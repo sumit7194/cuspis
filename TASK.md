@@ -1,127 +1,159 @@
-# The corner function a(θ) for a free scalar
+# Why do theories that share nothing else agree on a(θ)/C_T?
 
-## The problem
+## The setup, in one paragraph
 
-Take a 3d (2+1 dimensional) conformal field theory in its ground state. Pick a spatial region,
-trace out everything outside it, and compute the entanglement entropy of what remains.
+Take a 3d (2+1 dimensional) conformal field theory in its ground state, pick a spatial region,
+and compute the entanglement entropy of the inside with the outside. A **smooth** boundary gives
+entropy proportional to the perimeter. A **sharp corner** of opening angle θ adds a *logarithmic*
+term whose coefficient is a function of the angle:
 
-For a region with a **smooth** boundary the entropy scales with the perimeter. Introduce a **sharp
-corner** of opening angle θ and the corner contributes an additional, **logarithmic** term:
+    S  =  B · (perimeter/δ)  −  a(θ) · ln(perimeter/δ)  +  O(1)
 
-    S  =  B · (perimeter / δ)  −  a(θ) · ln(perimeter / δ)  +  O(1)
+`a(θ)` is **universal** — independent of the regulator, the lattice, and every microscopic
+detail. It is an intrinsic property of the CFT itself.
 
-with δ the short-distance cutoff. The coefficient **a(θ)** is the object of interest.
+## The actual problem
 
-**Why it matters.** `a(θ)` is *universal*: independent of the regulator, of the lattice, and of the
-microscopic details. It is an intrinsic fingerprint of the CFT, and it appears across condensed
-matter, holography, and quantum information as a way to identify which theory one is looking at.
+Normalise `a(θ)` by `C_T`, the coefficient of the stress-tensor two-point function. Then:
 
-**The open part.** For the **free massless scalar** — the simplest field theory there is — `a(θ)`
-is not known in closed form. It is computed numerically, angle by angle. Two limits are believed
-known; the interior is not.
+> **The function a(θ)/C_T is very nearly the SAME for the free scalar, the free Dirac fermion,
+> strongly-coupled holographic theories, a family of higher-curvature holographic models, and the
+> interacting Wilson–Fisher fixed points of the O(N) models.**
 
-> **THE TASK: find a closed form for a(θ) for the free scalar, or establish something new and
-> checkable about it.**
+These theories share almost nothing. Different field content, different spectra, different
+interactions, free versus strongly coupled, Lagrangian versus not. **And their normalised corner
+functions collapse onto each other.**
 
----
+There is also a proven lower bound, believed to be of the form
 
-## Before anything else — M1
+    a(π/2)  ≥  (π² ln 2 / 6) · C_T
 
-**Do the prior-art sweep first and report it before deriving anything.** State what is known, by
-whom, and with what identifier, and flag anything that would make this task already solved or
-already impossible.
+**which all known theories nearly saturate.**
 
-**Everything in the next section is stated as BELIEVED, not as given.** It is written from
-recollection, has not been verified against sources by whoever wrote this file, and is exactly the
-kind of thing rule III exists for. **Verify each item against the literature and correct this file
-before using any of it.** If a stated limit turns out to be wrong or to have a different
-coefficient, that discovery is itself worth more than a fast start.
+> ### **WHY?**
+>
+> **This is an observation, not a theorem. Nobody has explained it. That is the task.**
 
 ---
 
-## What is believed known — VERIFY BEFORE USE
+## Three ways in. They are not alternatives — a real answer probably touches two.
 
-**The smooth limit, θ → π.** `a(θ)` is believed to vanish quadratically as the corner flattens:
+### ① EXPLAIN THE COLLAPSE
 
-    a(θ)  →  σ · (π − θ)²
+What structural fact forces theories with different spectra and different dynamics to produce
+nearly the same normalised corner function?
 
-and σ is believed to be fixed by the stress-tensor two-point function coefficient C_T, via a
-relation of the form σ = C_T · π²/24 — associated with Bueno, Myers and Witczak-Krempa (~2015).
-**Verify the relation, its numerical factor, and its conditions of validity.**
+**The bar is quantitative, not narrative.** The theories do not agree *exactly* — they agree
+*nearly*. **Any explanation must predict the size and the sign of the residual deviations**, and
+those deviations are measured. An argument that explains why they agree, without explaining why
+they disagree by exactly as much as they do, is incomplete and should be labelled as such.
 
-**The sharp limit, θ → 0.** `a(θ)` is believed to diverge, faster than quadratically, with a
-leading behaviour of the form κ/θ. **Verify the form and the value of κ for the free scalar.**
+*A plausible-sounding mechanism that cannot be turned into a number is worth very little here.
+Say so if that is what you have.*
 
-**The interior.** Numerical values exist in the literature and in the sibling repo `../quantum`.
-No closed form is known to the author of this file. **This is the claim most worth attacking
-first, because if it is false the task is over in an hour and that is a good outcome.**
+### ② BREAK IT
 
----
+**Find or construct a CFT where a(θ)/C_T departs substantially from the collapse.**
 
-## Verification protocol — pre-registered, frozen before any result
+This is the counterexample-first route (rule M3) and it is the one recent frontier results have
+most often succeeded on. Two outcomes, both real:
 
-A proposed closed form is graded on three tiers. **Tier 1 is symbolic and unfoolable. Tier 3 is
-numerical and weak. Do not let a Tier-3 pass stand in for a Tier-1 failure.**
+- **A counterexample exists** → the near-universality is an accident of the theories anyone has
+  looked at, and you have shown which structural feature they all happened to share.
+- **Every attempt fails in the same way** → the failures localise the hypothesis. *A theorem is
+  hiding, and the shape of the failures tells you what its conditions are.* **Report the failed
+  constructions with their reasons. A silent failed attempt is invisible to everyone.**
 
-    TIER 1  (exact, symbolic)   Does the candidate reproduce BOTH known limits analytically --
-                                the correct power AND the correct coefficient? Not numerically
-                                close: symbolically equal, after the prior-art sweep has
-                                established what the limits actually are.
+Candidate directions worth considering — establish for yourself whether each is even admissible:
+theories with large numbers of fields, theories with unusual central-charge ratios, non-unitary
+CFTs, theories with higher-spin currents, deformations that move C_T without moving the corner
+structure.
 
-    TIER 2  (exact, structural) Does it satisfy the constraints a(θ) must obey on general
-                                grounds -- positivity, monotonicity, any known convexity or
-                                reflection property? Establish which of these hold, with
-                                sources, before using them as gates.
+### ③ SHARPEN THE BOUND
 
-    TIER 3  (numerical)         Does it match ../quantum's measured a(60°), a(90°), a(120°)
-                                within their stated across-regulator spread, under BOTH the
-                                3-parameter and 4-parameter fits?
+The lower bound is nearly saturated by everything known. **Is it tight? Is there a matching upper
+bound? Is near-saturation itself the thing that needs explaining, rather than a coincidence?**
 
-**Tier 3 is three points with error bars in the tens of percent.** A wrong formula can pass it.
-Treat a Tier-3 agreement as necessary and nowhere near sufficient — and remember that a plateau
-recruits you while a blow-up announces itself.
-
-### Grading
-
-Every claim is labelled `verified` / `partially verified` / `unverified`, and no unverified claim
-travels without its label. **A closed form that passes Tier 3 but fails Tier 1 is `unverified`,
-however good the plot looks.**
-
-### The failure mode this protocol exists to catch
-
-*A derivation containing an error — a missing factor of two, a dropped boundary term — whose
-output nonetheless looks plausible.* The guard is a verification script that checks the candidate
-against an independent computation, not a re-reading of the derivation.
+If a two-sided bound can be established with a small enough gap, **the near-universality stops
+being mysterious and becomes a corollary** — that would be the cleanest possible resolution and
+it is a legitimate target.
 
 ---
 
-## Outcomes, ranked, and all four are reportable
+## What this task is NOT
 
-    A   A closed form passing Tier 1 and Tier 3.                        The full result.
-    B   A closed form for a restricted range, or an exact value at a
-        special angle not previously known.                             A real result.
-    C   A new term in one of the asymptotic expansions, or a sharpened
-        bound on the interior.                                          A real result.
-    D   A demonstration that no closed form of a stated class can
-        reproduce both limits.                                          A real result, and the
-                                                                        one most likely to be
-                                                                        provable.
-    E   A verified statement that the problem is already solved in the
-        literature, with the citation.                                  ALSO A RESULT. Report it
-                                                                        immediately and stop.
+**It is not a computation you set running.** There is no large calculation here whose completion
+answers the question. If you find yourself waiting on a long job, you have probably taken a wrong
+turn — and the box currently has another session's multi-hour run on it, so heavy compute is
+actively unwelcome.
 
-**E is not a failure and must not be treated as one.** Two recent efforts in this family of
-projects were correct computations of results that already existed, and both were caught late.
+**Numerics are for CHECKING a claim, never for producing one.** Small exact computations,
+verification scripts, and consistency checks are all welcome. A parameter scan hoping a pattern
+falls out is not.
+
+**It is not a literature review.** The prior-art sweep is a prerequisite, not the deliverable.
 
 ---
 
-## What would make this worthless
+## Before anything: M1, and it is a real gate
 
-- A closed form asserted without the prior-art sweep.
-- A formula fitted to `../quantum`'s three angles. **That is inference, not verification** — three
-  points can be fitted by many wrong functions, and the fit will look excellent.
-- A limit "checked numerically" rather than symbolically. Tier 1 is exact or it is not Tier 1.
-- Any coefficient extracted from numerical data by fitting a series, without a sweep over the
-  nuisance parameter showing the coefficient is stable. **A recent case in this family produced
-  three real coefficients and two convincing fictions this way.**
+**Do the prior-art sweep first and report before deriving.** Verify every citation against the
+actual source.
+
+**Everything stated above is written from an assistant's recollection and is UNVERIFIED.** The
+bound's exact form and coefficient, which theories have been checked, how close the collapse
+actually is, and whether an explanation already exists — **all of it must be checked against
+sources before you build on it.** If any of it is wrong, correcting it is a result and you should
+report it rather than quietly routing around it.
+
+**Specifically establish:** how large the deviations between theories actually are, at which
+angles, and with what error bars. **You cannot explain a collapse whose magnitude you have not
+measured.**
+
+---
+
+## Verification protocol — frozen before any result
+
+    TIER 1  EXACT      Does the claim reproduce known exact results symbolically -- the
+                       theta -> pi limit, the theta -> 0 limit, the bound at pi/2, and the
+                       exact values for the free scalar and free fermion where they exist?
+                       Symbolically equal, not numerically close.
+
+    TIER 2  STRUCTURAL Does it respect the constraints a(theta) must satisfy -- positivity,
+                       monotonicity, convexity, any reflection property? Establish WHICH of
+                       these actually hold, with sources, before using any as a gate.
+
+    TIER 3  NUMERICAL  Does it reproduce the measured deviations between theories, in SIZE
+                       and in SIGN? ../quantum can supply a(60), a(90), a(120) for a free
+                       scalar on two lattices with across-regulator spreads.
+
+**Grade every claim `verified` / `partially verified` / `unverified`.** A mechanism that passes
+Tier 2 and fails Tier 1 is `unverified`, however elegant.
+
+---
+
+## Outcomes, ranked, all reportable
+
+    A  An explanation of the collapse that predicts the residual deviations in size and sign.
+    B  A counterexample: a CFT where a(theta)/C_T departs substantially, with the structural
+       reason the collapse fails there.
+    C  A two-sided bound tight enough to make the near-universality a corollary.
+    D  A sharpened one-sided bound, or a new exact value, or a new term in an expansion.
+    E  A proof that a stated class of explanations CANNOT work, with the obstruction named.
+    F  A verified finding that this is already resolved in the literature, with the citation.
+       REPORT IT AND STOP -- this is a result, not a failure.
+
+**E is worth more than it looks.** *"No argument of this type can produce the observed deviation
+sizes, and here is why"* is a real contribution and is often reachable when A is not.
+
+---
+
+## What would make the work worthless
+
+- An explanation with no number attached to it.
+- A mechanism fitted to the collapse after seeing it, with no independent prediction.
+- Any claim about which theories agree, or by how much, that was not checked against a source.
 - A citation written from memory.
+- Treating the two-limit asymptotics as *given* rather than as the first thing to verify.
+- **Reporting agreement without reporting the disagreement.** The deviations are the signal here.
+  A collapse quoted as "they all agree" has thrown away the entire quantitative content.

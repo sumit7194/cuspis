@@ -1,7 +1,11 @@
 # corner_function
 
-**Find a closed form for the entanglement-entropy corner function `a(θ)` of a free massless scalar
-in 3d — or establish something new and checkable about it.**
+**Why do conformal field theories that share almost nothing else agree on the normalised corner
+function a(θ)/C_T — and by exactly the amount they disagree?**
+
+The collapse across free scalars, free fermions, holographic models and Wilson–Fisher fixed points
+is an **observation with no explanation**. There is a proven lower bound that all of them nearly
+saturate, and no account of why. **That gap is the task.**
 
 Set up 2026-09-02 as a self-contained workspace for a frontier-model research run, with read-only
 access to four sibling research repositories.
@@ -22,9 +26,13 @@ access to four sibling research repositories.
 S  =  B · (perimeter/δ)  −  a(θ) · ln(perimeter/δ)  +  O(1)
 ```
 
-`a(θ)` is **universal** — independent of regulator, lattice, and microscopic detail — which is what
-makes it worth knowing and what makes it verifiable. Two limits are believed known (θ → π
-quadratic, θ → 0 divergent); the interior is computed numerically, angle by angle.
+`a(θ)` is **universal** — independent of regulator, lattice, and microscopic detail. Normalise it
+by `C_T` and theories with different field content, different spectra, and different couplings
+land on nearly the same curve. **Nearly**, not exactly — and the residuals are the whole
+quantitative content of the problem.
+
+**This is a reasoning task, not a compute task.** There is no long calculation whose completion
+answers it. Numerics verify claims here; they do not produce them.
 
 ## How verification works here
 
