@@ -31,8 +31,10 @@ by `C_T` and theories with different field content, different spectra, and diffe
 land on nearly the same curve. **Nearly**, not exactly — and the residuals are the whole
 quantitative content of the problem.
 
-**This is a reasoning task, not a compute task.** There is no long calculation whose completion
-answers it. Numerics verify claims here; they do not produce them.
+**The obstruction is believed to be conceptual rather than computational** — the numbers exist for
+several theories; the account of why they agree does not. That is a description of the problem's
+current state, not a restriction: if a large computation turns out to be the way in, take it and
+say why the reasoning route was insufficient.
 
 ## How verification works here
 

@@ -80,16 +80,24 @@ it is a legitimate target.
 
 ---
 
-## What this task is NOT
+## Where the difficulty sits
 
-**It is not a computation you set running.** There is no large calculation here whose completion
-answers the question. If you find yourself waiting on a long job, you have probably taken a wrong
-turn — and the box currently has another session's multi-hour run on it, so heavy compute is
-actively unwelcome.
+**As far as anyone knows, the obstruction here is conceptual rather than computational.** The
+numbers exist — the corner functions have been computed, for several theories, by several groups.
+What is missing is an account of why they land where they do. **No calculation currently on the
+table produces that account by finishing.**
 
-**Numerics are for CHECKING a claim, never for producing one.** Small exact computations,
-verification scripts, and consistency checks are all welcome. A parameter scan hoping a pattern
-falls out is not.
+That is a statement about the state of the problem, **not a restriction on you.** If you conclude
+that a substantial computation *is* the way in — a new theory's corner function, a large symbolic
+derivation, a systematic search over some space — **do it, and say why the reasoning route was
+insufficient.** Discovering that this problem has a computational core after all would itself be a
+finding, and a surprising one.
+
+**One epistemic point that is a real constraint, and it is about inference rather than cost:** a
+pattern that emerges from a scan is a hypothesis, not a result. **A number is not an explanation.**
+If a computation produces something suggestive, it still needs an independent argument before it
+counts — and see the note on inference-versus-verification in `CLAUDE.md`, which was bought at the
+price of two convincing fictions.
 
 **It is not a literature review.** The prior-art sweep is a prerequisite, not the deliverable.
 
