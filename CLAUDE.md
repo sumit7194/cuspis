@@ -91,7 +91,23 @@ assumption you are carrying over. If you cannot name one, you have checked the a
 the argument.
 
 **Report the failed replication, with the reason.** A silent one is invisible to everyone and is the
-easiest thing in any day's work to skip.
+easiest thing in any day's work to skip. *Sharper, from a sibling who kept three multi-hour failures
+as evidence:* **a failed run you keep is a control for the fix; a failed run you discard is a
+rumour.** When the fix landed, the same solver with only one step changed went NO SOLUTION →
+SOLUTION on the same input — *that* is what proved the cause, and it only existed because the
+failures had been kept.
+
+**Ask why the check fired before acting on what it said.** A sibling counted **nine** times in one
+arc where a guard or test fired and *the routine was right and the check was wrong*. Treating a red
+light as a finding, rather than as a claim to be investigated, cost more than any bug did.
+
+**Show the ansatz contains the answer before any negative result means anything.** *"No solution"
+from a space that could not have held the solution is not a result about the problem; it is a
+result about your parametrisation.* Establish representability first, always.
+
+**Run the known-answer control BEFORE the expensive run, not after it fails.** A sibling diagnosed
+one multi-hour failure three different ways — mass dimension, fall-off, term count, all wrong — and
+the actual cause was found by a **four-second** control that should have run first.
 
 ---
 
