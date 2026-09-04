@@ -1,5 +1,42 @@
 # The general entropic constraints on the corner function do not localise κ/C_T
 
+> ## ✅ INDEPENDENTLY VERIFIED — `../quantum`, commit `dbd443a`, 2026-09-05
+>
+> **All three load-bearing checks PASS. The result stands.** Verified by the sibling repo that owns
+> the corner-coefficient machinery, working from this file rather than from the author's summary.
+>
+>     C3 reduction     RE-DERIVED from scratch, not read. a_L = eps^2/(pi^2-eps^2) gives exactly
+>                      (pi^2+3eps^2) sin eps >= eps(pi^2-eps^2). Checked on 4e5 points: sign(CHL)
+>                      = sign(f) everywhere, equality only at endpoints, f/eps^3 -> 4 - pi^2/6 to
+>                      six digits, cubic bound alone reaches 2.1703 -- so the SECOND SUBINTERVAL
+>                      IS GENUINELY NEEDED
+>     admissibility    sigma = pi^2/24 and kappa = pi^5/48 confirmed. C4 Hankel determinants
+>                      positive at four angles, and a DELIBERATELY CORRUPTED moment sequence goes
+>                      negative -- so the C4 test is not vacuous
+>     convexity        verified structurally AND the truncated family verified independently
+>                      rather than on the lemma: min CHL >= 0 at u = 0, 0.5, 2, 5, 20, 50;
+>                      kappa/C_T reaches 8.4e64 at u = 50
+>
+> **TWO DOCUMENTATION ERRORS FOUND, NEITHER LOAD-BEARING.** Both are annotated in place below:
+> Lemma 2(i)'s claim that `a_min ∈ 𝒞` (it has κ = 0, C6 needs κ > 0), and the blanket
+> "C1, C2, C4, C6 hold for every ρ ≥ 0" (**false for C6**). *The proof uses neither.*
+>
+> **THE MECHANISM, SHARPENED BY THE VERIFIER AND BETTER THAN THE ORIGINAL STATEMENT.** Not merely
+> "positivity is blind to tails" —
+>
+> > **C6 constrains only the θ → 0 LIMIT, so it says nothing about WHERE the asymptotic regime
+> > begins.** Pushing the cutoff u → ∞ holds the tail amplitude fixed while the mass goes to zero;
+> > for `a_u` the κ/θ behaviour is only visible for θ ≲ 1/u. **That is a genuine looseness in an
+> > asymptotic condition, not a trick.**
+>
+> **WHAT REMAINS UNCHECKED, AND IT IS THE LOAD-BEARING PART.** Whether C1–C6 is the *complete* set
+> of known constraints is a **literature claim, not a mathematical one**, and was not swept. *The
+> theorem is exactly as strong as that completeness.*
+>
+> **AND ONE REFRAME WORTH MORE THAN IT LOOKS:** C4 being conjectural at n = 1 is **CONSERVATIVE, not
+> threatening.** *If C4 failed, 𝒞 would be LARGER and the supremum no less infinite.* "A conjectural
+> constraint" reads like a weakness; here it is the opposite.
+
 *Standalone statement of the result of this workspace. Self-contained; the lab notebook is `report.md`
 (entries EXP-001 to EXP-011), the verified bibliography is `references.md`, the checking scripts are
 under `scripts/`. Written 2026-09-05 and consolidated the same day after EXP-011; §10 is the handover.*
@@ -87,7 +124,11 @@ using a(π) = a′(π) = 0. Consequences:
   **C5 is the mass condition M₀ = 2σ = π²C_T/12**;
 - **C6 is a tail condition**: a ~ κ/θ ⟺ ρ(s) ~ 2κ s² e^{−πs} as s → ∞ (this reproduces the
   smooth–sharp asymptotics σ^{(p)} → 2κ/π^{2p+3} of [BWK16]);
-- C1, C2, C4, C6 hold for every ρ ≥ 0;
+- ~~C1, C2, C4, C6 hold for every ρ ≥ 0;~~ **FALSE FOR C6** — see the verification note at the top
+  of this file. C1, C2 and C4 hold for every ρ ≥ 0; **C6 does not.** It requires the tail
+  ρ ~ 2κ s²e^{−πs}, which the families used here have and a generic positive measure does not.
+  *Counterexample (verified independently): ρ = 1 on [0.1, 1] gives a(θ→0) = 6.0966, finite, so
+  κ = 0.* **The proof never uses the blanket statement, so nothing downstream changes.**
 - **C3 is the single linear inequality**
 
       CHL[a](ε) = ∫₀^∞ dρ(s) K(s, ε) ≥ 0,     K(s, ε) ≡ cosh(sε) − sinh(sε)/(s sin ε).            (3.2)
@@ -107,7 +148,10 @@ Since sin ε < ε, there is exactly one s*(ε) > 0 with K < 0 on (0, s*) and K >
 
 *Reading:* C3 penalises spectral weight at small s and rewards weight at large s.
 
-**Lemma 2 (two admissible functions).**
+**Lemma 2 (two admissible functions).** *[Verification note: **2(i) as stated is wrong** — `a_min`
+has κ = 0 while **C6 requires κ > 0**, so it is not in 𝒞 except "in the limiting sense" the text
+concedes. **It is not needed:** the theorem runs over λ ∈ (0,1] and states its conclusion on the
+OPEN interval, and `a_λ` is in 𝒞 directly because ρ_λ ≥ 0 and κ_λ = λκ_L > 0. Cosmetic.]*
 (i) 𝔞_min ∈ 𝒞 with κ = 0. C3 holds with equality [BWK16, App. A.1]; C1, C2, C5 are explicit; C4 holds
 because ρ_min > 0; C6 holds in the limiting sense (logarithmic divergence, κ = 0).
 (ii) â_L ≡ (π⁴C_T/24) a_L ∈ 𝒞 with κ/C_T = π⁵/48 = 6.375. C1, C2, C5, C6 are explicit from
