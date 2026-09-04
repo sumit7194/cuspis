@@ -52,15 +52,34 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
 
 ## Handed off — RESOLVED 2026-09-05 by `../quantum` (their commit `afc7ace`)
 
-> **The bound was right, the lattice was wrong, and the corrected value satisfies the bound.**
-> Verified independently by the bridge; every figure below reproduces.
+> **The bound was right and the lattice was wrong. The corrected value is CONSISTENT WITH the bound
+> at the level the method can resolve — not PASS, and not FAIL.** Verified independently by the
+> bridge; every figure reproduces.
 
     bound  a_min(120) = (1/32) log(2/sqrt3)  = 0.0044950     [pi^2 C_T/3 = 1/32 EXACTLY]
-    committed      0.0038956   0.867x  FAIL
-    N=1024         0.0043706   0.972x  FAIL
-    N=2048         0.0044650   0.993x  FAIL
-    m->0 extrap    0.0045099   1.003x  PASS        correction +15.8%
+    committed      0.0038956   0.867x   13.3% below
+    N=1024         0.0043706   0.972x
+    N=2048         0.0044650   0.993x
     a(60)          0.0242324 -> 0.0256670  (+5.9%); vs expected 0.0264, was 8.2% low, now 2.8%
+
+    3-param, m->0 extrapolated   0.0044915   0.9992x   marginally BELOW
+    4-param, measured m=0.00125  0.0045195   1.0054x   ABOVE
+      the two models differ 1.22% like-for-like at that window, and the bound sits INSIDE the gap
+      correction to the committed value: +14.6% measured, +15.3% extrapolated
+
+**~~PASS, m->0 = 0.0045099 at 1.003x~~ RETRACTED (`04db813`).** *That extrapolation imported
+`r = 3.1` increments-per-halving, measured at the fixed R=4..14 window and carried to the plateau
+without being re-measured there.* **The verdict is decided by that constant, not by the data:**
+
+    r=2.0 -> 1.0143x   r=3.1 -> 1.0033x   r=4.0 -> 1.0003x   r=4.56 -> 0.9992x   r=5.0 -> 0.9986x
+                                                     the sign flips at r ~ 4.3
+
+**A third plateau point at m=0.005, N=512 — chosen so `xi/N = 0.391` matches the 0.39 of the other
+two, so m varies alone at fixed geometry — measures `r = 4.56`, not 3.1.** *With only two plateau
+points r was unconstrained.*
+
+> **The deficit falls from 13.3% to 0.08%, into the residual model ambiguity, and that is the whole
+> of what measurement supports.**
 
 **THE CAUSE, and it was not the short fit window this file proposed.** The extraction needs
 `R << xi << N`. The committed run had `Rmax/xi = 0.14` (fine) but **`xi/N = 0.62` — the correlation
