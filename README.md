@@ -23,6 +23,7 @@ The ≈1% shape residual is still open. Start at RESULT.md; §10 is the handover
 
 | file | what it is |
 |---|---|
+| **[PHASE2.md](PHASE2.md)** | **what Phase 1 left open** — the two targets, quoted from RESULT.md §10 rather than reframed. Read RESULT.md first. |
 | **[RESULT.md](RESULT.md)** | **the result** — standalone: statement, scope, proof, mechanism, prior work, handover |
 | **[TASK.md](TASK.md)** | the problem, what is believed known (**and must be verified**), the frozen three-tier verification protocol, and the five reportable outcomes |
 | **[CLAUDE.md](CLAUDE.md)** | the operating contract — loads every session, deliberately short |
