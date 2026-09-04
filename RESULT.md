@@ -71,7 +71,7 @@
 > constraint" reads like a weakness; here it is the opposite.
 
 *Standalone statement of the result of this workspace. Self-contained; the lab notebook is `report.md`
-(entries EXP-001 to EXP-011), the verified bibliography is `references.md`, the checking scripts are
+(entries EXP-001 to EXP-013), the verified bibliography is `references.md`, the checking scripts are
 under `scripts/`. Written 2026-09-05 and consolidated the same day after EXP-011; §10 is the handover.*
 
 ## 0. Statement and scope
@@ -100,6 +100,13 @@ inequality rewards tails. A bound would need a growth condition at the tail end;
 sources of such conditions are an inverted-channel expansion whose lowest state is universal (the
 Cardy/crossing mechanism) and locality/anomalies fixing local coefficients; §6 shows why neither
 reaches κ in d = 3, and states carefully what is proved and what is a classification.
+
+**Update after Phase 2 (EXP-013).** §6's own falsifier fired: a third bridge exists. The rectangle of
+twist lines has a self-dual crossing in which κ_n is the vacuum energy of both channels and the four
+corners carry a_n(π/2); it yields κ_n ≥ (2π/3) a_n(π/2) and, with a(π/2) ≥ 𝔞_min(π/2), κ/C_T ≥ 2.39
+[LMW26, assuming their bound persists at n → 1]. It is one-sided: the pure-Casimir solution
+𝒟 = e^{ε₀(y+1/y)} satisfies every constraint used and has a(π/2)/κ = 0. So the theorem below stands,
+and the rigorous range becomes κ/C_T ∈ [2.39, ∞) against the observed [3.67, 4.18].
 
 ## 1. Setting and notation
 
@@ -243,6 +250,7 @@ entropic inequalities of the corner function.
 | Modular theory (Bisognano–Wichmann, relative entropy, QNEC) | second-order shape variations (the σ theorem) | no (κ is all orders; it sits at the boundary of convergence of the ε-expansion) |
 | Stress-tensor 2-/3-point data (C_T, t₄) | see `report.md` EXP-002: two theories with equal t₄ differ in κ/C_T by 11.5% | no |
 | An inverted-channel positive expansion with a universal lowest state | would fix κ from universal data (the Cardy/crossing mechanism) | absent for the two-ball function in d ≥ 3; the strip's inverted channel lands on a non-universal Casimir energy, §6 |
+| A *self-dual* crossing with κ as the vacuum energy of both channels (the rectangle of twist lines) [LMW26] | κ_n ≥ (2π/3)a_n(π/2); κ/C_T ≥ 2.39 at n → 1 | lower bound only: 𝒟 = e^{ε₀(y+1/y)} is admissible with a(π/2)/κ = 0 (EXP-013) |
 
 The named obstruction: **κ is a non-perturbative fusion datum of the twist defect, and no entropic
 inequality or finite-order correlator bound reaches it.**
@@ -270,8 +278,13 @@ so the short-distance coefficient is fixed by c.
   Q = Tr e^{−ℓH(w)}, positive in e^{−ℓ}, whose ground-state energy is E₀(w) = −(n−1)κ_n/w. So κ_n is
   a mass — the Casimir energy of two twist points on the plane — in the other channel.
 - The torus: exchanging cycles gives c_S = d·c_vac exactly [Sha16].
-Neither bounds anything, because the mass at the other end is itself non-universal: in odd d there is
-no conformal anomaly, and Casimir energies of flat and defect geometries are non-local numbers. The
+Neither fixes κ, because the mass at the other end is itself non-universal: in odd d there is no
+conformal anomaly, and Casimir energies of flat and defect geometries are non-local numbers. *But
+"non-universal" is not "useless" (correction, EXP-013):* when the geometry is self-dual — a rectangle
+of twist lines, whose x ↔ y symmetry is a modular relation — the same non-universal κ_n sits at the
+bottom of both channels while the corners bring a_n(π/2) into the equation, and OS positivity then
+yields the inequality κ_n ≥ (2π/3)a_n(π/2) [LMW26]. In d = 2 the same crossing is an equality (corner
+c/16, strip πc/24: Cardy). In d = 3 it is one-sided; see the update in §0 and EXP-013. The
 d = 3 values c_S/C_T = 60.4 (real scalar), 48.3 (N = ∞ Wilson–Fisher, from c̃/N = 4/5 [Sac93]), 12πζ(3) = 45.32
 (Dirac), 4π⁵/27 = 45.34 (Einstein) show the spread that remains despite the exact torus relation. (The
 Dirac–Einstein agreement at 4.4·10⁻⁴ is the n → 0 endpoint of a known 0.2% agreement of σ_n/C_T on
@@ -288,10 +301,11 @@ every d ≥ 3.
 a singular-end coefficient (§4); (N2) in d = 2 the x ↔ 1−x symmetry supplies the missing growth
 condition through a universal crossed vacuum; (N3) the two-ball function in d ≥ 3 has no channel
 relation onto a universal lowest state, and the strip's inverted channel lands on a non-universal
-Casimir energy. Not proved, offered as a classification with a named falsifier: that no *third* bridge
-(other than an inverted channel with universal lowest state, or locality/anomaly) can supply a growth
-condition at the tail end. In QFT the remaining candidate, analyticity with an a priori growth bound of
-Froissart type, has so far always rested on unitarity plus crossing or on locality with a cutoff.
+Casimir energy. The classification first offered here — that no *third* bridge could supply a growth condition at the
+tail end — was falsified by [LMW26] (EXP-013): a self-dual crossing with a non-universal but shared
+vacuum energy supplies one. What survives, now with an explicit witness: every known bridge is
+one-sided at the tail. The analyticity route (Lorentzian cusps, [CGT26]) likewise yields a
+positivity, not an upper bound.
 
 *A solvable instance, read to the bottom.* For the free massless Dirac field the two-sphere Rényi
 mutual information is known exactly for all n and d [AM26]; there the short-distance (strip)
@@ -359,6 +373,14 @@ positivity): no upper bound on a(θ)/C_T at any angle, nor on any σ^{(p)}/C_T, 
 constraints. The holographic route suggested there gave, in [Miao15] and [BCV21], that the Einstein
 curve is not even a lower bound.
 
+*Cusp literature, 2024–26 (EXP-013).* In d = 3 the corner function is the cusp anomalous dimension of
+the replica twist line, Γ^{(n)} = (1−n)a_n(θ) [LMW26 eq 35; CGT26; Cha26]. [CHK24] prove Γ < 0,
+Γ′ > 0, Γ″ < 0 and Γ″(π) = −C_D/6 for general line defects (C2 and σ_n ∝ C_D in that language);
+[DKPW24] give the wedge/Casimir relation F = Vol(ℍ^p)ℰ/θ^p (the strip–corner identity); [KRS25] prove
+the leading fusion coefficient non-negative and derive one-point-density growth *from* it; [LMW26]
+bootstrap the rectangle and obtain the first lower bound on κ in terms of a(π/2). None bounds a
+Casimir energy from above.
+
 [CH12] introduced conditional positivity / infinite divisibility for the entropies and wrote, for the
 holographic corner function, "if we could write g(θ) as a Laplace transform…"; the representation
 (3.1) is that structure. [BWK16] §IV found the smooth–sharp asymptotics σ^{(p)} → 2κ/π^{2p+3}, which
@@ -392,12 +414,17 @@ analytic, with a falsifiable numerical companion. (5) What a bound must use (§5
 it and d = 3 does not, narrowed after attack (§6, EXP-007/009). (6) The solvable instance read to the
 bottom (§6, EXP-008/011): κ₂ and the UV datum are different moments of one positive function.
 (7) The Dirac–Einstein c_S/C_T near-coincidence is chance on a known loose pattern (EXP-010).
+(8) Phase 2: the sign of the (σ, κ) trial-function residual is not universal but is set by one number
+at each end — σ′ − σ̃′ at the smooth end (positive for every n = 1 theory, negative for both free fields
+at n ≥ 2) and a₀ − ã₀ at the sharp end (EXP-012). (9) Phase 2: the third bridge exists — the rectangle
+crossing of [LMW26] — gives κ ≥ (2π/3)a(π/2), hence κ/C_T ≥ 2.39, and is provably one-sided (EXP-013).
 
-**Open, in order of value.** (a) The shape residual: why the (σ, κ) trial function reproduces every
-curve to ≈1%, and whether its sign is universal. (b) The real input for any bound on κ: a growth
-condition on the bulk-channel density of the two-defect function from outside the tail — either a
-second positive expansion with a universal lowest state (shown absent for two balls in d ≥ 3) or an
-analyticity-plus-growth argument for defect fusion, which does not yet exist. (c) The ECG t₄ sign
+**Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
+sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and the value of the sharp-end constant
+a₀ (a defect-creation dimension; being measured for the free scalar, EXP-012). (b) An *upper* bound on
+κ: every known bridge, including the rectangle crossing, is one-sided; closing the problem needs a
+constraint that excludes pure-Casimir solutions 𝒟 = e^{ε₀(y+1/y)} — dynamical input beyond OS
+positivity and self-dual crossing (EXP-013). (c) The ECG t₄ sign
 discrepancy between [BCV21] and [BCR18] (does not affect any conclusion here).
 
 **For whoever picks this up.** Start from this file, then `report.md` in order; every number carries
@@ -424,6 +451,9 @@ J. Stat. Mech. (2009) P11001 · [CH07] Casini, Huerta, NPB 764 (2007) 183 · [CH
 JHEP 11 (2012) 087 · [CHL09] Casini, Huerta, Leitao, NPB 814 (2009) 594 · [FLP16] Faulkner, Leigh,
 Parrikar, JHEP 04 (2016) 088 · [HHCWM16] Helmes et al., PRB 94, 125142 (2016) · [HT07] Hirata,
 Takayanagi, JHEP 0702:042 (2007) · [Miao15] Miao, JHEP 10 (2015) 038 · [NN15] Nakaguchi, Nishioka,
-JHEP 04 (2015) 072 · [BCR18] Bueno, Cano, Ruipérez, JHEP 03 (2018) 150 · [BFGLM26] Bueno, Fernández García, Gentile,
+JHEP 04 (2015) 072 · [BCR18] Bueno, Cano, Ruipérez, JHEP 03 (2018) 150 · [BCGKM26] Bianchi, Cavaglià, Gutiérrez, Kousvos, Meineri,
+arXiv:2609.04035 · [CGT26] Cuomo, Giombi, Tizzano, arXiv:2608.03704 · [Cha26] Chandra, arXiv:2608.28531 ·
+[CHK24] Cuomo, He, Komargodski, JHEP 11 (2024) 061 · [DKPW24] Diatlyk, Khanchandani, Popov, Wang, arXiv:2404.05815 ·
+[KRS25] Kravchuk, Radcliffe, Sinha, J. Phys. A 58 (2025) 465402 · [LMW26] Lanzetta, Moult, Wang, arXiv:2609.04041 · [BFGLM26] Bueno, Fernández García, Gentile,
 Lasso Andino, Moreno, arXiv:2604.01436 · [CV21] Caron-Huot, Van Duong, JHEP 05 (2021) 280 · [Sac93] Sachdev, Phys.
 Lett. B 309 (1993) 285 · [Sha16] Shaghoulian, PRD 93, 126005 (2016) · [TWZ21] Tolley, Wang, Zhou, JHEP 05 (2021) 255.

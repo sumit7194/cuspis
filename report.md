@@ -955,3 +955,189 @@ not survive the text conversion of arXiv:0905.2562; left unchecked and listed in
 **Grade** Facts 1–2: verified against the quoted equations. Fact 3: derivation verified; arithmetic
 checked in two ways. Fact 4: verified as [AM26]'s statement; physical status of the RS entropy not
 examined. Outcome (B): the null, as pre-registered.
+
+## EXP-012  Target A, the cheap sub-question: is the sign of the trial-function residual universal?
+
+**Date** 2026-09-05. **Status** complete from published tables plus the two validated exp001 modules;
+one pre-registered prediction handed to the instrument (running, see end).
+
+**Pre-registration.** r(θ) ≡ ã(θ) − a(θ), with ã the two-parameter (σ, κ) function of [BMW15b]
+eqs (6.2)–(6.7) (= [HHCWM16] eq 21, = [BCV21] eq 261). Outcomes named before looking: (i) one sign
+for all theories, all n, all θ; (ii) the sign is set by a single datum and flips with it; (iii) no
+pattern. Inputs: exact smooth-limit coefficients σ_n^{(p)} for the complex scalar (8) and Dirac (7)
+at n = 1–4 [HHCWM16] Tables 3–4 ("all shown digits are significant"); κ_n from [CHL09] Table 1 (n = 1)
+and [BMW15b] Table 3; Einstein and ECG curves from `exp001_measure.py` / `exp001_ecg.py` (controls:
+σ/C_T = π²/24, κ/C_T = π²Γ(3/4)⁴/6, σ_ECG/σ_E = 1−3μ, κ_ECG/κ_E = 1−123μ/20, all pass).
+Script: `scripts/exp012_sign.py`. Its controls reproduce four entries of [HHCWM16] Tables 1–2.
+
+**Where the free-field values come from, and how exact they are.** The Taylor series about θ = π has
+radius π, so at θ ≥ 90° the truncated series (M = 7, 8 terms) is exact to < 10⁻⁴ relative; at 63.4°
+to 7·10⁻⁴; below that [HHCWM16] eq (22) (series plus the geometric tail with σ^{(p)} → 2κ/π^{2p+3})
+is used. Because the coefficients approach the asymptote from above ([HHCWM16] Fig. 3; measured excess
+r of the last coefficient 0.0–0.8%), eq (22) is a lower bound with one-sided error ≤ r × tail: 0.01% at
+45°, 0.03–0.05% at 26.6°. [CHL09]'s exact values at 90°, 135° agree with the series to all digits.
+
+**Result A — the sign near θ = π is decided by one number.** ã has σ̃ = σ exactly and
+σ̃′ = λ¹/π⁴ + λ²/45, a fixed linear function of (σ, κ); r ≈ (σ̃′ − σ′)ε⁴. Measured (σ̃′ − σ′)/σ′:
+
+| | n = 1 | n = 2 | n = 3 | n = 4 |
+|---|---|---|---|---|
+| complex scalar | +1.53% | −1.08% | −1.39% | −1.42% |
+| Dirac | +2.24% | −0.79% | −1.43% | −1.65% |
+| Einstein | +1.65% | — | — | — |
+| ECG μ = +0.00312 / −0.00322 | + / + (numerically, from the exact curves) | — | — | — |
+
+**Result B — the interior sign follows it, with no node where tables can see.** (ã − a)/a in %:
+
+| | 26.6° | 45° | 63.4° | 90° | 116.6° | 135° | 153.4° |
+|---|---|---|---|---|---|---|---|
+| Einstein | +0.92 | +0.79 | +0.57 | +0.31 | +0.14 | +0.07 | +0.02 |
+| ECG μ=+0.00312 | +1.22 | +1.09 | +0.81 | +0.45 | +0.21 | +0.10 | +0.03 |
+| ECG μ=−0.00322 | +0.62 | +0.49 | +0.33 | +0.17 | +0.07 | +0.03 | +0.01 |
+| scalar n=1 | +0.01(3) | +0.16 | +0.22 | +0.19 | +0.12 | +0.06 | +0.02 |
+| Dirac n=1 | +0.54 | +0.58 | +0.50 | +0.33 | +0.17 | +0.09 | +0.03 |
+| scalar n=2 | −0.83(5) | −0.67 | −0.47 | −0.25 | −0.11 | −0.05 | −0.02 |
+| scalar n=3 | −0.94(5) | −0.78 | −0.56 | −0.31 | −0.14 | −0.07 | −0.02 |
+| scalar n=4 | −0.95(5) | −0.80 | −0.58 | −0.32 | −0.15 | −0.07 | −0.02 |
+| Dirac n=2 | −0.21 | −0.22 | −0.19 | −0.12 | −0.06 | −0.03 | −0.01 |
+| Dirac n=3 | −0.39 | −0.40 | −0.34 | −0.22 | −0.12 | −0.06 | −0.02 |
+| Dirac n=4 | −0.45 | −0.46 | −0.40 | −0.26 | −0.14 | −0.07 | −0.02 |
+
+[BCV21] Fig. 2 (1 − a/ã, curves ordered top to bottom by decreasing μ, "better for negative μ") is
+reproduced in sign and ordering. [BMW15b] reported only |difference| ≤ 0.33% for the n = 2 scalar.
+
+**Result C — the sign near θ = 0 is decided by a second number, and it is a defect datum.** With
+a = κ/θ + a₀ + O(θ): ã₀ = −¾λ¹ = (3π/2)(3πσ − κ)/(π² − 6), so r(0⁺) = ã₀ − a₀. For Einstein the
+exact curve gives a₀ = 0 to four digits (a − κ/θ = −0.9424 θ at θ = 0.02, 0.01, 0.005, 0.0025), so
+r(0⁺) = +0.203 C_T > 0 and the Einstein residual is single-signed. ã₀ in units of C_T: Einstein
++0.203, ECG +0.248 / +0.158, Dirac n=1 +0.092, scalar n=1 −0.370, scalar n=2 −0.373, Dirac n=2
+−0.023 (sign of 3π − κ/σ; the physical band κ/σ ∈ [8.9, 11.0] straddles 3π = 9.42). For the free
+fields a₀ is not in any table. Structure from the cusp literature (EXP-013): a_n(θ) = Γ^{(n)}(θ)/(1−n)
+with Γ the cusp anomalous dimension of the twist line, whose fusion expansion is
+Γ = C/θ + Δ_tip + … with Δ_tip the dimension of the operator creating the defect pair at the tip
+[CHK24 eq 2.12]. If that operator is unitary, Δ_tip^{(n)} ≥ 0 for n > 1, so a₀^{(n)} ≤ 0 and
+a₀^{EE} = −∂_nΔ_tip|_{n=1} ≤ 0 (my inference from their general structure; not verified for twist
+defects). Consequences: Dirac n = 1 has r(0⁺) = 0.092 C_T − a₀ ≥ 0.092 C_T > 0 — single-signed at all
+angles, as the data show; the scalar at n = 1 has r(0⁺) = −0.370 C_T − a₀, negative iff
+a₀ > −0.370 C_T (= −0.0035 in real-scalar units) — a node below 26.6°, consistent with the +0.01(3)%
+measured there and undecidable from tables.
+
+**Verdict.** Outcome (ii): the sign is *not* universal, but it is not patternless. It is uniform across
+all five n = 1 theories at every angle where data exist (trial above exact), uniformly opposite for
+both free fields at n = 2, 3, 4, single-signed in θ in every decidable case, and set at each end of
+the interval by one number: σ′ − σ̃′ at the smooth end, a₀ − ã₀ at the sharp end.
+
+**What this constrains before any mechanism is built.** (1) A mechanism must make the second spectral
+moment ⟨s²⟩ = 12σ′/σ fall *below* the two-basis interpolation at n = 1 for free fields, Einstein and
+ECG alike, and *above* it at n ≥ 2. (2) It must be a statement about one number per end, not about the
+whole curve: fixing σ′ (respectively a₀) in addition to (σ, κ) would remove the residual to the level
+of the next coefficient, which is what [HHCWM16] eq (22) does. (3) δ ≡ σ′/σ̃′ − 1 is not a function
+of κ/σ alone (Einstein 9.02 → −1.6%; Dirac n = 2 9.50 → +0.8%; Dirac n = 1 9.24 → −2.2%), so the
+n-dependence is genuine and the n = 1 (entanglement) point is on the opposite side from all n ≥ 2.
+(4) The trial function's accuracy is not mysterious once stated this way: all theories have
+κ/σ within 15% of the EMI value 3π and σ′/σ within 5% of the EMI value 1/15; the residual is the
+≈2% by which the true σ′ misses the line through the EMI and Lifshitz points.
+
+**Pre-registered for the instrument (scalar EE production launched 2026-09-05, 672 nodes, M ≤ 15,
+n_t = 14, t_max = 3.2, reusing 97 validated nodes; Tier-1 continuity control EE(t → 0) vs Rényi-2
+passed: deviation ∝ t², 0.03% at t = 0.022, no branch jump).** (P1) a₀ ≤ 0 for the real scalar.
+(P2) If a₀ > −0.0035, the n = 1 scalar residual changes sign below 26.6° with the exact function
+above ã at small angles; with a₀ = 0 the leading estimate is r/a ≈ −8.8% × θ(rad), which the Einstein
+case suggests is reduced ≈2.7× by O(θ) terms, i.e. ≈ −1% by 15–20°. (P3) The run must first
+reproduce [HHCWM16] Table 1 (α = 1) at 63.4°–153.4° to the series precision and [CHL09] at 90°, 135°;
+its first disagreement with a table is evidence about the solver, not about the table. Failure of P1
+would falsify the tip-unitarity inference; failure of P3 stops everything downstream.
+
+**Grade** Results A, B: verified (published exact coefficients; validated modules). Result C: Einstein
+verified; the Δ_tip identification and a₀ ≤ 0: unverified inference, labelled. Verdict: as stated.
+
+## EXP-013  Target B: the missing growth condition exists in the literature, it is one-sided, and here is why
+
+**Date** 2026-09-05. **Status** complete as a reading plus one explicit construction; no computation.
+
+**Pre-registration.** RESULT.md §6 named its falsifier: "a third bridge that supplies a growth
+condition at the tail end." Outcomes: (i) found in the literature; (ii) constructed here; (iii) proven
+impossible; (iv) not session-sized. Sweep rule from PHASE2 applied: the queries contained neither κ
+nor C_T — they asked for cusps, defect fusion, Casimir energies, Regge/causality for defects, cross-n
+inequalities, energy-flux positivity with twist defects.
+
+**Finding 1 — the object.** In d = 3 the entangling corner is a cusp on the replica twist *line*
+defect of CFT^n/Z_n, and the corner function is its cusp anomalous dimension:
+Γ^{(n)}_twist(θ) = (1 − n) a_n(θ) [LMW26 eq 35; the same identification is stated in the
+introductions of CGT26 and Cha26]. The 2024–26 "cusp" papers are therefore about this object, not a
+different one. The sibling's filing in PHASE2 ("cusped line defects, not entangling-surface corners")
+checked the noun against the wrong object: cusped line defects *include* the twist line, and one of
+those papers derives corner bounds explicitly. Correction recorded in TODO for the bridge.
+
+**Finding 2 — the third bridge, as published.** [LMW26] bootstrap a rectangle of line defects
+(L_x × L_y): ⟨𝔇(L_x, L_y)⟩ = ⟨staple| e^{−L_y Ĥ(L_x)} |staple⟩ = 𝒟(y)/A^{2Γ}, y = L_x/L_y,
+Γ ≡ Γ^{aā}(π/2) (their eq 12); the x ↔ y symmetry is a modular relation 𝒟(y) = 𝒟(1/y) (13); and
+𝒜(y) ≡ y^{−2Γ} e^{−ε₀ y} 𝒟(y) = ∫₀^∞ S(ε) e^{−yε} dε with S ≥ 0 by OS positivity (14–15), where
+ε₀ = ε^{aā} is the Casimir energy of the defect and its conjugate, V(L) = −ε^{aā}/L. An analytic
+"magic" functional gives Γ^{aā}(π/2)/ε^{aā} ≥ −3/(2π) (their eq 1), optimal for these constraints and
+saturated by every 2d BCFT (𝒟 = y^{2Γ}η^{8Γ}(iy), Γ = −c/16, ε₀ = πc/24). For twist defects, with
+ε^{(n)} = (n−1)κ_n (the same normalisation as RESULT.md §6's open-channel reading E₀ = −(n−1)κ_n/w):
+
+    κ_n ≥ (2π/3) a_n(π/2)    (their eq 38),    κ_n/σ_n ≥ π³/6 = 5.17   (eq 39, using a_n(π/2) ≥ σ_n π²/4),
+    κ_EE ≥ (π⁵/144) C_T = 2.125 C_T   (eq 40, "assuming the magic bound persists in the n → 1 limit").
+
+Their eq 37 uses the weaker input a(π/2) ≥ σπ²/4; with the theorem a(π/2) ≥ 𝔞_min(π/2) = 4σ log 2
+[BWK16 + FLP16] the same step gives **κ/C_T ≥ (π³ log 2/9) = 2.387** and κ/σ ≥ 5.81 (my combination,
+same n → 1 assumption). Data: (2π/3) a(π/2)/κ = 0.62 (scalar), 0.68 (Dirac), 0.69 (Einstein),
+0.69/0.69 (ECG), 0.60–0.66 at n = 2–4 — satisfied everywhere with 30–40% to spare; the rigorous window
+is now κ/C_T ∈ [2.39, ∞) against the observed [3.67, 4.18].
+
+**Finding 3 — what this corrects in RESULT.md §6, and what it confirms.** §6 required the inverted
+channel's lowest state to be *universal*, and dismissed the strip channel because its vacuum energy
+is the non-universal κ. That requirement was too strong. It suffices that the tail coefficient itself
+be the vacuum energy of a *self-dual* crossing: the rectangle puts κ_n at the bottom of both channels
+and its four right-angle corners bring a_n(π/2) into the same equation, so the non-universal mass
+gets traded against another value of the same function. In d = 2 this is exactly the Cardy mechanism
+(corners c/16 by Cardy–Peschel, strip energy πc/24 — the bound is an equality); in d = 3 it is an
+inequality. The falsifier fired, in the narrowed form "a third bridge exists and is one-sided."
+The new inequality is not a consequence of C1–C6: 𝔞_min (κ = 0, a(π/2) = 1.14 C_T) violates it, so
+the [BWK16] lower-bound curve is not the corner function of any theory satisfying [LMW26]'s
+assumptions.
+
+**Finding 4 — the bridge is one-sided, by an explicit admissible solution (new here).** Within the
+constraints that produce the magic bound (S ≥ 0 and 𝒟(y) = 𝒟(1/y)), take
+
+    𝒟(y) = exp[ε₀ (y + 1/y)],   Γ = 0:   𝒜(y) = e^{ε₀/y} = Σ_k ε₀^k/(k! y^k) = ∫₀^∞ S(ε) e^{−yε} dε,
+    S(ε) = δ(ε) + Σ_{k≥1} ε₀^k ε^{k−1}/(k!(k−1)!) ≥ 0.
+
+It is modular invariant, OS-positive, has any ε₀ > 0 and a vanishing corner dimension, i.e.
+a(π/2)/κ = 0 at κ > 0. Hence these constraints cannot bound κ above at fixed a(π/2), only below — the
+same pure-Casimir, tail-only object as RESULT.md §7's Q = e^{(n−1)κℓ/w} and the truncated family of
+Theorem (b), now inside the rectangle bootstrap. Whether further cutting-and-gluing relations (other
+polygons, the cuboid of [LMW26]'s end matter) exclude it is open; nothing published does.
+
+**Finding 5 — the rest of the 2024–26 structure, mapped onto Phase 1.**
+- [DKPW24] eq (2.10), F = Vol(ℍ^p) ℰ/θ^p as θ → 0: the strip/corner identity in general-defect form;
+  prior art for §6's "κ_n is a Casimir energy in the other channel". ℰ is stated to be new data.
+- [KRS25]: a₀ ≥ 0 (Thm 3.1), inequalities between a₀ of different fusions (Thm 3.2), and the density of
+  bulk one-point coefficients log ρ(Δ, J) ~ √(8πa₀Δ)[1 − ½j² − …] for line defects in d = 3 (eq 11):
+  the growth of the one-point coefficients is *fixed by* the Casimir coefficient, not bounding it — the
+  Tauberian direction of EXP-006/011, now general. [BCGKM26] §6 do the same for the density of cusp
+  operators from a two-cusp crossing (cusp-operator channel vs fusion channel).
+- [CHK24]: Γ < 0, Γ′ > 0, Γ″ < 0 by reflection positivity of displacement two-point functions on
+  opposite edges (= C2 in cusp language), Γ″(π) = −C_D/6 (= σ_n ∝ C_D of [BMMS16]), and the Casimir
+  energy of a defect with its reversal is attractive (= κ_n ≥ 0, RESULT §5).
+- [CGT26]: Lorentzian cusps; Rindler positivity gives Γ^L ≥ 0 — the analyticity route yields a
+  positivity, not an upper bound, as §6 anticipated. [Cha26]: complete monotonicity of Γ in a
+  reflection-symmetric variable, stated as a conjecture from examples; possibly the cusp-side form of
+  C4 (proved for twist defects at integer n by [CH12]); not checked.
+- No paper bounds a Casimir energy from above in terms of other data; none was found that connects the
+  n → 1 twist bound to entanglement beyond [LMW26]'s eq 40.
+
+**Verdict.** Outcome (i)+(iii) together: the growth condition Phase 1 asked for exists (the rectangle
+crossing, [LMW26]), it bounds the tail from *below*, κ ≥ (2π/3)a(π/2), and it provably cannot bound it
+from above within the constraints used, by the solution of Finding 4. The theorem of RESULT.md §4
+stands unchanged and is strengthened in scope: C1–C6 together with the rectangle crossing localise
+κ/C_T only to [2.39, ∞). The upper edge of the observed band, 4.18 at the free scalar, is explained by
+no known constraint. Closing the problem would require a constraint that excludes pure-Casimir
+solutions, i.e. dynamical input beyond OS positivity and the self-dual crossing.
+
+**Grade** Finding 1: verified (three independent statements in the sources). Finding 2: verified
+against [LMW26]'s equations as extracted; the numerical sharpening is my arithmetic on their step.
+Finding 3: reasoning, checked on the d = 2 case. Finding 4: verified (a two-line computation, the
+Laplace transform of 1/y^k). Finding 5: verified as the sources' statements; proofs not read.

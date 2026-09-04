@@ -9,11 +9,22 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
       ([BMW15b], [HHCWM16], [BCV21] all report it; none explains it)? Is the residual universal in
       sign (it overshoots every known curve: +0.9% Einstein at 26.6°, +0.2–0.6% free fields; BCV Fig. 2
       says smaller for μ < 0)? This is the half of the original problem the κ-band reframe leaves open.
-- [ ] **The input any bound on κ needs** (RESULT.md §5–6, EXP-011): a growth condition on the
-      bulk-channel density of the two-defect function that does not come from the tail itself.
-      Named falsifier of the §6 classification: a third bridge (neither an inverted channel with a
-      universal lowest state nor locality/anomaly). Entry points not surveyed here: defect fusion,
-      Casimir energy of parallel conformal defects (no specific paper cited; verify before citing).
+- [ ] **An upper bound on κ** (EXP-013). The third bridge exists — [LMW26]'s rectangle crossing — and
+      gives only κ_n ≥ (2π/3)a_n(π/2) (κ/C_T ≥ 2.39 at n → 1 with the BWK16 input). The pure-Casimir
+      solution 𝒟 = e^{ε₀(y+1/y)} shows it cannot bound κ above. Open: do the other cutting-and-gluing
+      relations (polygons, [LMW26]'s cuboid) jointly exclude that solution? Test for any claimed upper
+      bound: it must exclude 𝒟 = e^{ε₀(y+1/y)}. Also open: [LMW26]'s bound at n → 1 is assumed, not
+      proved; the n = 2, 3, 4 statements rest on OS positivity, which is a theorem there.
+- [ ] **EXP-012 instrument run in progress** (scalar EE, launched 2026-09-05, `scripts/prod_ee2.log`,
+      `exp004_nodes/ee_*`, 672 nodes). On completion: run `exp004_analyze.py` on the result JSON;
+      P3 (contact with [HHCWM16]/[CHL09]) first; then read a₀ from the 5°–30° nodes (fit
+      κ/θ + a₀ + a₁θ + a₂θ² with κ fixed at 0.0397, and report the drift under the fit degree and
+      angle window — a number that moves with the window is not a measurement); then P1, P2.
+      Dirac EE run (mode `dirac`, same grid) not yet launched; its prediction is "no node, residual
+      positive throughout".
+- [ ] Is the tip constant a₀ really a defect-creation dimension for twist defects (EXP-012, Result C)?
+      Inferred from [CHK24] eq (2.12) for general line defects; check the fusion σ_n × σ̄_n → 1 and
+      the unitarity of the tip operator in the orbifold; if it holds, a₀^{EE} ≤ 0 is a theorem.
 - [ ] **ECG t₄ sign.** [BCV21] Fig. 1 caption pairs μ = +0.00312 with t₄ = +4; [BCR18] eq. 129 gives
       t₄ = −1260 μ f∞²/(1−3μ f∞²), the opposite pairing. Adopted BCR18. EXP-002's obstruction is
       sign-independent; the fermion-side conflict is 3.5% (BCR18) or 1.4% (BCV21). An independent
@@ -49,6 +60,15 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
 - Cross-dimensional log-convexity of the free-field κ_d (Mellin moments of one c-function, [AM26]
   eq. 4.17): free-field only; the [CH09] table needed to check it did not survive text conversion.
   Unchecked.
+
+## For the bridge (2026-09-05, EXP-013): the cusp papers are about this object
+
+PHASE2 records `../quantum`'s filing of the 2026 cusp-bootstrap papers as "a different object — cusped
+line defects, not entangling-surface corners". In d = 3 the entangling corner *is* a cusp on the
+replica twist line defect, and [LMW26] derive corner bounds explicitly (their eqs 35–40:
+Γ^{(n)}_twist = (1−n)a_n, κ_n ≥ (2π/3)a_n(π/2), κ_EE ≥ π⁵C_T/144). The filing checked the noun
+against the wrong object. The direction they reported (lower bounds) is right. Not modified there;
+recorded here for the bridge to carry back.
 
 ## Handed off — RESOLVED 2026-09-05 by `../quantum` (their commit `afc7ace`)
 
