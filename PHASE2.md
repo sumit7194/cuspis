@@ -107,3 +107,40 @@ distinction; it is why the sweep is trustworthy.
 > the parked solver's controls pass, that establishes it responds — not that it is asking the right
 > question. Run it against a published value before trusting it on an unpublished one, and treat
 > its first disagreement with a table as evidence about the solver.
+
+---
+
+## One thing that changed since Phase 1 ran, and it strengthens the ground under it
+
+**`../quantum` re-checked their own prior-art sweep for target B and the negative survived a
+widened query.** *Recorded here because Phase 1's headline is a negative result, and a negative is
+the one shape that cannot falsify itself from inside the sweep that produced it.*
+
+Their finding, in their words:
+
+> *"My route-1 searches asked whether a bound on κ exists **in terms of C_T**. That is not the
+> question the theorem needs — it needs to know whether **κ is bounded at all**. A bound stated in
+> σ, hₙ, F, or another corner coefficient would have been invisible to my phrasing, and I reported
+> the narrow answer as though it were the broad one."*
+
+**They re-queried with `C_T` deliberately excluded**, asking for any inequality with κ on either
+side bounded by anything, and for each distinct main result separately:
+
+> *"**No stand-alone inequality with κ on one side exists**; the only relation is the asymptotic
+> `σₙ^(p≫1) → 2κₙ/π^(2p+3)`, which expresses smooth coefficients via κ and **is not a bound in
+> either direction. THE NEGATIVE SURVIVES THE WIDENED QUERY.**"*
+
+**So target B's premise — that no bound on κ currently exists — now rests on a question someone
+actually meant to ask.** *Cost: one fetch.*
+
+**And the rule generalises to anything you conclude here:**
+
+> **A negative result is exactly where a narrow query survives, because the absence cannot be
+> falsified from inside the sweep that produced it.** *Before reporting that something does not
+> exist, re-run the search with your own framing's central term deliberately removed.*
+
+**A near-miss they logged rather than a save, which you should also know about:** the 2026
+cusp-bootstrap papers match these search terms, carry *corner* and *cusp* in their titles, are a
+**different object** — cusped line defects, not entangling-surface corners — and give **lower**
+bounds. *A sweep filing them by title would report the opposite of the truth.* **Check the object,
+not the noun.**
