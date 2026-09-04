@@ -33,6 +33,39 @@
 > of known constraints is a **literature claim, not a mathematical one**, and was not swept. *The
 > theorem is exactly as strong as that completeness.*
 >
+> ### But it is narrower than it looks — `../quantum` `e484518`
+>
+> **NOT a sweep. An enumeration from domain knowledge at a May 2026 cutoff, labelled as such**, of
+> the families a general constraint on a(θ) could come from:
+>
+>     vacuum purity                  -> C1          SSA              -> C2
+>     SSA + Lorentz                  -> C3          smooth limit     -> C5
+>     reflection positivity, any order -> C4, and covered by the Corollary
+>     sharp limit                    -> C6
+>
+> **And the ones that are NOT in C1–C6 turn out not to be statements about a(θ) at all:** the
+> entropic c-theorem constrains RG flow *between* CFTs rather than a(θ) within one; ANEC and
+> conformal-collider bounds constrain ratios of central charges with no known corner statement; the
+> numerical bootstrap bounds `C_T` itself, not `a(θ)/C_T`; holographic positivity is theory-specific.
+>
+> **TWO PLACES A MISSING CONSTRAINT COULD PLAUSIBLY HIDE. A sweep should start here.**
+>
+> **1. A bound relating the thin-strip / cusp coefficient to C_T.** *As θ → 0 the wedge becomes a
+> strip and κ is tied to the strip entanglement coefficient; a general inequality bounding that by
+> C_T would bound κ directly.* **No rigorous one is known to the verifier; what exists in that area is
+> conjectural.** *Most direct route — and a **negative** result there would substantially **strengthen**
+> the theorem rather than weaken it.*
+>
+> **2. An inequality linking the Rényi tower across n — and this is the structurally interesting one.**
+> `a_n` is computable at **integer n, where C4 is a THEOREM rather than a conjecture.** Anything
+> connecting `κ_n` to `κ_1` would import real information into n = 1 —
+>
+> > **and crucially it would NOT be a consequence of ρ ≥ 0 at n = 1, so it is the one route that
+> > survives the Corollary by construction.**
+>
+> *The verifier's own words: "if a bound on κ exists at all, my guess is it lives here" — **labelled a
+> guess**, and the enumeration above labelled domain knowledge rather than a search.*
+>
 > **AND ONE REFRAME WORTH MORE THAN IT LOOKS:** C4 being conjectural at n = 1 is **CONSERVATIVE, not
 > threatening.** *If C4 failed, 𝒞 would be LARGER and the supremum no less infinite.* "A conjectural
 > constraint" reads like a weakness; here it is the opposite.
