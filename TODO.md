@@ -50,6 +50,55 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
   eq. 4.17): free-field only; the [CH09] table needed to check it did not survive text conversion.
   Unchecked.
 
+## Handed off — RESOLVED 2026-09-05 by `../quantum` (their commit `afc7ace`)
+
+> **The bound was right, the lattice was wrong, and the corrected value satisfies the bound.**
+> Verified independently by the bridge; every figure below reproduces.
+
+    bound  a_min(120) = (1/32) log(2/sqrt3)  = 0.0044950     [pi^2 C_T/3 = 1/32 EXACTLY]
+    committed      0.0038956   0.867x  FAIL
+    N=1024         0.0043706   0.972x  FAIL
+    N=2048         0.0044650   0.993x  FAIL
+    m->0 extrap    0.0045099   1.003x  PASS        correction +15.8%
+    a(60)          0.0242324 -> 0.0256670  (+5.9%); vs expected 0.0264, was 8.2% low, now 2.8%
+
+**THE CAUSE, and it was not the short fit window this file proposed.** The extraction needs
+`R << xi << N`. The committed run had `Rmax/xi = 0.14` (fine) but **`xi/N = 0.62` — the correlation
+length was 62% of the BOX, so the box and not the mass was the IR cutoff and the softest modes went
+unregulated.** Varying N alone moves a(120) by 2.3%; varying m alone by **61%**.
+
+*This file's window hypothesis is refuted by the data: extending R makes it monotonically worse —
+0.0038960, 0.0030028, 0.0004281, and **−0.0046760**, which is unphysical. The collapse was the clue,
+not the answer.*
+
+**A better plateau criterion than either fit alone, found on the way:** the 3- and 4-parameter fits
+now **bracket** the answer and converge (5.5e-05 apart and narrowing); the committed pair **diverged**
+(0.0038960 vs 0.0035869). *Confirmed on a second angle and shape, because a fix that only repairs the
+number it was designed around is not a fix.*
+
+**AND THE FIFTH INSTANCE OF THE CLASS, which is the transferable part.** The study quoted its
+uncertainty as the **across-regulator spread, 1.85%** — and all four regulators shared the same N,
+the same m and the same fit window. **That control could not have failed.** The real systematics are
+orthogonal to it: **61% in m, ~12% in the window, 2.3% in N.**
+
+> **The quoted precision measured the one axis that did not matter.**
+
+**PROCESS DEFECT WORTH CARRYING.** `corner_angles.json` stored only fitted coefficients and never the
+raw `S(R)` — so *"what happens if you refit over another window"* could not be asked without a full
+re-run. **That is why the diagnosis took four scripts instead of one refit.** Store the raw data, not
+just the fit.
+
+*The shape-independence control was sound and is NOT implicated — it constrains the area coefficient,
+not the log coefficient. It passed for the right reasons.*
+
+**A correction the bridge owes:** this file cited *"the sibling's README puts the zero mode at ~20% of
+B."* **Their README retracts that figure** — the 22–41% number is recorded there as an artifact of the
+kernel set, moved 3.5× by one further admissible kernel, and the systematic was renamed
+*bulk-coupling* because the mode is identical across admissible kernels by construction. **The
+conclusion never depended on it; the number should not be carried onward.**
+
+---
+
 ## Handed off — for the bridge, not for this session to fix
 
 - **`../quantum` corner numbers vs the rigorous bound.**
