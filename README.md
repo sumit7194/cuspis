@@ -10,15 +10,27 @@ saturate, and no account of why. **That gap is the task.**
 Set up 2026-09-02 as a self-contained workspace for a frontier-model research run, with read-only
 access to four sibling research repositories.
 
+## Outcome so far (2026-09-05)
+
+**[RESULT.md](RESULT.md) — the general entropic constraints do not localise κ/C_T.** Reframed, the
+collapse is the statement that κ/C_T lies in a 13% band, plus a separate ≈1% shape residual. The
+band is *not* a consequence of the known constraints: every value of κ/C_T in (0, ∞) is admissible,
+and a(θ)/C_T is unbounded above at every angle. This answers, in the negative, a question left open
+in the literature, and it means the collapse needs an explanation the constraints cannot give.
+The ≈1% shape residual is still open. Start at RESULT.md; §10 is the handover.
+
 ## Read in this order
 
 | file | what it is |
 |---|---|
+| **[RESULT.md](RESULT.md)** | **the result** — standalone: statement, scope, proof, mechanism, prior work, handover |
 | **[TASK.md](TASK.md)** | the problem, what is believed known (**and must be verified**), the frozen three-tier verification protocol, and the five reportable outcomes |
 | **[CLAUDE.md](CLAUDE.md)** | the operating contract — loads every session, deliberately short |
 | **[SISTERS.md](SISTERS.md)** | the four sibling repos: what each holds, which file to open for what, and the read-only rule |
 | **[TODO.md](TODO.md)** | living list of open questions and unverified claims |
-| **[report.md](report.md)** | one entry per experiment, required fields enforced |
+| **[report.md](report.md)** | one entry per experiment (EXP-001 … EXP-011), required fields enforced |
+| **[references.md](references.md)** | 52 verified references, each with *what was actually read* (abstract / table / full text) |
+| **[scripts/README.md](scripts/README.md)** | the checks, the parked instrument, and how to re-fetch the source texts |
 
 ## The shape of the thing
 
@@ -48,6 +60,12 @@ TIER 3   matches ../quantum's a(60°), a(90°), a(120°)   numerical, three poin
 ```
 
 Tier 3 alone can be passed by a wrong formula. **Tier 1 is the gate.**
+
+**Tier 3's referee did not survive the run.** `../quantum`'s a(120°) sits 13% *below* a rigorous
+lower bound that follows from strong subadditivity, Lorentz invariance and C_T alone — so the
+lattice number, not the bound, is the suspect. Details and extraction parameters are in
+[TODO.md](TODO.md) under *Handed off*; the sibling is read-only and was not modified. Use
+[CHL09] Table 1 and [HHCWM16] Tables 1–2 as the referee instead.
 
 ## The sibling repositories
 
