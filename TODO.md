@@ -81,6 +81,23 @@ points r was unconstrained.*
 > **The deficit falls from 13.3% to 0.08%, into the residual model ambiguity, and that is the whole
 > of what measurement supports.**
 
+### Forward guidance from `../quantum` (`6ec989f`) — read this before resuming
+
+    remaining deficit vs the bound       0.0786%
+    3-param / 4-param gap, same window   1.2206%
+    model ambiguity dominates by         15.5x
+
+> **Pushing m lower CANNOT decide PASS or FAIL, however far it is taken.** The next halving needs
+> N = 4096 and would refine a 0.08% term while a **1.22% term sits unresolved.**
+> **The limiting factor is the fit model, not the m→0 limit.** What would settle it is a
+> better-conditioned extraction — more subleading terms constrained over a longer lever arm in R —
+> **not a smaller mass.**
+
+*Their reason for flagging it, which is the part to keep:* **refining m is the intuitive move and it
+would be the same error a fourth time — working the axis that is already converged while the
+dominant one is untouched.** *That is this study's original defect (uncertainty quoted across
+regulators while 61% sat in m) restated as forward guidance rather than as a post-mortem.*
+
 **THE CAUSE, and it was not the short fit window this file proposed.** The extraction needs
 `R << xi << N`. The committed run had `Rmax/xi = 0.14` (fine) but **`xi/N = 0.62` — the correlation
 length was 62% of the BOX, so the box and not the mass was the IR cutoff and the softest modes went
