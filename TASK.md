@@ -1,5 +1,22 @@
 # Why do theories that share nothing else agree on a(θ)/C_T?
 
+> **Corrections from EXP-001 (2026-09-04), see `report.md` R3.** Everything below was written from
+> recollection; the sweep found it mostly right and inflated in two places:
+> 1. The "family of higher-curvature holographic models" of [BM15] has a(θ)/C_T *identically* equal
+>    to the Einstein function (both a and C_T rescale by the same constant). It is not independent
+>    evidence. The only holographic family with a different shape is cubic gravity [BCV21]; across
+>    the allowed coupling range it stays within ±1% of Einstein and lies *below* it for t₄ > 0.
+> 2. The Wilson-Fisher points exist at one angle (π/2) with ±8–10% errors, where every theory is
+>    within 2% of every other by construction (the value there is pinned by the universal σ). They
+>    do not test the collapse. At N = ∞ the WF corner function is exactly N × free scalar [WWS17].
+> 3. The bound is right: a(θ) ≥ (π²C_T/3) log[1/sin(θ/2)] [BWK16]. "Nearly saturated" holds for
+>    θ ≳ π/2 (7–9% excess at π/2), not at small angles (36–41% below the true values at 26.6°).
+> 4. Measured deviations from Einstein: scalar +12.7% (θ→0) → +1.9% (π/2); fermion +2.5% → +0.3%;
+>    ECG ±1.0% → ±0.3%. To ≈1% every known curve is fixed by (σ, κ); the collapse *is* the band
+>    κ/C_T ∈ [3.672, 4.179].
+> 5. Tier 3 as written cannot gate anything: `../quantum`'s a(120°) is below the rigorous bound and
+>    its a(60°) is ≈8% low. Use the [CHL09]/[HHCWM16] tables as referee instead.
+
 ## The setup, in one paragraph
 
 Take a 3d (2+1 dimensional) conformal field theory in its ground state, pick a spatial region,
@@ -19,6 +36,8 @@ Normalise `a(θ)` by `C_T`, the coefficient of the stress-tensor two-point funct
 > **The function a(θ)/C_T is very nearly the SAME for the free scalar, the free Dirac fermion,
 > strongly-coupled holographic theories, a family of higher-curvature holographic models, and the
 > interacting Wilson–Fisher fixed points of the O(N) models.**
+> *[EXP-001: three independent curves (scalar, fermion, Einstein) plus a ±1% cubic-gravity band;
+> the [BM15] family is identical to Einstein by construction; WF is measured at π/2 only, ±8%.]*
 
 These theories share almost nothing. Different field content, different spectra, different
 interactions, free versus strongly coupled, Lagrangian versus not. **And their normalised corner
@@ -26,9 +45,10 @@ functions collapse onto each other.**
 
 There is also a proven lower bound, believed to be of the form
 
-    a(π/2)  ≥  (π² ln 2 / 6) · C_T
+    a(π/2)  ≥  (π² ln 2 / 6) · C_T        [verified: BWK16 eq II.4; general form (π²C_T/3) log(1/sin(θ/2))]
 
-**which all known theories nearly saturate.**
+**which all known theories nearly saturate.** *[EXP-001: 7–9% excess at π/2; not near saturation
+below ~60°.]*
 
 > ### **WHY?**
 >
@@ -126,6 +146,9 @@ measured.**
                        theta -> pi limit, the theta -> 0 limit, the bound at pi/2, and the
                        exact values for the free scalar and free fermion where they exist?
                        Symbolically equal, not numerically close.
+                       [EXP-001: exact closed forms exist for sigma (1/256, 1/128) and sigma'
+                       ((20+3pi^2)/(9216pi^2) per complex scalar, (16+3pi^2)/(9216pi^2) per Dirac);
+                       a(pi/2) etc. are 4-digit numerics; kappa is an integral of the 2d c-function.]
 
     TIER 2  STRUCTURAL Does it respect the constraints a(theta) must satisfy -- positivity,
                        monotonicity, convexity, any reflection property? Establish WHICH of
@@ -134,6 +157,8 @@ measured.**
     TIER 3  NUMERICAL  Does it reproduce the measured deviations between theories, in SIZE
                        and in SIGN? ../quantum can supply a(60), a(90), a(120) for a free
                        scalar on two lattices with across-regulator spreads.
+                       [EXP-001: ../quantum's a(120) violates the BWK16 bound by 13% and a(60) is
+                       ~8% low; use CHL09 Table 1 and HHCWM16 Tables 1-2 as the referee instead.]
 
 **Grade every claim `verified` / `partially verified` / `unverified`.** A mechanism that passes
 Tier 2 and fails Tier 1 is `unverified`, however elegant.
