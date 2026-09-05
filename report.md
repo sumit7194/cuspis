@@ -1235,3 +1235,38 @@ above the trial function's ã₀ = −0.00354, so r(0⁺) = ã₀ − a₀ = −
 single-signed negative residual at n = 2. Grade: instrument verified to ≤ 5·10⁻⁴ on the window used;
 the fit is model-dependent at the ±0.0003 level quoted; the interpretation as a defect-creation
 dimension is the unverified inference of Result C.
+
+### EXP-012 addendum 4 (2026-09-05) — scalar EE production: validated from 50° up; the small-angle end is not yet measured
+
+**Run.** 672 nodes (48 masses ≤ 15 × 14 Gauss–Legendre t-nodes on [0, 3.2]), no failures,
+`exp004_ee_result_n24_24_p15.0_t14.json`, analysed with `exp012_ee_analyze.py` in the pre-registered
+order.
+
+**P3 (contact with published values): PASS from 63.4° to 170°, and the instrument is better than the
+references there.** Against the exact series [HHCWM16 Table 3, α = 1, /2]: −9.8·10⁻⁷ uniformly from
+100° to 170° (a constant 10⁻⁶ offset, the same as σ from H1: 0.999 999 0 × 1/256 and σ′ from H3:
+0.999 999 3 × exact — the t-quadrature's residual), +1.0·10⁻⁵ at 90° (CHL09's 0.01183: +2.9·10⁻⁴,
+i.e. CHL09's last digit), +5.9·10⁻⁵ at 80°, +2.0·10⁻⁴ at 70°, and at 63.4° the value sits 7·10⁻⁴
+*above* the truncated series, which is exactly that series' own one-sided truncation error at that
+angle (re-assembly with M ≤ 11 gives +7.3·10⁻⁴ at 63.4° and −2.5·10⁻⁵ at 50°).
+
+**Residual sign at n = 1 from the instrument** (trial − s)/s: +0.23% (70°), +0.21% (80°), +0.193%
+(90°), +0.115% (116.6°), +0.062% (135°), +0.023% (153.4°), +0.003% (170°) — positive throughout,
+matching EXP-012 Result B's table values (+0.19, +0.12, +0.06, +0.02) to the last digit.
+
+**Below 50°: the run is garbage, and the cause is localised, not yet fixed.** The assembled s(θ)
+blows up to −0.76 at 45° and −2.8·10⁹ at 5°. Node by node, |F(5°)| is physical (10⁻³·⁹ and falling
+with M) for every node with t = 0.02 up to M = 7 and for every real-a (Rényi-2) node up to M = 15,
+but for complex a it is 100× too large already at (M = 7.1, t = 0.11), spreads to all t by M ≈ 12,
+and reaches 10⁷–10⁸ at M ≈ 15, with random signs. The onset mass rises with t (≈7 at t = 0.1, ≈11 at
+t = 2.7). No branch flag accompanies the onset (branch −1, 0 flips at M = 7.1, t = 0.11). A mass
+cutoff cannot rescue small angles: with M ≤ 8 the 5° value is still 5× too large, because the
+garbage begins below the mass where the physical contribution at 5° is exhausted (the Rényi-2 run
+needed M > 15 there). Diagnosis in one sentence: the complex-a integration loses the physical
+solution against the growing mode e^{2M(π−x)} at small x for M ≳ 7 with the precision rule
+dps = 25 + 3M that suffices at real a; the one-variable test (the same node at higher dps) is
+next. Until it passes, **P1 and P2 are undecided**; the pre-registered predictions stand.
+
+**What is measured.** For θ ≥ 50° the free-scalar corner function at n = 1 is now known to ≤ 10⁻⁵
+(≥ 70°) and ≤ 10⁻³ (50°–63°) independently of [HHCWM16]'s series, and agrees with it. That is a
+confirmation of published numbers, not news; the news this run was built for lives below 45°.
