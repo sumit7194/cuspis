@@ -108,6 +108,18 @@ corners carry a_n(π/2); it yields κ_n ≥ (2π/3) a_n(π/2) and, with a(π/2) 
 𝒟 = e^{ε₀(y+1/y)} satisfies every constraint used and has a(π/2)/κ = 0. So the theorem below stands,
 and the rigorous range becomes κ/C_T ∈ [2.39, ∞) against the observed [3.67, 4.18].
 
+**Refereeing status of the Phase-2 measurement (stated once, inherited by every reader).** The
+free-scalar values from `scripts/exp004_eehp_result_Mcut13.1.json` are checked against published
+numbers to ≤ 5·10⁻⁵ from 45° to 170° [HHCWM16 series, CHL09], and from 20° to 45° only against
+[HHCWM16] eq (22), a lower bound whose one-sided error is ≤ 5·10⁻⁴ at 20°, 2.6·10⁻⁴ at 26.6° and
+5·10⁻⁵ at 40°; they agree with it within those bounds. **The node at 27 ± 3° and a₀ = −0.33 C_T are
+determined by deviations at the 10⁻⁴ level, below that referee's resolution: at the precision claimed
+they rest on the instrument alone**, whose controls below 45° are built from the same understanding
+that built it. The sign statements survive the referee (the exact function is above eq (22) at 20°
+after the known normalisation and eq (22) is itself a lower bound); the magnitudes do not yet have an
+external check. What would supply one: a route to a₀ that does not pass through the CHL ODE system —
+the tip-operator dimension of the twist pair computed directly (TODO).
+
 ## 1. Setting and notation
 
 For a region with a sharp corner of opening angle θ in the ground state of a 3d CFT,
@@ -361,7 +373,8 @@ of the non-tail part of ρ), and in the cusp language the derivative at n = 1 of
 operator that creates the twist pair at the tip [CHK24 eq 2.12; inference for twist defects]. Measured
 here: Einstein a₀ = 0 to four digits (exact curve); real scalar, n = 1: a₀ = −0.33 C_T (−0.38 … −0.27,
 `scripts/exp004_eehp_result_Mcut13.1.json`, validated to ≤ 5·10⁻⁵ against [HHCWM16] from 20° to 170°);
-real scalar, n = 2: −0.24 ± 0.03 C_T. The (σ, κ) trial function's own constant is
+real scalar, n = 2: −0.24 ± 0.03 C_T; the sub-45° magnitudes behind these numbers are unrefereed at
+the precision quoted (see §0). The (σ, κ) trial function's own constant is
 ã₀ = (3π/2)(3πσ − κ)/(π² − 6), which changes sign inside the physical band (κ/σ straddles 3π); the
 residual's sign at each end of the interval is set by one number — σ′ − σ̃′ at π, a₀ − ã₀ at 0 — and
 for the free scalar at n = 1 the two ends disagree, giving a node at 27 ± 3° with the exact function

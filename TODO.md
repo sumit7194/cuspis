@@ -25,6 +25,14 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
       (M = 14.02, t = 0.03) by varying N and δ₀ separately before any production.
 - [ ] Dirac EE (a₀ for the Dirac fermion; prediction "no node, residual positive throughout,
       a₀ ≤ 0"): blocked on the Dirac vertex-term transcription (parked, see below).
+- [ ] **An external check on a₀ and the node** (raised by the bridge): below 45° the instrument is
+      refereed only by [HHCWM16] eq (22), to ≤ 5·10⁻⁴ at 20°, 2.6·10⁻⁴ at 26.6°; a₀ and the node
+      position live at 10⁻⁴. Routes not through the CHL ODE system: (a) compute the tip-operator
+      dimension ∂_nΔ_tip|₁ of the free-scalar twist pair directly from the fusion/strip spectrum
+      ([KRS25] eq 10 structure, [CHK24] eq 2.12) — prediction to test: +0.0032 (units of a); (b) a
+      second instrument (lattice at small angles with the `../quantum` extraction repaired; or the
+      heat-kernel route of [CH07] extended one order past κ/θ). Until one exists, quote the node and
+      a₀ with the §0 caveat attached.
 - [ ] Is the tip constant a₀ really a defect-creation dimension for twist defects (EXP-012, Result C)?
       Inferred from [CHK24] eq (2.12) for general line defects; check the fusion σ_n × σ̄_n → 1 and
       the unitarity of the tip operator in the orbifold; if it holds, a₀^{EE} ≤ 0 is a theorem.
