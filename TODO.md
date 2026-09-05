@@ -20,6 +20,8 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
       P3 (contact with [HHCWM16]/[CHL09]) first; then read a₀ from the 5°–30° nodes (fit
       κ/θ + a₀ + a₁θ + a₂θ² with κ fixed at 0.0397, and report the drift under the fit degree and
       angle window — a number that moves with the window is not a measurement); then P1, P2.
+      Windows start at 15°: the M ≤ 15 truncation is −8% at 5° and −0.5% at 10° (measured at n = 2,
+      addendum 3); the old "≈4·10⁻⁴ at 5°" estimate was wrong.
       Dirac EE run (mode `dirac`) NOT launched: its known-answer control (`dirac2`) FAILED
       (s₂ negative, −0.84× exact; see report EXP-012 addendum). Diagnosis: the vertex-term numerator
       as transcribed from [CHL09] eq (59) does not vanish at m → 0 while the denominator does;
@@ -60,7 +62,8 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
   145 EE checkpoint nodes for M ≲ 1 in `scripts/exp004_nodes/`. To resume: run the known-answer
   controls first (σ = 1/256, s(π/2) = 0.01183, s(3π/4) = 0.002520, κ = 0.0397 for the scalar;
   σ = 1/128, s(π/2) = 0.02329, κ = 0.0722 for Dirac), then check smoothness of F in t at fixed M
-  (branch flips), then decide the M > 15 tail (measured decay 0.83/unit M; ≈4·10⁻⁴ at 5°). Justified
+  (branch flips), then decide the M > 15 tail (contaminates 5° by 8% and 10° by 0.5%; clean from 15°
+  up, measured at n = 2). Justified
   only if the shape residual becomes the target.
 - Closed form of κ₂^f = (2/π)∫₀^∞ y² u²_{1/4}(y) dy (EXP-011): a Painlevé connection-type integral;
   integrable-systems curiosity; no bearing on the bound.

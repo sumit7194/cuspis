@@ -1207,3 +1207,31 @@ exact at all angles, a₀ ≤ 0") stays pre-registered and untested.
 
 **Grade** verified: both control outcomes, the decomposition A − V (A is the validated scalar
 integral), the exact V targets. The diagnosis of *which* angular structure is wrong: not established.
+
+### EXP-012 addendum 3 (2026-09-05) — dry run of the analysis on the Rényi-2 result: truncation measured, and a first sharp-end constant
+
+Run before the EE result exists, so that the analysis script meets known numbers first
+(`scripts/exp012_ee_analyze.py` on `exp004_renyi2_result_n24_24_p15.0_t1.json`, real scalar, n = 2).
+
+**Truncation, measured rather than estimated.** Against [HHCWM16] eq (22) (complex/2): −8.0% at 5°,
+−0.51% at 10°, then +3.7·10⁻⁴, +5.3·10⁻⁴, +3.1·10⁻⁴, +2.2·10⁻⁴, +0.8·10⁻⁴ at 15°, 20°, 26.6°, 30°, 40°
+(positive and within eq (22)'s own one-sided error r × tail ≈ 4.6·10⁻⁴ at 26.6°), and ≤ 4·10⁻⁴ from
+45° to 153° against the exact series; smooth limit exact to 10⁻¹². So the M ≤ 15 mass cutoff
+contaminates 5° and 10° and nothing above: the earlier note "≈4·10⁻⁴ relative at 5°" (TODO,
+from an extrapolated decay rate) was wrong by two orders of magnitude and is withdrawn. Protocol
+consequence: the sharp-end fits use windows starting at 15°.
+
+**Residual sign at n = 2 from the instrument** (trial − s)/s: −0.13% at 10°, −0.80% at 15°, −0.86% at
+26.6°, −0.68% at 45°, −0.25% at 90°, −0.05% at 135°, −0.002% at 170° — negative at every angle from
+10° to 170°, as EXP-012 Result B found from tables; the +8% at 5° is the truncation artifact above,
+not a node.
+
+**A new number: the Rényi-2 real-scalar sharp-end constant.** With κ₂ fixed at 0.0455996/2 and
+s − κ₂/θ fitted to a₀ + a₁θ + a₂θ² (+ a₃θ³): a₀ = −0.00236 (15–45°, degree 2), −0.00228 (15–45°,
+degree 3); windows reaching down to 10° or 5° drift to −0.004 … −0.06 and are excluded for the
+reason above. So **a₀^{(n=2)} = −0.0023 ± 0.0003** (drift, not a statistical error), i.e. −0.24 C_T.
+Checks: negative, as the tip-unitarity inference requires (Δ_tip^{(2)} = (1−n)a₀ = +0.0023 ≥ 0);
+above the trial function's ã₀ = −0.00354, so r(0⁺) = ã₀ − a₀ = −0.0012 < 0, consistent with the
+single-signed negative residual at n = 2. Grade: instrument verified to ≤ 5·10⁻⁴ on the window used;
+the fit is model-dependent at the ±0.0003 level quoted; the interpretation as a defect-creation
+dimension is the unverified inference of Result C.
