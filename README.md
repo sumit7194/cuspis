@@ -124,21 +124,20 @@ lattice number, not the bound, is the suspect. Details and extraction parameters
 
 ## The sibling repositories
 
-**These are local, private research repositories and are not published.** The `../` paths below will
-not resolve for an outside reader; they are recorded because **every number imported from one of
-them is cited by repo and file**, and a reader is entitled to know which claims rest on sources they
-cannot open.
+Five projects with deliberately independent roots, **kept ignorant of each other on purpose** — so
+that when two of them agree, the agreement is evidence rather than echo. **All read-only from
+here**, and every number imported from one is cited by repo and file.
 
-Five projects with deliberately independent roots, kept ignorant of each other so that agreement
-between two of them is evidence rather than echo. **All read-only from here.**
+**All five are public.** The `../` paths in `SISTERS.md` are local checkout names; the links are the
+same repositories.
 
-```
-../quantum              vestigium        the referee -- measures a(60°), a(90°), a(120°)
-../conjecture_machine   ansatz machine   exact symbolic GR; the model for a validated instrument
-../SpaceTime            tabula           silent_nulls.md: 45+ ways a bug reads as a result
-../BlackHole            DeepStrain       real LIGO data; source of the "plateau" failure mode
-../TheBridge            trivium          the cross-validation layer and the lessons ledger
-```
+| local path | name | what it is |
+|---|---|---|
+| `../quantum` | [**vestigium**](https://github.com/sumit7194/vestigium) | verified QM lattice numerics — the original referee for a(60°), a(90°), a(120°) |
+| `../conjecture_machine` | [**ansatz-machine**](https://github.com/sumit7194/ansatz-machine) | exact symbolic GR over finite fields; the model for a validated instrument |
+| `../SpaceTime` | [**tabula-geometrica**](https://github.com/sumit7194/tabula-geometrica) | what is discoverable in principle — and `silent_nulls.md`, 50+ ways a bug reads as a result |
+| `../BlackHole` | [**DeepStrain**](https://github.com/sumit7194/DeepStrain) | real LIGO strain, honest error bars; source of the "plateau" failure mode |
+| `../TheBridge` | [**trivium**](https://github.com/sumit7194/trivium) | the cross-validation layer and the lessons ledger |
 
 `SISTERS.md` says which file to open for what. **Nothing there needs to be loaded by default** —
 go and get what you need when you need it.
