@@ -1294,3 +1294,60 @@ calibration; the M ≥ 7 nodes dominate.
 **What stays fixed.** The predictions P1–P3 and the fit protocol (windows from 15°, κ fixed, drift
 reported) are unchanged; the old run's nodes are kept; the new run's first job is again P3 — now with
 the 15°–45° values of eq (22) as the referee, which the old run could not reach.
+
+### EXP-012 addendum 6 (2026-09-05) — the measurement: P1 and P2 confirmed, the node found, a₀ measured
+
+**Run** `eehp`: 480 nodes (48 masses × 10 t-nodes on [0, 2.2]), dps = 50 + 5M, no failures. Two
+instrument facts first, because they set the error bars. (i) The higher digits cured every node up
+to M ≈ 13.1 (smooth in t, consistent with the calibrated nodes, branch = +1 nodes included), but the
+top five masses M ≥ 14 are garbage even at 120–125 digits — a *different* failure, not precision; they
+are excluded by assembling with M ≤ 13.1 (`exp004_eehp_result_Mcut13.1.json`, 420 nodes). The cost of
+that cutoff, measured by moving it: −5.5·10⁻⁴ at 15°, −9·10⁻⁵ at 20°, −7·10⁻⁶ at 26.6°, −4·10⁻⁹ at 45°
+per 0.5 unit of M; against eq (22) the deficit is −1.6·10⁻³ at 15° and −1.0·10⁻⁴ at 20°. (ii) Reducing
+the t-grid from 14 nodes on [0, 3.2] to 10 on [0, 2.2] — a second variable changed in the same run,
+against Rule VI — costs a uniform normalisation of −1.874·10⁻⁴ (σ from H1 = 0.999 813 × 1/256; the same
+−1.87·10⁻⁴ against the exact series at every angle from 100° to 170°). It is known exactly and is
+divided out below; it would have been avoided by keeping the old grid.
+
+**P3 — contact with published values: PASS.** After the known normalisation, the instrument agrees
+with the exact series to ≤ 5·10⁻⁵ from 70° to 170° and with eq (22) to ≤ 5·10⁻⁵ from 26.6° to 60°
+(26.6°: −1.9·10⁻⁵, 30°: −5·10⁻⁵, 40°: −1.2·10⁻⁴ raw = +6·10⁻⁵ corrected, 45°: −1.4·10⁻⁴ raw); CHL09's
+0.01183 and 0.002520 to their last digit. 20° carries the 1·10⁻⁴ cutoff deficit, 15° the 1.6·10⁻³ one;
+10° and 5° remain truncation-dominated (−1.5%, −13%) and are not used. This is the first independent
+four-digit determination of the free-scalar entanglement corner function between 20° and 60°.
+
+**P2 — the sign below 26.6°: node found.** Residual (ã − a)/a after both corrections: +0.213% (60°),
++0.181% (50°), +0.155% (45°), +0.121% (40°), +0.031% (30°), −0.007% (26.6°), −0.069% (20°),
+−0.107% (15°, using the eq (22) deficit; between −0.09% and −0.18% depending on how much of eq (22)'s
+own one-sided error is real). The residual changes sign at **27 ± 3°** (the uncertainty is the
+normalisation's possible angle dependence, ±5·10⁻⁵) and the exact function lies *above* the trial
+function below it, by ≤ 0.1% down to 15°. This is exactly the case EXP-012 Result C left undecided
+(+0.01(3)% at 26.6° from tables): the node sits at the last angle the tables could reach.
+
+**P1 — the sharp-end constant: a₀ ≤ 0 confirmed, and measured.** With κ fixed at 0.0397 and windows
+from 20°: a₀ = −0.00321, −0.00300 (20–50°, degrees 2, 3), −0.00330, −0.00301 (20–60°), −0.00340,
+−0.00302 (26–60°), −0.00316, −0.00300 (20–45°), −0.00331, −0.00292 (26–50°); over all windows,
+degrees and κ = 0.0397 ± 0.00005 the range is [−0.00362, −0.00259], median −0.00317. So
+
+    a₀^{EE}(real scalar) = −0.0032 (−0.0036 … −0.0026) = −0.33 C_T (−0.38 … −0.27),
+
+against the trial function's ã₀ = −0.00351 (−0.370 C_T). The difference a₀ − ã₀ = +0.0003
+(−0.0001 … +0.0009) is what makes the node exist and makes it shallow; the negative residuals at
+15°–20° confirm its sign independently of the fit.
+
+**The a₀ table so far** (units of C_T; ã₀ = (3π/2)(3πσ − κ)/(π²−6)):
+
+| theory | a₀ | ã₀ | r(0⁺) = ã₀ − a₀ | node |
+|---|---|---|---|---|
+| Einstein, n = 1 | 0.000 (exact curve) | +0.203 | +0.203 | none |
+| real scalar, n = 1 | −0.33 (−0.38 … −0.27) | −0.370 | −0.04 (−0.10 … +0.01) | at 27 ± 3° |
+| real scalar, n = 2 | −0.24 ± 0.03 | −0.373 | −0.13 | none (negative throughout) |
+| Dirac, n = 1 | unmeasured (branch parked) | +0.092 | ≥ +0.09 if a₀ ≤ 0 | none predicted |
+
+If a₀ = −∂_nΔ_tip|_{n=1} (the CHK24 structure, unverified for twist defects), the free scalar's
+tip operator has ∂_nΔ_tip = +0.0032 at n = 1 and Δ_tip = +0.0023 at n = 2; Einstein's vanishes at
+leading order in 1/N. Both scalar numbers are positive, as unitarity requires.
+
+**Grade** P3: verified. Node and sign below 27°: verified at the level of the stated corrections.
+a₀: measured; the quoted range is a systematic drift, not a statistical error; the κ value is CHL09's
+to three digits. Δ_tip interpretation: inference, labelled. Instrument lessons recorded above.

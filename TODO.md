@@ -15,26 +15,16 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
       relations (polygons, [LMW26]'s cuboid) jointly exclude that solution? Test for any claimed upper
       bound: it must exclude 𝒟 = e^{ε₀(y+1/y)}. Also open: [LMW26]'s bound at n → 1 is assumed, not
       proved; the n = 2, 3, 4 statements rest on OS positivity, which is a theorem there.
-- [ ] **EXP-012 scalar EE run: DONE for θ ≥ 50°, BROKEN below 45°** (addendum 4). Validated to 10⁻⁶
-      against the exact series from 100° up, 10⁻⁵ at 90°; residual signs confirm Result B. The
-      complex-a nodes at M ≳ 7 lose the physical solution at small x (garbage 100× at M = 7.1,
-      t = 0.11; 10⁸ at M = 15). One-variable precision test on that node (`exp012_precision_test.py`:
-      dps 46/70/100, tolerance separately) decides whether a re-run of the M ≥ 7 nodes at higher dps
-      (~420 nodes, several hours) can deliver a₀ and P1/P2. Original plan for the analysis, kept:
-      run `exp012_ee_analyze.py`; P3 first; then read a₀ from the 15°–45° nodes (fit
-      κ/θ + a₀ + a₁θ + a₂θ² with κ fixed at 0.0397, and report the drift under the fit degree and
-      angle window — a number that moves with the window is not a measurement); then P1, P2.
-      Windows start at 15°: the M ≤ 15 truncation is −8% at 5° and −0.5% at 10° (measured at n = 2,
-      addendum 3); the old "≈4·10⁻⁴ at 5°" estimate was wrong.
-      Dirac EE run (mode `dirac`) NOT launched: its known-answer control (`dirac2`) FAILED
-      (s₂ negative, −0.84× exact; see report EXP-012 addendum). Diagnosis: the vertex-term numerator
-      as transcribed from [CHL09] eq (59) does not vanish at m → 0 while the denominator does;
-      one-variable fix (`dirac2r`: coefficient −2 on the b B₁ sin²x term) removed the singularity but
-      still FAILS (2× exact near π, sign change in the vertex term near 75°; addendum 2). PARKED.
-      Fast exact check for any future candidate: the vertex term's smooth-limit coefficient must be
-      2σ₂^{cs} − σ₂^f = 0.003469 (ε²) and 2σ₂′^{cs} − σ₂′^f (ε⁴), computable from the series start plus the
-      mass quadrature in seconds; only a candidate passing that gets a 48-node run. Both failed runs
-      kept as controls (`dirac2_*`, `dirac2r_*`).
+- [x] **EXP-012 scalar EE measurement DONE** (addendum 6): a₀ = −0.33 C_T (−0.38 … −0.27), node at
+      27 ± 3°, P1–P3 confirmed; instrument validated to ≤ 5·10⁻⁵ from 20° to 170°.
+- [ ] **Instrument, if anyone re-runs it** (what would make the scalar EE result clean rather than
+      corrected): keep the 14-node t-grid on [0, 3.2] (the 10-node grid cost a uniform −1.87·10⁻⁴) and
+      the rule dps = 50 + 5M; use M ≤ 13.1. The five masses M ≥ 14 are garbage at 120–125 digits —
+      *not* a precision failure; candidates: the series-start convergence (residual not stored in the
+      node record — store it), the N = 1.6M + 8 order, δ₀ = 0.01/M. Diagnose on one node
+      (M = 14.02, t = 0.03) by varying N and δ₀ separately before any production.
+- [ ] Dirac EE (a₀ for the Dirac fermion; prediction "no node, residual positive throughout,
+      a₀ ≤ 0"): blocked on the Dirac vertex-term transcription (parked, see below).
 - [ ] Is the tip constant a₀ really a defect-creation dimension for twist defects (EXP-012, Result C)?
       Inferred from [CHK24] eq (2.12) for general line defects; check the fusion σ_n × σ̄_n → 1 and
       the unitarity of the tip operator in the orbifold; if it holds, a₀^{EE} ≤ 0 is a theorem.

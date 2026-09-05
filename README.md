@@ -17,7 +17,11 @@ collapse is the statement that κ/C_T lies in a 13% band, plus a separate ≈1% 
 band is *not* a consequence of the known constraints: every value of κ/C_T in (0, ∞) is admissible,
 and a(θ)/C_T is unbounded above at every angle. This answers, in the negative, a question left open
 in the literature, and it means the collapse needs an explanation the constraints cannot give.
-The ≈1% shape residual is still open. Start at RESULT.md; §10 is the handover.
+Phase 2 (2026-09-05): the residual's sign is set by one number at each end of the interval and is
+not universal; the free scalar's sharp-end constant was measured and its predicted node found at 27°;
+and the missing bridge for a bound on κ exists in the 2026 cusp-bootstrap literature — a rectangle
+crossing giving κ ≥ (2π/3)a(π/2), hence κ/C_T ≥ 2.39 — and is provably one-sided, so the upper edge of
+the band is still explained by nothing. Start at RESULT.md; §10 is the handover.
 
 ## Read in this order
 

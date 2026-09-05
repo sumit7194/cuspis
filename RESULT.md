@@ -355,6 +355,18 @@ half-planes Q = e^{(n−1)κ_n ℓ/w}, which is completely monotone for every κ
 Σ_k c^k/(k! w^k), each 1/w^k a Laplace transform of a positive density), so this gives κ_n ≥ 0 and
 nothing else — the mechanism of §4 again.
 
+*The sharp-end constant (Phase 2, EXP-012).* With a(θ) = κ/θ + a₀ + O(θ), the constant a₀ is the
+sharp-end analogue of σ′: a second non-universal number, fixed by nothing in C1–C6 (it is an integral
+of the non-tail part of ρ), and in the cusp language the derivative at n = 1 of the dimension of the
+operator that creates the twist pair at the tip [CHK24 eq 2.12; inference for twist defects]. Measured
+here: Einstein a₀ = 0 to four digits (exact curve); real scalar, n = 1: a₀ = −0.33 C_T (−0.38 … −0.27,
+`scripts/exp004_eehp_result_Mcut13.1.json`, validated to ≤ 5·10⁻⁵ against [HHCWM16] from 20° to 170°);
+real scalar, n = 2: −0.24 ± 0.03 C_T. The (σ, κ) trial function's own constant is
+ã₀ = (3π/2)(3πσ − κ)/(π² − 6), which changes sign inside the physical band (κ/σ straddles 3π); the
+residual's sign at each end of the interval is set by one number — σ′ − σ̃′ at π, a₀ − ã₀ at 0 — and
+for the free scalar at n = 1 the two ends disagree, giving a node at 27 ± 3° with the exact function
+above the trial function below it by ≤ 0.1%.
+
 At n = 2 for the Dirac fermion the obstruction is explicit (§6, `report.md` EXP-011): κ₂ is the second
 moment of the positive profile y u²_{1/4}(y) whose first moment, 1/8, is the UV central charge. The
 same two numbers cannot be related by positivity, and the construction contains nothing else.
@@ -416,12 +428,14 @@ bottom (§6, EXP-008/011): κ₂ and the UV datum are different moments of one p
 (7) The Dirac–Einstein c_S/C_T near-coincidence is chance on a known loose pattern (EXP-010).
 (8) Phase 2: the sign of the (σ, κ) trial-function residual is not universal but is set by one number
 at each end — σ′ − σ̃′ at the smooth end (positive for every n = 1 theory, negative for both free fields
-at n ≥ 2) and a₀ − ã₀ at the sharp end (EXP-012). (9) Phase 2: the third bridge exists — the rectangle
+at n ≥ 2) and a₀ − ã₀ at the sharp end; a₀ measured for the free scalar (−0.33 C_T at n = 1, −0.24 C_T
+at n = 2) and Einstein (0), with the predicted node for the n = 1 scalar found at 27 ± 3° (EXP-012). (9) Phase 2: the third bridge exists — the rectangle
 crossing of [LMW26] — gives κ ≥ (2π/3)a(π/2), hence κ/C_T ≥ 2.39, and is provably one-sided (EXP-013).
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
-sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and the value of the sharp-end constant
-a₀ (a defect-creation dimension; being measured for the free scalar, EXP-012). (b) An *upper* bound on
+sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
+a₀ (0 for Einstein, −0.33 C_T for the free scalar at n = 1; a defect-creation dimension if the cusp
+structure carries over; unmeasured for the Dirac fermion, whose solver branch is parked, EXP-012). (b) An *upper* bound on
 κ: every known bridge, including the rectangle crossing, is one-sided; closing the problem needs a
 constraint that excludes pure-Casimir solutions 𝒟 = e^{ε₀(y+1/y)} — dynamical input beyond OS
 positivity and self-dual crossing (EXP-013). (c) The ECG t₄ sign
