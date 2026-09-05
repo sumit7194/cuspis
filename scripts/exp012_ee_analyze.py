@@ -7,12 +7,12 @@ from math import pi
 sys.path.insert(0, __file__.rsplit('/',1)[0])
 from exp012_sign import boson, kap, series, ansatz22, trial
 res=json.load(open(sys.argv[1])); mode=res['mode']; deg=np.array(res['deg']); s=np.array(res['s']); th=np.radians(deg)
-n = 1 if mode=='ee' else 2
+n = 1 if mode in ('ee','eehp') else 2
 c=[x/2 for x in boson[n]]            # complex -> real scalar
 k=kap['boson'][n]/2; sig=c[0]; sigp=c[1]
 CT=3/(32*pi**2)
 print(f"mode={mode} (real scalar, n={n}) nodes={res['nodes']} failures={res['failures']} nt={res['nt']} t_max={res['t_max']}")
-if mode=='ee': print(f"sigma from H1: {res['sigma_from_H1']:.10e} exact 1/256={1/256:.10e} ratio {res['sigma_from_H1']*256:.8f};  sigma' from H3: {res['sigmap_from_H3']:.10e} exact {sigp:.10e} ratio {res['sigmap_from_H3']/sigp:.8f}")
+if mode in ('ee','eehp'): print(f"sigma from H1: {res['sigma_from_H1']:.10e} exact 1/256={1/256:.10e} ratio {res['sigma_from_H1']*256:.8f};  sigma' from H3: {res['sigmap_from_H3']:.10e} exact {sigp:.10e} ratio {res['sigmap_from_H3']/sigp:.8f}")
 print("\n(1) CONTACT WITH PUBLISHED VALUES  [HHCWM16 Table 1 alpha=%d, complex/2; series exact to <1e-4 at >=90, 7e-4 at 63.4; eq22 below; CHL09 exact at 90,135 for n=1]"%n)
 chl = {90:0.02366/2, 135:0.005040/2} if n==1 else {}
 worst=0
@@ -25,6 +25,13 @@ for d,v in zip(deg,s):
     if 63<=d<=160: worst=max(worst,abs(v/ref-1))
     print(line)
 print(f"  worst |ratio-1| vs exact series on 63.4-160 deg: {worst:.2e}   -> P3 {'PASS' if worst<2e-3 else 'FAIL'} (criterion 2e-3; series itself 7e-4 at 63.4)")
+# below 63.4: eq22 is a LOWER bound with one-sided error <= r*tail; r = last coefficient's excess over 2k/pi^(2p+3)
+M=len(c); r=c[-1]*pi**(2*(M-1)+3)/(2*k)-1
+print(f"  15-45 deg vs eq22 (lower bound; its one-sided error <= r*tail with r={r:+.4f}):")
+for d in (15.0,20.0,26.565,30.0,40.0,45.0):
+    i=list(deg).index(d); t=th[i]; ref=ansatz22(t,c,k); tail=2*k/pi**(2*M+1)*(pi-t)**(2*M+2)/(t*(2*pi-t)); bound=abs(r)*tail/ref
+    dev=s[i]/ref-1; ok = (-1e-4 <= dev <= bound+1e-4)
+    print(f"    {d:7.3f}: s/eq22-1 = {dev:+.2e}   allowed [-1e-4, +{bound:.1e}]  {'ok' if ok else 'OUT'}")
 print("\n(2) SMOOTH LIMIT")
 for d in (170.0,160.0,150.0):
     i=list(deg).index(d); e=pi-th[i]; ref=sum(c[p]*e**(2*p+2) for p in range(len(c)))
