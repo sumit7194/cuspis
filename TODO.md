@@ -20,8 +20,12 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
       P3 (contact with [HHCWM16]/[CHL09]) first; then read a₀ from the 5°–30° nodes (fit
       κ/θ + a₀ + a₁θ + a₂θ² with κ fixed at 0.0397, and report the drift under the fit degree and
       angle window — a number that moves with the window is not a measurement); then P1, P2.
-      Dirac EE run (mode `dirac`, same grid) not yet launched; its prediction is "no node, residual
-      positive throughout".
+      Dirac EE run (mode `dirac`) NOT launched: its known-answer control (`dirac2`) FAILED
+      (s₂ negative, −0.84× exact; see report EXP-012 addendum). Diagnosis: the vertex-term numerator
+      as transcribed from [CHL09] eq (59) does not vanish at m → 0 while the denominator does;
+      one-variable fix (`dirac2r`: coefficient −2 on the b B₁ sin²x term) under test with a fixed pass
+      criterion. If it passes: launch `dirac` EE with the same change (mode `dirac` still carries the
+      old numerator — change it only after the control passes). If it fails: park.
 - [ ] Is the tip constant a₀ really a defect-creation dimension for twist defects (EXP-012, Result C)?
       Inferred from [CHK24] eq (2.12) for general line defects; check the fusion σ_n × σ̄_n → 1 and
       the unitarity of the tip operator in the orbifold; if it holds, a₀^{EE} ≤ 0 is a theorem.

@@ -1141,3 +1141,38 @@ solutions, i.e. dynamical input beyond OS positivity and the self-dual crossing.
 against [LMW26]'s equations as extracted; the numerical sharpening is my arithmetic on their step.
 Finding 3: reasoning, checked on the d = 2 case. Finding 4: verified (a two-line computation, the
 Laplace transform of 1/y^k). Finding 5: verified as the sources' statements; proofs not read.
+
+### EXP-012 addendum (2026-09-05) — the Dirac known-answer control FAILED; diagnosis; one-variable fix under test
+
+**The control.** Before any Dirac EE production, the Rényi-2 Dirac mode (`dirac2`: a = ±½, no
+t-integration, 48 mass nodes, M ≤ 15) was run against exact targets: σ₂^f = 1/(64π),
+σ₂′^f = (35π−8)/(30720π²) [HHCWM16 Table 4], and the seven α = 2 fermion angles of [HHCWM16] Table 2
+(0.0955, 0.0503, 0.0302, 0.01496, 0.006669, 0.003204, 0.001085). Result: **fail, decisively.** The
+assembled s₂(θ) is negative, −0.84 × the exact value from 45° to 117° (e.g. −0.01263 vs +0.01496 at
+90°), and structurally wrong near π (s(160°) ≈ s(170°) ≈ +2·10⁻⁴ instead of scaling as ε²). The run
+and its 48 nodes are kept (`scripts/exp004_nodes/dirac2_*`, `exp004_dirac2_result_*.json`) as the
+control for any fix. The Dirac EE production was not launched.
+
+**Why the check fired (asked before acting).** The references are solid — closed forms and a table
+whose other entries the scalar mode reproduces — so the routine is wrong, not the check. Node-level:
+at the lowest mass (M = 0.5001, m = 0.0096) the regularised vertex term is ≈ −5.4·10³ against a scalar
+piece of 0.03, and the per-node subtraction Ψ_π = +5396.6; Ψ_π scales as m^{−2.00} between the first
+two nodes. The first four mass nodes alone contribute −0.030 to s₂(90°), overwhelming the true +0.015.
+Cause, from the solver's own leading-order relations at a = ½: the denominator of the vertex term,
+4β₁² − b² sin²x → ε²(4(β₁¹)² − b₀²) = ε² m²/M², vanishes like m² *identically* (verified numerically:
+D/m² → 4.00); the numerator as transcribed from [CHL09] eq (59), 4β₁X₁cos(x/2) − bB₁sin²x →
+ε²(2β₁¹X₁⁰ − b₀B₁⁰), does not: 2β₁¹X₁⁰ = −0.1061 and b₀B₁⁰ = +0.0530 at m = 0.0096, so the two terms
+*add*. A straight line has no vertex term, so the ratio must be finite at every m; with these boundary
+values that requires the second term's coefficient to be −2 rather than +1 in the solver's conventions
+— and indeed 2β₁¹X₁⁰/(b₀B₁⁰) = −2.0011, −2.0303, −2.1851, −2.6641 at m = 0.0096, 0.0505, 0.1235,
+0.2272, i.e. −2 − 11.85 m² + O(m⁴): an exact cancellation at m → 0 with a smooth O(m²) remainder. The
+scalar sector cannot see this: H¹ = 1/(16πa(1−a)) + M(β₁¹X₂⁰ + β₂¹X₁⁰) does not contain B₁, and at
+a = ½ the system is 1 ↔ 2 symmetric, so no index swap is diagnosable either. Whether the −2 is a typo
+in eq (59), a convention difference in B₁, or my transcription, is not established.
+
+**The fix under test, one variable.** New mode `dirac2r`, identical to `dirac2` except that the
+coefficient of b B₁ sin²x in the numerator (and correspondingly in Ψ_π) is −2 instead of +1. Chosen
+by the regularity requirement, *not* by the target numbers. Launched 2026-09-05 at two workers.
+Pass criterion, fixed in advance: the assembled s₂(θ) agrees with the exact series at θ ≥ 63.4° to
+≤ 10⁻³, with eq (22)/Table 2 at 45° and 26.6° to ≤ 2·10⁻³, and s(170°)/(σ₂ε² + σ₂′ε⁴ + σ₂″ε⁶) = 1 to
+10⁻⁴. Anything else: the Dirac branch stays parked with this record.
