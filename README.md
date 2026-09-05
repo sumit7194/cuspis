@@ -1,16 +1,66 @@
-# corner_function
+# cuspis
 
 **Why do conformal field theories that share almost nothing else agree on the normalised corner
 function a(θ)/C_T — and by exactly the amount they disagree?**
+
+*`cuspis` — Latin, a point or spear-tip. In d = 3 the entangling corner turns out to be a **cusp**
+on the replica twist line, `Γ⁽ⁿ⁾ = (1 − n)aₙ`, and recognising that is what unlocked the second of
+the two results below.*
 
 The collapse across free scalars, free fermions, holographic models and Wilson–Fisher fixed points
 is an **observation with no explanation**. There is a proven lower bound that all of them nearly
 saturate, and no account of why. **That gap is the task.**
 
-Set up 2026-09-02 as a self-contained workspace for a frontier-model research run, with read-only
-access to four sibling research repositories.
+---
 
-## Outcome so far (2026-09-05)
+## What is in here
+
+Two results, and an instrument.
+
+**① The known entropic constraints do not force the collapse.** *Analytic, with a falsifiable
+numerical companion, and independently verified by a separate project.* Reframed, the collapse is
+the statement that `κ/C_T ∈ [3.672, 4.179]` plus a separate ≈1% shape residual — and **every value
+of κ/C_T in (0, ∞) is admissible** under the general constraints, with `a(θ)/C_T` unbounded above at
+every angle. This answers a question left open in the literature, in the negative.
+
+**② The residual's sign is not universal — it is set by one number at each end.** At the smooth end
+by the trial function's own fourth-order coefficient; at the sharp end by `a₀ − ã₀`, which changes
+sign inside the physical band because `κ/σ` straddles `3π`. For the n = 1 free scalar the two ends
+disagree, **so a sign change was predicted before the run** — and the instrument found it, at
+**27 ± 3°**, with `a₀ = −0.33 C_T`.
+
+**③ The instrument.** An arbitrary-precision solver for the Casini–Huerta–Leitao ODE system,
+validated to ≤ 5·10⁻⁵ against published values from 20° to 170°. It was built because **no
+four-digit free-field a(θ) below 45° appears in the literature** the sweep could find, and its
+20°–45° values are, on that basis, the first independent determination there.
+
+**Read [RESULT.md](RESULT.md) first — §10 is the handover.**
+
+### What is honestly not settled
+
+- **The sub-45° values have no external referee.** That is why the instrument exists, and it means
+  those numbers are simultaneously the result and the only check on the result. The pre-registered
+  predictions that passed were **sign** tests, which do not validate a magnitude.
+- **The upper edge of the band is explained by nothing known.** The rigorous window after ② is
+  `κ/C_T ∈ [2.39, ∞)` against an observed `[3.67, 4.18]`.
+- **The Dirac branch is parked.** Its known-answer control failed twice; the diagnosis is exact and
+  both failed runs are kept. See `report.md`.
+
+---
+
+## How this was made
+
+**This is machine-generated research**, produced by large language models working in a repository
+with a written operating contract, a verification protocol frozen before any result, and a
+requirement that every claim carry a grade (`verified` / `partially verified` / `unverified`) and
+every citation record *what was actually read* — abstract, table, or full text.
+
+**The failures are in here too**, deliberately: two failed control runs, a self-reported violation
+of the repo's own one-variable rule and its exact cost, and a prior-art filing that excluded the
+paper which answered one of the targets. *A failed run you keep is a control for the fix; a failed
+run you discard is a rumour.*
+
+## Outcome log
 
 **[RESULT.md](RESULT.md) — the general entropic constraints do not localise κ/C_T.** Reframed, the
 collapse is the statement that κ/C_T lies in a 13% band, plus a separate ≈1% shape residual. The
@@ -74,8 +124,13 @@ lattice number, not the bound, is the suspect. Details and extraction parameters
 
 ## The sibling repositories
 
-Four projects with deliberately independent roots, kept ignorant of each other so that agreement
-between two of them is evidence rather than echo. **All read-only.**
+**These are local, private research repositories and are not published.** The `../` paths below will
+not resolve for an outside reader; they are recorded because **every number imported from one of
+them is cited by repo and file**, and a reader is entitled to know which claims rest on sources they
+cannot open.
+
+Five projects with deliberately independent roots, kept ignorant of each other so that agreement
+between two of them is evidence rather than echo. **All read-only from here.**
 
 ```
 ../quantum              vestigium        the referee -- measures a(60°), a(90°), a(120°)
