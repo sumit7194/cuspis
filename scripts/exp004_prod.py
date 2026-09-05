@@ -48,7 +48,7 @@ def worker(args):
         N = int(2*round((1.6*abs(M) + 8)/2))
         if mode == "eehp":
             # EXP-012 addendum 5: complex a needs more digits than 25+3M at small x (verified on M=7.13, t=0.11: 46 fails, 70 and 100 agree)
-            slope = float(os.environ.get("EEHP_DPS_SLOPE", "6")); em.set_prec = (lambda MM, _s=slope: setattr(mp.mp, "dps", int(25 + _s*abs(MM))))
+            slope = float(os.environ.get("EEHP_DPS_SLOPE", "5")); base = float(os.environ.get("EEHP_DPS_BASE", "50")); em.set_prec = (lambda MM, _s=slope, _b=base: setattr(mp.mp, "dps", int(_b + _s*abs(MM))))
             em.set_prec(M)
         if mode in ("ee", "eehp") and t > 0:
             sign, guess, flips = branch_by_continuation(M, t, N, 0.5, "ee")
