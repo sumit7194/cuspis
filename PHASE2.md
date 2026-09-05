@@ -144,3 +144,41 @@ cusp-bootstrap papers match these search terms, carry *corner* and *cusp* in the
 **different object** — cusped line defects, not entangling-surface corners — and give **lower**
 bounds. *A sweep filing them by title would report the opposite of the truth.* **Check the object,
 not the noun.**
+
+---
+
+## POSTSCRIPT, added after Phase 2 ran: the near-miss above was a MISS
+
+**The section immediately above told you the 2026 cusp-bootstrap papers were "a different object —
+cusped line defects, not entangling-surface corners" and closed with "check the object, not the
+noun." That guidance was relayed by the bridge from `../quantum`, and Phase 2 refuted it.**
+
+> *"In d = 3 the entangling corner **is** a cusp on the replica twist line, Γ⁽ⁿ⁾ = (1 − n)aₙ — so the
+> 2026 cusp papers **are** about this object, and the sibling's 'different object' filing checked
+> the noun against the wrong thing."* — EXP-013
+
+**And the exclusion ran in the worst possible direction.** *quantum also noted the papers "give
+**lower** bounds", as a reason they could not be relevant. **A lower bound on κ is precisely what
+Target B needed.*** So the filing excluded the paper that answers the target, for a reason that was
+itself the target's shape.
+
+**Lanzetta–Moult–Wang bootstrap a rectangle of line defects** — x ↔ y symmetry as a modular
+relation, the Casimir energy at the bottom of both channels, four corners bringing Γ(π/2) in, OS
+positivity giving `Γ(π/2)/ε ≥ −3/(2π)`. For twist defects, **`κₙ ≥ (2π/3)aₙ(π/2)`**, hence
+`κ/C_T ≥ 2.39` at n → 1 with the BWK16 input. **That is the third bridge §6 said did not exist. The
+named falsifier fired, and §6 is corrected.**
+
+**It was published two days before this page was written.**
+
+### What to keep from the wreck of the guidance
+
+*The advice "check the object, not the noun" is **right**. quantum applied it and got the wrong
+answer anyway, because in a replica construction the object and the noun are related by a theorem
+rather than by vocabulary.* **The sharper form:**
+
+> **Two objects can carry different names and be the same object under a map you have not thought
+> of. Deciding relevance by "is this the same thing?" fails exactly when a construction relates
+> them — which is when the paper would have been most useful.**
+
+*And the direction test is worth keeping separately:* **a bound in the "wrong" direction is not
+evidence of irrelevance. It is evidence you should read which quantity is on which side.**
