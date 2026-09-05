@@ -1176,3 +1176,34 @@ by the regularity requirement, *not* by the target numbers. Launched 2026-09-05 
 Pass criterion, fixed in advance: the assembled s₂(θ) agrees with the exact series at θ ≥ 63.4° to
 ≤ 10⁻³, with eq (22)/Table 2 at 45° and 26.6° to ≤ 2·10⁻³, and s(170°)/(σ₂ε² + σ₂′ε⁴ + σ₂″ε⁶) = 1 to
 10⁻⁴. Anything else: the Dirac branch stays parked with this record.
+
+### EXP-012 addendum 2 (2026-09-05) — the one-variable fix removes the singularity and still fails; Dirac branch parked
+
+**Result of `dirac2r`** (48 nodes, 0 failures) against the pre-registered criterion: **FAIL.** The
+small-mass singularity is gone — the assembled s₂(θ) is finite, positive for θ ≥ 20°, and scales as
+ε² near π — but it is 2.00–2.03 × the exact value at 153°–170°, 1.58 × at 90°, 0.84 × at 45°,
+0.33 × at 26.6°, and negative below 20°. Both failed runs are kept (`dirac2_*`, `dirac2r_*` nodes and
+result files).
+
+**What the failure localises.** The computed function is A − V with A = 2 s₂^{cs}(θ) the validated
+scalar-like piece (2m tr G_S integrated) and V the vertex term. The exact vertex term is therefore
+V_true = 2 s₂^{cs} − s₂^f, positive at every angle, with smooth-limit coefficient
+2σ₂^{cs} − σ₂^f = 2/(24π²) − 1/(64π) = 0.003469. The computed V: −0.49 × V_true at 170°, −0.43 × at
+153°, −0.31 × at 135°, +0.21 × at 90°, +0.73 × at 63°, +1.21 × at 45°, +1.79 × at 26.6°. A sign change
+near 75° and the wrong sign near π cannot be produced by any constant rescaling or sign flip of the
+term, and the per-node subtraction of Ψ_π cannot produce it either (a constant offset would not scale
+as ε²). So the vertex term as implemented has an *angle-dependent* error — a cos(x/2) ↔ sin(x/2),
+sin²x ↔ sin²(x/2), or tan(x/2)-structure mismatch between [CHL09] eq (59)/App. B and the solver's
+variables — in addition to the m → 0 normalisation that the −2 repaired.
+
+**Parked, with the check a next person needs.** The vertex term's smooth-limit coefficients are exact
+and independent targets: V → (2σ₂^{cs} − σ₂^f)ε² + (2σ₂′^{cs} − σ₂′^f)ε⁴ + …, i.e. 0.003469 ε² +
+[2(5+π²)/(480π⁴) − (35π−8)/(30720π²)] ε⁴. Like H¹ for the scalar, these are computable from the
+series start at each mass (no ODE integration) followed by the mass quadrature, so any candidate
+transcription of eq (59) can be tested in seconds against two exact numbers before a 48-node run.
+Neither the old nor the −2 transcription passes that test (the old one is singular; the new one gives
+−0.0017 for +0.003469). The Dirac EE production stays unlaunched; its prediction ("no node, trial above
+exact at all angles, a₀ ≤ 0") stays pre-registered and untested.
+
+**Grade** verified: both control outcomes, the decomposition A − V (A is the validated scalar
+integral), the exact V targets. The diagnosis of *which* angular structure is wrong: not established.
