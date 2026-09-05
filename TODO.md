@@ -15,9 +15,13 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
       relations (polygons, [LMW26]'s cuboid) jointly exclude that solution? Test for any claimed upper
       bound: it must exclude 𝒟 = e^{ε₀(y+1/y)}. Also open: [LMW26]'s bound at n → 1 is assumed, not
       proved; the n = 2, 3, 4 statements rest on OS positivity, which is a theorem there.
-- [ ] **EXP-012 instrument run in progress** (scalar EE, launched 2026-09-05, `scripts/prod_ee2.log`,
-      `exp004_nodes/ee_*`, 672 nodes). On completion: run `exp004_analyze.py` on the result JSON;
-      P3 (contact with [HHCWM16]/[CHL09]) first; then read a₀ from the 5°–30° nodes (fit
+- [ ] **EXP-012 scalar EE run: DONE for θ ≥ 50°, BROKEN below 45°** (addendum 4). Validated to 10⁻⁶
+      against the exact series from 100° up, 10⁻⁵ at 90°; residual signs confirm Result B. The
+      complex-a nodes at M ≳ 7 lose the physical solution at small x (garbage 100× at M = 7.1,
+      t = 0.11; 10⁸ at M = 15). One-variable precision test on that node (`exp012_precision_test.py`:
+      dps 46/70/100, tolerance separately) decides whether a re-run of the M ≥ 7 nodes at higher dps
+      (~420 nodes, several hours) can deliver a₀ and P1/P2. Original plan for the analysis, kept:
+      run `exp012_ee_analyze.py`; P3 first; then read a₀ from the 15°–45° nodes (fit
       κ/θ + a₀ + a₁θ + a₂θ² with κ fixed at 0.0397, and report the drift under the fit degree and
       angle window — a number that moves with the window is not a measurement); then P1, P2.
       Windows start at 15°: the M ≤ 15 truncation is −8% at 5° and −0.5% at 10° (measured at n = 2,
