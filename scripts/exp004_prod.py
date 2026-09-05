@@ -42,12 +42,16 @@ def worker(args):
     import exp004_mp as em
     fn = f"{OUT}/{mode}_M{M:.10f}_t{t:.10f}.json"
     if os.path.exists(fn): return json.load(open(fn))
-    a = 0.5 if mode in ("renyi2", "dirac2", "dirac2r") else (complex(0.5, -t) if mode == "ee" else complex(0.0, -t))
+    a = 0.5 if mode in ("renyi2", "dirac2", "dirac2r") else (complex(0.5, -t) if mode in ("ee", "eehp") else complex(0.0, -t))
     t0 = time.time()
     try:
         N = int(2*round((1.6*abs(M) + 8)/2))
-        if mode == "ee" and t > 0:
-            sign, guess, flips = branch_by_continuation(M, t, N, 0.5, mode)
+        if mode == "eehp":
+            # EXP-012 addendum 5: complex a needs more digits than 25+3M at small x (verified on M=7.13, t=0.11: 46 fails, 70 and 100 agree)
+            slope = float(os.environ.get("EEHP_DPS_SLOPE", "6")); em.set_prec = (lambda MM, _s=slope: setattr(mp.mp, "dps", int(25 + _s*abs(MM))))
+            em.set_prec(M)
+        if mode in ("ee", "eehp") and t > 0:
+            sign, guess, flips = branch_by_continuation(M, t, N, 0.5, "ee")
         elif mode == "dirac":
             # path from the validated real branch: a = 1/2 -> 1/2 - i t (vertical) -> -i t (horizontal), avoiding the pole at a = 0
             n1 = max(2, int(math.ceil(t/0.002)) + 1); n2 = 251
@@ -78,12 +82,12 @@ def worker(args):
 
 if __name__ == "__main__":
     mode = sys.argv[1]; n1, n2, pmax = int(sys.argv[2]), int(sys.argv[3]), float(sys.argv[4])
-    nt, tmax = (int(sys.argv[5]), float(sys.argv[6])) if mode in ("ee","dirac") else (1, 0.0)
+    nt, tmax = (int(sys.argv[5]), float(sys.argv[6])) if mode in ("ee","eehp","dirac") else (1, 0.0)
     workers = int(sys.argv[7]) if len(sys.argv) > 7 else 10
     os.makedirs(OUT, exist_ok=True)
     x1, w1 = np.polynomial.legendre.leggauss(n1); x2, w2 = np.polynomial.legendre.leggauss(n2)
     ps = np.concatenate([2*(x1+1), 4 + 0.5*(pmax-4)*(x2+1)]); wps = np.concatenate([2*w1, 0.5*(pmax-4)*w2])
-    if mode in ("ee","dirac"):
+    if mode in ("ee","eehp","dirac"):
         xt, wt = np.polynomial.legendre.leggauss(nt); ts = 0.5*tmax*(xt+1); wts = 0.5*tmax*wt
     else:
         ts, wts = np.array([0.0]), np.array([1.0])

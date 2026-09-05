@@ -1270,3 +1270,27 @@ next. Until it passes, **P1 and P2 are undecided**; the pre-registered predictio
 **What is measured.** For θ ≥ 50° the free-scalar corner function at n = 1 is now known to ≤ 10⁻⁵
 (≥ 70°) and ≤ 10⁻³ (50°–63°) independently of [HHCWM16]'s series, and agrees with it. That is a
 confirmation of published numbers, not news; the news this run was built for lives below 45°.
+
+### EXP-012 addendum 5 (2026-09-05) — the small-angle failure is precision, proved on one node; re-run designed
+
+**One-variable test** (`scripts/exp012_precision_test.py`, node M = 7.1317, t = 0.1145, the first
+garbage node). With the production rule dps = 25 + 3M = 46 the node reproduces its stored values to
+every digit (F(5°) = 9.134·10⁻³, F(90°) = 1.136·10⁻¹², H1 = 1.934·10⁻¹⁹). With dps = 70 and dps = 100
+it gives identical values (F(5°) = 1.3171·10⁻⁴, F(26.6°) = 7.248·10⁻⁷, F(90°) = 1.755·10⁻¹³,
+H1 = 2.833·10⁻¹⁹), and F(5°) matches the 1.36·10⁻⁴ expected from the t = 0.02 neighbour times the
+smooth (¼ + t²) factor. Tightening every tolerance by 10⁸ at dps = 70 changes nothing. So the cause
+is the digits rule alone: it suffices at real a (the Rényi-2 run was correct to M = 15) and not at
+complex a, where even F(90°) and H1 were wrong by 6× and 1.5× at M = 7 — invisible in the assembled
+90° value only because that mass contributes 10⁻¹² there.
+
+**Re-run design (mode `eehp`, same solver, one change: the digits rule).** dps = 25 + s·M with the
+slope s calibrated at M = 11.24, t = 0.50 (dps 59 = rule, 80, 100, 120; running). Grid: the same 48
+masses to M = 15; t-nodes reduced to 10 Gauss–Legendre points on [0, 2.2], dropping the four largest
+of the old grid: the weight 2/cosh²(πt) has ∫_{2.2}^∞ / ∫_0^∞ = 2·10⁻⁶, angle-independent, so the cut
+costs nothing at the 10⁻³ level the sign question needs while removing the slowest 30% of nodes.
+Smoke test passed on two production-grid nodes (files written, reusable). Cost estimate after
+calibration; the M ≥ 7 nodes dominate.
+
+**What stays fixed.** The predictions P1–P3 and the fit protocol (windows from 15°, κ fixed, drift
+reported) are unchanged; the old run's nodes are kept; the new run's first job is again P3 — now with
+the 15°–45° values of eq (22) as the referee, which the old run could not reach.
