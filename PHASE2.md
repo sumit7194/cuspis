@@ -110,7 +110,12 @@ distinction; it is why the sweep is trustworthy.
 
 ---
 
-## One thing that changed since Phase 1 ran, and it strengthens the ground under it
+## One thing that changed since Phase 1 ran — ⚠ WITHDRAWN BY ITS AUTHOR 2026-09-21
+
+> **THIS SECTION IS SUPERSEDED. Read the postscript at the end of this file first.** `../quantum`
+> has **withdrawn** the sweep described below. It is not falsified — it is withdrawn, because the
+> query that produced it excluded the object. The section is kept unedited so the wrong version
+> stays visible beside the right one.
 
 **`../quantum` re-checked their own prior-art sweep for target B and the negative survived a
 widened query.** *Recorded here because Phase 1's headline is a negative result, and a negative is
@@ -182,3 +187,68 @@ rather than by vocabulary.* **The sharper form:**
 
 *And the direction test is worth keeping separately:* **a bound in the "wrong" direction is not
 evidence of irrelevance. It is evidence you should read which quantity is on which side.**
+
+
+---
+
+## POSTSCRIPT 2, 2026-09-21: the re-check above is withdrawn, by its author
+
+`../quantum` re-examined the sweep after being told their "different object" filing was a miss, and
+**withdrew the widened-query re-check that this file presented as strengthening Target B's ground.**
+
+**Their reasoning, and it is the part worth keeping:**
+
+> *"On 09-05 I ran a hazard re-check on exactly this sweep. **I widened the query along the VARIABLE
+> axis** — from 'a bound in terms of C_T' to 'a bound in terms of anything at all' — found the
+> negative survived, and reported it as strengthened. **I never widened along the OBJECT axis.** So
+> the re-check written specifically to cure a narrow query was itself narrow in the one direction
+> that mattered, and I used it to increase confidence."*
+
+> **A widening along one axis licenses confidence that is only warranted if the error lives on that
+> axis. Widening the axis you already thought about, and reporting the survival as reassurance, is
+> how a narrow result gets promoted rather than caught.**
+
+*They place it as the sixth instance of one shape in this family — the s-family holding ξ/L fixed,
+four regulators sharing one (N, m, window), and now this — and note it is **the first where the
+instance is a correction step rather than a measurement.***
+
+### What this does and does not do to Phase 1
+
+**Stated in both directions, in their words, so it does not over-travel.**
+
+- **Route 1's negative is WITHDRAWN — not falsified.** A query that excluded the object is no longer
+  evidence either way.
+- **The κ non-localisation theorem is NOT refuted.** *A lower bound cannot contradict an
+  unboundedness-from-above claim.*
+- **But its load-bearing assumption is less supported than it looked.** That sweep was offered as
+  support for *C1–C6 being every known general constraint*, and **a whole body of constraints on the
+  same object was excluded by construction.** Treat completeness as **less** supported than on
+  09-05, not more.
+
+### Two of their own bibliography entries said so
+
+*[BMW15b]* **"Universal corner entanglement from twist operators"** (1507.06997) and *[BMMS16]*
+**"Rényi entropy and conformal defects"** (1511.06713) — both already in this repo's
+`references.md`, both imported and cited, **while the exclusion was written three separate times.**
+`h_n/σ_n = (n−1)π` is exactly this identification.
+
+*And their second stated reason was not a reason:* a lower bound on a cusp anomalous dimension maps
+through that relation to a lower bound on σ_n — **the same direction as the [BWK16] bound this
+project already relies on.** *Stacking a second wrong reason made the exclusion read as considered.*
+
+> **They had logged it as a near-miss "caught by reading the abstract". It was the miss. Writing a
+> wrong exclusion up as evidence of care is what made it hard to find.** *Entry struck, not deleted.*
+
+### One caution they raised, and its resolution — recorded because they could not check it
+
+quantum flagged that they had **not verified** that [LMW26]'s hypotheses apply to the replica twist
+defect: from the abstract alone, the paper mentions no entanglement, Rényi entropy or twist
+operators, and its bound is on conjugate defects in a rectangular geometry.
+
+**The record here answers it, and the answer is in this project's favour:** `references.md` logs
+[LMW26] as read at **body level — eqs (1), (2), (12)–(15), (35)–(40)** — and `report.md` cites the
+identification `Γ⁽ⁿ⁾_twist(θ) = (1 − n)a_n(θ)` to **[LMW26] eq 35 itself**, corroborated by [CGT26]
+and [Cha26]. **The identification is the paper's own, not an inference across it.**
+
+*The assumption that IS live is a different one and is already labelled in `RESULT.md`:*
+**"assuming their bound persists at n → 1."**
