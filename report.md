@@ -1723,3 +1723,37 @@ equivalently under adding a pure singular-end tail.
 
 **Grade.** Result 1: proved; numerical check with a working control. Result 2: a precise analogy.
 Result 3: verified for the constraints read; the cuboid is not covered and not claimed.
+
+## EXP-019  The Dirac control failed because it ran at the wrong twist parameter
+
+**Date** 2026-09-23. **Status** diagnosis complete; corrected known-answer control running (mode
+`dirac2q`, 48 nodes); pass criterion below, fixed before the run.
+
+**Why both earlier Dirac controls failed (EXP-012 addenda 1–2).** [CHL09] eq (6) sums fermion sectors
+over k = −(n−1)/2 … (n−1)/2 with boundary phase e^{2πik/n}; eq (12) writes that phase as e^{2πia}, so
+a = k/n; eq (13) restricts to a ∈ (0, ½), and the text of §3 repeats "recall that a ∈ (0,1/2)" at the
+point where eq (59) is derived. For n = 2 the fermion has a = ±¼. My driver used **a = ½** for the
+Dirac Rényi-2 mode — the free scalar's n = 2 value (bosons sum k = 0 … n−1, so k = 1 gives a = ½),
+carried across to the fermion. At a = ½ the formula is outside its stated range: the denominator
+4β₁² − b² sin²x vanishes like m² identically, which is exactly the m → 0 singularity diagnosed in
+EXP-012 addendum 1. So:
+
+- the transcription of eq (59) was probably right all along;
+- the "−2" patch of addendum 1 was chosen to cure a symptom of evaluating at an excluded point, and is
+  withdrawn (its failure in addendum 2 was the correct outcome);
+- the decomposition "A = 2 s₂^{cs}" used in addendum 2 was also wrong: the 2m tr G_S piece of eq (59)
+  at the fermion's a = ¼ is not the scalar Rényi-2 function, which lives at a = ½.
+
+**Why the check fired, asked before acting.** The check was right both times; the routine had the
+wrong input. The cue that should have been caught earlier: EXP-011 already used a = k/n = ¼ for the
+n = 2 fermion sector, in this same notebook.
+
+**Tier 1 (seconds), at a = ¼.** The regularised vertex term is finite as m → 0: Ψ_π = 7.32, 7.02,
+3.78 at m = 0.0096, 0.0505, 0.2272, against 5.4·10³ at the lowest mass at a = ½. The degeneracy is gone.
+
+**Pass criterion for `dirac2q`, fixed before the run** (identical to addendum 1's, except that 63.4° is
+refereed by eq (22) rather than by the truncated series — EXP-016 showed the series is 0.16% low there
+for the fermion): s₂(θ) within 10⁻³ of the exact series at θ ≥ 90°; within 2·10⁻³ of [HHCWM16] eq (22)
+and Table 2 (α = 2) at 26.6°, 45°, 63.4°; s(170°)/(σ₂ε² + σ₂′ε⁴ + σ₂″ε⁶) = 1 to 10⁻⁴, with
+σ₂ = 1/(64π), σ₂′ = (35π−8)/(30720π²) exact. If it passes, the Dirac entanglement run (mode `dirac`,
+a = −it) is licensed; its prediction, a₀ = 0 exactly (EXP-015), stays pre-registered.

@@ -42,7 +42,7 @@ def worker(args):
     import exp004_mp as em
     fn = f"{OUT}/{mode}_M{M:.10f}_t{t:.10f}.json"
     if os.path.exists(fn): return json.load(open(fn))
-    a = 0.5 if mode in ("renyi2", "dirac2", "dirac2r") else (complex(0.5, -t) if mode in ("ee", "eehp") else complex(0.0, -t))
+    a = 0.25 if mode == "dirac2q" else 0.5 if mode in ("renyi2", "dirac2", "dirac2r") else (complex(0.5, -t) if mode in ("ee", "eehp") else complex(0.0, -t))
     t0 = time.time()
     try:
         N = int(2*round((1.6*abs(M) + 8)/2))
@@ -63,7 +63,7 @@ def worker(args):
         F = [complex(out[x]) for x in XG]
         rec = {"M": M, "t": t, "F_re": [f.real for f in F], "F_im": [f.imag for f in F], "H1": complex(d['H'][1]).real, "H1_im": complex(d['H'][1]).imag,
                "H3": complex(d['H'][3]).real, "dps": mp.mp.dps, "N": len(d['H'])-1, "secs": time.time()-t0, "ok": True, "branch": sign, "flips": flips}
-        if mode in ("dirac", "dirac2", "dirac2r"):
+        if mode in ("dirac", "dirac2", "dirac2r", "dirac2q"):
             # CHL09 eq (59): tr G_D|odd / m = 2 tr G_S - 16 pi a(1-a) (4 beta1 X1 cos(x/2) - b B1 sin^2 x)/(M (4 beta1^2 - b^2 sin^2 x)),  tr G_S = 8 pi a(1-a) F.
             # The second term has a finite, nonzero x -> pi limit (0/0): (2 beta1^1 X1^0 - b0 B1^0)/(4 (beta1^1)^2 - b0^2); the vertex
             # contribution must vanish at x = pi, so subtract that limit per mass node (same regularisation as tr G_S in eq 72).
@@ -108,7 +108,8 @@ if __name__ == "__main__":
             M = float(np.sqrt(0.25 + p*p)); r = idx.get((round(M,10), round(float(t),10)))
             if r is None: continue
             inner += wps[ip]*p*p*np.array(r["F_re"]); innerH[0] += wps[ip]*p*p*r["H1"]; innerH[1] += wps[ip]*p*p*r["H3"]
-        if mode in ("dirac", "dirac2", "dirac2r"):
+        if mode in ("dirac", "dirac2", "dirac2r", "dirac2q"):
+            # dirac2q: Renyi-2 Dirac at the CORRECT twist a = k/n = 1/4 (CHL09 eqs 6, 12, 13: a in (0,1/2)); dirac2/dirac2r used a = 1/2 by mistake
             # dirac : s_D = Int dt 1/(2 sinh^2(pi t)) * 2 Int_0^inf dm m^2 Psi_reg     (CHL09 eq 60; odd part -> even integrand)
             # dirac2: Renyi-2 Dirac, a = +-1/2 (CHL09 eq 6, n=2): s_2^D = (2/pi) Int_0^inf dm m^2 Psi_reg (two equal k-terms, eq 36-37 prefactor 1/(2 pi))
             innerP = np.zeros(len(DEG))
