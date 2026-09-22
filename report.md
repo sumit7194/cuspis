@@ -1489,3 +1489,24 @@ and this pair fits it: their lattice data and my ODE-system data have never touc
 is the methodology — a shared literature ground truth (σ = π²C_T/24 [FLP16], C_T = 3/(32π²), [CHL09]),
 a bound of mine that became their post-repair acceptance criterion, and now a vendored implementation.
 Agreement between us is evidence about the data, and not about the method.
+
+### EXP-014 addendum 2 (2026-09-22) — the "≈4·10⁻⁴ at 5°" note, and a citation made precise
+
+**What the note was.** The 2026-09-04 `TODO.md` line "decide the M > 15 tail (measured decay 0.83/unit
+M; ≈4·10⁻⁴ at 5°)" is **not a value of a(θ) at any Rényi index**. It is a *relative truncation-error
+estimate* for cutting the mass integral at M = 15. The decay rate behind it came from
+`scripts/exp004_mdecay.py`, which calls the solver at **a = ½ only** (`cs.integrate(M, 0.5, …)`),
+i.e. the Rényi-2 point, and prints per-mass integrands F(θ; M), not the corner function. So it was
+measured on n = 2 data and proposed for application to n = 1. It carries no information about the
+magnitude of a₁(5°). It was also wrong by a factor of about 200 — addendum 3 measured the actual
+Rényi-2 truncation at 5° as −8% — and was withdrawn there. For the scope of `../quantum`'s check: it
+falls under the n = 2 exclusion and leaks no n = 1 magnitude. The same applies to
+`scripts/exp004_mdecay.log`, present in the 09-04 tree: per-mass a = ½ integrands, n = 2 arm.
+
+**Citation, corrected on the bridge's report.** Every real-scalar known-answer value in this repo —
+σ = 1/256, s(π/2) = 0.01183, s(3π/4) = 0.002520, κ = 0.0397 — is the [CHL09] Table 1 **complex-scalar**
+entry halved (1/128, 0.02366, 0.005040, 0.0794). The values were right and the halving was stated in
+some places ("0.02366/2" in EXP-001) but not all; the live `TODO.md` lines now say it explicitly.
+These four are the controls `../quantum` transcribed verbatim, so the halving arithmetic was
+re-checked: all four exact. The Dirac controls (σ = 1/128, 0.02329, 0.005022, 0.0722) are the [CHL09]
+Dirac column unmodified.

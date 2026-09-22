@@ -66,7 +66,8 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
   `scripts/exp004_mp.py` (mpmath, 25+3M digits, N-continuation) past the double-precision floor at
   M ≈ 4. Exists: Rényi-2 result to M = 15 (`scripts/exp004_renyi2_result_n24_24_p15.0_t1.json`);
   145 EE checkpoint nodes for M ≲ 1 in `scripts/exp004_nodes/`. To resume: run the known-answer
-  controls first (σ = 1/256, s(π/2) = 0.01183, s(3π/4) = 0.002520, κ = 0.0397 for the scalar;
+  controls first (σ = 1/256, s(π/2) = 0.01183, s(3π/4) = 0.002520, κ = 0.0397 for the real scalar —
+  each is the [CHL09] Table 1 complex-scalar entry halved (1/128, 0.02366, 0.005040, 0.0794);
   σ = 1/128, s(π/2) = 0.02329, κ = 0.0722 for Dirac), then check smoothness of F in t at fixed M
   (branch flips), then decide the M > 15 tail (contaminates 5° by 8% and 10° by 0.5%; clean from 15°
   up, measured at n = 2). Justified
@@ -186,7 +187,7 @@ conclusion never depended on it; the number should not be carried onward.**
   𝔞_min(90°) = (1/32) log √2 = 0.01083.
   *The comparison:* a(120°) is 13.3% BELOW the bound under the 3-parameter fit and 20–22%
   below under the 4-parameter fit; a(60°) passes the bound but is ≈8% below the expected
-  value ≈0.0264; a(90°) passes and is 1.9% (s=1) / 1.3% (s=6) below the exact 0.011830 [CHL09].
+  value ≈0.0264; a(90°) passes and is 1.9% (s=1) / 1.3% (s=6) below the exact 0.011830 ([CHL09] Table 1 complex-scalar entry 0.02366, halved).
   *Extraction parameters* (`qsim/corner_angles.py`): N = 160, m = 0.01 (ξ = 100, i.e. 0.6 N),
   triangles l ∈ {8,…,28} (3 corners, perimeter 3l), hexagons R ∈ {4,…,14} (6 corners,
   perimeter 6R), fit S = A·perimeter + B·ln(size) + C [+ D/size], a = −B/(number of corners);
