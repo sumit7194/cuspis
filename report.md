@@ -1757,3 +1757,34 @@ for the fermion): s₂(θ) within 10⁻³ of the exact series at θ ≥ 90°; wi
 and Table 2 (α = 2) at 26.6°, 45°, 63.4°; s(170°)/(σ₂ε² + σ₂′ε⁴ + σ₂″ε⁶) = 1 to 10⁻⁴, with
 σ₂ = 1/(64π), σ₂′ = (35π−8)/(30720π²) exact. If it passes, the Dirac entanglement run (mode `dirac`,
 a = −it) is licensed; its prediction, a₀ = 0 exactly (EXP-015), stays pre-registered.
+
+## EXP-018  The M ≥ 14 failure is the series start stalling at the size of the signal
+
+**Date** 2026-09-23. **Status** complete (`scripts/exp018_m14.py`, output `scripts/exp018_m14.out`).
+
+**One-node diagnosis, one variable per variant.** Node M = 14.019, t = 0.0287 from the high-precision
+run, whose stored F(5°) = −1.6·10⁻⁵ is wrong in sign; its good neighbours give ≈ +1.0·10⁻⁵ by
+interpolation (M = 13.58: 1.12·10⁻⁵; M = 14.38: 0.90·10⁻⁵). Production values: dps = 50 + 5M = 120,
+N = 1.6M + 8 = 30, δ₀ = 0.01/M.
+
+| variant | F(5°) | F(15°) | series-start residual | time |
+|---|---|---|---|---|
+| baseline | −1.5995·10⁻⁵ (reproduces the stored node exactly) | −3.9·10⁻¹⁰ | 2.5·10⁻³⁷ | 802 s |
+| δ₀ / 2.5 | −2.1·10⁻⁵ (different wrong value) | −1.6·10⁻⁸ | 2.5·10⁻³⁷ | 800 s |
+| N = 40 | **+1.0043·10⁻⁵** | **8.1341·10⁻⁸** | 5.9·10⁻⁵⁵ | 1794 s |
+| dps = 170 | **+1.0043·10⁻⁵** | **8.1341·10⁻⁸** | 5.1·10⁻¹⁷⁰ | 627 s |
+
+Two independent changes agree in every printed digit, and both converge the series start far below
+the signal e^{−2πM} ≈ 10⁻³⁸. The failing runs leave a starting residual larger than the signal. Values
+near θ = π and H1 were fine throughout; the error only surfaces after amplification toward small
+angles. **Cause: at dps 120 the series-start solve loses about 80 digits to conditioning at M = 14 and
+stalls at the size of the signal.** My TODO entry calling this "not a precision failure" was wrong:
+it is precision in the starting solve, not in the integrator. It was also invisible because the
+residual was never stored — the fix the TODO itself had named.
+
+**Changes.** The solver now returns the starting residual and every node records it, together with
+its ratio to e^{−2πM}; a node is trustworthy only if that ratio is far below 1. The high-precision
+digits rule becomes dps = 30 + 9M (165 at M = 15), which is also faster than the old rule where the old
+rule fails; it now applies to the Dirac entanglement mode as well, which runs at complex a.
+The scalar entanglement masses M ≥ 14 can be re-run under this rule (50 nodes) to remove the
+15°–20° cutoff deficit of EXP-012 addendum 6; not yet done.

@@ -46,9 +46,9 @@ def worker(args):
     t0 = time.time()
     try:
         N = int(2*round((1.6*abs(M) + 8)/2))
-        if mode == "eehp":
+        if mode in ("eehp", "dirac"):
             # EXP-012 addendum 5: complex a needs more digits than 25+3M at small x (verified on M=7.13, t=0.11: 46 fails, 70 and 100 agree)
-            slope = float(os.environ.get("EEHP_DPS_SLOPE", "5")); base = float(os.environ.get("EEHP_DPS_BASE", "50")); em.set_prec = (lambda MM, _s=slope, _b=base: setattr(mp.mp, "dps", int(_b + _s*abs(MM))))
+            slope = float(os.environ.get("EEHP_DPS_SLOPE", "9")); base = float(os.environ.get("EEHP_DPS_BASE", "30"))   # EXP-018: 50+5M lost M>=14 (series start stalls at ~e^{-2 pi M}); 30+9M; em.set_prec = (lambda MM, _s=slope, _b=base: setattr(mp.mp, "dps", int(_b + _s*abs(MM))))
             em.set_prec(M)
         if mode in ("ee", "eehp") and t > 0:
             sign, guess, flips = branch_by_continuation(M, t, N, 0.5, "ee")
@@ -62,7 +62,7 @@ def worker(args):
         out, d = em.integrate_mp(M, a, math.radians(4), XG, branch=sign, guess=guess)
         F = [complex(out[x]) for x in XG]
         rec = {"M": M, "t": t, "F_re": [f.real for f in F], "F_im": [f.imag for f in F], "H1": complex(d['H'][1]).real, "H1_im": complex(d['H'][1]).imag,
-               "H3": complex(d['H'][3]).real, "dps": mp.mp.dps, "N": len(d['H'])-1, "secs": time.time()-t0, "ok": True, "branch": sign, "flips": flips}
+               "H3": complex(d['H'][3]).real, "dps": mp.mp.dps, "rn": float(abs(d.get('_rn', float('nan')))), "rn_over_signal": float(abs(d.get('_rn', float('nan'))))/math.exp(-2*math.pi*abs(M)), "N": len(d['H'])-1, "secs": time.time()-t0, "ok": True, "branch": sign, "flips": flips}
         if mode in ("dirac", "dirac2", "dirac2r", "dirac2q"):
             # CHL09 eq (59): tr G_D|odd / m = 2 tr G_S - 16 pi a(1-a) (4 beta1 X1 cos(x/2) - b B1 sin^2 x)/(M (4 beta1^2 - b^2 sin^2 x)),  tr G_S = 8 pi a(1-a) F.
             # The second term has a finite, nonzero x -> pi limit (0/0): (2 beta1^1 X1^0 - b0 B1^0)/(4 (beta1^1)^2 - b0^2); the vertex

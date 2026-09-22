@@ -248,6 +248,7 @@ def integrate_mp(M, a, x_min, x_grid, N=None, delta0=None, tol=None, verbose=Fal
             targets.pop(0)
     if verbose: print(f"   M={M} a={a}: dps={mp.mp.dps} N={N} delta0={delta0:.4f} series |r|={float(nr):.1e} steps={nsteps} diag={dict(DIAG_MP)}", file=sys.stderr)
     integrate_mp.last_outq = outq
+    d['_rn'] = nr          # EXP-018: series-start residual; a node is trustworthy only if it is far below exp(-2 pi M)
     return out, d
 
 if __name__ == "__main__":
