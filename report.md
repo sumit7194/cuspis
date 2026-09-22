@@ -1852,3 +1852,25 @@ start is accurate, and changing it would be a second variable. The bad node was 
 deleted, and is being recomputed through the driver; the control will be re-judged on the same
 criterion. Recomputing a node that failed its own pre-declared convergence test is not a change to
 the evaluation.
+
+### EXP-019 addendum 3 (2026-09-23) — the Dirac known-answer control PASSES; the Dirac entanglement prediction frozen numerically
+
+**`dirac2v`, with the recomputed node** (residual 1.6·10⁻¹¹³ of the signal): **PASS** on the criterion
+fixed before `dirac2q`. Worst deviation from the exact series at 90°–160° is 3.9·10⁻⁵, at 90°; 100°–170°
+agree to ≈ 3·10⁻⁶. The out-of-sample angles, which played no part in identifying the corrections, agree
+with [HHCWM16] eq (22) and Table 2 to 5.0·10⁻⁶ (26.6°) and 1.2·10⁻⁶ (45°), four hundred times inside
+the criterion. Below 20° the M ≤ 15 mass cutoff shows, as for the scalar: −4·10⁻⁴ at 15°, −0.6% at 10°,
+−7.8% at 5°. The Dirac instrument is validated at n = 2.
+
+**Frozen before the entanglement run (mode `dirac`, a = −it, eq (60)).**
+- Known-answer controls, all out of sample for the n = 2 validation (complex twist, t-integral,
+  branch path): σ = 1/128; σ′ = (16 + 3π²)/(9216π²); s(π/2) = 0.02329 and s(3π/4) = 0.005022 [CHL09];
+  [HHCWM16] Table 2 α = 1, series and eq (22), at the seven angles. They must hold to ≤ 10⁻³ at
+  θ ≥ 63.4° and ≤ 2·10⁻³ at 26.6° and 45° before the fit below is looked at.
+- **The prediction (EXP-015): a₀^{Dirac} = 0 exactly.** Protocol: κ fixed at [CHL09]'s 0.0722, fit
+  s − κ/θ = a₀ + a₁θ + a₂θ² + a₃θ³ on the windows 20–50°, 20–60°, 26–60°, 20–70°, from 20° up because of
+  the mass cutoff. **Confirmed if every window gives |a₀| < 0.05 C_T; refuted if every window gives
+  |a₀| > 0.1 C_T; inconclusive otherwise.** C_T = 3/(16π²). For scale: the trial function's ã₀ is
+  +0.092 C_T and the free scalar's measured a₀ is ≈ −0.3 C_T. A log θ term is not expected (no
+  dimension-1 fusion operator); the log model is fitted and reported, not used for the verdict.
+- Also predicted: no node; the trial function lies above the exact function at every angle.
