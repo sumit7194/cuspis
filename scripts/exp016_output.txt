@@ -1,0 +1,57 @@
+control: trial3(a0=a0~) - trial2 at 0.7 rad = +8.88e-16 (must be 0)
+
+(1) ECG a0 from the exact first-order curve [BCV21 eq 293], kappa_ECG = (1-123mu/20) kappa_E, units C_T
+   mu=+0.00312: a - kappa/theta = -0.01816, -0.00908, -0.00454 at theta = 0.02, 0.01, 0.005  -> intercept -0.00000
+   mu=+0.00100: a - kappa/theta = -0.01863, -0.00932, -0.00466 at theta = 0.02, 0.01, 0.005  -> intercept -0.00000
+   mu=-0.00100: a - kappa/theta = -0.01906, -0.00953, -0.00477 at theta = 0.02, 0.01, 0.005  -> intercept -0.00000
+   mu=-0.00322: a - kappa/theta = -0.01954, -0.00977, -0.00489 at theta = 0.02, 0.01, 0.005  -> intercept -0.00000
+   Einstein: -0.01885 -0.00942 -0.00471
+
+(2) |residual| in % of the exact value: two-shape trial  vs  a0 = 0 imposed (two choices of third shape)
+   format  angle: two-shape / a0=0 with cos^2 / a0=0 with ((pi-th)/pi)^2
+   Einstein           26.6:+0.92/-0.57/-0.39  45:+0.79/-0.95/-0.63  63.4:+0.57/-1.08/-0.68  90:+0.31/-0.91/-0.55  135:+0.07/-0.30/-0.17
+   ECG mu=+0.00312    26.6:+1.22/-0.62/-0.39  45:+1.09/-1.05/-0.65  63.4:+0.81/-1.21/-0.73  90:+0.45/-1.04/-0.60  135:+0.10/-0.35/-0.19
+   ECG mu=-0.00322    26.6:+0.62/-0.53/-0.39  45:+0.49/-0.85/-0.60  63.4:+0.33/-0.94/-0.64  90:+0.16/-0.78/-0.50  135:+0.03/-0.25/-0.15
+   Dirac n=1          26.6:+0.54/-0.12/-0.04  45:+0.58/-0.20/-0.06  63.4:+0.50/-0.24/-0.06  90:+0.33/-0.22/-0.05  135:+0.09/-0.08/-0.02
+   Dirac n=2          26.6:-0.21/+0.04/+0.01  45:-0.22/+0.08/+0.03  63.4:-0.19/+0.10/+0.03  90:-0.12/+0.10/+0.03  135:-0.03/+0.03/+0.01
+   Dirac n=3          26.6:-0.39/+0.08/+0.03  45:-0.40/+0.15/+0.05  63.4:-0.34/+0.19/+0.06  90:-0.22/+0.18/+0.06  135:-0.06/+0.06/+0.02
+   Dirac n=4          26.6:-0.45/+0.10/+0.03  45:-0.46/+0.18/+0.06  63.4:-0.40/+0.22/+0.08  90:-0.26/+0.21/+0.07  135:-0.07/+0.07/+0.02
+   scalar n=1         26.6:+0.01/+2.53/+2.22  45:+0.16/+3.16/+2.60  63.4:+0.22/+3.12/+2.43  90:+0.19/+2.38/+1.73  135:+0.06/+0.73/+0.49
+   scalar n=2         26.6:-0.83/+3.65/+3.11  45:-0.67/+4.74/+3.73  63.4:-0.47/+4.80/+3.54  90:-0.25/+3.77/+2.57  135:-0.05/+1.19/+0.75
+
+(3) the two numbers per theory: x = kappa/sigma (3pi = 9.4248) and the smooth-end residual (sigma'~ - sigma')/sigma'
+   ECG mu=+0.00312: x = 8.9303  smooth-end +2.52%   sharp-end sign(3pi - x) = +
+   ECG mu=+0.00100: x = 8.9913  smooth-end +1.91%   sharp-end sign(3pi - x) = +
+   ECG mu=+0.00000: x = 9.0198  smooth-end +1.63%   sharp-end sign(3pi - x) = +
+   ECG mu=-0.00100: x = 9.0481  smooth-end +1.35%   sharp-end sign(3pi - x) = +
+   ECG mu=-0.00322: x = 9.1104  smooth-end +0.76%   sharp-end sign(3pi - x) = +
+   Dirac n=1: x = 9.2416  smooth-end +2.24%   sharp-end sign(3pi - x) = +
+   Dirac n=2: x = 9.4969  smooth-end -0.79%   sharp-end sign(3pi - x) = -
+   Dirac n=3: x = 9.5584  smooth-end -1.43%   sharp-end sign(3pi - x) = -
+   Dirac n=4: x = 9.5813  smooth-end -1.65%   sharp-end sign(3pi - x) = -
+   scalar n=1: x = 10.1632  smooth-end +1.53%   sharp-end sign(3pi - x) = -  (has a dimension-1 fusion operator: rule not applicable)
+   scalar n=2: x = 10.8012  smooth-end -1.08%   sharp-end sign(3pi - x) = -  (has a dimension-1 fusion operator: rule not applicable)
+   scalar n=3: x = 10.9715  smooth-end -1.39%   sharp-end sign(3pi - x) = -  (has a dimension-1 fusion operator: rule not applicable)
+   scalar n=4: x = 11.0267  smooth-end -1.42%   sharp-end sign(3pi - x) = -  (has a dimension-1 fusion operator: rule not applicable)
+
+(4) which imposed a0 fits best?  Scan a0 (units C_T), minimise rms residual over the five angles.
+    Einstein and ECG have a0 = 0 exactly (known-answer controls); the free scalar's is about -0.3 (second control);
+    Dirac is the unknown, predicted 0 by EXP-015.  This is inference from a fit, labelled as such.
+   Einstein           best a0 = +0.117 (rms 0.175%) / +0.093 (rms 0.130%)   two-shape a0~ = +0.203
+   ECG mu=+0.00312    best a0 = +0.129 (rms 0.214%) / +0.097 (rms 0.151%)   two-shape a0~ = +0.248
+   ECG mu=-0.00322    best a0 = +0.104 (rms 0.137%) / +0.088 (rms 0.109%)   two-shape a0~ = +0.157
+   Dirac n=1          best a0 = +0.026 (rms 0.045%) / +0.009 (rms 0.011%)   two-shape a0~ = +0.092
+   Dirac n=2          best a0 = -0.007 (rms 0.022%) / -0.002 (rms 0.010%)   two-shape a0~ = -0.023
+   Dirac n=3          best a0 = -0.011 (rms 0.041%) / -0.004 (rms 0.017%)   two-shape a0~ = -0.036
+   Dirac n=4          best a0 = -0.012 (rms 0.048%) / -0.005 (rms 0.020%)   two-shape a0~ = -0.039
+   scalar n=1         best a0 = -0.390 (rms 0.072%) / -0.394 (rms 0.082%)   two-shape a0~ = -0.370
+   scalar n=2         best a0 = -0.329 (rms 0.184%) / -0.317 (rms 0.146%)   two-shape a0~ = -0.372
+
+(5) do (sigma, kappa) leave 'little freedom'?  An admissible function with Einstein's exact sigma and kappa:
+    a_lam = (1-lam) a_min + lam aL_hat, proven in C1-C6 (RESULT.md Theorem (a)), lam = kappa_E/(pi^5/48)
+    lam = 0.5818;  sigma check: 0.411234 vs pi^2/24 = 0.411234;  kappa check: 3.7094 vs 3.7092
+     26.6 deg: Einstein 7.5752   two-shape trial 7.6450 (+0.92%)   admissible a_lam 8.2996 (+9.56%)
+       45 deg: Einstein 4.0369   two-shape trial 4.0687 (+0.79%)   admissible a_lam 4.3576 (+7.94%)
+     63.4 deg: Einstein 2.4452   two-shape trial 2.4591 (+0.57%)   admissible a_lam 2.5901 (+5.93%)
+       90 deg: Einstein 1.2220   two-shape trial 1.2258 (+0.31%)   admissible a_lam 1.2639 (+3.43%)
+      135 deg: Einstein 0.2642   two-shape trial 0.2644 (+0.07%)   admissible a_lam 0.2664 (+0.82%)

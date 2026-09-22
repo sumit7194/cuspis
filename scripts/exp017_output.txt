@@ -1,0 +1,3 @@
+E = 0: modular symmetry max dev 1.9e-121;  (-1)^k A^(k) >= 0, k <= 6, y = 0.5,1,2,10,30: True;  CONTROL A*(1+y) (must be False): False
+E = 1: modular symmetry max dev 1.9e-121;  (-1)^k A^(k) >= 0, k <= 6, y = 0.5,1,2,10,30: True;  CONTROL A*(1+y) (must be False): False
+E = 5: modular symmetry max dev 1.9e-121;  (-1)^k A^(k) >= 0, k <= 6, y = 0.5,1,2,10,30: True;  CONTROL A*(1+y) (must be False): False

@@ -7,7 +7,7 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
 
 All four chosen, in this order of dependence: (1) independent route to a₀ without the ODE solver,
 together with the tip-dimension question — DONE as EXP-015 (structural answer; magnitude route replaced); (2) shape-residual
-mechanism; (3) upper bound on κ versus the pure-Casimir solution; (4) instrument repairs — the M ≥ 14
+mechanism — DONE as EXP-016 (sharp-end mechanism; smooth end and size open); (3) upper bound on κ versus the pure-Casimir solution — DONE as EXP-017 (closure under dressing); (4) instrument repairs — the M ≥ 14
 one-node diagnosis, then the Dirac vertex term against its exact fast check. Items (1)–(3) need almost
 no CPU; (4) needs the machine. Housekeeping on the way in: the first item below still asks whether
 the residual's sign is universal (answered in EXP-012), and "independence hygiene" belongs under
@@ -15,18 +15,16 @@ caveats, not tasks.
 
 ## Open — actionable, unowned
 
-- [ ] **The shape residual.** Why does the (σ, κ) trial function reproduce every computed curve to ≈1%
-      ([BMW15b], [HHCWM16], [BCV21] all report it; none explains it)? Is the residual universal in
-      sign (it overshoots every known curve: +0.9% Einstein at 26.6°, +0.2–0.6% free fields; BCV Fig. 2
-      says smaller for μ < 0)? This is the half of the original problem the κ-band reframe leaves open.
-- [ ] **An upper bound on κ** (EXP-013). The third bridge exists — [LMW26]'s rectangle crossing — and
-      gives only κ_n ≥ (2π/3)a_n(π/2) (κ/C_T ≥ 2.39 at n → 1 with the BWK16 input). The pure-Casimir
-      solution 𝒟 = e^{ε₀(y+1/y)} shows it cannot bound κ above. Open: do the other cutting-and-gluing
-      relations (polygons, [LMW26]'s cuboid) jointly exclude that solution? Test for any claimed upper
-      bound: it must exclude 𝒟 = e^{ε₀(y+1/y)}. Also open: [LMW26]'s bound at n → 1 is assumed, not
-      proved; the n = 2, 3, 4 statements rest on OS positivity, which is a theorem there.
-- [x] **EXP-012 scalar EE measurement DONE** (addendum 6): a₀ = −0.33 C_T (−0.38 … −0.27), node at
-      27 ± 3°, P1–P3 confirmed; instrument validated to ≤ 5·10⁻⁵ from 20° to 170°.
+- [ ] **The shape residual** (EXP-012, EXP-016). Sharp-end half has a mechanism: the trial function's
+      constant is its Lifshitz component's, so for theories without a dimension-1 fusion operator the
+      sharp-end residual is ã₀ exactly (ECG a₀ = 0 confirmed out of sample). Open: (a) the smooth-end
+      sign, an empirical regularity sign(σ̃′ − σ′) = sign(3π − κ/σ) whose zero is family-dependent
+      (ECG ≈ 9.19, Dirac ≈ 9.43); (b) why computed theories sit near the EMI point at all — the same open
+      fact as the κ band, since an admissible function with Einstein's σ and κ is 8% off at 45°.
+- [ ] **An upper bound on κ** (EXP-013, EXP-017). Every constraint in hand is invariant under Casimir
+      dressing 𝒟 → 𝒟e^{E(y+1/y)}, which raises κ at any fixed corner dimension; so any candidate must
+      fail to be dressing-invariant. Unchecked: [LMW26]'s cuboid equations and other gluings — test each
+      against dressing first. Also open: [LMW26]'s bound at n → 1 is assumed, not proved.
 - [ ] **Instrument, if anyone re-runs it** (what would make the scalar EE result clean rather than
       corrected): keep the 14-node t-grid on [0, 3.2] (the 10-node grid cost a uniform −1.87·10⁻⁴) and
       the rule dps = 50 + 5M; use M ≤ 13.1. The five masses M ≥ 14 are garbage at 120–125 digits —

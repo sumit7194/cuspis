@@ -1601,3 +1601,125 @@ data; Dirac row a prediction. Result 4: verified (it follows from Result 2). Res
 script and its output are in `scripts/`. Prior art: the θ⁰ mechanism for general cusps is [CHK24]'s;
 its application to twist defects, the parity argument, and the classification were not found in the
 sources checked ([CH07], [CHL09], [CHK24], [LMW26], one query without corner vocabulary).
+
+## EXP-016  The shape residual: the sharp-end half is a Lifshitz artifact, the ≈1% accuracy is not a consequence of the constraints
+
+**Date** 2026-09-23. **Status** complete; closed forms and published tables only
+(`scripts/exp016_shape.py`, output frozen in `scripts/exp016_output.txt`; runtime seconds).
+
+**Goal.** Second picked item: why the (σ, κ) trial function reproduces every computed curve to ≈1%,
+and why its residual has the sign it has.
+
+**Pre-registration (before running).** P-A: ECG, holographic with no light operators and not used in
+EXP-015, has a₀ = 0. P-B: imposing a₀ = 0 on the trial function reduces its error at small angles
+(26.6°, 45°) for every theory without a dimension-1 fusion operator (Einstein, ECG at both ends of
+the allowed coupling, Dirac n = 1–4). P-C: imposing a₀ = 0 does not help the free scalar.
+
+**Result 1 — where the trial function's constant comes from (derived).** Of the two basis shapes, the
+extensive-mutual-information shape has no θ⁰ term (1 + (π−θ)cot θ = π/θ − πθ/3 + θ²/3 + …), while the
+Lifshitz shape carries −¾ ((θ−π)²/(θ(2π−θ)) = π/(2θ) − ¾ + θ/(8π) + …). So the trial function's
+constant is ã₀ = −¾λ¹, inherited entirely from its Lifshitz component, with λ¹ ∝ κ − 3πσ. For a theory
+without a dimension-1 fusion operator the true a₀ is zero (EXP-015), so **the sharp-end residual equals
+ã₀ exactly and its sign is sign(3π − κ/σ)**. The Lifshitz shape is the corner function of a
+non-Lorentz-invariant theory, and its constant is the part of the trial function no such CFT can have.
+
+**Result 2 — P-A passes.** ECG, exact first-order curve [BCV21 eq 293]: a − κ/θ is exactly linear in θ
+at θ = 0.02, 0.01, 0.005, with intercept 0.00000 at all four couplings μ = +0.00312, +0.001, −0.001,
+−0.00322. Out of sample for EXP-015, and it could have failed.
+
+**Result 3 — P-B passes at 26.6°, partly at 45°; P-C passes.** a₀ = 0 is imposed by adding a third
+shape with κ = 0, solving for all three weights, and repeating with two different third shapes,
+cos²(θ/2) and ((π−θ)/π)², so the outcome is not one arbitrary choice. With a₀ set to ã₀ the three-shape
+function reduces to the trial function exactly (control: 9·10⁻¹⁶). At 26.6°, 14 of 14 cases improve (7
+theories × 2 shapes). At 45°, 11 of 14; the three misses are holographic. **Dirac n = 1–4 improve 3 to
+15-fold at every angle with both shapes** (n = 1 at 26.6°: 0.54% → 0.12% / 0.04%). Einstein and ECG
+improve at 26.6° and over-correct at wider angles. **The free scalar gets 10 to 100 times worse** (n = 1
+at 26.6°: 0.01% → 2.5% / 2.2%; n = 2: 0.83% → 3.7% / 3.1%), as it must when the imposed constant is wrong.
+
+**Result 4 — a scan that failed its known-answer control.** Scanning the imposed a₀ for the best fit over
+five angles returns +0.09 … +0.13 C_T for Einstein and ECG, whose true a₀ is exactly zero. The control
+fails, so the scan does not measure a₀ — it absorbs the smooth-end mismatch. Consequence: the Dirac scan
+values (−0.012 … +0.026 C_T) are **not** evidence for the Dirac prediction a₀ = 0 beyond ±0.1 C_T. That
+prediction still needs the Dirac instrument. (The scalar scan returns −0.39, between the instrument's
+two model values; it is not used.)
+
+**Result 5 — the smooth end: an empirical regularity, not derived.** sign(σ̃′ − σ′) = sign(3π − κ/σ)
+holds for all nine entries without a dimension-1 operator (Einstein, four ECG couplings, Dirac n = 1–4)
+and for the scalar at n ≥ 2; the one exception is the scalar at n = 1. But the zero crossing is not at
+a fixed κ/σ: along the ECG family it extrapolates to κ/σ ≈ 9.19, along the Dirac n-family to ≈ 9.43. The
+Dirac crossing lands within 0.006 of 3π; given a crossing somewhere in that interval, the chance of
+landing that close is about 5%, so it is not claimed. **So the n = 1 versus n ≥ 2 split for the Dirac
+fermion is an x-dependence (κ_n/σ_n crosses ≈3π between n = 1 and 2), not an n-dependence** — a
+restatement that makes it less mysterious, without deriving the smooth-end sign.
+
+**Result 6 — "little freedom" does not follow from the constraints.** [BMW15b] §6.2 explain the trial
+function's accuracy by convexity: with both ends fixed, "little freedom remains at intermediate angles".
+Counterexample: a_λ = (1−λ)𝔞_min + λâ_L with λ = 0.5818 lies in 𝒞 (RESULT.md Theorem (a)) and has
+exactly Einstein's σ and κ (checked: 0.411234, 3.7094). It departs from Einstein by +9.6% at 26.6°, +7.9%
+at 45°, +3.4% at 90° and +0.8% at 135°. That is ten times the trial function's error. **The ≈1% accuracy is
+an empirical property of the theories computed, not a consequence of any known constraint.**
+
+**Result 7 — a reframing that unifies the two halves (not an explanation).** The trial function is the
+EMI shape plus a Lifshitz admixture proportional to κ − 3πσ. Its accuracy says that every computed n = 1
+theory lies close to the EMI point: within 8% in x = κ/σ (EMI: 3π) and 5% in y = σ′/σ (EMI: 1/15). The
+EMI value κ/C_T = π³/8 = 3.876 sits inside the observed band [3.672, 4.179]. So the κ band and the
+shape residual are one observation — **physical corner functions are close to the EMI corner function**
+— and, by the theorem and Result 6, neither follows from C1–C6. The EMI model is not a CFT [ABC21].
+
+**Verdict.** The sharp-end half of the residual has a mechanism, derived and confirmed out of sample:
+the Lifshitz component's spurious constant. The smooth-end sign is an empirical regularity. The size of
+the residual is not explained by the constraints, and is the same open fact as the κ band.
+
+**Grade.** Results 1, 2, 3, 6: verified (algebra; exact curves; published tables; an admissible function
+from a proved theorem). Result 4: the failed control, verified. Result 5: verified as a regularity,
+not derived. Result 7: a reframing, labelled as such.
+
+## EXP-017  The upper bound on κ: the rectangle bootstrap is closed under Casimir dressing, at every corner dimension
+
+**Date** 2026-09-23. **Status** complete; a two-line proof and a sub-minute check
+(`scripts/exp017_dressing.py`, output in `scripts/exp017_output.txt`).
+
+**Goal.** Third picked item: can the other cutting-and-gluing relations exclude the pure-Casimir
+solution that makes [LMW26]'s bound one-sided (EXP-013 Finding 4)?
+
+**Pre-registration.** Outcomes: (i) a known constraint excludes it; (ii) closure — shown impossible
+within the constraints in hand; (iii) not session-sized.
+
+**Result 1 — closure under Casimir dressing (theorem).** Let 𝒟(y) = 𝒟(1/y) and let
+𝒜(y) = y^{−2Γ} e^{−ε₀y} 𝒟(y) be completely monotone — the two conditions of [LMW26] eqs (13)–(15).
+Then for every E ≥ 0, 𝒟_E(y) = 𝒟(y) e^{E(y+1/y)} satisfies both, with the **same** corner dimension Γ
+and Casimir energy ε₀ + E. *Proof.* Symmetry is manifest. 𝒜_E = 𝒜 · e^{E/y}. The factor e^{E/y} is
+completely monotone, being the Laplace transform of δ(ε) + Σ_k E^k ε^{k−1}/(k!(k−1)!) ≥ 0, and a product
+of completely monotone functions is completely monotone, since the spectral densities convolve. ∎
+EXP-013's witness was the case 𝒟 = 1, Γ = 0. **This theorem covers every Γ.** In particular it covers
+the nonzero corner dimension a twist defect is forced to have by the lower bound a_n(π/2) ≥ 𝔞_min-type
+bound: at any fixed a_n(π/2), κ_n is unbounded above within the rectangle bootstrap.
+
+**Check** on the 2d-BCFT extremal solution (𝒟 = y^{2Γ}η(iy)^{8Γ}, c = 1), dressed with E = 0, 1, 5:
+modular symmetry to 2·10⁻¹²¹; (−1)^k𝒜^{(k)} ≥ 0 for k ≤ 6 at y = 0.5, 1, 2, 10, 30; control 𝒜·(1+y)
+must fail and does, at every E. Two failures of the check itself were kept rather than repaired quietly.
+With points only up to y = 2 the control did not fire at E = 5, because (1+y)e^{E/y} mimics a completely
+monotone function for y ≪ E. Once large y was added, the positive check failed at E = 0 at 20 digits,
+because the undressed 𝒜 is 1 + O(10⁻⁸⁰) there. The check was wrong both times, not the mathematics.
+
+**Result 2 — the same obstruction in two languages.** Dressing multiplies 𝒜 by a factor that tends to 1
+in one channel (y → ∞) and dominates in the other (y → 0): a pure contact attraction between the two
+defects, invisible at finite aspect ratio. In the corner function's spectral representation, the tail
+truncation of RESULT.md Theorem (b) adds κ with vanishing mass, invisible at finite angle. Both add
+weight only at the singular end, and both leave everything else unchanged.
+
+**Result 3 — the constraints in hand are all dressing-invariant.** The rectangle bootstrap (Result 1);
+concavity and monotonicity of Γ(θ) [CHK24], which are C2 in corner language and preserved by the tail
+truncation (EXP-003); [LMW26]'s mixed-cusp inequality, which for twist defects (a = b) reduces to those.
+Not checked: [LMW26]'s cuboid equations (not read), and multi-rectangle or polygon relations beyond
+their paper. **So an upper bound on κ requires a constraint that is not invariant under
+𝒟 → 𝒟e^{E(y+1/y)}** — one in which the Casimir energy enters other than as a multiplicative
+e^{ε·(geometry)} factor. The Cardy mechanism is of that kind (the vacuum energy is fixed by the anomaly,
+so dressing would change a universal number); RESULT.md §6 explains why it is absent in odd d.
+
+**Verdict.** Outcome (ii) for the constraints in hand. "No bridge found" becomes a single test that any
+proposed upper bound on κ must pass: it must fail to be invariant under Casimir dressing,
+equivalently under adding a pure singular-end tail.
+
+**Grade.** Result 1: proved; numerical check with a working control. Result 2: a precise analogy.
+Result 3: verified for the constraints read; the cuboid is not covered and not claimed.

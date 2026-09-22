@@ -71,7 +71,7 @@
 > constraint" reads like a weakness; here it is the opposite.
 
 *Standalone statement of the result of this workspace. Self-contained; the lab notebook is `report.md`
-(entries EXP-001 to EXP-013), the verified bibliography is `references.md`, the checking scripts are
+(entries EXP-001 to EXP-017), the verified bibliography is `references.md`, the checking scripts are
 under `scripts/`. Written 2026-09-05 and consolidated the same day after EXP-011; §10 is the handover.*
 
 ## 0. Statement and scope
@@ -104,8 +104,9 @@ reaches κ in d = 3, and states carefully what is proved and what is a classific
 **Update after Phase 2 (EXP-013).** §6's own falsifier fired: a third bridge exists. The rectangle of
 twist lines has a self-dual crossing in which κ_n is the vacuum energy of both channels and the four
 corners carry a_n(π/2); it yields κ_n ≥ (2π/3) a_n(π/2) and, with a(π/2) ≥ 𝔞_min(π/2), κ/C_T ≥ 2.39
-[LMW26, assuming their bound persists at n → 1]. It is one-sided: the pure-Casimir solution
-𝒟 = e^{ε₀(y+1/y)} satisfies every constraint used and has a(π/2)/κ = 0. So the theorem below stands,
+[LMW26, assuming their bound persists at n → 1]. It is one-sided, and structurally so (EXP-017):
+the admissible set is closed under Casimir dressing 𝒟 → 𝒟 e^{E(y+1/y)}, which raises κ at any fixed
+corner dimension, including the nonzero one twist defects must have. So the theorem below stands,
 and the rigorous range becomes κ/C_T ∈ [2.39, ∞) against the observed [3.67, 4.18].
 
 **Refereeing status of the Phase-2 measurement (stated once, inherited by every reader).** The
@@ -265,7 +266,7 @@ entropic inequalities of the corner function.
 | Modular theory (Bisognano–Wichmann, relative entropy, QNEC) | second-order shape variations (the σ theorem) | no (κ is all orders; it sits at the boundary of convergence of the ε-expansion) |
 | Stress-tensor 2-/3-point data (C_T, t₄) | see `report.md` EXP-002: two theories with equal t₄ differ in κ/C_T by 11.5% | no |
 | An inverted-channel positive expansion with a universal lowest state | would fix κ from universal data (the Cardy/crossing mechanism) | absent for the two-ball function in d ≥ 3; the strip's inverted channel lands on a non-universal Casimir energy, §6 |
-| A *self-dual* crossing with κ as the vacuum energy of both channels (the rectangle of twist lines) [LMW26] | κ_n ≥ (2π/3)a_n(π/2); κ/C_T ≥ 2.39 at n → 1 | lower bound only: 𝒟 = e^{ε₀(y+1/y)} is admissible with a(π/2)/κ = 0 (EXP-013) |
+| A *self-dual* crossing with κ as the vacuum energy of both channels (the rectangle of twist lines) [LMW26] | κ_n ≥ (2π/3)a_n(π/2); κ/C_T ≥ 2.39 at n → 1 | lower bound only: the admissible set is closed under 𝒟 → 𝒟e^{E(y+1/y)}, which raises κ at every fixed a(π/2) (EXP-013, EXP-017) |
 
 The named obstruction: **κ is a non-perturbative fusion datum of the twist defect, and no entropic
 inequality or finite-order correlator bound reaches it.**
@@ -386,7 +387,10 @@ the precision quoted (see §0). The (σ, κ) trial function's own constant is
 ã₀ = (3π/2)(3πσ − κ)/(π² − 6), which changes sign inside the physical band (κ/σ straddles 3π); the
 residual's sign at each end of the interval is set by one number — σ′ − σ̃′ at π, a₀ − ã₀ at 0 — and
 for the free scalar at n = 1 the two ends disagree, giving a node at 27 ± 3° with the exact function
-above the trial function below it by ≤ 0.1%.
+above the trial function below it by ≤ 0.1%. The trial function's constant comes entirely from its
+Lifshitz component (EXP-016). For theories without a dimension-1 fusion operator the sharp-end residual
+therefore equals ã₀ exactly: ECG has a₀ = 0 to five digits, confirming EXP-015 out of sample, and
+imposing a₀ = 0 improves the Dirac fermion 3 to 15-fold while making the scalar 10 to 100 times worse.
 
 At n = 2 for the Dirac fermion the obstruction is explicit (§6, `report.md` EXP-011): κ₂ is the second
 moment of the positive profile y u²_{1/4}(y) whose first moment, 1/8, is the UV central charge. The
@@ -451,15 +455,19 @@ bottom (§6, EXP-008/011): κ₂ and the UV datum are different moments of one p
 at each end — σ′ − σ̃′ at the smooth end (positive for every n = 1 theory, negative for both free fields
 at n ≥ 2) and a₀ − ã₀ at the sharp end; a₀ measured for the free scalar (≈ −0.3 C_T at n = 1, model-dependent at the factor-1.5 level; −0.24 C_T
 at n = 2) and Einstein (0), with the predicted node for the n = 1 scalar found at 27 ± 3° (EXP-012). (9) Phase 2: the third bridge exists — the rectangle
-crossing of [LMW26] — gives κ ≥ (2π/3)a(π/2), hence κ/C_T ≥ 2.39, and is provably one-sided (EXP-013).
+crossing of [LMW26] — gives κ ≥ (2π/3)a(π/2), hence κ/C_T ≥ 2.39, and is provably one-sided (EXP-013);
+its admissible set is closed under Casimir dressing at every corner dimension (EXP-017). (10) The ≈1%
+accuracy of the (σ, κ) trial function is not a consequence of the constraints: an admissible function
+with Einstein's exact σ and κ departs from Einstein by 8% at 45° (EXP-016).
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
 a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp
 structure carries over; unmeasured for the Dirac fermion, whose solver branch is parked, EXP-012). (b) An *upper* bound on
-κ: every known bridge, including the rectangle crossing, is one-sided; closing the problem needs a
-constraint that excludes pure-Casimir solutions 𝒟 = e^{ε₀(y+1/y)} — dynamical input beyond OS
-positivity and self-dual crossing (EXP-013). (c) The ECG t₄ sign
+κ: every constraint in hand is invariant under Casimir dressing 𝒟 → 𝒟e^{E(y+1/y)} (equivalently, under
+adding a pure singular-end tail), so a bound needs a constraint that is not — one in which the Casimir
+energy enters other than as a multiplicative factor (EXP-017). The κ band and the shape residual are
+one fact: computed corner functions are close to the EMI corner function (EXP-016). (c) The ECG t₄ sign
 discrepancy between [BCV21] and [BCR18] (does not affect any conclusion here).
 
 **For whoever picks this up.** Start from this file, then `report.md` in order; every number carries
