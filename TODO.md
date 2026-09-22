@@ -6,7 +6,7 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
 ## Next session — picked 2026-09-23, deferred until the machine is free
 
 All four chosen, in this order of dependence: (1) independent route to a₀ without the ODE solver,
-together with the tip-dimension question — reasoning-first, target −0.33 C_T; (2) shape-residual
+together with the tip-dimension question — DONE as EXP-015 (structural answer; magnitude route replaced); (2) shape-residual
 mechanism; (3) upper bound on κ versus the pure-Casimir solution; (4) instrument repairs — the M ≥ 14
 one-node diagnosis, then the Dirac vertex term against its exact fast check. Items (1)–(3) need almost
 no CPU; (4) needs the machine. Housekeeping on the way in: the first item below still asks whether
@@ -47,9 +47,16 @@ caveats, not tasks.
       second instrument (lattice at small angles with the `../quantum` extraction repaired; or the
       heat-kernel route of [CH07] extended one order past κ/θ). Until one exists, quote the node and
       a₀ with the §0 caveat attached.
-- [ ] Is the tip constant a₀ really a defect-creation dimension for twist defects (EXP-012, Result C)?
-      Inferred from [CHK24] eq (2.12) for general line defects; check the fusion σ_n × σ̄_n → 1 and
-      the unitarity of the tip operator in the orbifold; if it holds, a₀^{EE} ≤ 0 is a theorem.
+- [x] Is the tip constant a₀ a defect-creation dimension? **No** (EXP-015): the twist pair fuses to the
+      trivial defect, whose endpoint dimension is zero. A θ⁰ term needs a dimension-1 operator in the
+      pair-fusion channel; unitarity does not fix its sign.
+- [ ] **Independent route to the magnitude of a₀** (replaces the ∂ₙΔ_tip route, which targeted a
+      quantity that vanishes): the coefficient of the marginal bilinears φᵢφⱼ, φᵢ² in the fusion of two
+      parallel free-scalar twist lines at n → 1, plus the one-loop beta function of the φ² line coupling
+      in d = 3. Decides whether a log θ term exists (b in EXP-015) and fixes a₀. Prior art first: [HMS14]
+      twist one-point functions; the free φ² line defect's RG flow.
+- [ ] **Pre-registered for the Dirac instrument:** a₀^{Dirac} = 0 exactly (lowest pair-fusion operator
+      has Δ = 2), so the residual at θ → 0 is ã₀ = +0.092 C_T and there is no node.
 - [ ] **ECG t₄ sign.** [BCV21] Fig. 1 caption pairs μ = +0.00312 with t₄ = +4; [BCR18] eq. 129 gives
       t₄ = −1260 μ f∞²/(1−3μ f∞²), the opposite pairing. Adopted BCR18. EXP-002's obstruction is
       sign-independent; the fermion-side conflict is 3.5% (BCR18) or 1.4% (BCV21). An independent

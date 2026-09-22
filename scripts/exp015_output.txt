@@ -1,0 +1,24 @@
+--- window 20-50 deg, 6 points
+   A : a0 + a1 th + a2 th^2               a0 = -0.338 C_T   rms   4.54e-6
+   A3: a0 + a1 th + a2 th^2 + a3 th^3     a0 = -0.315 C_T   rms   0.50e-6
+   B : b log th + a0 + a1 th              a0 = -0.811 C_T   rms  10.43e-6  b = -0.223 C_T
+   B2: b log th + a0 + a1 th + a2 th^2    a0 = -0.480 C_T   rms   0.89e-6  b = -0.068 C_T
+   C : b/log th + a0 + a1 th              a0 = -0.425 C_T   rms  40.58e-6  b = -0.008 C_T
+--- window 20-60 deg, 7 points
+   A : a0 + a1 th + a2 th^2               a0 = -0.347 C_T   rms   9.06e-6
+   A3: a0 + a1 th + a2 th^2 + a3 th^3     a0 = -0.317 C_T   rms   0.61e-6
+   B : b log th + a0 + a1 th              a0 = -0.877 C_T   rms  20.66e-6  b = -0.263 C_T
+   B2: b log th + a0 + a1 th + a2 th^2    a0 = -0.509 C_T   rms   1.27e-6  b = -0.081 C_T
+   C : b/log th + a0 + a1 th              a0 = -0.464 C_T   rms  89.29e-6  b = +0.001 C_T
+--- window 26-60 deg, 6 points
+   A : a0 + a1 th + a2 th^2               a0 = -0.358 C_T   rms   4.28e-6
+   A3: a0 + a1 th + a2 th^2 + a3 th^3     a0 = -0.318 C_T   rms   0.66e-6
+   B : b log th + a0 + a1 th              a0 = -0.949 C_T   rms   7.44e-6  b = -0.317 C_T
+   B2: b log th + a0 + a1 th + a2 th^2    a0 = -0.574 C_T   rms   0.03e-6  b = -0.116 C_T
+   C : b/log th + a0 + a1 th              a0 = -0.490 C_T   rms  52.79e-6  b = +0.001 C_T
+--- window 20-70 deg, 9 points
+   A : a0 + a1 th + a2 th^2               a0 = -0.355 C_T   rms  13.03e-6
+   A3: a0 + a1 th + a2 th^2 + a3 th^3     a0 = -0.322 C_T   rms   1.86e-6
+   B : b log th + a0 + a1 th              a0 = -0.929 C_T   rms  29.67e-6  b = -0.295 C_T
+   B2: b log th + a0 + a1 th + a2 th^2    a0 = -0.530 C_T   rms   1.83e-6  b = -0.091 C_T
+   C : b/log th + a0 + a1 th              a0 = -0.503 C_T   rms 181.95e-6  b = +0.001 C_T

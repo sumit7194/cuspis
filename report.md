@@ -1510,3 +1510,94 @@ some places ("0.02366/2" in EXP-001) but not all; the live `TODO.md` lines now s
 These four are the controls `../quantum` transcribed verbatim, so the halving arithmetic was
 re-checked: all four exact. The Dirac controls (σ = 1/128, 0.02329, 0.005022, 0.0722) are the [CHL09]
 Dirac column unmodified.
+
+## EXP-015  Where the sharp-end constant can come from: a structural answer, a correction to EXP-012, and a caveat on my own number
+
+**Date** 2026-09-23. **Status** complete; reasoning, three source reads, and one millisecond fit on
+stored numbers (`scripts/exp015_a0_models.py`, output frozen in `scripts/exp015_output.txt`).
+
+**Goal.** First picked item of the deferred list: an independent route to a₀ that does not pass
+through the ODE solver, together with the question of whether a₀ is a tip-operator dimension.
+
+**Pre-registration (before the reads and the fit).** Outcomes: (i) an independent computation of
+a₀ reproducing −0.33 C_T; (ii) a structural statement fixing whether a₀ can be nonzero, by theory;
+(iii) a correction to EXP-012's mechanism; (iv) not session-sized. The fit was declared a
+*model-dependence check* on my own published number, not a new measurement.
+
+**Result 1 — the local physics of the thin wedge cannot produce a θ⁰ term (my argument).** At
+distance r from the tip the wedge is a strip of width w = rθ with slope w′ = θ. Any local description
+— the rectangle decomposition of [CH07] §3, or the fusion effective theory of [KRS25] — gives an
+entropy density (1/w) f(w′, w w″, …), and scale invariance plus w″ = 0 reduce the log coefficient to
+f(θ)/θ. Parity (mirror image of the wedge sends w′ → −w′) makes f even. So **every local contribution
+is odd in θ: κ/θ, θ, θ³, …** The leading [CH07] term κ/θ is the first of these. [KRS25]'s small-angle
+cusp expansion, −a₀/α − 3a₂,₂α + …, has no α⁰ term, as this requires.
+
+**Result 2 — the tip cannot produce it either, for twist defects.** [CHK24] eq (2.12) (read):
+Γ_ab = C/θ + Δ_c1 + α θ^{Δ_irr − 1} + …, where Δ_c1 is "the scaling dimension of the end-point
+operator" of the fused defect c, and α θ^{Δ_irr−1} comes from "the least irrelevant operator on c".
+A twist line and its orientation reversal fuse to the **trivial** defect, whose endpoint is the
+identity: **Δ_c1 = 0**. The only remaining source of a θ⁰ term is an operator on the fused line with
+dimension 1 — marginal on a line — which [CHK24] §3.3 already name, for N = 4 Wilson lines, as a
+contributor to the θ⁰ term. On the trivial line these are bulk operators; with a trivial endpoint
+their one-point functions vanish, so they enter at second order as θ^{2Δ−2}, which is θ⁰ exactly
+at Δ = 1.
+
+**Result 3 — classification, and one sharp prediction.** The lowest operator in the fusion channel of
+a twist pair is the replica bilinear.
+
+| theory | lowest pair-fusion operator | Δ | small-θ non-local term | a₀ |
+|---|---|---|---|---|
+| free real scalar | φᵢφⱼ, φᵢ² | 2Δ_φ = 1 | θ⁰, possibly with logs | ≠ 0 allowed ✓ (measured) |
+| free Dirac | ψ̄ᵢψⱼ | 2Δ_ψ = 2 | θ² | **= 0 exactly (prediction)** |
+| Einstein, leading N | T_μν (no light operators) | 3 | θ⁴ | = 0 ✓ (exact curve) |
+| O(N) Wilson–Fisher | φᵢᵃφⱼᵃ | 1 + η | θ^{2η}: non-analytic | no true constant; a slowly drifting effective one |
+
+Einstein checked against data that existed before this argument (not pre-registered, but it could
+have failed): a − κ/θ = −0.9424 θ at θ = 0.02, 0.01, 0.005, 0.0025 to four digits, so the θ⁰ term is
+zero and an O(1) θ² term is excluded (|c₂| ≲ 0.005 C_T against c₁ = 0.94 C_T), exactly the
+odd-series-plus-θ⁴ structure predicted. **Pre-registered for the Dirac instrument (parked):
+a₀^{Dirac} = 0 exactly, so the residual at θ → 0 equals ã₀ = +0.092 C_T and there is no node.**
+
+**Result 4 — correction to EXP-012 Result C.** There I inferred a₀ = −∂ₙΔ_tip|₁ with Δ_tip the
+dimension of a "defect-creation operator at the tip", and derived a₀ ≤ 0 from unitarity (P1). For
+twist defects that dimension is zero identically (Result 2). **The mechanism was wrong; P1 passed, but
+its pass is not evidence for the mechanism, and unitarity does not fix the sign of a₀.** The finite
+part of a second-order term after its divergence is removed has no fixed sign. The TODO route "compute
+∂ₙΔ_tip, target +0.0032" was aimed at a quantity that vanishes, and is replaced below.
+
+**Result 5 — caveat on my own number.** The free scalar's dimension-one operators close under the
+operator product (φᵢφⱼ × φᵢφⱼ ⊃ φᵢ² + φⱼ²). A marginal line coupling with nonzero three-point
+coefficient runs logarithmically, so its θ⁰ sector can carry log θ. Fit on the stored n = 1 values,
+κ fixed, windows from 20°:
+
+| model | a₀ / C_T across four windows | rms |
+|---|---|---|
+| a₀ + a₁θ + a₂θ² + a₃θ³ | −0.315 … −0.322 | 0.5–1.9·10⁻⁶ |
+| b log θ + a₀ + a₁θ + a₂θ² | −0.48 … −0.57 (b = −0.07 … −0.12) | 0.03–1.8·10⁻⁶ |
+| b / log θ + a₀ + a₁θ | — | 40–180·10⁻⁶, rejected |
+
+Both surviving models fit at the instrument's accuracy, and a log coefficient that drifts by 70% with
+the window is not a detection. **So a₀ is model-dependent at the factor-1.5 level; if b ≠ 0 it is not
+even a well-defined number, since it shifts with the unit of θ.** The range published in EXP-012
+(−0.38 … −0.27) covered windows and polynomial degree but not the functional form the theory itself
+allows. Robust across every model tried: the sign of the θ⁰ sector (negative), and the node at
+27 ± 3°, which is read directly from the corrected residuals at 15°–30° rather than from any fit.
+
+**Verdict.** Outcome (ii) plus (iii). No independent number for a₀, and that is the honest limit.
+What this entry gives is an independent account of *whether* a₀ is nonzero: it explains why the
+free scalar has a θ⁰ sector and Einstein does not, from the operator content of the twist-pair
+fusion, and it predicts a₀ = 0 exactly for the Dirac fermion.
+
+**Next steps.** The independent route to the *magnitude* is now concrete: the coefficient of the
+marginal bilinears in the fusion of two parallel free-scalar twist lines at n → 1, together with the
+one-loop beta function of the φ² line coupling in d = 3. Those give b, and whether the log is there
+at all. Prior art to check first: free-scalar twist one-point functions ([HMS14], "Twist operators in
+higher dimensions"; not re-read this session) and the φ² line defect's RG flow in the free theory.
+
+**Grade.** Result 1: derivation, verified against [CH07] §3 and consistent with [KRS25]'s expansion
+(abstract-level extract). Result 2: [CHK24] eq (2.12) and §3.3 as extracted, applied by me to twist
+defects. Result 3: classification from standard operator dimensions; Einstein row checked on existing
+data; Dirac row a prediction. Result 4: verified (it follows from Result 2). Result 5: verified; the
+script and its output are in `scripts/`. Prior art: the θ⁰ mechanism for general cusps is [CHK24]'s;
+its application to twist defects, the parity argument, and the classification were not found in the
+sources checked ([CH07], [CHL09], [CHK24], [LMW26], one query without corner vocabulary).

@@ -27,7 +27,9 @@ every angle. This answers a question left open in the literature, in the negativ
 by the trial function's own fourth-order coefficient; at the sharp end by `a₀ − ã₀`, which changes
 sign inside the physical band because `κ/σ` straddles `3π`. For the n = 1 free scalar the two ends
 disagree, **so a sign change was predicted before the run** — and the instrument found it, at
-**27 ± 3°**, with `a₀ = −0.33 C_T`.
+**27 ± 3°**, with `a₀ ≈ −0.3 C_T` (sign robust, magnitude model-dependent). Why the scalar has such a
+constant and holography does not is explained by the operator content of the twist-pair fusion, which
+predicts it vanishes exactly for the Dirac fermion.
 
 **③ The instrument.** An arbitrary-precision solver for the Casini–Huerta–Leitao ODE system,
 validated to ≤ 5·10⁻⁵ against published values from 20° to 170°. It was built because **no

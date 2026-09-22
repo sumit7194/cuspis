@@ -112,7 +112,7 @@ and the rigorous range becomes κ/C_T ∈ [2.39, ∞) against the observed [3.67
 free-scalar values from `scripts/exp004_eehp_result_Mcut13.1.json` are checked against published
 numbers to ≤ 5·10⁻⁵ from 45° to 170° [HHCWM16 series, CHL09], and from 20° to 45° only against
 [HHCWM16] eq (22), a lower bound whose one-sided error is ≤ 5·10⁻⁴ at 20°, 2.6·10⁻⁴ at 26.6° and
-5·10⁻⁵ at 40°; they agree with it within those bounds. **The node at 27 ± 3° and a₀ = −0.33 C_T are
+5·10⁻⁵ at 40°; they agree with it within those bounds. **The node at 27 ± 3° and a₀ ≈ −0.3 C_T are
 determined by deviations at the 10⁻⁴ level, below that referee's resolution: at the precision claimed
 they rest on the instrument alone**, whose controls below 45° are built from the same understanding
 that built it. The sign statements survive the referee (the exact function is above eq (22) at 20°
@@ -370,12 +370,17 @@ half-planes Q = e^{(n−1)κ_n ℓ/w}, which is completely monotone for every κ
 Σ_k c^k/(k! w^k), each 1/w^k a Laplace transform of a positive density), so this gives κ_n ≥ 0 and
 nothing else — the mechanism of §4 again.
 
-*The sharp-end constant (Phase 2, EXP-012).* With a(θ) = κ/θ + a₀ + O(θ), the constant a₀ is the
-sharp-end analogue of σ′: a second non-universal number, fixed by nothing in C1–C6 (it is an integral
-of the non-tail part of ρ), and in the cusp language the derivative at n = 1 of the dimension of the
-operator that creates the twist pair at the tip [CHK24 eq 2.12; inference for twist defects]. Measured
-here: Einstein a₀ = 0 to four digits (exact curve); real scalar, n = 1: a₀ = −0.33 C_T (−0.38 … −0.27,
-`scripts/exp004_eehp_result_Mcut13.1.json`, validated to ≤ 5·10⁻⁵ against [HHCWM16] from 20° to 170°);
+*The sharp-end constant (Phase 2, EXP-012; mechanism corrected in EXP-015).* With a(θ) = κ/θ + a₀ + O(θ),
+the constant a₀ is the sharp-end analogue of σ′: a second non-universal number, fixed by nothing in
+C1–C6. Where it can come from is now settled structurally (`report.md` EXP-015): local thin-wedge
+physics gives only odd powers of θ (parity), and a twist line fuses with its reversal to the trivial
+defect, so the tip contributes nothing. A θ⁰ term therefore requires an operator of dimension 1 in
+the twist-pair fusion channel. The free scalar has one (the replica bilinear, Δ = 2Δ_φ = 1); the Dirac
+fermion's lowest is Δ = 2, so a₀ = 0 exactly is predicted there; Einstein has none, and its exact curve
+has a₀ = 0 to four digits. Measured
+here: real scalar, n = 1: a₀ ≈ −0.3 C_T — −0.32 without a log θ term, −0.48 … −0.57 with one, and the
+data cannot tell the two forms apart, so the magnitude is model-dependent at the factor-1.5 level
+(`scripts/exp004_eehp_result_Mcut13.1.json`, validated to ≤ 5·10⁻⁵ against [HHCWM16] from 20° to 170°);
 real scalar, n = 2: −0.24 ± 0.03 C_T; the sub-45° magnitudes behind these numbers are unrefereed at
 the precision quoted (see §0). The (σ, κ) trial function's own constant is
 ã₀ = (3π/2)(3πσ − κ)/(π² − 6), which changes sign inside the physical band (κ/σ straddles 3π); the
@@ -444,13 +449,13 @@ bottom (§6, EXP-008/011): κ₂ and the UV datum are different moments of one p
 (7) The Dirac–Einstein c_S/C_T near-coincidence is chance on a known loose pattern (EXP-010).
 (8) Phase 2: the sign of the (σ, κ) trial-function residual is not universal but is set by one number
 at each end — σ′ − σ̃′ at the smooth end (positive for every n = 1 theory, negative for both free fields
-at n ≥ 2) and a₀ − ã₀ at the sharp end; a₀ measured for the free scalar (−0.33 C_T at n = 1, −0.24 C_T
+at n ≥ 2) and a₀ − ã₀ at the sharp end; a₀ measured for the free scalar (≈ −0.3 C_T at n = 1, model-dependent at the factor-1.5 level; −0.24 C_T
 at n = 2) and Einstein (0), with the predicted node for the n = 1 scalar found at 27 ± 3° (EXP-012). (9) Phase 2: the third bridge exists — the rectangle
 crossing of [LMW26] — gives κ ≥ (2π/3)a(π/2), hence κ/C_T ≥ 2.39, and is provably one-sided (EXP-013).
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
-a₀ (0 for Einstein, −0.33 C_T for the free scalar at n = 1; a defect-creation dimension if the cusp
+a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp
 structure carries over; unmeasured for the Dirac fermion, whose solver branch is parked, EXP-012). (b) An *upper* bound on
 κ: every known bridge, including the rectangle crossing, is one-sided; closing the problem needs a
 constraint that excludes pure-Casimir solutions 𝒟 = e^{ε₀(y+1/y)} — dynamical input beyond OS
