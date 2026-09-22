@@ -25,6 +25,10 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
       (M = 14.02, t = 0.03) by varying N and δ₀ separately before any production.
 - [ ] Dirac EE (a₀ for the Dirac fermion; prediction "no node, residual positive throughout,
       a₀ ≤ 0"): blocked on the Dirac vertex-term transcription (parked, see below).
+- [ ] **Independence hygiene (EXP-014).** `../quantum` holds a file-level copy of this workspace
+      including a byte-identical solver, and its repaired a(120°) was accepted against a bound this
+      repo supplied. Consequences to carry: never cite their post-repair lattice values as
+      corroboration here, and do not source the independent re-implementation below from that copy.
 - [ ] **An external check on a₀ and the node** (raised by the bridge): below 45° the instrument is
       refereed only by [HHCWM16] eq (22), to ≤ 5·10⁻⁴ at 20°, 2.6·10⁻⁴ at 26.6°; a₀ and the node
       position live at 10⁻⁴. Routes not through the CHL ODE system: (a) compute the tip-operator

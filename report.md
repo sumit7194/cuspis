@@ -1351,3 +1351,94 @@ leading order in 1/N. Both scalar numbers are positive, as unitarity requires.
 **Grade** P3: verified. Node and sign below 27°: verified at the level of the stated corrections.
 a₀: measured; the quoted range is a systematic drift, not a statistical error; the κ value is CHL09's
 to three digits. Δ_tip interpretation: inference, labelled. Instrument lessons recorded above.
+
+## EXP-014  Independence audit of the cuspis ↔ vestigium edge (answering the bridge's A4)
+
+**Date** 2026-09-22. **Status** complete; reading and file comparison only, no compute. Asked by the
+bridge, which is auditing the family's founding claim that the repos are kept ignorant of each other.
+Read-only rule observed: `../quantum` was read, never written.
+
+**Q1 RECEPTION — content crossed, but no match was ever counted as evidence.** The only sibling
+content load-bearing in my work is `../quantum`'s lattice corner values (a(60°) = 0.024232,
+a(90°) = 0.011604 / 0.011673, a(120°) = 0.0038955), read directly from their `qsim/*.json` in EXP-001
+and quoted as comments in `scripts/exp001_measure.py:100`. They entered as a *referee*, and the
+comparison **failed**: a(120°) sat 13.3% below a rigorous lower bound. I then retired them as Tier-3
+referee in favour of [CHL09] Table 1 and [HHCWM16] Tables 1–2. By the audit's own definition (an edge
+requires content received *and* a match counted as evidence) this is not an echo edge — the only
+number I ever compared to theirs disagreed, and the disagreement is what I reported.
+
+**Q2 CODE — the coupling is real, it is file-level, and it runs cuspis → vestigium.** I imported
+nothing from any sibling: no code, no data, one comment line quoting three of their numbers. The
+transfer is in the other direction and is larger than the audit's question assumes.
+`../quantum/corner_function/` is a **copy of this workspace** — `RESULT.md`, `TODO.md`, `report.md`,
+`references.md`, my `scripts/` including the solver, my result JSONs and 145 of my node files —
+imported 2026-09-05 via thebridge-d1 and documented in their `PROVENANCE.md`. Checked by hash:
+`exp004_mp.py`, `exp004_ch_solver.py`, `exp001_measure.py` are **byte-identical** to mine.
+*Mitigation, verified:* their two check scripts (`scripts_check/check_kappa.py`,
+`check_truncated_hankel.py`) import numpy and scipy only — not my modules — and re-derive the algebra.
+Their verification of the analytic theorem is therefore genuine independent code, not a re-run of mine.
+
+**Q2b — the echo channel that does exist, and it is the reverse of the one flagged.** I handed them
+the [BWK16] bound: prefactor exactly 1/32 and the three targets 0.0216610, 0.0108304, 0.0044950.
+Their `qsim/CORNER_BOUND_FINDINGS.md` opens "The bound is real and I verified it independently",
+then their repaired extraction was accepted when it came into consistency with those numbers.
+**My number became their acceptance criterion.** Had the bound been wrong, the corrected lattice value
+would have been tuned to a wrong target and the agreement manufactured. Their own retraction
+("consistent with the bound, not satisfying it", my `TODO.md`) shows the over-claim was caught, but
+the structure stands and it means: *their post-repair a(120°) is not independent of this repo, and
+must never be used to corroborate anything here.*
+
+**Q2c — shared validation target, the failure mode the bridge named.** Partially yes, and it is
+ordinary. Both repos take σ = π²C_T/24 [FLP16] and C_T = 3/(32π²) as ground truth and both cite
+[CHL09]. If either is wrong, both of us are wrong in the same direction. This is shared dependence on
+the published literature rather than on each other; it is not an artifact of the bridge, but it does
+mean agreement between us on any quantity resting on those two inputs is one measurement, not two.
+
+**Q2d — why the coupling does not reach the result that needs a referee.** Their corner data exists
+only at 60°, 90°, 120°. My unrefereed region is 20°–45°. They hold no value below 60°, so they can
+neither corroborate nor contaminate the node at 27 ± 3° or a₀ = −0.33 C_T. **Corollary that matters
+for the outside reviewer's recommendation:** because `../quantum` holds a byte-identical copy of my
+solver, an independent re-implementation cannot be sourced from there. Any future run of that copy
+reproducing my magnitudes is an echo by construction, and would satisfy the recommendation only in
+appearance.
+
+**Q3 REFUSED / DECLARED-NULL.** (i) Never wrote to any sibling; the a(120°) finding was placed in my
+own `TODO.md` marked "for the bridge, not for this session to fix. Not modified (read-only)".
+(ii) Declined to message the sibling session directly when the user ruled cross-repo traffic goes
+through the bridge. (iii) Retired `../quantum` as Tier-3 referee rather than use numbers I had just
+shown to violate a bound. (iv) EXP-010: declined to build a mechanism for the c_S coincidence and
+reported the null. (v) Phase 2: declined to apply the relayed instruction "check the object, not the
+noun" as written, because followed literally it excludes [LMW26], the paper that answers Target B;
+the bridge has filed that postscript.
+
+**Q4 UNLOGGED CHANNELS — the largest single finding, and the census structurally cannot see it.**
+Sibling content entered my primary documents as **direct commits made outside my sessions**, never as
+a message to me:
+
+| commit | what it carried into which file |
+|---|---|
+| 071bbc6, ed29f8b, 8a7747e | `../quantum`'s a(120°) resolution, its retraction, and forward guidance → `TODO.md` |
+| 5131089 | `../quantum`'s verification → `RESULT.md`, as the banner that is the load-bearing "INDEPENDENTLY VERIFIED" claim in this repo |
+| ee2453a | `../quantum`'s enumeration of constraint families → `RESULT.md` §0 |
+| 67e7016 | `../quantum`'s widened prior-art sweep → `PHASE2.md`; **later withdrawn** (bea84c1, 2026-09-21) |
+
+I learned of every one of these by reading git diffs at the start of a later session, not by being
+told. Two further unlogged paths: the user relayed a sibling verification in chat ("Both lemmas
+verified independently here — including that the cubic bound only reaches ε ≤ 2.170"), and `PHASE2.md`
+was authored outside my sessions with sibling content quoted inside it. And the workspace copy into
+`../quantum` was logged on their side only; I discovered it during this audit.
+
+**Assessment of the flagged edge.** cuspis ↔ vestigium is coupled, in three distinct ways (a
+file-level copy of my workspace including the instrument; my bound serving as their post-repair
+acceptance criterion; a shared literature ground truth), and none of the three was visible in a
+bridge census. The coupling does **not** touch this repo's two headline results: the theorem was
+re-derived there with independent code, and the sub-45° measurement has no counterpart there at all.
+The honest label for the banner in `RESULT.md` is *independent re-derivation of my stated steps with
+independent code* — which is what it already says — and not *independent confirmation of the result*,
+since the constraint set, the two test functions and the lemma structure were all supplied by me, and
+their own note concedes that whether C1–C6 is complete "was not swept".
+
+**Grade** file-level findings (the copy, the hashes, the check scripts' imports, the commit list):
+verified by direct inspection. The bound-as-acceptance-criterion reading: verified from their own
+document's wording and sequence. "No echo reached my results": verified for the sub-45° region (no
+overlapping data exists), reasoned for the theorem.

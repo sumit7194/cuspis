@@ -118,7 +118,10 @@ they rest on the instrument alone**, whose controls below 45° are built from th
 that built it. The sign statements survive the referee (the exact function is above eq (22) at 20°
 after the known normalisation and eq (22) is itself a lower bound); the magnitudes do not yet have an
 external check. What would supply one: a route to a₀ that does not pass through the CHL ODE system —
-the tip-operator dimension of the twist pair computed directly (TODO).
+the tip-operator dimension of the twist pair computed directly (TODO). **It cannot come from
+`../quantum`:** that repo holds a byte-identical copy of this solver (`report.md` EXP-014), so a run
+there reproducing these magnitudes would be an echo by construction, and its own corner data stops at
+60° in any case.
 
 ## 1. Setting and notation
 
