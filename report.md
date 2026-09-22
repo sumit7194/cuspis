@@ -1788,3 +1788,35 @@ digits rule becomes dps = 30 + 9M (165 at M = 15), which is also faster than the
 rule fails; it now applies to the Dirac entanglement mode as well, which runs at complex a.
 The scalar entanglement masses M ≥ 14 can be re-run under this rule (50 nodes) to remove the
 15°–20° cutoff deficit of EXP-012 addendum 6; not yet done.
+
+### EXP-019 addendum (2026-09-23) — `dirac2q` FAILED as run; two assembly errors of mine found in the stored nodes; a precision bug of mine caught by Tier 1
+
+**Outcome as pre-registered: FAIL.** s₂(θ) was 6·10³ times too small near π, scaled as ε⁴ (zero ε²
+coefficient), and blew up below 45°.
+
+**Diagnosis from the stored nodes, no rerun.** The node files store the scalar part F and the
+regularised Ψ separately, so the assembled function splits into A (the 2 tr G_S part) and V (the
+vertex part as coded). Two errors, both mine:
+1. The code divides the vertex term by 2M(…) where [CHL09] eq (59) prints M(…): the vertex term was
+   halved relative to the source.
+2. The assembly omitted the 1/(1−n) of the Rényi entropy, which is −1 at n = 2.
+With the source's factor, −(A − 2V) reproduces the exact Dirac Rényi-2 function to 3·10⁻⁶ at 135°–170°,
+4·10⁻⁵ at 90° and 6·10⁻⁴ at 63.4°. **This correction was identified on the same data it is checked
+against**, so it is confirmed only by the prospective rerun below, whose small angles played no part
+in finding it, and by the Dirac entanglement run's own known answers.
+
+**Small-angle garbage: the same class as EXP-018.** At a = ¼ the per-mass values are smooth to M ≈ 6
+and wrong from M ≈ 6.5 at the default 25 + 3M digits. The scalar at a = ½ stayed clean to M ≈ 14.7,
+because a = ½ is the symmetric, well-conditioned point. (The validated a = ½ run has one bad node,
+M = 14.87; recorded here, not previously noticed.)
+
+**A bug of mine, caught by Tier 1.** In the EXP-018 edit I appended a comment mid-line and commented
+out the statement that installs the high-precision digits rule. Every high-precision mode would have
+run silently at the old precision; nothing ran in those modes in between. Tier 1 of the new mode
+reported 46 digits at M = 7.13 where 94 were intended. Fixed; the two cached nodes written at the
+wrong precision were moved to `scripts/exp004_nodes_rejected/`, not deleted. After the fix: 94 digits,
+starting residual 6·10⁻⁷⁴ of the signal, F(5°) = 9.9·10⁻⁵ on the smooth trend.
+
+**Prospective control running:** mode `dirac2v` = a = ¼, the source's vertex factor, the 1/(1−n) sign,
+30 + 9M digits, residual stored. Same criterion as fixed before `dirac2q`. The out-of-sample part is
+26.6° and 45° against [HHCWM16] Table 2.

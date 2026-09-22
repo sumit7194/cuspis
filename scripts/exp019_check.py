@@ -4,7 +4,7 @@ from math import pi
 sys.path.insert(0, __file__.rsplit('/',1)[0])
 with contextlib.redirect_stdout(io.StringIO()):
     from exp012_sign import fermi, kap, series, ansatz22
-res = json.load(open(__file__.rsplit('/',1)[0] + '/exp004_dirac2q_result_n24_24_p15.0_t1.json'))
+res = json.load(open(__file__.rsplit('/',1)[0] + '/exp004_dirac2v_result_n24_24_p15.0_t1.json'))
 deg = np.array(res['deg']); s = np.array(res['s']); th = np.radians(deg)
 c = fermi[2]; k = kap['fermi'][2]; sig = 1/(64*pi); sigp = (35*pi-8)/(30720*pi**2)
 print(f"mode={res['mode']} nodes={res['nodes']} failures={res['failures']}")
