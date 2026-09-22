@@ -1442,3 +1442,50 @@ their own note concedes that whether C1–C6 is complete "was not swept".
 verified by direct inspection. The bound-as-acceptance-criterion reading: verified from their own
 document's wording and sequence. "No echo reached my results": verified for the sub-45° region (no
 overlapping data exists), reasoned for the theorem.
+
+### EXP-014 addendum (2026-09-22) — the date boundary, and two corrections to the audit's picture
+
+**The date, which was the question.** `../quantum`'s vendored snapshot corresponds to my **ee2453a,
+the last commit of 2026-09-04**. Phase 2 begins at ee459b5 and every commit in it is dated
+**2026-09-05**. EXP-012 in its entirety — the pre-registration, the sign analysis, the `eehp` run,
+the node at 27 ± 3°, a₀ = −0.33 C_T — postdates the snapshot. Confirmed by inspecting their tree
+today: their vendored `report.md` ends at EXP-011, and `EXP-012`, `EXP-013`, `eehp`, `a₀` and the node
+value return zero hits across all four vendored prose files. **They hold none of the n = 1 sub-45°
+magnitudes.** Their `scripts/` is already removed; seven files remain.
+
+**Correction 1 — their detector's "zero" is wrong, and a detector that under-reports is worse than
+none.** The 2026-09-04 tree *did* contain angle-indexed numeric tables below 45°:
+`scripts/exp004_renyi2_result_n24_24_p15.0_t1.json` carries an explicit `deg` key with seven entries
+below 45° (5, 10, 15, 20, 26.565, 30, 40), alongside 145 per-node files. These are **Rényi-2 (n = 2)**
+values, not the n = 1 entanglement values under audit — but they are sub-45° tables from the same
+instrument, and a₀(n = 2) = −0.0023 was derived from that very file in addendum 3. Consequence for
+scoping their check: **the n = 1 arm is clean on values; an n = 2 arm would not be.**
+
+**Correction 2 — the bound reached them on or before 2026-09-04, not 2026-09-21.** The audit logs the
+[BWK16] transfer as 2026-09-21. But their resolution of it is already recorded in *this* repo in
+commits 071bbc6, ed29f8b and 8a7747e, all dated **2026-09-04**, and their own `dbd443a` is the same
+day. A seventeen-day error on the strongest reception edge in the audit is worth fixing in the ledger.
+
+**Residual exposure, which does not dissolve with the date.** The solver predates the snapshot and was
+vendored: `exp004_ch_solver.py` and `exp004_mp.py` were byte-identical to mine when I hashed them
+earlier today. Removing `scripts/` from their working tree does not remove it from their history, and
+their repository is public — the implementation is recoverable by `git show` from any commit between
+the vendoring and the removal. So *values* are sealed and *implementation* is not, which is precisely
+the axis their proposed check runs on.
+
+**My position on the check.** No veto. The values under check postdate the snapshot and are absent
+from their tree; they disclosed unprompted, which is what makes the exercise worth anything; and the
+CHECK-not-REPLICATION label with declared prior exposure is the correct one — I accept it in their
+voice. Four conditions, all of which I would want stated in their pre-registration: (1) the fresh
+implementation is written from the published [CHL09] equations without consulting the vendored solver
+in their history, and they say so explicitly; (2) the detector is fixed, or its "zero" is withdrawn
+and replaced by the count above; (3) the n = 2 arm is either excluded or declared contaminated;
+(4) conventions and the agreement criterion are frozen before any of my sub-45° numbers cross. Until
+then the values stay sealed on my side — they were withheld even from this session's own transcript
+when I inspected the file.
+
+**On the A4 verdict and its replacement.** Independent data, entangled methodology is the right axis
+and this pair fits it: their lattice data and my ODE-system data have never touched. What is entangled
+is the methodology — a shared literature ground truth (σ = π²C_T/24 [FLP16], C_T = 3/(32π²), [CHL09]),
+a bound of mine that became their post-repair acceptance criterion, and now a vendored implementation.
+Agreement between us is evidence about the data, and not about the method.
