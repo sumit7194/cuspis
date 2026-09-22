@@ -3,6 +3,16 @@
 *Open questions, unverified claims, and deferred work. Consolidated 2026-09-05 after EXP-011: nothing
 settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) and `RESULT.md` §10.*
 
+## Next session — picked 2026-09-23, deferred until the machine is free
+
+All four chosen, in this order of dependence: (1) independent route to a₀ without the ODE solver,
+together with the tip-dimension question — reasoning-first, target −0.33 C_T; (2) shape-residual
+mechanism; (3) upper bound on κ versus the pure-Casimir solution; (4) instrument repairs — the M ≥ 14
+one-node diagnosis, then the Dirac vertex term against its exact fast check. Items (1)–(3) need almost
+no CPU; (4) needs the machine. Housekeeping on the way in: the first item below still asks whether
+the residual's sign is universal (answered in EXP-012), and "independence hygiene" belongs under
+caveats, not tasks.
+
 ## Open — actionable, unowned
 
 - [ ] **The shape residual.** Why does the (σ, κ) trial function reproduce every computed curve to ≈1%
