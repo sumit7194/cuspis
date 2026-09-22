@@ -1820,3 +1820,35 @@ starting residual 6·10⁻⁷⁴ of the signal, F(5°) = 9.9·10⁻⁵ on the sm
 **Prospective control running:** mode `dirac2v` = a = ¼, the source's vertex factor, the 1/(1−n) sign,
 30 + 9M digits, residual stored. Same criterion as fixed before `dirac2q`. The out-of-sample part is
 26.6° and 45° against [HHCWM16] Table 2.
+
+### EXP-019 addendum 2 (2026-09-23) — `dirac2v` FAILED as run, on one node; the cause was a solver bug of mine from EXP-004
+
+**Outcome as pre-registered: FAIL.** From 100° to 170° the new run agrees with the exact Dirac Rényi-2
+function to ≈ 3·10⁻⁶, and at 90° to 5·10⁻⁵. These are fresh nodes at new precision, but at the angles
+used to identify the EXP-019 corrections, so they count as reproduction, not out-of-sample.
+Everything below 80° was swamped by one node, M = 13.58, whose starting residual was 7·10⁻¹⁵ against a
+signal of e^{−2πM} ≈ 10⁻³⁷, and whose F(5°) was about −10¹⁰. The residual guard added in EXP-018 flagged it
+during the run. That assembly is kept as
+`scripts/exp004_nodes_rejected/exp004_dirac2v_result_first_assembly_with_bad_node.json`.
+
+**What it was not.** Larger N made it worse (N = 40: residual 2·10⁻⁹). Replaying only the starting
+solve showed erratic stage failures: at the production mass it converged; 10⁻⁴ below, the last stage
+jumped to 2·10⁻¹⁴ and stayed; 10⁻⁴ above, one stage jumped to 9·10⁻¹⁵ and the next recovered. The
+solver contains no randomness.
+
+**What it was.** Every jump landed near 10⁻¹⁴, at double-precision round-off. In `series_start_mp`,
+each continuation stage passes its coefficients to the next through `complex(cc[k])`, so **every
+stage restarted from double precision**. Newton's method usually recovers from there within a few
+iterations. But the line search accepts its last trial point even when that point is worse than the
+current one, so one failed step leaves the solve stuck at the double-precision floor. The conversion
+was written for the double-precision warm start and silently reused for the high-precision
+continuation.
+
+**Fix, one change.** Carried coefficients stay in multiple precision. The deterministic failing case
+now converges at every stage, to ≈ 10⁻¹⁵⁰ (a residual 10¹¹³ below the signal), in half the time.
+Regression: a validated scalar Rényi-2 node (M = 3.13) is unchanged at all 25 angles. The line
+search's acceptance of a worse point is left as found and recorded here; it is harmless once the
+start is accurate, and changing it would be a second variable. The bad node was quarantined, not
+deleted, and is being recomputed through the driver; the control will be re-judged on the same
+criterion. Recomputing a node that failed its own pre-declared convergence test is not a change to
+the evaluation.

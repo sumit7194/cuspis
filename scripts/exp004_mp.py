@@ -112,7 +112,8 @@ def series_start_mp(M, a, N, guess_double, iters=4, verbose=False, branch=-1):
         v = []
         for name, ks in layout:
             cc = dd[name] if isinstance(dd[name], (list, tuple)) else dd[name].c
-            for k in ks: v.append(mpc(complex(cc[k])) if k < len(cc) else mpc(0))
+            # EXP-019: keep mp precision when the guess is an mp continuation stage (complex() truncated every stage to double)
+            for k in ks: v.append((cc[k] if isinstance(cc[k], (mp.mpf, mp.mpc)) else mpc(complex(cc[k]))) if k < len(cc) else mpc(0))
         v = np.array(v, dtype=object)
     r0 = resid(v); nr = float(mp.sqrt(sum(abs(x)**2 for x in r0)))
     if verbose:
