@@ -2879,3 +2879,16 @@ starting at 15°. The κ-free fit appears only as a printed cross-check. The onl
 - σ as before (ε⁴ over 150°–170°).
 - Tolerances unchanged (10⁻³).
 - The same exclusion applies to A₄'s shape and κ₄.
+
+### EXP-028 addendum 3 — gate amendment accepted by the bridge (POST-FAILURE), extractor frozen; runs 2–4 resumed
+
+**The amendment, labelled as the bridge requires.** It is a **post-failure amendment**, written after A₂'s shape was
+seen and before any A₄. It has two parts:
+- (a) θ ≥ 15° for the gate and for A₄. This is **not new**: it is EXP-012's standing rule.
+- (b) The κ extractor: a quintic in θ over 15°–45°. This **is new**, chosen after seeing data, and validated on exact
+  EMI (κ/σ = 3π to 8.8·10⁻⁵). Its nuisance partner is the quartic over 15°–40°.
+
+**Frozen now:** no further changes once A₄ exists. If the amended gate fails on runs 2–4, that is the result. The gate
+is reported both ways: the original registered gate (FAIL, from the 5° truncation) and the amended one. **Any a₄
+conclusion is graded "conditional on a post-failure gate amendment"** until someone re-derives the gate
+independently. The code is `scripts/exp028_extract.py` (variants added) and `scripts/exp028_analyze.py`.

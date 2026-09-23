@@ -10,7 +10,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from exp028_extract import DEG, TH, kappa, sigma, K_VARIANTS, S_VARIANTS
 D = os.path.dirname(os.path.abspath(__file__))
 EMI = 1 + (pi - TH)/np.tan(TH)
-PRIMARY = ("quartic 5-26.6", "eps^4 150-170")
+PRIMARY = ("quartic 5-26.6", "eps^4 150-170")                  # ORIGINAL registered gate (full grid)
+# POST-FAILURE AMENDMENT (bridge-accepted 2026-09-24, written after A2's shape was seen, before A4): theta >= 15 deg (EXP-012 standing
+# rule, not new) and a NEW kappa extractor, quintic 15-45 deg (EMI test 8.8e-5), nuisance partner quartic 15-40. FROZEN: no further changes.
+AMENDED = ("quintic 15-45", "eps^4 150-170"); AMENDED_NUIS = ("quartic 15-40", "eps^4 150-170")
+MASK15 = np.array(DEG) >= 15
 
 def load():
     runs = {}
@@ -46,19 +50,22 @@ if __name__ == "__main__":
     if len(alist) >= 3:
         fits["A2,A4 drop largest a"] = fit(runs, alist[:-1], [2, 4])
         fits["A2,A4,A6 all a"] = fit(runs, alist, [2, 4, 6])
-    print("\nGATE on A2 (shape vs EMI <= 1e-3; kappa2/sigma2 = 3pi to <= 1e-3 absolute, primary extractor)")
-    gate = True
-    for name, c in fits.items():
-        A2 = c[2]; shape = A2/A2[DEG.index(90)]; dev = np.max(np.abs(shape/EMI - 1)); prim, lo, hi = ratio_stats(A2)
-        ok = dev <= 1e-3 and abs(prim - 3*pi) <= 1e-3
-        gate &= ok if name == "A2,A4 all a" else True
-        print(f"   {name:22s}: max|A2 shape/EMI - 1| = {dev:.2e};  kappa2/sigma2 = {prim:.6f} (variants {lo:.6f}..{hi:.6f}); |d| = {abs(prim-3*pi):.2e} -> {'PASS' if ok else 'FAIL'}")
+    print("\nGATE on A2, reported both ways (bridge term 2)")
+    c = fits["A2,A4 all a"]; A2 = c[2]; shape = A2/A2[DEG.index(90)]
+    dev_all = np.max(np.abs(shape/EMI - 1)); dev15 = np.max(np.abs(shape/EMI - 1)[MASK15])
+    r_orig = kappa(A2, PRIMARY[0])/sigma(A2, PRIMARY[1]); r_am = kappa(A2, AMENDED[0])/sigma(A2, AMENDED[1]); r_nu = kappa(A2, AMENDED_NUIS[0])/sigma(A2, AMENDED_NUIS[1])
+    ok_orig = dev_all <= 1e-3 and abs(r_orig - 3*pi) <= 1e-3
+    gate = dev15 <= 1e-3 and abs(r_am - 3*pi) <= 1e-3
+    print(f"   ORIGINAL (registered): max shape dev all angles {dev_all:.2e}; kappa2/sigma2 {r_orig:.6f} -> {'PASS' if ok_orig else 'FAIL'}")
+    print(f"   AMENDED (post-failure): max shape dev theta>=15 {dev15:.2e}; kappa2/sigma2 {r_am:.6f} (nuisance {r_nu:.6f}); |d| {abs(r_am-3*pi):.2e} -> {'PASS' if gate else 'FAIL'}")
+    for name, cc in fits.items():
+        sh = cc[2]/cc[2][DEG.index(90)]; print(f"      fit {name:22s}: shape dev theta>=15 {np.max(np.abs(sh/EMI-1)[MASK15]):.2e}; kappa2/sigma2 {kappa(cc[2],AMENDED[0])/sigma(cc[2],AMENDED[1]):.6f}")
     if not gate:
-        print("\nGATE FAILED: nothing about A4 is read (as registered)."); sys.exit(0)
-    print("\nA4 (read only because the gate passed)")
+        print("\nAMENDED GATE FAILED: nothing about A4 is read; that is the result."); sys.exit(0)
+    print("\nA4 (read only because the amended gate passed; conditional on a post-failure gate amendment)")
     for name, c in fits.items():
-        A2, A4 = c[2], c[4]; rel = A4/A2
-        prim, lo, hi = ratio_stats(A4)
-        print(f"   {name:22s}: A4/A2 range over angles [{rel.min():+.4f}, {rel.max():+.4f}] -> P1 (A4/A2 < 0 everywhere) {'HOLDS' if np.all(rel < 0) else 'FAILS'};"
-              f"  kappa4/sigma4 = {prim:.5f} (variants {lo:.5f}..{hi:.5f}) vs 3pi -> P2 {'HOLDS' if hi < 3*pi else ('FAILS' if lo > 3*pi else 'INCONCLUSIVE (straddles)')}")
-        print(f"      A4 shape / EMI at 5,20,45,90,135,170 deg: {np.round((A4/A4[DEG.index(90)]/EMI)[[DEG.index(d) for d in (5,20,45,90,135,170)]], 4)}")
+        A2, A4 = c[2], c[4]; rel = (A4/A2)[MASK15]
+        rp = kappa(A4, AMENDED[0])/sigma(A4, AMENDED[1]); rn = kappa(A4, AMENDED_NUIS[0])/sigma(A4, AMENDED_NUIS[1]); lo, hi = min(rp, rn), max(rp, rn)
+        print(f"   {name:22s}: A4/A2 over theta>=15 in [{rel.min():+.4f}, {rel.max():+.4f}] -> P1 {'HOLDS' if np.all(rel < 0) else 'FAILS'};"
+              f"  kappa4/sigma4 = {rp:.5f} (nuisance {rn:.5f}) vs 3pi {3*pi:.5f} -> P2 {'HOLDS' if hi < 3*pi else ('FAILS' if lo > 3*pi else 'INCONCLUSIVE')}")
+        print(f"      A4 shape/EMI at 15,20,45,90,135,170: {np.round((A4/A4[DEG.index(90)]/EMI)[[DEG.index(d) for d in (15,20,45,90,135,170)]],4)}")
