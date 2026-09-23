@@ -120,9 +120,9 @@ and the rigorous range becomes κ/C_T ∈ [2.39, ∞) against the observed [3.67
     (explicit saturator).
 - **(ii) Conformal concavity at n = 1: tan(θ/4)·a(θ) is convex in u = tan²(θ/4).** Derived from SSA plus the
   vacuum's global conformal invariance, by running [LMW26b]'s eye construction with nested regions. Grade:
-  physics-level; it survived an adversarial review by a subagent of this session, which shares its framing, and
-  is confirmed in the EMI model to 10⁻¹⁰. It has not been checked outside this workspace; the bridge is running
-  V7 as an outside check.
+  physics-level. Inside this workspace: a same-session subagent review, and an EMI check to 10⁻¹⁰. Outside: the
+  bridge's V7 re-derivation (non-blind, different formalisation, same gaps) confirms it and reproduces both
+  constants. Not a theorem: promotion needs proofs of A5 and A6.
   - Given (ii) and C3, **κ ≥ 2.538·a(π/2)**, so [LMW26]'s bound holds at n = 1 with a 21% margin.
   - Also **κ/C_T ≥ (2π²/3)·φ* = 2.894**, with φ* = max_τ τ[log((1+τ²)/(2τ)) + (1−τ²)/(1+τ²)]. This is optimal
     for {CC, C2, C3, C5}.

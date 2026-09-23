@@ -42,11 +42,12 @@ def worker(args):
     import exp004_mp as em
     fn = f"{OUT}/{mode}_M{M:.10f}_t{t:.10f}.json"
     if os.path.exists(fn): return json.load(open(fn))
-    a = 0.25 if mode in ("dirac2q", "dirac2v") else 0.5 if mode in ("renyi2", "dirac2", "dirac2r") else (complex(0.5, -t) if mode in ("ee", "eehp") else complex(0.0, -t))
+    isA = mode.startswith("diracA")            # EXP-028: single U(1) twist sector at real a, mode name 'diracA<a>'
+    a = float(mode[6:]) if isA else 0.25 if mode in ("dirac2q", "dirac2v") else 0.5 if mode in ("renyi2", "dirac2", "dirac2r") else (complex(0.5, -t) if mode in ("ee", "eehp") else complex(0.0, -t))
     t0 = time.time()
     try:
         N = int(2*round((1.6*abs(M) + 8)/2))
-        if mode in ("eehp", "dirac", "dirac2v"):
+        if mode in ("eehp", "dirac", "dirac2v") or isA:
             # EXP-012 addendum 5: complex a needs more digits than 25+3M at small x (verified on M=7.13, t=0.11: 46 fails, 70 and 100 agree)
             # EXP-018: 50+5M lost M>=14 (series start stalls at ~e^{-2 pi M}); 30+9M
             slope = float(os.environ.get("EEHP_DPS_SLOPE", "9")); base = float(os.environ.get("EEHP_DPS_BASE", "30")); em.set_prec = (lambda MM, _s=slope, _b=base: setattr(mp.mp, "dps", int(_b + _s*abs(MM))))
@@ -58,20 +59,24 @@ def worker(args):
             n1 = max(2, int(math.ceil(t/0.002)) + 1); n2 = 251
             path = [complex(0.5, -t*k/(n1-1)) for k in range(n1)] + [complex(0.5*(1 - k/(n2-1)), -t) for k in range(1, n2)]
             sign, guess, flips = branch_by_continuation(M, t, N, 0.5, mode, path=path)
+        elif isA:
+            # EXP-028: continue the validated real branch (-1 at a = 1/2) along the real axis to a
+            path = [complex(0.5 + (a - 0.5)*k/250, 0.0) for k in range(251)]
+            sign, guess, flips = branch_by_continuation(M, 0.0, N, 0.5, mode, path=path)
         else:
             sign, guess, flips = -1, None, 0
         out, d = em.integrate_mp(M, a, math.radians(4), XG, branch=sign, guess=guess)
         F = [complex(out[x]) for x in XG]
         rec = {"M": M, "t": t, "F_re": [f.real for f in F], "F_im": [f.imag for f in F], "H1": complex(d['H'][1]).real, "H1_im": complex(d['H'][1]).imag,
                "H3": complex(d['H'][3]).real, "dps": mp.mp.dps, "rn": float(abs(d.get('_rn', float('nan')))), "rn_over_signal": float(abs(d.get('_rn', float('nan'))))/math.exp(-2*math.pi*abs(M)), "N": len(d['H'])-1, "secs": time.time()-t0, "ok": True, "branch": sign, "flips": flips}
-        if mode in ("dirac", "dirac2", "dirac2r", "dirac2q", "dirac2v"):
+        if mode in ("dirac", "dirac2", "dirac2r", "dirac2q", "dirac2v") or isA:
             # CHL09 eq (59): tr G_D|odd / m = 2 tr G_S - 16 pi a(1-a) (4 beta1 X1 cos(x/2) - b B1 sin^2 x)/(M (4 beta1^2 - b^2 sin^2 x)),  tr G_S = 8 pi a(1-a) F.
             # The second term has a finite, nonzero x -> pi limit (0/0): (2 beta1^1 X1^0 - b0 B1^0)/(4 (beta1^1)^2 - b0^2); the vertex
             # contribution must vanish at x = pi, so subtract that limit per mass node (same regularisation as tr G_S in eq 72).
             aa = mp.mpc(a); Ma = mp.mpf(M); Psi = []
             be11, X10, b0, B10 = d['be1'][1], d['X1'][0], d['b'][0], d['B1'][0]
             cB = -2 if mode == 'dirac2r' else 1
-            vf = 1 if mode in ('dirac', 'dirac2v') else 2   # EXP-019: eq (59) has 16 pi a(1-a)(...)/(M(...)); earlier modes halved it (vf = 2)    # dirac2r: EXP-012 hypothesis, second numerator term coefficient -2 (regular at m->0)
+            vf = 1 if (mode in ('dirac', 'dirac2v') or isA) else 2   # EXP-019: eq (59) has 16 pi a(1-a)(...)/(M(...)); earlier modes halved it (vf = 2)    # dirac2r: EXP-012 hypothesis, second numerator term coefficient -2 (regular at m->0)
             Psi_pi = 16*mp.pi*aa*(1-aa)*(0 - (2*be11*X10 - cB*b0*B10)/(vf*Ma*(4*be11**2 - b0**2)))
             for x in XG:
                 b_, X1_, be1_, B1_ = em.integrate_mp.last_outq[x]; xx = mp.mpf(x)
@@ -110,7 +115,8 @@ if __name__ == "__main__":
             M = float(np.sqrt(0.25 + p*p)); r = idx.get((round(M,10), round(float(t),10)))
             if r is None: continue
             inner += wps[ip]*p*p*np.array(r["F_re"]); innerH[0] += wps[ip]*p*p*r["H1"]; innerH[1] += wps[ip]*p*p*r["H3"]
-        if mode in ("dirac", "dirac2", "dirac2r", "dirac2q", "dirac2v"):
+        if mode in ("dirac", "dirac2", "dirac2r", "dirac2q", "dirac2v") or mode.startswith("diracA"):
+            # diracA<a> (EXP-028): single sector, s_A(a, x) = (1/pi) Int dm m^2 Psi_reg(a); normalisation fixed so that dirac2v = -2 s_A(1/4)
             # dirac2v: a = 1/4, eq (59) factor as printed, sign 1/(1-n) = -1 at n = 2, digits 30+9M (EXP-019)
             # dirac2q: Renyi-2 Dirac at the CORRECT twist a = k/n = 1/4 (CHL09 eqs 6, 12, 13: a in (0,1/2)); dirac2/dirac2r used a = 1/2 by mistake
             # dirac : s_D = Int dt 1/(2 sinh^2(pi t)) * 2 Int_0^inf dm m^2 Psi_reg     (CHL09 eq 60; odd part -> even integrand)
@@ -120,7 +126,7 @@ if __name__ == "__main__":
                 M = float(np.sqrt(0.25 + p*p)); r = idx.get((round(M,10), round(float(t),10)))
                 if r is None: continue
                 innerP += wps[ip]*p*p*np.array(r["Psi_re"])
-            s += (wts[it]*(1/(2*np.sinh(np.pi*t)**2))*2*innerP) if mode == "dirac" else (-(2/np.pi)*innerP if mode == "dirac2v" else (2/np.pi)*innerP)
+            s += (wts[it]*(1/(2*np.sinh(np.pi*t)**2))*2*innerP) if mode == "dirac" else (-(2/np.pi)*innerP if mode == "dirac2v" else ((1/np.pi)*innerP if mode.startswith("diracA") else (2/np.pi)*innerP))
             continue
         pre = 2.0 if mode == "renyi2" else wts[it]*(2/np.cosh(np.pi*t)**2)*8*np.pi*(0.25 + t*t)/2   # /2 : real scalar
         s += pre*inner

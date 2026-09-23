@@ -2361,7 +2361,7 @@ Two objectives:
 - **(b) The full rectangle bound:** SSA on rectangles cannot reach it. It reduces exactly to Casini–Huerta
   conditional positivity for reflected rectangles.
 - **(c) Conformal concavity at n = 1 is derived from SSA plus global conformal invariance.** Physics-level rigour,
-  assumptions listed below. An independent adversarial review is pending as this is written.
+  assumptions listed below. [Wording corrected: a within-session review followed (addendum 2), then the bridge's outside check V7.]
 - **(d) If (c) stands:** CC together with the n = 1 theorems C2, C3 and C5 implies the rectangle bound with room:
   κ ≥ 2.5378·a(π/2) against 2π/3 = 2.0944. The n = 1 bound becomes κ/C_T ≥ 2.8936, against S4's conditional
   2.388.
@@ -2402,7 +2402,7 @@ Scripts: `scripts/exp025_n1.py` (K1–K4, H4), `scripts/exp025b_lp.py` (LPs). Ou
   the gap between 2 and 2π/3 lies entirely in positivity beyond SSA.
 - **This is where the n → 1 gap sits for the rectangle.**
 
-**O3: conformal concavity at n = 1 (derived, physics-level; independent review pending).**
+**O3: conformal concavity at n = 1 (derived, physics-level; within-session review + bridge V7, see the V7 note below).**
 
 *Structural observation.* [LMW26b]'s proof needs only the variational principle ℰ(u) ≤ ⟨ψ|H(u)|ψ⟩. For any trial
 state ψ, that follows from log-convexity of Z(τ) = ⟨ψ|e^{−τH(u)}|ψ⟩, which is a 2×2 Cauchy–Schwarz statement. By
@@ -2501,7 +2501,7 @@ O2's remark, SSA supplies such statements at n = 1 whenever the half-regions are
 **Grades.**
 - O1: derived from standard inputs (verified).
 - O2: derived. The equivalence with CP is by the stated theorems; the saturator is verified numerically.
-- O3: derived at physics-level rigour, pending independent review. It is the load-bearing link for O3 → (d).
+- O3: derived at physics-level rigour (within-session review + bridge V7). It is the load-bearing link for O3 → (d).
 - (d): numerically verified given O3.
 - The a₀ ≤ 0 at n = 1 upgrade of S7a: follows from O3. It is small-angle material, sealed toward quantum.
 
@@ -2548,7 +2548,7 @@ u below. The closed form was then derived. It is the analytic certificate that E
 - Grade: the arithmetic and optimality are verified. The inputs are CC at n = 1 (EXP-025 O3, derived, review
   pending), C3 [CHL09], C5 and σ = π²C_T/24 (FLP).
 
-### EXP-025 addendum 2 — independent adversarial review of O3, and a known-answer check in a solvable model
+### EXP-025 addendum 2 — within-session adversarial review of O3 (a subagent; see the correction below), and a known-answer check in a solvable model
 
 **Review.**
 - *Setup.* A separate agent was given O3's derivation and asked to break it. Candidate failure points: SSA
@@ -2785,3 +2785,24 @@ notation, with C_J for the free Dirac field.
   the angle grid, and κ₂/σ₂ within 10⁻³ of 3π. It is also read only if the sign is stable across the nuisance
   sweep.
 - If the control fails, nothing about a₄ is reported, except the control's failure.
+
+**Bridge V7 result (2026-09-24): the outside check of EXP-025.**
+- *Setup.* The bridge re-derived O1 and O3 non-blind, from A1–A7 and the frozen constraint definitions only. Its
+  findings were frozen at a897549 *before* reading this derivation; the comparison is at 6550173 (TheBridge
+  falsification/V7_corner_concavity_n1, sealed toward quantum).
+- *V7a PASS.* O1 was re-derived on the same three steps. BWK16 (II.4), read at source, needs only SSA + Lorentz
+  invariance, σ = π²C_T/24 and reflection. So 2.2804 is unconditional.
+- *V7b CONFIRMED WITH GAPS, no counterexample.* The bridge formalised O3 differently:
+  - its regions are translates of L ∪ slab ∪ φ_τ(U), not reflected halves, so A2 is not needed on that route;
+  - it keeps the cusps under a uniform cutoff, with a compensated, exactly flow-invariant finite part, instead of a
+    cap at ρ.
+
+  It carries the same load-bearing assumptions: A5 (its G1), the C¹ junction at ±i (its G2, this review's (i)), and
+  touching at u = u′ as a limit (its G3, the same degeneracy as this review's cap window (ii)).
+- *V7c MATCH.* Its own LPs give 2.537868 and 2.893629. It derived the closed forms 16σφ* and 4φ*/ln 2 without reading
+  EXP-025c. This workspace's integral-form C3 rows are the certified relaxation; midpoint rows only corroborate.
+- *V7d PASS.* EMI; holography including the F(0) = κ/4 node at 40 digits (κ = Γ(3/4)⁴/π to 10⁻¹¹); the CHL09
+  real-scalar and Dirac points. Its live controls fire.
+
+**Grade going forward (bridge index): "derived at physics-level; checked outside cuspis by the bridge (V7,
+non-blind); not a theorem."** Promotion needs a proof of A5 and A6, or a human specialist. That is the user's call.
