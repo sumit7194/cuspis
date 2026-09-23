@@ -71,7 +71,7 @@
 > constraint" reads like a weakness; here it is the opposite.
 
 *Standalone statement of the result of this workspace. Self-contained; the lab notebook is `report.md`
-(entries EXP-001 to EXP-021), the verified bibliography is `references.md`, the checking scripts are
+(entries EXP-001 to EXP-022), the verified bibliography is `references.md`, the checking scripts are
 under `scripts/`. Written 2026-09-05 and consolidated the same day after EXP-011; §10 is the handover.*
 
 ## 0. Statement and scope
@@ -85,7 +85,9 @@ the observed band κ/C_T ∈ [3.672, 4.179] spanned by all theories computed to 
 consequence of C1–C6, and no inequality that is itself a consequence of reflection positivity can
 ever bound κ.
 
-**Scope, stated once and meant throughout.** "Admissible" means *satisfies C1–C6*. It does not mean
+**Scope, stated once and meant throughout.** The statement is about κ normalised by C_T. A conjectured upper
+bound on κ normalised by the sphere free energy, κ/F₀ ≤ 0.6223 [BCLM23], is compatible with it and discussed in §8,
+together with the fact that under F₀ normalisation the computed κ values do not collapse at all.  "Admissible" means *satisfies C1–C6*. It does not mean
 "is the corner function of a unitary 3d CFT": one of the two endpoint functions in the proof is the
 corner function of a z = 2 Lifshitz theory, which is not Lorentz invariant, and no CFT with a large
 κ/C_T is claimed to exist. The valid conclusion is the narrower and stronger one: **the constraint
@@ -377,7 +379,10 @@ C1–C6. Where it can come from is now settled structurally (`report.md` EXP-015
 physics gives only odd powers of θ (parity), and a twist line fuses with its reversal to the trivial
 defect, so the tip contributes nothing. A θ⁰ term therefore requires an operator of dimension 1 in
 the twist-pair fusion channel. (The general small-angle structure, a term θ^{2(Δ−1)} for defects fusing
-to the identity, is [LMW26b] eq. (28), which predates EXP-015; see EXP-021.) The free scalar has one (the replica bilinear, Δ = 2Δ_φ = 1); the Dirac
+to the identity, is [LMW26b] eq. (28), which predates EXP-015; see EXP-021.) **The sign is a theorem at
+integer n ≥ 2:** a constant in Γ enters ℰ = √u·Γ as α√u, whose second derivative −α/(4u^{3/2}) dominates as
+u → 0, so [LMW26b]'s proven conformal concavity forces α ≥ 0, i.e. **a₀ ≤ 0** (EXP-022). The same run shows
+[LMW26b]'s eq. (37), a₁ ≤ −κ/12, holding in every applicable case by a factor of 3 to 4. The free scalar has one (the replica bilinear, Δ = 2Δ_φ = 1); the Dirac
 fermion's lowest is Δ = 2, so a₀ = 0 exactly was predicted there and then **confirmed by a run with a
 verdict rule frozen in advance: a₀^{Dirac} = 0.00 ± 0.02 C_T** (EXP-020); Einstein has none, and its
 exact curve has a₀ = 0 to four digits; ECG likewise (EXP-016). Measured
@@ -411,6 +416,22 @@ coefficients, in general. §4(c) answers it for the full constraint set C1–C6 
 positivity): no upper bound on a(θ)/C_T at any angle, nor on any σ^{(p)}/C_T, follows from the general
 constraints. The holographic route suggested there gave, in [Miao15] and [BCV21], that the Einstein
 curve is not even a lower bound.
+
+*The F₀-normalised conjecture [BCLM23].* Bueno, Casini, Lasso Andino and Moreno conjecture that F(A)/F₀ in
+any 3d CFT lies between the Maxwell and free-scalar values for every region A. Applied to thin strips, this
+gives **0 ≤ κ/F₀ ≤ 0.6223**, the free-scalar value (their eq. 18), with Dirac 0.3297, EMI 1/π ≈ 0.3183 and
+Einstein holography 0.2285 all consistent. Applied to deformed disks, it gives C_T/F₀ ≤ 0.14887 (their eq. 2).
+Three points fix the relation to this document. (i) **It is compatible with the theorem of §4.** It bounds
+κ/F₀, not κ/C_T. Since κ/C_T = (κ/F₀)/(C_T/F₀) and C_T/F₀ has no known positive lower bound (it vanishes for
+the Maxwell field), κ/C_T stays unbounded even if the conjecture holds. (ii) **If proven, it would be exactly
+the kind of constraint outside C1–C6 that §0's scope line allows for.** It constrains F(A) for all regions at
+once, which none of C1–C6 does. So the completeness of C1–C6 is not a safe assumption for κ/F₀, even though
+it does not affect κ/C_T. (iii) **The normaliser decides whether there is a collapse at all.** Divided by C_T,
+the computed κ values span 13%. Divided by F₀, they span a factor of 2.7, from holography's 0.2285 to the free
+scalar's 0.6223, and the EMI value falls below the Dirac fermion's. The "near-universality" this document
+addresses is a statement about C_T normalisation specifically, which any explanation (§10(a)) has to
+respect. They also note that κ "is not known to be related with any other coefficient defined beyond EE";
+this document's search agrees.
 
 *Cusp literature, 2024–26 (EXP-013).* In d = 3 the corner function is the cusp anomalous dimension of
 the replica twist line, Γ^{(n)} = (1−n)a_n(θ) [LMW26 eq 35; CGT26; Cha26]. [CHK24] prove Γ < 0,
@@ -498,7 +519,7 @@ J. Stat. Mech. (2009) P11001 · [CH07] Casini, Huerta, NPB 764 (2007) 183 · [CH
 JHEP 11 (2012) 087 · [CHL09] Casini, Huerta, Leitao, NPB 814 (2009) 594 · [FLP16] Faulkner, Leigh,
 Parrikar, JHEP 04 (2016) 088 · [HHCWM16] Helmes et al., PRB 94, 125142 (2016) · [HT07] Hirata,
 Takayanagi, JHEP 0702:042 (2007) · [Miao15] Miao, JHEP 10 (2015) 038 · [NN15] Nakaguchi, Nishioka,
-JHEP 04 (2015) 072 · [BCR18] Bueno, Cano, Ruipérez, JHEP 03 (2018) 150 · [BCGKM26] Bianchi, Cavaglià, Gutiérrez, Kousvos, Meineri,
+JHEP 04 (2015) 072 · [BCLM23] Bueno, Casini, Lasso Andino, Moreno, arXiv:2307.05164 · [BCR18] Bueno, Cano, Ruipérez, JHEP 03 (2018) 150 · [BCGKM26] Bianchi, Cavaglià, Gutiérrez, Kousvos, Meineri,
 arXiv:2609.04035 · [CGT26] Cuomo, Giombi, Tizzano, arXiv:2608.03704 · [Cha26] Chandra, arXiv:2608.28531 ·
 [CHK24] Cuomo, He, Komargodski, JHEP 11 (2024) 061 · [DKPW24] Diatlyk, Khanchandani, Popov, Wang, arXiv:2404.05815 ·
 [KRS25] Kravchuk, Radcliffe, Sinha, J. Phys. A 58 (2025) 465402 · [LMW26] Lanzetta, Moult, Wang, arXiv:2609.04041 · [BFGLM26] Bueno, Fernández García, Gentile,

@@ -2008,3 +2008,64 @@ inequality holds by more than the stated uncertainty, fail if violated by more, 
 **What would be news.** The concavity checks on the free scalar, Dirac and Einstein at n = 1 repeat
 [LMW26b]'s Fig. 2, so passing them is confirmation, not news. New: concavity for ECG; every eq. (37) test;
 the margins by which each theory satisfies the inequalities.
+
+### EXP-022 addendum — results: every pre-registered test passes; one check fired on an artifact; a correction to EXP-015
+
+Script `scripts/exp022_eye.py`, output `scripts/exp022_output.txt` (runtime seconds).
+
+**T-A, known answers (theorems at integer n ≥ 2): all pass.** F_n is positive, decreasing and convex for the
+published [HHCWM16] curves, boson and fermion, at n = 2, 3, 4, and for this workspace's scalar and Dirac runs
+at n = 2 (no secant-slope decrease at all, let alone beyond noise). Eq. (37) for Dirac at n = 2: a₁ lies
+between 4.07 and 4.09 times −κ₂/12 across four windows and κ₂'s last digit, so it holds with a factor-4
+margin.
+
+**T-B, the n → 1 continuation.** Convexity holds for Einstein (exact), for ECG at all four couplings (exact;
+a theory not in [LMW26b]'s Fig. 2), and for this workspace's Dirac and scalar runs at n = 1. Eq. (37) holds at
+n = 1 in every applicable case:
+
+| theory | a₁ | −κ/12 | a₁ / (−κ/12) |
+|---|---|---|---|
+| Einstein | −0.9424 C_T (exact, stable to 10⁻⁵) | −0.3091 C_T | 3.05 |
+| ECG, μ from +0.00312 to −0.00322 | −0.908 … −0.977 C_T (exact) | −0.306 … −0.312 C_T | 2.97 … 3.13 |
+| Dirac n = 1 | fits, a₀ = 0 imposed | κ = 0.0722 | 3.56 … 3.88 |
+| Dirac n = 2 | fits | κ₂ = 0.0472338 | 4.07 … 4.09 |
+
+The inequality is satisfied by a factor of 3 to 4 everywhere, far from saturation. It cannot come close to
+constraining κ in any known theory. It is also dressing-invariant: Casimir dressing shifts C by 4δ and a₂ by
+−δ/3, leaving C + 12a₂ unchanged. So it is not a route to an absolute bound (S5, CF-1).
+
+**The check that fired, and why.** [HHCWM16]'s eq. (22) for the fermion at n = 1 fails convexity. Asked
+before acting: the violation sits only at 3.4°–4.1° (u ≈ 2–3·10⁻⁴). Eq. (22)'s constructed small-angle tail
+gives that curve a small **positive** constant, a₀ = +0.00011 (+0.006 C_T), while the boson curves carry
+negative ones. A constant a₀ in a(θ) adds a₀√u to F, whose second derivative −a₀/(4u^{3/2}) dominates as
+u → 0. So any positive constant must break convexity at small enough angle. This is an artifact of the
+formula's tail, not physics: the measured Dirac a₀ is 0.00 ± 0.02 C_T (EXP-020), and this workspace's Dirac
+curve passes. It matters to anyone who uses eq. (22) below a few degrees; the 20°–45° refereeing it provides
+(S10, EXP-012) is unaffected.
+
+**Correction to EXP-015 Result 4: the sign of a₀ is fixed after all.** The same mechanism, applied to the
+cusp, gives a theorem. If Γ contains a constant α (the p = 0 case of [LMW26b] eq. (28)), then ℰ ⊃ α√u and
+ℰ″ ⊃ −α/(4u^{3/2}) dominates as u → 0. Conformal concavity (ℰ″ ≤ 0, proven for integer n ≥ 2) then
+forces α ≥ 0. For twist lines α = (1−n)a₀, so **a₀ ≤ 0 at every integer n ≥ 2**, and a₀ ≤ 0 at n = 1 if the
+concavity continues. This is the Δ_irr → 1 end of [LMW26b] eq. (35), α(Δ_irr − 3/2) ≤ 0, which the paper
+states for 1 < Δ_irr < 5/2. EXP-015 wrote that "unitarity does not fix the sign of a₀", having withdrawn
+EXP-012's defect-creation argument. That was wrong: reflection positivity in the eye geometry fixes it. The
+measured values, free scalar −0.24 C_T at n = 2 and ≈ −0.3 C_T at n = 1, and Dirac 0 (the boundary),
+are consistent. P1 of EXP-012 therefore has a correct mechanism, though not the one originally given.
+
+**T-C (low weight).** Eq. (35) with Δ = 2 predicts a non-negative θ² coefficient for the Dirac fermion at
+n ≥ 2. Fits give +0.0050 at n = 2 and +0.003 … +0.008 at n = 1 (in units of a). Consistent; inference only.
+
+**Observations, labelled as such.** (i) Eq. (22)'s own constant for the boson corresponds to
+−0.305 C_T for the real scalar at n = 1. That is close to this workspace's no-log value of −0.32 C_T. It
+cannot bear on the log question, because a geometric tail cannot produce a log θ term by construction.
+(ii) In holography a₁/κ = −0.254 (Einstein) and −0.247 … −0.261 (ECG), close to −¼. For the Dirac fermion
+it is about −0.30 to −0.32, and for the EMI shape −⅓. No explanation is offered.
+
+**Verdict.** Confirmation for the concavity checks at n = 1 on the free fields and Einstein, which repeat
+[LMW26b]'s Fig. 2. New: ECG concavity; every eq. (37) test, all passing by factors of 3 to 4; the
+artifact in eq. (22); and the theorem a₀ ≤ 0 at integer n ≥ 2, which corrects EXP-015.
+
+**Grade.** Tests: verified (exact curves, published curves, validated runs; controls passed). Eq. (37)
+re-derivation and the a₀ ≤ 0 argument: derived here, the latter as an elementary consequence of [LMW26b]'s
+proven concavity. Dirac a₁ values: fits, κ-limited, drift reported.

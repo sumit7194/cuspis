@@ -52,6 +52,8 @@ workspace's numerics, with the stated caveat), **conjectured**.
 | S5 | **The rectangle bootstrap can never bound κ above.** Multiplying any admissible solution by e^{E(y+1/y)}, E ≥ 0, keeps it admissible, with the same corner dimension and a larger Casimir energy. | proved (two-line proof, numerical check with a working control) | — |
 | S6 | Local thin-wedge physics contributes only odd powers of θ. The twist line fuses with its reversal to the trivial defect, so the tip contributes nothing. Hence **a₀ ≠ 0 requires a dimension-1 operator in the twist-pair fusion channel.** The general exponent θ^{2(Δ−1)} for identity fusion is **prior art: Lanzetta–Moult–Wang, "Eye-opening bounds on cusps", 2609.04302, eq. (28)**. The application to twist lines is this workspace's. | derived; exponent is prior art | A dimension-1 operator where none is expected, or a θ⁰ term without one. |
 | S7 | a₀ by theory: Einstein 0 (exact curve, four digits); ECG 0 (five digits, four couplings); **Dirac 0.00 ± 0.02 C_T** (pre-registered prediction, confirmed; the error comes from κ's third digit); free real scalar at n = 1 ≈ −0.3 C_T; free real scalar at n = 2 −0.24 ± 0.03 C_T. | measured | For the scalar, see S8. |
+| S7a | **a₀ ≤ 0 is a theorem at integer n ≥ 2** (and at n = 1 if conformal concavity continues): a constant in Γ adds α√u to ℰ, whose second derivative −α/(4u^{3/2}) dominates as u → 0, so the proven concavity of 2609.04302 forces α = (1−n)a₀ ≥ 0. All measured values agree. This corrects this workspace's earlier claim that the sign is not fixed. | derived from a proven theorem (added 2026-09-24) | — |
+| S7b | 2609.04302 eq. (37), in corner language **a₁ ≤ −κ_n/12** when the lightest fusion operator has Δ > 3/2, holds for Einstein (factor 3.05), ECG (2.97–3.13), Dirac n = 1 (3.6–3.9) and Dirac n = 2 (4.1). Conformal concavity holds for all these curves and for ECG, a theory the paper did not test. Far from saturated; dressing-invariant, so not a route to an absolute bound on κ. | verified (added 2026-09-24) | — |
 | S8 | The free scalar's a₀ is **model-dependent by a factor of about 1.5.** −0.32 C_T without a log θ term and −0.48 … −0.57 C_T with one; the data from 20° to 70° cannot tell them apart. Its sign is robust. | measured, with caveat | CF-13 or CF-18. |
 | S9 | The (σ, κ) trial function's constant comes entirely from its Lifshitz component, so for theories with no dimension-1 fusion operator the residual at θ → 0 equals that constant exactly. Imposing a₀ = 0 improves the Dirac fermion 3 to 15 times and makes the scalar 10 to 100 times worse. | derived and verified | — |
 | S10 | The free scalar's residual changes sign at **27 ± 3°**. | measured | Below 45° the values are refereed only by one published formula (Helmes et al. 2016, eq. 22); see CF-12. |
@@ -81,7 +83,10 @@ workspace's numerics, with the stated caveat), **conjectured**.
    "suggested". Bueno–Witczak-Krempa's a(π/2) bound is rigorous at n = 1 only.
 8. **Two citations lack recorded titles:** Van Bastelaere–Huang–Vanderstraeten 2609.20020 and Zhu–Wang–Cheng–Yan
    2605.00104. Verify before citing.
-9. **Prior art moves fast here.** Three relevant cusp-bootstrap papers appeared on 3 September 2026. Sweep
+9. **Helmes et al.'s tail-completed formula (their eq. 22) is not reliable below a few degrees.** Its
+   constructed tail gives the n = 1 fermion curve a small positive constant, which violates the proven
+   convexity at 3–4°. Fine as a referee from 20° up; not below a few degrees.
+10. **Prior art moves fast here.** Three relevant cusp-bootstrap papers appeared on 3 September 2026. Sweep
    again with your own framing's central term removed before claiming novelty.
 
 ---
@@ -132,7 +137,7 @@ instrument, L literature or desk work.
 | CF-19 | Cubic-gravity scan of κ/C_T over the t₄-allowed couplings | 2 | 1 | 95% | 0.1 | A |
 | CF-20 | Fix the singular starting solve at large t in the Dirac run | 1 | 2 | 80% | 0.4 | N |
 | CF-21 | Log-convexity in dimension of the free-field κ_d | 1 | 2 | 80% | 0.4 | A |
-| CF-22 | Test the new cusp-paper inequalities on existing exact and numerical curves | 3 | 1 | 90% | 0.3 | N |
+| CF-22 | Test the new cusp-paper inequalities on existing exact and numerical curves — **DONE 2026-09-24, see S7a, S7b** | 3 | 1 | 90% | 0.3 | N |
 | CF-23 | κ/F₀ normalisation audit and the κ/F₀ ≤ 0.622 conjecture | 2 | 1 | 90% | 0.2 | L |
 | CF-24 | Check the cuboid bootstrap's closure under Casimir dressing | 2 | 1 | 90% | 0.2 | A |
 | CF-25 | The ECG t₄ sign discrepancy | 1 | 1 | 90% | 0.1 | L |

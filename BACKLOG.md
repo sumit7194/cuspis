@@ -43,7 +43,7 @@ Source tags: **[doc]** was planned in this repository (file named); **[new]** co
 | 19 | Cubic-gravity scan of κ/C_T over the t₄-allowed couplings | 2 | 1 | 95% | 0.1 | [new] |
 | 20 | Fix the singular starting solve at large t | 1 | 2 | 80% | 0.4 | [doc] TODO |
 | 21 | Log-convexity in d of the free-field κ_d | 1 | 2 | 80% | 0.4 | [doc] TODO parked |
-| 22 | Test the new cusp-paper inequalities on this repository's data | 3 | 1 | 90% | 0.3 | [new] |
+| 22 | Test the new cusp-paper inequalities on this repository's data — **done, EXP-022** | 3 | 1 | 90% | 0.3 | [new] |
 | 23 | κ/F₀ normalisation audit, and the κ/F₀ ≤ 0.622 conjecture | 2 | 1 | 90% | 0.2 | [new] |
 | 24 | Check the cuboid bootstrap's closure under Casimir dressing | 2 | 1 | 90% | 0.2 | [new] |
 | 25 | The ECG t₄ sign discrepancy | 1 | 1 | 90% | 0.1 | [doc] TODO |

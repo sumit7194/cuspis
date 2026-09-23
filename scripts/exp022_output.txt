@@ -1,0 +1,33 @@
+T-A  KNOWN ANSWERS (theorem at integer n >= 2)
+  HHCWM16 boson n=2 (eq 22)    F>0: True  decreasing: True  min F''/max|F''| = +2.56e-05  ->  CONVEX
+  HHCWM16 boson n=3 (eq 22)    F>0: True  decreasing: True  min F''/max|F''| = +2.27e-05  ->  CONVEX
+  HHCWM16 boson n=4 (eq 22)    F>0: True  decreasing: True  min F''/max|F''| = +2.18e-05  ->  CONVEX
+  HHCWM16 fermion n=2 (eq 22)  F>0: True  decreasing: True  min F''/max|F''| = +2.82e-03  ->  CONVEX
+  HHCWM16 fermion n=3 (eq 22)  F>0: True  decreasing: True  min F''/max|F''| = +3.25e-03  ->  CONVEX
+  HHCWM16 fermion n=4 (eq 22)  F>0: True  decreasing: True  min F''/max|F''| = +3.20e-03  ->  CONVEX
+  instrument scalar n=2        23 angles  F>0: True  decreasing: True  secant-slope decreases: 0 (beyond noise: 0)  ->  CONVEX within noise
+  instrument Dirac n=2         23 angles  F>0: True  decreasing: True  secant-slope decreases: 0 (beyond noise: 0)  ->  CONVEX within noise
+
+T-B  CONTINUATION TO n = 1 (not guaranteed)
+  Einstein (exact)             F>0: True  decreasing: True  min F''/max|F''| = +4.50e-02  ->  CONVEX
+  ECG mu=+0.00312 (exact)      F>0: True  decreasing: True  min F''/max|F''| = +5.34e-02  ->  CONVEX
+  ECG mu=+0.00100 (exact)      F>0: True  decreasing: True  min F''/max|F''| = +4.73e-02  ->  CONVEX
+  ECG mu=-0.00100 (exact)      F>0: True  decreasing: True  min F''/max|F''| = +4.28e-02  ->  CONVEX
+  ECG mu=-0.00322 (exact)      F>0: True  decreasing: True  min F''/max|F''| = +3.88e-02  ->  CONVEX
+  HHCWM16 boson n=1 (eq 22)    F>0: True  decreasing: True  min F''/max|F''| = +3.61e-05  ->  CONVEX
+  HHCWM16 fermion n=1 (eq 22)  F>0: True  decreasing: True  min F''/max|F''| = -1.00e+00  ->  NOT CONVEX
+  instrument Dirac n=1         22 angles  F>0: True  decreasing: True  secant-slope decreases: 0 (beyond noise: 0)  ->  CONVEX within noise
+  instrument scalar n=1        22 angles  F>0: True  decreasing: True  secant-slope decreases: 0 (beyond noise: 0)  ->  CONVEX within noise
+
+EQ. (37): a_1 <= -kappa/12  (a_1 = theta^1 coefficient of a_n; applies when Delta_irr > 3/2)
+  Einstein n=1           (a - kappa/theta)/theta at theta = 0.01, 0.005, 0.0025: -0.94242 -0.94243 -0.94243   bound -kappa/12 = -0.30910   ratio a_1/(-kappa/12) = 3.049  ->  PASS
+  ECG mu=+0.00312 n=1    (a - kappa/theta)/theta at theta = 0.01, 0.005, 0.0025: -0.90814 -0.90815 -0.90815   bound -kappa/12 = -0.30604   ratio a_1/(-kappa/12) = 2.967  ->  PASS
+  ECG mu=+0.00100 n=1    (a - kappa/theta)/theta at theta = 0.01, 0.005, 0.0025: -0.93151 -0.93151 -0.93152   bound -kappa/12 = -0.30813   ratio a_1/(-kappa/12) = 3.023  ->  PASS
+  ECG mu=-0.00100 n=1    (a - kappa/theta)/theta at theta = 0.01, 0.005, 0.0025: -0.95327 -0.95328 -0.95329   bound -kappa/12 = -0.31007   ratio a_1/(-kappa/12) = 3.074  ->  PASS
+  ECG mu=-0.00322 n=1    (a - kappa/theta)/theta at theta = 0.01, 0.005, 0.0025: -0.97714 -0.97715 -0.97715   bound -kappa/12 = -0.31221   ratio a_1/(-kappa/12) = 3.130  ->  PASS
+  Dirac n=1              fits (a0 = 0; 4 windows x kappa +- its last digit): a_1/(-kappa/12) in [3.556, 3.879]  ->  PASS
+                         T-C theta^2 coefficient of a_n across the same fits: [+0.0032, +0.0076] (prediction >= 0; inference, low weight)
+  Dirac n=2              fits (a0 = 0; 4 windows x kappa +- its last digit): a_1/(-kappa/12) in [4.070, 4.087]  ->  PASS
+                         T-C theta^2 coefficient of a_n across the same fits: [+0.0050, +0.0052] (prediction >= 0; inference, low weight)
+
+SUMMARY: T-A all pass: True | T-B all pass: False

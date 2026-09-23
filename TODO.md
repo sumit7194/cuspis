@@ -17,6 +17,12 @@ caveats, not tasks.
 
 *The full ranked backlog, with scores and the 2026-09-23 literature sweep, is `BACKLOG.md`.*
 
+- [x] **CF-22 / bridge C17 (EXP-022):** the eye inequalities hold on every curve here; eq. (37) with margins
+      of 3 to 4. New theorem: a₀ ≤ 0 at integer n ≥ 2 (corrects EXP-015). Helmes eq. (22) unreliable below
+      a few degrees. Next in the bounds chain: CF-24, the cuboid under Casimir dressing.
+- [x] **Bridge job 2:** [BCLM23] positioned in RESULT.md §0 and §8 (κ/F₀ conjecture compatible with the
+      theorem; no collapse at all under F₀ normalisation).
+
 - [ ] **The shape residual** (EXP-012, EXP-016). Sharp-end half has a mechanism: the trial function's
       constant is its Lifshitz component's, so for theories without a dimension-1 fusion operator the
       sharp-end residual is ã₀ exactly (ECG a₀ = 0 confirmed out of sample). Open: (a) the smooth-end
