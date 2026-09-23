@@ -3061,3 +3061,25 @@ normalisation, sign and C_J, not only of its shape.
   10%, with a 1.6-point spread across angles) is new.
 - An observation, not tested: NG's tilt (−0.149) is close to A₄'s (−0.139, EXP-029). The non-Gaussian remainder is
   a₄-like in shape to within ~7%.
+
+### C2a″ (complex-scalar split) — well-posedness read: does NOT hold as given at source; parked
+
+**Read at source: CHL09 [0811.1968] §1, eqs. (6)–(9) and (13); §5, eqs. (60)–(61).**
+- *Fermions, eq. (8).* S = ∫₀^∞ dt π/sinh²(πt) · log Z[e^{2πt}]. The boundary factor e^{2πt} is e^{i2πa} with
+  **a = −it**, a contour through a = 0 whose weight concentrates there. That is what made the Dirac Gaussian/
+  non-Gaussian split natural, and the Dirac corner function ≈ 90% Gaussian.
+- *Bosons, eq. (9).* S = −∫₀^∞ dt π/cosh²(πt) · log Z[−e^{2πt}], i.e. **a = ½ − it** (eq. (61) evaluates
+  G_S at −it + ½). The text right after eq. (9) states the contrast: the cut carries "a positive factor for fermions
+  and a negative one for bosons".
+- *Conclusion as given.* The scalar EE samples the **maximal twist Re a = ½**, not small twist. The "Gaussian part"
+  (the exact a² term of s(a) on the EE contour) would be evaluated at a = ½ − it, outside the small-twist regime and
+  at the unverified radius ½. It has no meaning there as the pairwise part.
+- *A possible unparking route, not established at source.* Shift the contour t → t − i/2 to Re a = 0. The
+  1/cosh²(πt) double pole at a = 0 is harmless: near it the integrand ≈ −A₂a²/(π²τ²) with a = −iτ, which is regular.
+  But the shift requires (i) log Z_bos[e^{i2πa}] to be analytic in 0 ≤ Re a ≤ ½, and (ii) the *positive-factor*
+  bosonic functional integral on Re a = 0 to be well-defined. CHL09 deliberately use the negative factor for bosons,
+  and a real positive twist factor may spoil the positivity of the bosonic Gaussian integral. This workspace's
+  instrument also meets a pole at a = 0 in intermediate quantities (the Γ(−a) factors; the Dirac-mode path
+  comment). Neither (i) nor (ii) is settled.
+- **Parked**, with that lemma, analyticity plus well-definedness of the bosonic sector function on 0 ≤ Re a ≤ ½, as
+  the condition for unparking.
