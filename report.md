@@ -1959,3 +1959,52 @@ whether [LMW26b] discuss the dimension-1 case explicitly; that must be read befo
 **Grade.** The [LMW26b] eq. (28) statement: verified by me on the source. Other stream findings:
 verified by the streams on arXiv abstract pages or text as labelled in `references.md`; two entries lack
 recorded titles and are flagged there.
+
+## EXP-022  Testing the "eye" cusp inequalities on this workspace's curves (bridge C17 = CF-22) — pre-registration
+
+**Date** 2026-09-24. **Status** pre-registered; results in the addendum below. Requested by the bridge as
+the first step of the bounds chain; sole owner.
+
+**Source, read on the paper ([LMW26b] = 2609.04302).** Conformal concavity: ℰ″(u) ≤ 0 with
+ℰ(u) = √u·Γ(θ(u)) and u = tan²(θ/4) (eqs. 1–2). For twist lines Γ⁽ⁿ⁾ = (1−n)a_n (eq. 40), so for integer
+n ≥ 2 the function F_n(u) = tan(θ/4)·a_n(θ) is positive, decreasing and convex (eq. 41). The paper says this
+does not apply a priori at n → 1 and checks it there only graphically (its Fig. 2: free scalar, Dirac,
+Einstein). Eq. (37): if Δ_irr > 3/2, a₂ ≥ a₀/12 with a₀ ≡ −C, from Γ = C/θ + Δ_c𝟙 + a₂θ + αθ^p (eq. 28).
+
+**Sign convention, settled.** Eq. (3) gives ℰ(0) = C/4 with Γ ≈ C/θ, so for the twist line
+C = (1−n)κ_n < 0 when n > 1, and a₀ ≡ −C > 0. The sentence "C_{aāc̄} ≥ 0" near eq. (34) contradicts
+angular concavity (Γ″ ≤ 0 requires C ≤ 0) and is read as a slip.
+
+**Eq. (37) re-derived here, independently.** With u ≈ θ²/16 and θ = 4 arctan √u,
+ℰ(u) = C/4 + (C/12 + 4a₂)u + O(u²) when p > 1. The tangent-line form of concavity (their eq. 22) at u = 0,
+ℰ(1) ≤ ℰ(0) + ℰ′(0), with ℰ(1) = Δ_aā = 0, gives C + 12a₂ ≥ 0, which is their eq. (36) and (37). The condition
+Δ_irr > 3/2 (p > 1) is what keeps ℰ′(0) finite. **In corner-function language** (a_n = κ_n/θ + a₀ᶜ + a₁θ + …,
+with a₂ = (1−n)a₁): **a₁ ≤ −κ_n/12 for n > 1**; at n = 1 this is the continuation of that statement. It applies
+where the lightest fusion operator has Δ > 3/2: Dirac (Δ = 2), Einstein and ECG (stress tensor, Δ = 3). It
+does **not** apply to the free scalar (Δ = 1).
+
+**Frozen tests.**
+- **T-A, known answers that must pass (theorems at integer n ≥ 2).** F_n positive, decreasing and convex in u
+  for: this workspace's scalar n = 2 and Dirac n = 2 runs; and the published [HHCWM16] curves (series at
+  θ ≥ 90°, eq. (22) below) for boson and fermion at n = 2, 3, 4. Eq. (37) for Dirac at n = 2:
+  a₁⁽²⁾ ≤ −κ₂/12 with κ₂ = 0.0472338(1) [BMW15b]. **A failure stops the exercise:** it would mean my
+  transcription or my data is wrong, not the theorem.
+- **T-B, tests of the n → 1 continuation (not guaranteed).** Concavity for Einstein (exact curve), ECG (exact
+  first-order curves at four couplings; a theory not in [LMW26b]'s Fig. 2), Dirac n = 1 and scalar n = 1.
+  Eq. (37) at n = 1 for Einstein, ECG and Dirac: a₁ ≤ −κ/12.
+- **T-C, secondary and low weight.** Eq. (35), α(Δ_irr − 3/2) ≤ 0 for 1 < Δ_irr < 5/2, applies to Dirac
+  (Δ = 2, p = 2): the θ² coefficient of a_n must be ≥ 0 for n ≥ 2. Extracting it from numerics is inference;
+  reported with its fit drift, not used as a verdict.
+
+**Methods, fixed in advance.** Exact curves: F evaluated on a dense u-grid, second differences checked
+against a relative tolerance of 10⁻⁷. Numerical runs: the discrete secant-slope test of [LMW26b] eq. (39),
+on angles where the run is validated (θ ≥ 20° at n = 1, ≥ 15° at n = 2), with the noise level of the
+second differences estimated from the run's stated accuracy. a₁ for exact curves: lim (a − κ/θ)/θ from
+evaluations at θ = 0.01, 0.005, 0.0025, which is evaluation at points, not a fit. a₁ for numerical runs: fits
+of s − κ/θ with a₀ = 0 imposed (Dirac, EXP-020) over the windows 20–50°, 20–60°, 26–60°, 20–70°, with drift
+and κ-sensitivity reported; this is inference and graded as such. **Verdict per test:** pass if the
+inequality holds by more than the stated uncertainty, fail if violated by more, inconclusive otherwise.
+
+**What would be news.** The concavity checks on the free scalar, Dirac and Einstein at n = 1 repeat
+[LMW26b]'s Fig. 2, so passing them is confirmation, not news. New: concavity for ECG; every eq. (37) test;
+the margins by which each theory satisfies the inequalities.
