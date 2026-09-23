@@ -1,0 +1,10 @@
+y= 0.3: g_closed = 24.3217797828  dS/dy + pi c = 24.3217797828   pair closed 0.08869638045 vs quadrature 0.08869638045
+y=   1: g_closed = 1.14159265359  dS/dy + pi c = 1.14159265359   pair closed 0.8776491462 vs quadrature 0.8776491462
+y=   3: g_closed = 0.0483345653259  dS/dy + pi c = 0.0483345653259   pair closed 5.191689541 vs quadrature 5.191689541
+y=  10: g_closed = 0.00133067803215  dS/dy + pi c = 0.00133067803215   pair closed 24.80743297 vs quadrature 24.80743297
+y=0.5: 2c*Laplace[mu] = 7.07148717794   g_closed = 7.07148717794
+y=1: 2c*Laplace[mu] = 1.14159265359   g_closed = 1.14159265359
+y=2: 2c*Laplace[mu] = 0.159119022502   g_closed = 0.159119022502
+y=5: 2c*Laplace[mu] = 0.0105827644878   g_closed = 0.0105827644878
+min over t in [1e-3, 1e3] of (mu/t^2 for t<1, mu for t>=1) = 0.327869 at t = 0.998849;  mu ~ t^2/3 at small t: mu(1e-3)/1e-6 = 0.33333333
+mu'(t) = Si(t) + cos(t)/t - sin(t)/t^2 at t=0.5,2,5: ['0.33057', '1.17', '1.645']

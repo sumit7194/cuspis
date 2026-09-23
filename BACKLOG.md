@@ -65,7 +65,7 @@ in which κ enters other than as a multiplicative factor. The only upper-type in
 
 **2. Why corner functions sit near the EMI shape.** This is the original question, reduced. The
 trial function is the EMI shape plus a small Lifshitz admixture (EXP-016). The deviation from EMI is
-exactly the tripartite information [ABC21b], so the concrete question is why tripartite information is
+(~~exactly the tripartite information [ABC21b]~~: corrected 2026-09-24, EXP-026; [ABC21b] contains no corner identity; only EMI ⇔ I₃ ≡ 0 [ABC21] is sourced), so the concrete question is why tripartite information is
 small in the strip and corner limits for free and holographic theories. Nobody has explained it.
 Caution from the sweep: whether EMI lies inside the band depends on dividing by C_T; divided by F₀, it
 falls below the Dirac fermion [BCLM23].

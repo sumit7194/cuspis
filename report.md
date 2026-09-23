@@ -2623,3 +2623,59 @@ So:
   frozen in a938baa.
 - The quantum copy's S4 now carries the 2.280 bound (only 90° data enter), per the bridge's call. Everything
   routed through concavity's small-angle end stays withheld.
+
+## EXP-026  C2a / CF-2 ("why the corner band is narrow", tripartite-information route) — first read: not well-posed as written
+
+**Date** 2026-09-24. **Assigned by** the bridge (fleet step 4; method split with quantum's C2b). **Status:** first
+read only. Nothing was pre-registered, because no falsifiable prediction exists yet (see below). **Sealed toward
+quantum:** this entry is route material for C2a.
+
+**1. The premise does not hold on its source.**
+- CF-2 in both backlogs reads: "the deviation from the EMI shape is exactly the tripartite information
+  (Agón–Bueno–Casini 2109.09179)". references.md grades that key as "abstract via research agent".
+- The actual abstract (read 2026-09-24; *Tripartite information at long distances*, SciPost Phys. 12, 153 (2022))
+  covers the r^{−6Δ} long-distance tripartite information of three spheres, lattice checks for free scalars, and
+  (non-)monogamy for scalars and fermions. **Nothing about corner functions, and no identity relating any shape
+  function to I₃.**
+- The nearest true statement is [ABC21] (2105.11464, abstract read): imposing I₃ = 0 on a CFT's mutual information
+  gives the EMI geometric formula.
+- So "EMI ⇔ I₃ ≡ 0" is sourced, but "a(θ) − (EMI shape) = (a computable I₃ quantity)" is not. It was a paraphrase
+  that acquired a citation. This is this workspace's error. It was carried into both shared backlogs, so it is
+  corrected there (full backlog now; the quantum copy only with the bridge's approval).
+
+**2. Why no I₃ identity for the corner function is available off the shelf.**
+- Three adjacent wedges give an I₃ whose log coefficient contains a *new* function: the corner coefficient of two
+  wedges that share only an apex. This function is not determined by a(θ).
+- Tripartitions of the pure vacuum have I₃ ≡ 0 identically.
+- Cell-by-cell multipartite expansions are non-canonical, and their pairwise term is not EMI-shaped in a CFT: the
+  long-distance MI of small cells falls as r^{−4Δ}, not r^{−4}.
+- A falsifiable C2a prediction would therefore first need an identity that has to be invented. Its
+  well-posedness is itself the open question.
+
+**3. What is well-posed nearby (recorded, not started).**
+- *(a) Pairwise functionals.* Any pairwise (two-point) functional with a conformal 1/r⁴ density kernel reduces, by
+  the divergence theorem twice, to EMI's boundary double integral. It therefore has **exactly** EMI's corner
+  function (derivation; consistent with the "super-universal" corner shape of fluctuations, [ESW21] = 2102.06223,
+  abstract read, whose explicit angular function was not read on the text).
+- EMI normalised to the true σ is thus the unique conformal pairwise functional matching C_T. "Deviation from EMI"
+  can be *defined* as the non-pairwise part.
+- For the free Dirac fermion this becomes an exact identity through the Klich–Levitov cumulant series: the variance
+  term is exactly EMI-shaped, and the deviation is the sum of higher cumulants. Fermion-only, and not a statement
+  about I₃ in general.
+- **(b) Band centre.** EMI normalised by σ has κ/σ = 3π, i.e. κ/C_T = π³/8 = 3.876: the band [3.672, 4.179] sits
+  on it, with the scalar above and Dirac, Einstein and ECG below. Holographic MI is monogamous (I₃ ≤ 0), and all
+  holographic values lie below π³/8. The free scalar and fermion are non-monogamous at long distance per [ABC21b],
+  yet sit on opposite sides. So no single sign of I₃ orders the band. That is a useful negative for C2b's framing,
+  but it is only a read of abstracts, graded unverified.
+
+**4. Side result for the C11 alternative: EMI rectangles satisfy H_rect** (verified numerically:
+`scripts/exp026_emi_rect.py`, output `exp026_emi_rect_output.txt`).
+- Result: g(y) = S′(y) + κ = 2c[(1 + 1/y²)·arctan(1/y) − 1/y] = 2c·𝓛[μ](y), with
+  μ(t) = t·Si(t) + sin t/t + cos t − 2 ≥ 0 (μ ~ t²/3 at 0, ~ πt/2 at ∞; min μ/t² on [10⁻³, 1] is 0.328 at t = 1).
+  So g is completely monotone, and EMI obeys conditional positivity for reflected rectangles.
+- Checks:
+  - the closed form matches direct quadrature of the EMI double integral;
+  - the Laplace identity holds to 12 digits;
+  - g(1) = π − 2 = κ − 2a(π/2), as it must.
+- Consequence: **an EMI test of C11 cannot fire.** A real test of the named rectangle obstruction needs holography
+  (RT rectangles, numerical minimal surfaces) or lattice free fields.

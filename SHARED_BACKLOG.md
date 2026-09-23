@@ -166,8 +166,8 @@ which ties κ to the O(θ) coefficient, not to C_T. Sub-routes already shown to 
 twist-line crossing at integer n, and growth of one-point coefficients (Kravchuk–Radcliffe–Sinha 2406.04561,
 whose density grows at a rate fixed *by* κ).
 
-**CF-2 Why near EMI.** The deviation from the EMI shape is exactly the tripartite information
-(Agón–Bueno–Casini 2109.09179). *First step:* compute the tripartite information in the strip and corner
+**CF-2 Why near EMI.** ~~The deviation from the EMI shape is exactly the tripartite information
+(Agón–Bueno–Casini 2109.09179).~~ **Corrected 2026-09-24:** that paper (long-distance I₃ of three spheres) contains no corner-function identity. What is sourced is only that EMI ⇔ I₃ ≡ 0 (Agón–Bueno–Casini 2105.11464). An identity turning "a(θ) minus the EMI shape" into a computable I₃ quantity is not known; the attribution was a paraphrase that acquired a citation (cuspis EXP-026). *First step:* compute the tripartite information in the strip and corner
 limits for the free scalar and Dirac fermion, and holographically, and see whether a common reason makes it
 small. *Do not contradict:* S11, and the normalisation warning.
 
