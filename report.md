@@ -2190,6 +2190,59 @@ reported; it does not enter the verdict.
 - **(k3)** a_EMI + 10·(mode at s = 0.3) must fail C3 near ε → 0, where K(s, ε) ≈ ε²(s²/3 − 1/6) < 0.
 - **(k4)** a_EMI alone must pass everything.
 
+### EXP-024 addendum — results: outcome (a), conformal concavity does not bound κ above
+
+Scripts: `scripts/exp024_cc_kappa.py` (the frozen run) and `scripts/exp024_margins.py` (a diagnostic, not part of
+the verdict). Outputs: `exp024_output.txt`, `exp024_margins_output.txt`.
+
+**Controls: all fire as required.**
+- (k1) Without the mode, a₀ = −30.0 and a₁ = +44.0 against −κ/12 = −1.10. Both checks fail.
+- (k2) EMI + 𝔞_min fails CC (F″ = −2.6·10¹⁹ at u = 10⁻¹²).
+- (k3) EMI + 10·mode(s = 0.3) fails C3 (min −24.8 at 29.5°).
+- (k4) EMI alone passes everything.
+
+**Frozen family.** Result: **every check passes at every K, for both s₀ = 2w and s₀ = 3w.** Checks run: C2, C3, CC on
+6000-point grids, plus a₀ = 0 (closed form; the numerical extrapolation agrees to ≤ 10⁻⁸), a₁ ≤ −κ/12, and a
+θ²-coefficient ≥ 0.
+
+| K | w (rule) | κ/σ | added mass / σ_EMI | a₁ vs −κ/12 (s₀ = 2w) | θ² coeff. (s₀ = 2w) |
+|---|---|---|---|---|---|
+| 10 | 3.83 | 39.4 | 9.8·10⁻⁴ | −221 vs −1.10 | 1030 |
+| 100 | 4.68 | 309 | 9.9·10⁻⁴ | −3286 vs −8.60 | 1.9·10⁴ |
+| 10⁴ | 6.33 | 29 980 | 9.8·10⁻⁴ | −6.0·10⁵ vs −834 | 4.7·10⁶ |
+
+The nuisance sweep with w × 1.5 also passes everywhere. (In the output, labels such as "s0=21.5w" are a
+print artifact and mean s₀ = 2·(1.5w).)
+
+**Were the checks live where it matters (diagnostic)?**
+- **C3.** The added mode *alone* violates C3 for θ below 3°–7.5° (θ < 1/s₀, as predicted). The grid samples that
+  region densely (1300–1500 points). The family's CHL there is ≥ 25–49 times the mode's negative contribution.
+- **CC.** The mode alone violates CC for u < 10⁻³, through its positive constant. The family's F″ stays positive
+  there, but at only 10⁻⁷–10⁻⁶ of the mode's term. That is by construction, not a thin margin: a₀ = 0 exactly
+  cancels the leading u^{−3/2} terms, and the positive remainder comes from the θ² coefficient. At 40 digits the
+  7-digit cancellation leaves ≥ 30 good digits. So the pass rests on a₀ ≤ 0, which CC itself forces (S7a); it
+  would fail for any a₀ > 0, as it should.
+
+**Verdict, by the frozen rule: (a) no bound.** C1–C6, together with conformal concavity and the fusion
+small-angle structure (a₀ = 0, eq. (37), the θ² sign), do not bound κ/σ above, at least up to κ/σ ≈ 3·10⁴ on an
+explicit family.
+- The mechanism is the one pre-registered. The EMI part carries the mass. A heavy tail carries κ. One mode at
+  s₀ ≈ 2–3w cancels the tail's constant at mass cost ∝ e^{−s₀π}.
+- A single spectral mode far out can set the leading small-angle coefficients at negligible mass. So pointwise
+  conditions at the sharp end cannot pin κ.
+
+**Consequences.**
+- Combined with EXP-025: the n = 1 range under everything now in hand is **κ/C_T ∈ [2.28, ∞) unconditionally, and
+  [2.89, ∞) given CC at n = 1.**
+- **The §4 no-upper-bound theorem survives the addition of CC**, with a new witness family. Its old witness a_λ
+  does not survive.
+- Grade: numerically verified at the three pre-registered K (κ/σ up to 3·10⁴), with working controls. An all-K
+  analytic proof was not attempted. The scaling w ~ (log K)/π with the checks' structure unchanged suggests it
+  holds; that is an inference, not a claim.
+- The upper-bound search (CF-1 / bridge C1) now needs a constraint that is not a pointwise condition on the corner
+  function at either end. Every family tested so far (rectangle, cuboid, eye/CC, fusion structure) is defeated
+  either by dressing or by a far spectral mode.
+
 ## EXP-025  CF-9: do the rectangle bound and conformal concavity hold at n = 1? — pre-registration
 
 **Date** 2026-09-24. **Assigned by** the bridge (user's choice). **Status** pre-registered; results in the addendum.

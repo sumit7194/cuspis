@@ -128,8 +128,9 @@ and the rigorous range becomes κ/C_T ∈ [2.39, ∞) against the observed [3.67
     for {CC, C2, C3, C5}.
 - **Effect on the theorem.** The theorem below is stated for C1–C6 and stands as stated. Its witness family violates
   both (i) and (ii). So the rigorous range is now
-  **κ/C_T ∈ [2.28, ∞) unconditionally and [2.89, ?) given (ii)**. Whether the upper end stays infinite once (ii) is
-  imposed is open: this is EXP-024, pre-registered with an explicit CC-respecting family and deferred.
+  **κ/C_T ∈ [2.28, ∞) unconditionally and [2.89, ∞) given (ii)**. The upper end stays infinite once (ii) is imposed:
+  EXP-024 (pre-registered, run after CF-9) gives an explicit family satisfying C1–C6, CC, a₀ = 0, eq. (37) and the
+  θ²-sign, with κ/σ up to 3·10⁴. The theorem survives with a new witness; the old witness a_λ does not.
 
 **Refereeing status of the Phase-2 measurement (stated once, inherited by every reader).** The
 free-scalar values from `scripts/exp004_eehp_result_Mcut13.1.json` are checked against published
@@ -518,8 +519,9 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
 a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp
 structure carries over; zero for the Dirac fermion, EXP-020). (b) An *upper* bound on
-κ, now sharpened by (12): does κ/C_T stay unbounded once conformal concavity at n = 1 is imposed? That is EXP-024,
-pre-registered and deferred, and it is the first thing to run. The rest of this item as before: every constraint in hand is invariant under Casimir dressing 𝒟 → 𝒟e^{E(y+1/y)} (equivalently, under
+κ. EXP-024 answered the sharpened form: conformal concavity plus the fusion small-angle structure do not bound κ
+either (explicit family, κ/σ up to 3·10⁴). One far spectral mode fixes the leading sharp-end coefficients at
+negligible mass. A bound now needs a constraint that is not pointwise at either end. The rest of this item as before: every constraint in hand is invariant under Casimir dressing 𝒟 → 𝒟e^{E(y+1/y)} (equivalently, under
 adding a pure singular-end tail), so a bound needs a constraint that is not — one in which the Casimir
 energy enters other than as a multiplicative factor (EXP-017). The κ band and the shape residual are
 one fact: computed corner functions are close to the EMI corner function (EXP-016). (c) The ECG t₄ sign
@@ -535,9 +537,9 @@ becomes the target, and re-run its known-answer controls first. The sibling repo
 numbers violate a rigorous lower bound at 120° and are recorded in `TODO.md` for the bridge, not
 fixed. If you want to attack the theorem, the place to push is not the inequalities (they are all
 positivity) but the scope line of §0: exhibit a *unitary CFT* constraint that some positive spectral
-density violates. EXP-025 found one: conformal concavity at n = 1 excludes the theorem's witness family. The
-next step is EXP-024. Either a CC-respecting family with unbounded κ exists (pre-registered: a tail plus one
-high-frequency mode), or CC bounds κ. If you want to attack the explanation in §6, the falsifier is named there: a third
+density violates. EXP-025 found one: conformal concavity at n = 1 excludes the theorem's old witness family.
+EXP-024 then produced a CC-respecting witness (a tail plus one high-frequency mode), so the theorem survives. The next
+attack has to be a constraint that is not pointwise. If you want to attack the explanation in §6, the falsifier is named there: a third
 bridge that supplies a growth condition at the tail end.
 
 ## References (keys resolve in `references.md`)

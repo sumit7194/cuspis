@@ -27,9 +27,9 @@ caveats, not tasks.
   - given it, κ ≥ 2.538·a(π/2) and κ/C_T ≥ 2.894.
 
   Reported to the bridge.
-- [ ] **EXP-024 — resume first.** Does κ/C_T stay unbounded once conformal concavity at n = 1 is imposed? The
-      pre-registration (frozen family: EMI + K·tail + one high-frequency mode; verdict rule) is in report.md and
-      untouched. This is now the live form of the upper-bound question.
+- [x] **EXP-024 (2026-09-24): outcome (a), no bound.** CC plus a₀ = 0, eq. (37) and the θ²-sign do not bound κ/σ
+      (explicit family up to 3·10⁴; controls fire; the mode's violation region is probed). The theorem survives with a
+      new witness. Open: an all-K analytic proof (the scaling suggests it holds).
 - [ ] **Independent second model for O3's step 4.** EMI confirms the n = 1 identity "F(u) − ∫q = tangent line"
       to 10⁻¹⁰. A holographic (Ryu–Takayanagi) check of the same identity would be independent of EMI's
       extensivity. Also: re-derive the EMI reduction formula f′(0⁺) − f′(∞) = C·R, which so far has only been

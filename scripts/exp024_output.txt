@@ -1,0 +1,49 @@
+CONTROLS (each must behave as stated)
+   k1 no mode (K=10,w=3): a0 = -30.0005 (must be != 0), a1 = 43.9528 vs -kappa/12 = -1.09513 (must violate) -> fires
+   k2 EMI + a_min (CC must FAIL)                  C2 ok (min a 1.33e-12, max a' -2.67e-6, min a'' 2.67);  C3 ok (min 6.67e-14 at 180.0 deg);  CC FAIL (min F'' -2.62e+19 at u=1.0e-12)
+   k3 EMI + 10 mode(s=0.3) (C3 must FAIL)         C2 ok (min a 5.33e-12, max a' -1.07e-5, min a'' 10.7);  C3 FAIL (min -24.8 at 29.5 deg);  CC FAIL (min F'' -1.33e+19 at u=1.0e-12)
+   k4 EMI alone (all must pass)                   C2 ok (min a 3.33e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 6.67e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+   controls -> PASS
+
+FROZEN FAMILY a = a_EMI + K a_w + a_delta(s0), m fixed by a0 = 0, w = smallest (0.01 grid) with added mass <= 1e-3/3
+   K=10 s0=2w (w=3.83, s0=7.66)                   C2 ok (min a 3.34e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 7.04e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 39.386;  added mass/sigma_EMI = 0.000984;  a0 = 0.0 (numerical -2.06e-13);  a1 = -221.08 vs -kappa/12 = -1.0951;  theta^2 coeff = 1030.3
+      -> ALL PASS
+   K=10 s0=21.5w (w=5.745, s0=11.49)              C2 ok (min a 3.33e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 6.67e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 39.4246;  added mass/sigma_EMI = 5.11e-6;  a0 = 0.0 (numerical -6.95e-13);  a1 = -496.12 vs -kappa/12 = -1.0951;  theta^2 coeff = 3476.6
+      -> ALL PASS
+   K=10 s0=3w (w=3.83, s0=11.49)                  C2 ok (min a 3.34e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 7.04e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 39.386;  added mass/sigma_EMI = 0.000983;  a0 = 0.0 (numerical -4.87e-13);  a1 = -367.77 vs -kappa/12 = -1.0951;  theta^2 coeff = 2434.9
+      -> ALL PASS
+   K=10 s0=31.5w (w=5.745, s0=17.23)              C2 ok (min a 3.33e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 6.67e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 39.4246;  added mass/sigma_EMI = 5.11e-6;  a0 = -7.35e-40 (numerical -1.64e-12);  a1 = -826.17 vs -kappa/12 = -1.0951;  theta^2 coeff = 8216.9
+      -> ALL PASS
+   K=100 s0=2w (w=4.68, s0=9.36)                  C2 ok (min a 3.34e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 7.22e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 309.12;  added mass/sigma_EMI = 0.000987;  a0 = 0.0 (numerical -3.76e-12);  a1 = -3286.4 vs -kappa/12 = -8.5951;  theta^2 coeff = 18793.0
+      -> ALL PASS
+   K=100 s0=21.5w (w=7.02, s0=14.04)              C2 ok (min a 3.33e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 6.67e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 309.424;  added mass/sigma_EMI = 1.36e-6;  a0 = 0.0 (numerical -1.27e-11);  a1 = -7393.1 vs -kappa/12 = -8.5951;  theta^2 coeff = 63424.0
+      -> ALL PASS
+   K=100 s0=3w (w=4.68, s0=14.04)                 C2 ok (min a 3.34e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 7.22e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 309.12;  added mass/sigma_EMI = 0.000986;  a0 = 0.0 (numerical -8.88e-12);  a1 = -5476.6 vs -kappa/12 = -8.5951;  theta^2 coeff = 44418.0
+      -> ALL PASS
+   K=100 s0=31.5w (w=7.02, s0=21.06)              C2 ok (min a 3.33e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 6.67e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 309.424;  added mass/sigma_EMI = 1.36e-6;  a0 = 1.18e-38 (numerical -3.0e-11);  a1 = -12321.0 vs -kappa/12 = -8.5951;  theta^2 coeff = 1.4991e+5
+      -> ALL PASS
+   K=10000 s0=2w (w=6.33, s0=12.66)               C2 ok (min a 3.34e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 7.63e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 29980.1;  added mass/sigma_EMI = 0.000977;  a0 = 0.0 (numerical -9.3e-10);  a1 = -6.0103e+5 vs -kappa/12 = -833.6;  theta^2 coeff = 4.65e+6
+      -> ALL PASS
+   K=10000 s0=21.5w (w=9.495, s0=18.99)           C2 ok (min a 3.33e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 6.67e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 30009.4;  added mass/sigma_EMI = 1.02e-7;  a0 = 0.0 (numerical -3.14e-9);  a1 = -1.3523e+6 vs -kappa/12 = -833.6;  theta^2 coeff = 1.5694e+7
+      -> ALL PASS
+   K=10000 s0=3w (w=6.33, s0=18.99)               C2 ok (min a 3.34e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 7.63e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 29980.1;  added mass/sigma_EMI = 0.000977;  a0 = 0.0 (numerical -2.2e-9);  a1 = -1.0017e+6 vs -kappa/12 = -833.6;  theta^2 coeff = 1.0991e+7
+      -> ALL PASS
+   K=10000 s0=31.5w (w=9.495, s0=28.48)           C2 ok (min a 3.33e-13, max a' -6.67e-7, min a'' 0.667);  C3 ok (min 6.67e-14 at 180.0 deg);  CC ok (min F'' 0.667 at u=1.0)
+      kappa/sigma = 30009.4;  added mass/sigma_EMI = 1.02e-7;  a0 = 0.0 (numerical -7.42e-9);  a1 = -2.2539e+6 vs -kappa/12 = -833.6;  theta^2 coeff = 3.7094e+7
+      -> ALL PASS
+
+s0 = 2w: all checks pass at every K: True
+
+s0 = 3w: all checks pass at every K: True
+nuisance sweep (w x 1.5, not in the verdict): all pass: True
