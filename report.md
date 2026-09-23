@@ -2241,3 +2241,34 @@ results would become unconditional: S4 (κ/C_T ≥ 2.39) and S7a (a₀ ≤ 0).
   "derived (physics-level rigour; assumptions listed)", never "theorem", unless every assumption is itself standard
   and cited.
 - If K1 fails anywhere, O3 is restricted to the passing region or reported as an obstruction.
+
+### EXP-025b — pre-registration (added before running; the K1–K4 run has been done, and its results are in the EXP-025 addendum)
+
+**Why.** The chord bound of H4 is valid but cannot be optimal. It is attained only by the linear F, i.e.
+a = (κ/2)cot(θ/2), and that function violates C3 for θ > π/2 (CHL[a] = (κ/4)csc²(θ/2)cot θ) and violates C5
+(it is linear in π − θ).
+
+**Question.** If CC holds at n = 1, does CC together with C2, C3 and C5 already imply (R), κ ≥ (2π/3)a(π/2)?
+What is the optimal κ/C_T under the same constraints?
+
+**Method.** Linear programs in the values a_i on a θ-grid on (θ_min, π], with θ = π/2 on the grid:
+- CC: second divided differences of F = √u·a in u are ≥ 0, including the endpoint F(0) = κ/4.
+- C2: a is nonincreasing and convex.
+- C3: b·tan(θ/2) is nonincreasing, with b = −a′ at midpoints.
+- C5: a(π) = 0.
+
+Two objectives:
+- **LP1:** minimise κ subject to a(π/2) = 1.
+- **LP2:** minimise κ subject to the smooth-end normalisation b·tan(θ/2) → 4σ = 4 at the last midpoint.
+
+**Nuisance sweep.** N ∈ {200, 400, 800, 1600} and θ_min ∈ {10⁻³, 10⁻⁴}. Drift is reported.
+
+**Controls.**
+- Without CC, both LPs must return κ ≈ 0 (the no-bound theorem: 𝔞_min has κ = 0).
+- With CC, LP1 ≥ 2 and LP2 ≥ 16·0.40237 = 6.438 (the chord bounds). Anything below means a bug.
+
+**Verdict.**
+- LP1 ≥ 2π/3 beyond drift: "(R) at n = 1 follows numerically from CC + C3", reported as a numerical finding
+  that still needs an analytic certificate, not as a proof.
+- LP1 < 2π/3: CC + C3 do not imply (R); the value is reported.
+- LP2: the improved n = 1 bound κ/C_T = LP2·π²/24, conditional on CC at n = 1.
