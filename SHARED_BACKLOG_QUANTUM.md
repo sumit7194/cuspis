@@ -133,8 +133,8 @@ violates. *Do not contradict:* S1 and S5. Sub-routes already shown to give lower
 twist-line crossing at integer n, and growth of one-point coefficients (Kravchuk–Radcliffe–Sinha 2406.04561,
 whose density grows at a rate fixed *by* κ).
 
-**CF-2 Why near EMI.** The deviation from the EMI shape is exactly the tripartite information
-(Agón–Bueno–Casini 2109.09179). *First step:* compute the tripartite information in the strip and corner
+**CF-2 Why near EMI.** ~~The deviation from the EMI shape is exactly the tripartite information
+(Agón–Bueno–Casini 2109.09179).~~ **Corrected 2026-09-24:** that paper contains no corner identity; only EMI ⇔ I₃ ≡ 0 is sourced (Agón–Bueno–Casini 2105.11464). *First step:* compute the tripartite information in the strip and corner
 limits for the free scalar and Dirac fermion, and holographically, and see whether a common reason makes it
 small. *Do not contradict:* S11, and the normalisation warning.
 

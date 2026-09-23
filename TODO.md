@@ -30,6 +30,12 @@ caveats, not tasks.
 - [x] **EXP-024 (2026-09-24): outcome (a), no bound.** CC plus a₀ = 0, eq. (37) and the θ²-sign do not bound κ/σ
       (explicit family up to 3·10⁴; controls fire; the mode's violation region is probed). The theorem survives with a
       new witness. Open: an all-K analytic proof (the scaling suggests it holds).
+- [ ] **C11 (reflected-rectangle positivity at n = 1).** EMI satisfies it exactly (EXP-026 §4; S16), so it cannot
+      be the test. The next step is RT rectangles, held by the bridge as a hedge in case V7 finds a gap in S14.
+- [ ] **C2a′ (Dirac cumulant route; bridge-assigned 2026-09-24).** Step 1 is the prior-art sweep, reported to the
+      bridge before anything else. If "variance EMI-shaped, higher cumulants = deviation" is already in print for
+      corners, the item is settled by the literature. Otherwise pre-register a prediction that can fail, sealed toward
+      quantum. EXP-026 item 3(b) stays "unverified, abstracts only" and may not serve as a premise.
 - [ ] **Independent second model for O3's step 4.** EMI confirms the n = 1 identity "F(u) − ∫q = tangent line"
       to 10⁻¹⁰. A holographic (Ryu–Takayanagi) check of the same identity would be independent of EMI's
       extensivity. Also: re-derive the EMI reduction formula f′(0⁺) − f′(∞) = C·R, which so far has only been
