@@ -8,10 +8,10 @@ on this problem complement each other and do not contradict each other.*
 items onto these IDs rather than renumbering; add genuinely new items under your own prefix (for
 example QU-1 for `quantum`). Section 1 is the vocabulary every number should be stated in. Section 2 is
 what is already settled, with its status. Section 3 lists traps that have already cost real time.
-Section 6 says which items check each other, so that two sessions can aim at the same quantity by
-different methods on purpose, not by accident.
+Section 5 ranks the items and Section 6 describes each one. Section 7 says which items check each other,
+so that two sessions can aim at the same quantity by different methods on purpose, not by accident.
 
-**Nothing here assigns work.** Section 7 suggests fits; the user and the bridge decide.
+**Nothing here assigns work.** Section 7 also suggests fits by repository; the user and the bridge decide.
 
 ---
 
