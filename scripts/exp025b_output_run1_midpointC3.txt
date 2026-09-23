@@ -1,0 +1,27 @@
+floors from the chord bound: LP1 >= 2.0, LP2 >= 6.4379;  (R) threshold 2pi/3 = 2.094395
+
+CONTROL: no CC (must give kappa ~ 0; the no-bound theorem)
+   N=  400 a90: status 0  kappa/norm = 0.00000
+   N=  400 sig: status 0  kappa/norm = 0.00000
+   N= 1600 a90: status 0  kappa/norm = 0.00000
+   N= 1600 sig: status 0  kappa/norm = 0.00000
+
+WITH CC
+   LP1 kappa/a(pi/2)  thmin=1e-03 N=  200: status 0  value 2.530477  vs 2pi/3: +0.43608
+   LP1 kappa/a(pi/2)  thmin=1e-03 N=  400: status 0  value 2.536423  vs 2pi/3: +0.44203
+   LP1 kappa/a(pi/2)  thmin=1e-03 N=  800: status 0  value 2.537611  vs 2pi/3: +0.44322
+   LP1 kappa/a(pi/2)  thmin=1e-03 N= 1600: status 0  value 2.537767  vs 2pi/3: +0.44337
+   LP1 kappa/a(pi/2)  thmin=1e-04 N=  200: status 0  value 2.529803  vs 2pi/3: +0.43541
+   LP1 kappa/a(pi/2)  thmin=1e-04 N=  400: status 0  value 2.535960  vs 2pi/3: +0.44156
+   LP1 kappa/a(pi/2)  thmin=1e-04 N=  800: status 0  value 2.537322  vs 2pi/3: +0.44293
+   LP1 kappa/a(pi/2)  thmin=1e-04 N= 1600: status 0  value 2.537760  vs 2pi/3: +0.44336
+   LP2 kappa/sigma    thmin=1e-03 N=  200: status 0  value 7.015910  kappa/C_T = 2.88518
+   LP2 kappa/sigma    thmin=1e-03 N=  400: status 0  value 7.032441  kappa/C_T = 2.89198
+   LP2 kappa/sigma    thmin=1e-03 N=  800: status 0  value 7.035749  kappa/C_T = 2.89334
+   LP2 kappa/sigma    thmin=1e-03 N= 1600: status 0  value 7.036184  kappa/C_T = 2.89351
+   LP2 kappa/sigma    thmin=1e-04 N=  200: status 0  value 7.014040  kappa/C_T = 2.88441
+   LP2 kappa/sigma    thmin=1e-04 N=  400: status 0  value 7.031157  kappa/C_T = 2.89145
+   LP2 kappa/sigma    thmin=1e-04 N=  800: status 0  value 7.034946  kappa/C_T = 2.89301
+   LP2 kappa/sigma    thmin=1e-04 N= 1600: status 0  value 7.036162  kappa/C_T = 2.89351
+   a90: range over the sweep [2.529803, 2.537767], drift 7.96e-03
+   sig: range over the sweep [7.014040, 7.036184], drift 2.21e-02

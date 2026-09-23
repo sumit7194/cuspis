@@ -1,0 +1,36 @@
+K1  GEOMETRY  (nesting of the flowed half-eyes; must hold on the whole grid)
+   72 ordered pairs (u != u') on grid [0.02, 0.05, 0.1, 0.1716, 0.3, 0.5, 0.7, 0.9, 1.0]
+   transversality margin (cos angle, sign-corrected) over all pairs: min +2.066e-05; containment all: True; wrong crossing counts: 0
+   K1 -> PASS
+   control: interior-nesting test for u=0.7 > u'=0.3 (must be flagged): min cos = -5.617e-01 -> flagged
+
+K2  FALSIFIERS: SSA-satisfying conformal models must obey CC at n = 1
+  EMI 1+(pi-t)cot t            F>0: True  decreasing: True  min F''/max|F''| = +2.61e-03  ->  CONVEX
+  Einstein (exact)             F>0: True  decreasing: True  min F''/max|F''| = +4.50e-02  ->  CONVEX
+  scalar n=1 (HHCWM16 eq 22)   F>0: True  decreasing: True  min F''/max|F''| = +3.61e-05  ->  CONVEX
+  Dirac n=1 (HHCWM16 eq 22)    F>0: True  decreasing: True  min F''/max|F''| = -1.00e+00  ->  NOT CONVEX
+   eq-22 Dirac: F'' < 0 only for u in [2.25e-04, 3.21e-04] = theta in [3.44, 4.10] deg; its small-angle constant a0 = lim (a - kappa/theta), linear extrapolation from 0.1 and 0.2 deg: +0.000113
+   -> the EXP-022 artifact (eq. 22's constructed tail carries a0 > 0); the measured Dirac a0 is 0.00 +- 0.02 C_T (EXP-020).
+   Measured n = 1 curves from this workspace's solver (as in EXP-022 T-B):
+  instrument Dirac n=1         22 angles  F>0: True  decreasing: True  secant-slope decreases: 0 (beyond noise: 0)  ->  CONVEX within noise
+  instrument scalar n=1        22 angles  F>0: True  decreasing: True  secant-slope decreases: 0 (beyond noise: 0)  ->  CONVEX within noise
+   K2 as literally pre-registered (eq-22 Dirac included) -> FIRED on eq-22 Dirac;  physical curves (EMI, Einstein, scalar, measured Dirac and scalar) -> PASS
+
+K3  THE CC TEST MUST FIRE (sigma units)
+  a_min (must fail)            F>0: True  decreasing: False  min F''/max|F''| = -1.00e+00  ->  NOT CONVEX
+  witness a_lambda, lambda=.5818 (must fail) F>0: True  decreasing: False  min F''/max|F''| = -1.00e+00  ->  NOT CONVEX
+  convex control F=(1-u)^2 (must pass) F>0: True  decreasing: True  min F''/max|F''| = +1.00e+00  ->  CONVEX
+   K3 -> PASS
+
+K4  RECTANGLE SATURATOR S* (kappa = 2a, a = 1): concave, symmetric, not CM
+   concave (max 2nd difference -4.49e-06 <= 0): True;  symmetry defect 7.1e-15;  slope at infinity -2.000000 = -kappa
+   log-convexity of g = S'+kappa (needed by complete monotonicity): g g'' - g'^2 on y in (1/2,1): [-5.852 -3.898 -1.405 -0.334 -0.024]  -> violated: True
+   and g == 0 on y >= 1 while g > 0 on y < 1: not real-analytic, so not CM.  K4 -> PASS
+
+H4  CHORD BOUND a(theta) <= (kappa/2) cot(theta/2) from CC, and the kappa bound with a >= a_min
+   max_x tan x log(1/sin x) = 0.4023711713 at x* = 0.4676206496 (theta* = 53.5854 deg); grid max 0.4023711713
+   kappa/C_T >= (2 pi^2/3) * 0.402371 = 2.647496    [pi/2 route: 2 pi^2 ln2/6 = 2.280363; S4 conditional: (2pi/3)(pi^2 ln2/6) = 2.387990]
+   Einstein           max a/((kappa/2)cot(theta/2)) = 0.9999 (must be <= 1)
+   scalar n=1 eq22    max a/((kappa/2)cot(theta/2)) = 0.9984 (must be <= 1)
+   Dirac n=1 eq22     max a/((kappa/2)cot(theta/2)) = 0.9999 (must be <= 1)
+   EMI                max a/((kappa/2)cot(theta/2)) = 0.9999 (must be <= 1)

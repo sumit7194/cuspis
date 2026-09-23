@@ -2272,3 +2272,162 @@ Two objectives:
   that still needs an analytic certificate, not as a proof.
 - LP1 < 2π/3: CC + C3 do not imply (R); the value is reported.
 - LP2: the improved n = 1 bound κ/C_T = LP2·π²/24, conditional on CC at n = 1.
+
+### EXP-025 addendum — results (CF-9)
+
+**Headline.**
+- **(a) Unconditional:** κ₁ ≥ 2a₁(π/2), hence κ/C_T ≥ π² ln 2/3 = 2.2804 at n = 1. This was the bridge's arithmetic,
+  and both inputs were checked on their sources.
+- **(b) The full rectangle bound:** SSA on rectangles cannot reach it. It reduces exactly to Casini–Huerta
+  conditional positivity for reflected rectangles.
+- **(c) Conformal concavity at n = 1 is derived from SSA plus global conformal invariance.** Physics-level rigour,
+  assumptions listed below. An independent adversarial review is pending as this is written.
+- **(d) If (c) stands:** CC together with the n = 1 theorems C2, C3 and C5 implies the rectangle bound with room:
+  κ ≥ 2.5378·a(π/2) against 2π/3 = 2.0944. The n = 1 bound becomes κ/C_T ≥ 2.8936, against S4's conditional
+  2.388.
+
+Scripts: `scripts/exp025_n1.py` (K1–K4, H4), `scripts/exp025b_lp.py` (LPs). Outputs: `exp025_output.txt`,
+`exp025b_output.txt`. `exp025b_output_run1_midpointC3.txt` is the first LP run, kept as it was run.
+
+**O1: the rectangle, SSA part (derived; standard n = 1 inputs only).**
+- *Setup.* For a T×L rectangle, scale and rotation invariance give S = (perimeter) − 4a log(L/δ) − h(T/L) with
+  h(1/y) = h(y) − 4a log y, where a ≡ a(π/2). The strip limit gives h(y) = κy + c + o(1).
+- *SSA step.* Take A = [0,T₁]×[0,L] and B = [T₂,T₃]×[0,L] (the same height). Then A∪B and A∩B are rectangles.
+  Perimeter and corner terms cancel, so S is concave in T and h is convex.
+- *Conclusion.* The symmetry gives h′(1) = 2a. If h is not differentiable at 1, it gives h′(1⁺) ≥ 2a.
+  Convexity then gives κ = h′(∞) ≥ 2a.
+- *Unconditional number.* With [BWK16] eq. (II.4), a(π/2) ≥ (π² ln 2/6)C_T, which is SSA plus Lorentz invariance via
+  [CHL09] with no Rényi input (read on the source, §II), this gives **κ/C_T ≥ 2.2804, unconditionally**.
+- *Prior art.* This is the n = 1 twin of [LMW26]'s one-derivative bound Γ/ε₀ ≥ −½ (stated there at integer n).
+  The sweep found no n = 1 statement of it. Grade: derived; the inputs are standard; prior-art status is
+  "not found".
+
+**O2: the full rectangle bound at n = 1 (reduction plus obstruction; derived).**
+- *Linearisation.* Expanding [LMW26]'s constraints at first order in n−1 gives 𝒜_n = 1 + (n−1)α(y) with
+  α = −(S + κy) + const. Complete monotonicity for real n near 1 is equivalent to
+  **H_rect: T ↦ ∂_T S(T×L) + κ/L is completely monotone.**
+- *Sufficiency (exponentiation).* If H_rect holds, then α − α(∞) is CM, so e^{ηα} is CM for every η > 0.
+  Then (Γ, ε₀, 𝒟) = (−ηa, ηκ, e^{ηd}) is an admissible point of the *full* rectangle bootstrap, and the magic
+  functional gives κ ≥ (2π/3)a.
+- *What H_rect is.* By Schoenberg's theorem (K conditionally positive definite ⇔ e^{εK} positive definite for every
+  ε > 0) together with Bernstein–Widder, H_rect is equivalent to conditional positivity of the matrix
+  −S(A_i ∪ θA_j) over reflected rectangles. That is exactly [CH12]'s n = 1 conjecture, restricted to one family.
+  [CH12] find counterexamples to it for "more complicated" minimal-surface geometries, so it is not a safe general
+  assumption.
+- *Which part SSA supplies.* The 2×2 part is SSA for nested regions: X = A₁∪θA₂ and Y = A₂∪θA₁ give
+  X∪Y = A₂∪θA₂ and X∩Y = A₁∪θA₁. That is O1.
+- *Why SSA stops short.* The saturator S* (linear for y ≥ 1, fixed by the symmetry for y < 1) passes every SSA
+  constraint among equal-height rectangles and has κ = 2a exactly (K4: concave; symmetry defect 7·10⁻¹⁵; slope −2).
+  But g = S′ + κ vanishes on y ≥ 1 and fails log-convexity on (½, 1): g g″ − g′² = 8a²(1/y−1)²(1−2y)/y⁴ < 0. So
+  the gap between 2 and 2π/3 lies entirely in positivity beyond SSA.
+- **This is where the n → 1 gap sits for the rectangle.**
+
+**O3: conformal concavity at n = 1 (derived, physics-level; independent review pending).**
+
+*Structural observation.* [LMW26b]'s proof needs only the variational principle ℰ(u) ≤ ⟨ψ|H(u)|ψ⟩. For any trial
+state ψ, that follows from log-convexity of Z(τ) = ⟨ψ|e^{−τH(u)}|ψ⟩, which is a 2×2 Cauchy–Schwarz statement. By
+O2's remark, SSA supplies such statements at n = 1 whenever the half-regions are nested.
+
+*Construction.*
+- Rotate the eye into the t = 0 plane, with the NS time as a spatial coordinate x. Write z = x + iy, Σ₀ = {x = 0},
+  punctures ±i.
+- ξ_u = (1 − uz²)/2 generates (P_x − uK_x)/2, a Lorentzian conformal symmetry that preserves t = 0 and the vacuum.
+  Its flow is Φ_s(z) = tanh(atanh(√u z) + √u s/2)/√u.
+- In the Killing frame w = (2/√u)atanh(√u z), the plane minus the fixed points ±1/√u is a flat cylinder of
+  circumference 2π/√u. The flow is translation, and the u-lens is a straight band of angular width θ(u).
+
+*Steps.*
+1. **Trial.** h = the x < 0 half of the u′-eye, its cusp capped at radius ρ, with boundary P. Define
+   H_b = {T_P(φ) − b ≤ T ≤ 0} in flow coordinates, i.e. P pushed back by the flow.
+   **K1 PASS:** on 72 ordered (u, u′) pairs from {0.02, 0.05, 0.1, 0.1716, 0.3, 0.5, 0.7, 0.9, 1}:
+   - ξ_u is strictly transverse to P (min |cos| = 2·10⁻⁵, the value near the punctures, where ξ is tangent by
+     construction);
+   - the u′-eye is contained in the u-lens (or contains it, in the reverse order), as required;
+   - flow lines cross P exactly the expected number of times (0 wrong counts in 49 lines per pair).
+
+   So H_b increases in b for u < u′ and decreases for u > u′. The reversed test fires, as a control should.
+2. **Concavity.** Take X = θH_{s₁}∪H_{s₂} and Y = θH_{s₂}∪H_{s₁}. Monotonicity (either direction) makes X∪Y and X∩Y
+   the diagonal regions. SSA gives Q ≥ 0. Every boundary piece, junction and corner appears equally on both sides,
+   so Q is regulator-independent.
+
+   Evaluate Q with the Killing-covariant cutoff δ = ε|ξ_u| (a uniform cutoff on the cylinder). The flow is then an
+   isometry, so S(θH_a∪H_b) = f(a+b), and hence f is concave. In the Killing frame the perimeter term is exactly
+   (α/ε)(C + 2σ), since flow lines have unit speed and are geodesics. The total turning is constant. So the
+   universal part f_univ is concave.
+3. **Slope at infinity.** For large σ the region is a band of angular width θ(u) (for u > u′, its complement, of width
+   2π − θ, and C1 applies). The entropy per unit length of such a band on a cylinder of circumference 2π/√u is
+   √u·a(θ(u)). So f_univ′(∞) = −F(u).
+4. **Slope at zero.** To first order, R(σ) is R(0) with P displaced by −(σ/2)ξ_u and θP by +(σ/2)ξ_u. This is a
+   normal displacement that vanishes at the punctures, where ξ_u is tangent. The first shape variation of the
+   finite part is linear in the displacement.
+
+   With a fixed flat regulator, the local regulator differences are either pure 1/ε (they cancel), or the total
+   turning of a curve with fixed end tangents (constant). There are no corner terms, because the cap resolves the
+   cusp. So f_univ′(0⁺) = −X(u,u′), with **X affine in u**.
+
+   For u = u′ the capped eye is a capped band on the u′-cylinder, and the flow translates the cap. Hence
+   X(u′,u′) = F(u′) + O(ρ^γ).
+5. **Conclusion.** Concavity gives f′(0⁺) ≥ f′(∞), i.e. **F(u) ≥ X(u,u′) for all u ≠ u′**, on both sides. So F is the
+   supremum of affine functions that touch it, i.e. **convex: conformal concavity at n = 1.**
+
+*Assumptions, all standard for n = 1 corner work except where marked.*
+- A1: SSA in the continuum limit, including regions that share boundary pieces.
+- A2: CRT reflection x → −x.
+- A3 (the new input, in place of [CHL09]'s boosts): vacuum invariance under the global conformal group, with a
+  Weyl-covariant regulator.
+- A4: 3d UV structure: perimeter, total-turning and corner-log terms, plus a finite universal part.
+- A5: the strip-on-cylinder coefficient equals the corner function (the n = 1 counterpart of "Γ is the cylinder
+  energy").
+- A6: differentiability of the universal part under smooth shape deformations.
+- A7: a is C² on (0, π) with a finite κ.
+
+*Falsifiers.*
+- **K2:** every SSA-satisfying conformal model must obey CC. EMI, Einstein and the eq.-22 scalar are CONVEX, and so
+  are the measured Dirac and scalar n = 1 curves.
+- **A check that fired:** eq. (22)'s Dirac n = 1 curve fails, only at 3.44°–4.10°, with an extrapolated small-angle
+  constant a₀ = +0.000113. This is the artifact already diagnosed in EXP-022 (the formula's constructed tail).
+  A first printout gave a one-point estimate −0.000087, which is contaminated by the a₁θ term; it was corrected to
+  a two-point extrapolation before being read.
+- **K3 PASS:** the CC test flags 𝔞_min and the witness a_λ (F″ ~ σ u^{−3/2} log u → −∞) and passes a convex control.
+
+*Consequence.* If O3 stands, SSA excludes 𝔞_min. BWK16's bound is then optimal for C3 only, not for SSA.
+
+**EXP-025b: what CC implies at n = 1 (LPs; each discretisation is an exact relaxation).**
+- *Setup.*
+  - Variables: a on a θ-grid, and F(0) = κ/4.
+  - CC imposed as convexity of the sampled F in u, which is exact.
+  - C2 imposed as monotone and convex, which is exact.
+  - C3 imposed as (a_i − a_{i+1})/∫_{I_i}cot(θ/2)dθ nonincreasing. This row is implied for every C3 function,
+    because b·tan(θ/2) is nonincreasing.
+  - C5 imposed as a(π) = 0.
+  - σ enters through b·tan(θ/2) ≥ 4σ everywhere, which is also implied.
+- *Controls, all pass:*
+  - without CC, κ = 0 (the no-bound theorem);
+  - CC + C2 + C5 without C3 gives exactly 2.00000000, the chord bound attained by a = (κ/2)cot(θ/2);
+  - EMI and Einstein satisfy every discrete row (maximum relative violation 4·10⁻¹³).
+- *Results (sweep: N = 200–3200, θ_min = 10⁻³ and 10⁻⁴):*
+
+| LP | range over sweep | largest (N = 3200) | compare |
+|---|---|---|---|
+| min κ/a(π/2) | 2.5327 – 2.5379 | **2.5379** | 2π/3 = 2.0944; chord 2 |
+| min κ/σ | 7.0220 – 7.0364 | **7.0364 ⇒ κ/C_T ≥ 2.8936** | chord 6.438 (2.6475); S4 conditional 5.807 (2.388) |
+
+  Every grid value is a valid lower bound, and they increase with N (drift 5·10⁻³ and 1.4·10⁻², both far below the
+  margin). So, **given CC at n = 1, (R) holds at n = 1 with a 21% margin, and κ/C_T ≥ 2.89.**
+- *Why C3 matters.* C3 is exactly what the chord extremal violates: CHL[(κ/2)cot(θ/2)] = (κ/4)csc²(θ/2)cot θ < 0 for
+  θ > π/2. The LP's certificate has not been extracted analytically. Grade: verified numerically *conditional on
+  CC*; there is no analytic certificate yet.
+
+**Grades.**
+- O1: derived from standard inputs (verified).
+- O2: derived. The equivalence with CP is by the stated theorems; the saturator is verified numerically.
+- O3: derived at physics-level rigour, pending independent review. It is the load-bearing link for O3 → (d).
+- (d): numerically verified given O3.
+- The a₀ ≤ 0 at n = 1 upgrade of S7a: follows from O3. It is small-angle material, sealed toward quantum.
+
+**Next steps.**
+1. The adversarial review of O3, then the bridge report.
+2. An analytic dual certificate for the LP numbers.
+3. A direct model test of O3's step 4 (the n = 1 Hellmann–Feynman identity X(u,u′) = F(u′) + (u−u′)F′(u′)) in the
+   EMI model on the cylinder.
+4. Combining CC with a₀ ≤ 0 and eq. (37) in the LP.

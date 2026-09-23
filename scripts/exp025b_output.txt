@@ -1,0 +1,63 @@
+floors from the chord bound: LP1 >= 2.0, LP2 >= 6.4379;  (R) threshold 2pi/3 = 2.094395
+
+CONTROL A: no CC (must give kappa ~ 0; the no-bound theorem)
+   C3=mid   a90: status 0  kappa/norm = 0.000000
+   C3=mid   sig: status 0  kappa/norm = 0.000000
+   C3=exact a90: status 0  kappa/norm = 0.000000
+   C3=exact sig: status 0  kappa/norm = 0.000000
+
+CONTROL B: CC + C2 + C5 without C3 (LP1 must be exactly 2: a = (kappa/2)cot(theta/2) is feasible and optimal)
+   N=  400: status 0  kappa/a(pi/2) = 2.00000000
+   N= 1600: status 0  kappa/a(pi/2) = 2.00000000
+
+CONTROL C: physical curves must satisfy every discrete row (max relative violation should be <= ~1e-12 for 'exact')
+   EMI      C3=mid  : max relative violation +5.65e-14  -> feasible
+   EMI      C3=exact: max relative violation +5.65e-14  -> feasible
+   Einstein C3=mid  : max relative violation +3.71e-13  -> feasible
+   Einstein C3=exact: max relative violation +3.71e-13  -> feasible
+
+WITH CC (both discretisations of C3; 'exact' is a rigorous relaxation)
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-03 N=  200: status 0  value 2.530477  vs 2pi/3: +0.43608
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-03 N=  400: status 0  value 2.536423  vs 2pi/3: +0.44203
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-03 N=  800: status 0  value 2.537611  vs 2pi/3: +0.44322
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-03 N= 1600: status 0  value 2.537767  vs 2pi/3: +0.44337
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-03 N= 3200: status 0  value 2.537850  vs 2pi/3: +0.44345
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-04 N=  200: status 0  value 2.529803  vs 2pi/3: +0.43541
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-04 N=  400: status 0  value 2.535960  vs 2pi/3: +0.44156
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-04 N=  800: status 0  value 2.537322  vs 2pi/3: +0.44293
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-04 N= 1600: status 0  value 2.537760  vs 2pi/3: +0.44336
+   C3=mid   LP1 kappa/a(pi/2)  thmin=1e-04 N= 3200: status 0  value 2.537816  vs 2pi/3: +0.44342
+   C3=mid   LP2 kappa/sigma    thmin=1e-03 N=  200: status 0  value 7.015910  kappa/C_T = 2.88518
+   C3=mid   LP2 kappa/sigma    thmin=1e-03 N=  400: status 0  value 7.032441  kappa/C_T = 2.89198
+   C3=mid   LP2 kappa/sigma    thmin=1e-03 N=  800: status 0  value 7.035749  kappa/C_T = 2.89334
+   C3=mid   LP2 kappa/sigma    thmin=1e-03 N= 1600: status 0  value 7.036184  kappa/C_T = 2.89351
+   C3=mid   LP2 kappa/sigma    thmin=1e-03 N= 3200: status 0  value 7.036413  kappa/C_T = 2.89361
+   C3=mid   LP2 kappa/sigma    thmin=1e-04 N=  200: status 0  value 7.014040  kappa/C_T = 2.88441
+   C3=mid   LP2 kappa/sigma    thmin=1e-04 N=  400: status 0  value 7.031157  kappa/C_T = 2.89145
+   C3=mid   LP2 kappa/sigma    thmin=1e-04 N=  800: status 0  value 7.034946  kappa/C_T = 2.89301
+   C3=mid   LP2 kappa/sigma    thmin=1e-04 N= 1600: status 0  value 7.036162  kappa/C_T = 2.89351
+   C3=mid   LP2 kappa/sigma    thmin=1e-04 N= 3200: status 0  value 7.036320  kappa/C_T = 2.89357
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-03 N=  200: status 0  value 2.532653  vs 2pi/3: +0.43826
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-03 N=  400: status 0  value 2.536962  vs 2pi/3: +0.44257
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-03 N=  800: status 0  value 2.537746  vs 2pi/3: +0.44335
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-03 N= 1600: status 0  value 2.537801  vs 2pi/3: +0.44341
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-03 N= 3200: status 0  value 2.537858  vs 2pi/3: +0.44346
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-04 N=  200: status 0  value 2.533572  vs 2pi/3: +0.43918
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-04 N=  400: status 0  value 2.536895  vs 2pi/3: +0.44250
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-04 N=  800: status 0  value 2.537555  vs 2pi/3: +0.44316
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-04 N= 1600: status 0  value 2.537818  vs 2pi/3: +0.44342
+   C3=exact LP1 kappa/a(pi/2)  thmin=1e-04 N= 3200: status 0  value 2.537831  vs 2pi/3: +0.44344
+   C3=exact LP2 kappa/sigma    thmin=1e-03 N=  200: status 0  value 7.022004  kappa/C_T = 2.88768
+   C3=exact LP2 kappa/sigma    thmin=1e-03 N=  400: status 0  value 7.033952  kappa/C_T = 2.89260
+   C3=exact LP2 kappa/sigma    thmin=1e-03 N=  800: status 0  value 7.036127  kappa/C_T = 2.89349
+   C3=exact LP2 kappa/sigma    thmin=1e-03 N= 1600: status 0  value 7.036278  kappa/C_T = 2.89355
+   C3=exact LP2 kappa/sigma    thmin=1e-03 N= 3200: status 0  value 7.036437  kappa/C_T = 2.89362
+   C3=exact LP2 kappa/sigma    thmin=1e-04 N=  200: status 0  value 7.024554  kappa/C_T = 2.88873
+   C3=exact LP2 kappa/sigma    thmin=1e-04 N=  400: status 0  value 7.033766  kappa/C_T = 2.89252
+   C3=exact LP2 kappa/sigma    thmin=1e-04 N=  800: status 0  value 7.035597  kappa/C_T = 2.89327
+   C3=exact LP2 kappa/sigma    thmin=1e-04 N= 1600: status 0  value 7.036325  kappa/C_T = 2.89357
+   C3=exact LP2 kappa/sigma    thmin=1e-04 N= 3200: status 0  value 7.036360  kappa/C_T = 2.89359
+   C3=mid   a90: range over the sweep [2.529803, 2.537850], drift 8.05e-03
+   C3=mid   sig: range over the sweep [7.014040, 7.036413], drift 2.24e-02
+   C3=exact a90: range over the sweep [2.532653, 2.537858], drift 5.21e-03
+   C3=exact sig: range over the sweep [7.022004, 7.036437], drift 1.44e-02
