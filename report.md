@@ -2112,3 +2112,51 @@ the bounds chain: a constraint where the Casimir energy enters other than as e^{
 
 **Grade.** Proved (two-line arguments per dressing); numerical checks with a working control; one hand-algebra
 slip found by the checks and corrected before any conclusion was drawn.
+
+## EXP-024  Does conformal concavity bound κ? — pre-registration (bridge: bounds chain, the search for a non-multiplicative constraint)
+
+**Date** 2026-09-24. **Status** pre-registered; results in the addendum.
+
+**Why this candidate.** In the rectangle and cuboid, the Casimir energy enters as e^{ε·(geometry)}, and both are
+closed under dressing (EXP-017, EXP-023). In [LMW26b]'s conformal concavity it enters differently: as the
+endpoint value ℰ(0) = C/4 of a single concave function whose other end is fixed by the smooth-limit data. The
+paper's own "eye dressing", ℰ → ℰ + δ(1−u), preserves concavity. But for twist lines it is excluded: in the
+angle it adds 2δ·cot(θ/2), which is linear in ε = π − θ, violating reflection symmetry (C1) and A = 0. So
+conformal concavity is not obviously dressing-invariant. It is the strongest candidate found so far.
+
+**Constraint set tested.** C1–C6 (RESULT.md §2), plus:
+- **CC**, conformal convexity: F(u) = tan(θ/4)·a(θ) convex in u = tan²(θ/4). This is a theorem at integer n ≥ 2
+  and the n → 1 continuation here.
+- **Fusion structure** for theories without a dimension-1 fusion operator (Dirac, holography):
+  - a₀ = 0 exactly;
+  - eq. (37): a₁ ≤ −κ/12;
+  - eq. (35) at Δ_irr = 2: θ² coefficient ≥ 0.
+
+**Reasoning before numbers.** CC already excludes 𝔞_min and the EXP-003 witness family a_λ: their log divergence
+at small angle gives F″ ~ −log(1/u)/u^{3/2}. The pure tail a_w = e^{−wθ}/θ + (mirror) − 2e^{−wπ}/π has constant
+term −κw < 0, which CC favours, but it violates a₀ = 0 and has a₁ = +κw²/2 > 0. Proposed repair: add one mode
+at large s₀, m·(cosh(s₀(π−θ)) − 1)/s₀², with m fixed so that the constant cancels. Its mass is
+∝ κ w s₀² e^{−s₀π}, exponentially small. It contributes a₁ ≈ −κ w s₀ and θ² coefficient ≈ +κ w s₀²/2. So with
+s₀ = 2w or 3w, both fusion inequalities hold with room. Near u = 0 the leading F″ terms combine to
+∝ 1 + e^{−x}(x² − x − 1) with x = 4s₀√u, which is ≥ 0 for all x ≥ 0.
+
+**The family.** a = a_EMI + K·a_w + a_δ(s₀), with a_EMI = 1 + (π−θ)cot θ carrying the mass, and m set so that
+a₀ = 0 exactly. κ = π + K; σ = 1/3 + K·σ_w + m/2.
+
+**Frozen verdict rule.** For K = 10, 100, 10⁴ (κ/σ up to ≈ 3·10⁴), with w chosen so that the added mass is
+≤ 10⁻³ of σ and s₀ ∈ {2w, 3w}, check on dense grids:
+- C1 (by construction);
+- C2 (a ≥ 0, a′ ≤ 0, a″ ≥ 0 on (0, π));
+- C3 (a″ + a′/sin θ ≥ 0);
+- C4 (ρ ≥ 0, by construction);
+- CC (F″ ≥ 0 on u ∈ (0, 1));
+- a₀ = 0, a₁ ≤ −κ/12, θ² coefficient ≥ 0, all exactly from the expansions.
+
+**Outcomes.**
+- **(a) No bound:** if for some s₀ every check passes at every K, then C1–C6 + CC + the fusion structure do not
+  bound κ/σ, and the no-go extends to the 2026 constraints.
+- **(b) Possible bound:** if CC or C3 fails for every s₀ tried and the failure grows with K, report it as a
+  candidate bound.
+- **(c) Inconclusive:** otherwise.
+
+A check that fails is reported with its location, not tuned away: the parameters above are fixed now.
