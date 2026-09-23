@@ -2115,7 +2115,9 @@ slip found by the checks and corrected before any conclusion was drawn.
 
 ## EXP-024  Does conformal concavity bound κ? — pre-registration (bridge: bounds chain, the search for a non-multiplicative constraint)
 
-**Date** 2026-09-24. **Status** pre-registered; results in the addendum.
+**Date** 2026-09-24. **Status** DEFERRED — not run. The bridge relayed the user's choice of CF-9 (EXP-025)
+before any computation under this entry. Nothing below was executed; the frozen family and verdict rule stand as
+written if the entry is resumed. (Rule I: the promise to run it is deferred explicitly, not dropped.)
 
 **Why this candidate.** In the rectangle and cuboid, the Casimir energy enters as e^{ε·(geometry)}, and both are
 closed under dressing (EXP-017, EXP-023). In [LMW26b]'s conformal concavity it enters differently: as the
@@ -2160,3 +2162,82 @@ a₀ = 0 exactly. κ = π + K; σ = 1/3 + K·σ_w + m/2.
 - **(c) Inconclusive:** otherwise.
 
 A check that fails is reported with its location, not tuned away: the parameters above are fixed now.
+
+## EXP-025  CF-9: do the rectangle bound and conformal concavity hold at n = 1? — pre-registration
+
+**Date** 2026-09-24. **Assigned by** the bridge (user's choice). **Status** pre-registered; results in the addendum.
+
+**Goal.** Two statements are theorems at integer n ≥ 2 only:
+- **(R)** κ_n ≥ (2π/3)a_n(π/2) [LMW26, eq. 38].
+- **(CC)** F_n(u) ≡ tan(θ/4)·a_n(θ) is convex in u = tan²(θ/4) [LMW26b, eq. 41].
+
+Aim: prove either at n = 1, or name precisely why the integer-n argument does not continue. Two conditional
+results would become unconditional: S4 (κ/C_T ≥ 2.39) and S7a (a₀ ≤ 0).
+
+**What each proof uses (read on the sources).**
+- (R) needs the rectangle amplitude 𝒜(y) = y^{−2Γ}e^{−ε₀y}𝒟(y) to be completely monotone (CM) *to all orders*,
+  plus 𝒟(y) = 𝒟(1/y), plus the magic functional [LMW26 eqs. 13, 14, 16, 27–31]. The one-derivative version gives
+  only Γ/ε₀ ≥ −1/2, i.e. κ_n ≥ 2a_n(π/2) [LMW26, text after eq. 18].
+- (CC) needs only the variational principle ℰ(u) = inf⟨ψ|H(u)|ψ⟩ for the affine family H(u) = (P₀ − uK₀)/2
+  [LMW26b eqs. 12–19]. For a trial state, the variational principle needs only log-convexity of
+  τ ↦ ⟨ψ|e^{−τH}|ψ⟩, which is a 2×2 Cauchy–Schwarz statement.
+
+**Hypotheses (stated before derivation).**
+- **H1.** At n = 1, the 2×2 Cauchy–Schwarz statements that involve *nested* half-regions are supplied by SSA:
+  X = A₁∪θA₂, Y = A₂∪θA₁ gives X∪Y = A₂∪θA₂ and X∩Y = A₁∪θA₁. Higher Gram minors have no n = 1 counterpart
+  beyond conditional positivity (CP), which is conjectural [CH12, abstract, read on arXiv 2026-09-24]. CH12 also
+  reports counterexamples among "more complicated" minimal-surface geometries.
+- **H2 (R).** At n = 1:
+  - SSA on equal-height rectangles plus 90° rotation should give κ₁ ≥ 2a₁(π/2).
+  - The full (R) should follow from CP restricted to reflected rectangles, via the observation that
+    e^{η·(first-order function)} is then an admissible bootstrap point for every η > 0.
+  - SSA alone should *not* give (R). An explicit SSA-admissible function saturating κ = 2a is expected.
+- **H3 (CC).** At n = 1 the variational step can be replaced by SSA on "flowed eyes". Setup:
+  - Take the u-flow Φ_s of ξ_u = (P_x − uK_x)/2 in the t = 0 plane; the Lorentzian conformal symmetry preserves
+    that plane.
+  - Take a trial half-region h (the u′-half-eye, cusp capped at radius ρ) and set H_s = Φ_{−s}(h) ∪ tube_s.
+  - Expected nesting: the H_s are nested for u < u′. For u > u′, the complements are nested (purity).
+  - Concavity of f(s) = S(θH_{s/2} ∪ H_{s/2}), plus the two slopes, should then give F(u) ≥ X(u,u′). Here X is
+    affine in u (a first-order shape response, linear in ξ_u) with X(u′,u′) = F(u′). Hence F is a supremum of
+    affine functions, i.e. convex.
+- **H4 (consequence, if CC holds).** The chord of a convex F with F(0) = κ/4 and F(1) = 0 gives
+  a(θ) ≤ (κ/2)cot(θ/2). Combined with a(θ) ≥ 𝔞_min(θ) (BWK16 II.3, an n = 1 theorem from SSA plus Lorentz
+  invariance), this gives κ/C_T ≥ (2π²/3)·max_x tan x·log(1/sin x), i.e. about 2.6, which would exceed S4's
+  conditional 2.39.
+
+**Named outcomes (each reportable on its own).**
+- **O1** (bridge's arithmetic, adopted as an outcome): κ/C_T ≥ 2·(π² ln 2/6) = π² ln 2/3 ≈ 2.280 at n = 1,
+  **unconditionally**. This holds if H2's first bullet closes and BWK16 (II.4)'s hypotheses are n = 1-valid.
+  Check: (II.4) comes from CHL09's boosted-wedge SSA inequality with no Rényi input (read on the source,
+  2026-09-24).
+- **O2:** (R) at n = 1 either proved, or reduced to a named hypothesis (CP for reflected rectangles) together with
+  an SSA-admissible counterexample showing that SSA alone cannot reach it.
+- **O3:** (CC) at n = 1 proved via H3 with every assumption listed, or an obstruction naming the step that fails.
+- **O4:** if O3 closes, H4's number, together with the a₀ ≤ 0 upgrade. The a₀ ≤ 0 upgrade is small-angle
+  material and stays out of the quantum copy.
+
+**Controls and falsifiers (frozen before running).**
+- **K1 (geometry; can fail).** For a grid of (u, u′) with u ≠ u′:
+  1. ξ_u is strictly transverse to the u′-half-eye P on its open arcs (so each flow line crosses P once), with
+     the sign that makes H_s nested (interior for u < u′, exterior for u > u′).
+  2. The u′-eye is inside the u-lens when u < u′, and contains it when u > u′.
+
+  Any failure means H3 as stated is false for those (u, u′).
+- **K2 (falsifier; can fail).** H3 would make CC a consequence of SSA plus conformal invariance. So every
+  SSA-satisfying conformal entropy model must obey CC:
+  - EMI, a(θ) ∝ 1 + (π−θ)cot θ;
+  - holographic Einstein;
+  - free scalar and Dirac EE.
+
+  A CC violation by EMI kills H3.
+- **K3 (the CC test must fire).** 𝔞_min and the EXP-003 witness a_λ must violate CC numerically near u → 0, and a
+  convex control must pass. If the test cannot flag 𝔞_min, it is decoration.
+- **K4 (O1 input check).** Evaluate the rectangle saturator S* to confirm that it is concave, symmetric and has
+  κ = 2a exactly, and that it violates the 3-point Hankel condition. The last part places the missing input at
+  order ≥ 3.
+
+**Verdict rules.**
+- O3 is claimed only if K1 passes on the whole grid and K2 and K3 behave as stated. The claim is graded
+  "derived (physics-level rigour; assumptions listed)", never "theorem", unless every assumption is itself standard
+  and cited.
+- If K1 fails anywhere, O3 is restricted to the passing region or reported as an obstruction.
