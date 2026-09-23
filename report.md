@@ -3038,3 +3038,26 @@ instrument's EE mode already performs.
 **3. Recommendation.** Park C2a′'s cumulant-magnitude question as "not well-defined at the 2% level (asymptotic)".
 The replacement in §2 is well-posed but mostly bookkeeping. Its one new number is the non-Gaussian fraction of the
 Dirac corner, which is cheap (no runs) and worth recording. Whether it is worth a registration is the bridge's call.
+
+### C2a′ PARKED (bridge, 2026-09-24), with one recorded number (`scripts/exp030_nongauss.py`, `exp030_output.txt`)
+
+**Parked with this wording.** The cumulant picture gives the sign and direction of the free-Dirac deviation from EMI
+(EXP-029). Its *magnitude* is not a well-posed question at 2%, because the series is asymptotic. The radius-½ premise
+behind "asymptotic" is an **unverified hypothesis**.
+
+**Control, run first: PASS.** The fitted A₂(θ) equals the closed form −EMI(θ)/8 to **3.2·10⁻⁵** on θ ≥ 20°. The closed
+form combines ESW21 eq. (9) and its definitions, the free two-component Dirac C_J = 1/(8π²) (derived here from the
+equal-time propagator), and log Z_a = −(2πa)²C₂/2 + …. This is an *absolute* check of the instrument's sector
+normalisation, sign and C_J, not only of its shape.
+
+**Recorded number (not a test).**
+- G = −A₂/6 = EMI/48 is the Gaussian part of the EE corner function. It is the exact a² term of the solver's
+  imaginary-twist integral, and it equals the leading Klich–Levitov term (π²/3)·C₂.
+- The non-Gaussian part is NG = s_EE − G, with s_EE the EXP-020 Dirac EE curve.
+- **Non-Gaussian fraction NG/s_EE = 9.5% (20°), 9.9% (45°), 10.6% (90°), 11.0% (135°), 11.1% (170°).** So the
+  Gaussian, EMI-shaped part carries 89–90% of the Dirac corner function at every angle.
+- T(NG) = −0.149, against T(s_EE) = −0.016 and T(G) ≈ 0.
+- **Honest limit, next to the number:** the *sign* of NG's tilt follows from the known κ/σ < 3π. Only the *size* (about
+  10%, with a 1.6-point spread across angles) is new.
+- An observation, not tested: NG's tilt (−0.149) is close to A₄'s (−0.139, EXP-029). The non-Gaussian remainder is
+  a₄-like in shape to within ~7%.
