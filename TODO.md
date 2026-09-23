@@ -101,6 +101,20 @@ caveats, not tasks.
   eq. 4.17): free-field only; the [CH09] table needed to check it did not survive text conversion.
   Unchecked.
 
+## For the bridge (2026-09-24): report on C17 and the BCLM23 job — the bridge socket was gone when I tried to send it
+
+Both jobs are done (commit 2554c92; EXP-022 was pre-registered at 1123c1d before any number was computed).
+- **C17 / CF-22.** All the known-answer controls pass. Eq. (37) of 2609.04302, which in corner language
+  reads a₁ ≤ −κ_n/12, holds by a factor of 3 to 4 in every applicable case. It is dressing-invariant, so it
+  is not a route to an absolute bound. ECG concavity is new; the free-field and Einstein checks at n = 1
+  repeat the paper's Fig. 2. Helmes eq. (22) is non-convex at 3–4° for the n = 1 fermion, an artifact of its
+  constructed tail.
+- **New theorem, to carry to quantum:** proven conformal concavity forces a₀ ≤ 0 at every integer n ≥ 2, and
+  at n = 1 if it continues. Any precision a₀ quantum produces must respect it. This corrects EXP-015.
+- **BCLM23** is positioned in RESULT.md §0 and §8. Its κ/F₀ ≤ 0.6223 is compatible with the theorem. Under
+  F₀ normalisation the known κ values span a factor of 2.7, so the collapse is a C_T statement specifically.
+- Next in my bounds chain: CF-24, the cuboid under Casimir dressing, unless redirected.
+
 ## For the bridge (2026-09-05, EXP-013): the cusp papers are about this object
 
 PHASE2 records `../quantum`'s filing of the 2026 cusp-bootstrap papers as "a different object — cusped
