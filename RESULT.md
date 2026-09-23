@@ -71,7 +71,7 @@
 > constraint" reads like a weakness; here it is the opposite.
 
 *Standalone statement of the result of this workspace. Self-contained; the lab notebook is `report.md`
-(entries EXP-001 to EXP-022), the verified bibliography is `references.md`, the checking scripts are
+(entries EXP-001 to EXP-023), the verified bibliography is `references.md`, the checking scripts are
 under `scripts/`. Written 2026-09-05 and consolidated the same day after EXP-011; §10 is the handover.*
 
 ## 0. Statement and scope
@@ -268,7 +268,7 @@ entropic inequalities of the corner function.
 | Modular theory (Bisognano–Wichmann, relative entropy, QNEC) | second-order shape variations (the σ theorem) | no (κ is all orders; it sits at the boundary of convergence of the ε-expansion) |
 | Stress-tensor 2-/3-point data (C_T, t₄) | see `report.md` EXP-002: two theories with equal t₄ differ in κ/C_T by 11.5% | no |
 | An inverted-channel positive expansion with a universal lowest state | would fix κ from universal data (the Cardy/crossing mechanism) | absent for the two-ball function in d ≥ 3; the strip's inverted channel lands on a non-universal Casimir energy, §6 |
-| A *self-dual* crossing with κ as the vacuum energy of both channels (the rectangle of twist lines) [LMW26] | κ_n ≥ (2π/3)a_n(π/2); κ/C_T ≥ 2.39 at n → 1 | lower bound only: the admissible set is closed under 𝒟 → 𝒟e^{E(y+1/y)}, which raises κ at every fixed a(π/2) (EXP-013, EXP-017) |
+| A *self-dual* crossing with κ as the vacuum energy of both channels (the rectangle of twist lines) [LMW26] | κ_n ≥ (2π/3)a_n(π/2); κ/C_T ≥ 2.39 at n → 1 | lower bound only: the admissible set is closed under 𝒟 → 𝒟e^{E(y+1/y)}, which raises κ at every fixed a(π/2) (EXP-013, EXP-017); the cuboid ("wireframe") version is closed under the same dressing on each face, so it cannot bound κ either (EXP-023) |
 
 The named obstruction: **κ is a non-perturbative fusion datum of the twist defect, and no entropic
 inequality or finite-order correlator bound reaches it.**

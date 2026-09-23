@@ -1,0 +1,9 @@
+(i)  symmetries (42) of both dressings, 200 random points: max relative deviation 5.9e-39
+(ii) leftover factor after the eps4 shift equals the closed form, 200 random points: max relative deviation 2.6e-39
+(iii) complete monotonicity in r1 of the leftover factors ((-1)^k d^k/dr1^k >= 0, k <= 6), and a control that must fail:
+     E=0.5, r2=0.2: four-body True, pair True, CONTROL (1+r1)*pair (must be False) False
+     E=0.5, r2=1.0: four-body True, pair True, CONTROL (1+r1)*pair (must be False) False
+     E=0.5, r2=5.0: four-body True, pair True, CONTROL (1+r1)*pair (must be False) False
+     E=2.0, r2=0.2: four-body True, pair True, CONTROL (1+r1)*pair (must be False) False
+     E=2.0, r2=1.0: four-body True, pair True, CONTROL (1+r1)*pair (must be False) False
+     E=2.0, r2=5.0: four-body True, pair True, CONTROL (1+r1)*pair (must be False) False

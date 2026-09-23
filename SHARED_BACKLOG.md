@@ -55,7 +55,7 @@ workspace's numerics, with the stated caveat), **conjectured**.
 | S2 | The collapse, to ≈1%, is the statement κ/C_T ∈ [3.672, 4.179]; the ≈1% shape residual is a separate fact. | verified | — |
 | S3 | Theories with equal t₄ differ in κ/C_T by up to 11.5%, so ⟨TT⟩ and ⟨TTT⟩ data cannot order the band. | verified | — |
 | S4 | The only known "second channel" is Lanzetta–Moult–Wang's rectangle of twist lines. It gives κ_n ≥ (2π/3)·a_n(π/2), which together with a(π/2) ≥ (π²C_T/3)·log√2 (Bueno–Witczak-Krempa 2016) gives **κ/C_T ≥ 2.39 at n = 1, assuming their bound continues to n = 1.** | proved at integer n ≥ 2; continuation assumed | A proof at n = 1 (CF-9). |
-| S5 | **The rectangle bootstrap can never bound κ above.** Multiplying any admissible solution by e^{E(y+1/y)}, E ≥ 0, keeps it admissible, with the same corner dimension and a larger Casimir energy. | proved (two-line proof, numerical check with a working control) | — |
+| S5 | **The rectangle bootstrap can never bound κ above.** Multiplying any admissible solution by e^{E(y+1/y)}, E ≥ 0, keeps it admissible, with the same corner dimension and a larger Casimir energy. **The same holds for the cuboid ("wireframe") bootstrap** of 2609.04041: dressing each face the same way raises the pair energy, and a separate dressing raises the four-body energy, with every stated constraint kept (added 2026-09-24). | proved (two-line proofs, numerical checks with working controls) | — |
 | S6 | Local thin-wedge physics contributes only odd powers of θ. The twist line fuses with its reversal to the trivial defect, so the tip contributes nothing. Hence **a₀ ≠ 0 requires a dimension-1 operator in the twist-pair fusion channel.** The general exponent θ^{2(Δ−1)} for identity fusion is **prior art: Lanzetta–Moult–Wang, "Eye-opening bounds on cusps", 2609.04302, eq. (28)**. The application to twist lines is this workspace's. | derived; exponent is prior art | A dimension-1 operator where none is expected, or a θ⁰ term without one. |
 | S7 | a₀ by theory: Einstein 0 (exact curve, four digits); ECG 0 (five digits, four couplings); **Dirac 0.00 ± 0.02 C_T** (pre-registered prediction, confirmed; the error comes from κ's third digit); free real scalar at n = 1 ≈ −0.3 C_T; free real scalar at n = 2 −0.24 ± 0.03 C_T. | measured | For the scalar, see S8. |
 | S7a | **a₀ ≤ 0 is a theorem at integer n ≥ 2** (and at n = 1 if conformal concavity continues): a constant in Γ adds α√u to ℰ, whose second derivative −α/(4u^{3/2}) dominates as u → 0, so the proven concavity of 2609.04302 forces α = (1−n)a₀ ≥ 0. All measured values agree. This corrects this workspace's earlier claim that the sign is not fixed. | derived from a proven theorem (added 2026-09-24) | — |
@@ -145,7 +145,7 @@ instrument, L literature or desk work.
 | CF-21 | Log-convexity in dimension of the free-field κ_d | 1 | 2 | 80% | 0.4 | A |
 | CF-22 | Test the new cusp-paper inequalities on existing exact and numerical curves — **DONE 2026-09-24, see S7a, S7b** | 3 | 1 | 90% | 0.3 | N |
 | CF-23 | κ/F₀ normalisation audit and the κ/F₀ ≤ 0.622 conjecture | 2 | 1 | 90% | 0.2 | L |
-| CF-24 | Check the cuboid bootstrap's closure under Casimir dressing | 2 | 1 | 90% | 0.2 | A |
+| CF-24 | Check the cuboid bootstrap's closure under Casimir dressing — **DONE 2026-09-24: closed, including for κ; see S5** | 2 | 1 | 90% | 0.2 | A |
 | CF-25 | The ECG t₄ sign discrepancy | 1 | 1 | 90% | 0.1 | L |
 
 ---

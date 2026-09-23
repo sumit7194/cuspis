@@ -2069,3 +2069,46 @@ artifact in eq. (22); and the theorem a₀ ≤ 0 at integer n ≥ 2, which corre
 **Grade.** Tests: verified (exact curves, published curves, validated runs; controls passed). Eq. (37)
 re-derivation and the a₀ ≤ 0 argument: derived here, the latter as an elementary consequence of [LMW26b]'s
 proven concavity. Dirac a₁ values: fits, κ-limited, drift reported.
+
+## EXP-023  The cuboid bootstrap is also closed under Casimir dressing — including for the pair energy κ (bridge: bounds chain; CF-24)
+
+**Date** 2026-09-24. **Status** complete; algebra by hand, checked numerically at 40 digits with a working
+control (`scripts/exp023_cuboid.py`, output `scripts/exp023_output.txt`, runtime under a second).
+
+**Question.** Can [LMW26]'s cuboid ("wireframe") bootstrap bound anything from above, in particular the pair
+Casimir energy, which is κ for twist lines? The rectangle cannot (EXP-017). A research agent's algebra (EXP-021)
+suggested the cuboid is closed under a dressing of its four-body energy; that was unchecked.
+
+**The constraints, read on the source** (2609.04041 End Matter, eqs. 41–46). ⟨D̂(L₁,L₂,L₃)⟩ = 𝒟(r₁,r₂)/V^{8Γ/3}
+with r_i = L_i/L₃. (42): 𝒟(r₁,r₂) = 𝒟(r₂,r₁) = 𝒟(1/r₁, r₂/r₁), from invariance under swapping side lengths.
+(43): 𝒜(r₁,r₂) = (√r₂/r₁)^{8Γ/3} e^{−(r₁/√r₂)ε₄(r₂)} 𝒟(r₁,r₂) = ∫ S(ε; r₂) e^{−(r₁/√r₂)ε} dε, so 𝒜 is completely
+monotone in r₁ for each r₂. Here ε₄(r₂) = ε₄(1/r₂) is the four-body potential of two a, ā pairs on the diagonal
+corners of a rectangle, eq. (44). The authors note there are "no obvious sign constraints on derivatives with
+respect to r₂". Their bound (46) is Γ^{Y} ≥ −(3/8)ε₄(1).
+
+**Result 1 — four-body dressing.** 𝒟 → 𝒟·exp[E(L₁/√(L₂L₃) + L₂/√(L₁L₃) + L₃/√(L₁L₂))], E ≥ 0. It is symmetric
+under all permutations of the sides, so (42) holds, and scale invariant, so Γ is unchanged. It raises ε₄(r₂) by E
+uniformly, preserving ε₄(r₂) = ε₄(1/r₂). The leftover factor in 𝒜 is exp[E(r₂ + r₂^{−1/2})/√r₁]. That is a
+positive power series in r₁^{−1/2}, and each r₁^{−k/2} is completely monotone, so (43) holds. This confirms the
+research agent's claim; my first hand-written leftover had √r₂ where r₂ belongs, which check (ii) caught.
+
+**Result 2 — pair dressing, the part that matters for κ.** 𝒟 → 𝒟·exp[E′ Σ_{i≠j} L_i/L_j], E′ ≥ 0. This is exactly
+the rectangle dressing e^{E′(y+1/y)} applied to each of the cuboid's three face orientations: a pure contact
+attraction between adjacent parallel edges. It is permutation symmetric and scale invariant. Absorbing its
+r₁-linear part shifts ε₄(r₂) by E′(√r₂ + 1/√r₂), which is symmetric under r₂ → 1/r₂. As r₂ → 0 that shift is
+E′/√r₂, which is exactly the form in which the pair Casimir energy enters ε₄. With two a, ā pairs at short
+separation L₂, E₄ ≈ −2ε^{aā}/L₂, so ε₄ ≈ 2ε^{aā}/√r₂. So this dressing raises the pair energy by E′/2. The leftover
+factor, exp[E′((1+r₂)/r₁ + r₂ + 1/r₂)], is completely monotone in r₁.
+
+**Checks.** At 200 random points: both symmetries (42) hold to 6·10⁻³⁹; both leftover formulas hold to 3·10⁻³⁹.
+Complete monotonicity ((−1)^k∂^k ≥ 0, k ≤ 6, at r₁ = 0.3, 1, 3, 30) holds for both leftovers at E = 0.5 and 2 and
+r₂ = 0.2, 1 and 5. The control (1 + r₁)×leftover, which is not completely monotone, fails at every point, as it must.
+
+**Verdict.** With the constraints the paper states, the cuboid bounds neither its four-body energy nor the pair
+Casimir energy κ from above. Its bound (46) can only ever be a lower bound on Γ^{Y}, or a lower bound on ε₄ given
+Γ^{Y}. The rectangle (EXP-017) and the cuboid are both closed under the same move, a pure contact attraction
+between parallel defects, and that move is invisible to every positivity constraint yet written. Next link of
+the bounds chain: a constraint where the Casimir energy enters other than as e^{ε·(geometry)}, if one exists.
+
+**Grade.** Proved (two-line arguments per dressing); numerical checks with a working control; one hand-algebra
+slip found by the checks and corrected before any conclusion was drawn.
