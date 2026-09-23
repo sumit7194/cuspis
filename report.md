@@ -2163,6 +2163,33 @@ a₀ = 0 exactly. κ = π + K; σ = 1/3 + K·σ_w + m/2.
 
 A check that fails is reported with its location, not tuned away: the parameters above are fixed now.
 
+**Resumed 2026-09-24, after CF-9. Implementation note, committed before any computation (it resolves
+ambiguities only; no parameter above changes).**
+
+*Components in closed form.*
+- a_w = e^{−wθ}/θ + e^{−w(2π−θ)}/(2π−θ) − 2e^{−wπ}/π. In the spectral form (RESULT.md §3) its density is
+  ρ_w = 2s²e^{−πs} on s ≥ w, so ρ_w ≥ 0, and κ_w = 1. The mass is
+  σ_w = ∫_w^∞ s²e^{−πs} ds = e^{−wπ}(w²/π + 2w/π² + 2/π³).
+- a_δ = m(cosh(s₀ε) − 1)/s₀², ε = π − θ. This is a point mass m at s₀; its σ is m/2.
+- m is fixed by a₀ = 0: m = −K·c_w·s₀²/(cosh(s₀π) − 1), with c_w = −w + e^{−2πw}/(2π) − 2e^{−wπ}/π.
+  (EMI's own a₀ is 0.)
+
+*"Added mass ≤ 10⁻³ of σ"* is read as Kσ_w + m/2 ≤ 10⁻³·σ_EMI = 10⁻³/3, the stricter of the two readings. For each
+(K, s₀), w is the smallest value on the grid 0.01·ℕ that satisfies it. As a nuisance sweep, w × 1.5 is also
+reported; it does not enter the verdict.
+
+*Checks.*
+- Analytic a, a′, a″ at 40 digits (mpmath).
+- C2 and C3 on 6000 θ-points in (10⁻⁶, π − 10⁻⁶), log-dense near 0.
+- CC as F″ from the chain rule on 6000 u-points in (10⁻¹², 1 − 10⁻⁹), log-dense near 0.
+- The expansion coefficients a₀, a₁ and the θ² coefficient in closed form.
+
+*Controls, run first; each must fire.*
+- **(k1)** Without the mode (m = 0), the a₀ = 0 and a₁ ≤ −κ/12 checks must fail.
+- **(k2)** a_EMI + 8·log(1/sin(θ/2)) (𝔞_min added) must fail CC near u → 0.
+- **(k3)** a_EMI + 10·(mode at s = 0.3) must fail C3 near ε → 0, where K(s, ε) ≈ ε²(s²/3 − 1/6) < 0.
+- **(k4)** a_EMI alone must pass everything.
+
 ## EXP-025  CF-9: do the rectangle bound and conformal concavity hold at n = 1? — pre-registration
 
 **Date** 2026-09-24. **Assigned by** the bridge (user's choice). **Status** pre-registered; results in the addendum.
