@@ -2892,3 +2892,22 @@ seen and before any A₄. It has two parts:
 is reported both ways: the original registered gate (FAIL, from the 5° truncation) and the amended one. **Any a₄
 conclusion is graded "conditional on a post-failure gate amendment"** until someone re-derives the gate
 independently. The code is `scripts/exp028_extract.py` (variants added) and `scripts/exp028_analyze.py`.
+
+### EXP-028 addendum 4 — the frozen extractor is fragile at 15°; relaunch held pending the bridge
+
+- *The finding (before any run 2–4 data, and with A₄ nonexistent).* Applied to the a = 0.02 curve, the frozen
+  amended extractor gives κ/σ = 9.2735 (quintic 15–45°) and 9.3205 (quartic 15–40°), 1.6% below 3π. Yet that
+  curve's shape matches EMI to ≤ 4·10⁻⁴ at every θ ≥ 15° and to ≤ 10⁻⁵ at θ ≥ 20°.
+- *The cause, shown synthetically.* Exact EMI with only its 15° value multiplied by (1 − 4·10⁻⁴) gives 9.2621
+  (quintic) and 9.3168 (quartic), against 9.4249 unperturbed. Extrapolating to θ → 0 amplifies an error at 15° by
+  about 400×. The a = 0.02 curve's 15° value is −4·10⁻⁴ off EMI, while its ≥ 20° values are ≤ 10⁻⁵ off. That is the
+  tail of the same mass truncation that makes 5° and 10° low.
+- *Consequence.* The frozen amended gate will fail its κ₂/σ₂ criterion whatever runs 2–4 give, because truncation is
+  common to all twists and survives into A₂. Its shape criterion (≤ 10⁻³ on θ ≥ 15°) is expected to pass.
+- *Decision.* The frozen extractor is not changed here; the choice goes to the bridge. Options:
+  - (a) run 2–4 as frozen and report the expected failure;
+  - (b) a second post-failure amendment, graded accordingly;
+  - (c) drop the extrapolated κ₂/σ₂ criterion, keep the shape criterion, and read P2 from the angular trend of the A₄
+    shape relative to EMI, which needs no extrapolation.
+
+  Nothing is launched until the bridge decides.
