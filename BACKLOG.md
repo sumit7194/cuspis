@@ -1,5 +1,7 @@
 # Backlog — ranked for moonshots
 
+*Internal working version. The version written for other sessions and people, with stable IDs CF-1 … CF-25, shared conventions and a complementarity map, is `SHARED_BACKLOG.md`.*
+
 *Written 2026-09-23, after a six-stream literature sweep (up to September 2026). Every item planned in
 this repository's documents and never done, plus new items suggested by that sweep, scored and
 ranked. The notebook is `report.md`; the result is `RESULT.md`; the working list is `TODO.md`.*
