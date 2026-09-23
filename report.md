@@ -2849,3 +2849,33 @@ compare its shape with EMI and with A₂.
 - A₂ and not EMI ⇒ (iii), which would contradict ESW21.
 
 That would need the bridge's go.
+
+### EXP-028 addendum 2 — CORRECTION: the Tier-2 "gate will fail" call was a truncation artifact; the sector IS EMI-shaped
+
+**What was wrong.**
+- The 8.4% shape deviation in addendum 1 sits **entirely at 5°** (−8.41%), with −0.63% at 10°. That is the known M ≤ 15
+  mass truncation, recorded in EXP-012 ("5 and 10 deg are excluded: the M ≤ 15 mass truncation makes them 8% and 0.5%
+  low").
+- Per angle, a = 0.02 matches EMI to **−0.04% at 15°**, and to ≤ 10⁻⁵ at 20°–170°. So the maximum deviation for
+  θ ≥ 15° is 4·10⁻⁴, consistent with the expected a⁴ contamination of ≈ 3·10⁻⁴.
+- The a = ¼ sector deviates by up to 0.46% on 15°–170°. That is a genuine a⁴ effect: the gate is working as a
+  resolving instrument, not failing.
+- My errors:
+  - (1) EXP-028's gate and extractor were registered on the full angle grid, *including* the two angles that
+    EXP-012 had already excluded. The standing exclusion rule was not carried into the pre-registration.
+  - (2) Addendum 1 then read that artifact as physics. The same artifact explains the extractor caveat:
+    "θ·a at 5° is 8% below κ₂" *is* the truncation.
+- Addendum 1's conclusions are **withdrawn**: "gate fails by ~80×", the three candidates, the discriminator and the
+  extractor caveat. The chain pause was right for the wrong reason.
+
+**Audit asked by the bridge.** No recorded result used an extracted κ on a Rényi-type curve. EXP-012 addendum 3
+(scalar n = 2 a₀), EXP-020 (Dirac a₀) and S7/S8/S10 all fix κ at the published CHL09/HHCWM16 value and use windows
+starting at 15°. The κ-free fit appears only as a printed cross-check. The only extracted-κ use is EXP-028's Tier-2.
+
+**Proposed amendment to the gate. Not applied: it needs the bridge's agreement, and a₄ stays unread until then.**
+- Evaluate the A₂ shape on θ ≥ 15°. That is the EXP-012 standing rule, fixed before any A₄ is seen.
+- Extract κ with a quintic fit in θ over 15°–45°. On exact EMI this gives κ/σ = 3π to 8.8·10⁻⁵ absolute; the
+  15–40° quartic gives 5.5·10⁻⁴, and that pair is the nuisance spread.
+- σ as before (ε⁴ over 150°–170°).
+- Tolerances unchanged (10⁻³).
+- The same exclusion applies to A₄'s shape and κ₄.
