@@ -32,6 +32,7 @@ caveats, not tasks.
       new witness. Open: an all-K analytic proof (the scaling suggests it holds).
 - [ ] **C11 (reflected-rectangle positivity at n = 1).** EMI satisfies it exactly (EXP-026 §4; S16), so it cannot
       be the test. The next step is RT rectangles, held by the bridge as a hedge in case V7 finds a gap in S14.
+- [x] **C2a′ DONE (EXP-027–029):** the variance half is re-confirmed (A₂ = EMI to 10⁻⁵ at θ ≥ 20°); P1 and P2 hold (trend-based, not blind, free Dirac only); EXP-028 closed inconclusive (instrument-limited). Open: a registered magnitude test. (Original entry follows.)
 - [ ] **C2a′ (Dirac cumulant route; bridge-assigned 2026-09-24).** Step 1 is the prior-art sweep, reported to the
       bridge before anything else. If "variance EMI-shaped, higher cumulants = deviation" is already in print for
       corners, the item is settled by the literature. Otherwise pre-register a prediction that can fail, sealed toward

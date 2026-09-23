@@ -2958,3 +2958,43 @@ independently. The code is `scripts/exp028_extract.py` (variants added) and `scr
 - P1 is read on all three fits the same way.
 - Before A₄ is read, the A₂ of each fit must satisfy |T(A₂)| ≤ τ, and its shape must match EMI to ≤ 10⁻³ on θ ≥ 20°.
   If not, stop.
+
+### EXP-029 addendum — results: P1 HOLDS, P2 HOLDS (trend-based, no κ extrapolation; NOT blind)
+
+**Runs.** a = 0.02, 0.04, 0.06, 0.08: 48 nodes each, 0 failures. Peak trees 0.80, 0.73, 0.75 and 0.96 GB, all within the
+1.5 GB cap. Every launch check passed. Output: `scripts/exp029_output.txt` (script `exp029_analyze.py`, exactly as
+registered).
+
+**Gate:** passes in all three fits. |T(A₂)| ≈ 9·10⁻⁶ against τ = 10⁻³, and the A₂ shape matches EMI to 3.4·10⁻⁵ on
+θ ≥ 20°.
+
+| fit | A₄/A₂ on θ ≥ 20° | T(A₄) | A₄ shape / EMI at 20°, 45°, 135°, 170° |
+|---|---|---|---|
+| A₂ + A₄, all a | [−0.711, −0.605] | −0.1394 | 0.896, 0.934, 1.041, 1.053 |
+| A₂ + A₄, drop a = 0.08 | [−0.711, −0.605] | −0.1396 | 0.896, 0.934, 1.041, 1.053 |
+| A₂ + A₄ + A₆, all a | [−0.710, −0.604] | −0.1397 | 0.896, 0.934, 1.041, 1.053 |
+
+In the fit with A₆, A₆/A₂ ≈ −0.17. The three fits disagree by at most 3·10⁻⁴ in T(A₄) and 10⁻³ in A₄/A₂: none.
+
+**Verdict.**
+- **P1 HOLDS.** With A₄/A₂ = −(2π)²a₄/(12a₂), the fourth-cumulant corner function of the free Dirac charge has the
+  sign of the variance's, with a₄/a₂ ≈ 0.18–0.22.
+- **P2 HOLDS**, at 140τ. a₄(θ) is EMI-like to about 10%, but relatively lighter toward the sharp end: the κ₄/σ₄ < 3π
+  direction. That is the direction in which the Dirac entanglement entropy deviates from EMI (κ/σ = 9.24 against
+  3π = 9.42).
+
+**What this does and does not establish.**
+- It supports the simplest cumulant picture of "why near EMI" for the free Dirac fermion. The pairwise part is exactly
+  EMI, and the first non-pairwise correction is EMI-like to ~10%, same-signed and tilted the right way.
+- **Not established:**
+  - (i) blindness: the leading-order answer was implied by curves seen before registration, as disclosed in
+    EXP-029, so this is a stability confirmation;
+  - (ii) magnitude: whether 2ζ(4)·a₄ plus higher terms *quantitatively* reproduces the 1.9% EE deviation. It was not
+    registered and not computed; the series may be asymptotic ([BESW22]);
+  - (iii) anything beyond the free Dirac fermion: nothing about the scalar, holography or interacting theories.
+- Grade: **trend-based, no κ extrapolation; not blind; free Dirac only.** It depends on the instrument's validated
+  single-sector mode (regression to 2·10⁻¹⁶ at a = ¼).
+
+**Next, if wanted.** A registered magnitude test: does the truncated cumulant sum reproduce the Dirac EE's shape
+deviation at 20°–170°? It needs a⁶ and a⁸ as well, from larger twists, or the full sector integral that the
+instrument's EE mode already performs.

@@ -1,0 +1,17 @@
+twists: [0.02, 0.04, 0.06, 0.08]  failures: [0, 0, 0, 0]
+
+GATE (each fit: |T(A2)| <= tau = 0.001 and A2 shape = EMI to <= 1e-3 on theta >= 20)
+   A2+A4, all a            : T(A2) = -8.96e-06, max shape dev = 3.45e-05 -> PASS
+   A2+A4, drop largest a   : T(A2) = -8.91e-06, max shape dev = 3.44e-05 -> PASS
+   A2+A4+A6, all a         : T(A2) = -8.88e-06, max shape dev = 3.43e-05 -> PASS
+
+P1 (A4/A2 < 0 at every theta >= 20) and P2 (T(A4) < -tau), all three fits side by side
+   A2+A4, all a            : A4/A2 in [-0.7112, -0.6052] -> P1 holds;  T(A4) = -1.3944e-01 -> < -tau
+      A4 shape / EMI at 20,30,45,90,135,170: [0.8962 0.9105 0.9344 1.     1.0406 1.0532]
+   A2+A4, drop largest a   : A4/A2 in [-0.7105, -0.6045] -> P1 holds;  T(A4) = -1.3956e-01 -> < -tau
+      A4 shape / EMI at 20,30,45,90,135,170: [0.8961 0.9104 0.9343 1.     1.0406 1.0533]
+   A2+A4+A6, all a         : A4/A2 in [-0.7097, -0.6037] -> P1 holds;  T(A4) = -1.3971e-01 -> < -tau
+      A4 shape / EMI at 20,30,45,90,135,170: [0.8961 0.9103 0.9342 1.     1.0407 1.0534]
+      (A6/A2 range on theta >= 20: [-0.173, -0.166])
+
+VERDICT (trend-based, no kappa extrapolation; not blind): P1 HOLDS; P2 HOLDS
