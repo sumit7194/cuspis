@@ -1,0 +1,11 @@
+EYE TRIAL (prediction: G - tangent = 0 up to quadrature/finite-difference error)
+ u'=0.5: Fbar=0.112392190 Fbar'=-0.531591126
+   u=0.1  (u<u') G=0.3250286402 tangent=0.3250286402 G-tangent=-2.67e-11   [0s]
+   u=0.3  (u<u') G=0.2187104149 tangent=0.2187104149 G-tangent=-1.33e-11   [0s]
+   u=0.8  (u>u') G=-0.0470851483 tangent=-0.0470851483 G-tangent=+2.00e-11   [0s]
+   u=2.0  (u>u') G=-0.6849945000 tangent=-0.6849945001 G-tangent=+1.00e-10   [0s]
+ u'=1.5: Fbar=0.066936827 Fbar'=0.241848481
+   u=0.7  (u<u') G=-0.1265419580 tangent=-0.1265419580 G-tangent=-6.54e-12   [0s]
+   u=3.0  (u>u') G=0.4297095484 tangent=0.4297095484 G-tangent=+1.23e-11   [0s]
+CONTROL: half-ellipse trial A=1.5 (prediction: G affine in u, strictly below Fbar)
+   affine fit residual max 3.3e-16;  min(Fbar - G) = 0.0287 (> 0 means not touching)   [5s]

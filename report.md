@@ -2467,3 +2467,65 @@ u below. The closed form was then derived. It is the analytic certificate that E
   At integer n there is no C3, so this combination is specific to n = 1.
 - Grade: the arithmetic and optimality are verified. The inputs are CC at n = 1 (EXP-025 O3, derived, review
   pending), C3 [CHL09], C5 and σ = π²C_T/24 (FLP).
+
+### EXP-025 addendum 2 — independent adversarial review of O3, and a known-answer check in a solvable model
+
+**Review.**
+- *Setup.* A separate agent was given O3's derivation and asked to break it. Candidate failure points: SSA
+  applicability; the Killing-regulator step; the strip slope for u > u′; affinity of the initial slope; the need for
+  both sides of u′; conflict with known results. It was also asked to search for prior art.
+- *Verdict:* **no flaw found; ~75% confidence at the usual physics standard for SSA arguments; not a rigorous
+  proof.** Its step-by-step findings:
+  - SSA holds, with Q a conditional mutual information of separated regions for s₁ > 0.
+  - The flow never takes compact images through ∞.
+  - The remaining finite local terms (geodesic curvature and ∂ₙlog|ξ_u|) are topological, by Gauss–Bonnet and
+    because log|ξ_u| is harmonic.
+  - The u > u′ slope follows through the complement plus C1.
+  - Affinity holds, including the corrections from circular caps, which enter through ξ_{u′} = −uz and are linear
+    in u.
+  - Nothing known is contradicted: [BWK16] say themselves that 𝔞_min is not the corner function of any CFT.
+- *Rigour gaps it named, none fatal:*
+  - (i) ξ_u is tangent to P at ±i, not transverse. This was already noted in K1; δn vanishes linearly there.
+  - (ii) **For u′ < u ≲ u′ + O(ρ·u′^{3/2}), the fixed point −1/√u falls inside the removed cap, so H_b is not
+    monotone.** Resolution: the inequality is needed only at fixed u ≠ u′ as ρ → 0, and the window closes. The
+    correct order of limits is to fix (u, u′) first and then send ρ → 0.
+  - (iii) Shape-differentiability and the existence of the ρ → 0 limit are assumed (A6). Both are standard.
+- *Prior art:* none found deriving CC at n = 1 from SSA. [LMW26b] say explicitly that their inequalities "do not a
+  priori apply" at n → 1. [LMW26] and the simultaneous 2609.04035 were checked by the reviewer only through fetched
+  summaries, and neither appears to claim n = 1.
+
+**Known-answer check in EMI (the reviewer's construction, re-run here).**
+- *Why EMI.* The extensive-mutual-information model satisfies SSA, purity and Möbius invariance exactly, so every
+  premise of O3 holds. Its corner function is a = (C/4)(1 + (π−θ)cot θ).
+- *The identity.* In EMI, ∫₀^∞ q ds = f′(0⁺) − f′(∞) reduces to a mutual-information integral R(u,u′) on the
+  cylinder. O3 then predicts that **G(u) = F̄(u) − 4R(u,u′) is exactly the tangent line of F̄ at u′, on both sides
+  of u′.** This tests steps 3 and 4 together: the asymptotic slope F(u), the affine initial slope, and the value
+  and slope at u′. It does so against an integral computed independently of F.
+- *Re-run* (`scripts/exp025d_emi_rerun.py`; output `exp025d_output.txt`; reviewer's scripts preserved verbatim in
+  `scripts/exp025d_critic/`):
+  - G − tangent = −2.7·10⁻¹¹, −1.3·10⁻¹¹, +2.0·10⁻¹¹, +1.0·10⁻¹⁰ for u′ = 0.5 and u = 0.1, 0.3, 0.8, 2.0;
+  - −6.5·10⁻¹² and +1.2·10⁻¹¹ for u′ = 1.5 and u = 0.7, 3.0.
+- *Control that can fail.* A half-ellipse trial, which is not an eigen-configuration. It gives G affine to
+  3·10⁻¹⁶, as step 4 predicts for any trial, **and strictly below F̄ by at least 0.029, never touching**, as the
+  argument predicts. **PASS.**
+- *Caveat.* The EMI reduction formula f′(0⁺) − f′(∞) = C·R is the reviewer's derivation. It was re-run here, not
+  re-derived. A formula error would be unlikely to produce a 10⁻¹⁰ tangent match on both sides and at two values of
+  u′, but that is inference, not a derivation.
+
+**Final grades for EXP-025.**
+
+| Item | Statement | Grade |
+|---|---|---|
+| O1 | κ₁ ≥ 2a₁(π/2); κ/C_T ≥ π² ln 2/3 = 2.2804 at n = 1 | derived from standard n = 1 inputs (SSA, rotation; [BWK16] II.4 read on source) |
+| O2 | (R) at n = 1 ⇔ reached through CP of reflected rectangles ([CH12], conjectural); SSA alone stops at κ = 2a | derived; saturator verified numerically |
+| O3 | CC at n = 1 from SSA + global conformal invariance | **derived, physics-level; survived adversarial review; confirmed in EMI to 10⁻¹⁰ with a control that can fail.** Not a rigorous theorem (A1–A7) |
+| (d) | given O3: κ ≥ 4φ*/ln 2·a(π/2) = 2.5379·a(π/2) ⇒ (R) at n = 1; κ/C_T ≥ (2π²/3)φ* = 2.8936; optimal for {CC, C2, C3, C5} | closed form verified against LPs (Δ ~ 3·10⁻⁵ from below) |
+| S7a at n = 1 | a₀ ≤ 0 at n = 1 | follows from O3 — small-angle material, sealed toward quantum |
+
+**Consequence for this workspace's headline.** O1 and O3 are n = 1 constraints outside C1–C6. The §4 theorem is
+stated for C1–C6 and stands as stated. But its witness family a_λ violates both O1 (at small λ) and O3 (near u → 0).
+So:
+- the lower end of the rigorous κ range moves: 2.28 unconditionally, 2.89 given O3;
+- **whether κ/C_T stays unbounded above once CC is added is open.** That is exactly EXP-024, pre-registered with an
+  explicit CC-respecting family and deferred. Its pre-registered expectation is "still unbounded", which is
+  unverified. It should be the next item.
