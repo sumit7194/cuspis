@@ -31,8 +31,9 @@ caveats, not tasks.
       *not* a precision failure; candidates: the series-start convergence (residual not stored in the
       node record — store it), the N = 1.6M + 8 order, δ₀ = 0.01/M. Diagnose on one node
       (M = 14.02, t = 0.03) by varying N and δ₀ separately before any production.
-- [ ] Dirac EE (a₀ for the Dirac fermion; prediction "no node, residual positive throughout,
-      a₀ ≤ 0"): blocked on the Dirac vertex-term transcription (parked, see below).
+- [x] Dirac EE (EXP-020): a₀ = 0.00 ± 0.02 C_T, prediction confirmed; known answers pass to ≤ 4·10⁻⁵
+      from 20° to 170°. Instrument item left: 16 nodes at t ≥ 2.7, M ≥ 11.9 raise a singular starting
+      Jacobian (probably branch transitions); measured immaterial (≤ 4·10⁻⁷), not fixed.
 - [ ] **Independence hygiene (EXP-014).** `../quantum` holds a file-level copy of this workspace
       including a byte-identical solver, and its repaired a(120°) was accepted against a bound this
       repo supplied. Consequences to carry: never cite their post-repair lattice values as
@@ -53,8 +54,7 @@ caveats, not tasks.
       parallel free-scalar twist lines at n → 1, plus the one-loop beta function of the φ² line coupling
       in d = 3. Decides whether a log θ term exists (b in EXP-015) and fixes a₀. Prior art first: [HMS14]
       twist one-point functions; the free φ² line defect's RG flow.
-- [ ] **Pre-registered for the Dirac instrument:** a₀^{Dirac} = 0 exactly (lowest pair-fusion operator
-      has Δ = 2), so the residual at θ → 0 is ã₀ = +0.092 C_T and there is no node.
+- [x] Pre-registered Dirac prediction a₀ = 0 exactly: CONFIRMED (EXP-020).
 - [ ] **ECG t₄ sign.** [BCV21] Fig. 1 caption pairs μ = +0.00312 with t₄ = +4; [BCR18] eq. 129 gives
       t₄ = −1260 μ f∞²/(1−3μ f∞²), the opposite pairing. Adopted BCR18. EXP-002's obstruction is
       sign-independent; the fermion-side conflict is 3.5% (BCR18) or 1.4% (BCV21). An independent

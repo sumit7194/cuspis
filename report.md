@@ -1874,3 +1874,55 @@ the criterion. Below 20° the M ≤ 15 mass cutoff shows, as for the scalar: −
   +0.092 C_T and the free scalar's measured a₀ is ≈ −0.3 C_T. A log θ term is not expected (no
   dimension-1 fusion operator); the log model is fitted and reported, not used for the verdict.
 - Also predicted: no node; the trial function lies above the exact function at every angle.
+
+## EXP-020  The Dirac entanglement run: the pre-registered prediction a₀ = 0 is confirmed
+
+**Date** 2026-09-23. **Status** complete. Mode `dirac` (a = −it, [CHL09] eq (60)), 672 nodes
+(48 masses ≤ 15 × 14 t-nodes on [0, 3.2]), digits 30 + 9M, the EXP-019 fixes, residual guard on.
+Result `scripts/exp004_dirac_result_n24_24_p15.0_t14.json`; analysis `scripts/exp020_analyze.py`,
+applied exactly as frozen in EXP-019 addendum 3 before the run.
+
+**Failed nodes, measured before the verdict was looked at.** Sixteen nodes failed, all at large t
+(≥ 2.7) for M ≥ 11.9. The starting solve raised "matrix is numerically singular", probably near a
+branch transition, where the leading coefficient vanishes. The assembly skips failed nodes, so their
+effect was measured (`scripts/exp020_failed_nodes.py`) with two independent fill-ins, extrapolation in t
+and interpolation in M, which agree to ≈ 10%. **Their total contribution is ≤ 4·10⁻⁷ of s(θ) at every
+angle, and ≤ 2·10⁻⁷ from 20° up**: immaterial to every criterion below. The singular-start cases
+remain open as an instrument item.
+
+**(1) Known answers: PASS** (criterion ≤ 10⁻³ at 63.4°–160°, ≤ 2·10⁻³ at 26.6° and 45°). Against the
+exact series and eq (22) of [HHCWM16]: worst 3.9·10⁻⁵ at 63.4°–160° (90°); 3.6·10⁻⁵ at 26.6° and 5·10⁻⁶
+at 45°; ≤ 4·10⁻⁶ from 100° to 170°; 2·10⁻⁶ at 20°. [CHL09]: 0.02329 at 90° (+9·10⁻⁵, their last digit)
+and 0.005022 at 135° (−6·10⁻⁶). The mass cutoff shows below 20°: −7·10⁻⁴ (15°), −1% (10°), −11% (5°).
+This is the first independent four-digit determination of the free-Dirac corner function between 20°
+and 60°, and it agrees with [HHCWM16]'s eq (22) there to ≤ 4·10⁻⁵.
+
+**(2) Residual sign: as predicted.** (ã − a)/a is positive at every angle from 15° to 170° (+0.48% at
+15°–20°, maximum +0.58% at 40°, +0.005% at 170°). No node.
+
+**(3) a₀: CONFIRMED on the frozen rule.** κ fixed at [CHL09]'s 0.0722, model a₀ + a₁θ + a₂θ² + a₃θ³:
+
+| window | 20–50° | 20–60° | 26–60° | 20–70° |
+|---|---|---|---|---|
+| a₀ / C_T | +0.001 | +0.002 | +0.005 | +0.002 |
+
+All four satisfy |a₀| < 0.05 C_T; the rule was confirm-if-all-below-0.05, refute-if-all-above-0.1. The
+reported-only models agree in direction: quadratic −0.002 … −0.005; with a log term −0.017 … −0.058
+and a log coefficient drifting −0.007 … −0.028, which is not a detection. **Sensitivity beyond the
+frozen rule:** moving κ across its published rounding (0.07215–0.07225) moves a₀ by ±0.02 C_T, and
+fitting κ freely returns 0.07215 with a₀ = +0.019, the same degeneracy. So **a₀^{Dirac} = 0.00 ± 0.02
+C_T**, the uncertainty set by κ's third digit rather than by the instrument. For comparison: the
+trial function's ã₀ = +0.092 C_T, and the free scalar's a₀ ≈ −0.3 C_T.
+
+**What this establishes.** EXP-015 derived that a θ⁰ term needs a dimension-1 operator in the
+twist-pair fusion channel; the free scalar has one (Δ = 2Δ_φ = 1), the Dirac fermion does not
+(Δ = 2Δ_ψ = 2). The Dirac prediction was frozen numerically before this run, could have failed, and did
+not. Together with Einstein (a₀ = 0, exact curve), ECG (a₀ = 0, four couplings, EXP-016) and the free
+scalar (a₀ ≈ −0.3 C_T, nonzero), the sharp-end constant now behaves as the operator content says in
+all four theories where it has been measured. The mechanism of EXP-012 Result C, now withdrawn, would
+have allowed any a₀ ≤ 0 here.
+
+**Grade** known answers: verified. Failed-node immateriality: measured. a₀ = 0.00 ± 0.02 C_T: measured,
+κ-limited, with a verdict fixed in advance. Below 45° the instrument's values are refereed by [HHCWM16]
+eq (22), whose one-sided error for the fermion is ≈ 0 (the last coefficient already sits at its
+asymptote), so here the sub-45° values have two independent methods behind them.

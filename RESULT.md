@@ -71,7 +71,7 @@
 > constraint" reads like a weakness; here it is the opposite.
 
 *Standalone statement of the result of this workspace. Self-contained; the lab notebook is `report.md`
-(entries EXP-001 to EXP-017), the verified bibliography is `references.md`, the checking scripts are
+(entries EXP-001 to EXP-020), the verified bibliography is `references.md`, the checking scripts are
 under `scripts/`. Written 2026-09-05 and consolidated the same day after EXP-011; §10 is the handover.*
 
 ## 0. Statement and scope
@@ -377,8 +377,9 @@ C1–C6. Where it can come from is now settled structurally (`report.md` EXP-015
 physics gives only odd powers of θ (parity), and a twist line fuses with its reversal to the trivial
 defect, so the tip contributes nothing. A θ⁰ term therefore requires an operator of dimension 1 in
 the twist-pair fusion channel. The free scalar has one (the replica bilinear, Δ = 2Δ_φ = 1); the Dirac
-fermion's lowest is Δ = 2, so a₀ = 0 exactly is predicted there; Einstein has none, and its exact curve
-has a₀ = 0 to four digits. Measured
+fermion's lowest is Δ = 2, so a₀ = 0 exactly was predicted there and then **confirmed by a run with a
+verdict rule frozen in advance: a₀^{Dirac} = 0.00 ± 0.02 C_T** (EXP-020); Einstein has none, and its
+exact curve has a₀ = 0 to four digits; ECG likewise (EXP-016). Measured
 here: real scalar, n = 1: a₀ ≈ −0.3 C_T — −0.32 without a log θ term, −0.48 … −0.57 with one, and the
 data cannot tell the two forms apart, so the magnitude is model-dependent at the factor-1.5 level
 (`scripts/exp004_eehp_result_Mcut13.1.json`, validated to ≤ 5·10⁻⁵ against [HHCWM16] from 20° to 170°);
@@ -458,12 +459,14 @@ at n = 2) and Einstein (0), with the predicted node for the n = 1 scalar found a
 crossing of [LMW26] — gives κ ≥ (2π/3)a(π/2), hence κ/C_T ≥ 2.39, and is provably one-sided (EXP-013);
 its admissible set is closed under Casimir dressing at every corner dimension (EXP-017). (10) The ≈1%
 accuracy of the (σ, κ) trial function is not a consequence of the constraints: an admissible function
-with Einstein's exact σ and κ departs from Einstein by 8% at 45° (EXP-016).
+with Einstein's exact σ and κ departs from Einstein by 8% at 45° (EXP-016). (11) The sharp-end
+constant a₀ is nonzero exactly when the twist-pair fusion has a dimension-1 operator: predicted in
+EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP-020).
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
 a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp
-structure carries over; unmeasured for the Dirac fermion, whose solver branch is parked, EXP-012). (b) An *upper* bound on
+structure carries over; zero for the Dirac fermion, EXP-020). (b) An *upper* bound on
 κ: every constraint in hand is invariant under Casimir dressing 𝒟 → 𝒟e^{E(y+1/y)} (equivalently, under
 adding a pure singular-end tail), so a bound needs a constraint that is not — one in which the Casimir
 energy enters other than as a multiplicative factor (EXP-017). The κ band and the shape residual are
