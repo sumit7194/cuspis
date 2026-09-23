@@ -4,6 +4,12 @@
 people without opening anything else in this repository. Its purpose is that parallel sessions working
 on this problem complement each other and do not contradict each other.*
 
+> **⚠ QUANTUM SESSIONS: DO NOT READ SECTION 2 ROWS S7, S7a, S8, S10, OR SECTION 3 TRAP 9.** They contain this
+> workspace's small-angle (below 45°) results — measured a₀ values, the scalar's node angle, and a derivation about
+> the sign of a₀ — which `quantum` asked, in writing, to be shielded from while its independent sub-45° check is
+> registered. The rest of this document is safe to read. If you have already read those rows, declare the exposure
+> in your pre-registration. (Warning added 2026-09-24; the bridge decides whether a redacted copy replaces it.)
+
 **How to use it.** Items carry stable IDs **CF-1 … CF-25**. If your session made its own list, map your
 items onto these IDs rather than renumbering; add genuinely new items under your own prefix (for
 example QU-1 for `quantum`). Section 1 is the vocabulary every number should be stated in. Section 2 is
