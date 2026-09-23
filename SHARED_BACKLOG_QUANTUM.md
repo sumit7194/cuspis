@@ -55,6 +55,7 @@ workspace's numerics, with the stated caveat), **conjectured**.
 | S11 | "Fixing σ and κ leaves little freedom" is **not** a consequence of the constraints. An admissible function with exactly Einstein's σ and κ differs from Einstein by 8% at 45°. The trial function's ≈1% accuracy is an empirical property of the theories computed. | verified | — |
 | S12 | The Dirac and Einstein values of the thermal coefficient over C_T agree to 4·10⁻⁴. This is chance on a known looser pattern, not a relation. | verified | — |
 | S13 | From 45° to 170°, this workspace's free-field corner functions agree with Helmes et al. 2016 to better than 10⁻⁴. | verified | — |
+| S14 | **Conformal concavity holds at n = 1 (entanglement entropy): tan(θ/4)·a(θ) is convex in u = tan²(θ/4).** Derived from SSA plus the vacuum's global conformal invariance, by running Lanzetta–Moult–Wang's eye construction (2609.04302) with SSA on nested regions. Their variational step needs only a 2×2 Cauchy–Schwarz, which SSA supplies at n = 1. (Added 2026-09-24; general statement only, per the bridge.) | derived at physics-level rigour; survived an adversarial review; confirmed in the EMI model | A holographic (RT) check; an algebraic proof. |
 
 ---
 
@@ -105,7 +106,7 @@ instrument, L literature or desk work.
 | CF-5 | The 1/N correction to κ/C_T for large-N O(N) | 4 | 5 | 10% | 18.0 | A |
 | CF-7 | Numerical bootstrap of the n = 2 replica twist line in 3d Ising | 4 | 5 | 10% | 18.0 | I |
 | CF-8 | A non-perturbative or top-down holographic corner function | 4 | 5 | 15% | 17.0 | A |
-| CF-9 | Prove the rectangle bound, or conformal concavity, holds at n = 1 | 4 | 4 | 20% | 12.8 | A |
+| CF-9 | Prove the rectangle bound, or conformal concavity, holds at n = 1 — **concavity: DONE 2026-09-24, see S14** | 4 | 4 | 20% | 12.8 | A |
 | CF-10 | What orders κ/C_T across theories (t₄ does not) | 3 | 4 | 10% | 10.8 | A |
 | CF-11 | Prove reflection positivity of the corner function at n = 1 | 3 | 4 | 15% | 10.2 | A |
 | CF-14 | Derive the smooth-end sign rule of the shape residual | 2 | 4 | 15% | 6.8 | A |

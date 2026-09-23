@@ -20,6 +20,28 @@ caveats, not tasks.
 - [x] **CF-22 / bridge C17 (EXP-022):** the eye inequalities hold on every curve here; eq. (37) with margins
       of 3 to 4. New theorem: a₀ ≤ 0 at integer n ≥ 2 (corrects EXP-015). Helmes eq. (22) unreliable below
       a few degrees. Next in the bounds chain: CF-24, the cuboid under Casimir dressing.
+- [x] **CF-9 / bridge (EXP-025, 2026-09-24).** Outcomes:
+  - at n = 1, κ ≥ 2a(π/2) from SSA, so κ/C_T ≥ 2.280 unconditionally;
+  - the full rectangle bound reduces to [CH12] conditional positivity (obstruction named);
+  - conformal concavity at n = 1 is derived from SSA plus conformal flows (reviewed; EMI check to 10⁻¹⁰);
+  - given it, κ ≥ 2.538·a(π/2) and κ/C_T ≥ 2.894.
+
+  Reported to the bridge.
+- [ ] **EXP-024 — resume first.** Does κ/C_T stay unbounded once conformal concavity at n = 1 is imposed? The
+      pre-registration (frozen family: EMI + K·tail + one high-frequency mode; verdict rule) is in report.md and
+      untouched. This is now the live form of the upper-bound question.
+- [ ] **Independent second model for O3's step 4.** EMI confirms the n = 1 identity "F(u) − ∫q = tangent line"
+      to 10⁻¹⁰. A holographic (Ryu–Takayanagi) check of the same identity would be independent of EMI's
+      extensivity. Also: re-derive the EMI reduction formula f′(0⁺) − f′(∞) = C·R, which so far has only been
+      re-run.
+- [ ] **Rigour for O3.** Assumptions A1–A7 (report.md EXP-025) are physics-standard. For a theorem, A3 (a
+      Weyl-covariant regulator) and A6 (shape-differentiability) need an algebraic formulation. Candidate: CMI of
+      von Neumann algebras plus the unitary conformal group.
+- [ ] **Sharpen the n = 1 κ bound.** Add a₀ ≤ 0 (now n = 1) and [LMW26b] eq. (37) to the EXP-025c intercept
+      argument. Small-angle material; keep it out of the quantum copy.
+- [ ] **Quantum copy.** Only the bridge-approved general statement (CC holds at n = 1) was added to
+      SHARED_BACKLOG_QUANTUM.md. The κ-bound upgrades to S4 are held pending the bridge's decision, because their
+      derivation passes through F(0) = κ/4.
 - [x] **Bridge job 2:** [BCLM23] positioned in RESULT.md §0 and §8 (κ/F₀ conjecture compatible with the
       theorem; no collapse at all under F₀ normalisation).
 
@@ -32,7 +54,7 @@ caveats, not tasks.
 - [ ] **An upper bound on κ** (EXP-013, EXP-017). Every constraint in hand is invariant under Casimir
       dressing 𝒟 → 𝒟e^{E(y+1/y)}, which raises κ at any fixed corner dimension; so any candidate must
       fail to be dressing-invariant. Unchecked: [LMW26]'s cuboid equations and other gluings — test each
-      against dressing first. Also open: [LMW26]'s bound at n → 1 is assumed, not proved.
+      against dressing first. ~~Also open: [LMW26]'s bound at n → 1 is assumed, not proved.~~ Settled by EXP-025 (see below).
 - [ ] **Instrument, if anyone re-runs it** (what would make the scalar EE result clean rather than
       corrected): keep the 14-node t-grid on [0, 3.2] (the 10-node grid cost a uniform −1.87·10⁻⁴) and
       the rule dps = 50 + 5M; use M ≤ 13.1. The five masses M ≥ 14 are garbage at 120–125 digits —

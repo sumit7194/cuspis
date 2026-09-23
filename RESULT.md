@@ -111,6 +111,24 @@ the admissible set is closed under Casimir dressing 𝒟 → 𝒟 e^{E(y+1/y)}, 
 corner dimension, including the nonzero one twist defects must have. So the theorem below stands,
 and the rigorous range becomes κ/C_T ∈ [2.39, ∞) against the observed [3.67, 4.18].
 
+**Update after CF-9 (EXP-025, 2026-09-24): two n = 1 constraints outside C1–C6.**
+
+- **(i) The rectangle's SSA half, from standard inputs.** SSA on equal-height rectangles plus 90° rotation give
+  κ ≥ 2a(π/2) at n = 1. With a(π/2) ≥ 𝔞_min(π/2), this gives **κ/C_T ≥ π² ln 2/3 = 2.280, unconditionally**.
+  - [LMW26]'s full (2π/3) needs the rectangle entropy's derivative to be completely monotone. At n = 1 that is
+    exactly [CH12]'s conditional positivity for reflected rectangles, which is conjectural. SSA alone stops at 2
+    (explicit saturator).
+- **(ii) Conformal concavity at n = 1: tan(θ/4)·a(θ) is convex in u = tan²(θ/4).** Derived from SSA plus the
+  vacuum's global conformal invariance, by running [LMW26b]'s eye construction with nested regions. Grade:
+  physics-level; it survived an adversarial review and is confirmed in the EMI model to 10⁻¹⁰.
+  - Given (ii) and C3, **κ ≥ 2.538·a(π/2)**, so [LMW26]'s bound holds at n = 1 with a 21% margin.
+  - Also **κ/C_T ≥ (2π²/3)·φ* = 2.894**, with φ* = max_τ τ[log((1+τ²)/(2τ)) + (1−τ²)/(1+τ²)]. This is optimal
+    for {CC, C2, C3, C5}.
+- **Effect on the theorem.** The theorem below is stated for C1–C6 and stands as stated. Its witness family violates
+  both (i) and (ii). So the rigorous range is now
+  **κ/C_T ∈ [2.28, ∞) unconditionally and [2.89, ?) given (ii)**. Whether the upper end stays infinite once (ii) is
+  imposed is open: this is EXP-024, pre-registered with an explicit CC-respecting family and deferred.
+
 **Refereeing status of the Phase-2 measurement (stated once, inherited by every reader).** The
 free-scalar values from `scripts/exp004_eehp_result_Mcut13.1.json` are checked against published
 numbers to ≤ 5·10⁻⁵ from 45° to 170° [HHCWM16 series, CHL09], and from 20° to 45° only against
@@ -167,6 +185,11 @@ For a function a on (0, 2π):
 
 Every bound on a(θ) at n = 1 in the literature ([HT07], [CHL09], [BWK16], [HHCWM16]) is derived from
 a subset of C1–C5. No other general constraint is known (prior-art sweep, `report.md` EXP-001 R2).
+*Superseded in part by EXP-025, 2026-09-24.* At n = 1 this workspace derived two more constraints from SSA:
+- κ ≥ 2a(π/2), from rectangles;
+- conformal convexity of tan(θ/4)·a in u = tan²(θ/4), from SSA plus global conformal invariance (physics-level).
+
+Neither is in C1–C6. The C1–C6 statements below remain true as stated. See §0's CF-9 update for what changes.
 
 ## 3. Spectral form of the constraints
 
@@ -483,13 +506,18 @@ its admissible set is closed under Casimir dressing at every corner dimension (E
 accuracy of the (σ, κ) trial function is not a consequence of the constraints: an admissible function
 with Einstein's exact σ and κ departs from Einstein by 8% at 45° (EXP-016). (11) The sharp-end
 constant a₀ is nonzero exactly when the twist-pair fusion has a dimension-1 operator: predicted in
-EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP-020).
+EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP-020). (12) CF-9 (EXP-025):
+  - at n = 1, SSA gives κ ≥ 2a(π/2), hence κ/C_T ≥ 2.280, unconditionally;
+  - the full rectangle bound at n = 1 needs [CH12] conditional positivity for reflected rectangles;
+  - conformal concavity holds at n = 1 (derived from SSA plus conformal flows, physics-level; reviewed; EMI check
+    passes). With C3 it implies κ ≥ 2.538·a(π/2) and κ/C_T ≥ 2.894.
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
 a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp
 structure carries over; zero for the Dirac fermion, EXP-020). (b) An *upper* bound on
-κ: every constraint in hand is invariant under Casimir dressing 𝒟 → 𝒟e^{E(y+1/y)} (equivalently, under
+κ, now sharpened by (12): does κ/C_T stay unbounded once conformal concavity at n = 1 is imposed? That is EXP-024,
+pre-registered and deferred, and it is the first thing to run. The rest of this item as before: every constraint in hand is invariant under Casimir dressing 𝒟 → 𝒟e^{E(y+1/y)} (equivalently, under
 adding a pure singular-end tail), so a bound needs a constraint that is not — one in which the Casimir
 energy enters other than as a multiplicative factor (EXP-017). The κ band and the shape residual are
 one fact: computed corner functions are close to the EMI corner function (EXP-016). (c) The ECG t₄ sign
@@ -505,7 +533,9 @@ becomes the target, and re-run its known-answer controls first. The sibling repo
 numbers violate a rigorous lower bound at 120° and are recorded in `TODO.md` for the bridge, not
 fixed. If you want to attack the theorem, the place to push is not the inequalities (they are all
 positivity) but the scope line of §0: exhibit a *unitary CFT* constraint that some positive spectral
-density violates. If you want to attack the explanation in §6, the falsifier is named there: a third
+density violates. EXP-025 found one: conformal concavity at n = 1 excludes the theorem's witness family. The
+next step is EXP-024. Either a CC-respecting family with unbounded κ exists (pre-registered: a tail plus one
+high-frequency mode), or CC bounds κ. If you want to attack the explanation in §6, the falsifier is named there: a third
 bridge that supplies a growth condition at the tail end.
 
 ## References (keys resolve in `references.md`)

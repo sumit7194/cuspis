@@ -55,11 +55,11 @@ workspace's numerics, with the stated caveat), **conjectured**.
 | S1 | No constraint in the known general set (purity, strong subadditivity, strong subadditivity with Lorentz invariance, reflection positivity, the two limits) bounds κ/C_T above. Every κ/C_T in (0, ∞) is admissible, and a(θ)/C_T is unbounded above at every angle. | proved; independently re-derived by `quantum` with its own code | A general constraint missing from that set. The set's completeness is a literature claim, not a theorem. |
 | S2 | The collapse, to ≈1%, is the statement κ/C_T ∈ [3.672, 4.179]; the ≈1% shape residual is a separate fact. | verified | — |
 | S3 | Theories with equal t₄ differ in κ/C_T by up to 11.5%, so ⟨TT⟩ and ⟨TTT⟩ data cannot order the band. | verified | — |
-| S4 | The only known "second channel" is Lanzetta–Moult–Wang's rectangle of twist lines. It gives κ_n ≥ (2π/3)·a_n(π/2), which together with a(π/2) ≥ (π²C_T/3)·log√2 (Bueno–Witczak-Krempa 2016) gives **κ/C_T ≥ 2.39 at n = 1, assuming their bound continues to n = 1.** | proved at integer n ≥ 2; continuation assumed | A proof at n = 1 (CF-9). |
+| S4 | The only known "second channel" is Lanzetta–Moult–Wang's rectangle of twist lines. It gives κ_n ≥ (2π/3)·a_n(π/2) at integer n ≥ 2. **At n = 1 (CF-9, 2026-09-24):**<br>• SSA on equal-height rectangles plus rotation give **κ ≥ 2·a(π/2)**. With a(π/2) ≥ (π²C_T/3)·log√2 (Bueno–Witczak-Krempa 2016, SSA + Lorentz), this gives **κ/C_T ≥ 2.280 unconditionally**.<br>• The full 2π/3 needs complete monotonicity of the rectangle entropy's derivative. At n = 1 that is Casini–Huerta 2012 conditional positivity for reflected rectangles, which is conjectural; SSA alone provably stops at 2.<br>• Given S14, **κ ≥ 2.538·a(π/2)**, so the rectangle bound holds at n = 1 with room, and **κ/C_T ≥ 2.894**. | 2.280: derived from standard n = 1 inputs. 2.894: conditional on S14 | EXP-024 (does κ stay unbounded above under S14?) |
 | S5 | **The rectangle bootstrap can never bound κ above.** Multiplying any admissible solution by e^{E(y+1/y)}, E ≥ 0, keeps it admissible, with the same corner dimension and a larger Casimir energy. **The same holds for the cuboid ("wireframe") bootstrap** of 2609.04041: dressing each face the same way raises the pair energy, and a separate dressing raises the four-body energy, with every stated constraint kept (added 2026-09-24). | proved (two-line proofs, numerical checks with working controls) | — |
 | S6 | Local thin-wedge physics contributes only odd powers of θ. The twist line fuses with its reversal to the trivial defect, so the tip contributes nothing. Hence **a₀ ≠ 0 requires a dimension-1 operator in the twist-pair fusion channel.** The general exponent θ^{2(Δ−1)} for identity fusion is **prior art: Lanzetta–Moult–Wang, "Eye-opening bounds on cusps", 2609.04302, eq. (28)**. The application to twist lines is this workspace's. | derived; exponent is prior art | A dimension-1 operator where none is expected, or a θ⁰ term without one. |
 | S7 | a₀ by theory: Einstein 0 (exact curve, four digits); ECG 0 (five digits, four couplings); **Dirac 0.00 ± 0.02 C_T** (pre-registered prediction, confirmed; the error comes from κ's third digit); free real scalar at n = 1 ≈ −0.3 C_T; free real scalar at n = 2 −0.24 ± 0.03 C_T. | measured | For the scalar, see S8. |
-| S7a | **a₀ ≤ 0 is a theorem at integer n ≥ 2** (and at n = 1 if conformal concavity continues): a constant in Γ adds α√u to ℰ, whose second derivative −α/(4u^{3/2}) dominates as u → 0, so the proven concavity of 2609.04302 forces α = (1−n)a₀ ≥ 0. All measured values agree. This corrects this workspace's earlier claim that the sign is not fixed. | derived from a proven theorem (added 2026-09-24) | — |
+| S7a | **a₀ ≤ 0 is a theorem at integer n ≥ 2** **and at n = 1 given S14** (added after CF-9): a constant in Γ adds α√u to ℰ, whose second derivative −α/(4u^{3/2}) dominates as u → 0, so the proven concavity of 2609.04302 forces α = (1−n)a₀ ≥ 0. All measured values agree. This corrects this workspace's earlier claim that the sign is not fixed. | derived from a proven theorem (added 2026-09-24) | — |
 | S7b | 2609.04302 eq. (37), in corner language **a₁ ≤ −κ_n/12** when the lightest fusion operator has Δ > 3/2, holds for Einstein (factor 3.05), ECG (2.97–3.13), Dirac n = 1 (3.6–3.9) and Dirac n = 2 (4.1). Conformal concavity holds for all these curves and for ECG, a theory the paper did not test. Far from saturated; dressing-invariant, so not a route to an absolute bound on κ. | verified (added 2026-09-24) | — |
 | S8 | The free scalar's a₀ is **model-dependent by a factor of about 1.5.** −0.32 C_T without a log θ term and −0.48 … −0.57 C_T with one; the data from 20° to 70° cannot tell them apart. Its sign is robust. | measured, with caveat | CF-13 or CF-18. |
 | S9 | The (σ, κ) trial function's constant comes entirely from its Lifshitz component, so for theories with no dimension-1 fusion operator the residual at θ → 0 equals that constant exactly. Imposing a₀ = 0 improves the Dirac fermion 3 to 15 times and makes the scalar 10 to 100 times worse. | derived and verified | — |
@@ -67,6 +67,7 @@ workspace's numerics, with the stated caveat), **conjectured**.
 | S11 | "Fixing σ and κ leaves little freedom" is **not** a consequence of the constraints. An admissible function with exactly Einstein's σ and κ differs from Einstein by 8% at 45°. The trial function's ≈1% accuracy is an empirical property of the theories computed. | verified | — |
 | S12 | The Dirac and Einstein values of the thermal coefficient over C_T agree to 4·10⁻⁴. This is chance on a known looser pattern, not a relation. | verified | — |
 | S13 | Free-Dirac corner function from 20° to 170°: this workspace's solver agrees with Helmes et al. 2016 to ≤ 4·10⁻⁵. The free scalar agrees to ≤ 5·10⁻⁵ from 26.6° to 170° after two stated corrections; at 20° a known mass-cutoff deficit of 10⁻⁴ remains. | verified | — |
+| S14 | **Conformal concavity holds at n = 1 (entanglement entropy): tan(θ/4)·a(θ) is convex in u = tan²(θ/4).** Derived from SSA plus the vacuum's global conformal invariance, by running Lanzetta–Moult–Wang's eye construction with SSA on nested regions. The key point is that their variational step needs only a 2×2 Cauchy–Schwarz, which SSA supplies at n = 1 for nested regions. It excludes Bueno–Witczak-Krempa's 𝔞_min and this workspace's no-bound witness family (a new n = 1 constraint outside C1–C6). Together with the boosted-wedge inequality (C3), it gives κ/C_T ≥ 2.894 (S4). (Added 2026-09-24.) | derived at physics-level rigour (assumptions listed in report.md EXP-025); survived an adversarial review; confirmed in the EMI model to 10⁻¹⁰, with a control that can fail | A holographic (RT) check of the same identity; an algebraic proof. |
 
 ---
 
@@ -131,7 +132,7 @@ instrument, L literature or desk work.
 | CF-6 | Test the non-analytic θ^{2η} small-angle term at Ising/O(N) | 4 | 5 | 10% | 18.0 | I |
 | CF-7 | Numerical bootstrap of the n = 2 replica twist line in 3d Ising | 4 | 5 | 10% | 18.0 | I |
 | CF-8 | A non-perturbative or top-down holographic corner function | 4 | 5 | 15% | 17.0 | A |
-| CF-9 | Prove the rectangle bound, or conformal concavity, holds at n = 1 | 4 | 4 | 20% | 12.8 | A |
+| CF-9 | Prove the rectangle bound, or conformal concavity, holds at n = 1 — **DONE 2026-09-24, see S4, S14** | 4 | 4 | 20% | 12.8 | A |
 | CF-10 | What orders κ/C_T across theories (t₄ does not) | 3 | 4 | 10% | 10.8 | A |
 | CF-11 | Prove reflection positivity of the corner function at n = 1 | 3 | 4 | 15% | 10.2 | A |
 | CF-12 | A second instrument for free-field values below 45° | 3 | 4 | 35% | 7.8 | I |
@@ -200,6 +201,12 @@ route to asking whether any strongly coupled theory leaves the band.
 **CF-9 The n → 1 continuation.** Lanzetta–Moult–Wang's rectangle bound and their conformal concavity
 (2609.04302: tan(θ/4)·a_n(θ) is convex) are theorems at integer n ≥ 2 and only checked numerically at n = 1.
 A proof at n = 1 gives the first rigorous κ/C_T ≥ 2.39 for entanglement entropy.
+**Done 2026-09-24 (EXP-025):**
+- κ ≥ 2a(π/2) from SSA, giving 2.280 unconditionally;
+- the full rectangle bound needs Casini–Huerta conditional positivity;
+- concavity is derived at n = 1 (S14), and with C3 it gives κ ≥ 2.538·a(π/2) and κ/C_T ≥ 2.894.
+
+The live follow-up is whether κ stays unbounded above once S14 is imposed (EXP-024 in cuspis, pre-registered).
 
 **CF-10 The order of κ/C_T.** The order is scalar > Dirac > ECG(t₄ = −4) > Einstein > ECG(t₄ = +4). No
 known quantity produces it (S3).
