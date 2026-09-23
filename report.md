@@ -2529,3 +2529,17 @@ So:
 - **whether κ/C_T stays unbounded above once CC is added is open.** That is exactly EXP-024, pre-registered with an
   explicit CC-respecting family and deferred. Its pre-registered expectation is "still unbounded", which is
   unverified. It should be the next item.
+
+**Correction to the grading language of EXP-025 (2026-09-24, prompted by the bridge's question).**
+- The "independent adversarial review" in addendum 2 was a **subagent launched from this session**. It was given
+  this session's derivation text, so it shares this session's framing. By the bridge's protocol (A4) it counts as a
+  *within-session* check, not an independent one. The EMI known-answer construction was built by that subagent and
+  re-run here, so it is within-session as well.
+- O3's grade is therefore **PARTIAL** (bridge index): derived at physics-level rigour, and checked only inside this
+  workspace.
+- The outside check is the bridge's V7: a re-derivation of κ ≥ 2a(π/2) and of the concavity step, with
+  independent LP code. It is declared not blind. At the bridge's request, this session does not send it the LP
+  code, the extremal function or the derivation text. The bridge reads only A1–A7 and the C2/C3/C5 definitions as
+  frozen in a938baa.
+- The quantum copy's S4 now carries the 2.280 bound (only 90° data enter), per the bridge's call. Everything
+  routed through concavity's small-angle end stays withheld.
