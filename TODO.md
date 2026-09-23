@@ -101,7 +101,7 @@ caveats, not tasks.
   eq. 4.17): free-field only; the [CH09] table needed to check it did not survive text conversion.
   Unchecked.
 
-## For the bridge (2026-09-24): report on C17 and the BCLM23 job — the bridge socket was gone when I tried to send it
+## For the bridge (2026-09-24): report on C17 and the BCLM23 job — DELIVERED by message 2026-09-24 when the bridge returned
 
 Both jobs are done (commit 2554c92; EXP-022 was pre-registered at 1123c1d before any number was computed).
 - **C17 / CF-22.** All the known-answer controls pass. Eq. (37) of 2609.04302, which in corner language
