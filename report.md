@@ -2806,3 +2806,46 @@ notation, with C_J for the free Dirac field.
 
 **Grade going forward (bridge index): "derived at physics-level; checked outside cuspis by the bridge (V7,
 non-blind); not a theorem."** Promotion needs a proof of A5 and A6, or a human specialist. That is the user's call.
+
+### EXP-028 addendum 1 — run 1 (a = 0.02), and the known-answer gate is projected to fail; chain paused
+
+**Run 1:** diracA0.0200, W = 6, 48 nodes, 0 failures, 517 s wall. Peak whole-tree footprint: MEM 0.664 + CMPRS 0.131 =
+0.796 GB, within the bridge's 1.5 GB cap. The watchdog never fired.
+
+**Tier 2 (a single twist; not the registered gate, which needs ≥ 2 twists).**
+- *The a = 0.02 shape is not EMI.* s(0.02, θ)/s(0.02, 90°) deviates from EMI by **8.4%** at worst. The registered
+  gate on A₂ is 10⁻³.
+- *This is not a⁴ contamination.* s(0.02)/s(¼), with s(¼) = −½ × the validated Dirac n = 2 curve, is 0.00661–0.00670
+  across angles. Pure a² scaling gives 0.0064, so A₄a²/A₂ ≈ 3·10⁻⁴ at a = 0.02: the run is ≈ A₂a² to that accuracy.
+  And s scales as a², not as a(1−a), whose ratio would be 0.105.
+- *The shape barely moves with a.* It changes by 1.4% between a = 0.02 and a = ¼. The a = ¼ sector (the validated
+  Rényi-2 curve) is itself 7.3% off EMI.
+- *Instrument checks at the heavy end:* the mass tail is negligible (p²Ψ ≈ 10⁻²⁵ against 10⁻⁵), branch continuation
+  gives 0 flips, and series-start residuals are ≈ 10⁻¹¹⁶ of the signal.
+- *Extractor caveat.* On Rényi-type curves the κ/σ variants spread from 6.06 to 7.13, and θ·a at 5° is still 8% below
+  the published κ₂. So κ/σ extraction is unreliable for these shapes, and the shape deviation is the robust measure.
+  The extractor passes exact EMI to 2·10⁻⁵ only because EMI is smooth.
+
+**Consequence, per the registration.** The gate (A₂ = EMI shape to 10⁻³) will fail by about 80×. No choice of the
+remaining twists can change that, because the a⁴ contamination is already 3·10⁻⁴. **Nothing about a₄ is read.** The
+chain is paused after run 1: runs 2–4 cannot rescue the gate, so running them would spend compute without informing
+the verdict.
+
+**Why the control fired: open, and informative.** Three candidates, not yet discriminated:
+- **(i) Identification.** The CHL sector's a² corner coefficient is *not* the Dirac charge-variance corner function.
+  This could be spin-structure or regularisation content of the continuum twisted sector, a non-uniform a → 0 limit
+  of the log coefficient, or the vertex/Psi_π subtraction carrying a²-order corner content. For exact lattice
+  Gaussian states, log Z_a = log det(1 − C + Ce^{2πia}) = log⟨e^{2πiaN_A}⟩, so the discrepancy would have to sit in the
+  continuum corner coefficient.
+- **(ii) Instrument.** The small-a sector is wrong in a way the a = ¼ control cannot see. This is less likely: the
+  shape is nearly a-independent and matches the validated a = ¼ curve to 1.4%.
+- **(iii) Premise.** The free-Dirac variance corner is not EMI-shaped. This is least likely: [ESW21] eq. (9) holds for
+  any CFT, and its Dirac case is credited to [HLM19].
+
+**The discriminating next step, cheap relative to M1.** Compute the free-Dirac charge-variance corner function
+*directly*: lattice correlation-matrix variance for polygons, doubling divided out, with lattice angles only. Then
+compare its shape with EMI and with A₂.
+- EMI and not A₂ ⇒ (i) or (ii).
+- A₂ and not EMI ⇒ (iii), which would contradict ESW21.
+
+That would need the bridge's go.
