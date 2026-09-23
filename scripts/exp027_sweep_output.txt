@@ -1,0 +1,61 @@
+citers of 2102.06223 (recid 2011713): returned 40, total 40, citation_count 40  [sanity OK; control 2211.05159 present]
+    2106.01380   Scaling of the disorder operator at deconfined quantum criticality
+    2408.08364   Geometric expansion of fluctuations and average shadows
+    2211.05159   Full-counting statistics of corner charge fluctuations
+    2404.04334   Disorder operators in two-dimensional Fermi and non-Fermi liquids through multidimensional bosonizat
+    2009.02337   Geometric entanglement in integer quantum Hall states
+    2301.07130   Multipartite entanglement in two-dimensional chiral topological liquids
+    2212.09243   Entanglement entropy of the quantum Hall edge and its geometric contribution
+    2502.15467   Corner contribution to the entanglement in two-dimensional systems: A tensor network perspective
+    2311.05690   Measuring the Boundary Gapless State and Criticality via Disorder Operator
+    2211.04334   Universal Features of Entanglement Entropy in the Honeycomb Hubbard Model
+    2203.08847   Topological disorder parameter: A many-body invariant to characterize gapped quantum phases
+    2404.13876   Extracting universal corner entanglement entropy during the quantum Monte Carlo simulation
+    2407.11119   Entanglement scaling and charge fluctuations in a Fermi liquid of composite fermions
+    2105.11464   Is the EMI model a QFT? An inquiry on the space of allowed entropy functions
+    2609.20020   Corner entanglement scaling with projected entangled pair states
+    2609.09019   Modular commutator as a robust topological invariant and approximate Markovianity
+    2107.12394   Disks globally maximize the entanglement entropy in 2 + 1 dimensions
+    2407.19003   Holographic dual of defect conformal field theory with corner contributions
+    2102.09571   Universal signatures of Dirac fermions in entanglement and charge fluctuations
+    2510.25840   Scaling of the disorder operator at <math><mrow><mo>(</mo><mn>3</mn><mo>+</mo><mn>1</mn><mo>)</mo><m
+    2301.05238   Quantum Criticality Under Decoherence or Weak Measurement
+    2112.15178   Measuring Rényi entanglement entropy with high efficiency and precision in quantum Monte Carlo simul
+    2605.13971   Corner Charge Fluctuations in Higher Dimensions
+    2408.16057   Corner charge fluctuations and many-body quantum geometry
+    2201.08330   Entanglement entropy and phase space density: lowest Landau levels and 1/2 BPS states
+    2412.01384   Addressing general measurements in quantum Monte Carlo
+    -            Intrication dans les systèmes de Hall quantiques : négativité logarithmique et autres mesures
+    2209.14311   Aspects of N-partite information in conformal field theories
+    2112.13854   Equipartition of entanglement in quantum Hall states
+    2210.16009   Charge fluctuation and charge-resolved entanglement in a monitored quantum circuit with <math><mrow>
+    2307.05164   Conformal Bounds in Three Dimensions from Entanglement Entropy
+    2609.04302   Eye-opening bounds on cusps
+    2308.07380   Disorder Operator and Rényi Entanglement Entropy of Symmetric Mass Generation
+    2508.05494   Symmetry-resolved entanglement entropy in a non-Abelian fractional quantum Hall state
+    2404.04331   Bipartite Fluctuations of Critical Fermi Surfaces
+    2609.04041   Cutting corners: exciting and magical bounds from the cusp bootstrap
+    2604.01436   Entanglement entropy and conformal bounds for d = 5 CFTs
+    -            Novel routes beyond the Landau-Ginzburg-Wilson paradigm
+    -            Novel routes beyond the Landau-Ginzburg-Wilson paradigm
+    2207.12889   Higher-Curvature Gravity and Entanglement Entropy
+citers of 2211.05159 (recid 2180413): returned 9, total 9, citation_count 9  [sanity OK; control 2408.08364 present]
+    2408.08364   Geometric expansion of fluctuations and average shadows
+    2301.07130   Multipartite entanglement in two-dimensional chiral topological liquids
+    2502.15467   Corner contribution to the entanglement in two-dimensional systems: A tensor network perspective
+    2406.17023   Corner Charge Fluctuation as an Observable for Quantum Geometry and Entanglement in Two-Dimensional 
+    2407.11119   Entanglement scaling and charge fluctuations in a Fermi liquid of composite fermions
+    2605.13971   Corner Charge Fluctuations in Higher Dimensions
+    2408.16057   Corner charge fluctuations and many-body quantum geometry
+    2404.04331   Bipartite Fluctuations of Critical Fermi Surfaces
+    -            Probing Universal Fingerprints of Quantum States: From Quantum Entanglement to Conformal Field Theor
+arXiv [control] abs:corner AND abs:cumulants: total 12  control 2211.05159 HIT
+arXiv [Dirac corner cumulants] abs:corner AND abs:cumulants AND abs:Dirac: total 1
+    2211.05159v3   Full-counting statistics of corner charge fluctuations
+arXiv [corner EE + fluctuations + Dirac] abs:corner AND abs:entanglement AND abs:fluctuations AND abs:Dirac: total 1
+    2102.09571v2   Universal signatures of Dirac fermions in entanglement and charge fluctuations
+arXiv [corner EE + FCS/cumulant] abs:corner AND abs:entanglement AND (abs:"counting statistics" OR abs:cumulant): total 1
+    2211.05159v3   Full-counting statistics of corner charge fluctuations
+arXiv [disorder operator + corner] abs:"disorder operator" AND abs:corner: total 2
+    2101.10358v2   Scaling of disorder operator at $(2+1)d$ U(1) quantum criticality
+    2510.25840v2   Scaling of the disorder operator at (3+1)D O(3) quantum criticality

@@ -2679,3 +2679,58 @@ quantum:** this entry is route material for C2a.
   - g(1) = π − 2 = κ − 2a(π/2), as it must.
 - Consequence: **an EMI test of C11 cannot fire.** A real test of the named rectangle obstruction needs holography
   (RT rectangles, numerical minimal surfaces) or lattice free fields.
+
+**Record correction (2026-09-24).** Commit fda21ac's message says the quantum-copy leak scan was "clean". It was
+not: it flagged "π³/8" and "3.876". Both sit on line 38 of the quantum copy (the normalisation warning: "The EMI
+model's κ/C_T = π³/8 ≈ 3.876 sits inside the band"). They have been there since the copy was created (c8a7269),
+before C2a existed, and the correction added nothing. It is general, pre-existing, shared information, not C2a
+route material. It is reported to the bridge so it can judge the seal.
+
+## EXP-027  C2a′ (the Dirac cumulant route) — step 1: prior-art sweep (sealed toward quantum)
+
+**Date** 2026-09-24. **Assigned by** the bridge. **Question.** Is "for the free Dirac fermion, the variance corner
+term is EMI-shaped and the higher cumulants give the deviation" already in print for corners? If it is, the item is
+settled by the literature.
+
+**Protocol** (`scripts/exp027_sweep.py`, output `exp027_sweep_output.txt`).
+- INSPIRE citer queries use `refersto:recid:`, not `refersto:arxiv:`. Each is checked against a count bound
+  (returned = total = citation_count) and a positive control:
+  - citers of 2102.06223: 40 of 40, and the control 2211.05159 is present;
+  - citers of 2211.05159: 9 of 9, and the control 2408.08364 is present.
+- arXiv API keyword queries use a control, "corner AND cumulants", which must return 2211.05159. It does.
+
+**Read on source (full text unless stated).**
+- **[ESW21] 2102.06223.**
+  - Eq. (9): the variance corner term of a conserved U(1) charge is b(θ) = (σ_cond/π²)(1 + (π−θ)cot θ) for *any*
+    CFT.
+  - The Supplementary eqs. (41)–(43) show that the variance double integral "is exactly the form of the EMI model".
+  - For free Dirac fermions eq. (9) "was previously obtained" by Herviou–Le Hur–Mora, PRB 99, 075133 (2019)
+    (arXiv 1809.08252). That paper was read only through ESW21 and its own abstract.
+  - The Discussion: "It is an open question to understand why these distinct quantities [fluctuation and
+    entanglement corner functions] … seem constrained to obey nearly the same shape dependence."
+- **[BESW22] 2211.05159.**
+  - It quotes a₂(θ) ∝ 1 + (π−θ)cot θ (superuniversal) and computes higher even cumulants' corner terms for
+    quantum Hall states only. In that case a_m(θ) grows factorially with m, and a₄ > 0, a₆ < 0, alternating.
+  - For the free massless Dirac fermion it gives only area-law coefficients c_m (m ≤ 12; signs +, +, −, +, +, −).
+    It states: "It would be interesting to extend this analysis to higher corner terms in Dirac semimetals and
+    general CFTs."
+- *Abstracts only:*
+  - Crépel–Hackenbroich–Regnault–Estienne 2102.09571: Dirac EE and variance in the flux response; corners only via
+    Kitaev–Preskill non-universality.
+  - Wang et al. 2101.10358: the disorder operator at small U(1) angle, with corner exponent ∝ C_J; a nearly-smooth
+    formula; bosonic QMC.
+  - Jiang et al. 2209.07103 and Liu et al. 2212.11821: fermion disorder operators, with Fermi surfaces and GN log
+    coefficients. Not the corner decomposition.
+
+**Verdict of the sweep.**
+- **The variance half is settled in print:** it is exactly EMI-shaped, for any CFT.
+- **The other half is not in print:** as of 2021–2022 it was explicitly listed as open, and nothing later was
+  found. That half is the Dirac entanglement corner function as "EMI-shaped variance plus higher-cumulant
+  corrections", and the reason the two are close.
+- So C2a′ is not settled by the literature.
+- **One well-posedness caveat from BESW22's data.** Higher corner cumulants grow factorially, so the naive
+  Klich–Levitov series Σ 2ζ(2k)·a_{2k}(θ) need not converge for the corner coefficient. The well-posed object is the
+  full U(1)-twist decomposition: for free fermions, the entropy is an exact integral over the twisted sectors
+  ⟨e^{2πia·Q_A}⟩. Its small-a limit is the variance, which is exactly EMI-shaped. That is precisely CHL09's
+  twist-parameter decomposition, which this workspace's instrument implements. A test at finite a therefore means
+  instrument runs, not light work.
