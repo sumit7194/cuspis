@@ -71,7 +71,7 @@
 > constraint" reads like a weakness; here it is the opposite.
 
 *Standalone statement of the result of this workspace. Self-contained; the lab notebook is `report.md`
-(entries EXP-001 to EXP-020), the verified bibliography is `references.md`, the checking scripts are
+(entries EXP-001 to EXP-021), the verified bibliography is `references.md`, the checking scripts are
 under `scripts/`. Written 2026-09-05 and consolidated the same day after EXP-011; §10 is the handover.*
 
 ## 0. Statement and scope
@@ -376,7 +376,8 @@ the constant a₀ is the sharp-end analogue of σ′: a second non-universal num
 C1–C6. Where it can come from is now settled structurally (`report.md` EXP-015): local thin-wedge
 physics gives only odd powers of θ (parity), and a twist line fuses with its reversal to the trivial
 defect, so the tip contributes nothing. A θ⁰ term therefore requires an operator of dimension 1 in
-the twist-pair fusion channel. The free scalar has one (the replica bilinear, Δ = 2Δ_φ = 1); the Dirac
+the twist-pair fusion channel. (The general small-angle structure, a term θ^{2(Δ−1)} for defects fusing
+to the identity, is [LMW26b] eq. (28), which predates EXP-015; see EXP-021.) The free scalar has one (the replica bilinear, Δ = 2Δ_φ = 1); the Dirac
 fermion's lowest is Δ = 2, so a₀ = 0 exactly was predicted there and then **confirmed by a run with a
 verdict rule frozen in advance: a₀^{Dirac} = 0.00 ± 0.02 C_T** (EXP-020); Einstein has none, and its
 exact curve has a₀ = 0 to four digits; ECG likewise (EXP-016). Measured

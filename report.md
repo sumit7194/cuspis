@@ -1926,3 +1926,36 @@ have allowed any a₀ ≤ 0 here.
 κ-limited, with a verdict fixed in advance. Below 45° the instrument's values are refereed by [HHCWM16]
 eq (22), whose one-sided error for the fermion is ≈ 0 (the last coefficient already sits at its
 asymptote), so here the sub-45° values have two independent methods behind them.
+
+## EXP-021  Literature sweep for the backlog, and a prior-art correction to EXP-015
+
+**Date** 2026-09-23. **Status** complete. Six parallel research streams, restricted to reading, covered:
+interacting-CFT corner data; holography and extremality; the defect and cusp bootstrap; free-field twist
+lines; Rényi-index constraints; strip and mutual-information coefficients. The ranked backlog they
+informed is `BACKLOG.md`.
+
+**Correction to EXP-015.** [LMW26b] eq. (28), posted 3 September 2026, gives the small-angle expansion
+Γ = C/θ + Δ_c𝟙 + a₂θ + αθ^p + … with p = 2(Δ_irr − 1) when fusion is dominated by the identity defect
+(verified on the paper's HTML). That is the structure EXP-015 derived on 23 September: a θ⁰ term from
+an operator with Δ = 1 entering as θ^{2Δ−2}. EXP-015 read only the companion paper [LMW26] and claimed
+the application "not found in the sources checked". Revised novelty claim: the exponent and the fusion
+structure are [LMW26b]'s. What may still be new, pending a proper check against the whole paper: the
+parity argument for the absence of local θ⁰ terms; the application to replica twist lines (twist pair
+fuses to the identity, so a₀ ≠ 0 exactly when a dimension-1 operator is present); the classification of
+the scalar, Dirac, Einstein and ECG cases; and the confirmation in EXP-020. Two extracts disagree on
+whether [LMW26b] discuss the dimension-1 case explicitly; that must be read before any claim.
+
+**Other findings that bear on existing entries.**
+- EXP-017's closure of the rectangle bootstrap under Casimir dressing was listed by one stream as an open
+  research task, which suggests it is not in the literature. Not yet a verified novelty claim.
+- A stream's own algebra suggests [LMW26]'s cuboid bound is also closed under dressing; unchecked
+  (BACKLOG #24).
+- [LMW26b] eq. (37), a₂ ≥ a₀/12 for Δ_irr > 3/2, is the only upper-type inequality on a Casimir energy
+  found, and it is relative to the O(θ) coefficient. A stream checked it is dressing-invariant. It is
+  testable on this repository's data (BACKLOG #22).
+- The only interacting κ is Ising at Rényi-2, 0.763(22) of free [KHSM19]; none at n = 1 for any
+  interacting theory.
+
+**Grade.** The [LMW26b] eq. (28) statement: verified by me on the source. Other stream findings:
+verified by the streams on arXiv abstract pages or text as labelled in `references.md`; two entries lack
+recorded titles and are flagged there.

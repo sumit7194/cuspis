@@ -15,6 +15,8 @@ caveats, not tasks.
 
 ## Open — actionable, unowned
 
+*The full ranked backlog, with scores and the 2026-09-23 literature sweep, is `BACKLOG.md`.*
+
 - [ ] **The shape residual** (EXP-012, EXP-016). Sharp-end half has a mechanism: the trial function's
       constant is its Lifshitz component's, so for theories without a dimension-1 fusion operator the
       sharp-end residual is ã₀ exactly (ECG a₀ = 0 confirmed out of sample). Open: (a) the smooth-end
