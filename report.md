@@ -2911,3 +2911,50 @@ independently. The code is `scripts/exp028_extract.py` (variants added) and `scr
     shape relative to EMI, which needs no extrapolation.
 
   Nothing is launched until the bridge decides.
+
+### EXP-028 CLOSED — INCONCLUSIVE, limited by the instrument (bridge's call, 2026-09-24)
+
+- *Why inconclusive.* As registered, and as amended once, the κ₂/σ₂ criterion cannot be met by the M ≤ 15 instrument.
+  The −4·10⁻⁴ truncation at 15° is amplified about 400× by the θ → 0 extrapolation. No run of option (a) was made.
+  Nothing about a₄ was read.
+- *Positive side finding.* The small-twist sector's A₂ (a = 0.02, where the a⁴ contamination is ≈ 3·10⁻⁴) matches the
+  EMI shape to **≤ 10⁻⁵ at θ ≥ 20°**. That is the variance half of C2a′ [ESW21], re-confirmed on this workspace's own
+  instrument, and it also confirms that the CHL sector's a² term *is* the charge-variance corner.
+
+## EXP-029  C2a′ — trend-based test of the fourth cumulant (pre-registration; sealed toward quantum)
+
+**Date** 2026-09-24.
+
+**Provenance, stated plainly.**
+- Designed *after* A₂ was seen and *after* EXP-028 closed. It follows the bridge's terms.
+- **No A₄ has been computed.** But the two curves already seen, s(0.02) and s(¼), carry leading-order hints:
+  - s(0.02)/s(¼) exceeds the pure-a² ratio (0.0066–0.0067 against 0.0064), which suggests A₄/A₂ < 0, i.e. P1;
+  - s(¼) is relatively heavier toward the sharp end than EMI, which, given that sign, suggests P2.
+- **So this is not a blind test of P.** Runs 2–4 test the stability of the leading-order reading (a⁶ contamination,
+  twist-set dependence). They do not test the prediction afresh.
+- Grade of any result: **"trend-based, no κ extrapolation; not blind (leading-order hints seen before
+  registration)".**
+
+**Statistic, fixed now** (`scripts/exp029_trend.py`).
+- R(θ) = [f(θ)/f(90°)]/EMI(θ), using only θ ≥ 20°.
+- T(f) = mean R over {20°, 26.565°, 30°, 40°} minus mean R over {140°, 150°, 153.435°, 160°, 170°}.
+- T > +τ: heavier toward the sharp end than EMI, the κ/σ > 3π direction. T < −τ: lighter, the κ/σ < 3π direction.
+  |T| ≤ τ: flat. T(exact EMI) = 0.
+
+**Threshold, fixed from A₂'s measured flatness.** T(s(0.02)) = +2.9·10⁻⁵, so
+**τ = max(10⁻³, 10·|T(s(0.02))|) = 1.0·10⁻³**.
+
+**Control that must fire.** T(s(¼)) = +6.16·10⁻³ > τ, so it **fires**. The test can see an a⁴-sized trend.
+
+**Predictions, restated in trend form.**
+- **P1:** A₄/A₂ < 0 at every θ ≥ 20°. This is the cumulant a₄ having the sign of a₂.
+- **P2:** T(A₄) < −τ.
+
+**Verdict rule.**
+- A₄ comes from the per-angle fits of s(a) over a ∈ {0.02, 0.04, 0.06, 0.08}, in three versions: A₂ + A₄ on all a;
+  A₂ + A₄ dropping the largest a; A₂ + A₄ + A₆ on all a.
+- P2 **holds** if all three give T(A₄) < −τ, **fails** if all three give T(A₄) > +τ, and is **inconclusive**
+  otherwise.
+- P1 is read on all three fits the same way.
+- Before A₄ is read, the A₂ of each fit must satisfy |T(A₂)| ≤ τ, and its shape must match EMI to ≤ 10⁻³ on θ ≥ 20°.
+  If not, stop.
