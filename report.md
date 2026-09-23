@@ -2734,3 +2734,54 @@ settled by the literature.
   ⟨e^{2πia·Q_A}⟩. Its small-a limit is the variance, which is exactly EMI-shaped. That is precisely CHL09's
   twist-parameter decomposition, which this workspace's instrument implements. A test at finite a therefore means
   instrument runs, not light work.
+
+## EXP-028  C2a′ — pre-registration: the free Dirac fermion's fourth-cumulant corner function (sealed toward quantum)
+
+**Date** 2026-09-24. **Status:** pre-registered. **Execution awaits the bridge's decision on compute.** Both methods
+below need more than light work.
+
+**Scope, stated up front.** Only the free massless Dirac fermion in 2+1 dimensions, and its U(1) charge Q_A. Nothing
+here is claimed for the scalar, holography or interacting CFTs.
+
+**Objects (all well-defined without resumming any series).**
+- C_m(A) is the m-th cumulant of Q_A.
+- For a region with one corner of opening angle θ, C_m ⊃ −a_m(θ)·log(L/δ). Near θ = π, a_m(θ) = σ_m(π−θ)² + …; near
+  θ = 0, a_m(θ) ≈ κ_m/θ.
+- Equivalently, a_m(θ) is the m-th Taylor coefficient, in λ at λ = 0, of the corner coefficient of
+  log⟨e^{iλQ_A}⟩. That is the U(1)-twist sector at a = λ/2π, which CHL09's formalism computes.
+
+**Known answer, the control.** a₂(θ) ∝ 1 + (π−θ)cot θ exactly [ESW21 eq. (9)], so κ₂/σ₂ = 3π. Any method must reproduce
+this before its a₄ is read. Beyond the shape, the normalisation of a₂ is fixed by C_J: σ_cond = π²C_J/2 in ESW21's
+notation, with C_J for the free Dirac field.
+
+**Prediction P (stated so that it can fail).**
+- **P1:** a₄(θ) has the same sign as a₂(θ) on (0, π), i.e. positive in the convention where a₂ > 0.
+- **P2:** κ₄/σ₄ < 3π. The fourth-cumulant corner function is sharper-weighted than EMI, in the same direction as the
+  Dirac entanglement entropy's κ/σ = 3.8005/0.41123 = 9.242 < 3π = 9.425.
+- **Basis, and its limits.** In the Klich–Levitov organisation the fourth cumulant is the first correction to the
+  variance term, and it enters with positive weight 2ζ(4). In an asymptotic series the first correction usually
+  carries the sign of the full deviation. P2 is what the observed deviation requires if that holds.
+- **What P does not assume.** It does not assume the series converges ([BESW22] find factorial growth for quantum
+  Hall states). It does not use EXP-026 §3(b), which is still unverified.
+- **Outcomes.**
+  - P1 and P2 both hold: the first non-pairwise term pushes the shape the way entanglement deviates. That is
+    evidence for "near EMI because the variance dominates", not proof.
+  - P2 fails: the Dirac deviation from EMI is *not* carried by the leading cumulant correction, and the cumulant
+    picture of "why near EMI" is wrong in its simplest form. This is equally reportable.
+
+**Methods, both needing the bridge's OK on compute.**
+- **(M1) Continuum, preferred.** This workspace's CHL instrument at small twist, a ∈ {0.02, 0.04, 0.06, 0.08} (and
+  ±), on the standard angle grid. Extract the a² and a⁴ coefficients.
+  - Extracting coefficients is *inference*, so the a² coefficient must reproduce ESW21's exact shape and C_J
+    normalisation before a₄ is read.
+  - The a-set is swept as a nuisance parameter: drop the largest a, and fit through a⁶. The drift is reported.
+  - Cost: 4–8 instrument runs.
+- **(M2) Lattice.** Correlation-matrix cumulants of polygonal regions for a lattice Dirac fermion (the doubling is
+  divided out, as in BESW22 App. IV), several sizes, with the variance as the control.
+  - Cheaper per run, but only lattice-friendly angles are available, and log-coefficient extraction is a fit.
+
+**Verdict rule.**
+- P2 is read as the sign of κ₄/σ₄ − 3π, and only if the a₂-control passes: the shape reproduced to ≤ 10⁻³ across
+  the angle grid, and κ₂/σ₂ within 10⁻³ of 3π. It is also read only if the sign is stable across the nuisance
+  sweep.
+- If the control fails, nothing about a₄ is reported, except the control's failure.
