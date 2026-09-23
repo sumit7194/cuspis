@@ -2998,3 +2998,43 @@ In the fit with A₆, A₆/A₂ ≈ −0.17. The three fits disagree by at most 
 **Next, if wanted.** A registered magnitude test: does the truncated cumulant sum reproduce the Dirac EE's shape
 deviation at 20°–170°? It needs a⁶ and a⁸ as well, from larger twists, or the full sector integral that the
 instrument's EE mode already performs.
+
+### C2a′ magnitude question — feasibility note (no computation; sealed toward quantum)
+
+**1. As asked ("does the cumulant sum reproduce the 1.9% Dirac deviation?"), it is not well-posed.**
+- For free fermions the EE corner is an *exact* integral over imaginary twist. The instrument's EE mode computes
+  s_EE(θ) = ∫₀^∞ dt [1/sinh²(πt)]·s(a = −it, θ) (up to its fixed prefactors).
+- The cumulant series is the Taylor series of s(a) at a = 0, integrated term by term. That converges only if the
+  Taylor series of s(a) converges for all imaginary a on the weight's support.
+- The sector function is defined for a ∈ (−½, ½), with special behaviour at a = ±½ (unverified hypothesis: radius of
+  convergence ½). Then the weight beyond t = ½, about e^{−π} ≈ 4% of the integral, lies outside the radius. The
+  truncated series would be *asymptotic*, with an irreducible ambiguity of order 10⁻² relative: the same size as the
+  1.9% effect.
+- [BESW22]'s factorial growth of the quantum-Hall corner cumulants points the same way. Any truncation order would
+  be a choice made against a known target: that is fitting.
+- **So in cumulant form the magnitude question has no well-defined answer at the 2% level.**
+
+**2. A well-posed replacement: an exact Gaussian/non-Gaussian split, with no series and no truncation.**
+- Define G(θ) = the EE integral with s(−it) replaced by its exact a² term, −A₂t². This is EMI-shaped by construction
+  (A₂ = EMI shape to 10⁻⁵), and its normalisation is fixed analytically by ∫ t²/sinh²(πt) dt and A₂.
+- Define NG(θ) = s_EE(θ) − G(θ), exactly. Then the Dirac EE's entire deviation from EMI sits in NG. That is an
+  identity, not a finding.
+- **The quantities compared:**
+  - (i) NG's trend T(NG), with the same statistic as EXP-029;
+  - (ii) the non-Gaussian fraction |NG|/|s_EE| at 20°–170°, reported as a measured number and not tested.
+- **Why nothing is chosen to fit.** G has no free parameter: its normalisation follows from the mode prefactors and
+  A₂. There is no truncation order. The trend statistic and τ are EXP-029's, unchanged.
+- **Prediction that can fail:** T(NG) < −τ. The non-Gaussian part carries the κ/σ < 3π tilt, as A₄ does. It fails if
+  T(NG) > +τ, and is inconclusive if |T(NG)| ≤ τ.
+- **Required known-answer control, run first.** The normalisation bookkeeping between the EE mode (t-integral, weight
+  1/(2 sinh²)) and the sector mode (1/π prefactor) is the one place an error could hide. Control: A₂'s absolute
+  normalisation must match the closed-form variance corner, ESW21 eq. (9) with the free-Dirac C_J, via
+  A₂ = −c(2π)²a₂/2. It must agree to 10⁻³, or nothing is read.
+- **Cost:** existing data only: the Dirac EE run (EXP-020) and A₂ from EXP-029. No runs.
+- **Honest limit.** Since NG ≡ (EE − EMI-shaped part), predicting its tilt's sign from the *known* EE (κ/σ < 3π) is
+  nearly automatic. The informative content is (ii), the size of the non-Gaussian fraction, which is reported and
+  not tested.
+
+**3. Recommendation.** Park C2a′'s cumulant-magnitude question as "not well-defined at the 2% level (asymptotic)".
+The replacement in §2 is well-posed but mostly bookkeeping. Its one new number is the non-Gaussian fraction of the
+Dirac corner, which is cheap (no runs) and worth recording. Whether it is worth a registration is the bridge's call.
