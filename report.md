@@ -2431,3 +2431,39 @@ O2's remark, SSA supplies such statements at n = 1 whenever the half-regions are
 3. A direct model test of O3's step 4 (the n = 1 Hellmann–Feynman identity X(u,u′) = F(u′) + (u−u′)F′(u′)) in the
    EMI model on the cylinder.
 4. Combining CC with a₀ ≤ 0 and eq. (37) in the LP.
+
+### EXP-025c — closed form of the EXP-025b optima (analytic; reproduces the LPs)
+
+This was found by reading off the LP extremal's active constraints: C3 is saturated above ≈ 82°, and F is linear in
+u below. The closed form was then derived. It is the analytic certificate that EXP-025b's next steps asked for.
+
+**Claim (given CC at n = 1, plus C3 and C5).**
+- *Step 1: the intercept.* For every v ∈ (0, 1), convexity of F on [0, v] gives
+  κ/4 = F(0) ≥ F(v) − vF′(v) = (√v/2)·a(θ_v) + (2v/(1+v))·b(θ_v), with b = −a′.
+  Both coefficients are positive.
+- *Step 2: the C3 input.* C3 makes g = b·tan(θ/2) nonincreasing. C5 gives g → 4σ at π. Hence, pointwise,
+  b ≥ 4σ·cot(θ/2) and a ≥ 𝔞_min.
+- *Step 3: result.* With τ = tan(θ/4):
+
+  **κ ≥ 16σ·φ*, where φ* = max_τ φ(τ) and φ(τ) = τ[log((1+τ²)/(2τ)) + (1−τ²)/(1+τ²)].**
+
+  The maximum sits at τ* = 0.3715194149, i.e. θ* = 81.524°, with φ* = 0.4397789741.
+
+  This gives **κ/σ ≥ 7.036464** and **κ/C_T ≥ (2π²/3)φ* = 2.893630**.
+- *The a(π/2) form.* Because θ* < 90°: g(π/2) ≥ a(π/2)/ln 2 on [θ*, π/2]. Hence
+  **κ/a(π/2) ≥ 4φ*/ln 2 = 2.537868 > 2π/3.**
+
+**Checks** (`scripts/exp025c_analytic.py`, `exp025c_output.txt`):
+- *LP agreement.* The EXP-025b LPs converge to these values from below: 7.036437 and 2.537858 at N = 3200, a
+  difference of 3·10⁻⁵, as a relaxation should.
+- *Optimality.* The extremal attains the bound, so it is optimal for {CC, C2, C3, C5}. The extremal is
+  a = c·𝔞_min on [θ*, π] with F linear (the tangent at u* = 0.1380) below. On the linear part it is decreasing,
+  convex and C3-admissible (min CHL[a]/|a″| = +1.8·10⁻³).
+- *Why u* is special.* F_min is concave exactly on u < 0.138 and convex above, so u* is its inflection point, where
+  the tangent intercept is largest. This also locates where 𝔞_min violates CC: θ < 81.5°.
+
+**Remarks.**
+- Only the "tangent at v lies below F(0)" consequence of CC is used, together with C3's two pointwise consequences.
+  At integer n there is no C3, so this combination is specific to n = 1.
+- Grade: the arithmetic and optimality are verified. The inputs are CC at n = 1 (EXP-025 O3, derived, review
+  pending), C3 [CHL09], C5 and σ = π²C_T/24 (FLP).

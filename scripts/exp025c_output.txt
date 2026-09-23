@@ -1,0 +1,10 @@
+tau*   = 0.37151941491626774606   theta* = 81.5240360426472 deg
+phi*   = 0.43977897413420198753
+kappa/sigma   >= 16 phi*          = 7.03646358614723      (LP2 at N = 3200: 7.036437)
+kappa/C_T     >= (2 pi^2/3) phi*   = 2.89362966574766      (LP2 x pi^2/24: 2.89362)
+kappa/a(pi/2) >= 4 phi*/ln 2       = 2.5378677802826      (LP1 at N = 3200: 2.537858)
+theta* < 90 deg (needed for the a(pi/2) form): True
+grid max phi = 0.439778974131 at tau = 0.371521;  phi(1) = 1.000e-04 (-> 0 at the smooth end)
+extremal on the linear part (theta < theta*): a decreasing True, convex True, C3 margin min CHL[a]/|a''| = +1.830e-03
+extremal kappa/sigma = 4 F(0) = 7.0364635853
+F_min'' < 0 on u in [0.001, 0.138]; u* = 0.138027; F_min''(u*) = -2.2771e-19; convex on [u*,1]: True
