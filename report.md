@@ -3083,3 +3083,24 @@ normalisation, sign and C_J, not only of its shape.
   comment). Neither (i) nor (ii) is settled.
 - **Parked**, with that lemma, analyticity plus well-definedness of the bosonic sector function on 0 ≤ Re a ≤ ½, as
   the condition for unparking.
+
+### 2026-10-10 — advice to the bridge on quantum's stalled sub-45° check (control 1's 90° reference)
+
+The bridge asked whether [HHCWM16] Table 3 is the right replacement for CHL09's printed real-scalar a(90°) = 0.02366/2.
+
+**Facts from this workspace's data (scripts/exp012_sign.py coefficient table; not sent to quantum).**
+- [HHCWM16] Table 3 lists eight smooth-limit coefficients per Rényi index α, for the *complex* boson: σ = 1/128. That
+  is the same halving trap as CHL09 (trap documented in EXP-014 addendum 2).
+- The α = 1 series summed at 90° gives **0.02366659** (complex). [HHCWM16] eq. (22)'s geometric tail raises it to
+  **0.02366685** (+1.1·10⁻⁵). All coefficients are positive, so the truncated sum is a strict lower bound.
+- CHL09's printed 0.02366 lies **−2.9·10⁻⁴** below it: its last digit is one unit low, not a rounding.
+- [HHCWM16]'s own printed 4-digit series value at 90° (0.02367, Table 1) is +1.3·10⁻⁴ high. Its rounding is
+  ±2.1·10⁻⁴, so it cannot anchor a tolerance below about 2·10⁻⁴.
+
+**Advice given.** The anchor should be quantum's *own* sum of the Table 3 α = 1 coefficients, transcribed from the
+paper (not from its file-level copy of this workspace's scripts; EXP-014). It should carry:
+- a transcription self-check: the first coefficient must equal 1/128 for the complex field, 1/256 for the real one;
+- the reference interval [truncated sum, sum + eq. (22) tail].
+
+This workspace's sums above are withheld from quantum so that the bridge can compare them, afterwards, as an
+independent transcription check.
