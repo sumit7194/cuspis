@@ -3138,3 +3138,10 @@ independently on this workspace's copy of [HHCWM16] Table 3, α = 1).**
   of the omitted coefficients".
 - **Neither correction affects any verdict.** quantum's tolerance is 2.1·10⁻⁴ relative; the corrections are at
   10⁻⁸ and below.
+
+**Outcome of the blind comparison (bridge, 2026-10-10).**
+- quantum's independent transcription and sum of [HHCWM16] Table 3 (α = 1, complex) matches this workspace's sealed
+  values to every digit held: 0.02366659 truncated, 0.02366685 with the κ-tail.
+- quantum never saw these numbers, so two independent transcriptions of the published table agree.
+- quantum is re-running its control 1 against the conservative interval, with tolerance unchanged at 2.1·10⁻⁴
+  relative.
