@@ -6,8 +6,13 @@ Samples every --interval seconds:
 - free swap (sysctl vm.swapusage).
 
 It SIGTERMs the child's process group (then SIGKILLs after a grace period) if the tree exceeds --cap-gb, if free disk
-falls below --min-disk-gb, or if free swap falls below --min-swap-mb. Every sample goes to --log, and the peak is
-printed at exit.
+falls below --min-disk-gb, or if system memory is genuinely short. Every sample goes to --log, and the peak is printed
+at exit.
+
+Memory trigger (bridge fix, 2026-10-03, copied from quantum 955b4c0). macOS grows swap on demand, so low free swap
+alone is a false positive. The rules are:
+- kill if `memory_pressure` reports system-wide free memory < --min-sysfree-pct (default 10%);
+- kill on free swap < --min-swap-mb ONLY when system-wide free memory is also < 20%.
 
 Usage: python3 watchdog.py --log run.wd.log [--cap-gb 5] [--min-disk-gb 5] [--min-swap-mb 512] [--interval 5] -- cmd args...
 """
@@ -43,6 +48,11 @@ def tree_footprint(pids):
             mem += parse_size(p[1]); cmp += parse_size(p[2]); seen += 1
     return mem, cmp, seen
 
+def sys_free_pct():
+    s = subprocess.run(["memory_pressure"], capture_output=True, text=True).stdout
+    m = re.search(r"System-wide memory free percentage:\s*(\d+)%", s)
+    return float(m.group(1)) if m else float("nan")
+
 def swap_free_mb():
     s = subprocess.run(["sysctl", "vm.swapusage"], capture_output=True, text=True).stdout
     m = re.search(r"free\s*=\s*([\d.]+)M", s)
@@ -52,6 +62,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--log", required=True); ap.add_argument("--cap-gb", type=float, default=5.0)
     ap.add_argument("--min-disk-gb", type=float, default=5.0); ap.add_argument("--min-swap-mb", type=float, default=512.0)
+    ap.add_argument("--min-sysfree-pct", type=float, default=10.0)
     ap.add_argument("--interval", type=float, default=5.0); ap.add_argument("--stdout", default=None)
     ap.add_argument("cmd", nargs=argparse.REMAINDER)
     a = ap.parse_args()
@@ -60,16 +71,18 @@ def main():
     child = subprocess.Popen(cmd, start_new_session=True, stdout=outf or None, stderr=subprocess.STDOUT if outf else None)
     log = open(a.log, "w", buffering=1)
     log.write(f"# cmd: {' '.join(cmd)}\n# caps: tree <= {a.cap_gb} GB, disk >= {a.min_disk_gb} GB, free swap >= {a.min_swap_mb} MB\n"
-              f"# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB\n")
+              f"# memory trigger: system free < {a.min_sysfree_pct}%, or free swap < {a.min_swap_mb} MB together with system free < 20%\n"
+              f"# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct\n")
     peak = (0.0, 0.0, 0.0); t0 = time.time(); reason = None
     while child.poll() is None:
         pids = descendants(child.pid); mem, cmp, seen = tree_footprint(pids)
-        disk = shutil.disk_usage(os.getcwd()).free/1024**3; swp = swap_free_mb(); tot = (mem + cmp)/1024**3
+        disk = shutil.disk_usage(os.getcwd()).free/1024**3; swp = swap_free_mb(); sfp = sys_free_pct(); tot = (mem + cmp)/1024**3
         if tot > peak[2]: peak = (mem/1024**3, cmp/1024**3, tot)
-        log.write(f"{time.time()-t0:8.1f} {seen:5d} {mem/1024**3:7.3f} {cmp/1024**3:8.3f} {tot:7.3f} {disk:12.2f} {swp:12.1f}\n")
+        log.write(f"{time.time()-t0:8.1f} {seen:5d} {mem/1024**3:7.3f} {cmp/1024**3:8.3f} {tot:7.3f} {disk:12.2f} {swp:12.1f} {sfp:12.0f}\n")
         if tot > a.cap_gb: reason = f"tree footprint {tot:.2f} GB > cap {a.cap_gb} GB"
         elif disk < a.min_disk_gb: reason = f"free disk {disk:.2f} GB < {a.min_disk_gb} GB"
-        elif swp == swp and swp < a.min_swap_mb: reason = f"free swap {swp:.0f} MB < {a.min_swap_mb} MB"
+        elif sfp == sfp and sfp < a.min_sysfree_pct: reason = f"system-wide free memory {sfp:.0f}% < {a.min_sysfree_pct}%"
+        elif swp == swp and swp < a.min_swap_mb and sfp == sfp and sfp < 20: reason = f"free swap {swp:.0f} MB < {a.min_swap_mb} MB with system free {sfp:.0f}% < 20%"
         if reason:
             log.write(f"# WATCHDOG SIGTERM: {reason}\n")
             try: os.killpg(child.pid, signal.SIGTERM)

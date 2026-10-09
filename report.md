@@ -3104,3 +3104,20 @@ paper (not from its file-level copy of this workspace's scripts; EXP-014). It sh
 
 This workspace's sums above are withheld from quantum so that the bridge can compare them, afterwards, as an
 independent transcription check.
+
+### 2026-10-10 — housekeeping and declarations
+
+- **Watchdog swap-guard fix**, applied per the bridge's 2026-10-03 inbox note (copied from quantum 955b4c0).
+  `scripts/tools/watchdog.py` no longer kills on low free swap alone, because macOS grows swap on demand. The
+  memory trigger is now `memory_pressure` system-wide free memory below 10%. Low free swap counts only together with
+  system free below 20%. The tree cap and the disk floor are unchanged.
+  Self-test, four cases, all as required:
+  - a normal job passes (system free 80%);
+  - the tree cap still kills;
+  - the memory trigger fires when its threshold is set above current free memory;
+  - a huge swap threshold alone does NOT kill.
+- **Exposure declaration.** On 2026-10-10 this session read quantum's `COORDINATION_corner_research_menu.md` in full
+  (read-only, from quantum's working tree, before its hand-over). It contains quantum's C2b-type route (V3: "a =
+  universal bound part + remainder", with bound shares ~98% at 135°, ~92% at 90°, ~60% at 27°) and quantum's own
+  a(π/2) and c₂…c₁₆ values. C2a′ is already closed and parked, so nothing done here was influenced. Any future cuspis
+  work on the corner-band question, or at θ < 45°, carries this exposure.
