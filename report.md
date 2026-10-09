@@ -3121,3 +3121,20 @@ independent transcription check.
   universal bound part + remainder", with bound shares ~98% at 135°, ~92% at 90°, ~60% at 27°) and quantum's own
   a(π/2) and c₂…c₁₆ values. C2a′ is already closed and parked, so nothing done here was influenced. Any future cuspis
   work on the corner-band question, or at θ < 45°, carries this exposure.
+
+**Correction to the 2026-10-10 advice (prompted by quantum's observation, relayed by the bridge; checked here
+independently on this workspace's copy of [HHCWM16] Table 3, α = 1).**
+
+- **(i) The upper end of "[truncated sum, sum + eq. (22) tail]" is not strict.**
+  - The normalised coefficients r_p = σ^(p)π^(2p+3)/2 decrease monotonically toward κ = 0.0794 *from above*:
+    0.12112, 0.08345, 0.08074, 0.08051, 0.08028, 0.08002, 0.07984, 0.07970 for p = 0…7. So the κ-tail is itself
+    an *under*-estimate of the remainder.
+  - With the observed monotone decrease, the remainder lies between the κ-tail and the r₇-tail. The interval becomes
+    [S₈ + κ-tail, S₈ + r₇-tail] = [0.0236668488, 0.0236668498] (complex), a width of 4.1·10⁻⁸ relative.
+  - This rests on observed monotonicity, not on a proof.
+- **(ii) "The truncated sum is a strict lower bound" also needs a qualifier.** It holds if every omitted coefficient
+  is non-negative. That is observed for all published orders and follows from the positive spectral representation
+  (C4, RESULT.md §3), but C4 is *conjectural at n = 1*. So the correct statement is "a lower bound, given positivity
+  of the omitted coefficients".
+- **Neither correction affects any verdict.** quantum's tolerance is 2.1·10⁻⁴ relative; the corrections are at
+  10⁻⁸ and below.
