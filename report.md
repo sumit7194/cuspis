@@ -3191,3 +3191,13 @@ The bridge computes the registered verdicts and sends quantum only the verdicts.
 - *Reading.* The discrepancy is most likely a sharp-angle truncation on quantum's side. The premises are positivity of
   the omitted coefficients (C4, conjectural at n = 1) and the observed monotonicity of r_p. quantum receives only the
   verdicts and a self-check suggestion based on published data.
+
+**C12 closed (bridge, relaying quantum's pre-registered diagnostics).**
+- *Cause.* The sub-45° DISAGREES verdicts trace to *quantum's own* instrument. Its integration cut in q (at t + 7.5)
+  was never tested below 45°. The omitted positive tail matches the gap in sign and size: estimated +2.7·10⁻² at 15°,
+  ~4·10⁻⁵ at 40°.
+- *cuspis.* This workspace's values are not implicated, which is consistent with the published-data argument above:
+  quantum's values fell below the eq. (22) lower bound.
+- *Record.* The verdicts stand. quantum will run a corrected Stage 3 as a new, non-blind registration.
+- *Effect on cuspis's own systematics.* None. The read-high t-grid residual (~10⁻⁵) and the read-low mass-cutoff
+  deficit at 15°–20° stand as disclosed.
