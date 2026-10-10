@@ -3174,3 +3174,20 @@ increments (−9·10⁻⁵ per 0.5 in M at 20°) still say it reads low by an un
 published lower bound, so it is certainly low.
 
 The bridge computes the registered verdicts and sends quantum only the verdicts.
+
+**Outcome of the sealed comparison (bridge C12, sealed toward quantum).**
+- *Verdicts:* 40° and 30° AGREE WITH A DISCREPANCY TO EXPLAIN; 26.565°, 20° and 15° DISAGREE.
+- *Direction:* cuspis's values are HIGHER than quantum's, by 6·10⁻⁵ (40°), 5.7·10⁻⁴ (30°), 1.4·10⁻³ (26.565°) and
+  7·10⁻³ (20°).
+- *Re-checked here against the published [HHCWM16] series (α = 1, real) with the tail interval
+  [S₈ + κ-tail, S₈ + r₇-tail]:*
+  - cuspis lies inside at 30°, 26.565° and 20° (positions 0.77, 0.66 and 0.16 of the width);
+  - at 40° cuspis is ~8·10⁻⁶ above the upper end, consistent with its read-high t-grid residual;
+  - at 15° cuspis is 1.43·10⁻³ below the lower end, its known truncation.
+- *What the gaps imply.* Values lower than cuspis's by the reported gaps would lie *below* the eq. (22) lower bound,
+  by 4.4·10⁻⁴ (30°), 1.2·10⁻³ (26.565°) and 6.9·10⁻³ (20°). At 20° the tail is 13.5% of the value, so that would
+  need the true tail to be ~5% below the κ-tail. That contradicts both the observed approach of r_p to κ from above
+  and the asymptotic r_p → κ.
+- *Reading.* The discrepancy is most likely a sharp-angle truncation on quantum's side. The premises are positivity of
+  the omitted coefficients (C4, conjectural at n = 1) and the observed monotonicity of r_p. quantum receives only the
+  verdicts and a self-check suggestion based on published data.
