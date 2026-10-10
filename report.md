@@ -3145,3 +3145,32 @@ independently on this workspace's copy of [HHCWM16] Table 3, α = 1).**
 - quantum never saw these numbers, so two independent transcriptions of the published table agree.
 - quantum is re-running its control 1 against the conservative interval, with tolerance unchanged at 2.1·10⁻⁴
   relative.
+
+### 2026-10-10 — sub-45° real-scalar values sent to the bridge for quantum's sealed comparison ([NOT FOR QUANTUM])
+
+**Values sent.** a(θ), real scalar, n = 1, from `exp004_eehp_result_Mcut13.1.json`, quoted as raw ÷ 0.999813:
+
+| θ (deg) | a(θ) | status |
+|---|---|---|
+| 40 | 0.0473887089 | quotable |
+| 30 | 0.0676018797 | quotable |
+| 26.565 | 0.0778869709 | quotable, ±~3·10⁻⁵ |
+| 20 | 0.1069789401 | low-biased by the mass cutoff, ± a few 10⁻⁴ |
+| 15 | 0.1455041688 | qualitative only: 1.43·10⁻³ below the HHCWM16 eq. (22) lower bound |
+
+**Newly disclosed systematic: the t-grid residual is angle-dependent.**
+- After dividing out the uniform normalisation, the eehp values read high against the HHCWM16 exact series:
+  - +1.9·10⁻⁶ at 135°;
+  - +8.8·10⁻⁶ at 100°;
+  - +9.2·10⁻⁶ at 90°, against series + tail.
+- So dividing by σ's ratio removes only the uniform part of the 10-node t-grid error. Below 90° the residual is
+  unmeasured; the estimate is 1–5·10⁻⁵.
+- For comparison, quantum's published menu value at 90° is 3·10⁻⁸ from the series + tail. At ≥ 90° quantum's
+  instrument is the more precise.
+
+**Correction of wording (EXP-012 addendum 6, S13).** "20° carries the 1·10⁻⁴ cutoff deficit" was the *raw* comparison
+with eq. (22). After the normalisation, 20° lies 8.4·10⁻⁵ *above* the eq. (22) lower bound. The moving-cutoff
+increments (−9·10⁻⁵ per 0.5 in M at 20°) still say it reads low by an unmeasured amount. At 15° the value is below a
+published lower bound, so it is certainly low.
+
+The bridge computes the registered verdicts and sends quantum only the verdicts.
