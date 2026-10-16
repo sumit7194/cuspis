@@ -1,0 +1,24 @@
+(m1) outward checks k1.bis, k2.bis: -sin(theta/2) | -sin(theta/2)
+(m1) |u|^2, |v|^2 = 1 1  (length preserved)
+(m1) x(c1,c2) = -c1*c2*cos(theta) - c1*c2 - c1*sin(theta) - c2*sin(theta) + cos(theta)
+(m1) Hess(1,1) - 4Q = 0    Hess(1,0) - (Q - cot(t/2)a'/2) = 0
+(m1) H = (d1+d2)^2 A + d1 d2 B with B = 2*ap*(cos(theta) + 1)/sin(theta)  (<= 0 when a' <= 0, so min on simplex at d1=d2)
+(m1) h12 - CHL[a] = 0  (the SSA cross term alone reproduces CHL09)
+(m1) h11 - (Q - cot(t/2)a'/2) = 0
+(m1) future-past cross term d^2x/dc1dc2 = 1 - cos(theta) (sign opposite to future-future -cos(theta) - 1 )
+(m1) K_Q(s,eps) = cosh(epsilon*s) - cot(epsilon/2)*sinh(epsilon*s)/(2*s)
+(m1) identity Q = CHL - cot(theta/2) a'/2 on a mode: residual = 0
+(m2) finite-difference Hessian vs 4Q and single-edge form: worst relative deviation = 3.74e-16
+(m3) min K_Q on grid = 8.333e-10; min K_Q/cosh = 8.333e-10 at s->0, eps->0 (analytic min 0)
+(m3) check: tanh(s eps)/s <= eps <= 2 tan(eps/2) everywhere on grid: True
+(m3) random positive discrete measures (2000 x 60 angles): Q < 0 in 0 cases
+(m4) function: min Q over 2..178 deg  [verdict]
+  a_w w= 1: min Q = 5.55511e-5 at 178 deg  [pass]
+  a_w w= 3: min Q = 2.75156e-6 at 178 deg  [pass]
+  a_w w= 6: min Q = 2.75802e-9 at 178 deg  [pass]
+  a_w w=10: min Q = 6.8002e-14 at 178 deg  [pass]
+  EMI (positive control): min Q = 0.000284397 at 178 deg  [pass]
+  a_min (known answer Q = cot^2(theta/2)/4): max |Q - known| = 1.18e-38
+  EMI + 1e4*a_6 (dressed, kappa/sigma ~ 1e4): min Q = 0.000311978 at 178 deg  [pass]
+  chord (negative control): Q < 0 on 110..178 deg (69 angles); predicted threshold 109.471 deg  [fires]
+  chord: root of Q at 109.4712206 deg

@@ -3271,7 +3271,8 @@ parity-even case. With parity violation there is an extra parameter. Nothing bel
   piece. That piece is the K·a_w family of EXP-024: spectral density 2s²e^{−πs} on s ≥ w, κ = K, mass ∝ e^{−wπ}.
 - So adding K·a_w with w large raises κ without bound at negligible cost to σ, the Casimir-dressing argument in
   spectral form. This is established for C1–C6 and conformal concavity (RESULT.md §4; EXP-024). For QNEC and the
-  first law it is argued here, not proved.
+  first law it is argued here, not proved. *(Superseded for QNEC by EXP-031: tip-fixed corner QNEC adds nothing beyond C3, and its own
+  inequalities hold for every ρ ≥ 0. The first law is still argued.)*
 - An upper bound needs a constraint that the pure tail *violates*: a two-sided or nonlinear coupling between κ and
   C_T-level data. Hofman–Maldacena bounds are two-sided, but on ⟨TTT⟩ parameters, which §2 shows do not determine κ.
 
@@ -3386,3 +3387,131 @@ negative control must come from outside it.
 - **Any control misbehaving:** the run is void.
 
 **First law / relative entropy.** This part is a reasoned assessment, not a computation; see the results entry.
+
+### EXP-031 results: outcome (a). The QNEC corner inequality holds for every positive spectral measure, so it is closed under tail addition
+
+Script: `scripts/exp031_qnec.py`; output: `exp031_output.txt` (sympy 1.13.3 added to `.venv` for (m1); numpy 2.4.3,
+mpmath 1.4.1).
+
+**The run, against the pre-registration.**
+
+*(m1) sympy.*
+- k₁ and k₂ are null, normal to their edges, and outward: k·bisector = −sin(θ/2).
+- The deformed edges keep unit norm.
+- x(c₁, c₂) = cos θ − (c₁ + c₂) sin θ − c₁c₂(1 + cos θ), as derived.
+- Hessian along (1,1) minus 4Q = **0**. Single-edge Hessian minus (Q − ½cot(θ/2)a′) = **0**. Both are reduced
+  exactly via θ = 2 arctan z.
+- The d₁d₂ coefficient is 2a′(1 + cos θ)/sin θ ≤ 0, so the minimum over same-sign directions is at d₁ = d₂.
+- The future–past cross term has the opposite sign, 1 − cos θ, so it gives nothing new.
+- K_Q(s, ε) = cosh(sε) − ½cot(ε/2) sinh(sε)/s, as predicted.
+- The identity Q = CHL − ½cot(θ/2)a′ has residual **0**.
+
+*(m2) Independent finite-difference Hessian.* Explicit vectors, mpmath at 40 digits, EMI, a_w(3) and 𝔞_min at
+20–160°: it agrees with 4Q and with the single-edge form to 3.7·10⁻¹⁶ relative.
+
+*(m3) The kernel.*
+- min K_Q = 8.3·10⁻¹⁰ on the grid. The infimum 0 is approached at s, ε → 0.
+- tanh(sε)/s ≤ 2 tan(ε/2) holds at every grid point.
+- 2000 random positive discrete measures at 60 angles each: Q < 0 in **0** cases.
+
+*(m4) The table.*
+
+| function | min Q over 2–178° | verdict |
+|---|---|---|
+| a_w, w = 1 | 5.6·10⁻⁵ (at 178°) | pass |
+| a_w, w = 3 | 2.8·10⁻⁶ | pass |
+| a_w, w = 6 | 2.8·10⁻⁹ | pass |
+| a_w, w = 10 | 6.8·10⁻¹⁴ | pass |
+| EMI, positive control | 2.8·10⁻⁴ | pass |
+| 𝔞_min, known answer | max deviation from ¼cot²(θ/2) is 10⁻³⁸ | exact |
+| EMI + 10⁴·a₆, dressed | 3.1·10⁻⁴ | pass |
+| chord, negative control | Q < 0 on 110–178°; root at 109.4712206°, predicted 2 arctan √2 = 109.4712° | fires exactly as predicted |
+
+The minima sit at θ → π because Q vanishes there to second order. That is the smooth limit, where every mode gives
+K_Q ≈ ε²(s²/3 + 1/12) ≥ 0.
+
+**Analysis.**
+
+*1. What the corner geometry gives. This corrects the pre-registration.*
+- Split the Hessian of a(x(c₁, c₂)) into a single-edge part h₁₁ = h₂₂ and a cross-edge part h₁₂. The two parts
+  have separate signs:
+  - the cross term between different edges is ≤ 0 for S by **SSA alone**. So h₁₂ = a″ + a′/sin θ ≥ 0, which is
+    **exactly CHL09's C3** (sympy: h₁₂ − CHL = 0);
+  - the single-edge part needs **QNEC** for its diagonal piece and gives h₁₁ = a″ − a′cot θ ≥ 0;
+  - Q = (h₁₁ + h₂₂ + 2h₁₂)/4 is their average.
+- The pre-registration minimised only the full quadratic form, so it called Q "the strongest". That was **wrong**.
+  The strongest inequality from QNEC + SSA with tip-fixed null deformations is C3 itself, and QNEC's own
+  contribution h₁₁ ≥ 0 is weaker still.
+- The adversarial verifier below found this. The pre-registration text is left as written.
+- That the cross term reproduces CHL is also a known-answer check: it confirms P1 and the vector setup.
+
+Status of the derivation: **physics level, under P1–P3.**
+- P1 is CHL09's own premise.
+- P2 is SSA plus [BFKW17] QNEC at locally stationary points. I read their §2.1, which is "agnostic to the exact
+  shape" and requires local stationarity at the point; straight edges qualify and the tip is excluded. The
+  verifier, from memory, thought the proof needs a single null plane. Graded **partially verified**.
+- P3 is the log extraction. It is argued: the area term is λ-independent exactly (unit edge vectors), and the far
+  closure contributes no log.
+
+*2. Q, and h₁₁, are implied by the standard set in two independent ways* (**verified**, exact identities):
+- (i) Q = CHL[a] + ½cot(θ/2)·(−a′), so C2 + C3 ⇒ Q.
+- (ii) In spectral form, Q = ∫dρ K_Q with K_Q ≥ 0 for every s, because tanh(sε)/s ≤ ε ≤ 2tan(ε/2). So C4 alone
+  ⇒ Q.
+- The same holds for h₁₁: its condition is tanh(sε)/s ≤ tan ε for ε < π/2, and it holds trivially for
+  ε ≥ π/2 (the verifier's form). h₁₁ = Q − ½cot(θ/2)a′ ≥ Q in any case.
+
+Compare the SSA + Lorentz kernel, whose condition is tanh(sε)/s ≤ sin ε. Since sin ε < ε, it fails at small s.
+That sign change is exactly why C3 has content (it produces lower bounds such as 𝔞_min), while Q has none on the
+cone. **On the spectral cone, Q and h₁₁ are checks that cannot fire.** QNEC adds nothing to SSA + Lorentz in this
+geometry. The cross-edge SSA term is CHL's inequality itself, and the QNEC-only piece is implied by it.
+
+*3. Closure under tail addition.* **Proved** for Q and h₁₁, in the strongest sense: every positive measure satisfies it,
+including a_w alone and K·a_w added to anything. So tip-fixed corner QNEC cannot bound κ/C_T. This upgrades
+EXP-030 §3 item 3 from *argued* to **proved, conditional on P1–P3** for this class of deformations.
+
+*4. What is not covered.*
+- (α) Deformations that move the vertex. The tip displacement is then spacelike, not null, and QNEC's
+  locally-stationary hypothesis fails at the tip. The verifier's dimensional argument says offsets add no log term;
+  partially verified.
+- (β) Multi-corner regions. With tip-fixed deformations these give sums of single-corner forms, each already ≥ 0.
+  With vertex motion they fall under (α).
+- (γ) QNEC in non-vacuum states. That is not a constraint on the vacuum a(θ).
+
+None of (α)–(γ) is excluded rigorously. (α) is the only one that could in principle couple corners
+non-additively. Graded: **partially verified** that no QNEC corner inequality goes beyond C1–C4.
+
+*5. Relative entropy and the first law* (**argued, not proved**):
+- Relative entropies between vacuum marginals: mutual information is S(ρ_AB‖ρ_A⊗ρ_B), and its monotonicity under
+  inclusion *is* SSA. So positivity and monotonicity give exactly the SSA class (C2, C3).
+- Recoverability strengthenings of SSA (Fawzi–Renner type) are nonlinear, but their right-hand sides (fidelities
+  with recovered states) are not functionals of a(θ).
+- The first law δS = δ⟨K⟩ needs a second state on a fixed region. A vacuum shape change becomes a state change
+  only through a symmetry. Conformal maps give equalities (the input to conformal concavity, EXP-025), not new
+  inequalities.
+- Around the half-plane or disk, second-order relative-entropy positivity gives C_T > 0, i.e. σ > 0 [FLP16].
+- No local modular Hamiltonian is known for a corner, so no first-law inequality on a(θ) is available.
+
+  Verdict: no relative-entropy or first-law inequality on a(θ) beyond the SSA class was found.
+  - Its grade is unverified as a completeness statement. It is verified for the vacuum-marginal class, by the
+    standard equivalence of relative-entropy monotonicity and SSA.
+  - I worked from memory for the Fawzi–Renner characterisation and did not re-read the source.
+
+**Adversarial verifier.** A blind same-session subagent was given only the setup, not this entry or the script, with
+scratch files outside the repo (`verifier031/v.py`). This is within-session review, not independent.
+- Independently, it obtained x(λ₁, λ₂), h₁₁, h₁₂ = CHL and Q = the average. It checked them against 40-digit finite
+  differences for every future/past and inward/outward choice; residuals were ≤ 10⁻³⁹.
+- It found that Q and h₁₁ hold for every ρ ≥ 0, and checked a_w (w = 1, 3, 6, 10) against C2, C3, h₁₁ and Q on 1999
+  angles: all pass.
+- Its main point: the strongest inequality is C3, not Q. That is now item 1.
+- Attacks it made:
+  - log extraction: holds, partially verified;
+  - general outward normal mixtures αk⁺ + βk⁻: these reduce to the σσ = ±1 cases;
+  - vertex-moving deformations: a constant offset crossed with a linear piece scales as a power of the cutoff, not
+    a log, so it adds no log constraint (dimensional argument, partially verified);
+  - relative entropy / first law: none known beyond SSA in general QFT (unverified as completeness).
+- On the soft spot it flagged (QNEC at a corner whose boundary spans two null planes), it adds: *the conclusion does
+  not depend on it*. The strongest inequality comes from SSA alone.
+
+**Next steps.** None needed for I-08 or the closure question. The only open door is (α): a vertex-moving QNEC
+argument with a controlled tip. It is listed in TODO and is low priority. PROMPT_2 (drafted for the user's other
+sessions) asks the same question independently. Its inputs predate this entry, so its answer stays blind to it.

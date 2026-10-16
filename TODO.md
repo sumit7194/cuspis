@@ -17,6 +17,15 @@ caveats, not tasks.
 
 *The full ranked backlog, with scores and the 2026-09-23 literature sweep, is `BACKLOG.md`.*
 
+- [ ] **EXP-031 leftovers (low priority).**
+  - (α) Vertex-moving QNEC deformations with a controlled tip. The verifier's dimensional argument says these add no
+    log constraint; partially verified.
+  - The first law / relative entropy as a *completeness* statement: argued only.
+  - The Fawzi–Renner characterisation was used from memory.
+- [x] **EXP-031 (2026-10-17).** Tip-fixed corner QNEC: the cross-edge SSA term reproduces C3, and the QNEC-only
+  inequalities hold for every ρ ≥ 0. So QNEC is closed under tail addition and cannot bound κ/C_T. The t₄ range
+  is verified at source (EXP-030 addendum). Reported to the bridge.
+
 - [x] **CF-22 / bridge C17 (EXP-022):** the eye inequalities hold on every curve here; eq. (37) with margins
       of 3 to 4. New theorem: a₀ ≤ 0 at integer n ≥ 2 (corrects EXP-015). Helmes eq. (22) unreliable below
       a few degrees. Next in the bounds chain: CF-24, the cuboid under Casimir dressing.
