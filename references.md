@@ -25,7 +25,7 @@ Nothing here is cited from memory. Short keys in brackets are used in `report.md
 | [Dow15] | J. S. Dowker, *Note on Renyi vertex contributions and twist operator weights for free scalar fields*, arXiv:1509.00782 (2015) | metadata only |
 | [SSSDSM16] | S. Sahoo, E. M. Stoudenmire, J.-M. Stéphan, T. Devakul, R. R. P. Singh, R. G. Melko, *Unusual Corrections to Scaling and Convergence of Universal Renyi Properties at Quantum Critical Points*, Phys. Rev. B 93, 085120 (2016), doi:10.1103/PhysRevB.93.085120, arXiv:1509.00468 | full text read |
 | [BWK16] | P. Bueno, W. Witczak-Krempa, *Bounds on corner entanglement in quantum critical states*, Phys. Rev. B 93, 045131 (2016), doi:10.1103/PhysRevB.93.045131, arXiv:1511.04077 | full text read |
-| [FLP16] | T. Faulkner, R. G. Leigh, O. Parrikar, *Shape Dependence of Entanglement Entropy in Conformal Field Theories*, JHEP 04 (2016) 088, doi:10.1007/JHEP04(2016)088, arXiv:1511.05179 | abstract |
+| [FLP16] | T. Faulkner, R. G. Leigh, O. Parrikar, *Shape Dependence of Entanglement Entropy in Conformal Field Theories*, JHEP 04 (2016) 088, doi:10.1007/JHEP04(2016)088, arXiv:1511.05179 | abstract (2026-10-16 re-read: "we prove the conjectured universality of the corner term coefficient" in d = 3; EXP-030) |
 | [BMMS16] | L. Bianchi, M. Meineri, R. C. Myers, M. Smolkin, *Rényi entropy and conformal defects*, JHEP 07 (2016) 076, doi:10.1007/JHEP07(2016)076, arXiv:1511.06713 | abstract |
 | [KPSV16] | F. Kos, D. Poland, D. Simmons-Duffin, A. Vichi, *Precision Islands in the Ising and O(N) Models*, JHEP 08 (2016) 036, arXiv:1603.04436 | abstract (no C_T quoted) |
 | [HHCWM16] | J. Helmes, L. E. Hayward Sierens, A. Chandran, W. Witczak-Krempa, R. G. Melko, *Universal corner entanglement of Dirac fermions and gapless bosons from the continuum to the lattice*, Phys. Rev. B 94, 125142 (2016), doi:10.1103/PhysRevB.94.125142, arXiv:1606.03096 | full text read (Tables 1–4 used) |
@@ -78,3 +78,7 @@ Searched and found NOT relevant (title suggested otherwise): arXiv:2507.16800 (C
 | [MFS09] | M. A. Metlitski, C. A. Fuertes, S. Sachdev, *Entanglement entropy in the O(N) model*, PRB 80, 115122 (2009), arXiv:0904.4477 | text via research agent: eq. (4.10) φ² coupling on the entangling surface; eq. (4.20) its beta function |
 | [BCPRS21] | L. Bianchi, A. Chalabi, V. Procházka, B. Robinson, J. Sisti, *Monodromy defects in free field theories*, JHEP 08 (2021) 013, arXiv:2104.01220 | text via research agent: eqs. (3.20), (3.24), (6.19), (6.23), (3.66) |
 | [ZWCY26] | Zhu, Wang, Cheng, Yan, arXiv:2605.00104 (2026) | via research agent: replica twist lines at O(3) critical points carry their own defect criticality. **Title not recorded; verify before citing** |
+
+| [HLMPR16] | D. M. Hofman, D. Li, D. Meltzer, D. Poland, F. Rejon-Barrera, *A proof of the conformal collider bounds*, JHEP 06 (2016) 111, arXiv:1603.03771 | abstract (EXP-030): unitary, parity-preserving CFTs with a unique stress tensor in d > 2 |
+| [HKT16] | T. Hartman, S. Kundu, A. Tajdini, *Averaged null energy condition from causality*, arXiv:1610.05308 (DOI 10.1007/JHEP07(2017)066) | abstract (EXP-030) |
+| [CDP18] | S. D. Chowdhury, J. R. David, S. Prakash, *Bootstrap and collider physics of parity violating conformal field theories in d = 3*, arXiv:1812.07774 | abstract (EXP-030); the parity-odd ⟨TTT⟩ bound form is not read |
