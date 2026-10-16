@@ -3217,7 +3217,7 @@ verdict criteria were fixed by the bridge's request.
 | σ = π²C_T/24 for the d = 3 corner function | **conjectured** in [BMW15] arXiv:1505.04804; **proved** in [FLP16] arXiv:1511.05179: abstract, "we prove the conjectured universality of the corner term coefficient" for d = 3 CFTs, via the universal C_T-proportional non-local entanglement density | verified (abstracts) |
 | conformal collider (energy-flux positivity) bounds hold for unitary, parity-preserving CFTs with a unique stress tensor in d > 2 | Hofman, Li, Meltzer, Poland, Rejon-Barrera, *A proof of the conformal collider bounds*, arXiv:1603.03771, JHEP 06 (2016) 111 | verified (abstract) |
 | ANEC follows from microcausality for interacting theories in d > 2, and its consequences include conformal-collider constraints | Hartman, Kundu, Tajdini, *Averaged null energy condition from causality*, arXiv:1610.05308 (DOI 10.1007/JHEP07(2017)066) | verified (abstract) |
-| in parity-even d = 3, ⟨TTT⟩ = (C_T, t₄), and energy positivity gives −4 ≤ t₄ ≤ 4, saturated by the free real scalar (+4) and the free Dirac fermion (−4) | EXP-002 via [BCR18] §7, footnote 23, eqs. 130–132; [BWK16] §VI. The general-d positivity conditions specialised to d = 3, where the t₂ structure is absent, give 1 ∓ t₄/4 ≥ 0. Original general-d source (Buchel–Escobedo–Myers–Paulos–Sinha–Smolkin arXiv:0911.4257, Camanho–Edelstein, de Boer–Kulaxizi–Parnachev) **not read here** | partially verified |
+| in parity-even d = 3, ⟨TTT⟩ = (C_T, t₄), and energy positivity gives −4 ≤ t₄ ≤ 4, saturated by the free real scalar (+4) and the free Dirac fermion (−4) | EXP-002 via [BCR18] §7, footnote 23, eqs. 130–132; [BWK16] §VI. Read at source 2026-10-17 [BEMPSS09] (arXiv:0911.4257 TeX source, §3.3 "Constraints"). Footnote at TeX label `threed`: in d = 3 the t₂ structure is absent (its angular factor is identically 1/2, label `except`; d = 3 flux is label `basic1`). Footnote ending in label `cstr3`: "the vector and scalar constraints reduce to −4 ≤ t₄ ≤ 4", and in d = 3 free fields give t₄ = 4(n_s − ñ_f)/(n_s + ñ_f), with ñ_f = 2 per Dirac fermion, so free theories fill the range. My check: their vector and scalar constraints at d = 3 are 1 − t₄/4 ≥ 0 and 1 + t₄/4 ≥ 0, t₂ cancels. The free-field formula is C_T-weighted (scalar:Dirac C_T = 1:2), so t₄ = 0 is the equal-C_T mixture, which matches EXP-030's κ/C_T = (4.179 + 3.8005)/2 = 3.990 | **verified** (original source read; the reduction re-derived; the t₄ = 0 mixture cross-checked) |
 | a parity-violating d = 3 CFT has one more ⟨TTT⟩ structure, and the collider bound then involves it as well | Chowdhury–David–Prakash arXiv:1812.07774 abstract ("reproduce the previously known parity odd collider bounds"); a search snippet suggests the form t₄² + d₄² ≤ 16, **not verified at source** | partially verified / unverified |
 
 **Correction to the brief (v1).** It called the HM range "−4 ≤ t₄ ≤ 4" without qualification. That is the
@@ -3296,3 +3296,21 @@ is **not a Fable question** in the bridge's sense.
 
 **Recommendation.** Do not run Fable on I-08. The v1 brief stays on hold; its parity caveat and the ECG-free pair
 above would be needed if it were ever revived.
+
+### EXP-030 addendum (2026-10-17): the d = 3 t₄ range read at its original source
+
+The fact-check row "in parity-even d = 3 … −4 ≤ t₄ ≤ 4" was graded *partially verified* because the general-d
+source had not been read. **Change:** I read the arXiv TeX source of [BEMPSS09] (0911.4257) and the row is now
+**verified**.
+
+What the source says, and what I checked:
+- In d = 3 the t₂ structure is absent.
+- The vector and scalar positivity conditions reduce to 1 − t₄/4 ≥ 0 and 1 + t₄/4 ≥ 0. I re-derived this from
+  their general-d expressions; t₂ cancels.
+- Free fields give t₄ = 4(n_s − ñ_f)/(n_s + ñ_f), with ñ_f = 2 per Dirac fermion.
+- That formula is C_T-weighted, so t₄ = 0 is the equal-C_T scalar/Dirac mixture. Its value κ/C_T = 3.990 is the
+  one EXP-030 used. Consistent.
+
+Nothing downstream changes. Also drafted outside the repo, for the bridge: three heavy-research prompts (upper-bound
+programme; QNEC and first-law closure under tail addition; rigour of n = 1 conformal concavity). Their location and
+content were reported to the bridge; nothing from them is used here.

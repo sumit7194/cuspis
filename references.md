@@ -79,6 +79,7 @@ Searched and found NOT relevant (title suggested otherwise): arXiv:2507.16800 (C
 | [BCPRS21] | L. Bianchi, A. Chalabi, V. Procházka, B. Robinson, J. Sisti, *Monodromy defects in free field theories*, JHEP 08 (2021) 013, arXiv:2104.01220 | text via research agent: eqs. (3.20), (3.24), (6.19), (6.23), (3.66) |
 | [ZWCY26] | Zhu, Wang, Cheng, Yan, arXiv:2605.00104 (2026) | via research agent: replica twist lines at O(3) critical points carry their own defect criticality. **Title not recorded; verify before citing** |
 
+| [BEMPSS09] | A. Buchel, J. Escobedo, R. C. Myers, M. F. Paulos, A. Sinha, M. Smolkin, *Holographic GB gravity in arbitrary dimensions*, JHEP 03 (2010) 111, doi:10.1007/JHEP03(2010)111, arXiv:0911.4257 | TeX source read 2026-10-17 (§3.3 "Constraints"; footnotes at TeX labels `threed` and `cstr3`): d = 3 energy positivity −4 ≤ t₄ ≤ 4; free fields t₄ = 4(n_s − ñ_f)/(n_s + ñ_f) |
 | [HLMPR16] | D. M. Hofman, D. Li, D. Meltzer, D. Poland, F. Rejon-Barrera, *A proof of the conformal collider bounds*, JHEP 06 (2016) 111, arXiv:1603.03771 | abstract (EXP-030): unitary, parity-preserving CFTs with a unique stress tensor in d > 2 |
 | [HKT16] | T. Hartman, S. Kundu, A. Tajdini, *Averaged null energy condition from causality*, arXiv:1610.05308 (DOI 10.1007/JHEP07(2017)066) | abstract (EXP-030) |
 | [CDP18] | S. D. Chowdhury, J. R. David, S. Prakash, *Bootstrap and collider physics of parity violating conformal field theories in d = 3*, arXiv:1812.07774 | abstract (EXP-030); the parity-odd ⟨TTT⟩ bound form is not read |
