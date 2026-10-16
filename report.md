@@ -3314,3 +3314,75 @@ What the source says, and what I checked:
 Nothing downstream changes. Also drafted outside the repo, for the bridge: three heavy-research prompts (upper-bound
 programme; QNEC and first-law closure under tail addition; rigour of n = 1 conformal concavity). Their location and
 content were reported to the bridge; nothing from them is used here.
+
+## EXP-031  Do QNEC and the first law give a corner inequality the pure tail violates? — pre-registration (bridge item (a))
+
+**Goal.** EXP-030 §3 only *argued* that QNEC and relative-entropy / first-law constraints are closed under tail
+addition (adding K·a_w). This experiment derives the QNEC corner inequality explicitly and tests it on the pure
+tail. It then states what can and cannot be said about the first law.
+
+**Derivation, done before any numbers.** Notation:
+- Minkowski signature (−,+,+). A corner has edges along the unit spacelike vectors e₁ = (0,1,0) and
+  e₂ = (0, cos θ, sin θ), with opening angle θ ∈ (0, π).
+- The future-outward null normals are k₁ = (1, 0, −1) and k₂ = (1, −sin θ, cos θ).
+
+*The deformation.* Deform edge i along k_i with profile λᵢ(r) = cᵢ r. The profile vanishes at the tip, so the tip is
+fixed.
+- Each edge stays a straight, unit-norm spacelike ray, eᵢ + cᵢkᵢ, so the area (length) term is unchanged.
+- kᵢ stays a null normal of the deformed edge, so the family is a null deformation at every (c₁, c₂).
+- The Lorentz-invariant angle is set by x ≡ cos θ_eff = (e₁ + c₁k₁)·(e₂ + c₂k₂) = cos θ − (c₁ + c₂) sin θ
+  − c₁c₂(1 + cos θ).
+
+*Premise P1 (carried over from CHL09).* The universal log coefficient of a boosted corner is a(θ_eff).
+
+*Premise P2.* For outward deformations of the same sign, ∂²S ≤ 0:
+- the off-diagonal terms are ≤ 0 by SSA;
+- the diagonal term is ≤ 2π⟨T_kk⟩ = 0 by QNEC [BFKW17], which holds at locally stationary points (straight edges,
+  r > 0).
+
+*Premise P3.* The log coefficient of ∂²S can be read from the near-tip scaling region. Every partial sum of the
+nonpositive kernel is itself nonpositive, and the far region contributes no log.
+
+*The inequality.* With P1–P3, a(x(c₁, c₂)) is convex along every direction d with d₁, d₂ ≥ 0.
+- The Hessian at c = 0 is a_xx (g·d)² − 2a_x(1 + cos θ) d₁d₂, with g = (−sin θ, −sin θ).
+- Since a_x ≥ 0, its minimum on the simplex is at d₁ = d₂. Converting to θ:
+
+      Q[a](θ) ≡ a″(θ) + ½ tan(θ/2) a′(θ) ≥ 0.                                                  (QNEC-corner)
+
+- A single-edge deformation gives Q − ½cot(θ/2)a′, which is weaker.
+- Mixing future and past orientations gives nothing new: the cross term then has the favourable sign.
+- By Lorentz invariance, every other base point (c₁, c₂) is the c = 0 problem at θ_eff.
+
+**Two predictions, checkable analytically, made before any numbers.**
+- (i) Q = CHL[a] − ½cot(θ/2)·a′, so **C2 + C3 ⇒ Q**.
+- (ii) In spectral form the kernel is K_Q(s, ε) = cosh(sε) − ½cot(ε/2)·sinh(sε)/s. Since tanh(sε)/s ≤ ε ≤ 2 tan(ε/2),
+  **K_Q ≥ 0 for all s**, so C4 alone ⇒ Q, and every positive measure, including a_w itself, satisfies Q.
+
+If (ii) holds, then on the spectral cone Q *cannot fail*. It is a check that cannot fire inside the cone, so the
+negative control must come from outside it.
+
+**Method (two implementations of the Hessian, plus evaluations).** Script `scripts/exp031_qnec.py`:
+- **(m1)** sympy: build x(c₁, c₂) from the vectors above and confirm the d = (1,1) Hessian equals 4·Q[a]
+  identically.
+- **(m2)** numpy, independent: finite-difference Hessian of a(arccos x(c₁, c₂)) for explicit test functions, compared
+  with 4Q.
+- **(m3)** the minimum of K_Q on a grid, s ∈ [10⁻⁶, 60], ε ∈ (0, π).
+- **(m4)** Q on each function in the table below.
+
+**Controls, pre-registered; each must behave as stated.**
+
+| function | role | must |
+|---|---|---|
+| a_w, w ∈ {1, 3, 6, 10} | the object under test | pass |
+| EMI, 1 + (π−θ)cot θ | positive control | pass |
+| 𝔞_min = log(1/sin(θ/2)) | known answer | Q = ¼cot²(θ/2) exactly |
+| EMI + 10⁴·a_w at w = 6 (κ/σ huge) | dressed family | pass |
+| chord extremal (κ/2)cot(θ/2), outside the cone (it violates C3 for θ > π/2) | negative control | fail exactly for θ > 2 arctan √2 = 109.47° |
+
+**Pass/fail.**
+- **Outcome (a), closure proved for QNEC:** (m1) = (m2) = 4Q, K_Q ≥ 0 on the grid, all controls as stated.
+- **Outcome (b), Q is a candidate upper-bound ingredient:** any a_w fails Q. That would contradict (ii) and would mean
+  the derivation is wrong somewhere; investigate before believing it.
+- **Any control misbehaving:** the run is void.
+
+**First law / relative entropy.** This part is a reasoned assessment, not a computation; see the results entry.
