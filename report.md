@@ -3201,3 +3201,98 @@ The bridge computes the registered verdicts and sends quantum only the verdicts.
 - *Record.* The verdicts stand. quantum will run a corrected Stage 3 as a new, non-blind registration.
 - *Effect on cuspis's own systematics.* None. The read-high t-grid residual (~10⁻⁵) and the read-low mass-cutoff
   deficit at 15°–20° stand as disclosed.
+
+## EXP-030  Gemini audit item I-08: can Hofman–Maldacena / ANEC constraints bound κ/C_T? — groundwork (no Fable)
+
+**Date** 2026-10-16. **Assigned by** the bridge, at the user's instruction: do the groundwork with Opus first, and use
+Fable only for a genuinely hard remaining derivation.
+
+**Why no pre-registration.** This is literature verification and structural reasoning, with no computation. The
+verdict criteria were fixed by the bridge's request.
+
+### 1. References (verified at source unless marked)
+
+| claim | source | status |
+|---|---|---|
+| σ = π²C_T/24 for the d = 3 corner function | **conjectured** in [BMW15] arXiv:1505.04804; **proved** in [FLP16] arXiv:1511.05179: abstract, "we prove the conjectured universality of the corner term coefficient" for d = 3 CFTs, via the universal C_T-proportional non-local entanglement density | verified (abstracts) |
+| conformal collider (energy-flux positivity) bounds hold for unitary, parity-preserving CFTs with a unique stress tensor in d > 2 | Hofman, Li, Meltzer, Poland, Rejon-Barrera, *A proof of the conformal collider bounds*, arXiv:1603.03771, JHEP 06 (2016) 111 | verified (abstract) |
+| ANEC follows from microcausality for interacting theories in d > 2, and its consequences include conformal-collider constraints | Hartman, Kundu, Tajdini, *Averaged null energy condition from causality*, arXiv:1610.05308 (DOI 10.1007/JHEP07(2017)066) | verified (abstract) |
+| in parity-even d = 3, ⟨TTT⟩ = (C_T, t₄), and energy positivity gives −4 ≤ t₄ ≤ 4, saturated by the free real scalar (+4) and the free Dirac fermion (−4) | EXP-002 via [BCR18] §7, footnote 23, eqs. 130–132; [BWK16] §VI. The general-d positivity conditions specialised to d = 3, where the t₂ structure is absent, give 1 ∓ t₄/4 ≥ 0. Original general-d source (Buchel–Escobedo–Myers–Paulos–Sinha–Smolkin arXiv:0911.4257, Camanho–Edelstein, de Boer–Kulaxizi–Parnachev) **not read here** | partially verified |
+| a parity-violating d = 3 CFT has one more ⟨TTT⟩ structure, and the collider bound then involves it as well | Chowdhury–David–Prakash arXiv:1812.07774 abstract ("reproduce the previously known parity odd collider bounds"); a search snippet suggests the form t₄² + d₄² ≤ 16, **not verified at source** | partially verified / unverified |
+
+**Correction to the brief (v1).** It called the HM range "−4 ≤ t₄ ≤ 4" without qualification. That is the
+parity-even case. With parity violation there is an extra parameter. Nothing below depends on it, because it is still
+⟨TTT⟩ data.
+
+### 2. EXP-002 re-checked, and strengthened without ECG
+
+- **The weak points.** EXP-002's obstruction used Einsteinian cubic gravity (ECG) curves at t₄ = ±4. ECG is a toy
+  higher-curvature model that is not known to be a consistent unitary CFT, and the t₄ ↔ μ sign is inconsistent
+  between BCR18 and BCV21.
+- **The same obstruction from honest theories only.** Decoupled free real scalars and Dirac fermions form a unitary
+  CFT. For a product theory κ and C_T add, so κ/C_T is the C_T-weighted average. t₄ is the same C_T-weighted average
+  ([BCR18] fn. 23: t₄ = 4(n_s − n_f)/(n_s + n_f), with n_f counting two-component Dirac fields twice, i.e. weights ∝
+  C_T).
+- **The decisive pair.** The equal-C_T mixture (n_s real scalars per n_s/2 Dirac fermions) has **t₄ = 0** and
+  **κ/C_T = (4.179 + 3.8005)/2 = 3.990**. Einstein holography also has **t₄ = 0** (at leading order in large N, e.g.
+  strongly coupled ABJM), with **κ/C_T = π²Γ(3/4)⁴/6 = 3.709**. That is **7.6% apart at equal (C_T-normalised) t₄**,
+  with no ECG and no sign issue.
+- **Consequence.** κ/C_T is not a function of (C_T, t₄). This holds for the parity-even free fields and Einstein
+  holography alone.
+- Grade: verified (the inputs are EXP-001/EXP-002 values and BCR18 fn. 23).
+
+### 3. The candidate finite-angle links (the brief's list), assessed
+
+1. **Second-order shape dependence** (FLP16; Mezei; Rosenhaus–Smolkin). δ²S is universal and ∝ C_T. On the corner it
+   fixes **σ only**.
+   - Third order involves ⟨TTT⟩, so at most (C_T, t₄). But EXP-002 shows σ′/C_T differs by 8.4% at equal t₄, so
+     even σ′ is not a function of (C_T, t₄), in line with [BWK16] §VI.
+   - **κ is not reachable at any finite order.** κ is the large-p asymptotics of the smooth-limit coefficients
+     (σ^(p) → 2κ/π^(2p+3), [BWK16]; RESULT.md §3, where κ is the tail of the spectral measure). Any finite set of
+     shape-derivative data fixes finitely many σ^(p) and leaves the tail free. That is the Casimir-dressing freedom.
+2. **Relative-entropy positivity / first law.** For vacuum entanglement of *different regions*, relative-entropy
+   monotonicity yields SSA-type inequalities: linear, homogeneous and one-sided, the C2/C3 class. The first law
+   constrains *state* perturbations at fixed region, not the vacuum's shape dependence. No coupling of κ to anything
+   new.
+3. **QNEC.** In the vacuum ⟨T_kk⟩ = 0, so QNEC reduces to null concavity of S under null deformations. That is again
+   a linear, one-sided inequality on a(θ), of the boosted-SSA type C3 [CHL09]. A QNEC-specific corner inequality
+   beyond C3 was not found in the literature here (unverified that none exists).
+4. **"Rényi-2 modular susceptibility" (the audit's phrase).** Not a standard object: no source found. The nearest
+   standard objects are:
+   - the expansion of the twist-operator dimension in (n − 1): ∂_n h_n|₁ ∝ C_T, and ∂²_n h_n|₁ involves t₄
+     ([BCR18] eq. 128 as recorded in EXP-002);
+   - the capacity of entanglement.
+
+   These control the smooth-limit (θ → π) and n-dependence data, not κ. Graded unverified as a well-defined
+   proposal.
+
+**The structural reason, common to items 1–3.**
+- Every one of these is a *linear, homogeneous* constraint on a(θ) that is satisfied by a pure sharp-corner "tail"
+  piece. That piece is the K·a_w family of EXP-024: spectral density 2s²e^{−πs} on s ≥ w, κ = K, mass ∝ e^{−wπ}.
+- So adding K·a_w with w large raises κ without bound at negligible cost to σ, the Casimir-dressing argument in
+  spectral form. This is established for C1–C6 and conformal concavity (RESULT.md §4; EXP-024). For QNEC and the
+  first law it is argued here, not proved.
+- An upper bound needs a constraint that the pure tail *violates*: a two-sided or nonlinear coupling between κ and
+  C_T-level data. Hofman–Maldacena bounds are two-sided, but on ⟨TTT⟩ parameters, which §2 shows do not determine κ.
+
+### 4. Verdict on I-08
+
+**Settled at the level asked.** Hofman–Maldacena / ANEC constraints cannot bound κ/C_T (or a(θ)/C_T at finite
+angle) on their own:
+- (i) they constrain only stress-tensor two- and three-point data, (C_T, t₄) plus a parity-odd parameter;
+- (ii) κ/C_T is not a function of that data (§2: 7.6% at t₄ = 0 using only free fields and Einstein holography;
+  11.5% at t₄ = +4 with ECG);
+- (iii) the finite-angle couplings the audit proposes either reach only σ, or are linear one-sided positivity
+  constraints closed under adding a pure tail.
+
+**I-08's other half is already known without HM.** "Bound a(θ)/C_T away from 0" is not new: a(θ) ≥ 𝔞_min(θ)
+∝ C_T [BWK16], and κ/C_T ≥ 2.28 (EXP-025). I-08's factual statement about C12 is wrong: it was a continuum q-cut in
+quantum's instrument, not lattice artifacts.
+
+**Not settled, and not I-08:** whether *any* constraint bounds κ/C_T above. That is the open research question.
+Candidate ingredients would have to be non-linear or involve ⟨TTTT⟩, twist-defect or fusion spectral data. Per
+RESULT.md §5, κ is controlled by twist-defect fusion data. It is a research programme, not a single derivation, so it
+is **not a Fable question** in the bridge's sense.
+
+**Recommendation.** Do not run Fable on I-08. The v1 brief stays on hold; its parity caveat and the ECG-free pair
+above would be needed if it were ever revived.
