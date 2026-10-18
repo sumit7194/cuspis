@@ -18,8 +18,8 @@ caveats, not tasks.
 *The full ranked backlog, with scores and the 2026-09-23 literature sweep, is `BACKLOG.md`.*
 
 - [ ] **Guards (2026-10-18).**
-  - The SendMessage blind hook is live from the next session. Verify that it fires there: a test send to the
-    bridge with a dummy embargoed string, then check `~/.claude/blind_hook.log`.
+  - The SendMessage blind hook is verified live (2026-10-18, same session). It blocked a real outgoing draft to the
+    bridge that named the sealed S7a statement; the resend without it went through.
   - The embargo `quantum-smallangle-and-C2a-prime` stays until quantum lifts it.
   - The commit-msg overclaim hook is local: reinstall it after a fresh clone (see the `tools/overclaim_check.py`
     header).
