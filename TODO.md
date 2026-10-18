@@ -3,6 +3,20 @@
 *Open questions, unverified claims, and deferred work. Consolidated 2026-09-05 after EXP-011: nothing
 settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) and `RESULT.md` §10.*
 
+## RESUME NOTES — 2026-10-18 (HOLD for the Mac restart; everything committed and pushed)
+
+- **State.** No cuspis runs or agents are active. The latest work, all pushed:
+  - EXP-030 addendum: the t₄ range is verified at source;
+  - EXP-031: tip-fixed corner QNEC adds nothing beyond C3 and is closed under tail addition;
+  - the two guards (blind hook on SendMessage, commit-msg overclaim check).
+- **Outside the repo.** Three heavy-research prompts are in `/Users/sumit/Github/fable_briefs/cuspis/`, delivered to
+  the bridge and not run. The Fable brief for I-08 is on hold.
+- **Open embargo.** `quantum-smallangle-and-C2a-prime` (`tools/EMBARGOES.json`) stays until quantum lifts it.
+- **After the restart.**
+  - Check that the commit-msg hook still exists in `.git/hooks`.
+  - Check that the SendMessage hook loads in the new session (`~/.claude/blind_hook.log`).
+  - Ask the bridge for the next item. Low-priority leftovers are the EXP-031 items below.
+
 ## Next session — picked 2026-09-23, deferred until the machine is free
 
 All four chosen, in this order of dependence: (1) independent route to a₀ without the ODE solver,
