@@ -3515,3 +3515,25 @@ scratch files outside the repo (`verifier031/v.py`). This is within-session revi
 **Next steps.** None needed for I-08 or the closure question. The only open door is (α): a vertex-moving QNEC
 argument with a controlled tip. It is listed in TODO and is low priority. PROMPT_2 (drafted for the user's other
 sessions) asks the same question independently. Its inputs predate this entry, so its answer stays blind to it.
+
+## Housekeeping 2026-10-18: two enforcement mechanisms (bridge fleet practices; user-approved)
+
+**1. Outbound blinding guard.** `tools/EMBARGOES.json`, `tools/blind_check.py` and `tools/blind_hook.sh` are copied
+from TheBridge/tools. `.claude/settings.json` runs the hook as a PreToolUse hook on SendMessage; it takes effect from
+the next session.
+- Every embargo uses recipient "*", because socket addresses defeat name matching.
+- *Embargo lifted:* `quantum-sub45-values` (the C12 sub-45° real-scalar values), by quantum commit 1c5e8cf, relayed
+  by the bridge. C12 is closed and Stage 3 is registered non-blind.
+- *Embargo kept:* `quantum-smallangle-and-C2a-prime` (S7a a₀ ≤ 0 at n = 1; EXP-027–029), at quantum's request.
+- *Controls:* the guard fires on embargoed text, including to a uds socket address; it passes clean text; the hook
+  exits 2 and logs to `~/.claude/blind_hook.log`.
+
+**2. Overclaim guard.** `tools/overclaim_check.py`, run as `.git/hooks/commit-msg`. It is local and unversioned;
+install it with the line in the script header.
+- *Why:* overclaiming wording was corrected three times (the fda21ac "leak scan clean", the "strict" bound wording
+  of 20cbbe9, and EXP-031's "strongest").
+- *What it does:* it checks the commit message and the added lines of staged `.md` files. It refuses
+  strong-claim words (strongest, strict, proved, clean, independent, settled, confirmed, …) unless a grade label sits
+  on the same or an adjacent line. An override must carry a reason.
+- *Controls:* the selftest includes the real fda21ac message, which must fire. A first, looser version let it pass
+  because "corrected" on the same line counted as a qualifier, so the qualifier list was narrowed.

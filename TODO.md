@@ -17,6 +17,12 @@ caveats, not tasks.
 
 *The full ranked backlog, with scores and the 2026-09-23 literature sweep, is `BACKLOG.md`.*
 
+- [ ] **Guards (2026-10-18).**
+  - The SendMessage blind hook is live from the next session. Verify that it fires there: a test send to the
+    bridge with a dummy embargoed string, then check `~/.claude/blind_hook.log`.
+  - The embargo `quantum-smallangle-and-C2a-prime` stays until quantum lifts it.
+  - The commit-msg overclaim hook is local: reinstall it after a fresh clone (see the `tools/overclaim_check.py`
+    header).
 - [ ] **EXP-031 leftovers (low priority).**
   - (α) Vertex-moving QNEC deformations with a controlled tip. The verifier's dimensional argument says these add no
     log constraint; partially verified.

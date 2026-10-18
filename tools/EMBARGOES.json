@@ -2,18 +2,6 @@
   "_doc": "cuspis outbound blinding embargoes. tools/blind_check.py must pass on every outgoing cross-session message (enforced by tools/blind_hook.sh as a PreToolUse hook on SendMessage). Lift an embargo only when its seal arrives, and record the commit. Template: TheBridge/tools (bridge fleet practices 2026-10-18).",
   "embargoes": [
     {
-      "id": "quantum-sub45-values",
-      "recipient": "*",
-      "until": "bridge confirms quantum's Stage 3 sub-45 deg values are committed (seal), or the bridge lifts the C12 shielding",
-      "opened": "2026-10-10 (sealed in report.md; guard installed 2026-10-18)",
-      "patterns": [
-        "0\\.0473887", "0\\.0676018", "0\\.0778869", "0\\.1069789", "0\\.1455041",
-        "0\\.04739\\b", "0\\.06760\\b", "0\\.07789\\b", "0\\.10698\\b", "0\\.14550\\b",
-        "cuspis[^.\\n]{0,60}(higher|above)[^.\\n]{0,60}(6\\s*[·x*]\\s*10|5\\.7\\s*[·x*]\\s*10|1\\.4\\s*[·x*]\\s*10|7\\s*[·x*]\\s*10)"
-      ],
-      "note": "recipient '*' per bridge (socket addresses defeat name matching); a message to the bridge carrying these needs the embargo lifted deliberately, with a reason"
-    },
-    {
       "id": "quantum-smallangle-and-C2a-prime",
       "recipient": "*",
       "until": "bridge lifts the 'sealed toward quantum' status of S7a (a0 <= 0 at n = 1, O3) and C2a' (EXP-027 to EXP-029)",
@@ -25,6 +13,29 @@
         "A[₂2]\\s*=\\s*-?\\s*EMI\\s*/\\s*8"
       ],
       "note": "small-angle material and the C2a' Dirac cumulant route, sealed toward quantum in report.md"
+    }
+  ],
+  "lifted": [
+    {
+      "id": "quantum-sub45-values",
+      "recipient": "*",
+      "until": "bridge confirms quantum's Stage 3 sub-45 deg values are committed (seal), or the bridge lifts the C12 shielding",
+      "opened": "2026-10-10 (sealed in report.md; guard installed 2026-10-18)",
+      "patterns": [
+        "0\\.0473887",
+        "0\\.0676018",
+        "0\\.0778869",
+        "0\\.1069789",
+        "0\\.1455041",
+        "0\\.04739\\b",
+        "0\\.06760\\b",
+        "0\\.07789\\b",
+        "0\\.10698\\b",
+        "0\\.14550\\b",
+        "cuspis[^.\\n]{0,60}(higher|above)[^.\\n]{0,60}(6\\s*[·x*]\\s*10|5\\.7\\s*[·x*]\\s*10|1\\.4\\s*[·x*]\\s*10|7\\s*[·x*]\\s*10)"
+      ],
+      "note": "recipient '*' per bridge (socket addresses defeat name matching); a message to the bridge carrying these needs the embargo lifted deliberately, with a reason",
+      "lifted": "2026-10-18 by quantum (commit 1c5e8cf, embargo note in PREREG_cuspis_sub45_check.md; relayed by the bridge): C12 closed, Stage 3 and Plan A registered NON-BLIND"
     }
   ]
 }
