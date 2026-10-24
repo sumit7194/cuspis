@@ -3391,7 +3391,7 @@ negative control must come from outside it.
 ### EXP-031 results: outcome (a). The QNEC corner inequality holds for every positive spectral measure, so it is closed under tail addition
 
 Script: `scripts/exp031_qnec.py`; output: `exp031_output.txt` (sympy 1.13.3 added to `.venv` for (m1); numpy 2.4.3,
-mpmath 1.4.1).
+mpmath 1.3.0 — corrected 2026-10-24 from "1.4.1": the sympy install had downgraded it; see the regression entry).
 
 **The run, against the pre-registration.**
 
@@ -3537,3 +3537,24 @@ install it with the line in the script header.
   on the same or an adjacent line. An override must carry a reason.
 - *Controls:* the selftest includes the real fda21ac message, which must fire. A first, looser version let it pass
   because "corrected" on the same line counted as a qualifier, so the qualifier list was narrowed.
+
+## Regression after the macOS update, and environment pinning (bridge, 2026-10-24)
+
+**Environment of every result below:** macOS 27.0.1 (26A434), arm64, Python 3.14.5 (`.venv`), numpy 2.4.3,
+mpmath 1.3.0, scipy 1.17.1, sympy 1.13.3. No compiled code is involved. The full pin is `requirements.lock`
+(`pip freeze` of `.venv`).
+- *Restore:* `python3.14 -m venv .venv && .venv/bin/pip install -r requirements.lock`.
+- *From now on:* each new results entry states its environment in this form.
+
+**Regression.** I reran two key frozen results on the updated OS, one after the other at nice 10, and compared them
+byte for byte (`cmp`) with the committed pre-update outputs:
+- `scripts/exp031_qnec.py` → `exp031_output.txt`: **identical**;
+- `scripts/exp024_cc_kappa.py` → `exp024_output.txt`: **identical**.
+
+**Correction found while pinning (EXP-031's environment line).** EXP-031 recorded "mpmath 1.4.1". That is wrong:
+installing sympy 1.13.3 on 2026-10-17 downgraded mpmath to 1.3.0, because sympy 1.13 requires mpmath < 1.4, and the
+run came after that install.
+- EXP-031 ran under **mpmath 1.3.0**.
+- EXP-024's committed output dates from before the downgrade, so presumably mpmath 1.4.1 (inferred, unverified).
+- EXP-024 reproduces identically under 1.3.0. On this evidence its outputs do not depend on that change of mpmath
+  version (partially verified: one script).
