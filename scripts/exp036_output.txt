@@ -1,0 +1,41 @@
+22:42:34   new numerics a1.0_e0.0001_np32_q96: M=1005312 (11 s)
+22:43:49   new numerics a1.0_e0.0001_np64_q96: M=2010620 (74 s)
+22:45:56   new numerics a1.0_e1e-05_np16_q96: M=5026552 (127 s)
+22:52:10   new numerics a1.0_e1e-05_np32_q96: M=10053100 (374 s)
+22:52:21   new numerics a1.5_e0.0001_np32_q96: M=1005312 (11 s)
+22:53:35   new numerics a1.5_e0.0001_np64_q96: M=2010620 (74 s)
+22:55:40   new numerics a1.5_e1e-05_np16_q96: M=5026552 (125 s)
+23:02:02   new numerics a1.5_e1e-05_np32_q96: M=10053100 (382 s)
+23:02:02 n_p gate at the new eta (rel diff between the two n_p; must be < 2%):
+23:02:02   alpha=1.0 eta=0.0001 i90: 4.01e-06 [PASS]
+23:02:02   alpha=1.0 eta=0.0001 i180: 3.75e-06 [PASS]
+23:02:02   alpha=1.0 eta=1e-05 i90: 1.95e-05 [PASS]
+23:02:02   alpha=1.0 eta=1e-05 i180: 1.96e-05 [PASS]
+23:02:02   alpha=1.5 eta=0.0001 i90: 9.16e-07 [PASS]
+23:02:02   alpha=1.5 eta=0.0001 i180: 8.12e-07 [PASS]
+23:02:02   alpha=1.5 eta=1e-05 i90: 9.06e-07 [PASS]
+23:02:02   alpha=1.5 eta=1e-05 i180: 7.97e-07 [PASS]
+23:02:02 P-b  Delta = 1/2: prediction / numerics (frozen criterion: |ratio-1| decreasing in eta, <= 0.15 at 1e-3, <= 0.10 at 1e-5):
+23:02:02   th=90 eta=0.1: numerics 1.307623e-02  predicted 1.016649e-02  ratio 0.7775   (leading-order-only ratio 2.8321)
+23:02:02   th=90 eta=0.05: numerics 9.147818e-03  predicted 7.499734e-03  ratio 0.8198   (leading-order-only ratio 2.3917)
+23:02:02   th=90 eta=0.02: numerics 6.255852e-03  predicted 5.345991e-03  ratio 0.8546   (leading-order-only ratio 2.0509)
+23:02:02   th=90 eta=0.01: numerics 4.911466e-03  predicted 4.285152e-03  ratio 0.8725   (leading-order-only ratio 1.8851)
+23:02:02   th=90 eta=0.005: numerics 3.965357e-03  predicted 3.514177e-03  ratio 0.8862   (leading-order-only ratio 1.7639)
+23:02:02   th=90 eta=0.002: numerics 3.087743e-03  predicted 2.779719e-03  ratio 0.9002   (leading-order-only ratio 1.6465)
+23:02:02   th=90 eta=0.001: numerics 2.605917e-03  predicted 2.367954e-03  ratio 0.9087   (leading-order-only ratio 1.5790)
+23:02:02   th=90 eta=0.0001: numerics 1.618831e-03  predicted 1.503209e-03  ratio 0.9286   (leading-order-only ratio 1.4298)
+23:02:02   th=90 eta=1e-05: numerics 1.104145e-03  predicted 1.039300e-03  ratio 0.9413   (leading-order-only ratio 1.3416)
+23:02:02   th=90: monotone decrease of |ratio-1|: True; at 1e-3: 0.0913; at 1e-5: 0.0587
+23:02:02   th=180 eta=0.1: numerics 7.595840e-03  predicted 6.057283e-03  ratio 0.7974   (leading-order-only ratio 3.1039)
+23:02:02   th=180 eta=0.05: numerics 5.452820e-03  predicted 4.525647e-03  ratio 0.8300   (leading-order-only ratio 2.5544)
+23:02:02   th=180 eta=0.02: numerics 3.793434e-03  predicted 3.261583e-03  ratio 0.8598   (leading-order-only ratio 2.1532)
+23:02:02   th=180 eta=0.01: numerics 3.001360e-03  predicted 2.629513e-03  ratio 0.8761   (leading-order-only ratio 1.9638)
+23:02:02   th=180 eta=0.005: numerics 2.436678e-03  predicted 2.165996e-03  ratio 0.8889   (leading-order-only ratio 1.8274)
+23:02:02   th=180 eta=0.002: numerics 1.907588e-03  predicted 1.720996e-03  ratio 0.9022   (leading-order-only ratio 1.6967)
+23:02:02   th=180 eta=0.001: numerics 1.614901e-03  predicted 1.469966e-03  ratio 0.9103   (leading-order-only ratio 1.6221)
+23:02:02   th=180 eta=0.0001: numerics 1.010140e-03  predicted 9.388785e-04  ratio 0.9295   (leading-order-only ratio 1.4587)
+23:02:02   th=180 eta=1e-05: numerics 6.918195e-04  predicted 6.515747e-04  ratio 0.9418   (leading-order-only ratio 1.3632)
+23:02:02   th=180: monotone decrease of |ratio-1|: True; at 1e-3: 0.0897; at 1e-5: 0.0582
+23:02:02 P-c  Delta = 1/4 plateau: predicted i_inf vs numerics (frozen: |ratio-1| decreasing in eta, <= 0.10 at 1e-5):
+23:02:02   th=90: predicted plateau 0.042041;  numerics 0.1:0.058772 (ratio 0.7153)  0.05:0.052495 (ratio 0.8009)  0.02:0.048065 (ratio 0.8747)  0.01:0.046126 (ratio 0.9114)  0.005:0.044851 (ratio 0.9374)  0.002:0.043777 (ratio 0.9603)  0.001:0.043255 (ratio 0.9719)  0.0001:0.042418 (ratio 0.9911)  1e-05:0.042160 (ratio 0.9972)
+23:02:02   th=180: predicted plateau 0.031250;  numerics 0.1:0.041277 (ratio 0.7571)  0.05:0.037792 (ratio 0.8269)  0.02:0.035123 (ratio 0.8897)  0.01:0.033904 (ratio 0.9217)  0.005:0.033086 (ratio 0.9445)  0.002:0.032390 (ratio 0.9648)  0.001:0.032048 (ratio 0.9751)  0.0001:0.031499 (ratio 0.9921)  1e-05:0.031328 (ratio 0.9975)

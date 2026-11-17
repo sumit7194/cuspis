@@ -4237,3 +4237,52 @@ argued, and A5′ for general CFTs is not addressed. The 2.894 grade wording wil
 
 **If P-b fails:** the theory is wrong or incomplete. That will be recorded, and the earlier "inconclusive" stands.
 If P-c fails but P-b passes, the theory is not trusted: its control failed.
+
+### EXP-036 results: all frozen criteria PASS — the thin-arc theory predicts the free-scalar wedge MI to 6% at η = 10⁻⁵ (residual shrinking), and predicts the Δ = ¼ plateau to 0.3%
+
+**Run:** 1180 s, 1 core, peak 1.98 GB (cap 3), exit 0. Output: `scripts/exp036_output.txt`; predictions
+`scripts/exp036_predictions.json` (committed in 433978d before the new numerics ran); new numerics
+`scripts/exp036_new_numerics.json`.
+
+**P-0, P-a (PASS).**
+- x_s: Fourier vs quadrature ≤ 7·10⁻⁹.
+- k_s: diff ≤ 4·10⁻¹⁰.
+- x_s(0) for Δ = ¼: ≤ 4·10⁻⁹.
+- C(θ) closed form vs numeric ≤ 8·10⁻¹³. C(90°) = π/16, C(180°) = 1/8. Also x₀(π) = ¼ exactly.
+
+**New numerics gate (PASS).** n_p drift ≤ 2·10⁻⁵ at η = 10⁻⁴ and 10⁻⁵.
+
+**P-b, free scalar (PASS).** Ratio i_pred/i_num, with no fitted parameter:
+
+| η | 0.1 | 0.01 | 10⁻³ | 10⁻⁴ | 10⁻⁵ |
+|---|---|---|---|---|---|
+| θ = 90° | 0.778 | 0.873 | **0.909** | 0.929 | **0.941** |
+| θ = 180° | 0.797 | 0.876 | **0.910** | 0.930 | **0.942** |
+
+- The deviation is monotone in η at both θ (9 points each).
+- |ratio − 1| = 0.091 and 0.090 at 10⁻³ (≤ 0.15), and 0.059 and 0.058 at 10⁻⁵ (≤ 0.10).
+- As stated in advance, the prediction lies below the numerics: the residual is the classical-channel truncation, and
+  it shrinks. Descriptively it scales like ≈ 0.69/ln(2/η) (0.091·7.6 ≈ 0.059·12.2), i.e. a relative O(1/ln)
+  correction. That is inference from points, not derived.
+- *The leading order alone,* (π−θ)/(8 sin θ)/ln²(1/η), is 1.34× the numerics at 10⁻⁵. The offset (ln 2 plus k_s)
+  matters at accessible η, and it is what made the EXP-035 ratio test inconclusive.
+
+**P-c, Δ = ¼ plateau (PASS).** The predicted i_∞ is 0.042041 (90°) and 0.031250 (180°; equal to 1/32 to six
+digits, an observation only). Numerics/prediction rise monotonically: 0.972 → 0.991 → **0.997** (90°) and 0.975 →
+0.992 → **0.998** (180°), at η = 10⁻³, 10⁻⁴, 10⁻⁵. *The same theory that gives decay for Δ = ½ gives the plateau for
+Δ = ¼, with no free parameter.*
+
+**Out-of-sample illustration (descriptive).** The scalar's decade ratio at 10⁻⁴ → 10⁻⁵ is 0.682 (90°), up from 0.531
+at 10⁻² → 10⁻³. The prediction made the same drift (0.691). This is the asymptotic ambiguity of ratio tests
+flagged in EXP-035: their verdicts were "inconclusive", and that stands as recorded.
+
+**Grade of P3 / A5′ for the free scalar: upgraded.** P3 now holds for the free scalar at this grade: *argued
+analytically, with the leading behaviour verified by evaluation against continuum numerics to η = 10⁻⁵.*
+- **i_G(θ, η) → 0 like (π − θ)/(8 sin θ · ln²(1/η)).**
+- Steps 1–2 (monopole and classical-channel dominance) are argued. They are supported by the diagnostic and by the
+  shrinking residual, but not proved. Step 3 is a standard capacity fact.
+- So A5′ holds for the free scalar under the same grade. That is the marginal, hardest unitary case (Δ = ½).
+- **Not a theorem, and not addressed for general CFTs:** the argument uses Gaussianity (MI from covariances) and the
+  log-correlated φ.
+- The **2.894 bound** stays "physics-level; checked by the bridge (V7); not a theorem". Its premise A5′ is now
+  supported for the free scalar (argued + verified by evaluation), but not for interacting CFTs. 2.280 is unaffected.

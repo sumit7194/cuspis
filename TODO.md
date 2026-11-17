@@ -305,6 +305,11 @@ conclusion never depended on it; the number should not be carried onward.**
 - [ ] Not recommended: bigger lattice (eta 0.03 needs ~8 GB, few h, only a factor ~1.7 more in eta).
 
 ## EXP-035 follow-up (2026-11-17)
-- [ ] Analytic thin-arc asymptotics of I_s for the Delta = 1/2 cylinder symbol: predict C/(ln(1/eta)+b)^2 (C, b from theory),
+- [x] (done, EXP-036: PASS) Analytic thin-arc asymptotics of I_s for the Delta = 1/2 cylinder symbol: predict C/(ln(1/eta)+b)^2 (C, b from theory),
       then EVALUATE at the EXP-035 points (verification, not a fit).  If it matches, A5' for the free scalar can be
       upgraded from "inconclusive" to "supported analytically + numerically".
+
+## EXP-036 follow-ups (2026-11-17)
+- [ ] Derive the O(1/ln) quantum excess (residual 9% -> 6% from 1e-3 to 1e-5, ~0.69/ln(2/eta) by inference) to close steps 1-2.
+- [ ] Why is the Delta=1/4 plateau at theta=180 exactly 1/32 (to 6 digits)?  Observation only.
+- [ ] A5' beyond Gaussian theories (Dirac fermion next: same reduction, fermionic covariance) -- only if Sumit wants it.
