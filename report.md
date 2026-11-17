@@ -4118,3 +4118,66 @@ the session scratchpad; the queries and hits are summarised here.
 **What a pass would mean.** A5′ would become "supported by a continuum computation for the free scalar, the
 marginal Δ = ½ case" (partially verified: numerics, not a proof). The 2.894 bound would stay physics-level, because
 A5′ is needed for general CFTs. A fail would weaken 2.894 as registered in EXP-034. No retuning after numbers.
+
+### EXP-035 results: every gate PASS; the Δ = ¼ control plateaus (the test is live); the scalar is INCONCLUSIVE under the frozen thresholds (R2 = 0.531, 0.538); descriptively, its log-decay exponent is rising toward 2, the opposite of a plateau
+
+**Run:** 172 s, 1 core, peak 0.12 GB, exit 0. Output: `scripts/exp035_output.txt`, `scripts/exp035_results.json`.
+
+**Gates (all PASS).**
+- Tier 1: the large-m symbol (to 10⁻⁸) and purity (≤ 7·10⁻¹³).
+- s-quadrature, 48 vs 96 nodes: max rel 2.6·10⁻⁴.
+- Points per arc, 64 vs 128: max rel 2.6·10⁻³. The drift is ≤ 10⁻⁵ relative for η ≤ 0.02.
+- **Known answer vs the EXP-034a lattice** (12 values): ratios 0.90–1.03, max |ratio − 1| = 0.098 < 0.15.
+  - Scalar: 0.96–0.98. Δ = ¾: 0.99–1.03. Δ = ¼: 0.90–0.95.
+  - The lattice runs high for Δ = ¼, where long-range correlations make finite-R₀ effects largest.
+
+**i_G (continuum; n_p = 128, 96 nodes).**
+
+| α (Δ) | θ | 0.1 | 0.05 | 0.01 | 0.005 | 0.002 | 0.001 | R1 = i(0.01)/i(0.1) | **R2 = i(0.001)/i(0.01)** |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 (½) | 90° | 0.013076 | 0.009148 | 0.004911 | 0.003965 | 0.003088 | 0.002606 | 0.376 | **0.531** |
+| 1 (½) | 180° | 0.007596 | 0.005453 | 0.003001 | 0.002437 | 0.001908 | 0.001615 | 0.395 | **0.538** |
+| 1.5 (¼) | 90° | 0.058772 | 0.052495 | 0.046126 | 0.044851 | 0.043777 | 0.043255 | 0.785 | **0.938** |
+| 1.5 (¼) | 180° | 0.041277 | 0.037792 | 0.033904 | 0.033086 | 0.032390 | 0.032048 | 0.821 | **0.945** |
+| 0.5 (¾) | 90° | 1.49e-3 | 6.65e-4 | 1.15e-4 | 5.54e-5 | 2.15e-5 | 1.06e-5 | 0.077 | 0.092 |
+| 0.5 (¾) | 180° | 6.74e-4 | 3.04e-4 | 5.29e-5 | 2.56e-5 | 9.92e-6 | 4.89e-6 | 0.078 | 0.093 |
+
+The full η grid (0.40 … 0.001) is in the output.
+
+**Verdict against the frozen criteria.**
+- *Able to fail:* R2(Δ = ¼) = 0.938 and 0.945, both ≥ 0.8. **Live.**
+- *Easy control:* R2(Δ = ¾) = 0.09 < R2(scalar). **PASS.**
+- *Scalar:* R2 = 0.531 and 0.538. Not ≤ 0.5 and not ≥ 0.8, so **INCONCLUSIVE.** The θ-difference shrinks
+  (1.91·10⁻³ → 0.99·10⁻³). No change of threshold or pair.
+- Consistency with the lattice (descriptive): the continuum i_G(0.05)/i_G(0.15) = 0.543 and 0.573, against EXP-034a's
+  lattice 0.531 and 0.550.
+
+**Descriptive reading (NOT a registered criterion; inference, labelled).** Local exponent p_eff, with
+i_G ∝ ln(1/η)^{−p_eff} between neighbouring η:
+
+| | η 0.1 → 0.01 | 0.01 → 0.001 | 0.002 → 0.001 |
+|---|---|---|---|
+| scalar 90° / 180° | 1.41 / 1.34 | 1.56 / 1.53 | 1.60 / 1.58 |
+| Δ = ¼ 90° / 180° | 0.35 / 0.28 | 0.16 / 0.14 | 0.11 / 0.10 |
+| Δ = ¾ 90° / 180° | 3.7 / 3.7 | 5.9 / 5.9 | 6.7 / 6.7 |
+
+- A plateau drives p_eff → 0, and the Δ = ¼ control does exactly that. A power law in η drives p_eff → ∞, and
+  Δ = ¾ does that.
+- **The scalar's p_eff is rising (1.34–1.41 → 1.58–1.60), the opposite of the plateau signature.** It is consistent
+  with the heuristic i_G ∝ 1/(ln(1/η) + b)², with an offset b ≈ 1.7 that makes p_eff = 2L/(L+b) approach 2 from below.
+- *Why the frozen R2 test cannot see this:* with that offset, the predicted decade ratio is ((L+b)/(L+b+ln10))², which
+  gives 0.54 at 0.01 → 0.001. That matches the measurement. **This is what the pre-registration flagged as the
+  inconclusive branch: log decay with an O(1) offset.**
+- i_G·ln²(1/η) grows only from 0.104 to 0.124 (90°) over the last decade, against ×2.25 for a plateau.
+- *Grade:* the offset b and the "approach to 2" are read off points (inference), not verified. Note also that p_eff is
+  a ratio statistic and inherits the same asymptotic ambiguity at any finite η; its *trend* is the evidence.
+
+**Consequence.**
+- The 2.894 bound keeps its grade: "derived at physics-level; checked by the bridge (V7); not a theorem". 2.280 is
+  unaffected.
+- What changed: A5′ for the free scalar is now tested in the continuum, with no lattice and down to η = 10⁻³. The
+  must-fail control plateaus, and the scalar does not. Every diagnostic that can tell decay from plateau points to
+  decay, but the registered criterion is inconclusive.
+- **The numerics have reached their limit on this question.** Any finite-η ratio criterion is ambiguous for log decay.
+  The remaining step is analytic: derive the thin-arc asymptotics of I_s for the Δ = ½ symbol, predict the 1/ln²
+  coefficient and offset, and verify it by *evaluating* that prediction at these points. That is a check, not a fit.

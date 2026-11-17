@@ -303,3 +303,8 @@ conclusion never depended on it; the number should not be carried onward.**
       invariant Gaussian; thin arcs cheap). Prior-art sweep FIRST (M1). Known-answer control: reproduce EXP-034a's i_G.
 - [ ] Alternative: bound Gaussian MI by canonical correlations of smeared fields between thin wedges; try to prove -> 0 for Delta >= 1/2.
 - [ ] Not recommended: bigger lattice (eta 0.03 needs ~8 GB, few h, only a factor ~1.7 more in eta).
+
+## EXP-035 follow-up (2026-11-17)
+- [ ] Analytic thin-arc asymptotics of I_s for the Delta = 1/2 cylinder symbol: predict C/(ln(1/eta)+b)^2 (C, b from theory),
+      then EVALUATE at the EXP-035 points (verification, not a fit).  If it matches, A5' for the free scalar can be
+      upgraded from "inconclusive" to "supported analytically + numerically".

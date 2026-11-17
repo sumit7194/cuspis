@@ -534,8 +534,14 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
     - The free scalar gives r = 0.53, 0.55: between the frozen thresholds, so **inconclusive**. It does not plateau
       like the control and does not reach the pass line.
     - 2.894 keeps its grade, "physics-level; checked by the bridge (V7); not a theorem". 2.280 is unaffected.
-    - Going further needs a different method (dilatation reduction to arcs on a cylinder, or a Gaussian-correlation
-      proof), not a bigger lattice (argued).
+  - *EXP-035, continuum (2026-11-17).* Dilatation reduction: the wedges become arcs × ℝ_{log r}. The symbol was
+    verified against quadrature, and the known answer against the lattice (within 10%).
+    - Down to η = 10⁻³ the Δ = ¼ control plateaus (R2 = 0.94), but the scalar is again **inconclusive** under the
+      frozen thresholds (R2 = 0.53, 0.54).
+    - Descriptively, the scalar's local log-decay exponent rises (1.4 → 1.6, toward the 1/ln² heuristic), the
+      opposite of a plateau (inference, not verification).
+    - A5′ is not upgraded and the 2.894 grade is unchanged.
+    - The remaining step is analytic: thin-arc asymptotics of the reduced 1D problem, checked by evaluation.
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant

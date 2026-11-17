@@ -1,0 +1,248 @@
+22:29:51 EXP-035 start
+22:29:51 Tier-1 large-m symbol alpha=1.0: Xhat / (|m|^(2D-2)/2) at m=1e6: 1.00000000 [PASS]
+22:29:51 Tier-1 large-m symbol alpha=1.5: Xhat / (|m|^(2D-2)/2) at m=1e6: 1.00000000 [PASS]
+22:29:51 Tier-1 large-m symbol alpha=0.5: Xhat / (|m|^(2D-2)/2) at m=1e6: 1.00000000 [PASS]
+22:29:51 Tier-1 purity alpha=1.0: S(A)=1.156739000500 S(Ac)=1.156739000500 rel 5.8e-13 [PASS]
+22:29:51 Tier-1 purity alpha=1.5: S(A)=2.120441001785 S(Ac)=2.120441001786 rel 4.5e-13 [PASS]
+22:29:51 Tier-1 purity alpha=0.5: S(A)=0.394695723571 S(Ac)=0.394695723571 rel 6.8e-13 [PASS]
+22:29:51   a1.0_e0.4_np32_q48: M=252 eta_eff=0.398932  done (0 s)
+22:29:51   a1.0_e0.4_np32_q96: M=252 eta_eff=0.398932  done (0 s)
+22:29:51   a1.0_e0.4_np64_q48: M=504 eta_eff=0.398932  done (0 s)
+22:29:51   a1.0_e0.4_np64_q96: M=504 eta_eff=0.398932  done (0 s)
+22:29:51   a1.0_e0.4_np128_q48: M=1008 eta_eff=0.398932  done (0 s)
+22:29:52   a1.0_e0.4_np128_q96: M=1008 eta_eff=0.398932  done (0 s)
+22:29:52   a1.0_e0.25_np32_q48: M=404 eta_eff=0.248839  done (0 s)
+22:29:52   a1.0_e0.25_np32_q96: M=404 eta_eff=0.248839  done (0 s)
+22:29:52   a1.0_e0.25_np64_q48: M=808 eta_eff=0.248839  done (0 s)
+22:29:52   a1.0_e0.25_np64_q96: M=808 eta_eff=0.248839  done (0 s)
+22:29:52   a1.0_e0.25_np128_q48: M=1612 eta_eff=0.249456  done (0 s)
+22:29:53   a1.0_e0.25_np128_q96: M=1612 eta_eff=0.249456  done (1 s)
+22:29:53   a1.0_e0.15_np32_q48: M=672 eta_eff=0.149600  done (0 s)
+22:29:53   a1.0_e0.15_np32_q96: M=672 eta_eff=0.149600  done (0 s)
+22:29:53   a1.0_e0.15_np64_q48: M=1344 eta_eff=0.149600  done (0 s)
+22:29:53   a1.0_e0.15_np64_q96: M=1344 eta_eff=0.149600  done (0 s)
+22:29:53   a1.0_e0.15_np128_q48: M=2684 eta_eff=0.149823  done (0 s)
+22:29:54   a1.0_e0.15_np128_q96: M=2684 eta_eff=0.149823  done (0 s)
+22:29:54   a1.0_e0.1_np32_q48: M=1008 eta_eff=0.099733  done (0 s)
+22:29:54   a1.0_e0.1_np32_q96: M=1008 eta_eff=0.099733  done (0 s)
+22:29:54   a1.0_e0.1_np64_q48: M=2012 eta_eff=0.099931  done (0 s)
+22:29:54   a1.0_e0.1_np64_q96: M=2012 eta_eff=0.099931  done (0 s)
+22:29:54   a1.0_e0.1_np128_q48: M=4024 eta_eff=0.099931  done (0 s)
+22:29:55   a1.0_e0.1_np128_q96: M=4024 eta_eff=0.099931  done (1 s)
+22:29:55   a1.0_e0.05_np32_q48: M=2012 eta_eff=0.049966  done (0 s)
+22:29:55   a1.0_e0.05_np32_q96: M=2012 eta_eff=0.049966  done (0 s)
+22:29:55   a1.0_e0.05_np64_q48: M=4024 eta_eff=0.049966  done (0 s)
+22:29:55   a1.0_e0.05_np64_q96: M=4024 eta_eff=0.049966  done (0 s)
+22:29:56   a1.0_e0.05_np128_q48: M=8044 eta_eff=0.049991  done (0 s)
+22:29:56   a1.0_e0.05_np128_q96: M=8044 eta_eff=0.049991  done (1 s)
+22:29:56   a1.0_e0.02_np32_q48: M=5028 eta_eff=0.019994  done (0 s)
+22:29:56   a1.0_e0.02_np32_q96: M=5028 eta_eff=0.019994  done (0 s)
+22:29:57   a1.0_e0.02_np64_q48: M=10056 eta_eff=0.019994  done (0 s)
+22:29:57   a1.0_e0.02_np64_q96: M=10056 eta_eff=0.019994  done (0 s)
+22:29:57   a1.0_e0.02_np128_q48: M=20108 eta_eff=0.019998  done (0 s)
+22:29:58   a1.0_e0.02_np128_q96: M=20108 eta_eff=0.019998  done (1 s)
+22:29:58   a1.0_e0.01_np32_q48: M=10056 eta_eff=0.009997  done (0 s)
+22:29:58   a1.0_e0.01_np32_q96: M=10056 eta_eff=0.009997  done (0 s)
+22:29:59   a1.0_e0.01_np64_q48: M=20108 eta_eff=0.009999  done (0 s)
+22:29:59   a1.0_e0.01_np64_q96: M=20108 eta_eff=0.009999  done (0 s)
+22:30:00   a1.0_e0.01_np128_q48: M=40216 eta_eff=0.009999  done (1 s)
+22:30:01   a1.0_e0.01_np128_q96: M=40216 eta_eff=0.009999  done (1 s)
+22:30:01   a1.0_e0.005_np32_q48: M=20108 eta_eff=0.005000  done (0 s)
+22:30:01   a1.0_e0.005_np32_q96: M=20108 eta_eff=0.005000  done (0 s)
+22:30:02   a1.0_e0.005_np64_q48: M=40216 eta_eff=0.005000  done (0 s)
+22:30:03   a1.0_e0.005_np64_q96: M=40216 eta_eff=0.005000  done (1 s)
+22:30:04   a1.0_e0.005_np128_q48: M=80428 eta_eff=0.005000  done (1 s)
+22:30:06   a1.0_e0.005_np128_q96: M=80428 eta_eff=0.005000  done (2 s)
+22:30:07   a1.0_e0.002_np32_q48: M=50268 eta_eff=0.002000  done (0 s)
+22:30:07   a1.0_e0.002_np32_q96: M=50268 eta_eff=0.002000  done (1 s)
+22:30:08   a1.0_e0.002_np64_q48: M=100532 eta_eff=0.002000  done (1 s)
+22:30:10   a1.0_e0.002_np64_q96: M=100532 eta_eff=0.002000  done (2 s)
+22:30:13   a1.0_e0.002_np128_q48: M=201064 eta_eff=0.002000  done (2 s)
+22:30:17   a1.0_e0.002_np128_q96: M=201064 eta_eff=0.002000  done (4 s)
+22:30:18   a1.0_e0.001_np32_q48: M=100532 eta_eff=0.001000  done (1 s)
+22:30:20   a1.0_e0.001_np32_q96: M=100532 eta_eff=0.001000  done (2 s)
+22:30:22   a1.0_e0.001_np64_q48: M=201064 eta_eff=0.001000  done (2 s)
+22:30:26   a1.0_e0.001_np64_q96: M=201064 eta_eff=0.001000  done (4 s)
+22:30:33   a1.0_e0.001_np128_q48: M=402124 eta_eff=0.001000  done (7 s)
+22:30:47   a1.0_e0.001_np128_q96: M=402124 eta_eff=0.001000  done (15 s)
+22:30:47   a1.5_e0.4_np32_q48: M=252 eta_eff=0.398932  done (0 s)
+22:30:47   a1.5_e0.4_np32_q96: M=252 eta_eff=0.398932  done (0 s)
+22:30:47   a1.5_e0.4_np64_q48: M=504 eta_eff=0.398932  done (0 s)
+22:30:47   a1.5_e0.4_np64_q96: M=504 eta_eff=0.398932  done (0 s)
+22:30:48   a1.5_e0.4_np128_q48: M=1008 eta_eff=0.398932  done (0 s)
+22:30:48   a1.5_e0.4_np128_q96: M=1008 eta_eff=0.398932  done (1 s)
+22:30:48   a1.5_e0.25_np32_q48: M=404 eta_eff=0.248839  done (0 s)
+22:30:48   a1.5_e0.25_np32_q96: M=404 eta_eff=0.248839  done (0 s)
+22:30:48   a1.5_e0.25_np64_q48: M=808 eta_eff=0.248839  done (0 s)
+22:30:48   a1.5_e0.25_np64_q96: M=808 eta_eff=0.248839  done (0 s)
+22:30:49   a1.5_e0.25_np128_q48: M=1612 eta_eff=0.249456  done (0 s)
+22:30:49   a1.5_e0.25_np128_q96: M=1612 eta_eff=0.249456  done (0 s)
+22:30:49   a1.5_e0.15_np32_q48: M=672 eta_eff=0.149600  done (0 s)
+22:30:49   a1.5_e0.15_np32_q96: M=672 eta_eff=0.149600  done (0 s)
+22:30:49   a1.5_e0.15_np64_q48: M=1344 eta_eff=0.149600  done (0 s)
+22:30:49   a1.5_e0.15_np64_q96: M=1344 eta_eff=0.149600  done (0 s)
+22:30:50   a1.5_e0.15_np128_q48: M=2684 eta_eff=0.149823  done (0 s)
+22:30:50   a1.5_e0.15_np128_q96: M=2684 eta_eff=0.149823  done (1 s)
+22:30:50   a1.5_e0.1_np32_q48: M=1008 eta_eff=0.099733  done (0 s)
+22:30:50   a1.5_e0.1_np32_q96: M=1008 eta_eff=0.099733  done (0 s)
+22:30:50   a1.5_e0.1_np64_q48: M=2012 eta_eff=0.099931  done (0 s)
+22:30:50   a1.5_e0.1_np64_q96: M=2012 eta_eff=0.099931  done (0 s)
+22:30:51   a1.5_e0.1_np128_q48: M=4024 eta_eff=0.099931  done (0 s)
+22:30:51   a1.5_e0.1_np128_q96: M=4024 eta_eff=0.099931  done (1 s)
+22:30:51   a1.5_e0.05_np32_q48: M=2012 eta_eff=0.049966  done (0 s)
+22:30:51   a1.5_e0.05_np32_q96: M=2012 eta_eff=0.049966  done (0 s)
+22:30:51   a1.5_e0.05_np64_q48: M=4024 eta_eff=0.049966  done (0 s)
+22:30:52   a1.5_e0.05_np64_q96: M=4024 eta_eff=0.049966  done (0 s)
+22:30:52   a1.5_e0.05_np128_q48: M=8044 eta_eff=0.049991  done (0 s)
+22:30:53   a1.5_e0.05_np128_q96: M=8044 eta_eff=0.049991  done (1 s)
+22:30:53   a1.5_e0.02_np32_q48: M=5028 eta_eff=0.019994  done (0 s)
+22:30:53   a1.5_e0.02_np32_q96: M=5028 eta_eff=0.019994  done (0 s)
+22:30:53   a1.5_e0.02_np64_q48: M=10056 eta_eff=0.019994  done (0 s)
+22:30:53   a1.5_e0.02_np64_q96: M=10056 eta_eff=0.019994  done (0 s)
+22:30:54   a1.5_e0.02_np128_q48: M=20108 eta_eff=0.019998  done (0 s)
+22:30:54   a1.5_e0.02_np128_q96: M=20108 eta_eff=0.019998  done (1 s)
+22:30:55   a1.5_e0.01_np32_q48: M=10056 eta_eff=0.009997  done (0 s)
+22:30:55   a1.5_e0.01_np32_q96: M=10056 eta_eff=0.009997  done (0 s)
+22:30:55   a1.5_e0.01_np64_q48: M=20108 eta_eff=0.009999  done (0 s)
+22:30:56   a1.5_e0.01_np64_q96: M=20108 eta_eff=0.009999  done (1 s)
+22:30:56   a1.5_e0.01_np128_q48: M=40216 eta_eff=0.009999  done (1 s)
+22:30:57   a1.5_e0.01_np128_q96: M=40216 eta_eff=0.009999  done (1 s)
+22:30:58   a1.5_e0.005_np32_q48: M=20108 eta_eff=0.005000  done (0 s)
+22:30:58   a1.5_e0.005_np32_q96: M=20108 eta_eff=0.005000  done (0 s)
+22:30:58   a1.5_e0.005_np64_q48: M=40216 eta_eff=0.005000  done (0 s)
+22:30:59   a1.5_e0.005_np64_q96: M=40216 eta_eff=0.005000  done (1 s)
+22:31:00   a1.5_e0.005_np128_q48: M=80428 eta_eff=0.005000  done (1 s)
+22:31:03   a1.5_e0.005_np128_q96: M=80428 eta_eff=0.005000  done (2 s)
+22:31:03   a1.5_e0.002_np32_q48: M=50268 eta_eff=0.002000  done (0 s)
+22:31:04   a1.5_e0.002_np32_q96: M=50268 eta_eff=0.002000  done (1 s)
+22:31:05   a1.5_e0.002_np64_q48: M=100532 eta_eff=0.002000  done (1 s)
+22:31:07   a1.5_e0.002_np64_q96: M=100532 eta_eff=0.002000  done (2 s)
+22:31:09   a1.5_e0.002_np128_q48: M=201064 eta_eff=0.002000  done (2 s)
+22:31:13   a1.5_e0.002_np128_q96: M=201064 eta_eff=0.002000  done (4 s)
+22:31:14   a1.5_e0.001_np32_q48: M=100532 eta_eff=0.001000  done (1 s)
+22:31:16   a1.5_e0.001_np32_q96: M=100532 eta_eff=0.001000  done (2 s)
+22:31:18   a1.5_e0.001_np64_q48: M=201064 eta_eff=0.001000  done (2 s)
+22:31:22   a1.5_e0.001_np64_q96: M=201064 eta_eff=0.001000  done (4 s)
+22:31:29   a1.5_e0.001_np128_q48: M=402124 eta_eff=0.001000  done (7 s)
+22:31:44   a1.5_e0.001_np128_q96: M=402124 eta_eff=0.001000  done (14 s)
+22:31:44   a0.5_e0.4_np32_q48: M=252 eta_eff=0.398932  done (0 s)
+22:31:44   a0.5_e0.4_np32_q96: M=252 eta_eff=0.398932  done (0 s)
+22:31:44   a0.5_e0.4_np64_q48: M=504 eta_eff=0.398932  done (0 s)
+22:31:44   a0.5_e0.4_np64_q96: M=504 eta_eff=0.398932  done (0 s)
+22:31:44   a0.5_e0.4_np128_q48: M=1008 eta_eff=0.398932  done (0 s)
+22:31:45   a0.5_e0.4_np128_q96: M=1008 eta_eff=0.398932  done (0 s)
+22:31:45   a0.5_e0.25_np32_q48: M=404 eta_eff=0.248839  done (0 s)
+22:31:45   a0.5_e0.25_np32_q96: M=404 eta_eff=0.248839  done (0 s)
+22:31:45   a0.5_e0.25_np64_q48: M=808 eta_eff=0.248839  done (0 s)
+22:31:45   a0.5_e0.25_np64_q96: M=808 eta_eff=0.248839  done (0 s)
+22:31:45   a0.5_e0.25_np128_q48: M=1612 eta_eff=0.249456  done (0 s)
+22:31:45   a0.5_e0.25_np128_q96: M=1612 eta_eff=0.249456  done (0 s)
+22:31:46   a0.5_e0.15_np32_q48: M=672 eta_eff=0.149600  done (0 s)
+22:31:46   a0.5_e0.15_np32_q96: M=672 eta_eff=0.149600  done (0 s)
+22:31:46   a0.5_e0.15_np64_q48: M=1344 eta_eff=0.149600  done (0 s)
+22:31:46   a0.5_e0.15_np64_q96: M=1344 eta_eff=0.149600  done (0 s)
+22:31:46   a0.5_e0.15_np128_q48: M=2684 eta_eff=0.149823  done (0 s)
+22:31:46   a0.5_e0.15_np128_q96: M=2684 eta_eff=0.149823  done (0 s)
+22:31:46   a0.5_e0.1_np32_q48: M=1008 eta_eff=0.099733  done (0 s)
+22:31:47   a0.5_e0.1_np32_q96: M=1008 eta_eff=0.099733  done (0 s)
+22:31:47   a0.5_e0.1_np64_q48: M=2012 eta_eff=0.099931  done (0 s)
+22:31:47   a0.5_e0.1_np64_q96: M=2012 eta_eff=0.099931  done (0 s)
+22:31:47   a0.5_e0.1_np128_q48: M=4024 eta_eff=0.099931  done (0 s)
+22:31:47   a0.5_e0.1_np128_q96: M=4024 eta_eff=0.099931  done (0 s)
+22:31:48   a0.5_e0.05_np32_q48: M=2012 eta_eff=0.049966  done (0 s)
+22:31:48   a0.5_e0.05_np32_q96: M=2012 eta_eff=0.049966  done (0 s)
+22:31:48   a0.5_e0.05_np64_q48: M=4024 eta_eff=0.049966  done (0 s)
+22:31:48   a0.5_e0.05_np64_q96: M=4024 eta_eff=0.049966  done (0 s)
+22:31:48   a0.5_e0.05_np128_q48: M=8044 eta_eff=0.049991  done (0 s)
+22:31:49   a0.5_e0.05_np128_q96: M=8044 eta_eff=0.049991  done (1 s)
+22:31:49   a0.5_e0.02_np32_q48: M=5028 eta_eff=0.019994  done (0 s)
+22:31:49   a0.5_e0.02_np32_q96: M=5028 eta_eff=0.019994  done (0 s)
+22:31:49   a0.5_e0.02_np64_q48: M=10056 eta_eff=0.019994  done (0 s)
+22:31:49   a0.5_e0.02_np64_q96: M=10056 eta_eff=0.019994  done (0 s)
+22:31:50   a0.5_e0.02_np128_q48: M=20108 eta_eff=0.019998  done (0 s)
+22:31:50   a0.5_e0.02_np128_q96: M=20108 eta_eff=0.019998  done (1 s)
+22:31:50   a0.5_e0.01_np32_q48: M=10056 eta_eff=0.009997  done (0 s)
+22:31:51   a0.5_e0.01_np32_q96: M=10056 eta_eff=0.009997  done (0 s)
+22:31:51   a0.5_e0.01_np64_q48: M=20108 eta_eff=0.009999  done (0 s)
+22:31:51   a0.5_e0.01_np64_q96: M=20108 eta_eff=0.009999  done (0 s)
+22:31:52   a0.5_e0.01_np128_q48: M=40216 eta_eff=0.009999  done (1 s)
+22:31:53   a0.5_e0.01_np128_q96: M=40216 eta_eff=0.009999  done (1 s)
+22:31:53   a0.5_e0.005_np32_q48: M=20108 eta_eff=0.005000  done (0 s)
+22:31:54   a0.5_e0.005_np32_q96: M=20108 eta_eff=0.005000  done (0 s)
+22:31:54   a0.5_e0.005_np64_q48: M=40216 eta_eff=0.005000  done (0 s)
+22:31:55   a0.5_e0.005_np64_q96: M=40216 eta_eff=0.005000  done (1 s)
+22:31:56   a0.5_e0.005_np128_q48: M=80428 eta_eff=0.005000  done (1 s)
+22:31:58   a0.5_e0.005_np128_q96: M=80428 eta_eff=0.005000  done (2 s)
+22:31:59   a0.5_e0.002_np32_q48: M=50268 eta_eff=0.002000  done (0 s)
+22:32:00   a0.5_e0.002_np32_q96: M=50268 eta_eff=0.002000  done (1 s)
+22:32:01   a0.5_e0.002_np64_q48: M=100532 eta_eff=0.002000  done (1 s)
+22:32:02   a0.5_e0.002_np64_q96: M=100532 eta_eff=0.002000  done (2 s)
+22:32:05   a0.5_e0.002_np128_q48: M=201064 eta_eff=0.002000  done (2 s)
+22:32:09   a0.5_e0.002_np128_q96: M=201064 eta_eff=0.002000  done (4 s)
+22:32:10   a0.5_e0.001_np32_q48: M=100532 eta_eff=0.001000  done (1 s)
+22:32:12   a0.5_e0.001_np32_q96: M=100532 eta_eff=0.001000  done (2 s)
+22:32:14   a0.5_e0.001_np64_q48: M=201064 eta_eff=0.001000  done (2 s)
+22:32:18   a0.5_e0.001_np64_q96: M=201064 eta_eff=0.001000  done (4 s)
+22:32:25   a0.5_e0.001_np128_q48: M=402124 eta_eff=0.001000  done (7 s)
+22:32:40   a0.5_e0.001_np128_q96: M=402124 eta_eff=0.001000  done (15 s)
+22:32:40 all done; analysis:
+22:32:40 gates:
+22:32:40   s-quadrature 48 vs 96 nodes, max rel diff over all: 2.58e-04 [PASS]
+22:32:40   points-per-arc 64 vs 128, max rel diff over all: 2.62e-03 [PASS]
+22:32:40     n_p drift alpha=1.0 eta=0.4: th=90: [np.float64(0.0428695), np.float64(0.0427007), np.float64(0.0426079)]  th=180: [np.float64(0.0192842), np.float64(0.019252), np.float64(0.0192343)]
+22:32:40     n_p drift alpha=1.0 eta=0.25: th=90: [np.float64(0.0251409), np.float64(0.0251067), np.float64(0.0251447)]  th=180: [np.float64(0.0132586), np.float64(0.0132507), np.float64(0.0132698)]
+22:32:40     n_p drift alpha=1.0 eta=0.15: th=90: [np.float64(0.0168495), np.float64(0.0168424), np.float64(0.0168556)]  th=180: [np.float64(0.0095173), np.float64(0.0095156), np.float64(0.009523)]
+22:32:40     n_p drift alpha=1.0 eta=0.1: th=90: [np.float64(0.0130645), np.float64(0.0130774), np.float64(0.0130762)]  th=180: [np.float64(0.0075888), np.float64(0.0075962), np.float64(0.0075958)]
+22:32:40     n_p drift alpha=1.0 eta=0.05: th=90: [np.float64(0.0091462), np.float64(0.0091459), np.float64(0.0091478)]  th=180: [np.float64(0.0054518), np.float64(0.0054517), np.float64(0.0054528)]
+22:32:40     n_p drift alpha=1.0 eta=0.02: th=90: [np.float64(0.0062554), np.float64(0.0062554), np.float64(0.0062559)]  th=180: [np.float64(0.0037932), np.float64(0.0037932), np.float64(0.0037934)]
+22:32:40     n_p drift alpha=1.0 eta=0.01: th=90: [np.float64(0.0049112), np.float64(0.0049115), np.float64(0.0049115)]  th=180: [np.float64(0.0030012), np.float64(0.0030014), np.float64(0.0030014)]
+22:32:40     n_p drift alpha=1.0 eta=0.005: th=90: [np.float64(0.0039653), np.float64(0.0039653), np.float64(0.0039654)]  th=180: [np.float64(0.0024366), np.float64(0.0024366), np.float64(0.0024367)]
+22:32:40     n_p drift alpha=1.0 eta=0.002: th=90: [np.float64(0.0030877), np.float64(0.0030877), np.float64(0.0030877)]  th=180: [np.float64(0.0019076), np.float64(0.0019076), np.float64(0.0019076)]
+22:32:40     n_p drift alpha=1.0 eta=0.001: th=90: [np.float64(0.0026059), np.float64(0.0026059), np.float64(0.0026059)]  th=180: [np.float64(0.0016149), np.float64(0.0016149), np.float64(0.0016149)]
+22:32:40     n_p drift alpha=1.5 eta=0.4: th=90: [np.float64(0.1100664), np.float64(0.1097434), np.float64(0.1095575)]  th=180: [np.float64(0.0598589), np.float64(0.0597944), np.float64(0.059758)]
+22:32:40     n_p drift alpha=1.5 eta=0.25: th=90: [np.float64(0.0789033), np.float64(0.0788405), np.float64(0.0789008)]  th=180: [np.float64(0.0503297), np.float64(0.050315), np.float64(0.0503435)]
+22:32:40     n_p drift alpha=1.5 eta=0.15: th=90: [np.float64(0.0649494), np.float64(0.0649388), np.float64(0.0649602)]  th=180: [np.float64(0.0443746), np.float64(0.0443724), np.float64(0.0443843)]
+22:32:40     n_p drift alpha=1.5 eta=0.1: th=90: [np.float64(0.0587513), np.float64(0.0587739), np.float64(0.0587722)]  th=180: [np.float64(0.0412646), np.float64(0.0412774), np.float64(0.0412771)]
+22:32:40     n_p drift alpha=1.5 eta=0.05: th=90: [np.float64(0.0524911), np.float64(0.0524919), np.float64(0.0524954)]  th=180: [np.float64(0.0377892), np.float64(0.0377898), np.float64(0.0377918)]
+22:32:40     n_p drift alpha=1.5 eta=0.02: th=90: [np.float64(0.0480636), np.float64(0.0480643), np.float64(0.0480652)]  th=180: [np.float64(0.0351222), np.float64(0.0351226), np.float64(0.0351232)]
+22:32:40     n_p drift alpha=1.5 eta=0.01: th=90: [np.float64(0.0461252), np.float64(0.0461261), np.float64(0.0461262)]  th=180: [np.float64(0.033903), np.float64(0.0339036), np.float64(0.0339037)]
+22:32:40     n_p drift alpha=1.5 eta=0.005: th=90: [np.float64(0.0448504), np.float64(0.0448507), np.float64(0.0448509)]  th=180: [np.float64(0.0330859), np.float64(0.0330861), np.float64(0.0330862)]
+22:32:40     n_p drift alpha=1.5 eta=0.002: th=90: [np.float64(0.0437769), np.float64(0.0437771), np.float64(0.0437772)]  th=180: [np.float64(0.0323895), np.float64(0.0323896), np.float64(0.0323897)]
+22:32:40     n_p drift alpha=1.5 eta=0.001: th=90: [np.float64(0.0432547), np.float64(0.0432548), np.float64(0.0432549)]  th=180: [np.float64(0.0320483), np.float64(0.0320483), np.float64(0.0320484)]
+22:32:40     n_p drift alpha=0.5 eta=0.4: th=90: [np.float64(0.0105785), np.float64(0.010532), np.float64(0.0105066)]  th=180: [np.float64(0.0038786), np.float64(0.0038698), np.float64(0.003865)]
+22:32:40     n_p drift alpha=0.5 eta=0.25: th=90: [np.float64(0.0048873), np.float64(0.0048779), np.float64(0.0048903)]  th=180: [np.float64(0.0020648), np.float64(0.0020627), np.float64(0.0020681)]
+22:32:40     n_p drift alpha=0.5 eta=0.15: th=90: [np.float64(0.002459), np.float64(0.0024571), np.float64(0.0024607)]  th=180: [np.float64(0.001093), np.float64(0.0010926), np.float64(0.0010943)]
+22:32:40     n_p drift alpha=0.5 eta=0.1: th=90: [np.float64(0.0014893), np.float64(0.0014923), np.float64(0.0014919)]  th=180: [np.float64(0.0006729), np.float64(0.0006743), np.float64(0.0006742)]
+22:32:40     n_p drift alpha=0.5 eta=0.05: th=90: [np.float64(0.000665), np.float64(0.0006649), np.float64(0.0006652)]  th=180: [np.float64(0.0003039), np.float64(0.0003039), np.float64(0.000304)]
+22:32:40     n_p drift alpha=0.5 eta=0.02: th=90: [np.float64(0.0002411), np.float64(0.0002411), np.float64(0.0002412)]  th=180: [np.float64(0.0001108), np.float64(0.0001108), np.float64(0.0001108)]
+22:32:40     n_p drift alpha=0.5 eta=0.01: th=90: [np.float64(0.0001147), np.float64(0.0001148), np.float64(0.0001148)]  th=180: [np.float64(5.29e-05), np.float64(5.29e-05), np.float64(5.29e-05)]
+22:32:40     n_p drift alpha=0.5 eta=0.005: th=90: [np.float64(5.54e-05), np.float64(5.54e-05), np.float64(5.54e-05)]  th=180: [np.float64(2.56e-05), np.float64(2.56e-05), np.float64(2.56e-05)]
+22:32:40     n_p drift alpha=0.5 eta=0.002: th=90: [np.float64(2.15e-05), np.float64(2.15e-05), np.float64(2.15e-05)]  th=180: [np.float64(9.9e-06), np.float64(9.9e-06), np.float64(9.9e-06)]
+22:32:40     n_p drift alpha=0.5 eta=0.001: th=90: [np.float64(1.06e-05), np.float64(1.06e-05), np.float64(1.06e-05)]  th=180: [np.float64(4.9e-06), np.float64(4.9e-06), np.float64(4.9e-06)]
+22:32:40     known answer alpha=1.0 eta=0.4 th=90: continuum 0.042608 lattice(EXP-034a B) 0.043918 ratio 0.9702
+22:32:40     known answer alpha=1.0 eta=0.4 th=180: continuum 0.019234 lattice(EXP-034a B) 0.019999 ratio 0.9618
+22:32:40     known answer alpha=1.0 eta=0.25 th=90: continuum 0.025145 lattice(EXP-034a B) 0.025868 ratio 0.9720
+22:32:40     known answer alpha=1.0 eta=0.25 th=180: continuum 0.013270 lattice(EXP-034a B) 0.013609 ratio 0.9751
+22:32:40     known answer alpha=1.5 eta=0.4 th=90: continuum 0.109558 lattice(EXP-034a B) 0.115931 ratio 0.9450
+22:32:40     known answer alpha=1.5 eta=0.4 th=180: continuum 0.059758 lattice(EXP-034a B) 0.065428 ratio 0.9133
+22:32:40     known answer alpha=1.5 eta=0.25 th=90: continuum 0.078901 lattice(EXP-034a B) 0.084917 ratio 0.9292
+22:32:40     known answer alpha=1.5 eta=0.25 th=180: continuum 0.050344 lattice(EXP-034a B) 0.055810 ratio 0.9021
+22:32:40     known answer alpha=0.5 eta=0.4 th=90: continuum 0.010507 lattice(EXP-034a B) 0.010604 ratio 0.9908
+22:32:40     known answer alpha=0.5 eta=0.4 th=180: continuum 0.003865 lattice(EXP-034a B) 0.003846 ratio 1.0050
+22:32:40     known answer alpha=0.5 eta=0.25 th=90: continuum 0.004890 lattice(EXP-034a B) 0.004889 ratio 1.0003
+22:32:40     known answer alpha=0.5 eta=0.25 th=180: continuum 0.002068 lattice(EXP-034a B) 0.002017 ratio 1.0253
+22:32:40   continuum vs lattice at eta = 0.40, 0.25: max |ratio - 1| = 0.098 [PASS]
+22:32:40 i_G table (n_p = 128, 96 nodes):
+22:32:40   alpha=1.0 th=90: 0.4:0.0426079  0.25:0.0251447  0.15:0.0168556  0.1:0.0130762  0.05:0.00914782  0.02:0.00625585  0.01:0.00491147  0.005:0.00396536  0.002:0.00308774  0.001:0.00260592
+22:32:40   alpha=1.0 th=180: 0.4:0.0192343  0.25:0.0132698  0.15:0.009523  0.1:0.00759584  0.05:0.00545282  0.02:0.00379343  0.01:0.00300136  0.005:0.00243668  0.002:0.00190759  0.001:0.0016149
+22:32:40   alpha=1.5 th=90: 0.4:0.109558  0.25:0.0789008  0.15:0.0649602  0.1:0.0587722  0.05:0.0524954  0.02:0.0480652  0.01:0.0461262  0.005:0.0448509  0.002:0.0437772  0.001:0.0432549
+22:32:40   alpha=1.5 th=180: 0.4:0.059758  0.25:0.0503435  0.15:0.0443843  0.1:0.0412771  0.05:0.0377918  0.02:0.0351232  0.01:0.0339037  0.005:0.0330862  0.002:0.0323897  0.001:0.0320484
+22:32:40   alpha=0.5 th=90: 0.4:0.0105066  0.25:0.0048903  0.15:0.00246065  0.1:0.00149193  0.05:0.000665227  0.02:0.000241155  0.01:0.000114755  0.005:5.5398e-05  0.002:2.1474e-05  0.001:1.05671e-05
+22:32:40   alpha=0.5 th=180: 0.4:0.00386505  0.25:0.00206809  0.15:0.00109427  0.1:0.000674224  0.05:0.000304024  0.02:0.00011083  0.01:5.28603e-05  0.005:2.55599e-05  0.002:9.92209e-06  0.001:4.88702e-06
+22:32:40 verdict quantities (frozen thresholds; report.md EXP-035):
+22:32:40   alpha=1.0: R1 = i_G(0.01)/i_G(0.1): th=90: 0.3756  th=180: 0.3951   R2 = i_G(0.001)/i_G(0.01): th=90: 0.5306  th=180: 0.5381
+22:32:40   alpha=1.5: R1 = i_G(0.01)/i_G(0.1): th=90: 0.7848  th=180: 0.8214   R2 = i_G(0.001)/i_G(0.01): th=90: 0.9378  th=180: 0.9453
+22:32:40   alpha=0.5: R1 = i_G(0.01)/i_G(0.1): th=90: 0.0769  th=180: 0.0784   R2 = i_G(0.001)/i_G(0.01): th=90: 0.0921  th=180: 0.0925
+22:32:40   scalar |i_G(90)-i_G(180)| at 0.01: 1.910e-03; at 0.001: 9.910e-04
+22:32:40   descriptive, scalar th=90: i_G * ln^2(1/eta): 0.4:0.03577  0.25:0.04832  0.15:0.06066  0.1:0.06933  0.05:0.08210  0.02:0.09574  0.01:0.10416  0.005:0.11132  0.002:0.11925  0.001:0.12435
+22:32:40   descriptive, scalar th=180: i_G * ln^2(1/eta): 0.4:0.01615  0.25:0.02550  0.15:0.03427  0.1:0.04027  0.05:0.04894  0.02:0.05805  0.01:0.06365  0.005:0.06840  0.002:0.07367  0.001:0.07706
