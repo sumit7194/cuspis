@@ -1,0 +1,13 @@
+# cmd: ../.venv/bin/python -u exp034a_wedge_mi.py
+# caps: tree <= 4.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.192    0.000   0.192        19.36        757.5           69              1
+     5.8     1   1.250    0.447   1.697        19.35        757.5           63              1
+    11.1     1   1.532    0.428   1.960        19.35        757.5           63              1
+    16.5     1   1.532    0.428   1.960        19.35        757.5           64              1
+    21.9     1   1.532    0.428   1.960        19.35        757.5           64              1
+    27.2     1   1.532    0.428   1.960        19.35        757.5           64              1
+    32.7     1   1.129    0.144   1.272        19.35        757.5           65              1
+# exit 1; wall 38 s; PEAK tree MEM 1.532 GB + CMPRS 0.428 GB = 1.960 GB

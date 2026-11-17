@@ -1,0 +1,79 @@
+21:57:57 EXP-034a start; threads OMP=1 VECLIB=1; N=8192 KEEP=642
+21:57:57 Tier-1 purity alpha=1.0: rel diff 1.15e-12 [PASS]
+21:57:57 Tier-1 purity alpha=1.5: rel diff 7.94e-13 [PASS]
+21:57:57 Tier-1 purity alpha=0.5: rel diff 4.72e-12 [PASS]
+21:57:59 Tier-1 X_inf(0) alpha=1.0: quadrature 0.3214411241472  Richardson(16k,32k) 0.3214411241472  |diff| 2.4e-15 [PASS]
+21:58:01 alpha=1.0: tables N=8192 built (2 s); zero-mode constant C = 0.0000378874 (0.01% of X(0))
+21:58:03 Tier-1 correlator alpha=1.0: X_corr(r,0)/X_inf(r,0) - 1 at r=(0, 40, 160, 320, 640): [0.00e+00 2.59e-07 1.66e-05 1.33e-04 1.07e-03] [PASS]  (uncorrected box would be off by [1.18e-04 1.90e-02 7.62e-02 1.52e-01 3.05e-01])
+21:58:03   known answer, alpha=1: X_corr(640,0) * 4 pi 640 = 1.00108 (continuum 1/(4 pi r) -> 1)
+21:58:03 Tier-1 entropy implementations n=628: old 8.720683288026 new 8.720683288026 rel 0.0e+00 [PASS]
+21:58:03 Tier-1 entropy implementations n=1256: old 17.339811092584 new 17.339811092584 rel 0.0e+00 [PASS]
+21:58:03   A_a1.0_e0.4_R40.000_G1: n=628 S = 8.7206832880  (0 s)
+21:58:03   A_a1.0_e0.4_R40.000_G2_th90: n=628 S = 8.7206832880  (0 s)
+21:58:03 Tier-1 symmetry A alpha=1.0 eta=0.4 th=90: 8.0e-14 [PASS]
+21:58:03   A_a1.0_e0.4_R40.000_U_th90: n=1256 S = 17.3398110926  (0 s)
+21:58:03   A_a1.0_e0.4_R40.000_G2_th180: n=628 S = 8.7206832880  (0 s)
+21:58:03 Tier-1 symmetry A alpha=1.0 eta=0.4 th=180: 0.0e+00 [PASS]
+21:58:04   A_a1.0_e0.4_R40.000_U_th180: n=1256 S = 17.3964607227  (0 s)
+21:58:04   A_a1.0_e0.4_R56.000_G1: n=1242 S = 12.3900686126  (0 s)
+21:58:05   A_a1.0_e0.4_R56.000_U_th90: n=2484 S = 24.6640572006  (1 s)
+21:58:05   A_a1.0_e0.4_R56.000_U_th180: n=2484 S = 24.7286180556  (1 s)
+21:58:06   A_a1.0_e0.4_R80.000_G1: n=2544 S = 17.9964513267  (1 s)
+21:58:16   A_a1.0_e0.4_R80.000_U_th90: n=5088 S = 35.8615101629  (9 s)
+21:58:25   A_a1.0_e0.4_R80.000_U_th180: n=5088 S = 35.9344254462  (10 s)
+21:58:25   A_a1.0_e0.25_R40.000_G1: n=383 S = 7.0011009133  (0 s)
+21:58:25   A_a1.0_e0.25_R40.000_G2_th90: n=383 S = 7.0011009133  (0 s)
+21:58:25 Tier-1 symmetry A alpha=1.0 eta=0.25 th=90: 2.7e-14 [PASS]
+21:58:25   A_a1.0_e0.25_R40.000_U_th90: n=766 S = 13.9563710880  (0 s)
+21:58:25   A_a1.0_e0.25_R40.000_G2_th180: n=383 S = 7.0011009133  (0 s)
+21:58:25 Tier-1 symmetry A alpha=1.0 eta=0.25 th=180: 0.0e+00 [PASS]
+21:58:25   A_a1.0_e0.25_R40.000_U_th180: n=766 S = 13.9795106426  (0 s)
+21:58:25   A_a1.0_e0.25_R56.000_G1: n=767 S = 10.3108954029  (0 s)
+21:58:26   A_a1.0_e0.25_R56.000_U_th90: n=1534 S = 20.5672386849  (0 s)
+21:58:26   A_a1.0_e0.25_R56.000_U_th180: n=1534 S = 20.5945043332  (0 s)
+21:58:26   A_a1.0_e0.25_R80.000_G1: n=1583 S = 15.2386309850  (0 s)
+21:58:28   A_a1.0_e0.25_R80.000_U_th90: n=3166 S = 30.4135501147  (2 s)
+21:58:30   A_a1.0_e0.25_R80.000_U_th180: n=3166 S = 30.4451309277  (2 s)
+21:58:30   A_a1.0_e0.15_R40.000_G1: n=209 S = 5.2481836584  (0 s)
+21:58:30   A_a1.0_e0.15_R40.000_G2_th90: n=209 S = 5.2481836584  (0 s)
+21:58:30 Tier-1 symmetry A alpha=1.0 eta=0.15 th=90: 1.7e-16 [PASS]
+21:58:30   A_a1.0_e0.15_R40.000_U_th90: n=418 S = 10.4782807579  (0 s)
+21:58:30   A_a1.0_e0.15_R40.000_G2_th180: n=209 S = 5.2481836584  (0 s)
+21:58:30 Tier-1 symmetry A alpha=1.0 eta=0.15 th=180: 0.0e+00 [PASS]
+21:58:30   A_a1.0_e0.15_R40.000_U_th180: n=418 S = 10.4872088213  (0 s)
+21:58:30   A_a1.0_e0.15_R56.000_G1: n=441 S = 8.3250253317  (0 s)
+21:58:30   A_a1.0_e0.15_R56.000_U_th90: n=882 S = 16.6260406767  (0 s)
+21:58:30   A_a1.0_e0.15_R56.000_U_th180: n=882 S = 16.6376926128  (0 s)
+21:58:30   A_a1.0_e0.15_R80.000_G1: n=929 S = 12.6592268163  (0 s)
+21:58:30   A_a1.0_e0.15_R80.000_U_th90: n=1858 S = 25.2882957295  (0 s)
+21:58:31   A_a1.0_e0.15_R80.000_U_th180: n=1858 S = 25.3026987549  (0 s)
+21:58:31   B_a1.0_e0.4_R20.000_G1: n=150 S = 3.9911483004  (0 s)
+21:58:31   B_a1.0_e0.4_R20.000_G2_th90: n=150 S = 3.9911483004  (0 s)
+21:58:31 Tier-1 symmetry B alpha=1.0 eta=0.4 th=90: 3.5e-14 [PASS]
+21:58:31   B_a1.0_e0.4_R20.000_U_th90: n=300 S = 7.9111828052  (0 s)
+21:58:31   B_a1.0_e0.4_R20.000_G2_th180: n=150 S = 3.9911483004  (0 s)
+21:58:31 Tier-1 symmetry B alpha=1.0 eta=0.4 th=180: 0.0e+00 [PASS]
+21:58:31   B_a1.0_e0.4_R20.000_U_th180: n=300 S = 7.9512532657  (0 s)
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp034a_wedge_mi.py", line 166, in <module>
+    analyse(load_ck()) if sys.argv[1:] == ["--analyse"] else main()
+                                                             ~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/exp034a_wedge_mi.py", line 133, in main
+    s1 = S(f"{run}_a{al}_e{eta}_R{R:.3f}_G1", X, P, g1)
+  File "/Users/sumit/Github/corner_function/scripts/exp034a_wedge_mi.py", line 97, in S
+    t0 = time.time(); ck[key] = entropy_sites(X, P, s)
+                                ~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp034a_wedge_mi.py", line 39, in entropy_sites
+    L = cholesky(A, lower=True, overwrite_a=True, check_finite=False); del A
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/_lib/_util.py", line 1181, in wrapper
+    return f(*arrays, *other_args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 106, in cholesky
+    c, lower = _cholesky(a, lower=lower, overwrite_a=overwrite_a, clean=True,
+               ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                         check_finite=check_finite)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 39, in _cholesky
+    raise LinAlgError(
+        f"{info}-th leading minor of the array is not positive definite"
+    )
+numpy.linalg.LinAlgError: 8-th leading minor of the array is not positive definite

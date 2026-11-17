@@ -3935,3 +3935,17 @@ estimate for the whole run is ~25–40 min: 1 core, BLAS threads 1, nice 15, det
 - *Slip in the engineering check, recorded:* the synthetic memory test printed "expect 0" for an X = I, P = ½I
   block. The correct value is 10 080 × 0.553 = 5577, which is what it gave. The expectation was miswritten; the
   routine was right.
+
+**EXP-034a run 1 crashed (recorded; a bug, fixed as an implementation change).**
+- *What happened:* `LinAlgError: 8-th leading minor not positive definite` at run B's first non-integer radius
+  (η = 0.40, R = 4√2·5 = 28.28), 38 s in.
+- *Before the crash:* every Tier-1 gate passed, including the correlator check (1.1·10⁻³ at r = 640; the
+  uncorrected box would be off by 0.30), and run A's entropies were all computed. No analysis was run and no ratio
+  was looked at.
+- *Cause:* the EXP-034 wedge builder makes its grid with `np.arange(-R, R+1)`. A fractional R gives non-integer y,
+  so 24 sites duplicate after the integer cast and X is singular. EXP-034 used integer R only, so it was unaffected.
+- *Fix:* the grid now runs to ⌈R⌉ while the radial cut keeps the float R.
+- *New Tier-1 gate:* the builder equals the EXP-034 builder at every integer R, and no B radius has a duplicate site.
+- *Kept:* the log (`exp034a_output_run1_crashed.txt`, `exp034a_run1_crashed.wd.log`) and the checkpoint. The
+  checkpoint holds only run A and the integer-R B entries, which the gate shows are unchanged.
+- Nothing else changes.

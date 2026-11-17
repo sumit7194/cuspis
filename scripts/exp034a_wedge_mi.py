@@ -71,6 +71,20 @@ def tables_corrected(al):
                         f"np.savez(r'{f}', X=X, P=P)"], cwd=D, check=True)
     z = np.load(f); return z["X"], z["P"]
 
+def wedge(eta, R, axis):
+    """As exp034_wedge_mi.wedge, but on an INTEGER grid for non-integer R (fix after run 1 crashed: np.arange(-R, R+1)
+    with fractional R gave non-integer y, hence duplicate sites after the int cast and a singular X).  The radial cut
+    r <= R keeps the float R.  Identical to the EXP-034 wedge for integer R (checked in Tier 1)."""
+    Ri = int(np.ceil(R)); r0 = 2.0 / eta
+    xs, ys = np.meshgrid(np.arange(0, Ri + 1), np.arange(-Ri, Ri + 1), indexing="ij")
+    r = np.hypot(xs, ys); ang = np.arctan2(ys, xs)
+    msk = (r >= r0) & (r <= R) & (np.abs(ang) <= eta + 1e-12)
+    s = np.stack([xs[msk], ys[msk]], axis=1)
+    if axis == "+x": return s
+    if axis == "-x": return np.stack([-s[:, 0], s[:, 1]], axis=1)
+    if axis == "+y": return np.stack([s[:, 1], s[:, 0]], axis=1)
+    raise ValueError(axis)
+
 def load_ck():
     d = {}
     if os.path.exists(CK):
@@ -91,6 +105,12 @@ def main():
         rel = abs(sA - sAc) / sA
         log(f"Tier-1 purity alpha={al}: rel diff {rel:.2e} [{'PASS' if rel < 1e-8 else 'FAIL'}]")
         if rel >= 1e-8: log("ABORT"); sys.exit(2)
+    for eta in ETAS_A + ETAS_B:     # Tier 1e: the integer-grid wedge equals the EXP-034 wedge at integer R; no duplicates anywhere
+        for R in RS_A:
+            assert np.array_equal(wedge(eta, R, "+x"), m0.wedge(eta, R, "+x")), (eta, R)
+        for k in KS_B:
+            w = wedge(eta, k * 2 / eta, "+x"); assert len(np.unique(w, axis=0)) == len(w) and w.dtype.kind == "i", (eta, k)
+    log("Tier-1 wedge: integer-grid builder == EXP-034 builder at integer R; no duplicate sites at any B radius [PASS]")
     ck = load_ck(); fck = open(CK, "a")
     def S(key, X, P, s):
         if key not in ck:
@@ -129,10 +149,10 @@ def main():
             for eta in etas:
                 Rs = RS_A if run == "A" else tuple(k * 2 / eta for k in KS_B)
                 for iR, R in enumerate(Rs):
-                    g1 = m0.wedge(eta, R, "+x")
+                    g1 = wedge(eta, R, "+x")
                     s1 = S(f"{run}_a{al}_e{eta}_R{R:.3f}_G1", X, P, g1)
                     for th in THETAS:
-                        g2 = m0.wedge(eta, R, "+y" if th == 90 else "-x")
+                        g2 = wedge(eta, R, "+y" if th == 90 else "-x")
                         if iR == 0:
                             s2 = S(f"{run}_a{al}_e{eta}_R{R:.3f}_G2_th{th}", X, P, g2)
                             log(f"Tier-1 symmetry {run} alpha={al} eta={eta} th={th}: {abs(s1 - s2) / s1:.1e} "
