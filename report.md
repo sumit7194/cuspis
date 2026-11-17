@@ -4486,3 +4486,57 @@ Dirac formula; bilinear dominance argued) **+ verified by evaluation** to 1.2% a
 - *Cause:* a cap set too low by me. EXP-036 ran the same η = 10⁻⁵ sizes at a 1.98 GB peak, under a 3 GB cap.
 - *Fix:* relaunch with a 3 GB cap (as EXP-036). The checkpoint (`exp038_partC.json`) is kept, and nothing else changes.
 - Logs: `exp038_output_run1_killed.txt`, `exp038_run1_killed.wd.log`.
+
+### EXP-038 results: Part B (holographic O(N²)) PASS — P3 holds exactly for thin sectors; Part C: Δ = 0.6 PASS (p = 0.44 vs 0.40), Δ = 0.9 VOID (numerical precision floor; gates failed)
+
+**Run 2:** Part C completed from the checkpoint. 417 s, peak 1.61 GB (cap 3), exit 0. Output: `scripts/exp038_output.txt`;
+Part B is identical in both runs.
+
+**Part B, holographic CFT (Einstein, AdS₄), O(N²).**
+- Two implementations of a(Ω) agree to ≤ 1.5·10⁻¹².
+- **Control:** η_c(180°) − π/4 = −4·10⁻¹⁴. **PASS.**
+- *Results* (both implementations agree to all printed digits):
+
+| θ | 60° | 90° | 120° | 180° |
+|---|---|---|---|---|
+| η_c | 0.328327 | 0.490738 | 0.636623 | π/4 |
+| sector opening 2η_c | 37.62° | 56.23° | 72.95° | 90° |
+
+- **For η < η_c(θ) the RT surface is disconnected and I ≡ 0 at O(N²), so i_G = 0 identically.** P3, and with it A5′,
+  holds *exactly* at leading order in holography. This is conditional on RT and on MMO's two candidate
+  configurations.
+- *Grade:* verified (computation) conditional on RT. Most of it is already in MMO 1511.00244. The new parts are
+  the reading as P3/A5′ and the η_c values at our θ.
+- *O(1) correction (argued, not computed):* this is the bulk MI between the two thin entanglement wedges (FLM;
+  Agón–Faulkner). It should fall off like the lightest-operator law of §2, with Δ_min ≥ 1 for any field other
+  than a singleton.
+
+**Part C, out-of-sample exponent law.**
+- **Δ = 0.6 (α = 0.8): PASS.**
+  - Gates: quadrature ≤ 1.5·10⁻⁶; n_p drift ≤ 5·10⁻⁵.
+  - Local exponent p(10⁻⁴ → 10⁻⁵) = 0.4411 (90°) and 0.4400 (180°), against the predicted 0.4000 (|Δp| = 0.041 and
+    0.040 ≤ 0.15).
+  - It approaches from above (p(10⁻³ → 10⁻⁴) = 0.470 and 0.468), as expected near the margin (ε = 0.2; crossover at
+    ln(1/η) ~ 1/ε = 5).
+- **Δ = 0.9 (α = 0.2): VOID, because the gates failed.**
+  - The quadrature gate gave 5.7·10⁻³ and 7.1·10⁻³ (limit 10⁻³). The n_p drift was 0.7% and 1.3% at 10⁻³ but 22% and
+    64% at 10⁻⁴, and 190% and 6.8% at 10⁻⁵.
+  - *Why it fired:* i_G falls to 10⁻⁹–10⁻¹¹ there. MI computed as 2S₁ − S₁₂, with entropies of order 1–10, hits the
+    double-precision cancellation floor. The check correctly says these numbers are noise.
+  - The printed exponents (1.63/1.71 and 2.28/1.38) therefore carry no weight. Only the 10⁻³ values are resolved.
+  - *A fix would be a method change, so it is not done here:* evaluate the MI without subtracting large entropies.
+    For example, use the Gaussian relative entropy S(ρ₁₂‖ρ₁⊗ρ₂) via log det of near-identity matrices with log1p.
+    That needs its own registration.
+
+**Overall grade of P3 / A5′ after EXP-034…038.**
+- Free scalar (marginal, 1/ln²) and free Dirac fermion (η²): argued + verified by evaluation.
+- Holographic CFTs at O(N²): **exact** (i_G ≡ 0 for η < η_c), conditional on RT.
+- General unitary 3d CFTs: **argued (physics-level)**, via the lightest-operator law i_G ~ η^{2(2Δ_min−1)} together
+  with the unitarity bound Δ_min > ½ (Minwalla eq. 2.58; saturation means a free field, argued).
+  - The exponent law is verified in the Gaussian family at Δ = ½ (log), 0.6, ¾ and 1. Δ = 0.9 is unresolved
+    numerically.
+- **Not a theorem.** In particular the block-sum step (summing Cardy's pairwise law over a thin strip) is argued. For
+  near-marginal interacting theories such as 3d Ising (ε = 0.036) the decay is predicted but invisible at any
+  computable η.
+- **2.894:** its premise A5′ is now argued for general unitary CFTs and verified in the two free CFTs and at
+  holographic O(N²). The bound's grade stays "physics-level; checked by the bridge (V7); not a theorem".

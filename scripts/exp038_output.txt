@@ -1,0 +1,19 @@
+00:35:21 EXP-038 start
+00:35:21 B two implementations a(Omega=0.3000)/C_T: HT 12.084733653137  direct-ODE 12.084733653140  rel 1.9e-13 [PASS]
+00:35:21 B two implementations a(Omega=1.0000)/C_T: HT 2.872172317179  direct-ODE 2.872172317178  rel 3.8e-13 [PASS]
+00:35:21 B two implementations a(Omega=1.5708)/C_T: HT 1.221980042551  direct-ODE 1.221980042552  rel 5.3e-13 [PASS]
+00:35:21 B two implementations a(Omega=2.5000)/C_T: HT 0.173870915513  direct-ODE 0.173870915513  rel 1.5e-12 [PASS]
+00:35:21 B eta_c(theta=180 deg) = 0.7853981634 (impl 2: 0.7853981634); sector opening 2 eta_c = 90.0000 deg
+00:35:21 B eta_c(theta=90 deg) = 0.4907378216 (impl 2: 0.4907378216); sector opening 2 eta_c = 56.2344 deg
+00:35:22 B eta_c(theta=120 deg) = 0.6366233766 (impl 2: 0.6366233766); sector opening 2 eta_c = 72.9517 deg
+00:35:22 B eta_c(theta=60 deg) = 0.3283269580 (impl 2: 0.3283269580); sector opening 2 eta_c = 37.6235 deg
+00:35:22 B control: eta_c(180) - pi/4 = -4.17e-14 [PASS]
+00:42:14   C a0.2_e1e-05_np32: M=10053100 (412 s)
+00:42:17 C alpha=0.8 (Delta=0.6) i90: gates quad(48 vs 96 @1e-3) 1.5e-06, n_p drift ['1.8e-05', '1.2e-05', '4.2e-05'] [PASS];  i_G = 3.8753e-04, 1.3130e-04, 4.7556e-05
+00:42:17     local exponent p(1e-3->1e-4) = 0.4700;  p(1e-4->1e-5) = 0.4411;  predicted 2(2D-1) = 0.4000  |p2 - pred| = 0.0411 <= 0.15: [PASS]
+00:42:17 C alpha=0.8 (Delta=0.6) i180: gates quad(48 vs 96 @1e-3) 1.6e-07, n_p drift ['1.6e-05', '2.1e-05', '4.7e-05'] [PASS];  i_G = 2.1555e-04, 7.3369e-05, 2.6637e-05
+00:42:17     local exponent p(1e-3->1e-4) = 0.4680;  p(1e-4->1e-5) = 0.4400;  predicted 2(2D-1) = 0.4000  |p2 - pred| = 0.0400 <= 0.15: [PASS]
+00:42:17 C alpha=0.2 (Delta=0.9) i90: gates quad(48 vs 96 @1e-3) 5.7e-03, n_p drift ['6.6e-03', '2.2e-01', '1.9e+00'] [FAIL];  i_G = 1.5728e-07, 3.6625e-09, 1.9112e-11
+00:42:17     local exponent p(1e-3->1e-4) = 1.6329;  p(1e-4->1e-5) = 2.2825;  predicted 2(2D-1) = 1.6000  |p2 - pred| = 0.6825 <= 0.1: [FAIL]
+00:42:17 C alpha=0.2 (Delta=0.9) i180: gates quad(48 vs 96 @1e-3) 7.1e-03, n_p drift ['1.3e-02', '6.4e-01', '6.8e-02'] [FAIL];  i_G = 6.0393e-08, 1.1666e-09, 4.8104e-11
+00:42:17     local exponent p(1e-3->1e-4) = 1.7141;  p(1e-4->1e-5) = 1.3847;  predicted 2(2D-1) = 1.6000  |p2 - pred| = 0.2153 <= 0.1: [FAIL]

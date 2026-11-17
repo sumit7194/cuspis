@@ -318,3 +318,8 @@ conclusion never depended on it; the number should not be carried onward.**
 - [ ] A5' for an interacting CFT (e.g. large-N / holographic sector MI of 1511.00244 gives zero at O(N^2) for thin sectors?
       check what is known at O(1)); this is the step that would matter for 2.894 beyond free fields.
 - [ ] Note: the n_p gate passed at 1.93% (near the 2% line); a 256-cell run would tighten the Dirac coefficient check.
+
+## EXP-038 follow-ups (2026-11-18)
+- [ ] Cancellation-free Gaussian MI (relative entropy via log1p of near-identity dets) to resolve Delta = 0.9 at eta <= 1e-4 (EXP-038 Part C void there).
+- [ ] O(1) holographic correction to the thin-sector MI (bulk MI between thin entanglement wedges) -- argued only.
+- [ ] Block-sum step of the general argument (Cardy pairwise law summed over a thin strip) -- the one argued link for interacting CFTs.

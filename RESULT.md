@@ -556,6 +556,14 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
     - **A5′ is argued + verified by evaluation for both free CFTs, scalar and Dirac; not a theorem; interacting CFTs
       not addressed.**
     - A weaker test than the scalar: there is no fermionic must-fail control.
+  - *EXP-038, beyond free fields (2026-11-18).*
+    - **Holographic O(N²): exact.** The RT surface is disconnected for η < η_c(θ) (90°: 0.4907; 180°: π/4 as the
+      control), so i_G ≡ 0 there (cf. MMO 1511.00244).
+    - **General unitary CFTs: argued.** i_G ~ η^{2(2Δ_min−1)} (Cardy's lightest-operator law, summed over a strip),
+      and the unitarity bound gives Δ_min > ½. The free scalar is the unique marginal case.
+    - The exponent law was verified out of sample at Δ = 0.6 (p = 0.44 vs 0.40). Δ = 0.9 is void (precision floor).
+    - 2.894's grade wording is unchanged. Its premise is now argued generally, verified for both free CFTs, and exact at
+      holographic O(N²); **not a theorem.**
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
