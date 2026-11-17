@@ -1,0 +1,15 @@
+22:42:03 P-a C(theta=90): closed 0.1963495408 numeric 0.1963495408 rel 3.3e-13 [PASS]
+22:42:05 P-a C(theta=180): closed 0.1250000000 numeric 0.1250000000 rel 8.4e-13 [PASS]
+22:42:05 P-0 x_s alpha=1 s=0.0 th=90: Fourier 0.295085149754 quad 0.295085149754 rel 1.9e-13
+22:42:05 P-0 x_s alpha=1 s=0.0 th=180: Fourier 0.250000000000 quad 0.250000000000 rel 2.4e-13
+22:42:05 P-0 k_s s=0.0: Fourier 0.3309534002  quad(psi=1e-5) 0.3309534002  diff 1.3e-11 (O(psi^2 ln psi) expected)
+22:42:05 P-0 x_s(0) alpha=1.5 s=0.0: Fourier+tail 1.7461221821 quad 1.7461221812 rel 5.1e-10
+22:42:05 P-0 x_s alpha=1 s=0.8 th=90: Fourier 0.068821880531 quad 0.068821880531 rel 1.1e-12
+22:42:05 P-0 x_s alpha=1 s=0.8 th=180: Fourier 0.040237282372 quad 0.040237282372 rel 2.2e-12
+22:42:05 P-0 k_s s=0.8: Fourier 0.0673122836  quad(psi=1e-5) 0.0673122836  diff 4.4e-11 (O(psi^2 ln psi) expected)
+22:42:05 P-0 x_s(0) alpha=1.5 s=0.8: Fourier+tail 0.4843047362 quad 0.4843047353 rel 1.8e-09
+22:42:05 P-0 x_s alpha=1 s=3.0 th=90: Fourier 0.001042450189 quad 0.001042450189 rel 1.3e-12
+22:42:05 P-0 x_s alpha=1 s=3.0 th=180: Fourier 0.000040349758 quad 0.000040349759 rel 7.3e-09
+22:42:05 P-0 k_s s=3.0: Fourier -0.1556463749  quad(psi=1e-5) -0.1556463745  diff 4.1e-10 (O(psi^2 ln psi) expected)
+22:42:05 P-0 x_s(0) alpha=1.5 s=3.0: Fourier+tail 0.2413624232 quad 0.2413624223 rel 3.7e-09
+22:42:14 predictions frozen to /Users/sumit/Github/corner_function/scripts/exp036_predictions.json
