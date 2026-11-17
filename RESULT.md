@@ -528,10 +528,14 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
     - The free-scalar lattice test EXP-034 was **VOID** as registered: its Δ = ¼ must-fail control did not plateau
       at θ = 90°.
     - 2.894 therefore stays "physics-level; checked by the bridge (V7); not a theorem". 2.280 is unaffected.
-  - *Cost of a discriminating rerun (an estimate, not a plan).* Wedges down to η ≈ 0.05 need R ≈ 320
-    (r₀ = 2/η = 40), i.e. unions of ~10⁴ sites. That is 1 core, ~4 GB RAM, < 50 MB disk and ~2–3 h.
-    - It is not guaranteed to discriminate: the Δ = ¼ control may still decay slowly at η = 0.05. If it does,
-      the test stays void.
+  - *The discriminating rerun, EXP-034a (2026-11-17).* Wedges went down to η = 0.05 (up to 10⁴ sites), and the
+    correlators were corrected to the infinite lattice (the 4096-box had left long-range correlations 25–60% low).
+    - The Δ = ¼ control now plateaus (r = 0.83, 0.86), so the test is **live**, and the Δ = ¾ control passes.
+    - The free scalar gives r = 0.53, 0.55: between the frozen thresholds, so **inconclusive**. It does not plateau
+      like the control and does not reach the pass line.
+    - 2.894 keeps its grade, "physics-level; checked by the bridge (V7); not a theorem". 2.280 is unaffected.
+    - Going further needs a different method (dilatation reduction to arcs on a cylinder, or a Gaussian-correlation
+      proof), not a bigger lattice (argued).
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant

@@ -297,3 +297,9 @@ conclusion never depended on it; the number should not be carried onward.**
   with a log-fit over ln R ∈ [1.4, 2.6]. Candidate causes, not diagnosed: finite-size 1/size and
   zero-mode (k = 0) contamination (the sibling's README puts it at ~20% of B); the short ln-range
   making B degenerate with C and D. Not modified (read-only).
+
+## EXP-034a follow-ups (2026-11-17; inconclusive scalar, live test)
+- [ ] If Sumit wants P3 resolved: dilatation reduction (MI per unit log-scale -> two arcs on S^1 x R, 1D-translation
+      invariant Gaussian; thin arcs cheap). Prior-art sweep FIRST (M1). Known-answer control: reproduce EXP-034a's i_G.
+- [ ] Alternative: bound Gaussian MI by canonical correlations of smeared fields between thin wedges; try to prove -> 0 for Delta >= 1/2.
+- [ ] Not recommended: bigger lattice (eta 0.03 needs ~8 GB, few h, only a factor ~1.7 more in eta).

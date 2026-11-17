@@ -3960,3 +3960,62 @@ estimate for the whole run is ~25–40 min: 1 core, BLAS threads 1, nice 15, det
 - *Fix, ordering only:* all tables and all correlator gates now run before any entropy, with chunk 256. Numerics,
   geometry and criteria are unchanged. The checkpoint is kept, since it holds entropies made by identical code.
 - Logs: `exp034a_output_run2_killed.txt`, `exp034a_run2_killed.wd.log`.
+
+### EXP-034a results: the test is LIVE (the Δ = ¼ control plateaued), and the scalar is INCONCLUSIVE under the frozen criteria (r₁ = 0.53, 0.55)
+
+**Run 3** (the reordering fix only): exit 0 in 308 s; peak tree 2.12 GB; pressure level 1 throughout. 60 Tier-1 lines,
+all PASS:
+- X_inf(0) two ways: |diff| ≤ 1.8·10⁻¹³.
+- Corrected correlators vs infinite lattice: ≤ 1.6·10⁻³ at r = 640. The uncorrected box would be off by 0.30 (α = 1)
+  and 0.54 (α = 1.5) there.
+- Known answer: X(640)·4π·640 = 1.0011.
+- Purity, symmetry and builder equality all pass.
+
+Output: `scripts/exp034a_output.txt`; checkpoint `scripts/exp034a_ckpt.jsonl`. The N = 8192 tables were deleted.
+
+**Run B (the test): i_G (LSQ slope over R = 4, 4√2, 8 × r₀).**
+
+| α (Δ) | θ | 0.40 | 0.25 | 0.15 | 0.10 | 0.05 | **r = i_G(0.05)/i_G(0.15)** |
+|---|---|---|---|---|---|---|---|
+| 1 (½, scalar) | 90° | 0.04392 | 0.02587 | 0.01720 | 0.01331 | 0.00914 | **0.531** |
+| 1 (½, scalar) | 180° | 0.02000 | 0.01361 | 0.00954 | 0.00755 | 0.00525 | **0.550** |
+| 1.5 (¼, must plateau) | 90° | 0.11593 | 0.08492 | 0.07152 | 0.06532 | 0.05901 | **0.825** |
+| 1.5 (¼, must plateau) | 180° | 0.06543 | 0.05581 | 0.05006 | 0.04684 | 0.04319 | **0.863** |
+| 0.5 (¾) | 90° | 0.01060 | 0.00489 | 0.00241 | 0.00146 | 0.00064 | 0.264 |
+| 0.5 (¾) | 180° | 0.00385 | 0.00202 | 0.00103 | 0.00063 | 0.00028 | 0.267 |
+
+**Verdict against the frozen criteria.**
+- *Able to fail:* r₁.₅ = 0.825 and 0.863, both ≥ 0.8. **PASSED.** The test is not void.
+- *Easy control:* r₀.₅ (0.264, 0.267) < r₁ (0.531, 0.550). **PASSED.**
+- *Scalar:* r₁ = 0.531 and 0.550. That is not ≤ 0.5, so it does not pass, and not ≥ 0.8, so it does not fail.
+  **INCONCLUSIVE.** The θ-difference does shrink (0.00766 → 0.00389), but the pass needs both conditions.
+
+**Robustness to the fit (the nuisance parameter).** Using either two-point slope instead of the LSQ slope gives
+scalar r = 0.531/0.531 (90°) and 0.549/0.552 (180°), and control r = 0.829/0.821 (90°). No verdict moves.
+
+**Run A (secondary, one variable: the correlators only, at EXP-034's geometry and criteria).**
+- r₁.₅ = 0.669 (90°) and 0.843 (180°), against 0.602 and 0.817 in EXP-034. So run A is still VOID.
+- r₁ = 0.405 and 0.486; r₀.₅ = 0.227 and 0.258.
+- *Attribution (descriptive):* the IR correction raised the control's 90° ratio by 0.07 but did not rescue it.
+  What made the test live was mainly the thinner wedges.
+- Run A vs run B at shared η (the R-schedule change alone) moves i_G by ≤ 4% (e.g. scalar 90° at η = 0.15: 0.01741
+  vs 0.01720).
+
+**What the numbers say (descriptive, not a registered verdict).**
+- At equal η range the scalar decays clearly faster than the live Δ = ¼ control (0.53–0.55 vs 0.83–0.86) and clearly
+  slower than Δ = ¾ (0.26). That is the ordering the heuristic predicts, with the scalar between the two.
+- The asymptotic form 1/log²(1/η) would give 0.40 here, so it is still not quantitative at these η.
+- The data are therefore *consistent with* P3 for the free scalar and give no sign of a plateau, but they do not
+  pass the registered criterion.
+- Per step in η the scalar's i_G falls by factors 0.77, 0.69 (0.15 → 0.10 → 0.05, 90°). It shows no slowing.
+  Three points cannot distinguish a slow decay from a very low plateau, so this is inference, not verification.
+
+**Consequence for the 2.894 bound.** The grade is unchanged: "derived at physics-level; checked by the bridge (V7); not a
+theorem".
+- What changed is the test: P3 is now tested where it could fail, and the scalar did not fail.
+- Under the frozen thresholds it also did not pass. A5′ is therefore *not* upgraded.
+- 2.280 is unaffected.
+- No retuning and no change of pair: the inconclusive verdict stands as registered.
+
+**Records kept:** run 1 crashed (fractional-R wedge bug) and run 2 was killed (4 GB cap at an α transition). Both are
+logged above; neither fix touched the numerics.
