@@ -323,3 +323,9 @@ conclusion never depended on it; the number should not be carried onward.**
 - [ ] Cancellation-free Gaussian MI (relative entropy via log1p of near-identity dets) to resolve Delta = 0.9 at eta <= 1e-4 (EXP-038 Part C void there).
 - [ ] O(1) holographic correction to the thin-sector MI (bulk MI between thin entanglement wedges) -- argued only.
 - [ ] Block-sum step of the general argument (Cardy pairwise law summed over a thin strip) -- the one argued link for interacting CFTs.
+
+## EXP-039 HOLD (bridge, 2026-11-18 night)
+- [ ] HOLD until the bridge's morning check (~8 AM): Quantum's approved G3 worker (PID 6018, ~4.4 GB) must not be pushed
+      into pressure yellow, because a stopped G3 task is not retried.  Then relaunch `scripts/exp039_mp_mi.py` under the
+      watchdog with --cap-gb 2.5 (other guards as before), only with pressure at level 1 and the bridge's go.
+      V1 and V2 already passed (run 1); the run restarts from validation (no checkpoint yet).
