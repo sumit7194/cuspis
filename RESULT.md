@@ -514,6 +514,24 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
   - the full rectangle bound at n = 1 needs [CH12] conditional positivity for reflected rectangles;
   - conformal concavity holds at n = 1 (derived from SSA plus conformal flows, physics-level; reviewed; EMI check
     passes). With C3 it implies κ ≥ 2.538·a(π/2) and κ/C_T ≥ 2.894.
+  (13) Status as of 2026-11-17 (EXP-032–034):
+  - *Upper bound.* No mechanism capping κ/C_T is in print. This is a partially verified sweep: 9 citation trees
+    and keyword queries with controls.
+    - Two new free-scalar envelope conjectures exist for sphere and thermal quantities (Herzog–Stergiou
+      2610.33179; Kusuki–Tang 2610.37449). By the papers' account, both are proved only locally, from ⟨TTT⟩.
+    - For corners even that local step fails, because σ′/C_T is not fixed by (C_T, t₄) (argued).
+    - The one new ingredient for the two-sided route is Jia's replica-free n = 1 mutual-information expansion
+      (2611.03630, abstract only).
+  - *The 2.894 bound.* O3's step 2 carries over to CHMY15's mutual-information regularization (argued). By purity
+    on the lattice, A5 reduces to P3: the MI between two thin wedges with a common apex → 0 (argued).
+    - EMI passes, but it is degenerate (pairwise-additive), so it carries no weight.
+    - The free-scalar lattice test EXP-034 was **VOID** as registered: its Δ = ¼ must-fail control did not plateau
+      at θ = 90°.
+    - 2.894 therefore stays "physics-level; checked by the bridge (V7); not a theorem". 2.280 is unaffected.
+  - *Cost of a discriminating rerun (an estimate, not a plan).* Wedges down to η ≈ 0.05 need R ≈ 320
+    (r₀ = 2/η = 40), i.e. unions of ~10⁴ sites. That is 1 core, ~4 GB RAM, < 50 MB disk and ~2–3 h.
+    - It is not guaranteed to discriminate: the Δ = ¼ control may still decay slowly at η = 0.05. If it does,
+      the test stays void.
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
