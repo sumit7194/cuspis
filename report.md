@@ -3871,3 +3871,67 @@ Scalar |i_G(90°) − i_G(180°)|: 0.0227 at η = 0.40, 0.0074 at η = 0.15.
 **Consequence for the 2.894 bound.** It is unchanged: "derived at physics-level; checked by the bridge (V7); not a
 theorem". A5′ remains reduced (argued) to P3, and P3 remains **untested where it could fail**. The 2.280 bound is
 unaffected. No rerun or retuning is made under this registration.
+
+## EXP-034a  Addendum to EXP-034: thinner wedges, plus an infinite-lattice correction to the correlators — pre-registration (Sumit's GO via the bridge, 2026-11-17; slot: 1 core, ~4 GB tree cap, stop on memory pressure yellow, nice 15, 5 GB disk floor)
+
+**Goal.** The discriminating rerun named in RESULT.md §10 (13): resolve P3 for the free scalar at thinner wedges, with
+the Δ = ¼ must-fail control able to plateau. Sumit accepts that it may come out void again.
+
+**Design calibration made before any wedge entropy (correlators only; script kept in this entry's commit as
+`scripts/exp034a_wedge_mi.py`, Tier 1b/1c).** I compared the on-axis X(r, 0) of the periodic N-lattice (k = 0
+excluded, as in EXP-034) for N = 4096 … 32768.
+- *The box artifact is a constant.* X_N(r) − X_N(0) agrees between N = 4096 and 32768 to ≤ 1.1·10⁻⁶ (α = 1) and
+  ≤ 6·10⁻⁵ (α = 1.5) for r ≤ 640, while X_N(0) itself moves by 7.6·10⁻⁵ and 5.0·10⁻³.
+- *It is large where the wedge MI lives.* At N = 4096 the uncorrected X(r) is ~40% of the infinite-lattice value at
+  r = 640 for α = 1, and ~25% (r = 640) to ~60% (r = 160) for α = 1.5. EXP-034's unions span separations up to 160.
+  So **EXP-034's correlators under-represent exactly the long-range correlation that should make the Δ = ¼ control
+  plateau.** This may be part of why EXP-034 was void (unverified; run A below tests it with one variable changed).
+- *Fix.* Add the zero-mode constant C = X_inf(0) − X_N(0) to every X entry. X_inf(0) is computed two ways, by 2D
+  quadrature over the Brillouin zone and by Richardson extrapolation of the box sums (16384, 32768). They agree to
+  ≤ 2·10⁻¹³ (verified): X_inf(0) = 0.321441124147 (α = 1), 0.339615253993 (α = 1.5), 0.383782989742 (α = 0.5).
+  Adding a positive constant to X keeps X P ≥ ¼, so the state stays physical. P has no zero-mode problem (ω(0) = 0).
+- Known-answer check (verified, α = 1): with C added, X(640, 0) from N = 32768 equals 1/(4π·640) to 4 digits.
+
+**What changes from EXP-034 (stated so each effect can be attributed).**
+1. *Correlators:* N = 8192 (k = 0 excluded) plus C. The residual (image-gradient) error at r = 640 is ≲ 0.3%.
+2. *Run A (one-variable control):* the EXP-034 geometry exactly (η ∈ {0.40, 0.25, 0.15}, R ∈ {40, 56, 80}) with
+   the corrected correlators. EXP-034 → A isolates the correlator change.
+3. *Run B (the test):* η ∈ {0.40, 0.25, 0.15, 0.10, 0.05}, R = k·r₀ with r₀ = 2/η and k ∈ {4, 4√2, 8}. Every η then
+   has the same geometry in units of r₀ (inner width 4 sites, R/r₀ from 4 to 8). The largest union is 10 080 sites
+   (η = 0.05, R = 320). A → B at the shared η isolates the R schedule.
+- Unchanged: model, dispersion, α ∈ {1, 1.5, 0.5}, θ ∈ {90°, 180°}, wedge definition, the i_G estimator (LSQ slope of
+  I against log R over three R), and every threshold.
+
+**Tier-1 gates (abort on failure).** Purity on the 24×24 torus (< 10⁻⁸); X_inf(0) two implementations (< 10⁻¹⁰);
+corrected X(r, 0) vs infinite lattice at r ∈ {0, 40, 160, 320, 640} (< 1%); the lean entropy equals the EXP-034
+entropy on identical matrices (< 10⁻¹⁰; pre-checked: EXP-034 checkpoint values reproduced to 0.0 relative);
+S(G₁) = S(G₂) (< 10⁻⁸).
+
+**Pass/fail (thresholds frozen from EXP-034; only the η pair moves down).** For run B, r_α(θ) = i_G(θ, 0.05)/i_G(θ, 0.15)
+(a factor 3 in η; EXP-034 used 2.67).
+- *Able to fail:* r₁.₅ ≥ 0.8 at both θ. Otherwise **VOID**, and nothing is concluded about the scalar.
+- *Easy control:* r₀.₅ < r₁ at both θ. Otherwise void.
+- *Scalar passes P3:* r₁ ≤ 0.5 at both θ **and** |i_G(90°) − i_G(180°)| is smaller at η = 0.05 than at η = 0.15.
+- *Scalar fails P3:* r₁ ≥ 0.8 at either θ. That is a real result against A5′, and the 2.894 bound weakens.
+- 0.5 < r₁ < 0.8: inconclusive.
+- *Run A* is evaluated under the EXP-034 criteria verbatim (r = i_G(0.15)/i_G(0.40)). It is a secondary,
+  one-variable control and does not override B. B's i_G(0.15)/i_G(0.40) is reported descriptively only.
+- No rerun, retuning or change of pair after the numbers are seen.
+
+**Bound on expectations (rule VIII).** The heuristic gives the scalar i_G ~ 1/log²(1/η), so r₁ ≈ (log(1/0.15)/log(1/0.05))² ≈ 0.40
+if that asymptotic form held. But EXP-034's scalar ratios (0.39, 0.48 over 0.40 → 0.15) were already off the form's
+0.23, so the heuristic is not quantitative here. *I cannot predict whether the control plateaus*, and a second void
+is a live outcome.
+
+**Resources (measured on a synthetic 10 080-site block).** The entropy takes 85 s and peaks at a 1.75 GB tree. The
+estimate for the whole run is ~25–40 min: 1 core, BLAS threads 1, nice 15, detached under `scripts/tools/watchdog.py`.
+- Watchdog settings: 4 GB tree cap, 5 GB disk floor, and the new `--stop-on-pressure-warn` (kernel memory-pressure
+  level ≥ 2). Its trigger was tested to fire by forcing level 2.
+- Launch with `scripts/run_exp034a.sh`. Stop with `scripts/stop_exp034a.sh`, which verifies the PID's command
+  line and start time before signalling.
+- *Output:* `scripts/exp034a_output.txt`; checkpoint `scripts/exp034a_ckpt.jsonl`; the N = 8192 tables are
+  deleted after the run.
+- *Environment:* macOS 27.2, Python 3.14.5, numpy 2.4.3, scipy 1.17.1 (`requirements.lock`).
+- *Slip in the engineering check, recorded:* the synthetic memory test printed "expect 0" for an X = I, P = ½I
+  block. The correct value is 10 080 × 0.553 = 5577, which is what it gave. The expectation was miswritten; the
+  routine was right.
