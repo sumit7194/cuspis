@@ -4286,3 +4286,72 @@ analytically, with the leading behaviour verified by evaluation against continuu
   log-correlated φ.
 - The **2.894 bound** stays "physics-level; checked by the bridge (V7); not a theorem". Its premise A5′ is now
   supported for the free scalar (argued + verified by evaluation), but not for interacting CFTs. 2.280 is unaffected.
+
+## EXP-037  P3 / A5′ for the free massless Dirac fermion (2+1), by dilatation reduction — pre-registration (Sumit's direct GO in chat, 2026-11-17: "go with the Dirac fermion next")
+
+**Prior art (M1, fermion-specific; partially verified, abstracts read).** EXP-035's sweep applies.
+- Additionally, the 74 citers of CHL 0811.1968 (74 = 74; control 1506.06729 HIT) were filtered for MI, sectors or
+  wedges. That gave 14 hits, none of them free-fermion common-apex MI.
+- Abate–Martinek 2608.23692 (2026), "Exact mutual information for free massless fermions in any dimension":
+  - Rényi MI between two *spherical* regions, via angular-momentum reduction to AdS₂ fermions and Painlevé.
+  - A different geometry. Relevant only as a cross-check of the long-distance MI normalisation used below.
+- Not found: free-fermion MI between sectors with a common apex.
+
+**Reduction (argued; the symbol is verified).**
+- C = ⟨ψψ†⟩ = ½(1 − σ·k̂). Position space: K = −(i/4π)σ·(x−y)/|x−y|³.
+- ψ has Δ = 1 = d/2, so the unitary map f → r f alone makes the state u-translation invariant.
+- *Symbol.* Mellin–Hankel, as in EXP-035, with the up component carrying angular momentum l and the down component
+  l+1. Per (s, l): S = [[0, B′], [B, 0]], with B = (−i)^{|l|} i^{|l+1|} g(−1+is, l) g(−1−is, l+1) and B′ = B̄.
+- *Tier-1, already run (PASS):*
+  - |B| = 1 and B′ = B̄ to 2·10⁻¹⁶, so S² = 1 and the state is pure.
+  - The cross kernel from the symbol matches the position-space u-integral of −(i/4π)(e^{u/2}e^{−iψ} − e^{−u/2})/D^{3/2}
+    to ≤ 2·10⁻⁷, at s ∈ {0, 0.7} and ψ ∈ {1, π/2, π}. This uses the e^{−isu} convention; the integral over the full
+    s-line makes the sign immaterial.
+  - Parseval: ∫ds‖K_s(θ)‖² from the symbol equals the closed form [1 + (π−θ)cot θ]/(8π sin²θ) to ≤ 1.2·10⁻⁸.
+
+**Discretisation, and three implementation fixes made before this registration (recorded).**
+1. *Band-limited circle (as for the scalar) rejected.* The chiral symbol ∓i·sgn does not decay. Truncating it at
+   |l| = M/2 creates a staggered doubler correlation (−1)^d/M, as large as the physical long-range kernel.
+   - This was found when the kernel check fired: the truncated Fourier sum gave ≈ 0 against the true (−1+i)/(4π).
+   - *Replaced by* the cell-averaged (piecewise-constant Galerkin) compression of the *exact* continuum projector,
+     summed over all l. The non-decaying part B′_∞ = −i·sgn(l+½) is summed over all aliases in closed form (trigamma);
+     the remainder R = B′ − B′_∞ ~ s/|l| over |k| ≤ 8 aliases.
+   - This is a valid state (verified: C_A eigenvalues in [0, 1]) with no doublers. MI on the cell subalgebra is
+     ≤ the continuum MI and increases with refinement.
+   - Cell vs point kernel at large separation: ≤ 2·10⁻⁶.
+2. *The Parseval check first fired at 1.6·10⁻³.* The cause: evaluating the symbol sum at s ~ 3000, where the s/l
+   remainder is badly truncated and the true kernel is ~e⁻⁴⁷⁰⁰.
+   - Fix: s ∈ [−20, 20] on Gauss–Legendre panels (0,1,3,7,12,20). The kernel decays like e^{−sψ} with ψ ≥ π/2 − 2η.
+3. *With 2 aliases, I_s grew spuriously at s ≥ 20* for small M (10⁻⁹ against I₀ = 0.1): aliasing of R at s/M ≳ 0.15.
+   - With 8 aliases the tail is I₂₀/I₀ = 4·10⁻¹³.
+- *Grid:* n_p ∈ {16, 32, 64} cells per arc; 12 and 24 nodes per panel; η ∈ {0.40 … 0.001} as in EXP-035; θ ∈ {90°, 180°}.
+- *Script:* `scripts/exp037_dirac.py`. Estimated run: 16 min, 1 core, < 1 GB, so no slot is needed.
+
+**Thin-arc theory (argued).** Per s, at the scale of thin arcs the 1D state is locally two chiral fermions: K_s(ψ) →
+(i/2π)σ_φ/ψ, as checked from the 2D kernel. For two short intervals of a 1+1 Dirac fermion,
+I = −(1/3)ln(1−x) ≈ x/3 (Casini–Fosco–Huerta 2005, *cited from memory, not re-verified this session*). This is bilinear
+in the cross kernel, normalised so that I ≈ ((2π)²w²/6)·‖K(θ)‖_F² for intervals of length w = 2η.
+- Assuming the leading term stays bilinear in the cross kernel with this local (UV) coefficient, Parseval gives
+  **i_G ≈ (η²/6)·[1 + (π−θ)cot θ]/sin²θ**: η²/6 at 90° and η²/18 at 180°.
+- The angular factor is the EMI shape of EXP-033.
+- Corrections are expected at relative O(η²), plus cell discretisation.
+
+**Frozen criteria.**
+- *Gates (no verdict if any fails):* every Tier-1 check above; s-quadrature 12 vs 24 nodes/panel < 10⁻³; tail
+  I₂₀/I₀ < 10⁻⁶; n_p 32 vs 64 < 2%.
+- *P3 verdict, thresholds as EXP-034/035,* with R2 = i_G(0.001)/i_G(0.01):
+  - pass if R2 ≤ 0.5 at both θ **and** |i_G(90°) − i_G(180°)| shrinks from 0.01 to 0.001;
+  - fail if R2 ≥ 0.8 at either θ;
+  - otherwise inconclusive.
+- *Must-fail control: not available inside this family.* Every scale-invariant pure fermionic Gaussian state of this
+  form has Δ = 1, because K is homogeneous of degree 0 in k. The cylinder method's ability to show a plateau rests on
+  EXP-035/036 (scalar Δ = ¼, predicted to 0.3%).
+  - **So this test is weaker than the scalar one, and is expected to pass easily (Δ = 1 > ½).** Its value is the first
+    non-scalar A5′ check, plus an exact coefficient to verify.
+- *Theory test (no fitted parameter):* |i_pred(η_eff)/i_num − 1| ≤ 0.03 at every η ≤ 0.01, at both θ. The full table
+  is reported.
+
+**Consequence.**
+- *If both pass:* P3/A5′ for the free Dirac fermion would be "argued (leading coefficient by CFT matching) + verified by
+  evaluation". That gives two free theories, one marginal (scalar) and one not.
+- *Still not a theorem, and not for interacting CFTs.* The 2.894 grade wording stays.
