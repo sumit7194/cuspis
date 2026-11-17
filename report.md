@@ -3568,3 +3568,45 @@ matching `requirements.lock`. Nothing was installed or downloaded.
 compared byte for byte (`cmp`) with the committed output.
 - `scripts/exp031_qnec.py` → `exp031_output.txt`: **identical** (1 s);
 - `scripts/exp024_cc_kappa.py` → `exp024_output.txt`: **identical** (39 s).
+
+## EXP-032  Upper-bound literature sweep: does anything in print cap κ/C_T? — protocol (bridge item (i), Sumit's GO 2026-11-17)
+
+**Question.** Is there, in print as of 2026-11-17, any constraint, or a programme close to one, that bounds κ/C_T
+(or the corner function at fixed angle divided by C_T) from above in unitary 3d CFTs? The main target is the n → 1
+twist-defect crossing route, which RESULT.md §5 and EXP-030 name as the only plausible two-sided route. Two
+secondary targets:
+- any proof or refutation of the [BCLM23] κ/F₀ ≤ 0.6223 conjecture;
+- any new two-sided corner or strip constraint.
+
+**Why a sweep first (M1).** The two costliest past failures in this project family were re-derivations of results
+already in print.
+
+**Protocol** (`scripts/exp032_sweep.py`, output `exp032_sweep_output.txt`). The method is EXP-027's.
+- *INSPIRE citer queries* use `refersto:recid:`, sorted most recent first. Each is checked against a count bound
+  (returned = total) and against a positive control that must appear. Seeds:
+  - [LMW26] 2609.04041, control 2609.04302;
+  - [LMW26b] 2609.04302;
+  - [BCGKM26] 2609.04035;
+  - [Cha26] 2608.28531;
+  - [CGT26] 2608.03704;
+  - [DKPW24] 2404.05815;
+  - [BCLM23] 2307.05164;
+  - [BWK16] 1511.04077;
+  - [BMW15] 1505.04804.
+- *arXiv API keyword queries,* each with a control:
+  - "corner AND entanglement AND bound";
+  - "twist defect AND fusion";
+  - "cusp AND bootstrap";
+  - "entanglement AND strip AND bound AND conformal".
+- *Reading.* Anything dated after 2026-09-01, or matching the target, is read: abstract first, then the relevant
+  sections. Each is graded by what was actually read.
+
+**Pre-registered outcomes.**
+- **(A)** An upper-bound mechanism is in print: record it, test it against the free scalar's 4.179 and against tail
+  addition, and stop.
+- **(B)** A partial route is in print (e.g. a defect crossing equation at integer n, or an n → 1 positivity
+  statement): record precisely what is missing.
+- **(C)** Nothing new: the record says "no known mechanism as of 2026-11-17".
+
+**Environment:** macOS 27.2, Python 3.14.5 per `requirements.lock`; network queries only, no downloads beyond API
+responses (< 5 MB).
