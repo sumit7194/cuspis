@@ -4181,3 +4181,59 @@ i_G ∝ ln(1/η)^{−p_eff} between neighbouring η:
 - **The numerics have reached their limit on this question.** Any finite-η ratio criterion is ambiguous for log decay.
   The remaining step is analytic: derive the thin-arc asymptotics of I_s for the Δ = ½ symbol, predict the 1/ln²
   coefficient and offset, and verify it by *evaluating* that prediction at these points. That is a check, not a fit.
+
+## EXP-036  Analytic thin-arc asymptotics of the wedge MI, checked by evaluation — pre-registration (Sumit's direct GO in chat, 2026-11-17)
+
+**One exploratory diagnostic was run before this registration (recorded).** I wanted to know which channel carries the
+thin-arc MI. On EXP-035's discretised circle (Δ = ½, n_p = 64, θ = 90°), I compared the full quantum I_s with the
+classical, φ-only Gaussian MI, −½ ln det(1 − X₁₁⁻¹X₁₂X₂₂⁻¹X₂₁), at s ∈ {0, 0.5, 2} and η ∈ {0.05, 0.01, 0.001}.
+- quantum/classical = 1.19, 1.14, 1.10 at s = 0 for η = 0.05, 0.01, 0.001. It is 1.44 → 1.14 at s = 2.
+- The classical value is reproduced by the single arc-averaged mode (ρ = 0.19 → −½ln(1−ρ²) = 0.0185, against 0.0187).
+- *What this shows:* the MI is carried by the monopole of φ, classically, with a quantum excess that shrinks as η → 0.
+- A first hand estimate was 10–25× too small; the cause was a stray 1/2π in x_s. The error was found by this
+  diagnostic, not by comparing with i_G.
+
+### Theory (argued; each step labelled)
+1. **Monopole dominance (argued).** For thin arcs the cross-covariance between the arcs is smooth across each arc.
+   The leading part is rank one: X₁₂ ≈ δ·x_s(θ)·𝟙𝟙ᵀ, with x_s(ψ) = (1/2π)Σ_m X̂(s,m)e^{imψ} = ∫du e^{isu}X′(u, ψ).
+   Dipole and higher terms carry relative factors O(η²). The P cross-block contributes O(η⁴).
+2. **Classical channel (argued; supported by the diagnostic).** The arc-averaged φ mode is infinitely mixed in the
+   continuum: ⟨φ_μ²⟩ ~ ln(1/η), while its best conjugate has a UV-divergent variance. So the φ-only classical
+   Gaussian MI captures I_s at leading order.
+   - With a rank-one coupling that MI is exactly −½ln(1−ρ_s²), where ρ_s = x_s(θ)·(𝟙ᵀX_A⁻¹𝟙) = x_s(θ)/E_s.
+   - E_s = min over probability measures μ on the arc of ∫∫μμ x_s, the equilibrium (capacity) energy.
+3. **Capacity (verified standard fact; argued expansion).**
+   - Δ = ½: X̂ = 1/(2|m|) + O(m⁻³), so x_s(ψ) = −(1/2π)ln|ψ| + k_s + O(ψ² ln ψ), with
+     k_s = (1/2π)[X̂(s,0) + 2Σ_{m≥1}(X̂(s,m) − 1/(2m))].
+   - The log kernel on an interval of half-width η has energy ln(2/η), since its logarithmic capacity is η/2.
+   - Hence E_s(η) = (1/2π)ln(2/η) + k_s + O(η²).
+   - Δ = ¼: X̂ ~ ½|m|^{−3/2}, so x_s(0) is finite and E_s → x_s(0), giving a **plateau** i_∞ > 0.
+   - Δ = ¾: E_s ~ η^{−1/2}, so i_G ∝ η. The per-decade ratio of 0.09 in EXP-035 agrees (descriptive).
+4. **Result.** i_pred(θ, η) = (1/π)∫₀^∞ ds [−½ ln(1 − ρ_s²)].
+   - **Leading order (Parseval, exact algebra):** ∫_{−∞}^{∞}ds x_s² = 2π c_X²∫du/(2(cosh u − cos θ)) = 2π c_X²(π−θ)/sin θ.
+   - With c_X = 1/(4π) this gives **i_G ≃ (π − θ)/(8 sin θ) · 1/ln²(1/η) → 0**: π/16 at 90° and 1/8 at 180°.
+   - *If this holds (argued), it implies P3 for the free scalar:* the wedge MI vanishes as the opening closes, like 1/ln².
+   - No parameter is fitted. k_s and x_s come from the symbol.
+
+### Frozen verification criteria (predictions are written to `scripts/exp036_predictions.json` and committed before the comparison runs)
+- **P-0 (two implementations):** x_s(θ) by Fourier sum vs u-quadrature (rel < 10⁻⁶); k_s by Fourier vs
+  quadrature at ψ = 10⁻⁵ (diff ≲ 10⁻⁸); x_s(0) for Δ = ¼ the same way (rel < 10⁻⁴).
+- **P-a:** C(θ) closed form vs numerical (1/π)∫ds ½(2πx_s)², rel < 10⁻⁶.
+- **New numerics (out of sample):** the EXP-035 machinery at η = 10⁻⁴ (n_p 32, 64) and 10⁻⁵ (n_p 16, 32), for
+  α = 1 and 1.5, θ ∈ {90°, 180°}, 96 nodes. Gate: n_p drift < 2%. Cost: ≲ 15 min, 1 core, < 2 GB.
+- **P-b (the test).** For Δ = ½, at both θ:
+  - |i_pred/i_num − 1| decreases monotonically over η = 0.1 … 10⁻⁵;
+  - it is ≤ 0.15 at η = 10⁻³;
+  - **it is ≤ 0.10 at η = 10⁻⁵.**
+  - Expectation, stated in advance: the residual should be the shrinking quantum excess seen in the diagnostic
+    (~10% at 10⁻³), with the prediction *below* the numerics.
+- **P-c (the theory must also get the control right).** For Δ = ¼, |i_∞/i_num − 1| decreases over η and is ≤ 0.10
+  at η = 10⁻⁵.
+
+**If P-0, P-a, P-b and P-c all pass:** P3 for the free scalar becomes "argued analytically (monopole-classical
+reduction), leading coefficient (π−θ)/(8 sin θ ln²(1/η)) verified by evaluation against continuum numerics to
+η = 10⁻⁵". A5′ for the free scalar is then upgraded from inconclusive. It is **still not a theorem**: steps 1–2 are
+argued, and A5′ for general CFTs is not addressed. The 2.894 grade wording will say exactly this.
+
+**If P-b fails:** the theory is wrong or incomplete. That will be recorded, and the earlier "inconclusive" stands.
+If P-c fails but P-b passes, the theory is not trusted: its control failed.
