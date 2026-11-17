@@ -4372,3 +4372,47 @@ in the cross kernel, normalised so that I ≈ ((2π)²w²/6)·‖K(θ)‖_F² fo
 - *Cost:* ≈ 13 min, 1 core, < 1 GB.
 - *Seen in run 1 but not acted on (descriptive):* the frozen quantities themselves (R2 ≈ 0.0100; pred/num ≈ 1.024 at
   η ≤ 0.01). By the registration rule they carry no weight until the gate passes.
+
+### EXP-037 results (n_p = 128 addendum): all gates PASS; P3 PASSES for the free Dirac fermion; the thin-arc prediction matches to 1.2% (the remaining discretisation deficit)
+
+**Run 2:** 1288 s, peak 0.52 GB, exit 0. Output: `scripts/exp037_output.txt`, `scripts/exp037_results.json`.
+
+**Gates.** Tier-1 all PASS; s-quadrature 4.1·10⁻⁷; tail 4.4·10⁻¹³; **n_p 64 vs 128: 1.93·10⁻²**, which is PASS but
+close to the 2% line, as stated.
+
+**Citation check (rule III), done before this write-up.** Casini, Fosco, Huerta, "Entanglement and alpha entropies
+for a massive Dirac field in two dimensions", cond-mat/0505563 (2005). Read in the PDF:
+- eq. (24): S = (1/3)Ξ for massless multi-interval sets;
+- eq. (26): I(A,B) = (1/3)∫_A∫_B dx dy/(x−y)².
+
+For short intervals this is w²/(3d²), the normalisation used in the prediction. The "from memory" label on it in
+the pre-registration is now **verified**.
+
+**i_G at n_p = 128 (θ = 90° / 180°).**
+
+| η | 0.1 | 0.01 | 0.001 |
+|---|---|---|---|
+| 90° | 1.699·10⁻³ | 1.648·10⁻⁵ | 1.646·10⁻⁷ |
+| 180° | 5.548·10⁻⁴ | 5.488·10⁻⁶ | 5.487·10⁻⁸ |
+
+**P3 verdict (frozen thresholds): PASS.**
+- R2 = 0.00999 (90°) and 0.01000 (180°), both ≤ 0.5.
+- |i_G(90°) − i_G(180°)| shrinks from 1.10·10⁻⁵ to 1.10·10⁻⁷.
+- The decay is ∝ η², as the heuristic gives for Δ = 1: R1 = 0.0097 and 0.0099.
+- *Caveat, as registered:* there is no fermionic must-fail control, and Δ = 1 is far from marginal. The method's
+  ability to show a plateau rests on EXP-035/036.
+
+**Theory test (frozen: |pred/num − 1| ≤ 0.03 at every η ≤ 0.01): PASS.**
+- pred/num = 1.0114–1.0124 (90°) and 1.0121–1.0124 (180°) over η = 0.01 … 0.001.
+- The angular shape: i(90°)/i(180°) = 3.0000 at η = 10⁻³, against the predicted 3, i.e. [1+(π/2)·0]/1 ÷ 1/3 from the EMI factor.
+- *Descriptive (inference):* the residual is the discretisation deficit. The cell MI is a lower bound, and its n_p
+  increments shrink by ×0.55 per doubling (2.06% → 1.13%). The geometric remainder ≈ 1.4% would bring pred/num to
+  ≈ 0.998. This is an extrapolation, not verified.
+
+**Grade.** P3 and A5′ for the free Dirac fermion: **argued** (leading coefficient by matching to the verified 1+1
+Dirac formula; bilinear dominance argued) **+ verified by evaluation** to 1.2% at η ≤ 0.01, with i_G ≃ (η²/6)[1 +
+(π−θ)cot θ]/sin²θ.
+- Together with EXP-036, A5′ now holds at this grade for both free CFTs: the marginal scalar (log decay) and the
+  Dirac fermion (power decay).
+- **Not a theorem; interacting CFTs are not addressed.** The 2.894 wording is unchanged: "physics-level; checked by
+  the bridge (V7); not a theorem".

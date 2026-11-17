@@ -550,6 +550,12 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
       addressed.**
     - The 2.894 grade wording is unchanged ("physics-level; checked by the bridge (V7); not a theorem"). Its premise
       is now supported in the marginal free-scalar case.
+  - *EXP-037, Dirac fermion (2026-11-18).* Same reduction, with a doubler-free cell discretisation. P3 passes the
+    frozen criteria (R2 = 0.0100, decay ∝ η²). The prediction i_G ≃ (η²/6)[1+(π−θ)cot θ]/sin²θ (the EMI angular
+    shape) matches to 1.2%, the residual discretisation deficit.
+    - **A5′ is argued + verified by evaluation for both free CFTs, scalar and Dirac; not a theorem; interacting CFTs
+      not addressed.**
+    - A weaker test than the scalar: there is no fermionic must-fail control.
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant

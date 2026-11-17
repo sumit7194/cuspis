@@ -312,4 +312,9 @@ conclusion never depended on it; the number should not be carried onward.**
 ## EXP-036 follow-ups (2026-11-17)
 - [ ] Derive the O(1/ln) quantum excess (residual 9% -> 6% from 1e-3 to 1e-5, ~0.69/ln(2/eta) by inference) to close steps 1-2.
 - [ ] Why is the Delta=1/4 plateau at theta=180 exactly 1/32 (to 6 digits)?  Observation only.
-- [ ] A5' beyond Gaussian theories (Dirac fermion next: same reduction, fermionic covariance) -- only if Sumit wants it.
+- [x] (done, EXP-037: PASS, 2026-11-18) A5' beyond Gaussian theories (Dirac fermion next: same reduction, fermionic covariance) -- only if Sumit wants it.
+
+## EXP-037 follow-ups (2026-11-18)
+- [ ] A5' for an interacting CFT (e.g. large-N / holographic sector MI of 1511.00244 gives zero at O(N^2) for thin sectors?
+      check what is known at O(1)); this is the step that would matter for 2.894 beyond free fields.
+- [ ] Note: the n_p gate passed at 1.93% (near the 2% line); a 256-cell run would tighten the Dirac coefficient check.
