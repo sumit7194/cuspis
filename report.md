@@ -3813,3 +3813,61 @@ up to ~10⁴⁸. It was rewritten as g = (1 − x cot x)/(2 sin²x) with x = π 
 estimated at 1–3 h.
 - *Script:* `scripts/exp034_wedge_mi.py`; *output:* `scripts/exp034_output.txt`.
 - *Environment:* macOS 27.2, Python 3.14.5, numpy 2.4.3, scipy 1.17.1 (`requirements.lock`).
+
+### EXP-034 results: VOID under the frozen criteria (the Δ = ¼ control did not plateau at θ = 90°)
+
+**Environment:** macOS 27.2, arm64, Python 3.14.5, numpy 2.4.3, scipy 1.17.1. 1 core (BLAS threads = 1), nice 15,
+under the watchdog (2 GB tree cap, 5 GB disk floor).
+- Run 3: 114 s wall; peak tree 1.34 GB (MEM 1.00 + CMPRS 0.34); exit 0.
+- Output: `scripts/exp034_output.txt`. Checkpoint: `scripts/exp034_ckpt.jsonl`.
+
+**Two killed launches, kept as records.** Both were stopped by the watchdog, before any result was printed, for
+exceeding the 2 GB slot cap:
+- run 1: 2.55 GB at 17 s;
+- run 2: 2.43 GB at 28 s.
+
+Logs: `exp034_output_run{1,2}_killed.txt`, `exp034_run{1,2}_killed.wd.log`.
+- *Cause, measured:* the N = 4096 FFT table build (0.52 GB peak) and the largest entropy (1.14 GB) shared one
+  process, and compressed memory counted.
+- *Fix, an implementation change only:* tables are built in a short-lived subprocess, and the entropy step frees
+  intermediates and uses int16 indices. N, the geometry, the sizes and the criteria are unchanged. The lean entropy
+  reproduces the old one exactly (S = 35.790425518262985 for the 5088-site union).
+- The checkpoint was cleared, so every number below comes from run 3.
+
+**Tier 1: all PASS.**
+- Purity rel. diff: 1.2·10⁻¹², 7.9·10⁻¹³ and 4.7·10⁻¹² (α = 1, 1.5, 0.5).
+- Symmetry S(G₁) = S(G₂): ≤ 6·10⁻¹⁴ at all 18 checks.
+- IR truncation of X(0): 0.0%, 1.4% and 0.0% (α = 1, 1.5, 0.5).
+
+**i_G (MI per unit log R, least-squares slope over R = 40, 56, 80; two-point slopes agree within ~3–8%):**
+
+| α (Δ) | θ | η = 0.40 | η = 0.25 | η = 0.15 | r = i_G(0.15)/i_G(0.40) |
+|---|---|---|---|---|---|
+| 1 (½, scalar) | 90° | 0.03914 | 0.02297 | 0.01535 | **0.392** |
+| 1 (½, scalar) | 180° | 0.01647 | 0.01138 | 0.00791 | **0.480** |
+| 1.5 (¼, must plateau) | 90° | 0.08447 | 0.05920 | 0.05088 | **0.602** |
+| 1.5 (¼, must plateau) | 180° | 0.03777 | 0.03276 | 0.03085 | **0.817** |
+| 0.5 (¾) | 90° | 0.01016 | 0.00470 | 0.00228 | 0.225 |
+| 0.5 (¾) | 180° | 0.00360 | 0.00189 | 0.00093 | 0.257 |
+
+Scalar |i_G(90°) − i_G(180°)|: 0.0227 at η = 0.40, 0.0074 at η = 0.15.
+
+**Verdict against the frozen criteria.**
+- *Able-to-fail gate:* r₁.₅ ≥ 0.8 at **both** θ. It is 0.817 at 180° but **0.602 at 90°. FAILED. The test is
+  VOID:* this lattice and η range do not show they can tell the Δ < ½ plateau from decay. Nothing is concluded
+  about the free scalar.
+- *Easy control:* r₀.₅ < r₁ at both θ. Passed, but immaterial given the void.
+- For the record only, since it carries no weight under a void: the scalar's ratios (0.39, 0.48) fall in the
+  pre-registered "pass" band, and its θ-difference shrinks.
+
+**What the data do show (descriptive, not a registered test).**
+- At both θ the ratios are ordered by dimension: r₀.₅ < r₁ < r₁.₅. Decay is fastest for Δ = ¾ and slowest for
+  Δ = ¼, as the heuristic suggests qualitatively.
+- But the Δ = ¼ wedge MI still falls by 40% at θ = 90° over η = 0.40 → 0.15. So the heuristic "plateau for Δ < ½"
+  is **not visible at these η**: either the asymptotic regime is not reached, or the heuristic is too crude.
+- Any discriminating version needs smaller η, i.e. much larger lattices (|G| ∝ ηR² with r₀ = 2/η), beyond this
+  slot.
+
+**Consequence for the 2.894 bound.** It is unchanged: "derived at physics-level; checked by the bridge (V7); not a
+theorem". A5′ remains reduced (argued) to P3, and P3 remains **untested where it could fail**. The 2.280 bound is
+unaffected. No rerun or retuning is made under this registration.

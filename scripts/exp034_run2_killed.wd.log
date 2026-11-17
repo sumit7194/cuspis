@@ -1,0 +1,12 @@
+# cmd: ../.venv/bin/python -u exp034_wedge_mi.py
+# caps: tree <= 2.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct
+     0.3     1   0.333    0.000   0.333         7.92        749.5           68
+     5.8     1   1.496    0.000   1.496         7.89        749.5           66
+    11.2     1   1.496    0.000   1.496         7.87        749.5           66
+    16.5     1   1.496    0.000   1.496         7.88        749.5           66
+    21.9     1   1.496    0.000   1.496         7.89        749.5           66
+    27.3     1   1.894    0.533   2.427         7.91        749.5           63
+# WATCHDOG SIGTERM: tree footprint 2.43 GB > cap 2.0 GB
+# exit -15; wall 28 s; PEAK tree MEM 1.894 GB + CMPRS 0.533 GB = 2.427 GB; KILLED: tree footprint 2.43 GB > cap 2.0 GB
