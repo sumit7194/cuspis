@@ -18,7 +18,7 @@ from scipy.integrate import quad
 D0 = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(D0, "exp037_results.json")
 ETAS = (0.40, 0.25, 0.15, 0.10, 0.05, 0.02, 0.01, 0.005, 0.002, 0.001)
-NPS = (16, 32, 64)
+NPS = (16, 32, 64, 128)            # 128 added in the EXP-037 addendum (gate refinement); q = 24 only at 128
 NODES = (12, 24)                      # Gauss-Legendre nodes per panel
 PANELS = ((0, 1), (1, 3), (3, 7), (7, 12), (12, 20))   # s in [0, 20]; |K_s(theta)| ~ e^{-s psi}, psi >= pi/2 - 2 eta
 
@@ -153,7 +153,7 @@ def main():
         for n_p in NPS:
             for q in NODES:
                 k = f"e{eta}_np{n_p}_q{q}"
-                if k in res: continue
+                if k in res or (n_p == 128 and q == NODES[0]): continue
                 t0 = time.time(); v, M, ee = iG(eta, n_p, q)
                 res[k] = {"i90": v[0], "i180": v[1], "M": M, "eta_eff": ee}; json.dump(res, open(OUT, "w"), indent=0)
                 log(f"  {k}: M={M} ({time.time() - t0:.0f} s)")
@@ -161,15 +161,15 @@ def main():
 
 def analyse(res):
     g = lambda e, th, n=NPS[-1], q=NODES[-1]: res[f"e{e}_np{n}_q{q}"]["i90" if th == 90 else "i180"]
-    wq = max(abs(g(e, th, q=NODES[0]) / g(e, th) - 1) for e in ETAS for th in (90, 180))
+    wq = max(abs(g(e, th, n=64, q=NODES[0]) / g(e, th, n=64) - 1) for e in ETAS for th in (90, 180))
     tr = tail_ratio(); log(f"gate tail: I_s at s = 20 relative to s = 0 (eta = 0.4, n_p = 16): {tr:.1e} [{'PASS' if tr < 1e-6 else 'FAIL'}]")
     wn = max(abs(g(e, th, n=NPS[-2]) / g(e, th) - 1) for e in ETAS for th in (90, 180))
-    log(f"gate s-quadrature 12 vs 24 nodes/panel: {wq:.2e} [{'PASS' if wq < 1e-3 else 'FAIL'}];  gate n_p 32 vs 64: {wn:.2e} [{'PASS' if wn < 0.02 else 'FAIL'}]")
+    log(f"gate s-quadrature 12 vs 24 nodes/panel: {wq:.2e} [{'PASS' if wq < 1e-3 else 'FAIL'}];  gate n_p {NPS[-2]} vs {NPS[-1]}: {wn:.2e} [{'PASS' if wn < 0.02 else 'FAIL'}]")
     for th, thr in ((90, np.pi / 2), (180, np.pi)):
         log(f"theta={th}:")
         for e in ETAS:
             ee = res[f"e{e}_np{NPS[-1]}_q{NODES[-1]}"]["eta_eff"]
-            log(f"  eta={e:<6g} i_G={g(e, th):.6e}  drift(n_p 16,32,64)={[f'{g(e, th, n=n):.6e}' for n in NPS]}  "
+            log(f"  eta={e:<6g} i_G={g(e, th):.6e}  drift(n_p 16,32,64,128)={[f'{g(e, th, n=n):.6e}' for n in NPS]}  "
                 f"prediction(eta_eff) {lead(ee, thr):.6e}  pred/num {lead(ee, thr) / g(e, th):.5f}")
         log(f"  R2 = i_G(0.001)/i_G(0.01) = {g(0.001, th) / g(0.01, th):.5f};  R1 = i_G(0.01)/i_G(0.1) = {g(0.01, th) / g(0.1, th):.5f}")
     log(f"|i_G(90) - i_G(180)|: at 0.01 {abs(g(0.01, 90) - g(0.01, 180)):.3e}, at 0.001 {abs(g(0.001, 90) - g(0.001, 180)):.3e}")

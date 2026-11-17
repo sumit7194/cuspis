@@ -4355,3 +4355,20 @@ in the cross kernel, normalised so that I ≈ ((2π)²w²/6)·‖K(θ)‖_F² fo
 - *If both pass:* P3/A5′ for the free Dirac fermion would be "argued (leading coefficient by CFT matching) + verified by
   evaluation". That gives two free theories, one marginal (scalar) and one not.
 - *Still not a theorem, and not for interacting CFTs.* The 2.894 grade wording stays.
+
+### EXP-037 run 1: a frozen gate FAILED (n_p 32 vs 64 = 2.65% > 2%), so no verdict is given; addendum: refine to n_p = 128 with every criterion unchanged
+
+**Run 1:** 1342 s, peak 0.52 GB, exit 0. Output kept as `scripts/exp037_output_run1_gatefail.txt` (and `exp037_run1.wd.log`).
+- *Gates:* Tier-1 all PASS; s-quadrature 4.1·10⁻⁷ PASS; tail 4.4·10⁻¹³ PASS; **n_p 32 vs 64: 2.65·10⁻² FAIL.**
+- *Why it fired.* The cell (piecewise-constant) compression converges slowly and *uniformly in η*. At every η the MI
+  rises by ≈ +3.6% from n_p 16 → 32 and ≈ +2.1% from 32 → 64. The geometry is the same at every η in units of cells,
+  so the deficit is a constant relative factor. It is a lower bound, by monotonicity of MI under restriction.
+  - The check measured a normalisation error that is not yet converged, which is what it was built to measure.
+- *Response, an implementation refinement:* add n_p = 128 (q = 24 nodes/panel only; the quadrature gate is assessed at
+  n_p = 64, where it passed at 4·10⁻⁷).
+  - Gate: n_p 64 vs 128 < 2%. Same threshold, next refinement pair.
+  - **All verdict and theory criteria are unchanged and are evaluated at n_p = 128.** If the gate fails again, the
+    verdict stays withheld.
+- *Cost:* ≈ 13 min, 1 core, < 1 GB.
+- *Seen in run 1 but not acted on (descriptive):* the frozen quantities themselves (R2 ≈ 0.0100; pred/num ≈ 1.024 at
+  η ≤ 0.01). By the registration rule they carry no weight until the gate passes.
