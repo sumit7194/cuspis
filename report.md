@@ -3752,3 +3752,64 @@ up to ~10⁴⁸. It was rewritten as g = (1 − x cot x)/(2 sin²x) with x = π 
 - **Recommendation:** (a) only if Sumit wants the 2.894 grade improved enough to justify a few CPU-hours.
   Otherwise (b). The scientific upside is modest; the downside risk, that A5′ fails, is the more interesting
   outcome.
+
+## EXP-034  Free-field lattice test of the wedge-MI statement A5′ — pre-registration (Sumit's GO (a), bridge slot: 1 core, < 2 GB, < 200 MB, a few hours)
+
+**Reduction, made before any numbers (argued).**
+- Split the plane at the common apex into four wedges: W₁ = A⁻ (angle θ−2η), W₂ = A⁺ (angle 2π−θ−2η), and the two
+  thin gaps G₁, G₂ (angle 2η each, centred on directions ±θ/2 from the axis of W₁... i.e. separated by θ).
+- Purity of the vacuum gives S(W₁∪W₂) = S(G₁∪G₂). This holds *exactly* on a lattice, whose ground state is pure.
+- Per unit log scale, with a(·) the corner function and i_G(θ, η) the MI per unit log scale between G₁ and G₂, it
+  follows that 𝓘(θ, η) = 2a(2η) + i_G(θ, η) − a(θ−2η) − a(2π−θ−2η). Hence
+
+      𝓘(θ, η) − 𝓘(π, η) = [i_G(θ, η) − i_G(π, η)] − [a(θ−2η) + a(2π−θ−2η) − 2a(π−2η)].
+
+- The second bracket → 2a(θ) as η → 0. **So A5′ holds iff i_G(θ, η) − i_G(π, η) → 0.** It is implied by
+  **P3: the MI per unit log scale between two thin wedges with a common apex tends to 0 as their opening 2η → 0.**
+  - By monotonicity of MI under inclusion, i_G decreases as η decreases, so the limit exists and is ≥ 0.
+  - It is 0 when no observables live on a ray.
+- *Heuristic scaling (argued).* For a scalar of dimension Δ, smearing over a strip of width w and length L gives a
+  correlation coefficient between the two gaps ~ η^{2Δ−1} for Δ > ½, ~ 1/log(1/η) at Δ = ½, and ~ const for
+  Δ < ½. So i_G ~ ρ²: a power-law decay for Δ > ½, ~ 1/log²(1/η) at Δ = ½, and a **nonzero plateau** for Δ < ½.
+- The free scalar (Δ = ½, at the unitarity bound) is the marginal, slowest case. It is therefore the hardest
+  unitary test of P3.
+
+**Model.** A pure Gaussian state on the infinite square lattice with dispersion
+ω(k) = [4sin²(k_x/2) + 4sin²(k_y/2)]^{α/2}, X = ⟨φφ⟩ from 1/(2ω), P = ⟨ππ⟩ from ω/2.
+- **α = 1: the free massless scalar (the test).**
+- **α = 1.5:** ⟨φφ⟩ ~ r^{−1/2}, i.e. Δ = ¼ < ½ (non-unitary as a CFT, but a valid scale-invariant pure Gaussian
+  state). P3 is predicted to FAIL (plateau). This is the control showing the test *can fail*.
+- **α = 0.5:** Δ = ¾. P3 is predicted to hold with fast decay (the easy control).
+- Correlators come from an FFT on an N = 4096 periodic lattice, excluding k = 0. The IR truncation error is reported
+  (largest for α = 1.5). Entropy uses the symplectic eigenvalues of √(X_A P_A).
+
+**Geometry.**
+- Gap wedges have half-opening η, centred on lattice axes: θ = 90° (gaps along +x and +y) and θ = 180° (gaps along
+  +x and −x). Both are axis-aligned, so lattice anisotropy is the same for both.
+- Each gap is the set of sites at polar angle within η of its axis and radius r₀ ≤ r ≤ R, with r₀ = 2/η, so that the
+  wedge is at least 4 sites wide at its inner end.
+- η ∈ {0.40, 0.25, 0.15}; R ∈ {40, 56, 80}.
+- i_G is estimated as the slope of I(G₁:G₂) against log R, by a least-squares fit over the three R values. The
+  spread of the two-point slopes is reported as the lattice/finite-size error.
+
+**Tier-1 checks (must pass before any reading).**
+- Purity: S(A) = S(Ā) on a 24×24 periodic lattice for each α (relative error < 10⁻⁸).
+- Symmetry: S(G₁) = S(G₂), computed separately, to 10⁻⁸.
+
+**Pass/fail (frozen).** Let r_α(θ) = i_G(θ, 0.15)/i_G(θ, 0.40).
+- *The test is able to fail* only if the α = 1.5 control plateaus: r₁.₅ ≥ 0.8 at both θ.
+  - If the control does NOT plateau, the test is **void**: the lattice cannot resolve P3, and nothing is concluded
+    about the scalar.
+- *Easy control:* r₀.₅ < r₁ (decay is faster at larger Δ). Otherwise void.
+- **The scalar passes P3** if r₁ ≤ 0.5 at both θ, **and** |i_G(90°) − i_G(180°)| at η = 0.15 is smaller than at
+  η = 0.40.
+- **The scalar fails** if r₁ ≥ 0.8 at either θ, i.e. it plateaus like the Δ < ½ control. That would be a real result:
+  A5′ fails for the free scalar, and the 2.894 bound would weaken. It will be recorded as such, with no tuning.
+- 0.5 < r₁ < 0.8: **inconclusive** (consistent with the slow logarithmic decay predicted at Δ = ½, but not
+  discriminating).
+
+**Resources.** OMP/BLAS threads = 1, nice 10, detached, with a verified-PID stop script. The largest matrix is
+~5100² (I(G₁:G₂) at η = 0.4, R = 80), so peak RAM is about 1.3 GB, disk < 50 MB of outputs, and the run is
+estimated at 1–3 h.
+- *Script:* `scripts/exp034_wedge_mi.py`; *output:* `scripts/exp034_output.txt`.
+- *Environment:* macOS 27.2, Python 3.14.5, numpy 2.4.3, scipy 1.17.1 (`requirements.lock`).
