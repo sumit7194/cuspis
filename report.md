@@ -3667,3 +3667,35 @@ relevant sections.
 - Jia's replica-free n = 1 mutual-information expansion is the one new ingredient for the two-sided route. Before
   any reasoning about a half-plane version, its full text should be read: whether the short-distance limit or a
   half-plane geometry is discussed. Logged in TODO as a reading item.
+
+## EXP-033  Firming up the 2.894 bound (bridge item (ii)), session 1: a mutual-information reformulation of A5 — pre-registration
+
+**Context.** O3 (EXP-025) rests on A5 (band-on-cylinder coefficient = corner function) and A6 (shape
+differentiability), both statements about regulated entropies. The route is CHMY15 (Casini–Huerta–Myers–Yale,
+arXiv:1506.06195, read on source §5): mutual information between separated regions is finite and
+regulator-free, and CHMY use it to re-derive the F-theorem.
+
+**Two observations made before any numbers (argued, not checked).**
+1. *CHMY's MI form of SSA is available for O3's step 2.*
+   - CHMY's MI version of SSA has an extra term J. J is harmless when ∂A and ∂B cross at null cusps, but picks up
+     uncancelled log δ terms when they cross at corners in a spatial plane.
+   - In O3, ∂X and ∂Y never cross transversally. They share flow-line segments through the punctures, with
+     tangential (C¹) junctions, and are otherwise nested.
+   - So J reduces to local terms at C¹ junctions, which appear equally on both sides. I expect it to cancel.
+2. *A5 has an exact MI form.*
+   - Frame the corner with scale-covariant framing ε(r) = η·r. The regulated pair is then two wedges with a common
+     apex: A⁻ of angle θ − 2η and A⁺ the complementary wedge of angle 2π − θ − 2η, with gaps 2η on each side.
+   - Their MI is scale invariant, so it is (log of the scale range) × 𝓘(θ, η).
+   - A θ-independent artefact of the r-dependent framing (CHMY's ∫ε′/ε term, which is not a total derivative at
+     an apex) is removed by subtracting θ = π, where a(π) = 0.
+   - **A5′ (MI form):** 𝓘(θ, η) − 𝓘(π, η) → −2a(θ) as η → 0.
+
+**Test (seconds of compute), in the EMI model.** I(A, B) = C∫_A∫_B |x−y|⁻⁴ satisfies SSA, purity and conformal
+invariance exactly, and its corner function is ∝ 1 + (π−θ)cot θ.
+- *Prediction:* D(θ, η) ≡ 𝓘(θ, η) − 𝓘(π, η) converges as η → 0 to K·[1 + (π−θ)cot θ], with one constant K for
+  every θ.
+- *Fails if:* the ratio D/(1 + (π−θ)cot θ) varies with θ by more than the η-extrapolation error. That would mean a
+  θ-dependent framing artefact, i.e. A5′ false, which would reopen 2.894.
+- *Also reported:* whether 𝓘(π, η) has a nonzero finite part, i.e. whether the subtraction is needed at all.
+- *Control:* the 1/η coefficient of 𝓘 must be θ-independent; it is the "area" term ã on both edges.
+- *Script:* `scripts/exp033_emi_wedge.py`.
