@@ -4019,3 +4019,102 @@ theorem".
 
 **Records kept:** run 1 crashed (fractional-R wedge bug) and run 2 was killed (4 GB cap at an α transition). Both are
 logged above; neither fix touched the numerics.
+
+## EXP-035  P3 in the continuum by dilatation reduction (the "cylinder" route) — prior-art sweep, derivation, pre-registration (Sumit's direct GO in chat, 2026-11-17: "go with the cylinder reformulation, do the prior-art sweep first")
+
+### 1. Prior-art sweep (M1), run before any derivation
+
+*Method (as in EXP-032).* INSPIRE citer queries by recid, with a count sanity check (returned = total = citation_count)
+and a positive control. arXiv abstract queries, each with a control where one is known. Scripts and outputs are in
+the session scratchpad; the queries and hits are summarised here.
+- *Recorded slip:* the first INSPIRE batch used `refersto:arxiv:…`. INSPIRE ignored it and returned 2138 unrelated
+  records (malformed, labelled noise, discarded). The rerun used `refersto:recid:720168`; sanity check 229 = 229 = 229;
+  control 0811.1968 HIT.
+
+*Findings.* Grade: partially verified. Abstracts were read for every hit, and the method sections for CH06 and Ma26.
+- **Casini–Huerta, hep-th/0606256 (2006), "Universal terms for the entanglement entropy in 2+1 dimensions".**
+  - The single-corner free scalar, reduced by a Euclidean replica calculation. Radial and angular separation leads
+    to the trace of a Green function on a sphere with a cut along a great-circle segment (method section read, around
+    their eqs. 9–15).
+  - The solution is given by nonlinear ODEs.
+  - **This is prior art for the reduction idea, single sector, Euclidean.**
+- **Casini–Huerta–Leitao, 0811.1968 (2008).** The same reduction for the Dirac fermion.
+- **Elvang–Hadjiantonis, 1506.06729 (2015).** Exact σ, σ_n from the CHL integrals.
+- **Mozaffar–Mollabashi–Omidi, 1511.00244 (2015), "Holographic Mutual Information for Singular Surfaces".**
+  - **MI between disjoint sectors of one circle, i.e. common apex — the geometry of P3, but holographic only.**
+  - Its 34 citers (34 = 34) were listed. None is a free-field computation, by title.
+- **Chen-Te Ma, 2611.04220 (2026-11-03), "Negative Junction Logarithms in Scalar Multipartite Entanglement".**
+  - A free real scalar with a three-sector junction, giving an "angular spectral formula" at the apex.
+  - It is for genuine tripartite Rényi multi-entropy at integer n ≥ 3, by Euclidean replica / heat kernel. It is not
+    von Neumann MI and not n → 1.
+  - **The closest recent method, but a different quantity.**
+- Considered and excluded: CHMY 1506.06195 (the MI regularization, already used in EXP-033), Van Raamsdonk
+  2508.21276 (finite entropy combinations, general), Bueno–Casini–Witczak-Krempa 1904.11495 (singular regions, mainly
+  in 3+1), and the transverse-momentum "dimensional reduction" papers (2003.11453 and its line), which reduce along
+  a translation, not a dilatation.
+- **Not found:** a free-field computation of MI between sectors with a common apex, or the real-time (Hamiltonian)
+  version of the dilatation reduction applied to it. The closed form below may well exist in the modular-Hamiltonian
+  literature; I did not find it, and do not claim novelty for it.
+
+### 2. Derivation (argued; the symbol is verified)
+
+- **The state.** Pure Gaussian, X(k) = 1/(2|k|^α), P(k) = |k|^α/2, Δ = (2−α)/2. This is the continuum limit of the
+  EXP-034 lattices.
+- **Coordinates.** Use u = log r, and pass to L²(du dφ) by f = g/r. Then apply the canonical rescaling φ → r^{1−Δ}φ,
+  π → r^{Δ−1}π, which leaves the spectrum of X_A P_A unchanged. Both X and P become translation invariant in u, with
+  X′(u, ψ) = c_X [2(cosh u − cos ψ)]^{−Δ}.
+- **The symbol.** Mellin–Fourier analysis, using ∫r^{μ}J_m(kr)dr, gives
+  X̂(s, m) = ½·2^{2Δ−2}·|Γ((|m|+Δ+is)/2)|² / |Γ((|m|+2−Δ+is)/2)|², with P̂ = 1/(4X̂).
+  - **Verified** against direct 2D quadrature of c_X[2(cosh u − cos ψ)]^{−Δ} at four (s, m) per α: rel. diff ≤ 3·10⁻¹²
+    (α = 1, 1.5).
+  - For α = 0.5 the diff is a constant 4·10⁻⁷ absolute, which equals the quadrature's u-floor error 2√10⁻¹²·c, as
+    expected.
+- **The reduction.** Wedges with a common apex are (arcs) × ℝ_u. The restricted operators commute with
+  u-translations, so I(L) = L·∫ds/(2π) I_s + O(1), and **i_G = (1/π)∫₀^∞ ds I_s**. Here I_s is the MI of two arcs
+  (half-width η, centres θ apart) in the 1D Gaussian state on the circle with symbol X̂(s, ·).
+  - There is no outer radius R and no lattice in r. Thin wedges cost only angular resolution *within* the arcs.
+- **Representability.** The same machinery covers α = 1.5. A plateau, if the Δ = ¼ state has one, is representable,
+  so the must-fail control can fire.
+
+### 3. Pre-registration (frozen before any i_G is computed)
+
+**Numerics.**
+- *Circle:* M sites, modes |m| ≤ M/2 (band-limited), with M = 4⌈πn_p/(4η)⌉. An arc is n_p consecutive sites, and
+  η_eff = πn_p/M ≤ η is logged.
+- *Integral:* the s-integral uses Gauss–Legendre in t with s = t/(1−t), at 48 and 96 nodes.
+- *Grid:* n_p ∈ {32, 64, 128}; η ∈ {0.40, 0.25, 0.15, 0.10, 0.05, 0.02, 0.01, 0.005, 0.002, 0.001}; α ∈ {1, 1.5, 0.5};
+  θ ∈ {90°, 180°}.
+- *Script:* `scripts/exp035_cylinder_mi.py`; output `scripts/exp035_output.txt` and `exp035_results.json`.
+- *Resources:* 1 core, nice 15, < 200 MB RAM, minutes. No slot is needed (under 30 min).
+
+**Gates.** If any gate fails, there is no verdict: investigate first.
+- Tier 1 (already run, PASS): the large-m symbol → ½|m|^{2Δ−2} (rel < 10⁻⁵), and purity S(arc) = S(complement) on
+  the M-circle (< 10⁻⁸; a code check).
+- s-quadrature: 48 vs 96 nodes, max rel diff < 10⁻³.
+- *Nuisance sweep:* n_p = 64 vs 128, max rel diff < 2% on every i_G. The drift is printed for all three n_p.
+- **Known answer:** the continuum i_G at η = 0.40 and 0.25 against EXP-034a run B's lattice values, all three α and
+  both θ (12 numbers): max |ratio − 1| < 0.15.
+  - This is a second implementation by a different route: a 2D lattice in Cartesian sites vs a continuum symbol on the
+    circle.
+  - The 15% allows for the lattice's finite resolution at r₀ (4 sites). A normalisation error (a factor 2, or 4π)
+    would fail it.
+
+**Verdict (thresholds frozen from EXP-034: pass ≤ 0.5, fail ≥ 0.8).** The primary ratio is R2 = i_G(0.001)/i_G(0.01).
+- *The test can fail:* the Δ = ¼ control has R2 ≥ 0.8 at both θ. Otherwise VOID.
+- *Easy control:* R2(Δ = ¾) < R2(scalar) at both θ. Otherwise void.
+- **The scalar passes P3** if R2 ≤ 0.5 at both θ **and** |i_G(90°) − i_G(180°)| is smaller at η = 0.001 than at 0.01.
+- **The scalar fails** if R2 ≥ 0.8 at either θ.
+- Otherwise it is inconclusive.
+- *Why the decade 0.01 → 0.001 (stated before any number).* For a decay ∝ 1/ln²(1/η), the heuristic for Δ = ½, a
+  fixed-factor ratio drifts to 1 as η → 0: (ln(1/η)/ln(10/η))² = 0.25, 0.44 and 0.56 for the decades starting at 0.1,
+  0.01 and 0.001.
+  - **So a ratio test cannot separate log decay from a plateau asymptotically.** At the decade 0.01 → 0.001 a pure
+    1/ln² would give 0.44 and pass. With an O(1) offset in the log it could give 0.5–0.6 and be inconclusive.
+  - I chose the decade so that the test is passable under the hypothesis, not so that it passes. The threshold is
+    unchanged.
+- *Descriptive only:* R1 = i_G(0.01)/i_G(0.1), and i_G·ln²(1/η) across η. Under 1/ln² the latter is roughly flat;
+  under a plateau it grows ∝ ln².
+
+**What a pass would mean.** A5′ would become "supported by a continuum computation for the free scalar, the
+marginal Δ = ½ case" (partially verified: numerics, not a proof). The 2.894 bound would stay physics-level, because
+A5′ is needed for general CFTs. A fail would weaken 2.894 as registered in EXP-034. No retuning after numbers.
