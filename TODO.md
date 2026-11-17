@@ -38,6 +38,9 @@ caveats, not tasks.
   - The embargo `quantum-smallangle-and-C2a-prime` stays until quantum lifts it.
   - The commit-msg overclaim hook is local: reinstall it after a fresh clone (see the `tools/overclaim_check.py`
     header).
+- [ ] **EXP-032 follow-up (reading only).** Read Jia 2611.03630 in full. It gives a replica-free n = 1 long-distance
+  mutual-information expansion. Check whether it treats the short-distance limit or half-planes; that is the missing
+  channel of the two-sided route.
 - [ ] **EXP-031 leftovers (low priority).**
   - (α) Vertex-moving QNEC deformations with a controlled tip. The verifier's dimensional argument says these add no
     log constraint; partially verified.

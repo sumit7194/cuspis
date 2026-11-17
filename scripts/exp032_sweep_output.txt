@@ -1,0 +1,131 @@
+citers of 2609.04041 [LMW26 rectangle/cusp bootstrap] recid 3199634: 2 returned, total 2  [sanity OK; control 2609.04302 MISSING]
+    2026-11-06  2611.10113   Small Defects at Large Charge
+    2026-10-14  2610.20602   Heavy-Heavy-Light-Light correlators from holography on the worldsheet
+citers of 2609.04302 [LMW26b eye bounds] recid 3200120: 2 returned, total 2  [sanity OK]
+    2026-11-06  2611.10113   Small Defects at Large Charge
+    2026-10-14  2610.20602   Heavy-Heavy-Light-Light correlators from holography on the worldsheet
+citers of 2609.04035 [BCGKM26 cusped defects] recid 3199624: 2 returned, total 2  [sanity OK]
+    2026-11-06  2611.10113   Small Defects at Large Charge
+    2026-10-14  2610.20602   Heavy-Heavy-Light-Light correlators from holography on the worldsheet
+citers of 2608.28531 [Cha26 cusped impurities positivity] recid 3197547: 3 returned, total 3  [sanity OK]
+    2026-11-06  2611.10113   Small Defects at Large Charge
+    2026-09-03  2609.04041   Cutting corners: exciting and magical bounds from the cusp bootstrap
+    2026-09-03  2609.04302   Eye-opening bounds on cusps
+citers of 2608.03704 [CGT26 impurities near the light cone] recid 3187336: 6 returned, total 6  [sanity OK]
+    2026-11-06  2611.10113   Small Defects at Large Charge
+    2026-09-11  2609.13366   Flavor Flux Correlators, Forward-Backward Asymmetries, and Anomalies
+    2026-09-03  2609.04035   Cusped Defects: Cusp Operator Expansion, Conformal Properties and Bootstrap Applications
+    2026-09-03  2609.04041   Cutting corners: exciting and magical bounds from the cusp bootstrap
+    2026-09-03  2609.04302   Eye-opening bounds on cusps
+citers of 2404.05815 [DKPW24 defect fusion/Casimir] recid 2775458: 42 returned, total 42  [sanity OK]
+    2026-11-06  2611.10113   Small Defects at Large Charge
+    2026-09-29  2609.38130   Boundaries and defects in conformal field theories at finite temperature
+    2026-09-03  2609.04035   Cusped Defects: Cusp Operator Expansion, Conformal Properties and Bootstrap Applications
+    2026-09-03  2609.04041   Cutting corners: exciting and magical bounds from the cusp bootstrap
+    2026-09-03  2609.04302   Eye-opening bounds on cusps
+    2026-09-01  -            An Exploration of CFT Techniques
+citers of 2307.05164 [BCLM23 conformal bounds from EE] recid 2676037: 16 returned, total 16  [sanity OK]
+    2026-10-27  2610.37449   Entanglement Bounds on Cardy Growth in Higher Dimensions
+    2026-10-23  2610.33179   The Free Scalar as a Thermal Envelope for Three-Dimensional CFTs
+    2026-10-17  2610.24698   Holomorphic extremal surfaces for pseudoentropy in dS/CFT
+    2026-09-30  2610.00670   Monogamous quantum corrections to holographic mutual information
+citers of 1511.04077 [BWK16 bounds on corner EE] recid 1404719: 49 returned, total 49  [sanity OK]
+    2026-10-20  2610.27587   Microscopic Bipartition and Macroscopic Symmetry in a Rényi Entanglement Ensemble
+    2026-09-03  2609.04041   Cutting corners: exciting and magical bounds from the cusp bootstrap
+    2026-09-03  2609.04302   Eye-opening bounds on cusps
+citers of 1505.04804 [BMW15 corner universality] recid 1371699: 209 returned, total 209  [sanity OK]
+    2026-10-20  2610.27587   Microscopic Bipartition and Macroscopic Symmetry in a Rényi Entanglement Ensemble
+    2026-09-30  2610.00670   Monogamous quantum corrections to holographic mutual information
+    2026-09-17  2609.20020   Corner entanglement scaling with projected entangled pair states
+    2026-09-03  2609.03854   Universal Driven Critical Dynamics of Entanglement Entropy
+    2026-09-03  2609.04035   Cusped Defects: Cusp Operator Expansion, Conformal Properties and Bootstrap Applications
+    2026-09-03  2609.04041   Cutting corners: exciting and magical bounds from the cusp bootstrap
+
+UNION of citers dated >= 2026-09 across seeds: 15
+  2026-11-06  2611.10113   cites 6 seed(s) ['2404.05815', '2608.03704', '2608.28531', '2609.04035', '2609.04041', '2609.04302']  Small Defects at Large Charge
+  2026-10-27  2610.37449   cites 1 seed(s) ['2307.05164']  Entanglement Bounds on Cardy Growth in Higher Dimensions
+  2026-10-23  2610.33179   cites 1 seed(s) ['2307.05164']  The Free Scalar as a Thermal Envelope for Three-Dimensional CFTs
+  2026-10-20  2610.27587   cites 2 seed(s) ['1505.04804', '1511.04077']  Microscopic Bipartition and Macroscopic Symmetry in a Rényi Entanglement Ensemble
+  2026-10-17  2610.24698   cites 1 seed(s) ['2307.05164']  Holomorphic extremal surfaces for pseudoentropy in dS/CFT
+  2026-10-14  2610.20602   cites 3 seed(s) ['2609.04035', '2609.04041', '2609.04302']  Heavy-Heavy-Light-Light correlators from holography on the worldsheet
+  2026-09-30  2610.00670   cites 2 seed(s) ['1505.04804', '2307.05164']  Monogamous quantum corrections to holographic mutual information
+  2026-09-29  2609.38130   cites 1 seed(s) ['2404.05815']  Boundaries and defects in conformal field theories at finite temperature
+  2026-09-17  2609.20020   cites 1 seed(s) ['1505.04804']  Corner entanglement scaling with projected entangled pair states
+  2026-09-11  2609.13366   cites 1 seed(s) ['2608.03704']  Flavor Flux Correlators, Forward-Backward Asymmetries, and Anomalies
+  2026-09-03  2609.04041   cites 5 seed(s) ['1505.04804', '1511.04077', '2404.05815', '2608.03704', '2608.28531']  Cutting corners: exciting and magical bounds from the cusp bootstrap
+  2026-09-03  2609.04302   cites 4 seed(s) ['1511.04077', '2404.05815', '2608.03704', '2608.28531']  Eye-opening bounds on cusps
+  2026-09-03  2609.04035   cites 3 seed(s) ['1505.04804', '2404.05815', '2608.03704']  Cusped Defects: Cusp Operator Expansion, Conformal Properties and Bootstrap Applications
+  2026-09-03  2609.03854   cites 1 seed(s) ['1505.04804']  Universal Driven Critical Dynamics of Entanglement Entropy
+  2026-09-01  -            cites 1 seed(s) ['2404.05815']  An Exploration of CFT Techniques
+
+arXiv control [corner bounds] ti:corner AND ti:bounds AND abs:entanglement: total 1; control 1511.04077 HIT
+arXiv [corner bounds] since 2026-09-01: total 0
+arXiv control [corner EE + bound] abs:corner AND abs:entanglement AND abs:bound: total 15; control 1511.04077 HIT
+arXiv [corner EE + bound] since 2026-09-01: total 0
+arXiv [twist defect fusion] since 2026-09-01: total 0
+arXiv control [defect fusion Casimir] abs:defect AND abs:fusion AND abs:Casimir: total 9; control 2404.05815 HIT
+arXiv [defect fusion Casimir] since 2026-09-01: total 2
+    2611.10113v1   Small Defects at Large Charge
+    2609.04302v1   Eye-opening bounds on cusps
+arXiv control [cusp bootstrap] abs:cusp AND abs:bootstrap: total 25; control 2609.04041 HIT
+arXiv [cusp bootstrap] since 2026-09-01: total 2
+    2609.04041v1   Cutting corners: exciting and magical bounds from the cusp bootstrap
+    2609.04035v1   Cusped Defects: Cusp Operator Expansion, Conformal Properties and Bootstrap Applications
+arXiv [strip EE bound CFT] since 2026-09-01: total 0
+arXiv control [F0 bound EE] abs:"free energy" AND abs:entanglement AND abs:bound AND abs:three: total 7; control 2307.05164 HIT
+arXiv [F0 bound EE] since 2026-09-01: total 1
+    2610.37449v2   Entanglement Bounds on Cardy Growth in Higher Dimensions
+arXiv [Renyi twist defect n->1] since 2026-09-01: total 0
+
+# POST-HOC (added after the pre-registered queries, 2026-11-17)
+arXiv [entanglement defect bootstrap] since 2026-09-01: total 1
+    2609.26892v2   Transparent Domain Walls through Information Convex Sets
+arXiv [replica/twist + crossing] since 2026-09-01: total 38
+    2611.21497v1   The CYBER-BRIDGE project: An AI-Powered Platform for Cross-Border Cybersecurity, Compliance and Forensics in t
+    2611.15927v1   Eigenvalue Crossings and Discontinuous BBP Transitions in Spiked Euclidean Random Matrices
+    2611.13141v1   Dynamics of Rényi entanglement entropies and Eigenstate Thermalization
+    2611.05882v1   Optimizing Geo-replicated Deterministic Databases
+    2611.04036v1   Energy-Resolved Cross-Correlation of THz Field Emission of Electrons from a Metal Nanotip
+    2611.03630v1   Mutual information to all orders from modular flow: a replica-free approach
+    2611.01192v1   Rapid microscopic decorrelation precedes sustained collective ordering in quenched two-dimensional colloids
+    2611.00646v1   When Shards Fly: Cross-Tensor In-Flight Conversion for Low-Latency, Low-Memory Weight Updates in Disaggregated
+    2611.00401v1   VESPER: Online Learning of Free Energies with a Multi-Tempered Variational Objective
+    2610.39713v1   I$_4$ complex acting as near-infrared emitter with a quantum memory in silicon
+    2610.39699v1   Implementation and Validation of Mismatch-Tolerant High-Gain OTA with a Calibrated Negative Conductance Load
+    2610.39046v1   A 3D measurement workflow for assessing replication quality and tool degradation in moulded microfluidic chann
+    2610.37952v1   SAG-Sep: Sparse Augmented Graphs and Onion-Guided Search for Rounded Capacity Cut Separation
+    2610.32788v1   Generalization properties of the token perceptron: the role of embedding and vocabulary
+    2610.29426v1   BIRD-RL: Scaling Agentic Reinforcement Learning over Stateful Data-Centric Environments
+    2610.27776v1   Geometry Regularization for Vanilla NeRF via Self-Supervised Cross-Ray Consistency
+    2610.24552v1   Tensor-polarized gluon distribution \texorpdfstring{$h_{1TT}^{g}$}{h1TTg} in the deuteron: QCD evolution and D
+    2610.26908v1   Floquet Instability of Photon-Axion Conversion
+    2610.23372v1   Beyond Success Rate: Interventional Evaluation of Memory in Vision-Language-Action Systems
+    2610.13311v1   Quantization-Tolerant Gradient Auditing for Active Inference-Attack Detection in Federated Learning
+    2610.40662v1   A small HER2 reader for routine H&amp;E slides: real-world deployment
+    2610.14077v1   Two-Stage Multi-modal Learning for Dynamic Audio-Visual Navigation: From Physical Alignment to Scene Aggregati
+    2610.09307v1   vLLM-Omni Technical Report: A Unified Serving Runtime for Omni-Modality Generation
+    2610.08503v1   Replica Fragmentation and Glassy Dynamics in Parity Learning
+    2610.02307v1   A Semiclassical Entanglement Wedge in Double-Scaled SYK
+    2609.38746v1   Matisse: Evidence-Space Reasoning for Active 3D Reconstruction
+    2609.36959v1   Cobalt: Leveraging Expert Co-activation for Efficient Distributed MoE Training
+    2609.29160v1   Cross-Model Autoscaling for Shared LLM Serving
+    2609.29157v1   OREN-X: Octree Residual Network for Real-Time Multi-Modal Mapping
+    2609.23706v1   Neutron Double-Differential Cross Sections for Spallation Reactions from an ANN Model
+    2609.19251v1   Theory of post-selected entanglement transitions in monitored bosons
+    2609.17522v1   Coupling spherical p-spin systems
+    2609.16153v1   The Role of Completeness in Probing Symmetry Breaking
+    2609.15021v1   Shared KV Caching for Replicated 27B Inference: Correctness Failures and Performance Boundaries
+    2609.13434v1   Microscopic Parametric Correlations and Spectral Rigidity in the Non-Hermitian Threefold Way
+    2609.11336v1   Universal sampling of spin systems across quenched disorder
+    2609.10790v1   Composable CXL Memory as a Kubernetes-Native Shared Memory for LLM Serving
+    2609.09787v1   Spatial LLM Workload Shifting Needs Foresight: Model Commitment for AI Data Center Operation under Power Grid 
+arXiv control [corner entanglement (any)]: total 240; control 1505.04804 HIT
+arXiv [corner entanglement (any)] since 2026-09-01: total 8
+    2611.20682v1   Excitonic magnetism and competing valence bond solid instabilities in $d^4$ ruthenium compounds
+    2611.18078v1   TelePhysica: Agentic Reconstruction of Physically Interactive Scenes
+    2611.13852v1   Assessing the expressive power of a gauge-invariant PEPS ansatz across a topological phase transition
+    2610.40125v1   Scale-free wave localization at topological multicriticality
+    2610.05592v1   Erasure of entanglement-locked energy in multi-cell quantum batteries through decoherence
+    2609.20020v1   Corner entanglement scaling with projected entangled pair states
+    2609.09276v1   Universal Entanglement Dynamics of Unitary Operators
+    2609.03854v1   Universal Driven Critical Dynamics of Entanglement Entropy

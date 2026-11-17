@@ -3610,3 +3610,60 @@ already in print.
 
 **Environment:** macOS 27.2, Python 3.14.5 per `requirements.lock`; network queries only, no downloads beyond API
 responses (< 5 MB).
+
+### EXP-032 results: outcome (C) for an upper-bound mechanism, with one (B)-type partial ingredient and two parallel conjectures
+
+**Environment:** macOS 27.2, Python 3.14.5 per `requirements.lock`; network queries plus three arXiv source tarballs
+(1.9 MB, kept in scratch, not in the repo). Output: `scripts/exp032_sweep_output.txt`.
+
+**Instrument checks.**
+- All nine INSPIRE citer queries pass the count bound: returned = total = citation_count (2, 2, 2, 3, 6, 42, 16, 49
+  and 209 citers).
+- The one pre-registered citer control is **MISSING**: INSPIRE does not list 2609.04302 among 2609.04041's citers.
+  That reads as a referencing gap, not a query fault, because the other seed cross-citations resolve (e.g.
+  2609.04041 and 2609.04302 both appear among 2608.28531's citers).
+- All five arXiv keyword controls hit.
+- Three post-hoc queries were added after the pre-registered set and are labelled as post-hoc in the output. One
+  of them, "replica/twist + crossing", was badly formed and returned mostly off-topic noise.
+
+**What exists after 2026-09-01.** The union of citers of the nine seeds dated ≥ 2026-09 has 15 entries; the keyword
+queries add 2. Abstracts of all 8 non-seed physics candidates were read. Three were read on TeX source in their
+relevant sections.
+
+| paper | what it is | relevance to an upper bound on κ/C_T |
+|---|---|---|
+| Herzog–Stergiou 2610.33179 (source, intro + "local theorem") | conjecture c_S/C_T ≤ 16πζ(3), with the free scalar extremal (c_S = thermal entropy coefficient), and a stronger all-temperature hyperbolic heat-capacity envelope. Proved only *near* the conformal temperature, from ⟨TTT⟩ collider positivity: Ψ″(1) = 3/4 + t₄/240. | **Parallel, not a mechanism.** No mention of corners, strips or κ (grep). Its obstruction statement is the analogue of ours: stability "does not place an upper bound on the large-x slope". |
+| Kusuki–Tang 2610.37449 (source, intro + motivation) | conjecture f ≤ 2.998 F in 3d (f = thermal coefficient): the thermal limit of an all-q spherical Rényi envelope R₃(q) ≤ 1. To first order near q = 1 it follows from the [BCLM23] conjecture. | **Parallel, not a mechanism.** No corners or strips (grep). |
+| Jia 2611.03630 (abstract) | all-orders long-distance expansion of vacuum mutual information of two balls, **replica-free** (modular flow), in general d. 2d Ising truncation "approximately satisfies crossing symmetry". | **Partial ingredient, type (B).** κ is the short-distance (touching half-planes) mutual-information coefficient. The missing two-sided route needs a crossing equation at n = 1, and the n → 1 continuation was the obstruction. This supplies the long-distance channel at n = 1 without replicas. Still missing: the short-distance (fusion) channel with positivity, the half-plane/strip geometry, and the crossing equation itself. Read in abstract only. |
+| Woods 2611.10113 (source, grep) | cusp anomalous dimensions of charged impurity lines (abelian Higgs, large charge), compared with the 2026 cusp bounds | Tests the LMW/Chandra bounds on another defect. Its "κ" is a quartic coupling. Not about twist defects. |
+| 2610.27587, 2609.20020, 2610.00670, 2609.38130, 2610.20602, 2609.26892 (abstracts) | lattice Rényi ensemble (J-Q₃); PEPS corner extraction; holographic MI monogamy; thermal defects; Wilson-line cusps; topological-order entanglement bootstrap | none bounds κ |
+
+**Verdict against the pre-registration.**
+- **(C) for the main question:** no upper-bound mechanism for κ/C_T is in print as of 2026-11-17, and no n → 1
+  twist-defect crossing work was found. *Partially verified:* nine seeds, about eleven queries and abstract-level
+  reading. Not exhaustive: work that cites none of the seeds and avoids the keywords would be missed.
+- **(B)-type ingredient:** Jia 2611.03630, as above.
+- **Context worth keeping.** Free-scalar "envelope" conjectures are now a small genre in 3d:
+  - C_T/F [BCLM23];
+  - c_S/C_T (Herzog–Stergiou);
+  - f/F (Kusuki–Tang);
+  - this project's own κ/C_T ≤ 4.179.
+
+  The two new ones share our situation. They are consistent with all data and, per the papers (read on source, not re-derived here, so unverified
+  by me), *proved only locally*, at the
+  universal point, from ⟨TTT⟩ positivity; generic positivity is admitted not to bound the far end.
+
+**One structural difference, argued here (not checked against any source).**
+- The sphere envelopes have a local theorem: the first non-universal coefficient at the universal point (Ψ″(1),
+  equivalently h″_q(1)) is fixed by t₄, so collider positivity bounds it.
+- The corner analogue would be "a(θ)/C_T at most the free-scalar value at every angle". Its local version fails at
+  the first step. At θ → π, a/C_T is universal at order ε², but the next coefficient σ′/C_T is **not** a function
+  of (C_T, t₄): EXP-002 and EXP-030 find 8.4% apart at equal t₄. So no ⟨TTT⟩ positivity statement can give even a
+  local corner envelope.
+- Corners are therefore one step harder than the sphere envelopes, not just open.
+
+**Next steps.**
+- (ii) begins: firming up 2.894, first session, then a go/no-go to Sumit.
+- Jia's replica-free n = 1 mutual-information expansion is the one new ingredient for the two-sided route. Before
+  any reasoning about a half-plane version, its full text should be read: whether the short-distance limit or a
+  half-plane geometry is discussed. Logged in TODO as a reading item.
