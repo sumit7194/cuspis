@@ -9,8 +9,9 @@ settled is listed here. Settled items live in `report.md` (EXP-001 … EXP-011) 
   - EXP-030 addendum: the t₄ range is verified at source;
   - EXP-031: tip-fixed corner QNEC adds nothing beyond C3 and is closed under tail addition;
   - the two guards (blind hook on SendMessage, commit-msg overclaim check).
-- **Outside the repo.** Three heavy-research prompts are in `/Users/sumit/Github/fable_briefs/cuspis/`, delivered to
-  the bridge and not run. The Fable brief for I-08 is on hold.
+- **Outside the repo.** The three heavy-research prompts (2026-10-17) and the on-hold I-08 Fable brief were
+  DROPPED by the user on 2026-11-17. Their folder `fable_briefs/` no longer exists. They were never run, so nothing
+  is lost from the record.
 - **Open embargo.** `quantum-smallangle-and-C2a-prime` (`tools/EMBARGOES.json`) stays until quantum lifts it.
 - **After the restart.**
   - Check that the commit-msg hook still exists in `.git/hooks`.
