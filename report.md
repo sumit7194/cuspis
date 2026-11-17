@@ -4571,3 +4571,13 @@ tolerance, the exponent law fails at Δ = 0.9.
 **Resources.** ≈ 60 min, 1 core, < 1 GB, nice 15, under the watchdog. This is over 30 min, so a slot is requested from
 the bridge before launch.
 - *Script:* `scripts/exp039_mp_mi.py`; output `scripts/exp039_output.txt`, `scripts/exp039_results.json`.
+
+**EXP-039 run 1 stopped by the memory-pressure guard (recorded; the guard worked as intended).**
+- *What happened:* the system-wide pressure level reached 2 (yellow) at 77 s. The tree was at 1.55 GB; the largest
+  consumer on the box was another process.
+- *Before the stop:* **V1 PASS** (mp vs double ≤ 3.3·10⁻⁸ where double is reliable) and **V2 PASS** (dps 35 vs 50
+  identical to double precision at η = 10⁻⁵). V3 and the run had not started.
+- *Correction to the slot request:* I estimated < 1 GB. The η = 10⁻⁵ circle rows (M ≈ 10⁷) bring the tree to
+  ≈ 1.5 GB, and EXP-036 peaked at 2.0 GB on the same sizes. The bridge has been told.
+- *Plan:* relaunch only when the pressure level is back to normal, and with the bridge's OK on the corrected memory
+  figure. Logs: `exp039_output_run1_pressure.txt`, `exp039_run1_pressure.wd.log`.

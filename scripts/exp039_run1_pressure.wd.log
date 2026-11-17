@@ -1,0 +1,22 @@
+# cmd: ../.venv/bin/python -u -W ignore exp039_mp_mi.py
+# caps: tree <= 2.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.045    0.000   0.045        18.42        757.5           55              1
+     5.8     1   0.075    0.000   0.075        18.42        757.5           55              1
+    11.3     1   0.701    0.000   0.701        18.42        757.5           54              1
+    16.7     1   1.201    0.119   1.320        18.42        757.5           53              1
+    22.1     1   1.201    0.029   1.230        18.42        757.5           52              1
+    27.4     1   1.201    0.029   1.230        18.42        757.5           52              1
+    32.9     1   1.201    0.029   1.230        18.42        757.5           53              1
+    38.3     1   1.201    0.029   1.230        18.41        757.5           54              1
+    43.7     1   1.201    0.029   1.230        18.41        757.5           54              1
+    49.1     1   1.313    0.028   1.342        18.41        757.5           54              1
+    54.6     1   1.313    0.028   1.342        18.41        757.5           54              1
+    60.0     1   1.313    0.028   1.342        18.41        757.5           54              1
+    65.4     1   1.313    0.029   1.343        18.41        757.5           49              1
+    70.8     1   1.313    0.029   1.343        18.41        757.5           51              1
+    77.0     1   0.900    0.645   1.545        18.42        757.5           43              2
+# WATCHDOG SIGTERM: memory pressure level 2 (>= 2, yellow)
+# exit -15; wall 78 s; PEAK tree MEM 0.900 GB + CMPRS 0.645 GB = 1.545 GB; KILLED: memory pressure level 2 (>= 2, yellow)
