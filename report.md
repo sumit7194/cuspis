@@ -3699,3 +3699,56 @@ invariance exactly, and its corner function is ∝ 1 + (π−θ)cot θ.
 - *Also reported:* whether 𝓘(π, η) has a nonzero finite part, i.e. whether the subtraction is needed at all.
 - *Control:* the 1/η coefficient of 𝓘 must be θ-independent; it is the "area" term ã on both edges.
 - *Script:* `scripts/exp033_emi_wedge.py`.
+
+### EXP-033 session 1 results, and the go/no-go assessment for Sumit
+
+**Environment:** macOS 27.2, Python 3.14.5, mpmath 1.3.0 (per `requirements.lock`). Run: 1.7 s at nice 10. Output:
+`scripts/exp033_output.txt`.
+
+**First run void (kept as a record).** The closed form for g was evaluated near ψ = π, where it is 0/0, and blew
+up to ~10⁴⁸. It was rewritten as g = (1 − x cot x)/(2 sin²x) with x = π − ψ, with a series near x = 0.
+- The closed form matches direct quadrature to 10⁻³⁰ at four points, including ψ = π − 10⁻⁹.
+- Nothing from the void run is used.
+
+**Results.**
+- *Control:* the 1/η coefficient of 𝓘 is 0.78496–0.78540 across θ (spread 6·10⁻⁴, an O(η) effect) and tends to
+  π/4. It does not depend on θ, as required.
+- *Prediction:* D(θ, η)/(1 + (π−θ)cot θ) = **−0.5 at every θ and every η** (10⁻², 10⁻³, 10⁻⁴). The spread across
+  θ is 4·10⁻²³. This is −2a(θ) with EMI's a = (C/4)(1 + (π−θ)cot θ) (EXP-025 addendum 2), as A5′ predicts.
+- *Subtraction:* the finite part of 𝓘(π, η) is −0.0104, then −0.0010: it is O(η), so the θ = π subtraction is not
+  needed in EMI.
+
+**Why this pass carries little weight. It is a check that could not fail.**
+- The kernel satisfies g = ¼·G″ exactly, with G(ψ) = 1 + (π−ψ)cot ψ (verified by differentiation:
+  d²/dψ²[(π−ψ)cot ψ] = 4g).
+- So in EMI the double angular integral collapses to G at the four edge-pair separations {2η, θ, 2π−θ, 2π−2η}. That
+  gives D = −½[G(θ) − G(π)] identically, for every η.
+- EMI is pairwise-additive, so it cannot produce the angle-dependent framing artefact this test was meant to
+  catch. A5′ is therefore **consistent with EMI but untested** in any model where it could fail.
+- The pre-registered prediction "passed". I record that the pre-registration did not see this degeneracy.
+
+**What session 1 produced, with grades (argued / untested / unverified as marked).**
+1. *Route.* CHMY15's MI regularization is the natural vehicle. I read on source its MI-SSA inequality (their
+   eq. "ine") and the J-term analysis. Their argument needs J to cancel, and J fails only for crossings at spatial
+   corners. In O3, ∂X and ∂Y share flow-line segments with C¹ junctions and never cross. So step 2 (concavity)
+   carries over at the same physics standard as CHMY's MI version of the F-theorem. **Argued**, not checked in a
+   model.
+2. *A5′.* A5 has an exact MI form: a(θ) = −½ lim_{η→0}[𝓘(θ, η) − 𝓘(π, η)], for wedge pairs with common apex. It is
+   **consistent with EMI; untested where it could fail.**
+3. *A6* becomes differentiability of the MI of *separated* regions under smooth deformations. That is expected and
+   plausible, but no source was read for it here (**unverified**).
+4. *Ceiling.* Full algebraic-QFT rigour is **not** within reach in a few sessions. The realistic ceiling is: "O3 at
+   the standard of the MI F-theorem proof, with A5′ tested in a free field". That firms up 2.894 but does not make
+   it a theorem.
+
+**Go/no-go options for Sumit.**
+- **(a) Small GO.** One discriminating test of A5′ in a *free* field, where MI is not pairwise-additive. The free
+  scalar or Dirac MI between two wedges with a common apex, per unit log scale, on a lattice. Estimate: 1 core,
+  < 2 GB RAM, < 200 MB disk, a few hours (a slot request first). Then one reasoning session writing O3 in MI form.
+  - If A5′ fails, that is news: 2.894 would weaken.
+  - If it passes, the grade moves up one notch.
+- **(b) NO-GO.** Park (ii). 2.894 stays "physics-level; checked by the bridge (V7); not a theorem". The 2.280 bound
+  is unaffected either way.
+- **Recommendation:** (a) only if Sumit wants the 2.894 grade improved enough to justify a few CPU-hours.
+  Otherwise (b). The scientific upside is modest; the downside risk, that A5′ fails, is the more interesting
+  outcome.

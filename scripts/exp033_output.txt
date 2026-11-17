@@ -1,0 +1,24 @@
+g closed form vs quadrature at psi=0.3: rel diff 3.35e-30
+g closed form vs quadrature at psi=2.0: rel diff 4.93e-31
+g closed form vs quadrature at psi=4.0: rel diff 3.94e-31
+g closed form vs quadrature at psi=3.14159265258979323846264338328: rel diff 0.0
+
+1/eta coefficient (control: theta-independent), estimated as eta*Ical at eta=1e-4:
+  theta=  20.0 deg: eta*Ical = 0.784964532709
+  theta=  45.0 deg: eta*Ical = 0.785230343202
+  theta=  60.0 deg: eta*Ical = 0.785287692947
+  theta=  90.0 deg: eta*Ical = 0.785348152926
+  theta= 120.0 deg: eta*Ical = 0.785378382916
+  theta= 150.0 deg: eta*Ical = 0.78539349791
+  theta= 180.0 deg: eta*Ical = 0.785398152926
+
+D(theta,eta)/EMI(theta) (prediction: one constant K for all theta, as eta -> 0):
+  theta=  20.0 deg: -0.5  -0.5  -0.5   -> extrap -0.5
+  theta=  45.0 deg: -0.5  -0.5  -0.5   -> extrap -0.5
+  theta=  60.0 deg: -0.5  -0.5  -0.5   -> extrap -0.5
+  theta=  90.0 deg: -0.5  -0.5  -0.5   -> extrap -0.5
+  theta= 120.0 deg: -0.5  -0.5  -0.5   -> extrap -0.5
+  theta= 150.0 deg: -0.5  -0.5  -0.5   -> extrap -0.5
+
+relative spread of K across theta: 4.48e-23   (K mean -0.5)
+finite part of Ical(pi,eta) (is the pi-subtraction needed?): ['-0.010404539', '-0.0010360599']
