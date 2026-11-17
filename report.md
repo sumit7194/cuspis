@@ -4540,3 +4540,34 @@ Part B is identical in both runs.
   computable η.
 - **2.894:** its premise A5′ is now argued for general unitary CFTs and verified in the two free CFTs and at
   holographic O(N²). The bound's grade stays "physics-level; checked by the bridge (V7); not a theorem".
+
+## EXP-039  Cancellation-free wedge MI for Δ = 0.9, closing the EXP-038 Part C void — pre-registration (Sumit's direct GO in chat, 2026-11-18: "go with the cancellation-free MI for Δ = 0.9")
+
+**Diagnosis carried over (EXP-038).** The X and P blocks from the FFT are accurate in double precision; the
+cross-block carries the correlation to ~10⁻¹⁰ relative. The loss is *only* in I_s = 2S(G₁) − S(G₁∪G₂), where entropies
+of order 1–10 are subtracted to leave I ~ 10⁻⁹–10⁻¹¹.
+
+**Method (the only change from EXP-038 Part C).**
+- The three entropies per s-node are evaluated in **35-digit arithmetic** (mpmath: Cholesky of X, LᵀPL, symmetric
+  eigenproblem, h(ν)) from the same double-precision blocks.
+- State, discretisation, s-mapping, nodes, η plan, n_p pairs, θ and thresholds are all unchanged.
+- *Why rounding the inputs does not matter:* at a product state MI is quadratic in the cross-block, so it is
+  insensitive to the 10⁻¹⁶ rounding of the diagonal blocks, which are common to both entropies.
+- *Rejected alternative:* a second-order (BKM) perturbative MI. Nearly pure arc modes (ν → ½) make it non-analytic
+  (δ ln δ).
+
+**Validation gates (all must pass before the run's numbers count).**
+- **V1:** mp vs double per-s MI where double is reliable (I_s ≥ 10⁻⁶): Δ = 0.9 at η = 0.1 and Δ = 0.6 at η = 10⁻³,
+  s ∈ {0, 0.8, 2.5}, rel < 10⁻⁶.
+- **V2 (precision gate):** at η = 10⁻⁵, n_p = 32, s ∈ {0, 1, 4}, dps 35 vs 50, rel < 10⁻⁸.
+- **V3 (reproduction):** the full i_G for Δ = 0.6, η = 10⁻⁴, n_p = 32 by mp must reproduce EXP-038's double value
+  (reliable there, i_G ~ 10⁻⁴) to < 10⁻⁶.
+- *Run gates as EXP-038:* quadrature 48 vs 96 at 10⁻³ < 10⁻³; n_p drift < 2% at every η.
+
+**Criterion (frozen in EXP-038, unchanged).** |p(10⁻⁴ → 10⁻⁵) − 1.6| ≤ 0.10 at both θ, with p the local log-slope of
+i_G in η. Predicted p = 2(2Δ − 1) = 1.6. If the run gates fail again the result is void; if they pass and p is outside
+tolerance, the exponent law fails at Δ = 0.9.
+
+**Resources.** ≈ 60 min, 1 core, < 1 GB, nice 15, under the watchdog. This is over 30 min, so a slot is requested from
+the bridge before launch.
+- *Script:* `scripts/exp039_mp_mi.py`; output `scripts/exp039_output.txt`, `scripts/exp039_results.json`.
