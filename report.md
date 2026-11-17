@@ -3558,3 +3558,13 @@ run came after that install.
 - EXP-024's committed output dates from before the downgrade, so presumably mpmath 1.4.1 (inferred, unverified).
 - EXP-024 reproduces identically under 1.3.0. On this evidence its outputs do not depend on that change of mpmath
   version (partially verified: one script).
+
+## Regression after macOS 27.2 (bridge GO from Sumit, 2026-11-17)
+
+**Environment:** macOS 27.2 (26B123), arm64, Python 3.14.5 (`.venv`), numpy 2.4.3, mpmath 1.3.0, sympy 1.13.3,
+matching `requirements.lock`. Nothing was installed or downloaded.
+
+**Method:** the same two spot checks as for 27.0.1, run one after the other at nice 10 on one core. Each output was
+compared byte for byte (`cmp`) with the committed output.
+- `scripts/exp031_qnec.py` → `exp031_output.txt`: **identical** (1 s);
+- `scripts/exp024_cc_kappa.py` → `exp024_output.txt`: **identical** (39 s).
