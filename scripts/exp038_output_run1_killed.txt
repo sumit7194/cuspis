@@ -1,0 +1,21 @@
+00:19:16 EXP-038 start
+00:19:16 B two implementations a(Omega=0.3000)/C_T: HT 12.084733653137  direct-ODE 12.084733653140  rel 1.9e-13 [PASS]
+00:19:16 B two implementations a(Omega=1.0000)/C_T: HT 2.872172317179  direct-ODE 2.872172317178  rel 3.8e-13 [PASS]
+00:19:16 B two implementations a(Omega=1.5708)/C_T: HT 1.221980042551  direct-ODE 1.221980042552  rel 5.3e-13 [PASS]
+00:19:16 B two implementations a(Omega=2.5000)/C_T: HT 0.173870915513  direct-ODE 0.173870915513  rel 1.5e-12 [PASS]
+00:19:16 B eta_c(theta=180 deg) = 0.7853981634 (impl 2: 0.7853981634); sector opening 2 eta_c = 90.0000 deg
+00:19:17 B eta_c(theta=90 deg) = 0.4907378216 (impl 2: 0.4907378216); sector opening 2 eta_c = 56.2344 deg
+00:19:17 B eta_c(theta=120 deg) = 0.6366233766 (impl 2: 0.6366233766); sector opening 2 eta_c = 72.9517 deg
+00:19:17 B eta_c(theta=60 deg) = 0.3283269580 (impl 2: 0.3283269580); sector opening 2 eta_c = 37.6235 deg
+00:19:17 B control: eta_c(180) - pi/4 = -4.17e-14 [PASS]
+00:19:20   C a0.8_e0.001_np32: M=100532 (2 s)
+00:19:24   C a0.8_e0.001_np64: M=201064 (5 s)
+00:19:37   C a0.8_e0.0001_np32: M=1005312 (13 s)
+00:20:59   C a0.8_e0.0001_np64: M=2010620 (82 s)
+00:23:18   C a0.8_e1e-05_np16: M=5026552 (139 s)
+00:30:09   C a0.8_e1e-05_np32: M=10053100 (411 s)
+00:30:13   C a0.2_e0.001_np32: M=100532 (2 s)
+00:30:17   C a0.2_e0.001_np64: M=201064 (4 s)
+00:30:30   C a0.2_e0.0001_np32: M=1005312 (12 s)
+00:31:52   C a0.2_e0.0001_np64: M=2010620 (83 s)
+00:34:11   C a0.2_e1e-05_np16: M=5026552 (138 s)

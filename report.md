@@ -4480,3 +4480,9 @@ Dirac formula; bilinear dominance argued) **+ verified by evaluation** to 1.2% a
   non-holographic interacting CFT (Ising etc.); for those, §2 is an argument only.
 
 **Resources:** ≈ 25 min on 1 core, < 2 GB, nice 15, under the watchdog. That is under 30 min, so no slot is needed.
+
+**EXP-038 run 1 killed by the watchdog (recorded).**
+- *What happened:* Part C reached 2.005 GB against the 2 GB cap, at 941 s. Part B had completed.
+- *Cause:* a cap set too low by me. EXP-036 ran the same η = 10⁻⁵ sizes at a 1.98 GB peak, under a 3 GB cap.
+- *Fix:* relaunch with a 3 GB cap (as EXP-036). The checkpoint (`exp038_partC.json`) is kept, and nothing else changes.
+- Logs: `exp038_output_run1_killed.txt`, `exp038_run1_killed.wd.log`.
