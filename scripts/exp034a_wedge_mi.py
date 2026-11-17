@@ -119,24 +119,29 @@ def main():
             log(f"  {key}: n={len(s)} S = {ck[key]:.10f}  ({time.time() - t0:.0f} s)")
         return ck[key]
     rs_chk = (0, 40, 160, 320, 640)
+    # Phase 0 (reordered after run 2 was killed by the 4 GB cap at an alpha transition: the table-build subprocess and
+    # the 32768 axis sums overlapped a main process still holding ~2 GB from the last large entropy).  All tables and
+    # all correlator gates now run first, while the main process is small.  Numerics unchanged.
+    consts = {}
     for al in ALPHAS:
-        # ---- Tier 1b: zero-mode constant, two implementations ----
         q = 2.0 ** (-(2 - al))
-        b16, b32 = axis_box(al, 16384, [0])[0], axis_box(al, 32768, [0])[0]
+        b16, b32 = axis_box(al, 16384, [0], chunk=256)[0], axis_box(al, 32768, [0], chunk=256)[0]
         x0q, x0r = X0_quad(al), b32 + (b32 - b16) * q / (1 - q)
         log(f"Tier-1 X_inf(0) alpha={al}: quadrature {x0q:.13f}  Richardson(16k,32k) {x0r:.13f}  |diff| {abs(x0q - x0r):.1e} "
             f"[{'PASS' if abs(x0q - x0r) < 1e-10 else 'FAIL'}]")
         if abs(x0q - x0r) >= 1e-10: log("ABORT"); sys.exit(3)
-        t0 = time.time(); X, P = tables_corrected(al); C = x0q - X[0, 0]; X = X + C
+        t0 = time.time(); X, P = tables_corrected(al); C = x0q - X[0, 0]; X = X + C; consts[al] = C
         log(f"alpha={al}: tables N={N} built ({time.time() - t0:.0f} s); zero-mode constant C = {C:.10f} ({C / x0q:.2%} of X(0))")
-        # ---- Tier 1c: corrected correlator vs the infinite lattice (N = 32768 axis sums + their own constant) ----
-        ref = axis_box(al, 32768, rs_chk); ref = ref + (x0q - ref[0])
+        ref = axis_box(al, 32768, rs_chk, chunk=256); ref = ref + (x0q - ref[0])
         rel = np.abs(X[list(rs_chk), 0] - ref) / ref
         log(f"Tier-1 correlator alpha={al}: X_corr(r,0)/X_inf(r,0) - 1 at r={rs_chk}: {np.array2string(rel, precision=2)} "
             f"[{'PASS' if rel.max() < 0.01 else 'FAIL'}]  (uncorrected box would be off by {np.array2string(C / ref, precision=2)})")
         if rel.max() >= 0.01: log("ABORT"); sys.exit(4)
         if al == 1.0:
             log(f"  known answer, alpha=1: X_corr(640,0) * 4 pi 640 = {X[640, 0] * 4 * np.pi * 640:.5f} (continuum 1/(4 pi r) -> 1)")
+        del X, P
+    for al in ALPHAS:
+        X, P = tables_corrected(al); X = X + consts[al]
         # ---- Tier 1d: lean entropy == EXP-034 entropy on the same matrices ----
         if al == ALPHAS[0]:
             s = m0.wedge(0.40, 40, "+x"); s2 = np.concatenate([s, m0.wedge(0.40, 40, "+y")])

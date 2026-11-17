@@ -3949,3 +3949,14 @@ estimate for the whole run is ~25–40 min: 1 core, BLAS threads 1, nice 15, det
 - *Kept:* the log (`exp034a_output_run1_crashed.txt`, `exp034a_run1_crashed.wd.log`) and the checkpoint. The
   checkpoint holds only run A and the integer-R B entries, which the gate shows are unchanged.
 - Nothing else changes.
+
+**EXP-034a run 2 killed by the watchdog (recorded; it worked as intended).**
+- *What happened:* at 508 s the tree reached 4.43 GB (MEM 2.86 + CMPRS 1.57), above the 4 GB cap, at the α = 1.5 → 0.5
+  transition.
+- *Completed before the kill:* all α = 1 and α = 1.5 entropies, runs A and B, checkpointed. Not analysed.
+- *Cause, from the watchdog log:* after the largest entropy, the main process held ~1.7–2 GB. The next α's 32768
+  axis sums and its N = 8192 table-build subprocess then ran on top of that. The same overlap had reached 2.7 GB at
+  the α = 1 → 1.5 transition.
+- *Fix, ordering only:* all tables and all correlator gates now run before any entropy, with chunk 256. Numerics,
+  geometry and criteria are unchanged. The checkpoint is kept, since it holds entropies made by identical code.
+- Logs: `exp034a_output_run2_killed.txt`, `exp034a_run2_killed.wd.log`.
