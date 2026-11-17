@@ -4416,3 +4416,67 @@ Dirac formula; bilinear dominance argued) **+ verified by evaluation** to 1.2% a
   Dirac fermion (power decay).
 - **Not a theorem; interacting CFTs are not addressed.** The 2.894 wording is unchanged: "physics-level; checked by
   the bridge (V7); not a theorem".
+
+## EXP-038  P3 / A5′ beyond free fields: holographic CFTs at O(N²), and a general argument via the lightest operator — pre-registration (Sumit's direct GO in chat, 2026-11-18: "go with the interacting CFT check")
+
+### 1. Prior art (M1; checked, grades as stated)
+- **Cardy, 1304.7985 (2013),** "Some Results on Mutual Information of Disjoint Regions in Higher Dimensions" (abstract
+  read). For distant compact regions, I ~ C_A C_B (R_A R_B/r²)^{a}, where a is the smallest total scaling dimension of
+  an operator product carrying vacuum quantum numbers (a = 2Δ_min).
+  - For the free scalar the coefficient is set by the **capacitance** of a thin slab. *This is prior art for the
+    capacity mechanism of EXP-036, which rediscovered it in the thin-arc setting.*
+- **Agón–Faulkner, 1511.07462 (2015)** (abstract read). Long-distance MI of spheres for any CFT, refining Cardy's OPE
+  method. In holography it comes from the bulk O(1) correction (FLM): the bulk MI between the entanglement wedges.
+- **Shiba, 1907.07155 (2019)** (abstract read). For the free scalar, I ~ C·⟨φφ⟩², with a direct expression for C.
+- **Mozaffar–Mollabashi–Omidi, 1511.00244 (2015),** read in the PDF (eqs. 2.4–2.7, 3.1–3.4, Fig. 9).
+  - Holographic MI between sectors with a common apex. S_{Ω₁∪Ω₂} = min(S_dis, S_con), with
+    a_dis = 2a(Ω) and a_con = a(2Ω+ω) + a(ω).
+  - There is a first-order transition, with MI ≡ 0 (O(N²)) in the disconnected phase.
+  - **This is the holographic O(N²) content of P3, in our variables Ω = 2η and ω = θ − 2η.** They do not state P3 or
+    A5′ themselves.
+- **Minwalla, hep-th/9712074 (1997),** read in the PDF. Unitarity bounds in d = 3: scalar ε₀ ≥ (d−2)/2 = ½
+  (eq. 2.58: "all non singleton scalar representations" have dimension at least that of the free scalar), spinor ≥ 1
+  (eq. 2.56), vector ≥ 2 (eq. 2.57).
+  - *Equality for a scalar implies □O = 0, i.e. a free field.* This is standard (a level-2 null state), but not quoted
+    from the source, so it is argued.
+- **Kos–Poland–Simmons-Duffin–Vichi, 1603.04436 (2016)** (abstract read). For the 3d Ising model, Δ_σ = 0.5181489(10).
+
+### 2. The general argument (argued, physics-level; it is the claim under test)
+- Per unit log scale, two thin wedges are two thin strips: width w = ηr, separation d ~ θr.
+- Decompose each strip into blocks of size w and sum Cardy's pairwise law (I_pair ~ (w²/D²)^{2Δ}) over block pairs:
+  I/L ~ (1/w²)·w^{4Δ}·∫dy (d² + y²)^{−2Δ} ~ (1/d)(w/d)^{4Δ−2}.
+- That gives **i_G ~ c·η^{2(2Δ_min − 1)}**, the same exponent as the EXP-034 correlation heuristic.
+- The block sum converges for Δ > ½. At Δ = ½ the strip's self-correlation is log-divergent; the capacity treatment
+  of EXP-036 then replaces the power by 1/ln².
+- **By unitarity, Δ_min > ½ in any 3d CFT without a decoupled free scalar.** So P3, and with it A5′, holds there with a
+  power law. The free scalar is the unique marginal case (1/ln², EXP-036).
+- *Evidence so far, in sample:* the Gaussian family gives log decay at Δ = ½ (EXP-036), p = 1.02 at Δ = ¾ (EXP-035,
+  η 0.002 → 0.001; predicted 1) and p = 2.00 at Δ = 1 (EXP-037).
+- *Near-marginal theories (argued).* With ε = 2Δ_min − 1, the self-normalisation carries a factor 1/ε, so i_G ~ ε²·η^{2ε}
+  up to O(1). The crossover from ~1/ln² to the power law sits at ln(1/η) ~ 1/ε.
+  - For 3d Ising (ε = 0.036) that is η ~ e^{−28}. **The decay is real but invisible at any computable η; only the
+    argument reaches it.**
+
+### 3. Frozen tests
+**Part B, holographic O(N²) (computed from RT and the verified a_E of EXP-001).**
+- Disconnected ⇔ 2a(2η) ≥ a(θ−2η) + a(θ+2η), with a(x) = a(2π − x). Then I ≡ 0 at O(N²), so i_G = 0 for η < η_c(θ).
+- Two implementations of a(Ω): (1) HT via `exp001_measure`; (2) Ω(h*) from the conservation law (MMO eq. 2.5),
+  integrated directly. Already run: they agree to ≤ 2·10⁻¹² at four Ω.
+- **Control (known answer):** by symmetry η_c(180°) = π/4 exactly. It must reproduce to < 10⁻⁹.
+- The outputs are η_c at 90°, 120°, 60°. These are results, not predictions.
+- *What it establishes:* P3 at O(N²) for Einstein holography, exactly (i_G = 0 for thin sectors), conditional on RT
+  and on the two candidate surfaces of MMO eq. 3.2.
+  - The O(1) bulk correction is argued, via Agón–Faulkner/FLM, to scale like the lightest-operator law of §2; it is
+    not computed.
+
+**Part C, out-of-sample test of the exponent law.** EXP-035 machinery, never run at these Δ:
+- Δ = 0.6 (α = 0.8), predicted p = 0.4; Δ = 0.9 (α = 0.2), predicted p = 1.6.
+- η ∈ {10⁻³, 10⁻⁴, 10⁻⁵}; θ ∈ {90°, 180°}; n_p pairs (32, 64), (32, 64), (16, 32).
+- *Gates:* n_p drift < 2%; quadrature 48 vs 96 nodes at 10⁻³ < 10⁻³.
+- **Criterion:** the local exponent p = ln(i_G(10⁻⁴)/i_G(10⁻⁵))/ln 10 is within 0.15 of 0.4 (Δ = 0.6, near-marginal,
+  slower approach expected) and within 0.10 of 1.6 (Δ = 0.9), at both θ.
+- *Limits, stated:* this family is Gaussian and non-relativistic for α ≠ 1, so Part C tests the Δ-dependence of the
+  mechanism, not an interacting CFT. Only Part B is an interacting theory. No computation here touches a
+  non-holographic interacting CFT (Ising etc.); for those, §2 is an argument only.
+
+**Resources:** ≈ 25 min on 1 core, < 2 GB, nice 15, under the watchdog. That is under 30 min, so no slot is needed.
