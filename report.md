@@ -5346,3 +5346,20 @@ This is still not a Paley–Wiener proof; it is the numerical form of its hypoth
   size (t_max/t)^σ times the answer; at t = 0.3, σ = 80 that is ~5·10²², beyond double precision. The inside-edge
   agreement test is restricted to (t, σ) with (t_max/t)^σ ≤ 10⁶: t = 0.5 on σ = 0.5, 5, 20, 80; t = 0.3 on σ = 0.5, 5, 20.
   The outside-edge test (t = 0.62, 0.8, all four σ) is unchanged.
+
+### Model provenance for EXP-040 to EXP-043 (the Bridge's request, 2026-11-18)
+
+Pushed commit messages are not rewritten; this table is the record. "Fable" = Fable 5.2, "Opus" = Opus 5.5. Sumit
+switched this session's model in chat; each part is attributed to the model that did the thinking and wrote the text.
+
+| part | model | commits |
+|---|---|---|
+| EXP-040 origin: the exploratory d-scan, the one-particle decomposition, the withdrawn π²/3 link, the void Rényi test (side-session) | Fable | notes/fable/, committed in 978b97c |
+| EXP-040 Parts A–C: sweep, both registrations, Impl-2, comparison, toy test, write-up | Opus | 211890c, c1697a4, 978b97c, ccbd4cf |
+| EXP-041: EMI C_T(d) derivation, the curve, addendum A (d = 4, 5) | Opus | f0594ac, ee21235, 83a7302 |
+| EXP-042 Part A: interacting sweep, base rate, feasibility | Opus | 2b7ce6a |
+| EXP-043 registration, Stirling prediction of the edge π/(2e), results | Fable | f7b0448, 1e754af |
+| EXP-043 addendum A: the one-crossing proof (A1) and the tightened tests (A2, A3), as registered | Fable | drafted under Fable; committed as 687d739 under Opus (message says so) |
+| EXP-043 addendum A: grade wording, the σ = 80 pre-run amendment, the run and its write-up | Opus | 115bb50 and later |
+
+From here on every commit message names its model in brackets.
