@@ -5363,3 +5363,9 @@ switched this session's model in chat; each part is attributed to the model that
 | EXP-043 addendum A: grade wording, the σ = 80 pre-run amendment, the run and its write-up | Opus | 115bb50 and later |
 
 From here on every commit message names its model in brackets.
+
+**EXP-043 addendum A — status at pause (2026-11-18, Sumit paused the session).** Registered (687d739, amendment 115bb50);
+script `scripts/exp043_addA.py` written. Run 1 was stopped by the pressure-yellow guard at 2 s while using 37 MB (the box
+was already at yellow from other jobs); its logs are kept (`exp043_addA_output_run1_pressure.txt`,
+`exp043_addA_run1_pressure.wd.log`). A wait-for-green relaunch was stopped at the pause, before it ran. **No A2 or A3
+result exists yet**; A1 (the proof) stands as argued.

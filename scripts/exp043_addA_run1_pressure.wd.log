@@ -1,0 +1,8 @@
+# cmd: .venv/bin/python scripts/exp043_addA.py
+# caps: tree <= 1.5 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.5     1   0.037    0.000   0.037        12.90       1673.9           35              2
+# WATCHDOG SIGTERM: memory pressure level 2 (>= 2, yellow)
+# exit -15; wall 2 s; PEAK tree MEM 0.037 GB + CMPRS 0.000 GB = 0.037 GB; KILLED: memory pressure level 2 (>= 2, yellow)

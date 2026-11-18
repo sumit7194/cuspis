@@ -373,3 +373,15 @@ This session (Cuspis) stops here. Plan agreed with Sumit, to be done in Cuspis-p
       argument for compact support; is there a reason the holographic edge pi/(2e) = 0.578 sits at the free-field scale?
 - [ ] Interacting route (EXP-042 Part A) parked 2026-11-18 by this session's judgement: B and C are multi-session, low odds;
       D out of reach. Still Sumit's call.
+
+## PAUSE 2026-11-18 (Cuspis-personal, Opus 5.5): work returns to the "Cuspis" session on the other account
+Everything is committed and pushed. Nothing is running. Where things stand:
+- EXP-040 to EXP-043 are done and reported to The Bridge; model provenance table in report.md (5033cb6).
+- **Next, ready to run:** EXP-043 addendum A (registered 687d739 + 115bb50). Run it only at memory pressure green:
+      nice -n 12 .venv/bin/python scripts/tools/watchdog.py --log scripts/exp043_addA.wd.log --cap-gb 1.5 \
+        --min-disk-gb 5 --stop-on-pressure-warn -- .venv/bin/python scripts/exp043_addA.py > scripts/exp043_addA_output.txt 2>&1
+  Expected a few minutes and < 0.2 GB. Then write A2/A3 results against the registered criteria, regrade EXP-043,
+  and tell The Bridge (it asked for the lemma check and for the model to be named in each commit message).
+- Open choices for Sumit: the interacting route (EXP-042: B = 1/N, C = epsilon-expansion; D out of reach); EXP-043
+  follow-ups (Paley-Wiener write-up; why pi/(2e) sits at the free-field scale); the Bridge's offer of a check without
+  the dimensional reduction.
