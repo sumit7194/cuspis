@@ -325,7 +325,13 @@ conclusion never depended on it; the number should not be carried onward.**
 - [ ] Block-sum step of the general argument (Cardy pairwise law summed over a thin strip) -- the one argued link for interacting CFTs.
 
 ## EXP-039 HOLD (bridge, 2026-11-18 night)
-- [ ] HOLD until the bridge's morning check (~8 AM): Quantum's approved G3 worker (PID 6018, ~4.4 GB) must not be pushed
+- [x] DONE 2026-11-18 (run 3, PASS; report.md EXP-039). Was: HOLD until the bridge's morning check (~8 AM): Quantum's approved G3 worker (PID 6018, ~4.4 GB) must not be pushed
       into pressure yellow, because a stopped G3 task is not retried.  Then relaunch `scripts/exp039_mp_mi.py` under the
       watchdog with --cap-gb 2.5 (other guards as before), only with pressure at level 1 and the bridge's go.
       V1 and V2 already passed (run 1); the run restarts from validation (no checkpoint yet).
+
+## EXP-039 follow-ups (2026-11-18)
+- [ ] Input-rounding floor: computing the X, P rows in mp (not double) would remove the ~2e-16 floor in I_s. Not needed at
+      η ≥ 1e-5 (floor/i_G ≤ 4.3e-4 at n_p = 32), but it would be needed for Δ = 0.9 at η ≤ 1e-6.
+- [ ] Prereg wording: "input rounding does not matter" was only approximately true (EXP-039 run-2 diagnostic). Check
+      whether the same argument is used anywhere else in report.md.

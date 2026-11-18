@@ -561,7 +561,9 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
       control), so i_G ≡ 0 there (cf. MMO 1511.00244).
     - **General unitary CFTs: argued.** i_G ~ η^{2(2Δ_min−1)} (Cardy's lightest-operator law, summed over a strip),
       and the unitarity bound gives Δ_min > ½. The free scalar is the unique marginal case.
-    - The exponent law was verified out of sample at Δ = 0.6 (p = 0.44 vs 0.40). Δ = 0.9 is void (precision floor).
+    - The exponent law was verified out of sample at Δ = 0.6 (p = 0.44 vs 0.40) and, by EXP-039 (35-digit entropies),
+      at Δ = 0.9: p(10⁻⁴ → 10⁻⁵) = 1.590 (90°) and 1.591 (180°) vs 1.60, all run gates passing. One validation gate was a
+      post-failure amendment (diagnosed); see report.md EXP-039.
     - 2.894's grade wording is unchanged. Its premise is now argued generally, verified for both free CFTs, and exact at
       holographic O(N²); **not a theorem.**
 

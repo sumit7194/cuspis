@@ -4623,3 +4623,33 @@ the bridge before launch.
   labelled "floor-limited" and the effect on p bounded explicitly. The effect on p is |Δp| ≤ (floor/i_G)/ln 10.
 - Nothing else changes: state, nodes, η plan, n_p pairs, run gates and the criterion |p(10⁻⁴ → 10⁻⁵) − 1.6| ≤ 0.10.
 - Logs from run 2 are kept: `exp039_output_run2_v3fail.txt`, `exp039_run2_v3fail.wd.log`.
+
+**EXP-039 results (run 3, 13:10–14:01 IST; exit 0; peak 1.38 GB; no guard fired).**
+- *Validation:* V1 PASS, V2 PASS. V3 (full sum, informational) gave 2.0·10⁻⁶, as in run 2. **V3′ PASS at 7.4·10⁻¹⁰**,
+  graded as a post-failure amendment (diagnosed), not a blind gate (addendum A).
+- *Δ = 0.9 (α = 0.2), 96 nodes, i_G at the larger n_p:*
+
+  | η | i_G(90°) | i_G(180°) | n_p drift 90° / 180° | floor/i_G 90° / 180° |
+  |---|---|---|---|---|
+  | 10⁻³ (n_p 32 → 64) | 1.582427·10⁻⁷ | 6.099704·10⁻⁸ | 6.3·10⁻⁵ / 6.7·10⁻⁵ | 6.3·10⁻⁷ / 1.8·10⁻⁶ |
+  | 10⁻⁴ (n_p 32 → 64) | 4.207041·10⁻⁹ | 1.609785·10⁻⁹ | 8.8·10⁻⁵ / 9.9·10⁻⁵ | 3.8·10⁻⁶ / 9.9·10⁻⁶ |
+  | 10⁻⁵ (n_p 16 → 32) | 1.082483·10⁻¹⁰ | 4.129202·10⁻¹¹ | 4.2·10⁻⁴ / 1.2·10⁻³ | 1.6·10⁻⁴ / 4.3·10⁻⁴ |
+
+- *Gates:* quadrature 48 vs 96 at 10⁻³: 3.2·10⁻⁷ (90°) and 1.0·10⁻⁶ (180°), against < 10⁻³. n_p drift ≤ 1.2·10⁻³,
+  against < 2·10⁻². **PASS.**
+- *Floor diagnostic:* at η = 10⁻⁵ with n_p = 32, the value used, floor/i_G ≤ 4.3·10⁻⁴. That is below the 0.2% label
+  threshold, so the verdict is **not floor-limited**. The bound on p is |Δp| ≤ 4.3·10⁻⁴/ln 10 = 1.9·10⁻⁴. (At n_p = 16,
+  floor/i_G reaches 1.9·10⁻³, still under threshold, and that run only enters the drift gate.)
+- *Local exponent:* p(10⁻³ → 10⁻⁴) = 1.575 (90°) and 1.579 (180°); **p(10⁻⁴ → 10⁻⁵) = 1.590 (90°) and 1.591 (180°)**.
+  Predicted 2(2Δ − 1) = 1.60. |p − 1.6| = 0.010 and 0.009, against a tolerance of 0.10. **PASS at both θ.**
+- *Analysis.*
+  - p rises toward 1.6 from below as η falls, the direction expected of a subleading correction. That direction was not
+    pre-registered, so it is a descriptive observation, not a test.
+  - The EXP-038 Part C void is closed. The exponent law i_G ~ η^{2(2Δ−1)} is now verified out of sample by evaluation in
+    the scale-invariant Gaussian family at Δ = 0.6 and Δ = 0.9, with Δ = ½ (1/ln², EXP-036) as the marginal case.
+  - **Grades.**
+    - The exponent law in this Gaussian family: verified (two Δ, out of sample, gates passing). One validation gate was
+      a diagnosed post-failure amendment.
+    - A5′ for general unitary CFTs: still argued, not a theorem. This family is generalised-free, not interacting.
+    - 2.894 wording unchanged; 2.280 unaffected.
+- *Files:* `scripts/exp039_output.txt`, `exp039.wd.log`, `exp039_results.json` (with per-node values).
