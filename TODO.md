@@ -362,3 +362,6 @@ This session (Cuspis) stops here. Plan agreed with Sumit, to be done in Cuspis-p
 - [ ] Bridge offer (2026-11-18, on receipt of EXP-040, logged 978b97c): a separate check by a route that avoids the reduction (unverified until run),
       direct D = 3 and D = 4 lattice values without the dimensional reduction. Not requested yet; Sumit's call. The Bridge
       agreed the grade "partially verified". An Ising/O(N) run would need a slot request with measured cost first.
+- [x] EXP-041 (2026-11-18): EMI as a fourth curve. C_T,EMI(d) = 2(d^2-1)(d-2) kappa/pi^2 (partially verified). EMI crosses
+      scalar at 2.809, Einstein at 2.892, Dirac at 3.659 (EMI/Dirac within 2.2% on (2, 4)).
+- [ ] EXP-041 E5 at d = 4, 5 (upgrade the general-d EMI C_T derivation).

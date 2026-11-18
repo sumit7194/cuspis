@@ -5030,8 +5030,9 @@ Defining the EMI's C_T by that match:
 - The closed form has already been evaluated by hand at D = 2.5 (≈ 10.24), 3 (π³/8) and 4 (π³/30 ≈ 1.0335), so the
   EMI–Dirac ordering at those points was seen. **This entry is a measurement with controls, not a blind prediction.**
 - "C_T" for EMI is a definition (via the planar entanglement density); EMI has no stress tensor. The three published
-  values come from three different routes (d = 5 via Mezei's sphere formula, d = 4 via the anomaly c, d = 3 [BCLM21,
-  not read]); agreement with all three is what makes the definition usable.
+  values come from three different routes (d = 5 via Mezei's sphere formula, d = 4 via the anomaly c, d = 3 via Bueno, Casini,
+  Lasso Andino, Moreno, *Disks globally maximize the entanglement entropy in 2 + 1 dimensions*, arXiv:2107.12394 — key
+  and title from BFGLM26's bibliography; that paper itself not read); agreement with all three is what makes the definition usable.
 
 **Controls (run first; tolerance 10⁻¹² relative unless stated).**
 - **E1:** the closed form C_T,EMI(d) reproduces 16κ/π², 60κ/π², 144κ/π² at d = 3, 4, 5.
@@ -5051,3 +5052,66 @@ Impl-2 (`scripts/exp040_impl2.json`). Script `scripts/exp041_emi.py`, output `ex
 
 **Questions it answers (descriptive).** Does EMI's curve cross the trio near D = 3, like the trio's own crossings, or
 elsewhere? Is "inside the band at D = 3" tied to "just past a crossing at D < 3"?
+
+### EXP-041 results: every control passes after two diagnosed fixes; EMI crosses scalar and Einstein inside the trio's window, and tracks Dirac within 2.2% to D = 4
+
+**Run 1 (kept: `scripts/exp041_output_run1_E4E5fail.txt`): E1–E3 PASS, E4 and E5 FAIL, both diagnosed as the check being
+wrong, not the routine.**
+- *E4 (pinning):* the free scalar gave (D − 2)κ/C_T = 1.15 at D = 2.001 against 6.58. Cause: the scalar's small-t tail
+  integral started at u = −200, which truncates e^{(D−2)u} once D − 2 ≲ 0.05. The same code is in EXP-040 but only ran
+  at D ≥ 2.25 with a tail (Part B, the comparison script and Part C's crossings; there e^{−0.25·200} ≈ 10⁻²² is
+  negligible) and at D = 2.02 only without a tail (Part C's body-only moments). **No EXP-040 number changes.**
+- *E5:* the δ⁰ coefficient of A − B was 2.1·10⁻³ against 0. Cause: `mp.quad` on the oscillatory [10, ∞) pieces; their
+  error does not depend on δ, so it lands exactly in the δ⁰ coefficient being tested.
+- *Fixes (one variable each, post-failure, labelled in the script):* the lower limit becomes −max(200, 60/(D − 2));
+  the [10, ∞) pieces use `mp.quadosc`. Nothing else changed.
+
+**Run 2 (`scripts/exp041_output.txt`).**
+- **E1 PASS:** C_T,EMI = 16, 60, 144 (units κ/π²) at d = 3, 4, 5, exactly the published values.
+- **E2 PASS:** k_EMI = 2πκ, 2πκ, π²κ/2.
+- **E3 PASS:** κ/C_T(D = 3) = π³/8 to 10⁻¹⁵. So the shape-response definition of the EMI's C_T agrees with the corner
+  (σ = π²C_T/24) definition used in EXP-016.
+- **E4 PASS:** (D − 2)κ/C_T at D = 2.001 is 6.5766 (EMI), 6.5799 (Einstein), 6.5763 (Dirac), 6.5280 (scalar), against
+  2π²/3 = 6.5797. The scalar is 0.79% low, the size its 1/(2 log t) approach predicts (≈ 1% at D − 2 = 10⁻³).
+- **E5 PASS:** δ⁰ coefficient of A − B = 4·10⁻¹⁴, and the finite part of B alone is −1.0471976 = −π/3, the non-local
+  coefficient the derivation predicts for f = cos y. This checks the integration by parts and the Laplacian identity at
+  d = 3 only.
+
+**The EMI curve.**
+
+| D | EMI | scalar | Dirac | Einstein | EMI/S | EMI/D | EMI/E |
+|---|---|---|---|---|---|---|---|
+| 2.50 | 10.239 | 9.166 | 10.030 | 11.215 | 1.117 | 1.021 | 0.913 |
+| 2.75 | 5.959 | 5.826 | 5.829 | 6.238 | 1.023 | 1.022 | 0.955 |
+| **3.00** | **3.876** | **4.174** | **3.802** | **3.709** | 0.929 | 1.019 | 1.045 |
+| 3.50 | 1.908 | 2.493 | 1.897 | 1.371 | 0.766 | 1.006 | 1.392 |
+| 4.00 | 1.034 | 1.618 | 1.048 | 0.497 | 0.639 | 0.986 | 2.079 |
+| 6.00 | 0.116 | 0.327 | 0.130 | 0.005 | 0.355 | 0.891 | 22.8 |
+
+**Crossings of EMI:** with the scalar at **D = 2.8089**, with Einstein at **2.8915**, with Dirac at **3.6586**.
+Together with EXP-040, five of the six pairwise crossings among the four curves fall in [2.751, 2.944]. The sixth
+(EMI–Dirac) is at 3.66, but that pair never separates by more than 2.2% anywhere in (2, 4).
+
+**Analysis.**
+- EMI behaves like the trio against the scalar and against Einstein: pinned at D = 2, crossed just below 3.
+- Against Dirac it is different: the two stay within 2.2% of each other from D = 2 to D = 4 and cross late. EMI's
+  place inside the band at D = 3 is therefore **not** "just past a crossing" with Dirac; it is near-identity with
+  Dirac over the whole range. That fits two facts already in the record: EMI coincides with the free fermion at d = 2
+  (BFGLM26, quoting Casini–Huerta 2005), and the Dirac corner function's variance part is exactly EMI-shaped
+  (EXP-027). It is a consistency observation, not a derivation of the 2.2%.
+- So "inside the D = 3 band" has at least two routes for theories pinned at D = 2: having crossed just below 3, or
+  never having separated. Part C of EXP-040 already showed the crossing location is not kinematic; the clustering of
+  five crossings in a 0.2-wide window is recorded as an observation, with no mechanism claimed.
+- Scope unchanged: EMI is not a CFT. Nothing here is about interacting CFTs.
+
+**Grades.**
+- C_T,EMI(d) = 2(d² − 1)(d − 2)κ/π² for continuous d: **partially verified** — derived (argued); verified by evaluation
+  at d = 3, 4, 5 against values obtained in print by three different routes; its key algebraic step checked numerically
+  at d = 3 only (E5). The definition (via FLP's planar density) is a choice for a model with no stress tensor; E3 shows
+  it agrees with the corner definition at d = 3. Not found in print (BFGLM26 state it is unknown in general d); offered
+  as new with that caveat.
+- EMI's κ_D/C_T curve and crossings: exact given that definition; the trio values are EXP-040's (partially verified).
+- The two run-1 failures: verified diagnoses (each fix changed one variable and the check then passed).
+
+**Next steps.** E5 at d = 4, 5 would upgrade the general-d derivation (needs the transverse angular average in d − 2
+dimensions). Handover item 4 (interacting CFTs) stays Sumit's call.

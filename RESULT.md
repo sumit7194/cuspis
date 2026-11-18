@@ -576,6 +576,11 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
   ensemble shows crossings after pinning are not generic. The Einstein crossings are unexplained. **Consequence:** the
   13% band is three theories sitting just past their crossings, not evidence of a D = 3 law about CFTs in general.
 
+  (15) *EXP-041, EMI as a fourth curve.* With C_T,EMI(d) = 2(d²−1)(d−2)κ/π² (derived here; matches the three published
+  values at d = 3, 4, 5; partially verified), EMI is pinned with the trio at D = 2, crosses the scalar at 2.809 and
+  Einstein at 2.892, and stays within 2.2% of Dirac on (2, 4), crossing it at 3.659. Inside the D = 3 band by two routes:
+  a crossing just below 3, or never separating. EMI is not a CFT.
+
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
 a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp
