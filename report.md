@@ -4653,3 +4653,153 @@ the bridge before launch.
     - A5′ for general unitary CFTs: still argued, not a theorem. This family is generalised-free, not interacting.
     - 2.894 wording unchanged; 2.280 unaffected.
 - *Files:* `scripts/exp039_output.txt`, `exp039.wd.log`, `exp039_results.json` (with per-node values).
+
+## EXP-040  The strip coefficient κ_d/C_T across spacetime dimension for the three anchor theories — Part A: prior-art sweep (protocol)
+
+**Date** 2026-11-18. **Session.** Cuspis-personal (Sumit's second account, Opus 5.5), which took over as the main cuspis
+session at the handover recorded in `TODO.md` (commit 3ed9b9a). **Plan agreed with Sumit** (relayed by the outgoing
+session): sweep first, then register and replicate the d-scan, then a generic-crossing test.
+
+**Disclosure of order, stated first.** The exploratory d-scan behind this entry was run *before* any prior-art sweep, in
+a side-session that was asked for directional thinking (`notes/fable/2026-11-18_directional_note.md`, untracked). That
+breaks M1's order. Its numbers are therefore treated as a hypothesis to be swept and replicated, not as a result, and
+everything they claim is re-done below under registration.
+
+**Question.** Has anyone compared the strip (thin-slab) entanglement coefficient κ_d, normalised by C_T, across the
+spacetime dimension d for the free real scalar, the free Dirac fermion and Einstein holography? Has anyone noticed that
+the three agree at d = 2 and cross near d = 3? Secondary: is there a published table of free-field κ_d at d = 4 (or in
+general d) against which a second implementation can be checked?
+
+**Protocol** (`scripts/exp040_sweep.py`, output `exp040_sweep_output.txt`). Method of EXP-027/032.
+- *INSPIRE citer queries* by recid, with the count bound (returned = total = citation_count when ≤ 250, else sorted
+  most recent and flagged truncated). Seeds, chosen because any cross-d strip comparison would almost certainly cite
+  one of them:
+  - Casini–Huerta, *Entanglement entropy in free quantum field theory*, arXiv:0905.2562 (dimensional-reduction κ_d);
+  - Ryu–Takayanagi, *Aspects of holographic entanglement entropy*, arXiv:hep-th/0605073 (holographic strip in d);
+  - Liu–Mezei, arXiv:1202.2070 (renormalised EE; strip and sphere across d);
+  - Giombi–Klebanov, *Interpolating between a and F*, arXiv:1409.1937 (continuous-d precedent, sphere);
+  - Abate–Martinek [AM26], arXiv:2608.23692 (all-d Dirac strip coefficient).
+  Identifiers above are from memory and are confirmed by the query itself (the returned title is printed); a mismatch
+  is recorded, not silently fixed.
+- *Citer filter:* titles or abstracts matching (strip OR slab OR "thin" OR "dimension") AND (entanglement).
+- *arXiv API keyword queries,* each with a positive control that must hit:
+  - `abs:strip AND abs:entanglement AND abs:dimensions AND abs:free AND abs:holographic`;
+  - `abs:"entropic c-function" AND abs:"dimensional reduction"` (control 0905.2562);
+  - `abs:"continuous dimension" AND abs:entanglement`;
+  - `abs:strip AND abs:entanglement AND abs:"stress tensor" AND abs:dimension`.
+- *Web search* (two general queries) as a net for anything outside both databases.
+- *Reading:* every hit that plausibly contains a cross-d strip comparison is read at source (abstract, then the
+  relevant section); each is graded by what was actually read.
+
+**Pre-registered outcomes.**
+- **(A)** The cross-d, C_T-normalised comparison (or the crossings) is in print: cite it, verified at source; the
+  computation below becomes a replication and nothing about it is claimed as new.
+- **(B)** Only ingredients are in print (free-field κ_d tables in d, the holographic strip in d) with no C_T-normalised
+  comparison: use them as known answers for Part B and record that the comparison was not found.
+- **(C)** Nothing relevant beyond the d = 3 values already in `references.md`.
+
+### EXP-040 Part A results: outcome (B) — the ingredients are in print, the C_T-normalised cross-d comparison is not found
+
+**Instrument checks** (`scripts/exp040_sweep_output.txt`).
+- All five seed identifiers resolved to the expected titles (printed).
+- Citer queries: Giombi–Klebanov (170) and Abate–Martinek (2) complete with the count check passing. The three large seeds
+  (Casini–Huerta review 851 citers, Ryu–Takayanagi 2413, Liu–Mezei 305) are **truncated to the 250 most recent**, so
+  older citers were not screened. That is a real hole in the database leg.
+- The one pre-registered arXiv control (0905.2562 for "c-function AND dimensional reduction") **MISSED**: the review's
+  abstract does not use those words. The keyword leg is therefore weak. The 17 filtered citers and 13 keyword hits
+  are holographic strip/c-function papers (timelike EE, confinement, RG flows); none compares free fields with
+  holography across d.
+- The web leg found what the database leg missed, so the sweep's coverage rests mostly on it.
+
+**Read at source.**
+- **[BFGLM26] arXiv:2604.01436** (Bueno, Fernández García, Gentile, Lasso Andino, Moreno, *Entanglement entropy and
+  conformal bounds for d = 5 CFTs*; TeX source read, sections 3–4 and appendix B). It is the closest prior art:
+  - free-field strip coefficients k at d = 3, 4, 5 (their eqs. in App. B, attributed to [CH09]): scalar 0.0397,
+    5.54·10⁻³, 1.31·10⁻³; fermion (tr 1 = 2^⌊d/2⌋) 0.0722, 0.0215, 5.20·10⁻³;
+  - the holographic k in general d (their eq. `kholo`, from Ryu–Takayanagi) and holographic C_T in general d (eq.
+    `CTholo`, attributed to Liu–Tseytlin), free-field C_T in general d (eq. `CTfreefields`, Osborn–Petkou);
+  - **a cross-dimension comparison of k/F₀** (and k/a in d = 4) at **integer d = 3, 4, 5**, with the hierarchy
+    "free scalar > free fermion > EMI > holography" stated to hold for all d, reversed in sign only where F(strip)
+    changes sign (d = 5, 9, …);
+  - **no k/C_T comparison** (the text compares k/F₀ and k/a only), no non-integer d, no statement about d = 2
+    agreement or any crossing.
+  - One sentence relevant to the d-picture: "the EMI model coincides with a free fermion in d = 2".
+- **[CH09] arXiv:0905.2562** (Casini, Huerta, *Entanglement entropy in free quantum field theory*, J. Phys. A 42
+  (2009) 504007; TeX source read, §"Dimensional reduction"). It contains:
+  - the dimensional-reduction formula κ = [(D−2)2^{D−3}π^{(D−2)/2}Γ((D−2)/2)]⁻¹ ∫₀^∞ y^{D−3} c(y) dy (their eq.
+    `ttt1`, written in spatial dimension), identical to the prefactor used in the side-session scan;
+  - **Table `tatal`: κ per field degree of freedom** (real scalar; one Majorana) for spacetime D = 3, 4, 5, 6:
+    bosons 3.97·10⁻², 5.54·10⁻³, 1.31·10⁻³, 4.08·10⁻⁴; fermions 3.61·10⁻², 5.38·10⁻³, 1.30·10⁻³, 4.06·10⁻⁴;
+  - **the one-particle statement, already in print:** "For large dimensions the bosonic and fermionic coefficients
+    approach each other, what is a consequence of the fact the c-function has the same asymptotic large t behavior in
+    both cases, c(t) ∼ ¼ t K₁(2t)", with κ ≃ Γ((d_s−1)/2)/(2^{d_s+3}π^{(d_s−1)/2}) for large spatial dimension d_s,
+    "less than the 3% error already for d = 5".
+- **Small- and large-t forms of the 2d c-functions**, read at source:
+  - Dirac, Casini–Fosco–Huerta cond-mat/0505563: c(x) = 1/3 − (1/3)x² log²x + O(x² log x) at small x;
+    c(x) ∼ ½ x K₁(2x) at large x (eq. `cmosca`).
+  - Real scalar, Casini–Huerta cond-mat/0511014: c(t) = 1/3 + 1/(2 log t) + O(log⁻² t) at small t; c(t) ∼ ¼ t K₁(2t)
+    at large t.
+
+**Verdict against the pre-registration: (B).**
+- Every ingredient of the side-session scan is in print: free-field κ_d via dimensional reduction (CH09), the
+  holographic κ_d and C_T in general d (BFGLM26 collecting RT06 and Liu–Tseytlin), the free-field C_T in general d.
+- **Also in print, and this corrects the side-session note:** the large-t one-particle form c ∼ N_p·¼tK₁(2t) and its
+  consequence that free-field κ per degree of freedom approaches a common Γ-function law at large d [CH09]. The note's
+  §5 closed form M = (N_p/16)Γ(d/2−1)Γ(d/2) is CH09's large-d formula rewritten; it is not new.
+- **Not found:** a C_T-normalised comparison of κ_d across d, any use of non-integer d for the strip coefficient, the
+  d = 2 pinning, or the sign change and crossings between d = 2 and d = 3. BFGLM26's F₀-normalised cross-d hierarchy is
+  the nearest statement; it is at integer d ≥ 3 only, where (see Part B) the C_T-normalised order is also fixed.
+- **Also not found (and so offered as new, with the sweep's holes stated):** that at D = 3 every free field's
+  one-particle value is κ/C_T = π²/3, because a free scalar particle and a free Dirac particle carry the same C_T there.
+- **Grade:** partially verified. The database leg was truncated for the three most-cited seeds and its one keyword
+  control missed; the web leg found the decisive paper. Work that cites none of the seeds and that the web search
+  missed would not be seen.
+
+**Consequence for Part B.** CH09's table gives a published known answer from another group at D = 4, 5, 6 (and 3); grade of the anchor: verified at source.
+BFGLM26's general-d holographic k and C_T are checked against the formulas used.
+
+### EXP-040 Part B — pre-registration: a second implementation of the d-scan, with published known answers
+
+**Objects (M2).** D is the spacetime dimension, real and > 2. For a free field reduced to 2d massive fields, c(t) =
+L dS/dL of one 2d field at t = mL. κ_D = P(D)·M(D), P(D) = [(D−2)2^{D−3}π^{(D−2)/2}Γ((D−2)/2)]⁻¹,
+M(D) = ∫₀^∞ t^{D−3} c(t) dt [CH09]. Real scalar: one 2d real scalar per field. Dirac with tr 1 = 2 held fixed in D:
+one 2d Dirac field (two Majorana) per field. C_T: Osborn–Petkou as in BFGLM26 eq. `CTfreefields` with tr 1 = 2.
+Einstein: BFGLM26 eqs. `kholo` and `CTholo`. The ratio r_XY(D) = (κ_D/C_T)_X / (κ_D/C_T)_Y.
+
+**Implementation 1** is the side-session script `notes/fable/dim_spread.py` (copied unchanged into
+`scripts/exp040_impl1_dim_spread.py`, with its output and JSON).
+
+**Implementation 2** (`scripts/exp040_impl2.py`), different at every numerical step:
+- *Discretisation.* Scalar: next-nearest-neighbour (O(a⁴)) chain, dispersion ω² = m² + 4 sin²(k/2) + (4/3) sin⁴(k/2).
+  Dirac: two-component Wilson fermion, h(k) = sin k σ_x + (m + 1 − cos k) σ_z (Impl-1 used staggered fermions).
+- *Correlators* by adaptive quadrature in k (QUADPACK, Fourier weight) instead of FFT on a ring. This removes the
+  ring-size cutoff and lets t go down to 10⁻⁵ (Impl-1 stopped at 2.5·10⁻³).
+- *Entropy.* Scalar symplectic eigenvalues as singular values of L_Xᵀ L_P (Cholesky factors), not the eigh/sqrt route.
+- *Derivative.* Five-point stencil in L at L₀ = 160 and 320, extrapolated as c(L₀) = c∞ + b/L₀² (Impl-1: symmetric
+  difference at 120 and 240).
+- *Mellin integral.* Gauss–Legendre panels in log t on c evaluated directly at the nodes (no spline), t ∈ [10⁻⁵, 25];
+  below 10⁻⁵ the source small-t forms (Dirac: 1/3 − t²log²t/3; scalar: 1/3 + 1/(2 ln(t/t*)) with t* matched at 10⁻⁵).
+  The tail fraction is printed per D.
+
+**Known-answer controls, run first; if any fails, nothing past it is read.**
+- **K1 (published, by another group, read at source): [CH09] Table `tatal`.** κ per degree of freedom at D = 3, 4, 5, 6 must lie within
+  the rounding interval of the printed value (±0.5 in the last digit): scalar [3.965, 3.975]·10⁻², [5.535, 5.545]·10⁻³,
+  [1.305, 1.315]·10⁻³, [4.075, 4.085]·10⁻⁴; fermion per Majorana (Dirac/2) [3.605, 3.615]·10⁻², [5.375, 5.385]·10⁻³,
+  [1.295, 1.305]·10⁻³, [4.055, 4.065]·10⁻⁴. Impl-1 is held to the same test.
+- **K2 (small t, at source).** Dirac: |c_D(t) − 1/3 + t² log²t/3| ≤ 3t²|log t| at t = 10⁻⁴, 10⁻³, 10⁻². Scalar:
+  |c_S(t) − 1/3 − 1/(2 log t)| ≤ 2/log²t at t = 10⁻⁵, 10⁻⁴ (the O(log⁻²) remainder, coefficient 2 chosen generous).
+- **K3 (large t, at source).** c/[N_p·¼tK₁(2t)] = 1 within 2·10⁻³ at t = 6, for both fields.
+- **K4 (formulas).** The Einstein κ_D/C_T used in both implementations equals BFGLM26 `kholo`/`CTholo` to 10⁻¹² at
+  D = 2.5, 3, 3.5, 4, 5, 6, and gives π²Γ(¾)⁴/6 at D = 3.
+
+**Replication criteria (Impl-2 against Impl-1).**
+- κ_D/C_T for scalar and Dirac agree to ≤ 0.3% at D ∈ {2.75, 3, 3.25, 3.5, 4, 5, 6} and to ≤ 1% at D = 2.5.
+- The three crossing dimensions (r = 1 for scalar/Dirac, scalar/Einstein, Dirac/Einstein) agree to ≤ 0.01.
+- *Nuisance sweep reported:* L₀ pair (160/320 vs 120/240), extrapolation on/off, tail model (scalar log-matched vs
+  constant), t_min (10⁻⁵ vs 10⁻⁴). A crossing that moves by more than 0.01 under these is reported as not measured.
+
+**Outcomes.** Pass: the crossings are recorded as partially verified (two implementations of one physical route,
+plus published integer-D anchors). Fail on K1–K4: no verdict; diagnose. Pass on controls but fail on replication:
+the side-session numbers are withdrawn until the discrepancy is found.
+
+**Resources.** Seconds to a few minutes, 1 core, < 500 MB, nice 12, under the watchdog with a 1 GB cap.

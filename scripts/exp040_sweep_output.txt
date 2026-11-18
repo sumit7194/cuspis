@@ -1,0 +1,46 @@
+SEED 0905.2562 [Casini-Huerta free-QFT EE review] -> title on record: 'Entanglement entropy in free quantum field theory'; recid 820615; cc 851
+   citers: 250 returned, total 851 [sanity TRUNCATED to 250 of 851 (most recent)]; filter (strip|slab)&dimension&entangl: 2
+SEED hep-th/0605073 [Ryu-Takayanagi aspects of HEE] -> title on record: 'Aspects of Holographic Entanglement Entropy'; recid 716307; cc 2413
+   citers: 250 returned, total 2413 [sanity TRUNCATED to 250 of 2413 (most recent)]; filter (strip|slab)&dimension&entangl: 8
+SEED 1202.2070 [Liu-Mezei refinement of EE] -> title on record: 'A Refinement of entanglement entropy and the number of degrees of freedom'; recid 1088626; cc 305
+   citers: 250 returned, total 305 [sanity TRUNCATED to 250 of 305 (most recent)]; filter (strip|slab)&dimension&entangl: 11
+SEED 1409.1937 [Giombi-Klebanov interpolating a and F] -> title on record: 'Interpolating between $a$ and $F$'; recid 1315441; cc 170
+   citers: 170 returned, total 170 [sanity OK]; filter (strip|slab)&dimension&entangl: 0
+SEED 2608.23692 [Abate-Martinek all-d Dirac RMI] -> title on record: 'Exact mutual information for free massless fermions in any dimension'; recid 3195617; cc 2
+   citers: 2 returned, total 2 [sanity OK]; filter (strip|slab)&dimension&entangl: 0
+
+UNION of filtered citers: 17
+  2025-08-18  2508.13266       cites ['1202.2070', 'hep-th/0605073']  Holographic timelike entanglement across dimensions
+  2025-11-25  2511.20891       cites ['1202.2070', 'hep-th/0605073']  Holographic entanglement entropy and c-functions in conformal and confining backgrounds
+  2026-08-19  -                cites ['1202.2070', 'hep-th/0605073']  Phase structure and tricriticality of a backreacted holographic superconductor with quartic scalar self-interaction
+  2014-07-24  1407.6511        cites ['1202.2070']  Holographic entanglement entropy of mass-deformed Aharony-Bergman-Jafferis-Maldacena theory
+  2017-08-30  1708.09376       cites ['1202.2070']  On Holographic Entanglement Density
+  2017-09-20  1709.07016       cites ['1202.2070']  Non-local observables at finite temperature in AdS/CFT
+  2018-11-23  1811.09500       cites ['1202.2070']  Information flows in strongly coupled ABJM theory
+  2018-12-17  1812.06985       cites ['1202.2070']  The dual of non-extremal area: differential entropy in higher dimensions
+  2020-10-19  2010.09392       cites ['1202.2070']  Is entanglement a probe of confinement?
+  2022-06-30  2207.00072       cites ['1202.2070']  Extremal surfaces and thin-shell wormholes
+  2024-10-30  2410.22684       cites ['0905.2562']  Imaginary part of timelike entanglement entropy
+  2025-05-26  2505.20388       cites ['1202.2070']  Timelike entanglement entropy: A top-down approach
+  2025-09-04  2509.04181       cites ['hep-th/0605073']  Timelike entanglement entropy in higher curvature gravity
+  2025-09-29  2509.25360       cites ['hep-th/0605073']  An analytic approach for holographic entanglement entropy at (quantum) criticality
+  2026-03-08  2603.07635       cites ['0905.2562']  Thermal and chemical response from entanglement entropy
+  2026-08-17  2608.16517       cites ['hep-th/0605073']  Metric Reconstruction from Timelike Entanglement Entropy
+  2026-09-11  2609.13137       cites ['hep-th/0605073']  Mixed state entanglement measures for open string geometry
+
+arXiv [strip/dim/free/holo] abs:strip AND abs:entanglement AND abs:dimensions AND abs:free AND abs:holographic: total 2
+    1811.09500v2     Information flows in strongly coupled ABJM theory
+    1711.11509v3     Lifshitz entanglement entropy from holographic cMERA
+arXiv [c-function + dim red] abs:"c-function" AND abs:"dimensional reduction" AND abs:entanglement: total 1; control 0905.2562 MISSED
+    2605.18942v1     Covariant unification of holographic c-functions
+arXiv [continuous dimension EE] abs:"continuous dimension" AND abs:entanglement: total 1
+    2403.09165v2     The Algebraic Page Curve
+arXiv [strip + stress tensor + dimension] abs:strip AND abs:entanglement AND abs:"stress tensor" AND abs:dimension: total 2
+    1202.2068v2      Comments on Holographic Entanglement Entropy and RG Flows
+    2408.03670v2     Information theoretic measures for Lifshitz system
+arXiv [strip coefficient free fields] abs:strip AND abs:entanglement AND abs:"free fields" AND abs:dimensions: total 0
+arXiv [arbitrary dimensions strip] abs:"arbitrary dimensions" AND abs:entanglement AND abs:strip: total 4
+    1709.07016v2     Non-local observables at finite temperature in AdS/CFT
+    1812.06985v1     The dual of non-extremal area: differential entropy in higher dimensions
+    1202.2068v2      Comments on Holographic Entanglement Entropy and RG Flows
+    1711.11509v3     Lifshitz entanglement entropy from holographic cMERA
