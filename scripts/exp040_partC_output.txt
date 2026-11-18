@@ -1,0 +1,17 @@
+=== C1 control: same-law pairs ===
+  scalar-law: 12 pairs with monotone c-ratio, 0 cross (must be 0); 54 non-monotone pairs, 20 cross
+  Dirac-law: 12 pairs with monotone c-ratio, 0 cross (must be 0); 54 non-monotone pairs, 20 cross
+  hand-built non-monotone pair: crossings at [2.172]  (must be non-empty: FIRES)
+
+=== C2: scalar/Dirac on the Impl-2 tables ===
+  c_D/c_S at t = 1.0e-05: 1.1352;  t = 1: 1.9804;  t = 24.5: 50.5673
+  P1 monotone increasing on 112 nodes: NO, decreases at t = [6.8003, 7.843, 8.5481, 8.9129, 11.2036, 13.4131, 16.2688]
+  q(D) monotone decreasing on the grid: YES;  q(2.02) = 1.499, q(3) = 1.0979, q(6) = 1.0047
+  P2 r(3) = q(3) > 1: YES;  crossing of h q = 1 at D = [2.7516629819960947]
+  P3 d ln q/dD near 2 (finite differences, 2.02..2.10): [-0.46, -0.47, -0.47, -0.47, -0.48, -0.48, -0.48, -0.49]
+
+=== C3: 12 x 12 scalar-law / Dirac-law toy pairs ===
+  pairs crossing in (2, 4): 36 of 144 (108 do not); more than one crossing: 2
+  D_c: min 2.082, quartiles 2.247 / 2.715 / 3.497, max 4.000; spread (max-min) 1.918, IQR 1.250
+  fraction of crossings in (2, 3): 0.667
+  (the measured scalar/Dirac crossing is reported in Part B)

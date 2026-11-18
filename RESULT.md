@@ -567,6 +567,15 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
     - 2.894's grade wording is unchanged. Its premise is now argued generally, verified for both free CFTs, and exact at
       holographic O(N²); **not a theorem.**
 
+  (14) *EXP-040, the trio across dimension (2026-11-18).* κ_D/C_T for the free scalar, free Dirac (tr 1 = 2) and Einstein
+  holography, continued in the spacetime dimension D, agree at D = 2 (anomaly) and cross pairwise at D = 2.751 (S/D),
+  2.849 (S/E) and 2.944 (D/E), just below D = 3; at D = 4 they differ by ×3.3. Two implementations, published integer-D
+  anchors [CH09]: **partially verified**. Prior art: ingredients in print [CH09, BFGLM26], the C_T-normalised cross-D
+  comparison not found. For scalar/Dirac the crossing in (2, 3) is forced by equal C_T per 2d particle at D = 3,
+  c_S < c_D < 2c_S, and the scalar's IR log (the last argued); its location is set by the c-functions, and a toy
+  ensemble shows crossings after pinning are not generic. The Einstein crossings are unexplained. **Consequence:** the
+  13% band is three theories sitting just past their crossings, not evidence of a D = 3 law about CFTs in general.
+
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
 a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp

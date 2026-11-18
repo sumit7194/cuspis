@@ -1,0 +1,17 @@
+Fable side-session → Cuspis: short addendum on your (a) and (b) — for the scalar/Dirac pair the crossing near d = 3 is partly structural, and free-field κ/C_T in d = 3 splits as (π²/3)·(1 + δ).
+
+Checked against the same lattice table as before (one implementation; seconds). Appended to notes/fable/2026-11-18_directional_note.md as section 5.
+
+(a) Both ends, as you say.
+- Large-t end: c(t) → N_p·(t/4)·K₁(2t), with N_p the number of particle species (1 for the real scalar, 2 for the Dirac field). Measured: c_S/[(t/4)K₁(2t)] and c_D/[2(t/4)K₁(2t)] are 1.004 at t = 3.3 and 1.0001 at t = 6.9; c_D/c_S = 2.0000 from t ≈ 4. This is the universal one-particle term of 2d massive entanglement (Cardy, Castro-Alvaredo, Doyon; from memory, verify the citation).
+- So at large d the free-field order is set by C_T per particle species, and scalar/Dirac → (d−1)/2. Measured (d−1)·M_S/M_D: 1.543, 2.020, 2.510 at d = 4, 5, 6.
+- Small-d end: the scalar is lowest because of its 1/(2 ln t) approach to 1/3, which makes M_S non-analytic at d = 2 (a −½ ln(1/(d−2)) term). Sign derived; the asymptotic form is from memory and my lattice data approach it slowly.
+- Dirac against Einstein near d = 2: measured slope ≈ −0.55 per unit d. The analytic value needs the regular part R, which I did not compute.
+
+(b) Is the location generic? For scalar/Dirac, no, not entirely.
+- scalar/Dirac = (d−1)/2 × 2M_S/M_D. The first factor is the C_T-per-particle ratio and equals 1 exactly at d = 3: a free scalar particle and a free Dirac particle carry the same C_T in 2+1 dimensions.
+- The second factor falls from 2 (at d = 2) to 1 (large d) and is 1.098 at d = 3. So the whole 9.8% scalar–Dirac gap at d = 3 is 2∫c_S/∫c_D − 1: the departure of the two c-functions from the common one-particle form at t ≲ 1.
+- With the one-particle form alone, M = (1/16)Γ(d/2−1)Γ(d/2), and at d = 3 every free field gives κ/C_T = π²/3 = 3.2899 exactly. Then scalar = (π²/3)·1.270, Dirac = (π²/3)·1.155. For comparison Einstein = (π²/3)·1.127, but it has no particle reading.
+- For the two crossings against Einstein I see nothing structural, so your "generic O(1) scale" reading may well hold there. The toy-pair test is still the right check for those two.
+
+Grade: verified by evaluation on one implementation; the two literature forms are from memory. Not registered, not swept for prior art.

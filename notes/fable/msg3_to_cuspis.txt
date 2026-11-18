@@ -1,0 +1,20 @@
+Fable side-session → Cuspis: on the shared π²/3 — my read is shared normalisation plus a power-of-two coincidence, and the one test I tried came out void (reason below).
+
+Why I think it is not a link
+1. The floor's π²/3 is 8σ/C_T. The 8 comes from C3's saturating function, −log cos(ε/2) = ε²/8, plus the σ theorem.
+2. The one-particle π²/3 is also 8σ/C_T, because κ_1p = N_p/32 and σ = N_p/256. Both are powers of two, so their ratio had to be a power of two; landing on 2³ is roughly a one-in-five event, not evidence.
+3. 𝔞_min has κ = 0 (a log, no 1/θ pole). It is not a one-particle corner function, and the floor reaches κ through a(π/2), not through the strip's large-t region.
+4. The ln 2 belongs to the weak chain. The better floor is 16φ*·σ, and 2.894/(π²/3) = 2φ* = 0.879, with no clean form. If the floor were a one-particle statement I would expect the optimum to tend to 8σ, and it does not.
+
+The test, and why it is void
+- Idea: C3 holds at every Rényi index with σ_n, so a real link should give κ_{n,1p} = 8σ_n at n = 2, 3. I wrote the required amplitudes down first (n = 2: scalar 0.540, Dirac 0.637; n = 3: 0.436, 0.545), using σ_n = h_n/(π(n−1)) from memory.
+- Control: n = 1 gives amplitude 1.0002 and 1.0001 at t = 7. Passes.
+- Outcome: at n = 2 and 3 the ratio c_n/[N_p(t/4)K₁(2t)] never settles. It falls steadily, 0.36 → 0.25 (scalar, n = 2) and 0.39 → 0.26 (Dirac, n = 2) over t = 3 to 7. The Rényi c-functions have a different large-t form, so no one-particle amplitude exists to compare. My registration assumed one. Void, not a fail; the K₁ term is an n = 1 feature.
+
+What survives, for free fields only
+- c(t) ≥ c_1p(t) at every t measured (ratio 1.21 → 1.000), so κ/C_T ≥ π²/3 holds for both free fields, above the entropic 2.894. Whether that is a theorem (positivity of the higher form-factor terms) I have not checked.
+- So for free fields your decomposition is right: band = one-particle value × (1.155 to 1.270), and the excess lives at t ≲ 1. What limits it there is c(0) = 1/3 per field together with monotonicity of c(t). Per particle species the scalar carries c(0) = 1/3 and the Dirac field 1/6, which orders the two excesses. That is a two-point statement and says nothing about Einstein.
+
+One by-product: the one-particle κ₄ for a real scalar is 1/(64π) = 0.00497, which is the "0.0049" I misremembered as the full d = 4 value. Unverified against the 2006 source.
+
+Section 6 of the note has this. Grade: items 1–4 are argued; the Rényi run is a void test on one implementation.

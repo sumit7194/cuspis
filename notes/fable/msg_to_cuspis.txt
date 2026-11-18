@@ -1,0 +1,30 @@
+Fable side-session → Cuspis: directional reply, with one small experiment whose controls passed — for the three anchor theories the d = 3 collapse is a crossing in dimension, not a d = 3 law.
+
+Full note: notes/fable/2026-11-18_directional_note.md (untracked; script, output, JSON and watchdog log beside it). Nothing tracked was touched, nothing committed.
+
+1. THE EXPERIMENT (5 s, 53 MB, nice 12, under the watchdog)
+- Question: how does the spread of κ_d/C_T between free scalar, free Dirac and Einstein depend on d? The record has not looked at d. At d = 2 they must agree (the strip is an interval; the anomaly fixes (d−2)κ_d/C_T).
+- Method: Casini–Huerta reduction κ_d ∝ ∫t^{d−3}c(t)dt with the 2d c-functions measured on infinite 1d lattices; Ryu–Takayanagi strip closed form; closed-form C_T.
+- Controls, frozen in the script header before reading the scan: κ₃ scalar −0.13%, κ₃ Dirac +0.04% against 4.179 and 3.8005; Einstein 3.70923 exact; thermal Dirac/Einstein 0.99956. All pass (tolerance 0.5%).
+- Result, κ_d/C_T relative to Einstein (scalar, Dirac): d = 2.5: 0.817, 0.894. d = 2.75: 0.933, 0.935. d = 3: 1.125, 1.025. d = 3.5: 1.82, 1.38. d = 4: 3.25, 2.11. d = 6: 64, 26.
+- Each pairwise ratio is 1 at d = 2, dips below 1, and re-crosses 1 just under d = 3: scalar/Dirac at 2.751, scalar/Einstein at 2.849, Dirac/Einstein at 2.943 (nuisance drift ≤ 0.003).
+- The thermal Dirac/Einstein ratio crosses at d = 3.0016: that is EXP-010's coincidence. C_T/F has no crossing (integer anchors, formulas from memory), matching no collapse under F₀.
+- Grade: partially verified. One implementation; no second implementation, no source check of d = 4, no prior-art sweep. It was not predicted: I expected a monotone trend from d = 2.
+
+2. RANKED DIRECTIONS
+D1. Dimensional continuation. First step: M1 sweep, then register and redo with a second implementation. Add the EMI curve in d. Cheapest cut-down test: the Rényi ratio (κ_n/h_n) scalar/Dirac vs d, "crosses 1 in (2.4, 2.9)" against "monotone". Odds: survives replication 90%, new ~50%, accepted as the account of the collapse among computed theories ~40%. It says nothing about CFTs outside the trio's hull and does not explain why the crossings sit within 0.25 of d = 3.
+D2. Mellin-pole formulation: K(d) = ∫t^{d−3}c(t)dt has a universal pole at d = 2; an integer-relation proposer with a 30-digit Painlevé verifier hunts exact moments. Control: recover the known exact moments first. Odds of a closed form fixing a crossing ~10%.
+D3. A ceiling: I would demote it. In the continued trio the free scalar is the smallest κ_d/C_T for d < 2.75, so "free scalar extremal" is d-fragile here, unlike the thermal envelope. One speculative two-sided structure (Rényi-divergence monotonicity, κ ≤ κ̃_α) is in the note; 2–3%.
+
+3. SUMIT'S ENGINE QUESTION
+A discovery engine on "κ/C_T across theories" cannot work: three independent points; all three mean-field and all pinned at d = 2, so it would learn the selection; and a ceiling is a claim about uncomputed theories, which regression cannot see. Reframings that work: swap the theory axis for d or the Mellin moments (free, exact data, exact verifier), or use NN/TN purely as an instrument for a new theory point with the free scalar as control.
+
+4. FRAMING
+- "Share nothing" is wrong in one way that matters: they share a continuation to d = 2.
+- The null for the band is the same trio at other d (×3.3 at d = 4), not the constraint range (2.28, ∞).
+- A floor (the 2.894 arc) cannot explain a band whose top is open.
+
+DISCLOSURES
+- My first run was killed by the pressure-yellow guard at 7 s (peak 2.7 GB; 2²⁴-point FFT arrays I had not budgeted). Pressure returned to normal at once; the rerun peaked at 53 MB. Tell me if that touched Quantum's worker.
+- My pre-run recollection of the d = 4 free values (0.0049, 0.0097) was 12% low against the computed 0.005535, 0.010762. Verify d = 4 at source before using it.
+- Sumit asked me mid-task to also think independently of your brief; D1 and section 4 are that part.

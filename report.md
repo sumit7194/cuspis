@@ -4849,3 +4849,152 @@ from {scalar, Dirac} and a toy c(t) = N_p·¼tK₁(2t) + e₀·exp[−(t/τ)^p],
 
 **What C does not address.** Einstein has no c-function, so C1 and C2 say nothing about the two crossings with
 Einstein. Their location stays a measured number.
+
+### EXP-040 origin — the side-session exploration, folded in with attribution
+
+All of this was done on 2026-11-18 by the Fable side-session ("Cuspis-personal", Fable 5.2), asked by the then-main
+cuspis session for directional thinking. It ran *before* the Part A sweep (disclosed at the top of this entry). The
+full note and its files are kept as written in `notes/fable/` (committed with this entry, unedited).
+- **The exploratory d-scan** (`notes/fable/dim_spread.py`, now `scripts/exp040_impl1_dim_spread.py`). Its first
+  run was **stopped by the pressure-yellow guard at 7 s** (peak 2.2 + 0.5 GB, from 2²⁴-point FFT arrays not budgeted).
+  Pressure returned to normal at once; no Quantum job was running (checked by the main session afterwards). The rerun
+  with capped grids peaked at 53 MB. Its controls (κ₃ against 4.179 and 3.8005 at 0.5%; Einstein exact) passed. It
+  reported the crossings 2.751 / 2.849 / 2.943. Implementation 1 as committed here is that script with only its JSON
+  path changed.
+- **The one-particle decomposition** (note §5). c(t) → N_p·¼tK₁(2t); at D = 3 every free field's one-particle value
+  is κ/C_T = π²/3; scalar = 1.270·π²/3, Dirac = 1.155·π²/3. Checked by hand by the main session. *Correction from
+  Part A:* the large-t form and its large-d consequence are already in [CH09]; only the C_T statement at D = 3 (equal
+  C_T per particle, hence one common value π²/3) was not found in print.
+- **A proposed link, withdrawn** (note §6). The main session asked whether the unconditional floor (π²/3)·ln 2 and the
+  one-particle π²/3 are related. Both are 8σ/C_T, one from C3's saturating function, one from two powers of two; 𝔞_min
+  has no 1/θ pole; the better floor 2.894 = 0.879·π²/3 does not tend to 8σ. Read as shared normalisation; the main
+  session withdrew the suggestion. Grade: argued.
+- **A void test, kept** (note §6). Registered in the note before running: if the link were real, the Rényi n = 2, 3
+  one-particle amplitudes should be 0.540 / 0.637 (n = 2, scalar / Dirac) and 0.436 / 0.545 (n = 3). Control (n = 1):
+  1.0002 / 1.0001 at t = 7, pass. Outcome: c_n/[N_p·¼tK₁(2t)] does not converge at n = 2, 3 (it falls steadily,
+  0.36 → 0.25 over t = 3 to 7 for the scalar at n = 2), so the Rényi c-functions have a different large-t form and the
+  registered comparison had no amplitude to compare. **Void, not a fail**: the registration assumed a form that does
+  not exist at n ≠ 1.
+
+### EXP-040 Part B results: all controls PASS; the two implementations agree; the crossings are 2.751 / 2.849 / 2.944
+
+**Runs.** Impl-2: 216 s, peak 0.25 GB, nice 12, watchdog (1 GB cap), exit 0 (`scripts/exp040_impl2_output.txt`,
+`exp040_impl2.json`, `exp040_impl2.wd.log`). Impl-1 rerun from its committed copy: 5 s (`exp040_impl1_output.txt`).
+Comparison: `scripts/exp040_compare.py` → `exp040_compare_output.txt`.
+
+**Controls.**
+- **K1, CH09 Table (κ per degree of freedom, D = 3–6): Impl-2 PASS at all eight entries** (e.g. D = 4: boson 5.53516·10⁻³,
+  fermion 5.38129·10⁻³ against 5.54 and 5.38).
+  - **Impl-1, as run, FAILS K1 at one entry**: the D = 3 boson 3.96443·10⁻² sits 6·10⁻⁶ below the interval
+    [3.965, 3.975]·10⁻². Cause: its constant c below t = 2.5·10⁻³ under-counts the scalar's rise towards 1/3. With the
+    log-matched tail (the nuisance variant the side-session had already reported) it passes all eight
+    (`exp040_impl1_k1_output.txt`). The as-run failure is kept; it is 0.015% and moves no crossing by more than 0.0022.
+  - Also recorded: the d = 3 references 4.179 and 3.8005 used by the side-session's control are themselves only 3-digit
+    (κ = 0.0397, 0.0722 in [CHL09]/[CH09]); Impl-2 gives κ₃/C_T = 4.1743 (scalar) and 3.8019 (Dirac).
+- **K2 (small t, at source): PASS.** Dirac |c − (1/3 − t²log²t/3)| = 3.0·10⁻⁸, 2.2·10⁻⁶, 1.6·10⁻⁴ at t = 10⁻⁴, 10⁻³, 10⁻²
+  (tolerances 2.8·10⁻⁷, 2.1·10⁻⁵, 1.4·10⁻³). Scalar: 3.8·10⁻³ and 5.8·10⁻³ from 1/3 + 1/(2 log t) at 10⁻⁵, 10⁻⁴ (tolerance
+  1.5·10⁻², 2.4·10⁻²; this is a weak control, the O(log⁻²) remainder being large).
+- **K3 (large t, at source): PASS.** c/[N_p·¼tK₁(2t)] at t = 6: scalar 1.00029, Dirac 0.99971. The Wilson raw values
+  were 1.235, 1.113, 1.055 at L₀ = 160, 320, 640, so amendment A's 1/L₀ extrapolation was needed.
+- **K4 (formulas): PASS.** The Einstein κ_D/C_T equals BFGLM26's `kholo`/`CTholo` to ≤ 4·10⁻¹⁶ at six D, and
+  π²Γ(¾)⁴/6 at D = 3.
+
+**Replication criteria: PASS.**
+- κ_D/C_T, Impl-2 vs Impl-1: Dirac within 4.2·10⁻⁴ everywhere; scalar within 8.4·10⁻⁴ for D ≥ 2.75 and 4.5·10⁻³ at
+  D = 2.5 (tolerance 1%; the difference is Impl-1's constant tail).
+- Crossings, Impl-2 | Impl-1 (const tail) | Impl-1 (log tail) | Impl-2 with t_min = 10⁻⁴ | Impl-2 two-size 1/L₀²:
+
+  | pair | Impl-2 | Impl-1 const | Impl-1 log | t_min 10⁻⁴ | 2-size |
+  |---|---|---|---|---|---|
+  | scalar = Dirac | **2.7513** | 2.7535 | 2.7513 | 2.7512 | 2.7524 |
+  | scalar = Einstein | **2.8487** | 2.8493 | 2.8487 | 2.8486 | 2.8487 |
+  | Dirac = Einstein | **2.9435** | 2.9435 | 2.9435 | 2.9435 | 2.9422 |
+
+  Largest movement under any variant: 0.0022 (S/D, Impl-1's tail), against the 0.01 criterion.
+
+**Scan (Impl-2), κ_D/C_T.**
+
+| D | scalar | Dirac | Einstein | S/E | D/E | S/D |
+|---|---|---|---|---|---|---|
+| 2.50 | 9.1656 | 10.0295 | 11.2149 | 0.817 | 0.894 | 0.914 |
+| 2.75 | 5.8264 | 5.8293 | 6.2381 | 0.934 | 0.935 | 0.9995 |
+| **3.00** | **4.1743** | **3.8019** | **3.7092** | 1.125 | 1.025 | 1.098 |
+| 3.50 | 2.4925 | 1.8973 | 1.3710 | 1.818 | 1.384 | 1.314 |
+| 4.00 | 1.6175 | 1.0484 | 0.4971 | 3.254 | 2.109 | 1.543 |
+| 5.00 | 0.7281 | 0.3604 | 0.0562 | 12.96 | 6.42 | 2.020 |
+| 6.00 | 0.3269 | 0.1302 | 0.0051 | 64.3 | 25.6 | 2.512 |
+
+At integer D ≥ 3 the C_T-normalised order is scalar > Dirac > Einstein, the same order BFGLM26 report for k/F₀.
+
+**Grade.** The scan and the three crossing dimensions: **partially verified** — two implementations that share one
+physical route (dimensional reduction of 2d c-functions), with every numerical step different, plus published
+integer-D anchors from another group (CH09) and published formulas (BFGLM26). Not covered: a route that does not pass
+through the 2d c-functions (e.g. the Painlevé V system of cond-mat/0505563 for the Dirac field at integer Rényi index;
+no closed n = 1 form exists there).
+
+### EXP-040 Part C results: crossings after pinning are not generic; for scalar/Dirac the crossing in (2, 3) is forced, its location is not
+
+**Runs.** `scripts/exp040_partC.py` → `exp040_partC_output.txt` (seconds). Post-hoc diagnostics, labelled:
+`exp040_partC_diag.py` → `exp040_partC_diag_output.txt`.
+
+**C1 (the lemma's control): PASS, both directions.** Same-law toy pairs with a monotone c-ratio: 24 of 24 do **not**
+cross (12 scalar-law, 12 Dirac-law). Non-monotone pairs: 40 of 108 cross. The hand-built non-monotone pair fires
+(crossing at D = 2.172). Lemma grade: argued (standard monotone-likelihood-ratio reasoning, not looked up), and
+consistent with evaluation on 132 pairs, with a control that fires.
+
+**C2 (scalar/Dirac).**
+- **P1 FAILS as registered**, on noise. c_D/c_S is non-monotone at t ≥ 6.8 on the table and reaches 50 at t = 24.5. The
+  diagnostic shows why: beyond t ≈ 7 the lattice c is below the resolution of the entropy differences (c_S ≈ 10⁻⁷ at
+  t = 6.8, negative values from t = 11). The registration had no floor mask; the check fired on numbers that are not
+  measurements. **Post-failure restriction (labelled):** on t ≤ 6 (101 nodes) c_D/c_S rises monotonically from 1.135 to
+  2.000, its one-particle limit. The consequence P1 was meant to deliver holds on the full grid regardless: **q(D) is
+  monotone decreasing on D ∈ [2.02, 6]**, the noisy nodes carrying ≤ 10⁻⁵ of any moment.
+- **P2 HOLDS.** r_SD(3) = q(3) = 1.098 > 1, and the crossing of h·q = 1 sits at 2.7517 on the truncated moments
+  (2.7513 in Part B).
+- **P3 VOID as executed.** The predicted d ln q/dD → −∞ at D → 2⁺ comes from the scalar's 1/(2 log t) approach and
+  lives at t ~ e^{−1/(D−2)}; the table stops at t = 10⁻⁵, so it cannot represent the effect (q(2.02) = 1.50 instead of
+  ≈ 2 shows the truncation). The analytic statement — M_S ≃ (1/3)/(D−2) + ½ ln(D−2) + O(1), hence
+  d ln q/dD ≃ (3/2)ln(D−2) → −∞ — stays **argued**, not checked.
+
+**C3 (toy ensemble, as registered).**
+- 36 of 144 scalar-law/Dirac-law pairs cross in (2, 4); two cross more than once. Among those, D_c runs from 2.08 to
+  4.00, quartiles 2.25 / 2.72 / 3.50 (IQR 1.25); 67% of them fall in (2, 3).
+- *Against the registered reading:* crossings occur for a minority (25%), not "most", and their location spreads by far
+  more than 0.5. So the location is **not kinematic**: D_c ≈ 2.75 is a property of the actual 2d c-functions, not of
+  h(3) = 1.
+- *Post-hoc, labelled:* in this ensemble a pair crosses exactly when ln r starts negative at D → 2 (35 of 35 sign
+  changers have a negative slope at D = 2.02; 91 pairs stay above 1, 18 stay below). The toys are analytic at t = 0;
+  the real scalar is not.
+
+**Analysis: what this does to the band question.**
+- **Cuspis's (b), answered in the negative.** Pinning at D = 2 plus divergence at large D does not make a crossing at
+  D − 2 = O(1) generic. A crossing needs opposing tendencies (C1); in the registered toy ensemble only a quarter of
+  pinned pairs cross at all, at widely spread D.
+- **For scalar/Dirac the crossing in (2, 3) is forced by three structural facts**, each checked or argued separately:
+  1. equal C_T per 2d particle at D = 3, so r_SD(3) = q(3) exactly (exact);
+  2. c_S < c_D < 2c_S at all t (measured on t ≤ 6; the endpoints 1 and 2 at source), so 1 < q < 2 and r_SD(3) > 1;
+  3. the scalar's 1/(2 log t) approach to 1/3, which makes r_SD dip below 1 just above D = 2 (argued; P3 void).
+  Given these, the scalar/Dirac ratio at D = 3 must lie in (1, 2) and the crossing must lie in (2, 3). That the ratio is
+  1.098 rather than nearer 2, and the crossing 2.75 rather than 2.2, is set by how much of ∫c dt is one-particle —
+  dynamics, not kinematics.
+- **The two crossings with Einstein have no such account.** Einstein has no c-function; their locations (2.849, 2.944)
+  remain measured numbers.
+- **Net effect on the problem.** The three theories that make up "every computed theory" agree at D = 2 by the
+  anomaly, and at D = 3 they sit just past their three pairwise crossings. For scalar/Dirac that position is
+  structurally forced into (2, 3); for the Einstein pairs it is a coincidence until explained. The band is therefore
+  not evidence of a D = 3 law, and gives no information about CFTs outside this trio.
+
+**Grades.** C1 control: verified by evaluation (it can and does fire). The lemma: argued. P1: fails as registered on
+noise; holds on t ≤ 6 (post-failure restriction). P2: verified on the table. P3: void as executed; argued. C3: a
+descriptive result about a stated toy ensemble, not about CFTs. The scalar/Dirac "forced into (2, 3)" statement:
+partially verified (facts 1 and 2 checked, fact 3 argued).
+
+**Next steps (for Sumit).**
+- Handover item 4: an interacting CFT relative to the crossings (Ising / O(N)). Expensive; no continuous-D route for
+  it is known here.
+- Cheaper and closer: the EMI model as a fourth curve. It is pinned to the free fermion at D = 2 (BFGLM26, quoting
+  Casini–Huerta 2005), and its k follows from the EMI formula in any d (BFGLM26's general-d I_EMI). Its C_T in general
+  d has not been read at source (unverified that a closed form exists). Whether it crosses the trio near D = 3 is a
+  prediction that could fail.
+- P3 can be made testable by evaluating the scalar c-function down to t ~ 10⁻³⁰ with the asymptotic form as a control
+  (the lattice cannot; a continuum route would).

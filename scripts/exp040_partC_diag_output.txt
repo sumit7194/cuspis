@@ -1,0 +1,19 @@
+(i) large t: c / one-particle form, and the size-to-size spread of the raw c (a noise proxy)
+  t=  4.683  c_S/(tK1/4) =     1.0010   c_D/(tK1/2) =     1.0010   c_S = 4.27e-05
+  t=  5.680  c_S/(tK1/4) =     1.0004   c_D/(tK1/2) =     1.0006   c_S = 6.35e-06
+  t=  6.800  c_S/(tK1/4) =     1.0000   c_D/(tK1/2) =     1.0018   c_S = 7.36e-07
+  t=  7.843  c_S/(tK1/4) =     1.0066   c_D/(tK1/2) =     0.9899   c_S = 9.85e-08
+  t=  8.548  c_S/(tK1/4) =     1.0204   c_D/(tK1/2) =     0.9899   c_S = 2.54e-08
+  t=  8.913  c_S/(tK1/4) =     1.0121   c_D/(tK1/2) =     0.8678   c_S = 1.24e-08
+  t=  9.714  c_S/(tK1/4) =     0.9933   c_D/(tK1/2) =     0.7442   c_S = 2.55e-09
+  t= 11.204  c_S/(tK1/4) =    -0.0852   c_D/(tK1/2) =    -3.6988   c_S = -1.19e-11
+  t= 13.413  c_S/(tK1/4) =   -45.5685   c_D/(tK1/2) = -1793.4630   c_S = -8.38e-11
+  t= 16.269  c_S/(tK1/4) = -4984.6016   c_D/(tK1/2) = -88175.2430   c_S = -3.33e-11
+  t= 19.477  c_S/(tK1/4) = 43768880.5521   c_D/(tK1/2) = 5462439.2188   c_S = 5.22e-10
+  t= 22.464  c_S/(tK1/4) = -13777594430.6149   c_D/(tK1/2) = -55497152264.6221   c_S = -4.49e-10
+  t= 24.483  c_S/(tK1/4) = -52629089331.7676   c_D/(tK1/2) = -1330655506620.7629   c_S = -3.15e-11
+(ii) P1 restricted to t <= 6 (101 nodes): monotone increasing YES; range 1.1352 -> 2.0004; max 2.0004 (2 is the one-particle limit)
+(iii) C3 toy pairs: where is r relative to 1?
+  r > 1 on all of (2.02, 4): 91;  r < 1 on all: 18;  changes sign: 35
+  r(3) over the 144 pairs: min 0.335, median 1.587, max 13.235
+  initial slope d ln r/dD at D = 2.02: negative in 35 of 144 pairs

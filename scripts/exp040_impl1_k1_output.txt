@@ -1,0 +1,10 @@
+[const scalar tail] D=3: boson 3.964425e-02 vs 3.97e-02 FAIL; fermion/Majorana 3.611331e-02 vs 3.61e-02 PASS
+[const scalar tail] D=4: boson 5.535024e-03 vs 5.54e-03 PASS; fermion/Majorana 5.381176e-03 vs 5.38e-03 PASS
+[const scalar tail] D=5: boson 1.313774e-03 vs 1.31e-03 PASS; fermion/Majorana 1.300562e-03 vs 1.30e-03 PASS
+[const scalar tail] D=6: boson 4.079839e-04 vs 4.08e-04 PASS; fermion/Majorana 4.063327e-04 vs 4.06e-04 PASS
+  K1 for Impl-1 with const tail: FAIL
+[log scalar tail] D=3: boson 3.965057e-02 vs 3.97e-02 PASS; fermion/Majorana 3.611331e-02 vs 3.61e-02 PASS
+[log scalar tail] D=4: boson 5.535025e-03 vs 5.54e-03 PASS; fermion/Majorana 5.381176e-03 vs 5.38e-03 PASS
+[log scalar tail] D=5: boson 1.313774e-03 vs 1.31e-03 PASS; fermion/Majorana 1.300562e-03 vs 1.30e-03 PASS
+[log scalar tail] D=6: boson 4.079839e-04 vs 4.08e-04 PASS; fermion/Majorana 4.063327e-04 vs 4.06e-04 PASS
+  K1 for Impl-1 with log tail: PASS

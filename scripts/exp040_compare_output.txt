@@ -1,0 +1,13 @@
+Replication: kappa_D/C_T, Impl-2 vs Impl-1 (as run: constant scalar tail)
+  D=2.5: scalar 9.16617 vs 9.12520 (+4.49e-03);  Dirac 10.02998 vs 10.02940 (+5.76e-05)  tol 0.01  PASS
+  D=2.75: scalar 5.82647 vs 5.82157 (+8.43e-04);  Dirac 5.82928 vs 5.82923 (+7.19e-06)  tol 0.003  PASS
+  D=3.0: scalar 4.17426 vs 4.17358 (+1.62e-04);  Dirac 3.80187 vs 3.80186 (+2.38e-06)  tol 0.003  PASS
+  D=3.25: scalar 3.17294 vs 3.17283 (+3.43e-05);  Dirac 2.63634 vs 2.63633 (+3.66e-06)  tol 0.003  PASS
+  D=3.5: scalar 2.49250 vs 2.49246 (+1.36e-05);  Dirac 1.89726 vs 1.89725 (+7.15e-06)  tol 0.003  PASS
+  D=4.0: scalar 1.61752 vs 1.61749 (+2.47e-05);  Dirac 1.04837 vs 1.04835 (+2.06e-05)  tol 0.003  PASS
+  D=5.0: scalar 0.72811 vs 0.72803 (+1.12e-04);  Dirac 0.36037 vs 0.36035 (+5.30e-05)  tol 0.003  PASS
+  D=6.0: scalar 0.32693 vs 0.32686 (+2.21e-04);  Dirac 0.13016 vs 0.13021 (-4.15e-04)  tol 0.003  PASS
+  value criterion: PASS
+  crossing S/D: Impl-2 2.7513 | Impl-1 const 2.7535, log 2.7513 | Impl-2 t_min=1e-4 2.7512  -> |Impl-2 - Impl-1| = 2.2e-03 PASS
+  crossing S/E: Impl-2 2.8487 | Impl-1 const 2.8493, log 2.8487 | Impl-2 t_min=1e-4 2.8486  -> |Impl-2 - Impl-1| = 6.0e-04 PASS
+  crossing D/E: Impl-2 2.9435 | Impl-1 const 2.9435, log 2.9435 | Impl-2 t_min=1e-4 2.9435  -> |Impl-2 - Impl-1| = 6.2e-06 PASS

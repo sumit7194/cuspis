@@ -333,20 +333,29 @@ conclusion never depended on it; the number should not be carried onward.**
 ## EXP-039 follow-ups (2026-11-18)
 - [ ] Input-rounding floor: computing the X, P rows in mp (not double) would remove the ~2e-16 floor in I_s. Not needed at
       η ≥ 1e-5 (floor/i_G ≤ 4.3e-4 at n_p = 32), but it would be needed for Δ = 0.9 at η ≤ 1e-6.
-- [ ] Prereg wording: "input rounding does not matter" was only approximately true (EXP-039 run-2 diagnostic). Check
-      whether the same argument is used anywhere else in report.md.
+- [x] Prereg wording: "input rounding does not matter" was only approximately true (EXP-039 run-2 diagnostic). Checked
+      2026-11-18 (Cuspis-personal): the argument appears only in EXP-039's prereg (report.md, "Why rounding the inputs does
+      not matter") and its own correction. EXP-034–038 make no insensitivity claim; EXP-038 already records its double
+      floor as noise. Nothing else to correct.
 
 ## HANDOVER 2026-11-18: work continues in the session "Cuspis-personal" (Sumit's other account, Opus 5.5)
 This session (Cuspis) stops here. Plan agreed with Sumit, to be done in Cuspis-personal:
-- [ ] 1. Prior-art sweep (M1): has κ_d/C_T (strip coefficient) been compared across dimensions d for free scalar, free
+- [x] 1. Prior-art sweep (M1) — DONE, EXP-040 Part A: outcome (B).: has κ_d/C_T (strip coefficient) been compared across dimensions d for free scalar, free
       Dirac and Einstein holography? If known, cite it and move on.
-- [ ] 2. Make the d-scan solid: a second implementation (different method) of notes/fable/dim_spread.py's κ_d/C_T scan, the
+- [x] 2. Make the d-scan solid — DONE, EXP-040 Part B: crossings 2.7513 / 2.8487 / 2.9435, partially verified.: a second implementation (different method) of notes/fable/dim_spread.py's κ_d/C_T scan, the
       d = 4 values checked against source, then register it as an EXP in report.md (pre-registration first).
-- [ ] 3. Generic-crossing test: do toy pairs pinned at d = 2 with different c(t) shapes cross at d − 2 = O(1)? If yes,
+- [x] 3. Generic-crossing test — DONE, EXP-040 Part C: not generic; S/D crossing in (2, 3) forced, location dynamical.: do toy pairs pinned at d = 2 with different c(t) shapes cross at d − 2 = O(1)? If yes,
       the band of the three known theories needs no further explanation.
 - [ ] 4. Decide afterwards (Sumit): interacting theories (Ising / O(N)) on or near the crossing. Expensive; lattice or
       tensor-network numerics.
-- [ ] Side item (EXP-039 follow-up above): check whether "input rounding does not matter" is used elsewhere in report.md.
-- notes/fable/ (sections 1–6, untracked) holds the d-scan, the π²/3 one-particle decomposition (verified by hand
+- [x] Side item (EXP-039 follow-up above): done 2026-11-18, not used elsewhere (see the EXP-039 follow-ups).
+- notes/fable/ (sections 1–6; committed with EXP-040, folded into report.md with attribution) holds the d-scan, the π²/3 one-particle decomposition (verified by hand
   in Cuspis) and the withdrawn floor/π²/3 link. Fold it into report.md with attribution when registering step 2.
 - scripts/exp034a.pid is a stale untracked leftover; safe to delete after a look.
+
+## EXP-040 follow-ups (2026-11-18)
+- [ ] Sumit decides: interacting CFT relative to the crossings (handover item 4), or the cheaper EMI fourth curve first
+      (EMI pinned to the free fermion at D = 2; its general-d C_T must be read at source before registering).
+- [ ] P3 (the scalar's log making r_SD dip at D → 2⁺) is argued only; a continuum evaluation of c_S to t ~ 1e-30 would
+      test it.
+- [ ] The two Einstein crossings (2.849, 2.944) have no structural account.
