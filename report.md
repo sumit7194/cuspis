@@ -4614,6 +4614,10 @@ the bridge before launch.
   - *It can still fire:* any mp error ≥ 10⁻⁶ relative in the integrand where i_G lives (s ≲ 5) trips it. The full-sum
     V3 fired on a 2·10⁻⁶ effect, so the sensitivity is real.
   - The full-sum V3 number is still printed, for information only.
+  - **Grade of V3′: post-failure amendment (diagnosed), not a blind gate.** The bridge asked for this grade on review,
+    and it is correct. V3′ was defined after V3 failed. Its pass was foreseeable, because the per-node diagnostic had
+    already computed those nodes and shown agreement at ≤ 2·10⁻¹⁴ per node. Its run-3 pass (7.4·10⁻¹⁰) therefore adds
+    nothing beyond what the diagnostic already showed. The run-2 V3 FAIL stays on record beside it.
 - **Floor diagnostic (not a gate).** For every run the per-node values are saved, and floor = Σ_{s>20} (w·jac/π)|I_s| is
   logged against i_G. If floor/i_G exceeds 0.2% (a tenth of the 2% n_p gate) at η = 10⁻⁵, the Δ = 0.9 verdict will be
   labelled "floor-limited" and the effect on p bounded explicitly. The effect on p is |Δp| ≤ (floor/i_G)/ln 10.
