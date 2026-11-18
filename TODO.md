@@ -359,3 +359,6 @@ This session (Cuspis) stops here. Plan agreed with Sumit, to be done in Cuspis-p
 - [ ] P3 (the scalar's log making r_SD dip at D → 2⁺) is argued only; a continuum evaluation of c_S to t ~ 1e-30 would
       test it.
 - [ ] The two Einstein crossings (2.849, 2.944) have no structural account.
+- [ ] Bridge offer (2026-11-18, on receipt of EXP-040, logged 978b97c): a separate check by a route that avoids the reduction (unverified until run),
+      direct D = 3 and D = 4 lattice values without the dimensional reduction. Not requested yet; Sumit's call. The Bridge
+      agreed the grade "partially verified". An Ising/O(N) run would need a slot request with measured cost first.
