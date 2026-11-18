@@ -4803,3 +4803,49 @@ plus published integer-D anchors). Fail on K1–K4: no verdict; diagnose. Pass o
 the side-session numbers are withdrawn until the discrepancy is found.
 
 **Resources.** Seconds to a few minutes, 1 core, < 500 MB, nice 12, under the watchdog with a 1 GB cap.
+
+**Part B amendment A (pre-run: written before any Implementation-2 output exists).**
+- *Why.* The Wilson Dirac dispersion is E² = m² + (1 + m)k² + O(k⁴): the velocity carries an O(m·a) = O(t/L₀) lattice
+  error, so the registered 1/L₀² extrapolation would be wrong for it. Seen while writing the code, not in data.
+- *Change.* Three sizes L₀ = 160, 320, 640 for both fields. Scalar (O(a⁴) dispersion): c(L₀) = c∞ + b/L₀² + b′/L₀⁴.
+  Dirac (Wilson): c(L₀) = c∞ + b/L₀ + b′/L₀². The registered two-size 1/L₀² form (320, 640) is printed as a nuisance
+  variant for both.
+- Everything else (controls K1–K4, tolerances, replication criteria) is unchanged.
+
+### EXP-040 Part C — pre-registration: is a crossing near D = 3 generic for theories pinned at D = 2?
+
+**Written before Part B's scan output was read** (Impl-2's controls K2–K4 had printed; no κ_D/C_T or crossing from it
+had). **Question (Cuspis's (b), handover item 3).** If any two theories pinned at D = 2 and diverging at large D cross
+at D − 2 = O(1), the trio's 13% band at D = 3 needs no explanation beyond "D = 3 is one unit from D = 2". Is that so?
+
+**Lemma C1 (argued here; a standard monotone-likelihood-ratio fact, proof below; not looked up).** Write
+M_X(D) = ∫₀^∞ e^{(D−2)u} c_X(e^u) du. For positive c_X, c_Y,
+d/dD ln(M_X/M_Y) = ⟨u⟩_X − ⟨u⟩_Y, the means of u under the densities ∝ e^{(D−2)u}c(e^u). If c_X/c_Y is increasing in
+t, the X density has an increasing likelihood ratio against Y, so ⟨u⟩_X ≥ ⟨u⟩_Y (stochastic dominance) and
+M_X/M_Y is increasing in D for every D. More generally, the number of sign changes of M_X − λM_Y in D is at most that
+of c_X − λc_Y in t (variation diminishing of the Laplace kernel).
+- *Consequence.* Two theories with the **same** C_T law h(D) and a monotone c-ratio never return to equality after
+  D = 2: no crossing. A crossing needs either a non-monotone c-ratio or a kinematic factor working against the moment
+  ratio. **So "pinned at D = 2, diverging at large D ⇒ crossing at O(1)" is not generic**; it is a statement about
+  opposing tendencies, which must be named for each pair.
+
+**C2 (scalar/Dirac, decomposition).** r_SD(D) = h(D)·q(D) with h = (D − 1)/2 exact (C_T per 2d particle: equal at
+D = 3) and q = 2M_S/M_D.
+- *Predictions, registered:* (P1) c_D/c_S is increasing in t on the Impl-2 table, from 1 (t → 0) towards 2 (t → ∞);
+  hence by C1 q is decreasing in D, from 2 at D → 2 to 1 at large D. (P2) Therefore r_SD(3) = q(3) > 1, and the S/D
+  crossing lies in (2, 3) whenever r_SD < 1 anywhere in (2, 3). (P3) The scalar's 1/(2 log t) approach makes
+  d ln q/dD → −∞ at D → 2⁺, so r_SD < 1 just above D = 2: the crossing in (2, 3) is forced, not measured.
+- *Fails if:* c_D/c_S is non-monotone on the table, or q is non-monotone on the scan.
+
+**C3 (the toy test Cuspis asked for; descriptive, its ensemble stated in advance).** Toy free-like theories: a C_T law
+from {scalar, Dirac} and a toy c(t) = N_p·¼tK₁(2t) + e₀·exp[−(t/τ)^p], with e₀ fixed so c(0) = 1/3 per field
+(e₀ = 5/24 scalar-law, 1/12 Dirac-law), τ ∈ {0.1, 0.3, 1, 3}, p ∈ {0.5, 1, 2}. All 12 × 12 scalar-law/Dirac-law pairs.
+- *Reported:* the fraction of pairs that cross in (2, 4), and the spread of D_c among those.
+- *Pre-registered reading:* if crossings occur for most pairs and D_c spreads over more than 0.5 in D, then the trio's
+  S/D location (≈ 2.75) is set by the actual c-functions, not by kinematics; if D_c clusters within 0.2 of one
+  value, the location is kinematic (h = 1 at D = 3).
+- *Control that must fire (C1 is checkable):* the 12 × 12 same-law pairs (scalar-law vs scalar-law, Dirac vs Dirac)
+  must show **no** crossing whenever their c-ratio is monotone; a hand-built non-monotone pair must show one.
+
+**What C does not address.** Einstein has no c-function, so C1 and C2 say nothing about the two crossings with
+Einstein. Their location stays a measured number.
