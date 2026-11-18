@@ -34,13 +34,19 @@ def mi_mp(al, s, n_p, M, dps=35):
         u = np.concatenate([a, a + sep]); out.append(2 * s1 - S_mp(blk(x, u, M), blk(p, u, M), dps))
     return [float(v) for v in out]
 
-def iG_mp(al, eta, n_p, nodes, dps=35):
+def iG_mp(al, eta, n_p, nodes, dps=35, per_node=None):
     M, ee = e35.geometry(eta, n_p)
     t, w = leggauss(nodes); t = 0.5 * (t + 1); w = 0.5 * w; s = t / (1 - t); jac = 1 / (1 - t) ** 2
     acc = np.zeros(2)
     for si, wi, ji in zip(s, w, jac):
-        acc += wi * ji * np.array(mi_mp(al, si, n_p, M, dps))
+        v = np.array(mi_mp(al, si, n_p, M, dps)); acc += wi * ji * v
+        if per_node is not None: per_node.append([float(si), float(wi * ji / np.pi), float(v[0]), float(v[1])])
     return acc / np.pi, M
+
+def floor_contrib(nodes):
+    """Addendum A (registered after run 2): weighted |I_s| over nodes with s > 20, where the true I_s is below the
+    input-rounding floor (~1e-16); an upper estimate of the floor's contribution to i_G.  Diagnostic, not a gate."""
+    return [sum(c * abs(r[k]) for s, c, *r in nodes if s > 20) for k in (0, 1)]
 
 def validate():
     # V1: per-s agreement with double precision where double is reliable (I_s >= 1e-6)
@@ -62,10 +68,22 @@ def validate():
         if r >= 1e-8: sys.exit(3)
     # V3: reproduce an EXP-038 double-precision i_G where double was reliable (Delta = 0.6, eta = 1e-4, n_p = 32)
     ref = json.load(open(os.path.join(D0, "exp038_partC.json")))["a0.8_e0.0001_np32"]
-    v, _ = iG_mp(0.8, 1e-4, 32, 96)
+    nodes = []; v, M = iG_mp(0.8, 1e-4, 32, 96, per_node=nodes)
     r = max(abs(v[0] / ref["i90"] - 1), abs(v[1] / ref["i180"] - 1))
-    log(f"V3 Delta=0.6 eta=1e-4 n_p=32: mp {v}  EXP-038 double {[ref['i90'], ref['i180']]}  max rel {r:.1e} [{'PASS' if r < 1e-6 else 'FAIL'}]")
-    if r >= 1e-6: sys.exit(4)
+    log(f"V3 (as registered; informational after addendum A) Delta=0.6 eta=1e-4 n_p=32: mp {v}  EXP-038 double "
+        f"{[ref['i90'], ref['i180']]}  max rel {r:.1e}  (run 2: FAIL at 2.0e-6, traced to double noise at s = 6440)")
+    # V3' (addendum A): same reference pipeline (EXP-038 double, recomputed node by node) and the same 1e-6 tolerance,
+    # summed only over the nodes where the double I_s is above its noise floor (|I_s| >= 1e-10), for mp and double alike.
+    rr = []
+    for k in (0, 1):
+        dsum = msum = 0.0
+        for s, c, m90, m180 in nodes:
+            x, p = e35.rows(0.8, s, M); d = e35.mi_both(x, p, 32, M)[k]
+            if abs(d) >= 1e-10: dsum += c * d; msum += c * (m90, m180)[k]
+        rr.append(abs(msum / dsum - 1))
+    log(f"V3' Delta=0.6 eta=1e-4 n_p=32, nodes with |I_s double| >= 1e-10: max rel {max(rr):.1e} [{'PASS' if max(rr) < 1e-6 else 'FAIL'}]"
+        f";  floor contribution (s > 20) {floor_contrib(nodes)}")
+    if max(rr) >= 1e-6: sys.exit(4)
 
 def main():
     log("EXP-039 start"); validate()
@@ -74,9 +92,10 @@ def main():
     for eta, n_p, q in jobs:
         k = f"e{eta}_np{n_p}_q{q}"
         if k in res: continue
-        t0 = time.time(); v, M = iG_mp(0.2, eta, n_p, q)
-        res[k] = {"i90": v[0], "i180": v[1], "M": M}; json.dump(res, open(OUT, "w"), indent=0)
-        log(f"  {k}: M={M} i_G={v} ({time.time() - t0:.0f} s)")
+        t0 = time.time(); nodes = []; v, M = iG_mp(0.2, eta, n_p, q, per_node=nodes)
+        fc = floor_contrib(nodes)
+        res[k] = {"i90": v[0], "i180": v[1], "M": M, "floor": fc, "nodes": nodes}; json.dump(res, open(OUT, "w"), indent=0)
+        log(f"  {k}: M={M} i_G={v}  floor(s>20)/i_G = {[f'{fc[j] / v[j]:.1e}' for j in (0, 1)]} ({time.time() - t0:.0f} s)")
     analyse(res)
 
 def analyse(res):

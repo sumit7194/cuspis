@@ -4581,3 +4581,41 @@ the bridge before launch.
   ≈ 1.5 GB, and EXP-036 peaked at 2.0 GB on the same sizes. The bridge has been told.
 - *Plan:* relaunch only when the pressure level is back to normal, and with the bridge's OK on the corrected memory
   figure. Logs: `exp039_output_run1_pressure.txt`, `exp039_run1_pressure.wd.log`.
+
+**EXP-039 run 2: V3 FAIL (kept as a control), diagnosed; the fault is in the reference.**
+- *Launch:* 13:02:46 IST, after the bridge's morning window and on Sumit's prompt in chat. Pressure level 1, the Quantum
+  job finished, 2.5 GB cap, nice 20 (the shell's base plus 15). Peak 1.31 GB; wall time 153 s; exit 4.
+- *Gates:* **V1 PASS** (≤ 3.3·10⁻⁸) and **V2 PASS** (dps 35 = dps 50 to every printed digit). **V3 FAIL:** mp i_G =
+  [1.31299988e-4, 7.33701589e-5] against EXP-038 double [1.31299727e-4, 7.33700471e-5], a max relative difference of
+  2.0·10⁻⁶ against a tolerance of 10⁻⁶. No Δ = 0.9 number was computed.
+- *Diagnostic* (`scripts/exp039_v3_diag.py`, output `exp039_v3diag_output.txt`): per-node I_s for double, dps 35 and
+  dps 50 on the same 96 nodes, with the weighted contributions.
+  - Nodes 0–71 (s ≤ 5.5, double I_s ≥ 8·10⁻¹²): double and mp contributions agree to ≤ 2·10⁻¹⁴ absolute per node.
+  - Nodes 72–95 (s ≥ 6): the double I_s is noise of ±10⁻¹³, while mp gives |I_s| ≲ 2·10⁻¹⁶. The quadrature weight grows
+    to 5.3·10³ at node 95 (s = 6440). There the double I_s = −4.8·10⁻¹⁴ contributes −2.55·10⁻¹⁰ to i_G at 90°
+    (−1.04·10⁻¹⁰ at 180°).
+  - The sum of the per-node differences reproduces the discrepancy exactly: double/mp − 1 = −1.99·10⁻⁶ (90°) and
+    −1.52·10⁻⁶ (180°). dps 50 equals dps 35 at every node checked.
+  - **Conclusion:** the EXP-038 double reference is itself wrong by 2·10⁻⁶, all from noise at the largest-s nodes.
+    V3 as registered compared against a reference whose own error exceeds the tolerance, so a correct mp code could
+    not pass it. This is the "check was wrong" case: the routine is right and the check is mis-posed.
+  - *Side effect for EXP-038:* the Δ = 0.6 double i_G carries a ~2·10⁻⁶ error. That is irrelevant to its exponent
+    verdict (p 0.44 vs 0.40, tolerance 0.15).
+- *A second finding the diagnostic exposed.* At s ≳ 9 even the 35-digit I_s sits on a floor of about ±2·10⁻¹⁶ of
+  random sign, the same at dps 50. This comes from the double rounding of the inputs. The prereg's claim that input
+  rounding "does not matter" is therefore only approximately true. Weighted, the floor contributes ≈ 1.4·10⁻¹³ to i_G
+  here, or 10⁻⁹ relative at Δ = 0.6, η = 10⁻⁴. At Δ = 0.9, η = 10⁻⁵ it could be ~0.1% if i_G ~ 10⁻¹⁰. Graded
+  *unverified for Δ = 0.9* until measured; see addendum A.
+
+**EXP-039 addendum A (registered before run 3; thresholds and criterion unchanged).**
+- **V3′ replaces V3 as the gate.** Same reference pipeline: the EXP-038 double integrand, recomputed node by node on the
+  same 96 nodes. Same tolerance, 10⁻⁶. Mp and double are each summed only over the nodes where the double |I_s| ≥ 10⁻¹⁰,
+  i.e. above double's noise floor; the mask is the same for both.
+  - *It can still fire:* any mp error ≥ 10⁻⁶ relative in the integrand where i_G lives (s ≲ 5) trips it. The full-sum
+    V3 fired on a 2·10⁻⁶ effect, so the sensitivity is real.
+  - The full-sum V3 number is still printed, for information only.
+- **Floor diagnostic (not a gate).** For every run the per-node values are saved, and floor = Σ_{s>20} (w·jac/π)|I_s| is
+  logged against i_G. If floor/i_G exceeds 0.2% (a tenth of the 2% n_p gate) at η = 10⁻⁵, the Δ = 0.9 verdict will be
+  labelled "floor-limited" and the effect on p bounded explicitly. The effect on p is |Δp| ≤ (floor/i_G)/ln 10.
+- Nothing else changes: state, nodes, η plan, n_p pairs, run gates and the criterion |p(10⁻⁴ → 10⁻⁵) − 1.6| ≤ 0.10.
+- Logs from run 2 are kept: `exp039_output_run2_v3fail.txt`, `exp039_run2_v3fail.wd.log`.
