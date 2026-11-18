@@ -5342,3 +5342,7 @@ C·(t_max/t)^σ with C growing at most polynomially in σ. Test at t = 0.62, 0.8
 10⁻⁸ in absolute value; and inside the edge, at t = 0.3 and 0.5, the four contours agree to 10⁻⁷. Also report
 sup_y |M(2+σ+iy)|·t_max^{−σ}·(1+|y|)^{5/2} for those σ. *Fails if* the contours disagree or the outside values do not shrink.
 This is still not a Paley–Wiener proof; it is the numerical form of its hypothesis.
+- *A3 pre-run amendment (written before any A3 output; Opus 5.5).* Inside the edge the integrand on Re D = 2 + σ is of
+  size (t_max/t)^σ times the answer; at t = 0.3, σ = 80 that is ~5·10²², beyond double precision. The inside-edge
+  agreement test is restricted to (t, σ) with (t_max/t)^σ ≤ 10⁶: t = 0.5 on σ = 0.5, 5, 20, 80; t = 0.3 on σ = 0.5, 5, 20.
+  The outside-edge test (t = 0.62, 0.8, all four σ) is unchanged.
