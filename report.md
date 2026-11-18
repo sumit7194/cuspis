@@ -5182,3 +5182,61 @@ it can test EXP-040/041's clustering under the rule adopted in EXP-041?
   multi-session, low odds.
 - **(D) A von Neumann κ for 3d Ising numerically.** One point at D = 3, the original band question. Rényi-2 alone took
   ~200 CPU-years [KHSM19]; beyond this machine without a new method (fuzzy-sphere lune, BACKLOG #4).
+
+## EXP-043  Mass profiles: the Mellin dual in dimension of each curve, and why the curves cross once — pre-registration (Sumit, 2026-11-18, in chat: "think everything through and pick the next route … and start on it"; session back on Fable 5.2)
+
+**Why this route, and not the interacting one.** EXP-042 Part A: no von Neumann κ exists for any interacting CFT; routes
+B (1/N) and C (ε-expansion) are multi-session derivations with low odds, D is out of reach. Meanwhile EXP-040 left one
+hole in its own result: the two crossings with Einstein (and now EMI's) are measured numbers with no account. This entry
+attacks that hole. The interacting route stays open in TODO.
+
+**Prior art (M1; two web queries, summaries only).** Dimensional reduction κ_D ∝ ∫t^{D−3}c(t)dt is in [CH09] and in
+Ryu–Takayanagi hep-th/0605073. Holographic strip c-functions exist as functions of the strip width along RG flows
+(e.g. Myers–Singh arXiv:1202.2068; not read). **Not found:** treating D as the Mellin variable and inverting it for a
+holographic theory. The zero-counting theorem used below is classical total positivity (variation-diminishing property;
+Karlin, *Total Positivity*, Ch. V, as cited in search summaries; not read at source). Grade of the sweep: unverified
+beyond those summaries.
+
+**Objects (M2).** D > 2 real is the spacetime dimension; P(D) as in EXP-040. Fix one reference C_T law, the Dirac law
+C_ref(D) = D/Ω_{D−1}² (one 2d Dirac field per unit; c(0) = 1/3). For a curve X define
+M_X(D) ≡ (κ_D/C_T)_X · C_ref(D)/P(D), and its **mass profile** e_X(t), t > 0, by M_X(D) = ∫₀^∞ t^{D−3} e_X(t) dt.
+- Dirac: e_D = c_D (the 2d entropic c-function). Scalar: e_S = c_S − t c_S′ (the factor D − 1 between the two C_T laws).
+- Einstein and EMI: e_X by inverse Mellin transform of closed forms,
+  M_E = (D−1)·2^{2D−5}π^{(D−1)/2} g(D)^{D−1} D Γ(D/2)³Γ(D/2−1)/Γ(D+2), g = Γ(D/(2D−2))/Γ(1/(2D−2));
+  M_EMI = (√π/4) D Γ(D/2−1)Γ(D/2)²/((D²−1)Γ((D−1)/2)) (both to be checked against EXP-040/041's values at real D).
+- The same construction with the scalar law (divide M by D − 1) gives ẽ_X, with e_X = ẽ_X − t ẽ_X′.
+- Consequences that need no computation: pinning at D = 2 ⟺ e_X(0⁺) = 1/3 for every X; (κ/C_T)_X at D = 3 is
+  ∝ ∫₀^∞ e_X dt, the **area** under the profile; r_XY(D) = M_X/M_Y for every pair.
+- **Zero-counting lemma (classical, cited above; argued here, not looked up):** the number of real zeros in D of
+  M_X − M_Y is at most the number of sign changes of e_X − e_Y on (0, ∞). The same holds with ẽ.
+
+**Done by hand before this registration (no profile computed, no number seen):** Stirling asymptotics of M_E along
+Re D = const. Result: the exponentials cancel, |M_E/(D−1)| ~ |y|^{−5/2}, with phase e^{iy ln(π/2e)}.
+
+**Predictions (each can fail).**
+- **P1 (compact support).** e_E(t) = 0 for t > t_max = π/(2e) = 0.57786, and e_E ≠ 0 below. Test: |ẽ_E| < 10⁻⁴ at
+  t = 0.62, 0.8, 1.5; ẽ_E(0.5) > 10⁻².
+- **P2 (edge).** ẽ_E ∝ (t_max − t)^{3/2} at the edge (so e_E ∝ (t_max − t)^{1/2}). Test: local log-slope of ẽ_E between
+  t_max − 0.02 and t_max − 0.005 lies in [1.3, 1.7].
+- **P3 (not a decreasing profile under the Dirac law).** Area: M_E(3) = 0.2214 > t_max/3 = 0.1926, so given P1, e_E must
+  exceed 1/3 somewhere. Test: max e_E > 0.34.
+- **P4 (one sign change per pair).** For each of the six pairs among {scalar, Dirac, Einstein, EMI}, the profiles differ
+  in sign exactly once on t ∈ [10⁻⁴, 20] in at least one of the two laws. With the lemma and the observed crossings
+  (EXP-040/041) this would make "exactly one crossing in D > 2" a consequence for each pair. *Falsifier:* a pair with
+  no sign change (contradicts an observed crossing: an error somewhere) or with ≥ 2 in both laws (the lemma then proves
+  nothing for that pair, and the statement is dropped for it).
+- **Open, no prediction:** is ẽ_E (scalar law) positive and decreasing, i.e. shaped like a genuine c-function? Is
+  e_EMI or ẽ_EMI?
+
+**Controls, run first.**
+- **K1 (known inverse).** The inversion code applied to M_1p = Γ(D/2−1)Γ(D/2)/8 returns (t/2)K₁(2t) to 10⁻⁶ absolute at
+  t = 0.05, 0.3, 1, 3.
+- **K2 (closed forms).** M_E and M_EMI as coded reproduce EXP-040/041's κ_D/C_T at D = 2.5, 3, 4, 6 to 10⁻¹⁰.
+- **K3 (round trip).** ∫t^{D−3}e_X dt from the computed profile returns M_X(D) at D = 2.5, 3, 4, 6 to 10⁻³ relative,
+  X = Einstein, EMI (both laws).
+- **K4 (pinning).** e_X(10⁻³) = 1/3 within 5·10⁻³ for Einstein and EMI.
+- **K5 (free fields).** The free-field profiles (Impl-2 table for t ≤ 6, the source-verified one-particle form beyond;
+  the t ≤ 6 mask is EXP-040 Part C's lesson, applied in advance) return EXP-040's κ/C_T at D = 3, 4 to 5·10⁻⁴.
+
+**Reported, descriptive:** the four areas; the t at which each pair's profiles cross, beside the D at which the curves
+cross. Script `scripts/exp043_profiles.py`, output `exp043_output.txt`. Minutes, < 1 GB, nice 12, watchdog.
