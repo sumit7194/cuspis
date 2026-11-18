@@ -335,3 +335,18 @@ conclusion never depended on it; the number should not be carried onward.**
       η ≥ 1e-5 (floor/i_G ≤ 4.3e-4 at n_p = 32), but it would be needed for Δ = 0.9 at η ≤ 1e-6.
 - [ ] Prereg wording: "input rounding does not matter" was only approximately true (EXP-039 run-2 diagnostic). Check
       whether the same argument is used anywhere else in report.md.
+
+## HANDOVER 2026-11-18: work continues in the session "Cuspis-personal" (Sumit's other account, Opus 5.5)
+This session (Cuspis) stops here. Plan agreed with Sumit, to be done in Cuspis-personal:
+- [ ] 1. Prior-art sweep (M1): has κ_d/C_T (strip coefficient) been compared across dimensions d for free scalar, free
+      Dirac and Einstein holography? If known, cite it and move on.
+- [ ] 2. Make the d-scan solid: a second implementation (different method) of notes/fable/dim_spread.py's κ_d/C_T scan, the
+      d = 4 values checked against source, then register it as an EXP in report.md (pre-registration first).
+- [ ] 3. Generic-crossing test: do toy pairs pinned at d = 2 with different c(t) shapes cross at d − 2 = O(1)? If yes,
+      the band of the three known theories needs no further explanation.
+- [ ] 4. Decide afterwards (Sumit): interacting theories (Ising / O(N)) on or near the crossing. Expensive; lattice or
+      tensor-network numerics.
+- [ ] Side item (EXP-039 follow-up above): check whether "input rounding does not matter" is used elsewhere in report.md.
+- notes/fable/ (sections 1–6, untracked) holds the d-scan, the π²/3 one-particle decomposition (verified by hand
+  in Cuspis) and the withdrawn floor/π²/3 link. Fold it into report.md with attribution when registering step 2.
+- scripts/exp034a.pid is a stale untracked leftover; safe to delete after a look.
