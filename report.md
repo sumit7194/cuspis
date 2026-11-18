@@ -5240,3 +5240,73 @@ Re D = const. Result: the exponentials cancel, |M_E/(D−1)| ~ |y|^{−5/2}, wit
 
 **Reported, descriptive:** the four areas; the t at which each pair's profiles cross, beside the D at which the curves
 cross. Script `scripts/exp043_profiles.py`, output `exp043_output.txt`. Minutes, < 1 GB, nice 12, watchdog.
+
+### EXP-043 results: all controls and all four predictions PASS; gravity's profile has a sharp edge at t = π/(2e); every pair of profiles crosses once
+
+**Run.** `scripts/exp043_profiles.py` → `exp043_output.txt`, `exp043_profiles.json`, `exp043.wd.log` (66 s, peak 0.18 GB,
+nice 12, watchdog, exit 0). Post-hoc refinement: `exp043_small_t.py` → `exp043_small_t_output.txt`.
+
+**Controls.** K1 PASS (known inverse recovered to 10⁻¹⁶). K2 PASS (closed forms equal EXP-040/041's values to 10⁻¹⁵).
+K3 PASS (round trip ≤ 7·10⁻⁴; the worst is Einstein's D-law profile, which is a spline derivative). K4 PASS (0.33333,
+0.33333, 0.33335, 0.33211 at t = 10⁻³). K5 PASS (free-field profiles return κ/C_T to ≤ 1.6·10⁻⁴).
+
+**Predictions.**
+- **P1 PASS (compact support).** ẽ_E(0.5) = 3.9·10⁻²; just inside the edge 5.4·10⁻³ (t_max − 0.02) and 6.8·10⁻⁴
+  (t_max − 0.005); just outside 6·10⁻¹⁰ (t = 0.58), then ≤ 4·10⁻¹¹. The profile stops at t_max = π/(2e) = 0.57786.
+- **P2 PASS (edge).** Log-slope 1.488 against the predicted 3/2.
+- **P3 PASS.** Under the Dirac law the Einstein profile rises to 0.4515 at t = 0.39 before falling to zero at the edge.
+- **P4 PASS (one sign change per pair, in both laws).**
+
+  | pair | profiles cross at t (D-law) | (S-law) | curves cross at D (EXP-040/041) |
+  |---|---|---|---|
+  | scalar – Dirac | 0.538 | 0.308 | 2.751 |
+  | scalar – Einstein | 0.569 | 0.418 | 2.849 |
+  | scalar – EMI | 0.595 | 0.351 | 2.809 |
+  | Dirac – Einstein | 0.569 | 0.435 | 2.944 |
+  | Dirac – EMI | 1.087 | 0.777 | 3.659 |
+  | Einstein – EMI | 0.569 | 0.428 | 2.892 |
+
+  Under the Dirac law the three Einstein rows share t = 0.569 because Einstein's profile lies above the other three
+  everywhere below its edge and is zero beyond it: the sign change is the cliff.
+- **Areas (κ/C_T at D = 3 is area × 16π/3):** scalar 0.2491 → 4.174; EMI 0.2313 → 3.876; Dirac 0.2269 → 3.802;
+  Einstein 0.2213 → 3.709. Widths (area ÷ ⅓): 0.747, 0.694, 0.681, 0.664.
+
+**The open questions (no prediction was registered).**
+- EMI's profile is positive and decreasing under both laws: it has the shape of a genuine c-function.
+- Einstein's profile under the Dirac law is not decreasing (P3).
+- Einstein's profile under the scalar law: positive, with a sharp edge. **The main script reported "decreasing: YES",
+  and that check could not have failed**: its tolerance (10⁻⁷ per grid step, 4000 steps) cannot see a slow rise below
+  4·10⁻⁴. The refinement, on a contour shifted left of the pinning pole so that the integrand is suppressed by t^{1/2},
+  shows ẽ_E − ⅓ = +1.5·10⁻⁵ (t = 10⁻³), +4.7·10⁻⁵ (3·10⁻³), +5.3·10⁻⁵ (10⁻²), −1.0·10⁻³ (3·10⁻²). So the scalar-law
+  profile **rises above ⅓ by about 1.6·10⁻⁴ of its height near t ≈ 0.007 before falling**. Control for the refinement:
+  EMI's known-decreasing profiles come out negative at every t, and the residues at D = 2 are ⅓ to 6·10⁻⁷.
+  Grade: post-hoc, verified by evaluation on one contour.
+
+**Analysis.**
+- **Exactly one crossing per pair.** Given the zero-counting lemma, P4 means each pair of curves crosses at most once
+  for D > 2; EXP-040/041 found one each. So the six crossings are the only ones, and the order reversal between
+  small D − 2 and large D is a property of the profiles, not something read off a grid. Grade: verified by evaluation
+  for the sign counts (resolution t ∈ [10⁻⁴, 20], relative threshold 10⁻⁴); the lemma is classical and was cited from
+  search summaries, not read at source.
+- **What the D = 3 band is, in this language.** All four profiles start at ⅓ (pinning). At D = 3 the value of κ/C_T is
+  the area. The 13% band is the statement that the four profiles have the same width to 13% (0.66 to 0.75).
+- **Where Einstein's width comes from.** Not from a mass gap, as for free fields, but from a sharp edge at exactly
+  π/(2e), with weight piled up below it. That number is the exponential type of M_E in D, read off Stirling's formula.
+  The free-field profiles cross each other at t ≈ 0.54–0.60 (Dirac law), and the edge sits at 0.578. The two scales
+  are close, but nothing here derives one from the other. **The Einstein crossings near D = 3 are therefore still
+  not explained; they are relocated** to "why is π/(2e) close to the free-field scale".
+- **Einstein is not free-like, with a size attached.** No single decreasing 2d c-function reproduces Einstein's κ_D
+  under either law: the violation is 35% of the height under the Dirac law and 1.6·10⁻⁴ under the scalar law. So
+  Einstein is very nearly, but not exactly, "a scalar-type theory whose c-function is cut off at π/(2e)".
+- **Scope.** Profiles exist only for curves defined in continuous D. An interacting CFT at D = 3 has none.
+
+**Grades.**
+- Compact support at π/(2e) with edge exponent 3/2: **partially verified** (Stirling asymptotics by hand, argued;
+  numerics agree at the 10⁻⁹ level outside the edge; a Paley–Wiener proof was not written).
+- One sign change per pair: verified by evaluation at the stated resolution.
+- "Exactly one crossing per pair in D > 2": partially verified (rests on the lemma as cited).
+- The band as equal widths: an exact restatement, not an explanation.
+
+**Next steps.** (i) Read the zero-counting theorem at source and write the Paley–Wiener argument, to turn two
+"partially verified" into "verified". (ii) Is there a reason the holographic edge π/(2e) sits at the free-field
+scale? (iii) The interacting route (EXP-042) is unchanged and still Sumit's call.

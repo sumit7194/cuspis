@@ -367,3 +367,9 @@ This session (Cuspis) stops here. Plan agreed with Sumit, to be done in Cuspis-p
 - [x] EXP-041 E5 at d = 4, 5: PASS (addendum A). C_T,EMI verified at d = 3, 4, 5; partially verified for continuous d.
 - [ ] BINDING before any fifth curve (Bridge rule, adopted 2026-11-18, report.md EXP-041): register the prediction "its
       crossings with the four fall in [2.75, 2.95]", the toy-ensemble base rate for that window, and what counts against.
+- [x] EXP-043 (2026-11-18): mass profiles. Einstein's profile has a sharp edge at t = pi/(2e) (edge exponent 3/2); every
+      pair of profiles crosses once, so each pair of curves crosses exactly once in D > 2 (partially verified).
+- [ ] EXP-043 follow-ups: read the zero-counting theorem (Karlin, Total Positivity) at source; write the Paley-Wiener
+      argument for compact support; is there a reason the holographic edge pi/(2e) = 0.578 sits at the free-field scale?
+- [ ] Interacting route (EXP-042 Part A) parked 2026-11-18 by this session's judgement: B and C are multi-session, low odds;
+      D out of reach. Still Sumit's call.

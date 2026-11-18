@@ -1,0 +1,52 @@
+=== K1: known inverse, M_1p -> (t/2) K1(2t) ===
+  t=0.05: 0.2463461195 vs 0.2463461195  diff -1.1e-16
+  t=0.3: 0.1954252410 vs 0.1954252410  diff +5.6e-17
+  t=1.0: 0.0699329409 vs 0.0699329409  diff -6.9e-17
+  t=3.0: 0.0020158796 vs 0.0020158796  diff -2.6e-18
+  K1 PASS
+=== K2: closed forms against EXP-040/041 at real D ===
+  D=2.5: Einstein rel +2.2e-16   EMI rel -3.3e-16
+  D=3.0: Einstein rel +4.4e-16   EMI rel +6.7e-16
+  D=4.0: Einstein rel +8.9e-16   EMI rel +2.2e-16
+  D=6.0: Einstein rel -2.2e-16   EMI rel -1.1e-16
+  K2 PASS
+=== K5: free-field profiles return EXP-040's kappa/C_T ===
+  D=3.0: scalar rel +1.6e-05   Dirac rel +1.9e-05
+  D=4.0: scalar rel +1.5e-04   Dirac rel +1.6e-04
+  K5 PASS
+=== P1: compact support of the Einstein profile (S-law), t_max = 0.57786 ===
+  et_E(0.50000) = +3.865e-02
+  et_E(0.55786) = +5.386e-03
+  et_E(0.57286) = +6.849e-04
+  et_E(0.58000) = +6.269e-10
+  et_E(0.60000) = +3.913e-11
+  et_E(0.62000) = -2.808e-11
+  et_E(0.80000) = -5.680e-12
+  et_E(1.50000) = +7.093e-13
+  P1 PASS
+=== P2: edge exponent (S-law), log-slope between t_max-0.02 and t_max-0.005: 1.488  PASS
+=== P3: max of the D-law Einstein profile = 0.4515 at t = 0.3898  PASS
+  open question: S-law Einstein profile: min +0.00e+00; max 0.33341 at t = 6.76e-03; decreasing on the grid: YES
+                 D-law Einstein profile: min +0.00e+00; decreasing: NO
+  open question: EMI D-law: min +1.47e-22, max 0.33333, decreasing: YES;  S-law: min +2.84e-24, max 0.33321, decreasing: YES
+=== K3: round trip, Mellin of the computed profiles ===
+  D=2.5: Einstein S-law -6.4e-09, D-law -8.3e-05;  EMI D-law -2.7e-09, S-law -4.8e-06
+  D=3.0: Einstein S-law -1.9e-07, D-law -1.6e-04;  EMI D-law -1.9e-11, S-law -5.3e-08
+  D=4.0: Einstein S-law -6.9e-07, D-law -3.2e-04;  EMI D-law +1.2e-11, S-law +3.7e-12
+  D=6.0: Einstein S-law -2.4e-06, D-law -6.8e-04;  EMI D-law +2.5e-11, S-law +2.0e-11
+  K3 PASS
+=== K4: pinning at t = 1e-3: Einstein 0.33333, EMI 0.33333 (D-law); 0.33335, 0.33211 (S-law); 1/3 = 0.33333  PASS
+=== areas under the D-law profiles (kappa/C_T at D = 3 is area * 16 pi/3) ===
+  scalar    area 0.24914  -> kappa/C_T = 4.1743;  width = area/(1/3) = 0.7474
+  Dirac     area 0.22691  -> kappa/C_T = 3.8019;  width = area/(1/3) = 0.6807
+  Einstein  area 0.22134  -> kappa/C_T = 3.7086;  width = area/(1/3) = 0.6640
+  EMI       area 0.23132  -> kappa/C_T = 3.8758;  width = area/(1/3) = 0.6940
+=== P4: sign changes of e_X - e_Y on [1e-4, 20] (relative threshold 1e-4 of the larger profile; Einstein = 0 beyond t_max) ===
+  scalar   vs Dirac   : D-law 1 at t = [0.5377];  S-law 1 at t = [0.3079]  one sign change in at least one law
+  scalar   vs Einstein: D-law 1 at t = [0.5692];  S-law 1 at t = [0.4178]  one sign change in at least one law
+  scalar   vs EMI     : D-law 1 at t = [0.5953];  S-law 1 at t = [0.3507]  one sign change in at least one law
+  Dirac    vs Einstein: D-law 1 at t = [0.5692];  S-law 1 at t = [0.4351]  one sign change in at least one law
+  Dirac    vs EMI     : D-law 1 at t = [1.0872];  S-law 1 at t = [0.7771]  one sign change in at least one law
+  Einstein vs EMI     : D-law 1 at t = [0.5692];  S-law 1 at t = [0.4281]  one sign change in at least one law
+  P4 PASS
+# exit 0; wall 66 s; PEAK tree MEM 0.175 GB + CMPRS 0.000 GB = 0.175 GB

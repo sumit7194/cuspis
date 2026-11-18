@@ -581,6 +581,13 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
   Einstein at 2.892, and stays within 2.2% of Dirac on (2, 4), crossing it at 3.659. Inside the D = 3 band by two routes:
   a crossing just below 3, or never separating. EMI is not a CFT.
 
+  (16) *EXP-043, mass profiles.* Each curve is the Mellin transform in D of a profile e_X(t), all starting at 1/3
+  (pinning); κ/C_T at D = 3 is the area. Einstein's profile is compactly supported with a sharp edge at t = π/(2e) and
+  edge exponent 3/2 (predicted from Stirling asymptotics, then confirmed numerically: partially verified). Every pair of
+  profiles differs in sign exactly once, so by the classical zero-counting lemma each pair of curves crosses exactly once
+  in D > 2. The 13% band at D = 3 is the statement that the four profiles have equal width to 13%. The Einstein
+  crossings are relocated, not explained: why π/(2e) is close to the free-field mass scale is open.
+
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
 a₀ (0 for Einstein, ≈ −0.3 C_T for the free scalar at n = 1; nonzero only when the twist-pair fusion has a dimension-1 operator, EXP-015; formerly guessed to be a defect-creation dimension if the cusp
