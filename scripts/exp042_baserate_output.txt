@@ -1,0 +1,5 @@
+toy curves: 24; with >= 1 crossing against the four in (2.02, 6): 17
+  P(all of a curve's crossings lie in [2.75, 2.95] | it crosses at all) = 0/17 = 0.000
+  per-crossing rate: 0.163 of 43 crossings lie in the window
+  crossing locations: quartiles [2.524 2.86  3.217], min 2.089, max 4.876
+  naive uniform rate on (2, 4) for a 0.2-wide window: 0.100

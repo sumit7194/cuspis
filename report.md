@@ -5141,3 +5141,44 @@ interacting CFT or anything else) is computed, its entry must **register**: (i) 
 the existing four fall in [2.75, 2.95]; (ii) the toy-ensemble base rate for a curve landing there, computed and
 recorded before the curve is; (iii) what result counts against the clustering. The next curve then tests the clustering
 instead of adding to it.
+
+## EXP-042  An interacting CFT as a fifth curve — Part A: prior-art sweep, the registered base rate, and feasibility (Sumit's choice in chat, 2026-11-18: "Interacting CFTs")
+
+**Question.** Is a von Neumann (n = 1) κ_D/C_T curve, or even a single point, available for any interacting CFT, so that
+it can test EXP-040/041's clustering under the rule adopted in EXP-041?
+
+**Sweep (web search, then read at source where stated).**
+- **Large N** — Whitsitt, Witczak-Krempa, Sachdev, *Entanglement entropy of the large N Wilson-Fisher conformal field
+  theory*, PRB 95, 045148 (2017), arXiv:1610.06568 (HTML read, §II.3, §IV.1, conclusions): at N = ∞ the entropy of any
+  region in the plane equals that of N free massless scalars; for the strip, κ_WF = Nκ_free at leading order; corners
+  a_WF = N a_free + O(N⁰) with no coefficient given; the argument holds for 2 < D < 4. **So the large-N O(N) curve is
+  the free-scalar curve at leading order in every D, and no 1/N correction to κ is in print** (also BACKLOG #5).
+- **3d Ising numerics** — Ngai, Chau, Rong, Cheng, Liao, Meng, arXiv:2512.00382 (abstract page read, v3 June 2026):
+  Rényi-2 corner terms by projector QMC; no von Neumann value. The only interacting κ in the record remains Ising
+  Rényi-2, κ₂/κ₂^free = 0.763(22) [KHSM19].
+- **ε-expansion** — Metlitski, Fuertes, Sachdev, arXiv:0904.4477 (title and search summary only, not read here):
+  Wilson–Fisher entanglement in D = 4 − ε for cylinder/half-space geometries; no strip κ found in the summaries.
+- **Not found:** a von Neumann κ (strip or sharp corner) for any interacting CFT in any D; a 1/N correction to κ; κ
+  to any order in ε. Grade of the sweep: partially verified (three web queries, two papers read at source).
+- **Rényi-2 cannot stand in for n = 1** — already settled in this record (EXP-001 R7): at n = 2 even σ₂/C_T is
+  non-universal (≈ 30% spread), so a C_T-normalised Rényi-2 point does not test the n = 1 clustering.
+
+**The base rate the EXP-041 rule requires, computed before any fifth curve exists** (`scripts/exp042_baserate.py` →
+`exp042_baserate_output.txt`; ensemble = EXP-040 Part C's 24 toy curves, unchanged):
+- 17 of 24 toy curves cross at least one of the four (scalar, Dirac, Einstein, EMI) in (2.02, 6); 43 crossings in all.
+- **Per crossing, 7 of 43 = 16% fall in [2.75, 2.95]** (a uniform spread over (2, 4) would give 10%).
+- **No toy curve (0 of 17) has all its crossings in [2.75, 2.95].** Crossing quartiles 2.52 / 2.86 / 3.22, range 2.09–4.88.
+- So "all of a fifth curve's crossings with the four lie in [2.75, 2.95]" is a strong prediction: under the stated
+  ensemble it never happens by chance. What counts against the clustering: a fifth curve whose crossings with the four
+  land outside the window, or a pinned curve that does not cross them in (2, 4) at all.
+
+**Feasibility (assessment, not a result).** No interacting fifth curve can be computed in a session. The routes:
+- **(C) Wilson–Fisher near D = 4.** κ/C_T to first non-trivial order in ε = 4 − D, perturbation theory on the replica
+  geometry. Gives the slope of the Ising/O(N) curve against the free scalar at D = 4 (the free-scalar-extremality
+  question there). Analytic, low compute; prior art needs MFS09 and the λφ⁴ entanglement literature read first. It
+  does **not** test the clustering (crossings sit near D ≈ 2.85, far from D = 4).
+- **(B) O(N) at order 1/N, all 2 < D < 4.** C_T's 1/N correction is standard; κ's needs the Hubbard–Stratonovich
+  fluctuation determinant on the replica geometry. A full curve in D, so it could test the clustering; research-scale,
+  multi-session, low odds.
+- **(D) A von Neumann κ for 3d Ising numerically.** One point at D = 3, the original band question. Rényi-2 alone took
+  ~200 CPU-years [KHSM19]; beyond this machine without a new method (fuzzy-sphere lune, BACKLOG #4).
