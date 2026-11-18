@@ -4998,3 +4998,56 @@ partially verified (facts 1 and 2 checked, fact 3 argued).
   prediction that could fail.
 - P3 can be made testable by evaluating the scalar c-function down to t ~ 10⁻³⁰ with the asymptotic form as a control
   (the lattice cannot; a continuum route would).
+
+## EXP-041  The EMI model as a fourth curve across dimension — pre-registration (Sumit's choice in chat, 2026-11-18: "EMI fourth curve")
+
+**Goal.** EXP-040 found the three anchor theories pinned at D = 2 and crossing pairwise just below D = 3. The EMI model
+(not a CFT for d ≥ 3 [ABC21], but a well-defined entropy functional in every d) sits inside the d = 3 band
+(κ/C_T = π³/8 = 3.876, EXP-016). Where does it sit across D, and where does it cross the trio?
+
+**Source facts (read at source, 2026-11-18).**
+- BFGLM26 (arXiv:2604.01436, App. B, "Extensive mutual information model"): the EMI entropy is
+  S_δ(A) = κ∫∫ n₁·n₂/|r₁−r₂|^{2(d−2)}; the strip coefficient is known in arbitrary d,
+  k_EMI = 2π^{(d−2)/2}Γ((d−2)/2)κ/Γ(d−2) (their eq. `k_EMI`, from [ABC21]); and **"the coefficient of the stress–energy
+  tensor two-point function is not known in arbitrary dimension d"**: only C_T = 16κ/π² (d = 3), 60κ/π² (d = 4, via
+  C_T = 40c/π⁴ with c = 3π²κ/2) and 144κ/π² (d = 5) are given.
+- Faulkner–Leigh–Parrikar, *Shape dependence of entanglement entropy in conformal field theories*, arXiv:1511.05179
+  (TeX source read; eq. `planes`): for any CFT and a planar entangling surface, the non-local part of the entanglement
+  density is S⁽²⁾(x_a, x_b) = −(2π²C_T/(d+1)) η_ij /|x_a − x_b|^{2(d−1)}.
+
+**Derivation (argued, done here).** Deform the plane to x = εf(y), y ∈ ℝ^{d−2}. Then n·n′ dA dA′ = (1 + ε²∇f·∇f′) dy dy′
+exactly, and |r − r′|² = |y − y′|² + ε²(f − f′)². To second order, dropping local (coincident-point) terms,
+S_EMI ⊃ κε²[d(d−2) − (d−2)] ∫∫ (f − f′)²/|y − y′|^{2(d−1)} = κε²(d−1)(d−2) ∫∫ (f − f′)²/|y − y′|^{2(d−1)}, using
+Δ_y |y|^{−2(d−2)} = 2d(d−2)|y|^{−2(d−1)} in d − 2 dimensions. FLP's formula gives (π²C_T/(2(d+1))) for the same kernel.
+Defining the EMI's C_T by that match:
+
+    C_T,EMI(d) = 2(d² − 1)(d − 2) κ / π²,      κ_D/C_T |_EMI = π^{(D+2)/2} Γ((D−2)/2) / [(D² − 1)(D − 2) Γ(D − 2)].
+
+**Disclosures before any run.**
+- While deriving I noticed, before reading FLP's coefficient, that the three published C_T values fit
+  (d − 1)(d − 2)/N_d with N_d = π²/(2(d+1)). The (d − 1)(d − 2) factor was derived first; N_d was then read at source and
+  agrees. So the check below is a derived closed form evaluated at known points, with that ordering stated.
+- The closed form has already been evaluated by hand at D = 2.5 (≈ 10.24), 3 (π³/8) and 4 (π³/30 ≈ 1.0335), so the
+  EMI–Dirac ordering at those points was seen. **This entry is a measurement with controls, not a blind prediction.**
+- "C_T" for EMI is a definition (via the planar entanglement density); EMI has no stress tensor. The three published
+  values come from three different routes (d = 5 via Mezei's sphere formula, d = 4 via the anomaly c, d = 3 [BCLM21,
+  not read]); agreement with all three is what makes the definition usable.
+
+**Controls (run first; tolerance 10⁻¹² relative unless stated).**
+- **E1:** the closed form C_T,EMI(d) reproduces 16κ/π², 60κ/π², 144κ/π² at d = 3, 4, 5.
+- **E2:** k_EMI as coded equals BFGLM26 `k_EMI` and gives 2πκ, 2πκ, π²κ/2 at d = 3, 4, 5.
+- **E3:** κ/C_T at D = 3 equals π³/8 (EXP-016's σ-normalised value), a cross-check between the shape definition and
+  the corner (σ = π²C_T/24) definition of the EMI's C_T.
+- **E4 (pinning, can fail):** (D − 2)κ_D/C_T → 2π²/3 as D → 2 for EMI analytically; the trio's values at D = 2.001 must
+  match it to 1% (free fields from the EXP-040 Impl-2 tables, whose truncation at t = 10⁻⁵ limits this; Einstein exact).
+- **E5 (numerical derivation check):** the second-order EMI coefficient (d − 1)(d − 2) is checked by direct numerical
+  evaluation of the EMI functional for a sinusoidal deformation f = cos(qy) in d = 3 (one transverse dimension), where
+  the non-local term gives a |q|³ piece whose coefficient must match κ(d−1)(d−2) × the Fourier transform of the kernel.
+  *If E5 cannot be set up cleanly in session, it is reported as not done; the derivation then stays "argued".*
+
+**Measurement.** EMI's κ_D/C_T on the EXP-040 grid (D = 2.25 … 6), its ratios to scalar, Dirac and Einstein, and every
+crossing with each of them in (2.02, 6) located by sign change and root-finding. Free-field values from EXP-040
+Impl-2 (`scripts/exp040_impl2.json`). Script `scripts/exp041_emi.py`, output `exp041_output.txt`. Seconds; nice 12.
+
+**Questions it answers (descriptive).** Does EMI's curve cross the trio near D = 3, like the trio's own crossings, or
+elsewhere? Is "inside the band at D = 3" tied to "just past a crossing at D < 3"?
