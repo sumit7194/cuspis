@@ -5310,3 +5310,35 @@ K3 PASS (round trip ≤ 7·10⁻⁴; the worst is Einstein's D-law profile, whic
 **Next steps.** (i) Read the zero-counting theorem at source and write the Paley–Wiener argument, to turn two
 "partially verified" into "verified". (ii) Is there a reason the holographic edge π/(2e) sits at the free-field
 scale? (iii) The interacting route (EXP-042) is unchanged and still Sumit's call.
+
+### EXP-043 addendum A (registered before running; follows the Bridge's review of 1e754af)
+
+**A1. The lemma, with an elementary proof for the case used (replaces the citation; grade: argued — not checked by anyone else yet).** Let f be real on (0, ∞), not almost everywhere
+zero, with f ≤ 0 on (0, t₀) and f ≥ 0 on (t₀, ∞), and let F(s) = ∫₀^∞ t^{s−1} f(t) dt converge absolutely, together with
+∫ t^{s−1}|ln t||f| dt, on an open interval I of real s. Put G(s) = t₀^{−s}F(s) = ∫ (t/t₀)^s f(t) dt/t. Then
+G′(s) = ∫ ln(t/t₀)·(t/t₀)^s f(t) dt/t, and the integrand is ≥ 0 for every t, because ln(t/t₀) and f change sign at the
+same point. So G is strictly increasing on I and **F has at most one zero on I** (argued). ∎
+- *Use.* f = e_X − e_Y, s = D − 2, I = (0, ∞). Convergence: at t → 0 both profiles tend to ⅓ and their difference is
+  O(1/|ln t|) at worst (the scalar), which is integrable against t^{s−1}|ln t| for s > 0; at large t every profile
+  decays exponentially or vanishes.
+- This makes the general variation-diminishing theorem unnecessary here. The earlier wording "classical lemma, cited
+  from search summaries" is withdrawn in favour of this proof. What remains numerical is only the premise: that each
+  pair's profiles differ in sign exactly once.
+
+**A2. The premise, tightened (pre-registered).** The main run counted sign changes on t ∈ [10⁻⁴, 20] with a relative
+threshold of 10⁻⁴, which hides small differences near t → 0, where all profiles approach ⅓. Re-count with:
+- **zero threshold** on [10⁻⁴, 20], with the small-t values of Einstein and EMI taken from the contour shifted left of the
+  pinning pole (accurate to ≲ 10⁻⁹ there) and Dirac from its source form below t = 10⁻³;
+- **end signs argued separately**: the sign of each difference as t → 0 and as t → ∞, from the leading singular
+  structure, checked against numerics at t = 10⁻⁶ … 10⁻⁴ and t = 20 … 60.
+- *Prediction:* each of the six pairs still shows exactly one sign change in both laws, and the two end signs are
+  opposite. *Fails if* any pair shows an extra sign change, or equal end signs.
+- One number needed for the scalar-law Dirac/EMI pair: K = ∫₀^∞(⅓ − c_D)/u² du, since ẽ_D ≈ ⅓ − Kt while ẽ_EMI ≈ ⅓ − 1.233t
+  (measured). One sign change requires K > 1.233; that is a prediction.
+
+**A3. The sharp edge, a contour test (pre-registered).** If ẽ_E vanishes beyond t_max = π/(2e), the inversion integral
+taken on Re D = 2 + σ must return the same value for every σ > 0, and for t > t_max that value must be bounded by
+C·(t_max/t)^σ with C growing at most polynomially in σ. Test at t = 0.62, 0.8: values on σ = 0.5, 5, 20, 80 all below
+10⁻⁸ in absolute value; and inside the edge, at t = 0.3 and 0.5, the four contours agree to 10⁻⁷. Also report
+sup_y |M(2+σ+iy)|·t_max^{−σ}·(1+|y|)^{5/2} for those σ. *Fails if* the contours disagree or the outside values do not shrink.
+This is still not a Paley–Wiener proof; it is the numerical form of its hypothesis.
