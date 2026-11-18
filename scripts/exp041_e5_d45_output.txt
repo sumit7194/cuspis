@@ -1,0 +1,2 @@
+d=4: log(delta) coefficient of A - B = -6.62509e-23  -> PASS;  log(delta) coefficient of B alone = 0.589048622548;  delta^0 of A - B (local, reported only) = 0.392699
+d=5: delta^0 coefficient of A - B = 3.34379e-19  -> PASS;  delta^0 coefficient of B alone = 0.32898681337

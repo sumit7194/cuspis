@@ -5115,3 +5115,29 @@ Together with EXP-040, five of the six pairwise crossings among the four curves 
 
 **Next steps.** E5 at d = 4, 5 would upgrade the general-d derivation (needs the transverse angular average in d − 2
 dimensions). Handover item 4 (interacting CFTs) stays Sumit's call.
+
+**EXP-041 addendum A (registered before running): E5 at d = 4 and 5** (suggested by the Bridge on review of ee21235).
+- Same check as E5: f = cos y₁ in the d − 2 transverse dimensions; compare A(δ), the y-averaged second-order EMI
+  integrand before integration by parts, with B(δ) = (d−1)(d−2)∫_{|u|>δ}(1 − cos u₁)/|u|^{2(d−1)}, the formula after it.
+  The angular average of cos u₁ over S^{d−3} is Γ(n/2)(2/r)^{n/2−1}J_{n/2−1}(r), n = d − 2 (J₀ at d = 4; sin r/r at d = 5).
+- **Criterion.** d = 5 (odd): the δ⁰ coefficient of A − B vanishes (|q|⁵ is non-local), tolerance 10⁻⁸. d = 4 (even): the
+  universal term is q⁴ log, so the **log δ coefficient** of A − B must vanish (tolerance 10⁻⁸); the δ⁰ coefficient may
+  differ by local terms and is reported only. Also reported: the log δ (d = 4) or δ⁰ (d = 5) coefficient of B alone.
+- If both pass, the derivation of C_T,EMI(d) has its key step checked at d = 3, 4, 5. It remains a derivation checked at
+  integer points, so the continuous-d formula stays partially verified, with that sentence updated.
+
+**EXP-041 addendum A results: PASS at d = 4 and d = 5** (`scripts/exp041_e5_d45.py` → `exp041_e5_d45_output.txt`).
+- d = 4: log δ coefficient of A − B = −7·10⁻²³ (B alone: 0.5890486225 = 3π/16 to the digits printed; δ⁰ of A − B =
+  0.3927 = π/8, a local term, as allowed).
+- d = 5: δ⁰ coefficient of A − B = 3·10⁻¹⁹ (B alone: 0.3289868134 = π²/30 to the digits printed).
+- The key step of the C_T,EMI(d) derivation (integration by parts plus the Laplacian identity) is now checked by
+  evaluation at d = 3, 4, 5. **Grade of C_T,EMI(d) = 2(d²−1)(d−2)κ/π²:** verified at d = 3, 4, 5 (published values and
+  the step check); for non-integer d it is a derived formula whose every step is checked at integer d only, so
+  **partially verified** for continuous d.
+
+**A rule for the next curve (the Bridge's review of EXP-041, adopted).** "Five of six crossings in [2.75, 2.95]" was
+found after looking, and EXP-040 Part C's toy ensemble put crossings anywhere in 2.08–4.0. So before a fifth curve (an
+interacting CFT or anything else) is computed, its entry must **register**: (i) the prediction that its crossings with
+the existing four fall in [2.75, 2.95]; (ii) the toy-ensemble base rate for a curve landing there, computed and
+recorded before the curve is; (iii) what result counts against the clustering. The next curve then tests the clustering
+instead of adding to it.

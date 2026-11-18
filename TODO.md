@@ -364,4 +364,6 @@ This session (Cuspis) stops here. Plan agreed with Sumit, to be done in Cuspis-p
       agreed the grade "partially verified". An Ising/O(N) run would need a slot request with measured cost first.
 - [x] EXP-041 (2026-11-18): EMI as a fourth curve. C_T,EMI(d) = 2(d^2-1)(d-2) kappa/pi^2 (partially verified). EMI crosses
       scalar at 2.809, Einstein at 2.892, Dirac at 3.659 (EMI/Dirac within 2.2% on (2, 4)).
-- [ ] EXP-041 E5 at d = 4, 5 (upgrade the general-d EMI C_T derivation).
+- [x] EXP-041 E5 at d = 4, 5: PASS (addendum A). C_T,EMI verified at d = 3, 4, 5; partially verified for continuous d.
+- [ ] BINDING before any fifth curve (Bridge rule, adopted 2026-11-18, report.md EXP-041): register the prediction "its
+      crossings with the four fall in [2.75, 2.95]", the toy-ensemble base rate for that window, and what counts against.
