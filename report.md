@@ -6021,3 +6021,23 @@ prediction by more than 10× the tolerance.
 **Tier 1 first.** One point at small r to measure time and memory. Then the full set if it is within the envelope
 (< 0.5 GB, < 1 h).
 - Script: `scripts/exp051_twisted_lattice.py`; output `exp051_output.txt`.
+
+**EXP-050 addendum: MFS09 numbers read at source (the Bridge's request; PDF pp. 30–39, the arXiv PDF numbering).**
+- Eq. (6.27): α ≈ −(D−2)/(2(D−1))·(n−1) as n → 1, which is −(n−1)/4 in D = 3. Eq. (6.28):
+  aₙ = (D−2)²/(4(D−1)²)·(n−1)². Text after (6.31): "r ~ O(N) even though r_n ~ O(N²) for all n ≠ 1". The ar5iv
+  numbering (179), (180) differs.
+- **Table I (D = 3, large N):** α₂ = −0.16515, α₃ = −0.26594, α₄ = −0.32905, α₅ = −0.36743. So the n = 2 defect
+  bilinear has dimension 1 + 2α₂ = 0.670 < 1, which is relevant. **Corrections 1 and 2 of EXP-050 now rest on numbers
+  read at source.**
+- §VII: in the ε-expansion the n → 1 limit "was controlled by the non-zero fixed point c = c⁺_r", and the
+  finite-size and correlation-length corrections "are different at the Wilson-Fisher and Gaussian fixed points already
+  at leading order in ε".
+- **Restating (ii).** The defect sector is expected to contribute to universal terms, and to contribute finitely when
+  its coupling sits at a fixed point (c⁺ = O(n−1)). A log needs a marginal, running coupling. The O(N⁰) log det of the
+  exact bubble Bₙ on the cone includes the defect physics automatically, so the risk is only a 1/r tip divergence in
+  Tr(B₁⁻¹∂ₙB̃ₙ), i.e. a log.
+- **The n → 1 log test** will be registered floor-first, as the Bridge asked:
+  - measure the pipeline's noise in the L/w coefficient;
+  - choose a w/ε range of at least two decades in which a log coefficient of size O(1)·κ_free would be resolvable;
+  - state the minimum detectable log coefficient;
+  - write the outcome tree so a detected log is a finding (δκ not a pure number at O(N⁰)), not a failure.
