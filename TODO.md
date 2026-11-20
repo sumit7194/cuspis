@@ -421,3 +421,15 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       3. Fable (personal account, only if Opus cannot settle it): (ii) prove that the irrelevant surface operator
          stays out of the universal term, or find a counterexample, with the sphere-validated formula inline in the
          brief.
+- [x] 2026-11-20 late (Cuspis, Opus 5.5): δκ step 1 (EXP-050: formula; sphere gate PASS for conventions only; two plan
+      corrections accepted by the Bridge; MFS09 numbers read at source). Step-2 foundation EXP-051: twisted lattice
+      solver reproduces the Fredholm w at 6 points (partially verified; sign amendment labelled; must-fail FAIL as
+      registered at 5.9 vs 10 tol).
+- [ ] δκ next (when Sumit resumes):
+      (a) design a feasible strip-trace formulation: the dense lattice route needs ~11 GB per propagator, so it is
+          infeasible;
+      (b) the floor-first log test registration (Bridge: ≥ 2 decades, minimum detectable log stated, outcome tree with
+          both branches informative);
+      (c) (ii) as a defect-OPE statement: why the Δ̂ = 1 channel's coefficient vanishes for free fields (the strip κ
+          is finite), and whether that survives at O(N⁰). This is the candidate Fable brief. **Fable only on Sumit's
+          explicit word; never from this account.**

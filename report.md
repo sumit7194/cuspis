@@ -6083,3 +6083,21 @@ prediction by more than 10× the tolerance.
   partition function at r ≤ 32) is a first floor estimate for the step-2 floor-first registration. Full propagators,
   not just determinants, will be needed there, which raises memory beyond the envelope; that comes with a slot
   request.
+
+**EXP-051 follow-up: the cost of the full strip trace, and (ii) sharpened to a defect-OPE statement (argued; no computation).**
+- *Cost (measured from EXP-051's sizes).* The first-order trace Tr(B₁⁻¹·4G₁∂ₙG̃ₙ) needs full (dense) twisted
+  propagators. On a 192² box that is (3.7·10⁴)² ≈ 1.4·10⁹ entries, about 11 GB per propagator, and thousands of
+  (mass, twist) pairs are needed. The direct lattice formulation is **infeasible**, not just slow. A smarter
+  formulation (localised sources, the twisted b-decomposition of CH07b, Fourier-diagonal B₁⁻¹) is a design problem
+  belonging with (iii), not a slot request.
+- *(ii) as a defect-OPE statement.*
+  - Near either edge of the strip, the first-order entropy density behaves as ρ(r) ≈ (1/r²)[A + Σ B_Δ̂ (r/w)^Δ̂ + …].
+    Here Δ̂ runs over the dimensions of the defect (conical-tip) operators through which the far edge is felt.
+  - A term L·log(w/ε)/w arises iff a channel has **Δ̂ = D − 2 = 1 exactly** with a non-vanishing coefficient at first
+    order in (n − 1).
+  - At large N the singlet defect bilinear φ̂_aφ̂_a has Δ̂ = 1 + 2α_n = 1 + O(n − 1) (MFS09 eq. 6.27, read at source).
+    So at first order it sits exactly at 1.
+  - **Free-field puzzle:** for free fields Δ̂(φ̂²) = 1 exactly, yet the free strip κ is finite (CH09; EXP-040/044). So
+    that channel's coefficient in the entropy must vanish for free fields.
+  - **The sharp crux:** identify the mechanism (a selection rule, or an (n − 1)² suppression of the coupling) and
+    decide whether it survives at O(N⁰). This is the cleanest form of a Fable brief, if Sumit wants one.
