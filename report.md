@@ -5865,3 +5865,71 @@ the bibliography; §§V–VII and the large-N section by summary only), MST15, S
 
 **Grade:** partially verified as a sweep (seven papers, some sections summary-depth). No derivation attempted yet; that
 is groundwork step (b).
+
+## EXP-049 (groundwork (b): analysis, no computation)  The O(N⁰) strip coefficient: what the cone does, and exactly where the derivation sticks [model: Opus 5.5]
+
+**Read at source first** (the Bridge's order).
+- MFS09 is verbatim through eq. (172); eqs. (173)–(190) and §VII are summary-depth only.
+- MST15 is verbatim, including App. A and footnote 2.
+
+All statements below are **argued** unless marked.
+
+**1. The ν ≥ ½ divergence of [MST15] (half-space, 3d CFT).**
+- *What the source gives.* Their general-d result (eq. 57) carries Γ((d−1)/2 + ν̃)Γ((d−1)/2 − ν̃)/(Γ(ν̃)Γ(1−ν̃)), from
+  the orbifold/heat-kernel image sum (eq. 82, ψ(½ − ν̃) at d = 2, eq. 49).
+  - The pole of Γ((d−1)/2 − ν̃) = Γ(Δ₋ − 1) sits at **Δ₋ = 1 in every d** (my arithmetic, from their convention
+    Δ± = (d+1)/2 ± ν).
+  - For odd d it cancels against zeros of sin(πν̃) (their eq. 56 is a polynomial times ν̃). For even d it survives, but
+    inside the window 0 ≤ ν ≤ 1 only d = 2 reaches it. That is why "only when d = 2" (footnote 2).
+  - It multiplies only V₁/ε (∫dz/z²), the area-law coefficient, which is non-universal (verified as a reading of their
+    equations).
+- *Interpretation.* In D = 3, Δ₋ = 1 = D − 2 is exactly where the cone-induced surface coupling (c/2)∫_Σ φ² of
+  [MFS09] (eq. 40) is marginal at the free fixed point.
+  - MFS09: c has engineering dimension zero in any D; at u = 0, β(c) = c²/(2πn), a marginal coupling (eq. 50 at
+    u = 0).
+  - So the MST divergence marks the point where a *Gaussian-field model of φ²* on the replica cone (the holographic
+    Neumann quantisation) becomes singular.
+  - The real free operator is not Gaussian. Its cone two-point function, 2Gₙ(x,y)² with Gₙ the free cone propagator,
+    is finite (argued), and in the free theory c is not generated (β(c) has no c-independent term at u = 0).
+  - **Consequence: the naive identity δκ = κ_GFF(Δ₊ = 2) − κ_GFF(Δ₋ = 1) cannot be used at the O(N) point in D = 3.**
+    Its Δ₋ half is the singular object. The O(N⁰) computation must use the true kernel.
+
+**2. At the Wilson–Fisher point the cone-induced surface operator is irrelevant.**
+- [MFS09]: [c] = ν⁻¹ − 2 < 0; at large N, ν⁻¹ = 1 + O(1/N), so [c] → −1 in D = 3. So σ|_Σ (dimension 2 on a
+  one-dimensional surface) is irrelevant.
+- Power counting: an irrelevant surface coupling g with [g] = −1 can only contribute g·L/ε^{0}-type non-universal
+  terms and corrections ∝ (ε/w)·L/w → 0. So it cannot feed the universal L/w strip term.
+- *Expected:* δκ at O(N⁰) is well-defined (argued, by power counting only; not proved).
+
+**3. The saddle background drops out at n → 1.** At large N, ⟨iλ⟩ₙ = aₙ/r² with aₙ ∝ (n−1)² ([MFS09] eqs. 156, 180;
+eq. 180 summary-depth). Its effect on the O(N⁰) determinant is O((n−1)²), so it does not reach S. Hence
+  δS⁽⁰⁾ = ½[∂ₙ log det Bₙ − log det B₁]|_{n=1},  Bₙ(x,y) = 2Gₙ(x,y)²  (the free φ-bubble on the n-sheeted strip
+  replica manifold).
+
+**4. A computable route (heavy, finite).**
+- At first order in n − 1, ∂ₙBₙ = 4G₁∂ₙGₙ, and ∂ₙGₙ|_{n=1} is a modular-flow object: the insertion of the strip's
+  modular Hamiltonian of the free scalar.
+- For free fields the strip state is a product over transverse momentum k. Its modular Hamiltonian splits into 2d
+  interval modular Hamiltonians of mass |k|, which are Gaussian and computable on a lattice (EXP-040/044 machinery).
+- The bubble couples k with q − k, so δκ⁽⁰⁾ becomes a double transverse integral of traces of 2d interval data. The
+  flat inverse bubble B₁⁻¹ is known: B₁(p) ∝ |p|^{D−4} in D dimensions.
+
+**5. Where it sticks (the candidate Fable brief, if Sumit wants one).**
+- **(i)** The exact first-order-in-(n − 1) formula for the one-loop determinant of a composite-operator kernel
+  (Bₙ = 2Gₙ²) on the replica manifold. That includes:
+  - the "n log det B₁" bookkeeping;
+  - the image-sum / contour form;
+  - any contact or surface terms at the conical singularity (MFS09's generated c is such a term);
+  - whether they reach the universal L/w term.
+- **(ii)** A proof, beyond power counting, that the irrelevant surface operator cannot feed κ. Or a counterexample.
+- **(iii)** The UV subtraction scheme that isolates the universal L/w term in the double transverse integral.
+- **Controls any derivation must pass:**
+  - the same formula on the sphere (via CHM) must give δS = +ζ(3)/(8π²) (from δF = −ζ(3)/(8π²) [KPS11, GK14] and
+    F = −S);
+  - on the half-space it must give only area-law terms;
+  - the free limit;
+  - the Bridge's n = 2 numerical cone test;
+  - a must-fail non-double-trace case.
+
+**Grade.** Sections 1–3 are argued from sources read at source; the pole location and area-law placement are verified
+as a reading of MST15's equations. Section 4 is a route, not a result. No δκ number exists yet.
