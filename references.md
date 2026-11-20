@@ -39,7 +39,7 @@ Nothing here is cited from memory. Short keys in brackets are used in `report.md
 
 Searched and found NOT relevant (title suggested otherwise): arXiv:2507.16800 (Ciambelli, Kowalski-Glikman, Varrin, *Entanglement Entropy of Quantum Corners*, gravitational corner symmetries, not entangling-surface corners); arXiv:2604.01436 (Bueno et al., d=5 F-function bounds, no corner function); arXiv:2606.12540 (Ramirez Camasca et al., entanglement bootstrap Hamiltonian reconstruction, no corners).
 | [Cano19] | P. A. Cano, *Higher-Curvature Gravity, Black Holes and Holography*, PhD thesis, arXiv:1912.07035 (2019) | full text grepped (eq. 7.129 restates BCR18 eq. 129) |
-| [BFGLM26] | P. Bueno, A. Fernández García, F. Gentile, O. Lasso Andino, J. Moreno, *Entanglement entropy and conformal bounds for d=5 CFTs*, arXiv:2604.01436 (2026) | abstract |
+| [BFGLM26] | P. Bueno, A. Fernández García, F. Gentile, O. Lasso Andino, J. Moreno, *Entanglement entropy and conformal bounds for d=5 CFTs*, arXiv:2604.01436 (2026) | TeX source, §§3–4 and App. B (EXP-040 Part A, 2026-11-18; this entry previously said "abstract", corrected 2026-11-20) |
 | [DKPW24] | O. Diatlyk, H. Khanchandani, F. K. Popov, Y. Wang, *Defect Fusion and Casimir Energy in Higher Dimensions*, JHEP 09 (2024) 006, arXiv:2404.05815 | abstract + full text grepped: defines the fusion product and Casimir energy; examples in O(N)/GN CFTs; no bound on Casimir energies in terms of C_T |
 | [CHMY15] | H. Casini, M. Huerta, R. C. Myers, A. Yale, *Mutual information and the F-theorem*, JHEP 10 (2015) 003, arXiv:1506.06195 | abstract |
 | [CTT21] | H. Casini, E. Testé, G. Torroba, *Mutual information superadditivity and unitarity bounds*, JHEP 09 (2021) 046, doi:10.1007/JHEP09(2021)046, arXiv:2103.15847 | abstract |
