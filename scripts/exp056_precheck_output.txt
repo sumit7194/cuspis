@@ -1,0 +1,4 @@
+n=2.0 q=1: threshold kappa0 = 0.861421 (= 1/2 + alpha + nu_q = 0.861421); weight built [1s]
+B(0.3i) = (0.4838291854014345+0j)  real-axis-scan check vs B(): 0.4838291854014312 [1.4s]
+planted zero at (1+0.4j): winding = 1.000  [53s]
+unplanted B itself: winding = -0.000  [54s]

@@ -1,0 +1,15 @@
+g vs mpmath legenq: worst rel 1.8701626736117305e-07
+K0 Mehler-Fock nu=0.8 kappa=0.3: 1.8181818182 vs 1/(nu^2-kappa^2) = 1.8181818182  rel +2.9e-15
+K0 Mehler-Fock nu=1.5 kappa=1.0: 0.8000000000 vs 1/(nu^2-kappa^2) = 0.8000000000  rel +3.3e-15
+K0 Mehler-Fock nu=0.25 kappa=0.1: 19.0476190476 vs 1/(nu^2-kappa^2) = 19.0476190476  rel -1.4e-13
+K0 Mehler-Fock nu=2.0 kappa=0.0: 0.2500000000 vs 1/(nu^2-kappa^2) = 0.2500000000  rel +6.2e-15
+K0 Mehler-Fock nu=-0.3 kappa=-0.4: 33179105905274789485518499549740173503958775011591970812329984.0000000000 vs 1/(nu^2-kappa^2) = -14.2857142857  rel -2.3e+60
+K1 n=1 q=0 kappa=0.00: mode-sum 1.0942185459 (tail corr 2.5e-04) vs closed 1.0942198076  rel -1.15e-06  [1.6s]
+K1 n=1 q=0 kappa=0.30: mode-sum 1.6575457904 (tail corr 2.5e-04) vs closed 1.6575470519  rel -7.61e-07  [1.1s]
+K1 n=1 q=0 kappa=0.30: mode-sum 1.6575457904 (tail corr 2.5e-04) vs closed 1.6575470519  rel -7.61e-07  [1.0s]
+K1 n=1 q=1 kappa=0.00: mode-sum 0.2284720392 (tail corr 2.5e-04) vs closed 0.2284732905  rel -5.48e-06  [1.7s]
+K1 n=1 q=1 kappa=0.30: mode-sum 0.2356632505 (tail corr 2.5e-04) vs closed 0.2356645017  rel -5.31e-06  [1.2s]
+K1 n=1 q=1 kappa=1.30: mode-sum 0.7366863308 (tail corr 2.5e-04) vs closed 0.7366875786  rel -1.69e-06  [1.2s]
+K1 n=1 q=2 kappa=0.00: mode-sum 0.1215787584 (tail corr 2.5e-04) vs closed 0.1215799786  rel -1.00e-05  [1.7s]
+K1 n=1 q=2 kappa=0.30: mode-sum 0.1227800430 (tail corr 2.5e-04) vs closed 0.1227812631  rel -9.94e-06  [1.2s]
+K1 n=1 q=2 kappa=2.30: mode-sum 0.5428212171 (tail corr 2.5e-04) vs closed 0.5428224264  rel -2.23e-06  [1.1s]

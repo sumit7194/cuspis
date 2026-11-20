@@ -6414,3 +6414,45 @@ O(λ²). But θ = 2α − 1 makes the first-order coefficient itself depend on �
 - For Lemma U: the *integrated* necessary condition for (b) holds. The near-tip C₊(α) itself is still not extracted.
   Combined with EXP-054's diagnosis, a direct C₊ extraction needs a continuum near-tip method. The lattice cannot do
   it.
+
+## EXP-056  Lemma U gap (c): no zeros of the σ kernel B̃ₙ(k, q ≠ 0) in the strip below its first threshold; plus EXP-055's closed form as a registered prediction — pre-registration [model: Opus 5.5]
+
+**Why.** T7's uniform-gap step needs D_σ = 1/B̃ₙ in sector ω_q = q/n to decay at least as fast as its first
+threshold allows. The large-distance decay is set by the nearest singularity of D̃_σ(k) in the upper k-plane.
+
+**Instrument** (`scripts/exp056_sigma_kernel.py`; checks `exp056_instrument_checks.txt`, pre-check
+`exp056_precheck_output.txt`, all run before this registration).
+- On H² × S¹_{2πn} (the Weyl image of the cone):
+  B̃ₙ(k, q) = (2/2πn) Σ_m ∫2π sinh ρ P_{−½+ik}(cosh ρ) g_{ν_m} g_{ν_{q−m}} dρ, with g_ν = Q_{ν−½}(cosh ρ)/2π.
+  - The partial waves are ν_m = √(m²/n² + aₙ) for m ≠ 0 and ν₀ = αₙ on the alternate branch, with αₙ from EXP-053.
+  - This is the same mode sum EXP-053 verified.
+- *Instrument checks* (unregistered; they validate the tool, they are not the claims):
+  - g_ν against mpmath to ≤ 2·10⁻⁷ for ν ∈ [−0.37, 200].
+  - The Mehler–Fock transform of g_ν equals 1/(ν² − κ²) to ≤ 10⁻¹³. One case I wrote (ν < 0) lay outside the
+    integral's convergence region; it is excluded as ill-posed, not as passed.
+  - **n = 1, two routes:** the mode sum against the closed position-space form ¼∫P_{κ−½}(cosh ρ)e^{−|q|ρ}dρ, from
+    G̃₁ = 1/(4π√(2(cosh ρ − cos τ))), agrees to ≤ 10⁻⁵ at nine (q, κ) points.
+  - The n = 1 conformal propagator mode sum matches its closed form to 10⁻¹⁶.
+- *Facts that hold by construction* (argued, so not registered: a check that cannot fail is not a check):
+  - B̃ₙ(iκ, q) > 0 for 0 ≤ κ < κ₀, since every factor is positive.
+  - B̃ₙ(k, q) > 0 for real k, since B = 2G² is a Schur product of positive kernels.
+  - The first threshold is κ₀ = ½ + αₙ + √(q²/n² + aₙ) (j = 0, q terms), which the instrument reproduces exactly.
+  - So zeros of B̃ in the strip 0 < Im k < κ₀ can only be **off-axis**. That is the open content.
+- *Zero-visibility pre-check (the Bridge's rule):* n = 2, q = 1, on the rectangle [0.05, 3] × [0, 0.7]:
+  - a planted zero, B̃(k) − B̃(1 + 0.4i), gives winding 1.000;
+  - B̃ itself gives 0.000.
+  So the instrument can see a zero.
+
+**Predictions (registered before the runs below).**
+- **P1 (gap c):** the argument-principle zero count of B̃ₙ(k, q) on the rectangle Re k ∈ [0, 6], Im k ∈ [0, κ₀ − 0.05]
+  is **0** for every (n, q) with n ∈ {1.05, 1.25, 2, 3} and q ∈ {1, 2}. Here 24 points per side; αₙ is the EXP-053 root
+  at each n.
+  - Nuisance: 48 points per side for n ∈ {1.05, 2}, q = 1. The winding must agree to ±0.05.
+  - Outcome tree: all 0 means no off-axis D_σ poles inside the gap. With the threshold facts above, the decay rate in
+    sector q is then ≥ κ₀ − ½ = |ω_q| − |αₙ| + O(aₙ), T7's uniform gap with an O(n − 1) loss (partially verified at
+    sampled n, q). Any nonzero count is a finding against T7 (c), and gets located.
+- **Must-fail (instrument):** at n = 1.05, q = 1, the planted zero B̃(k) − B̃(2 + 0.5i) must give winding 1 ± 0.05.
+- **P2 (EXP-055 promotion, the Bridge's suggestion):** W₃(α)/λ²(α) = −(π/2)Γ(½+2α)Γ(5/2−2α) to ≤ 0.1% at the unused
+  α = 0.006 and 0.004, with the residual smaller at 0.004 than at 0.006.
+  - **Must-fail:** the wrong closed form −(π/2)Γ(½+α)Γ(5/2−α) misses by > 0.5% at α = 0.006.
+- Envelope: ~10 windings × ~2 min, < 0.5 GB, 1 core, nice 12, watchdog.
