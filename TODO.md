@@ -412,3 +412,12 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       SURE/CHECKED/UNSURE/LIT; verification under our own prereg and our own code. Never launched from cuspis on the
       office account.
 - [ ] Digest §10 still open: the Paley–Wiener write-up for the edge; untruncated citer sweep (CH09, RT06, Liu–Mezei).
+- [ ] δκ plan after EXP-049 (the Bridge's order, 2026-11-20; awaiting Sumit's go):
+      1. Opus: (i) the first-order-in-(n−1) formula ∂ₙ log det Bₙ|₁ = Tr(B₁⁻¹ ∂ₙBₙ|₁), with ∂ₙGₙ|₁ as a modular-flow
+         insertion. GATE: the same formula on the sphere (via CHM) must reproduce δS = +ζ(3)/(8π²). If it fails, the
+         mismatch identifies the contact terms, and that becomes the sharp Fable question.
+      2. Opus: (iii) the UV subtraction isolating L/w, with the n = 2 numerical cone test and a convergence study
+         (floor first).
+      3. Fable (personal account, only if Opus cannot settle it): (ii) prove that the irrelevant surface operator
+         stays out of the universal term, or find a counterexample, with the sphere-validated formula inline in the
+         brief.
