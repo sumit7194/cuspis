@@ -203,9 +203,17 @@ What made it doable: Casini–Huerta's dimensional reduction, plus closed forms 
 
 ## 9. Open items, in order of value
 
-1. **Weakest link: every free-field number rests on one physical route,** the 2d c-function dimensional reduction. The
-   two implementations share it. A second route for one crossing (the cleanest pair, one D) would remove this single
-   point of failure. *Next, agreed.*
+1. **Weakest link (corrected 2026-11-20 after the second-route prior-art sweep; agreed by the Bridge).** The earlier
+   wording ("every free-field number rests on one physical route, which a second route would remove") was wrong.
+   - For free fields the dimensional reduction is an exact identity: transverse Fourier decomposition into 2d fields of
+     mass |k_⊥|.
+   - At non-integer D it is the definition of κ_D, so a "route without it" is ill-posed.
+   - The real weak points are **(i) the 2d c-functions, which both implementations compute on lattices**, and
+     **(ii) the choice of continuation in D**.
+   - *Next:* EXP-044.
+     - (i) A lattice-free c-function from the Painlevé V characterisation (Casini–Fosco–Huerta 2005 for Dirac; Casini–
+       Huerta 2005 for the scalar), starting with the Dirac/Einstein crossing.
+     - (ii) A uniqueness argument for the continuation (Carlson-type growth).
 2. π/(2e): structure or numerology? Kill test: deform something it should track.
 3. The interacting fifth curve, via 1/N. It is the only route to new physics, and it is expensive. Registered
    rule: base rate first.
@@ -221,7 +229,7 @@ What made it doable: Casini–Huerta's dimensional reduction, plus closed forms 
     at its registered tolerance.
   - We cannot yet explain why the Einstein crossings sit near 2.85 and 2.94.
 - **Missing before any outreach:**
-  - the second route (item 1);
+  - the lattice-free c-function check (item 1, EXP-044);
   - the Paley–Wiener argument;
   - a fuller prior-art sweep (untruncated citers of CH09, RT06 and Liu–Mezei), and a re-check of the BWK16 §IX
     quotation;

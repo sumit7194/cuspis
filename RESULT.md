@@ -594,8 +594,9 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
 
   *Digest for (14)–(16):* `DIGEST_EXP040-043.md`, reviewed by the Bridge on 2026-11-20 (6ed2893), not ready for
   outreach. Its headline: the D-scan reframes the band question (the right null is the same theories at other D); the
-  sharp open question is why the Einstein crossings land at 2.849 and 2.944; the weakest link is that every free-field
-  number goes through one route (the 2d c-function dimensional reduction).
+  sharp open question is why the Einstein crossings land at 2.849 and 2.944. Weakest link (corrected 2026-11-20): not
+  the dimensional reduction, which is an exact identity for free fields and the definition at non-integer D, but the
+  lattice-computed 2d c-functions and the choice of continuation in D (EXP-044, planned).
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant
