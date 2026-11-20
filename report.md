@@ -6211,3 +6211,58 @@ H² × S¹ machinery itself.
   - *Sensitivity:* dropping the m ≠ 0 terms must move α₂ by more than the tolerance. Otherwise P1 does not test them.
 - **Numerics.** mpmath, a direct m-sum to M plus an Euler–Maclaurin tail, sweeping M ∈ {200, 400, 800} as the
   nuisance parameter. Seconds, < 0.1 GB, nice 12. A must-fail failure or a P1 miss is kept and reported.
+
+### EXP-053 results: every registered prediction and control passes [model: Opus 5.5]
+
+**Run** (`scripts/exp053_cone_gap.py`, output `scripts/exp053_output.txt`; 22 s, peak 0.017 GB, nice 12, watchdog,
+exit 0).
+- *Known-answer controls:* the F(n) image values at n = ½, ⅓ and ¼ hold to ≤ 4·10⁻²². The n = ⅓ value had failed in an
+  unregistered EXP-052 scratch evaluation. That was cancellation near t = 0, fixed here with a small-t series. EXP-052's
+  registered numbers used a series-safe route and are unaffected.
+- **P1 PASS:** α₂ = −0.16514655385 (nuisance sweep M = 200/400/800/nsum: −0.165146554059, …553872, …553849, …553846,
+  converging). Against MFS09 Table I's −0.16515 the difference is 3.4·10⁻⁶, within tolerance 5·10⁻⁵. It agrees with
+  Neon's −0.1651465539 to all ten digits Neon gave.
+- **P2 PASS:** α(1.01)/0.01 = −0.2483169, within 0.01 of −¼. It agrees with Neon's −0.248317.
+- **P3 (comparison):** α₃, α₄, α₅ = −0.2659406, −0.3290521, −0.3674336 vs Table I: diffs 0.6, 2.1, 3.6·10⁻⁶, all
+  within 5·10⁻⁵. 2α > −1 holds throughout.
+- **Must-fail PASS:** on the regular branch (ν₀ = +|α|), E(2, ·) has no root on (−0.49, 0.49). Max E = −0.5.
+- **Sensitivity PASS:** dropping the m ≠ 0 terms moves α₂ to −0.14918, a shift of 0.016 (320× tolerance). So P1 tests
+  the full sum.
+
+**Grade.** The large-N cone gap equation, in our own mode-sum form, is **verified by evaluation**. It reproduces all
+four Table I entries of MFS09 and α′(1) = −¼, and its must-fail and sensitivity controls fire. Two routes now give the
+same α_n: ours (a cone mode sum) and Neon's (H² × S¹, unverified machinery). This verifies the *gap-equation input*
+of Neon's Lemma U argument, not the lemma itself.
+
+### Assessment of Neon's Lemma U argument (T7; Bridge's gaps (a)–(e)) (argued; no computation beyond EXP-053)
+- **(a) The α → 1 end: covered by charge conjugation.** For a real field φ_(n−k) = φ̄_(k), so sector k/n ≅ sector
+  1 − k/n, and σ is real, so Σ^{(k)} respects k ↔ n − k.
+  - For the free part this is manifest in EXP-044's Fredholm form: a → 1 − a sends θ → −θ (a transpose of R̃) and
+    leaves sin²(πa) fixed.
+  - The leading mode (rr′)^{1−α} at α > ½ is the mirror of (rr′)^α.
+- **(b) C₊(α) = O(α²): supported, not derived.** At α = 0 the twist is trivial, so Δ_strip G^(0) = 0.
+  - Each edge alone changes G at O(|α|) (EXP-052's K₀K₀ form). The w-dependent two-edge part needs both edges.
+  - In the Fredholm form, the twisted interval partition function's t-dependence carries λ² = sin²(πα)/π² = O(α²),
+    with R̃ bounded at θ = −1. That is consistent with an O(α²) two-edge coefficient.
+  - A direct near-tip extraction of C₊ is still owed.
+- **(c) The ω_q ≠ 0 sum: open.** It is the one piece with neither a computation nor an argument from us.
+- **(d) Dim-reg vs cutoff: likely harmless.** Σ̃_{φ,1} ∝ (k² + α²) says the O(1/N) self-energy vanishes on the
+  on-shell (harmonic) near-tip modes r^α e^{iαθ}. A scheme change adds only local terms.
+  - The bulk local term is the mass shift, tuned by criticality. The defect-local terms (∝ δ_Σ) multiply the tip value
+    of (rr′)^α, which is zero for α > 0.
+  - The non-uniformity as α → 0 is the same as in (e).
+- **(e) A real gap in the write-up, but it reduces to (a)+(b)+analyticity.** Item 3 gives f(1, α) ≡ 0, so
+  f(n, α) = (n−1)g(α) + O((n−1)²), and ∂ₙΣ_{k=1}^{n−1} f(n, k/n)|₁ is the continued value S_g(1) of
+  Σ_{k=1}^{n−1} g(k/n) at n = 1.
+  - With a contour continuation along Re α = ½ (CH07b's, as used in EXP-044), S_g(1) = 0. That needs g analytic in
+    0 < Re α < 1 and bounded there uniformly in ε. On that line (ε/w)^{2α} has modulus ε/w → 0, so no log can come
+    from the contour.
+  - A log could enter only through endpoint singularities of g at α → 0 or 1. (b) and (a) make g regular there:
+    g ∝ C₊(α)·(1 − (ε/w)^{2α})/(2α) = O(α·log), → 0.
+  - So (e) closes if (a), (b) and the strip analyticity of g hold. The write-up must name this continuation. Bounds
+    alone do not fix the derivative, as the Bridge says.
+- **Correction to the Bridge's summary:** the mutual-information argument (EXP-052 §5) is graded *argued* here, not
+  verified.
+- **Net:** Neon's T7 is plausible. Its gap-equation input is now verified. Two items are owed: a direct check of
+  C₊(α) = O(α²), which is cheap with the EXP-051 lattice near one edge, and the ω_q ≠ 0 sum (c). Plus a write-up of
+  the continuation in (e).

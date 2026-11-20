@@ -466,3 +466,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
          must go through the q-sectors. Check this before relying on EXP-050 (i) for the strip.
       4. Neon's numerics (w/a ≤ 8, n = 2–4; no ln w growth after a tadpole subtraction; defect-mass must-fail fires
          at ~50× the step size) are indicative only. No n → 1 extrapolation was done.
+- [x] 2026-11-21: EXP-053: own cone gap equation reproduces MFS09 Table I (all four) and α′(1) = −¼; it agrees with
+      Neon's α₂ to 10 digits. Assessment of Neon's T7 (Lemma U) gaps recorded in report.md.
+- [ ] Lemma U, still owed (each needs pre-registration):
+      (1) a direct near-tip extraction of C₊(α) on the EXP-051 twisted lattice. Prediction O(α²). Must-fail: a
+          single-edge (half-line cut) run, where the O(|α|) term should be present;
+      (2) the ω_q ≠ 0 sum (Gap c): the only piece with neither a computation nor an argument;
+      (3) a write-up of the contour continuation for Gap (e): the reduction to (a)+(b)+strip analyticity of g.
+      Fable brief only if (2) sticks, and only on Sumit's word.
