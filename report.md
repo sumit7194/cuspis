@@ -6101,3 +6101,82 @@ prediction by more than 10× the tolerance.
     that channel's coefficient in the entropy must vanish for free fields.
   - **The sharp crux:** identify the mechanism (a selection rule, or an (n − 1)² suppression of the coupling) and
     decide whether it survives at O(N⁰). This is the cleanest form of a Fable brief, if Sumit wants one.
+
+## EXP-052  An outside referee pass on the δκ crux (Gemini 4 Neon, relayed by the Bridge): one claim verified by evaluation, an error of mine found (verified), and the crux reframed (argued) [model: Opus 5.5]
+
+**Provenance.** Sumit had the Bridge put the EXP-051 crux to Gemini 4 Neon. Its report was UNVERIFIED on arrival and is
+kept outside this repo. It is treated here as a referee's suggestion, and only what I checked myself is graded above
+"unverified". Not pre-registered: this is a check of a closed form the referee supplied (evaluation at points), plus
+argument.
+
+**1. The coincident propagator on the cone shifts at first order: verified by evaluation.**
+- Claim: for a massless 3D scalar on (2D cone of angle 2πn) × ℝ, 4πr(Gₙ − G₁)(x, x) = −(π/8)(n−1) + (π/6)(n−1)² + …
+- Our route (`scripts/exp052_cone_shift_check.py`, output `scripts/exp052_output.txt`): J² mode sum, then the toroidal
+  representation of Q_{ν−½}, then the sum over m gives coth. The result is
+  4πr(Gₙ − G₁) = (1/π)∫₀^∞ [(1/n)coth(t/2n) − coth(t/2)] / (2 sinh(t/2)) dt.
+  - Controls by the method of images: n = ½ gives ½ (exact, also analytically); n = ¼ gives √2 + ½ = 1.9142135623731
+    (to 10⁻¹⁹).
+  - First- and second-order coefficients, from analytic n-derivatives of the integrand: −π/8 and +π/6, each to 2·10⁻²⁰.
+- **Closure with MFS09.** At first order, the alternate-branch m = 0 exponent α changes the 2D m = 0 partial wave by
+  +(|α|/2π)K₀K₀. This uses ∂_ν I_ν|₀ = −K₀, checked numerically at three points. In 3D at coincidence that is
+  |α|/(8r), using ∫₀^∞K₀² = π²/4, checked numerically. The large-N gap equation (no shift of ⟨φ²⟩) then needs
+  |α′(1)| = 1/4, which is **MFS09 eq. (6.27) at D = 3, read at source** (EXP-050 addendum). It reproduces to 10⁻²⁰.
+- Arithmetic from MFS09's own equations: α² = ((n−1)/4)² = (n−1)²/16 = aₙ (eq. 6.28). The saddle aₙ/r² acts on the
+  m = 0 mode through ν₀ = ±√aₙ = O(n−1). The response is non-analytic in aₙ but analytic in n − 1.
+
+**2. Consequence: EXP-049 §3's justification is WRONG, as is its repetition in EXP-050 (i).**
+- I wrote "aₙ ∝ (n−1)², so the saddle's effect on the O(N⁰) determinant is O((n−1)²)". That assumes the response is
+  analytic in aₙ. It is not: a 1/r² potential is scale-invariant at the tip, and it shifts the m = 0 exponent by √aₙ.
+- The saddle changes Gₙ at O(n−1), only in the m = 0 sector. For m ≠ 0, ν_m = √(m²/n² + aₙ) = |m|/n + O((n−1)²).
+- At first order this is the same as a defect mass c_eff δ_Σ on the free n = 1 propagator (the K₀K₀ form above). It is
+  MFS09's induced surface coupling at its fixed point.
+- This is an error of mine, now recorded. I had written α_n = O(n−1) in EXP-050 correction 1 without connecting it to
+  the saddle.
+
+**3. Does the first-order formula survive? (argued; a simpler form of the referee's argument)**
+- The O(n−1) saddle effect is linear response to an O(n−1) source μ: the defect mass c_eff δ_Σ at the edges plus any
+  bulk part on the strip. So δG = −G₁μG₁ at this order.
+- Its contribution to ½Tr(B₁⁻¹δB) is −2∫d³z μ(z)·T, with T = ∫∫B₁⁻¹(y,x)G₁(x,y)G₁(x,z)G₁(z,y). In flat space T does not
+  depend on z (translation invariance), so it is a pure UV constant: dimension 1/length, ∝ 1/ε or tuned to zero by
+  criticality at O(N⁰).
+- Scale invariance of the strip problem makes ∫d³z μ = L·(n−1)·(a w-independent number).
+- So the saddle adds at most a term ∝ L/ε (area-type) and **cannot reach L/w**. The formula
+  δκ-part = ½Tr(B₁⁻¹∂ₙB̃ₙ)|_free survives for the universal term.
+- This does **not** need the referee's further claim that ∫d²x_⊥ μ_total = 0 on the strip, which I have not checked.
+- Second order in c_eff, where the marginal coupling's log appears (β(c) ∝ c²), is O((n−1)²) and does not reach S.
+
+**4. The free-field puzzle of the EXP-051 follow-up: resolved (argued).**
+- In the Z_n Fourier decomposition of the free field, Zₙ/Z₁ⁿ = Π_{k=1}^{n−1} Z_{k/n}/Z₁. The k = 0 sector is the
+  untwisted field and drops out.
+- The only Δ̂ = 1 defect bilinear lives in that k = 0 sector. Twisted sectors have Δ̂ = 1 + 2k/n > 1.
+- This matches EXP-044's continuation, whose c_S contour sits at twist ½ + is, i.e. Re a = ½, away from a = 0.
+- In the interacting theory the k = 0 channel is sourced at one edge at O(n−1) and probed at the other at O(n−1). So a
+  two-edge log needs (n−1)², the referee's point (b), consistent with §3.
+
+**5. The crux reframed: there is no log in the exact κ at any N (argued; standard reasoning).**
+- Take A and B as the two half-planes on either side of the strip, in the global pure state. Then
+  I(A, B) = S(A) + S(B) − S(strip) = κ(N)·L/w + (w-independent terms).
+- I(A, B) is UV-finite and depends only on L/w. So every order of its 1/N expansion is a pure number times L/w.
+- Equivalently, UV divergences are local on the entangling surface, and L·log ε/w is not.
+- **So δκ is a pure number.** The open question is no longer "is there a log?" but "does the replica O(N⁰)
+  computation, n → 1 first, commute with ε → 0?" This is the Bridge's reading and I agree.
+- *Change to the plan (EXP-050 addendum):* the n → 1 log test becomes a test of that commutation. A detected log would be
+  a finding about the replica method (MFS09-type non-commuting limits), not that "δκ is not a pure number". The
+  floor-first requirements stand.
+
+**6. Other referee items.**
+- Its α₂ = −0.165146553846 agrees with MFS09 Table I (−0.16515), but I have not checked it myself.
+- "Fact 3 nuance" (on H² × S¹, ∂ₙFₙ|₁ = 0, so +ζ(3)/(8π²) comes from −F₁) restates EXP-050's sphere gate, where the
+  energy term vanishes. This is confirmation, not news.
+- Its proposed deciding computation uses bipolar coordinates in the (x, τ) plane at fixed transverse momentum, w/a from
+  16 to 128, and D(w/ε) = w∂_w(wδS/L) over 2–3 decades. Its must-fail control is an n-independent defect mass c₀ = 0.5,
+  which must produce a log. This is a candidate design for step (a)'s feasible formulation, unverified, and a better
+  must-fail than EXP-050's planted log, because it is physical.
+- Its remaining caveat (the q ≠ 0 Z_n sectors) is, in our formulation, the question of whether the cone
+  (angle-rescaling) continuation used in EXP-050 equals the true n → 1 limit.
+
+**Grade.**
+- §1: **verified by evaluation**: two coefficients to 2·10⁻²⁰, two image controls, closure to MFS09 eq. 6.27.
+- §2: the error is **verified** (it follows from §1 and MFS09's own eqs. 6.27–6.28).
+- §§3–5: **argued**.
+- The referee's ∫μ_total = 0 and α₂: **unverified** by me.

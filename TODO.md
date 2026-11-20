@@ -433,3 +433,20 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       (c) (ii) as a defect-OPE statement: why the Δ̂ = 1 channel's coefficient vanishes for free fields (the strip κ
           is finite), and whether that survives at O(N⁰). This is the candidate Fable brief. **Fable only on Sumit's
           explicit word; never from this account.**
+- [x] 2026-11-21 (Cuspis, Opus 5.5): EXP-052, an outside referee pass (Gemini 4 Neon, via the Bridge) on the crux.
+      - Cone coincident-propagator shift verified by evaluation (−π/8, +π/6 to 2·10⁻²⁰). The gap-equation closure
+        reproduces MFS09's α′(1) = −1/4.
+      - **EXP-049 §3 / EXP-050 (i) justification was wrong:** the saddle acts at O(n−1) via the m = 0 exponent.
+      - The formula survives for the universal term (argued: the saddle enters as a flat UV tadpole × w-independent ∫μ).
+      - The free-field puzzle is resolved (k = 0 sector decouples).
+      - Crux reframed by the MI argument: δκ is a pure number; the question is replica/ε-limit commutation.
+- [ ] δκ next, updated by EXP-052 (supersedes (b) and (c) above where they differ):
+      (a) the feasible strip-trace formulation. Candidate: the referee's bipolar (x, τ) grid at fixed k_y, needing an
+          own cost estimate at Tier 1 first;
+      (b) register the log test as a **replica-limit commutation test** (floor-first; a detected log is a finding about
+          the method). Adopt the physical must-fail control: an n-independent defect mass must produce a log;
+      (c) the open Fable-grade question is now: does the cone (angle-rescaling) continuation of ½Tr(B₁⁻¹∂ₙB̃ₙ) equal
+          the true n → 1 limit (the referee's q ≠ 0 caveat)? **Fable only on Sumit's explicit word; never from this
+          account.**
+      (d) unverified referee items: ∫d²x_⊥ μ_total = 0 (not needed for §3), and α₂ = −0.165146553846 (own check
+          optional).
