@@ -5933,3 +5933,62 @@ eq. 180 summary-depth). Its effect on the O(N⁰) determinant is O((n−1)²), s
 
 **Grade.** Sections 1–3 are argued from sources read at source; the pole location and area-law placement are verified
 as a reading of MST15's equations. Section 4 is a route, not a result. No δκ number exists yet.
+
+## EXP-050  δκ step 1: the first-order formula, the sphere gate, and two corrections to the plan [model: Opus 5.5]
+
+**(i) The first-order formula (argued).**
+- At O(N⁰), log Zₙ ⊃ −½ Tr_{Mₙ} log Bₙ, with Bₙ = 2Gₙ² the free φ-bubble on the n-sheeted manifold Mₙ (the saddle
+  background aₙ/r² is O((n−1)²), EXP-049 §3).
+- Use angle-rescaled coordinates θ̃ = θ/n ∈ [0, 2π), so Mₙ ≅ M₁ with metric dr² + n²r²dθ̃² + dy², and B̃ₙ acts on a
+  fixed space. Then Tr_{Mₙ} log Bₙ − n Tr_{M₁} log B₁ = (n − 1)·Tr(B₁⁻¹ ∂ₙB̃ₙ|₁) + O((n−1)²): the measure factor
+  multiplies an integrand that vanishes at n = 1. Hence
+  δS⁽⁰⁾ = ½ Tr(B₁⁻¹ ∂ₙB̃ₙ|_{n=1}),   ∂ₙB̃ₙ = 4G₁ ∂ₙG̃ₙ|₁.
+- *Contact terms.* The metric variation is singular at the tip: the conical curvature carries 4π(1 − n)δ²
+  (Solodukhin-type). For a conformally coupled scalar this induces a ξ-weighted ∫_Σ φ² term, MFS09's c at the free
+  point. Such terms are **local** on Σ.
+  - In D = 3 a local surface term cannot reach the strip's universal L/w: two flat lines have no local invariant
+    besides length.
+  - Nor can it reach the sphere's universal F (odd D: lengths and extrinsic curvatures of ∂H² have no constant part).
+  - So local contact terms are harmless (argued).
+
+**The sphere gate: PASS for conventions, and structurally blind to the crux.**
+- Via CHM, the sphere is S¹_β × H². At β = 2π the first-order formula gives δS = −½ log det B_{S³} − (thermal-energy
+  term). The energy term vanishes for any CFT at β = 2π in odd D (argued). So δS = −δF.
+- Reproduced with our own code to 30 digits: ½ζ′(−2) = −ζ(3)/(8π²) = −0.0152242285…, from the zeta-regularised S³
+  mode sum (degeneracy (n+1)², Δ = 1). The GK14 (3.8) integral over its stated range 0 → Δ − 3/2 = −½ agrees. A
+  first attempt integrated over 0 → +½, which flips the sign because the integrand is even; that was my slip, now
+  recorded. **δS_sphere⁽⁰⁾ = +ζ(3)/(8π²): verified by evaluation by two routes.**
+- *But:* CHM removes the conical singularity (it maps to ∂H²), so this gate tests the bulk formula and conventions,
+  not the cone. A check that cannot see the crux does not gate (ii).
+
+**Corrections to the plan.**
+1. **The real crux of (ii) is a near-marginal *defect* operator, not a local contact term.**
+   - At the replica cone the φ zero-mode exponent is α_n (MFS09 eqs. 169–170: ν₀ = α, ϕ ~ r^α), with
+     α_n ≈ −(n−1)/4 in D = 3 at large N (eq. 179, summary-depth).
+   - So the O(N)-singlet defect bilinear φ̂_aφ̂_a has dimension D − 2 + 2α_n = 1 + O(n − 1). It is exactly marginal
+     for free fields (α = 0), where its coupling is not generated.
+   - At O(N⁰) the σ fluctuations couple to it. If they generate it with strength O(n − 1), the result could be an
+     (n − 1)·log(w/ε) term in log Zₙ, i.e. a log in δκ, which is MFS09's non-commuting-limits phenomenon.
+   - Bulk-spectrum power counting (EXP-049 §2) does not exclude this. **This is the sharp question for (ii).**
+2. **The n = 2 cone test cannot isolate the n → 1 physics.**
+   - At n = 2, α₂ ≈ −0.165 (MFS09 Table 1, summary-depth), so the defect bilinear has dimension ≈ 0.67 < 1: a
+     relevant defect coupling.
+   - MFS09 also state the large-N Rényi correction scales as N² for n ≠ 1.
+   - So the n = 2 O(N⁰) number lives in a qualitatively different regime and can neither validate nor refute the
+     n → 1 crux.
+   - **Replacement proposal:** test (ii) directly at n → 1. Compute δS⁽⁰⁾ for the strip from the first-order formula
+     at several w/ε, and test for an L·log(w/ε)/w term: present means (ii) fails, absent supports it. Use a must-pass
+     control: the same twisted-propagator/continuation pipeline must reproduce the FREE scalar's own κ = 0.0397
+     (CH09), and a must-fail one: a planted log term must be detected.
+
+**Step 2 design (not started; cost to be measured at Tier 1 before any slot request).**
+- Transverse Fourier q in D = 3. ∂ₙG̃ₙ|₁ for the 2d interval of mass m comes from the replica cyclic decomposition
+  G⁽ⁿ⁾ = (1/n)Σ_p G_{(p/n)} (twisted propagators), continued with CH07b's real-b form. For real b the twist across the
+  cut is a positive real factor e^{−2πb}: a single-sheet sparse lattice solve per (m, b).
+- B₁⁻¹ is a Fourier multiplier (the flat 3D bubble ∝ 1/|p|, so B₁⁻¹ ∝ |p|).
+- The trace couples k with q − k, giving a double transverse integral of lattice traces over a 2D box.
+- Estimated as multi-session, with memory ~1 GB per pair-matrix at 10⁴ sites. This exceeds the Bridge's envelope, so a
+  slot is needed, and it is a development project, not a run.
+
+**Grade.** (i) argued; sphere gate verified by evaluation (for conventions only); corrections 1–2 argued from MFS09
+(partly summary-depth). No δκ number yet.
