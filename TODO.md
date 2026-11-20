@@ -450,3 +450,6 @@ Everything is committed and pushed. Nothing is running. Where things stand:
           account.**
       (d) unverified referee items: ∫d²x_⊥ μ_total = 0 (not needed for §3), and α₂ = −0.165146553846 (own check
           optional).
+- [ ] 2026-11-21: HOLD on any Fable brief for EXP-052 (c) (Bridge): Neon is working the q ≠ 0 / continuation caveat
+      in the same session; wait for its result (the Bridge relays it), then do the Opus-first pass. The Bridge
+      accepted EXP-052's scale-invariance argument over ∫μ_total = 0.
