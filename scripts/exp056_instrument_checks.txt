@@ -13,3 +13,15 @@ K1 n=1 q=1 kappa=1.30: mode-sum 0.7366863308 (tail corr 2.5e-04) vs closed 0.736
 K1 n=1 q=2 kappa=0.00: mode-sum 0.1215787584 (tail corr 2.5e-04) vs closed 0.1215799786  rel -1.00e-05  [1.7s]
 K1 n=1 q=2 kappa=0.30: mode-sum 0.1227800430 (tail corr 2.5e-04) vs closed 0.1227812631  rel -9.94e-06  [1.2s]
 K1 n=1 q=2 kappa=2.30: mode-sum 0.5428212171 (tail corr 2.5e-04) vs closed 0.5428224264  rel -2.23e-06  [1.1s]
+/Users/sumit/Github/corner_function/scripts/exp056_sigma_kernel.py:123: RuntimeWarning: overflow encountered in square
+  x = np.cosh(R[~lo]); z = 1 / x ** 2; lx = np.log(2 * x)
+[added] Pc large-rho series vs mpmath: worst rel 1.0691176510959481e-14
+[added] fine grid B(0.3j) = 0.4838291854+0.0000000000j  (19424 nodes, 0.0s)
+[added] fine grid B((1+0.4j)) = 0.2147760987-0.0705748496j  (19424 nodes, 0.0s)
+[added] fine grid B((6+0.8j)) = 0.0409285933-0.0054544312j  (19424 nodes, 0.1s)
+/Users/sumit/Github/corner_function/scripts/exp056_sigma_kernel.py:130: RuntimeWarning: overflow encountered in square
+  x = np.cosh(R[~lo]); z = 1 / x ** 2; lx = np.log(2 * x)
+[added] scaled vs unscaled n=2 q=1 B(0.3j): 0.483829185401+0.000000000000j vs 0.483829185401+0.000000000000j  rel 2.2e-16
+[added] scaled vs unscaled n=2 q=1 B((1+0.4j)): 0.214776098706-0.070574849618j vs 0.214776098706-0.070574849618j  rel 4.6e-17
+[added] scaled vs unscaled n=2 q=1 B((6+0.8j)): 0.040928593278-0.005454431184j vs 0.040928593278-0.005454431184j  rel 1.7e-15
+[added] scaled vs unscaled n=2 q=1 B(0.8j): 2.569735928819+0.000000000000j vs 2.569735928819+0.000000000000j  rel 0.0e+00

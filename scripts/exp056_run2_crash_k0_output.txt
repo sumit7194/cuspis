@@ -1,0 +1,34 @@
+03:21:05 alpha_n: {1.05: -0.0120951619, 1.25: -0.0539970191, 2.0: -0.1651465538, 3.0: -0.2659406126}
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp056_run.py", line 62, in <module>
+    main()
+    ~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/exp056_run.py", line 34, in main
+    t0 = time.time(); w, kth, top, btop = count(n, alphas[n], q)
+                                          ~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp056_run.py", line 24, in count
+    wnd = K.winding(lambda k: f(k) - c, rect, npts=npts)
+  File "/Users/sumit/Github/corner_function/scripts/exp056_sigma_kernel.py", line 108, in winding
+    z = a + (b - a) * s; v = f(z)
+                             ~^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp056_run.py", line 24, in <lambda>
+    wnd = K.winding(lambda k: f(k) - c, rect, npts=npts)
+                              ~^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp056_run.py", line 21, in <lambda>
+    f = lambda k: K.Bkf(R, W, k)
+                  ~~~~~^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp056_sigma_kernel.py", line 154, in Bkf
+    def Bkf(R, W, k): return complex(W @ Pc(-0.5 + 1j * k, R))
+                                         ~~^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp056_sigma_kernel.py", line 128, in Pc
+    c1 = complex(gamma(mpc(nu) + 0.5) / (mp.sqrt(mp.pi) * gamma(mpc(nu) + 1)))
+                 ~~~~~^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/ctx_mp_python.py", line 1007, in f
+    return ctx.make_mpc(mpc_f(x._mpc_, prec, rounding))
+                        ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/libmp/gammazeta.py", line 1913, in mpc_gamma
+    return mpf_gamma(a, prec, rnd, type), fzero
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/libmp/gammazeta.py", line 1712, in mpf_gamma
+    raise ValueError("gamma function pole")
+ValueError: gamma function pole

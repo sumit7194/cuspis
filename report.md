@@ -6456,3 +6456,55 @@ threshold allows. The large-distance decay is set by the nearest singularity of 
   α = 0.006 and 0.004, with the residual smaller at 0.004 than at 0.006.
   - **Must-fail:** the wrong closed form −(π/2)Γ(½+α)Γ(5/2−α) misses by > 0.5% at α = 0.006.
 - Envelope: ~10 windings × ~2 min, < 0.5 GB, 1 core, nice 12, watchdog.
+
+### EXP-056 results: P1 (gap c, zero counts) PASS at all 8 (n, q); P2 (closed form) PASS; both must-fails fire [model: Opus 5.5]
+
+**Runs** (kept in `scripts/`). The final run is `exp056_run.py`, giving `exp056_output.txt` and `exp056_results.json`
+(77 s, peak 0.23 GB, nice 12, watchdog, exit 0). Three earlier runs failed on instrument bugs, fixed one at a time:
+- **Run 1:** killed by the watchdog at 1.47 GB, above the 1 GB cap, because the g_ν matrix was built in one piece.
+  Fixed by chunking g over ρ; the chunked and unchunked numbers are identical.
+- **Run 2:** crashed at the contour corner k = 0, where the two-term large-ρ formula is degenerate (Γ(0)). That single
+  point is now evaluated at k = 10⁻⁷.
+- **Run 3:** gave NaN at q = 2, n = 1.05 and 1.25 (P overflowed while the weight underflowed at Im k ≈ 2.3). The
+  other six cases were identical to the final run. Fixed by an exactly rescaled form, Ws = W e^{σρ} and
+  P̃ = P e^{−σρ}, which matches the unscaled form to ≤ 2·10⁻¹⁵. The registered rectangles were not changed.
+
+| n | αₙ | q | κ₀ = ½ + αₙ + ν_q | rectangle Im ≤ | winding |
+|---|---|---|---|---|---|
+| 1.05 | −0.012095 | 1 / 2 | 1.44036 / 2.39271 | 1.3904 / 2.3427 | 0.0000 / 0.0000 |
+| 1.25 | −0.053997 | 1 / 2 | 1.24782 / 2.04691 | 1.1978 / 1.9969 | 0.0000 / 0.0000 |
+| 2 | −0.165147 | 1 / 2 | 0.86142 / 1.34840 | 0.8114 / 1.2984 | 0.0000 / 0.0000 |
+| 3 | −0.265941 | 1 / 2 | 0.66048 / 0.95181 | 0.6105 / 0.9018 | 0.0000 / 0.0000 |
+
+- **P1 PASS.** Nuisance (n = 1.05 and 2, q = 1): 48 points per side and ρ-panel width 0.5 both give 0.0000.
+- **Must-fail PASS (fires):** the planted zero at 2 + 0.5i (n = 1.05, q = 1) gives winding +1.0000.
+- **P2 PASS:** W₃/λ² vs −(π/2)Γ(½+2α)Γ(5/2−2α) gives rel +2.84·10⁻⁴ at α = 0.006 and +1.29·10⁻⁴ at α = 0.004. Both are
+  ≤ 10⁻³, and the residual shrinks.
+- **P2 must-fail PASS (fires):** the wrong form −(π/2)Γ(½+α)Γ(5/2−α) misses by 1.53% (> 0.5%).
+
+**Reading.**
+- *(c).* Inside Re k ∈ [0, 6], 0 ≤ Im k ≤ κ₀ − 0.05, B̃ₙ(k, q) has no zeros at the eight sampled (n, q). The axis
+  zeros are excluded by positivity (argued). So D_σ has no poles there.
+  - Its first singularity in sector q is then at or above the threshold κ₀. The decay rate is
+    ≥ κ₀ − ½ = |ω_q| − |αₙ| + O(aₙ): T7's uniform gap, with an explicit O(n − 1) loss.
+  - T7's "bound-state pole" lies beyond κ₀ (B̃ → +∞ at κ₀⁻ and continues from −∞), so it is outside the strip. That is
+    consistent with T7.
+- *Closed form.* W₃(α) = λ²(α)·[−(π/2)Γ(½+2α)Γ(5/2−2α)] + o(α²) now passes as a registered prediction at unseen α,
+  with its must-fail firing.
+
+**Grade.**
+- (c): **partially verified**. It is evaluated at 8 sampled (n, q); q ≥ 3, n closer to 1, and Re k > 6 are argued, not
+  run. So are the 0.05 band below κ₀ and the threshold facts, which follow from positivity and the explicit large-ρ
+  exponents.
+- The EXP-055 leading closed form: **verified as a registered prediction**. The o(α²) remainder is supported at six α
+  values, not bounded.
+
+**Lemma U status after EXP-053–056.**
+- (a): argued (charge conjugation), with a free-part check in closed form.
+- (b): its integrated form is verified as a closed form plus partially verified as a limit. The near-tip C₊ is still
+  owed and needs a continuum near-tip method, since the lattice cannot do it (EXP-054).
+- (c): partially verified.
+- (d): argued.
+- (e): argued, closing on (a), (b) and strip analyticity once the CH07b contour is named.
+- Remaining Opus work: the direct C₊, and a write-up of (e)'s continuation. A Fable brief only if one of these sticks,
+  and only on Sumit's word.

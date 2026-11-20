@@ -1,0 +1,10 @@
+# cmd: ../.venv/bin/python -u -W ignore exp056_run.py
+# caps: tree <= 1.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.6     1   0.022    0.000   0.022        10.98        656.9           66              1
+     6.1     1   0.270    0.000   0.270        10.98        656.9           66              1
+    11.6     1   1.472    0.000   1.472        10.98        656.9           66              1
+# WATCHDOG SIGTERM: tree footprint 1.47 GB > cap 1.0 GB
+# exit -15; wall 13 s; PEAK tree MEM 1.472 GB + CMPRS 0.000 GB = 1.472 GB; KILLED: tree footprint 1.47 GB > cap 1.0 GB

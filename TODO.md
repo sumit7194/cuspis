@@ -486,3 +486,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       (verified, 3 routes). The full W₃ approaches it (residual 3.6% → 0.11%), so W₃/α² → −3π²/8: the integrated (b)
       holds (partially verified). The near-tip C₊ is still owed and needs a continuum method.
 - [ ] Gap (c), the ω_q ≠ 0 sum: scope it next. It needs the σ propagator on H² × S¹ in twisted sectors.
+- [x] 2026-11-21: EXP-056. Gap (c): no zeros of B̃ₙ(k, q) in the strip below threshold at 8 (n, q), so the uniform gap
+      holds with an O(n − 1) loss (partially verified). The EXP-055 closed form passed as a registered prediction.
+      Three instrument-bug runs are kept (memory, k = 0 corner, overflow).
+- [ ] Lemma U remaining:
+      (1) a direct near-tip C₊(α), by a continuum method;
+      (2) a write-up of (e)'s CH07b contour continuation;
+      (3) optional: (c) at q ≥ 3 and n → 1.01;
+      (4) check Neon's (a)–(e) reply against EXP-053–056 when it lands.

@@ -1,0 +1,16 @@
+03:21:24 alpha_n: {1.05: -0.0120951619, 1.25: -0.0539970191, 2.0: -0.1651465538, 3.0: -0.2659406126}
+03:21:29 P1 n=1.05 q=1: kappa0 = 1.440363, rectangle Im<=1.3904: winding -0.0000 [PASS]  B(i top)=2.642e+00  [4s]
+03:21:33 P1 n=1.05 q=2: kappa0 = 2.392705, rectangle Im<=2.3427: winding +nan [FAIL]  B(i top)=nan  [4s]
+03:21:37 P1 n=1.25 q=1: kappa0 = 1.247823, rectangle Im<=1.1978: winding -0.0000 [PASS]  B(i top)=2.755e+00  [4s]
+03:21:41 P1 n=1.25 q=2: kappa0 = 2.046914, rectangle Im<=1.9969: winding +nan [FAIL]  B(i top)=nan  [4s]
+03:21:46 P1 n=2.0 q=1: kappa0 = 0.861421, rectangle Im<=0.8114: winding -0.0000 [PASS]  B(i top)=3.112e+00  [4s]
+03:21:50 P1 n=2.0 q=2: kappa0 = 1.348398, rectangle Im<=1.2984: winding +0.0000 [PASS]  B(i top)=1.988e+00  [4s]
+03:21:54 P1 n=3.0 q=1: kappa0 = 0.660481, rectangle Im<=0.6105: winding -0.0000 [PASS]  B(i top)=3.494e+00  [4s]
+03:21:59 P1 n=3.0 q=2: kappa0 = 0.951812, rectangle Im<=0.9018: winding +0.0000 [PASS]  B(i top)=2.389e+00  [5s]
+03:21:59 P1 FAIL
+03:22:12 nuisance n=1.05 q=1: 48 pts/side winding -0.0000; rho-panel width 0.5 winding -0.0000
+03:22:26 nuisance n=2.0 q=1: 48 pts/side winding -0.0000; rho-panel width 0.5 winding -0.0000
+03:22:30 must-fail (planted zero at 2+0.5i, n=1.05 q=1): winding +1.0000 [PASS (fires)]
+03:22:31 P2 alpha=0.006: W3/lambda^2 = -3.58694481, closed form -3.58592491: rel +2.84e-04; wrong form -3.64270880: rel -1.53e-02
+03:22:32 P2 alpha=0.004: W3/lambda^2 = -3.62407392, closed form -3.62360502: rel +1.29e-04; wrong form -3.66199133: rel -1.04e-02
+03:22:33 P2 PASS; P2 must-fail PASS (fires)
