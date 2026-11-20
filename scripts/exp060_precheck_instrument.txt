@@ -1,0 +1,4 @@
+q=0 k=1.0: raw M=400 -1.265e-04; Richardson(1/M) -3.163e-07; Richardson(1/M,1/M^2) -4.558e-10  (exact 2.862941e-01)
+q=0 k=20.0: raw M=400 -1.265e-04; Richardson(1/M) -4.205e-07; Richardson(1/M,1/M^2) +1.348e-07  (exact 1.250391e-02)
+q=1 k=1.0: raw M=400 -1.265e-04; Richardson(1/M) -3.150e-07; Richardson(1/M,1/M^2) -2.169e-09  (exact 1.746456e-01)
+q=1 k=20.0: raw M=400 -1.265e-04; Richardson(1/M) -4.192e-07; Richardson(1/M,1/M^2) +1.332e-07  (exact 1.248828e-02)

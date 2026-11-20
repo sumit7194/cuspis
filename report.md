@@ -6699,3 +6699,41 @@ exist.
    - Both pieces are analytic in the continued frequency and reproduce the sampled values exactly. If they satisfy the
      growth bound, Carlson makes this *the* continuation.
    - T7 does not state this. It must be built into stage B.
+
+### Stage-B instrument pre-check, and a checkpoint (2026-11-21 ~04:00 IST) [model: Opus 5.5]
+
+**Pre-check** (`scripts/exp060_precheck_instrument.txt`; unregistered characterisation).
+- The ~10⁻⁴ raw offset in the n = 1 mode-sum B̃ is the m-sum truncation tail.
+- Richardson in 1/M leaves ~3–4·10⁻⁷. Three-point Richardson (1/M, 1/M²) leaves 5·10⁻¹⁰ at k = 1, but 1.3·10⁻⁷ at
+  k = 20, about 10⁻⁵ relative.
+- So stage B needs three-point Richardson, plus a measured noise floor for ΔD̃ = D̃ₙ − D̃₁^Γ at large k: about
+  10⁻⁵ × 4k in absolute terms.
+- The floor must be measured, and the ΔD̃ decay must stand above it over a stated k-range, before ΔD̃ is inverted.
+
+**Checkpoint: why stop here.**
+- Four registration slips of mine tonight: EXP-055 (an unbounded O(α) correction), EXP-057 (a mis-set admissibility
+  class), EXP-058 (a must-fail that could not fire, registered *without* the pre-check the Bridge had asked for an
+  hour earlier) and EXP-059 (a 4× Stirling prefactor).
+- None changed a conclusion: each was caught by a control or a diagnostic, and each is recorded.
+- But a rising slip rate on a multi-hour build is a reason to stop and write the spec. Per the fleet practice
+  ("mechanism, not promise, for repeat slips"), the mechanism adopted here: every future pre-registration in this repo
+  carries a **control table** (below), filled in *before* the registration commit.
+
+**Control table (template):**
+
+| clause | the input that makes it fire | pre-check run? (file) | what firing means |
+|---|---|---|---|
+| … | … | … | … |
+
+Any must-fail row without a pre-check file is not registered.
+
+**The stage-B spec, so it can resume cold:**
+1. Instrument: three-point Richardson in M; measure the ΔD̃ noise floor at k ∈ {1, 5, 20, 40} for n = 1.05, q = 1.
+2. Pre-check: ΔD̃(k) decay above the floor. A control-table row: a planted ΔD̃ that does not decay (add 0.01·4k) must
+   break the inverse-transform convergence.
+3. D̃ₙ via the zero-frequency alternate continuation (EXP-059 note 2). At sampled ω ∈ ℤ/n this is exactly the present
+   mode sum (j = 0, q both alternate). The analytic form is needed only for continuous ω in Σ̃.
+4. Σ̃ₙ(iα, α) at n = 1 ± δ (δ ∈ {0.02, 0.05}, as the nuisance), real α ∈ {0.2, 0.35, 0.5, 0.65, 0.8}.
+   - The checks: C-symmetry f(α) = f(1 − α), and independence of the small-ρ cutoff.
+5. Stage C: |A(½ + iy)| e^{−2π|y|} for y up to ~3, with a control-table row "the planted L·sin²(πα) factor must show a
+   growth rate of 2π".

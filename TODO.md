@@ -520,3 +520,6 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       - C-symmetry α ↔ 1 − α as the internal check;
       - UV-cutoff independence as the nuisance.
 - [ ] Stage C: growth along α = ½ + iy; the must-fail is a planted L·sin²(πα).
+- [ ] **Checkpoint 2026-11-21 ~04:00: the Σ̃ build is paused before stage B.** Resume from report.md "Stage-B instrument
+      pre-check, and a checkpoint". Every new pre-registration carries a control table with a pre-check file per
+      must-fail (the mechanism for tonight's four registration slips).
