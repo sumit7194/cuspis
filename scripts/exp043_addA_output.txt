@@ -1,0 +1,35 @@
+=== A2: K = int_0^inf (1/3 - c_D)/u^2 du = 1.53722   (one sign change for scalar-law Dirac/EMI predicted to need K > 1.233: PASS)
+[D-law Einstein/EMI inverted on 399 nodes]
+[S-law Einstein/EMI inverted on 399 nodes]
+=== A2: zero-threshold sign changes on the nodes in [1e-4, 20] (Einstein set to 0 beyond t_max) ===
+  scalar   vs Dirac   : D-law 1, S-law 1
+  scalar   vs Einstein: D-law 1, S-law 1
+  scalar   vs EMI     : D-law 1, S-law 1
+  Dirac    vs Einstein: D-law 1, S-law 1
+  Dirac    vs EMI     : D-law 1, S-law 1
+  Einstein vs EMI     : D-law 2, S-law 1
+  A2 count FAIL
+=== A2: end signs (small t from source forms / shifted contour; large t from asymptotic forms / saddle contour) ===
+  scalar   vs Dirac    D-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  scalar   vs Dirac    S-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  scalar   vs Einstein D-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  scalar   vs Einstein S-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  scalar   vs EMI      D-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  scalar   vs EMI      S-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  Dirac    vs Einstein D-law: small-t signs [1, 1, -1], large-t signs [1, 1, 1]  NOT opposite/consistent
+  Dirac    vs Einstein S-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  Dirac    vs EMI      D-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  Dirac    vs EMI      S-law: small-t signs [-1, -1, -1], large-t signs [1, 1, 1]  opposite
+  Einstein vs EMI      D-law: small-t signs [-1, -1, -1], large-t signs [-1, -1, -1]  NOT opposite/consistent
+  Einstein vs EMI      S-law: small-t signs [1, 1, 1], large-t signs [-1, -1, -1]  opposite
+  A2 ends FAIL
+=== A3: Einstein (S-law) on four contours ===
+  outside, t=0.62: sigma=0.5: -2.81e-11  sigma=5: -2.05e-11  sigma=20: -7.11e-12  sigma=80: -1.04e-13   PASS
+  outside, t=0.8: sigma=0.5: -5.68e-12  sigma=5: -1.31e-12  sigma=20: -9.99e-15  sigma=80: -3.33e-23   PASS
+  inside, t=0.5: sigma=0.5: 0.0386487967  sigma=5: 0.0386487967  sigma=20: 0.0386487968  sigma=80: 0.0386497122   spread 9.2e-07  FAIL
+  inside, t=0.3: sigma=0.5: 0.1991815284  sigma=5: 0.1991815284  sigma=20: 0.1991823501   spread 8.2e-07  FAIL
+  sup_y |M(2+sigma+iy)| t_max^-sigma (1+|y|)^(5/2), sigma=0.5: 1.448e+00
+  sup_y |M(2+sigma+iy)| t_max^-sigma (1+|y|)^(5/2), sigma=5: 1.171e+00
+  sup_y |M(2+sigma+iy)| t_max^-sigma (1+|y|)^(5/2), sigma=20: 1.141e+00
+  sup_y |M(2+sigma+iy)| t_max^-sigma (1+|y|)^(5/2), sigma=80: 1.138e+00
+# exit 0; wall 106 s; PEAK tree MEM 0.184 GB + CMPRS 0.058 GB = 0.241 GB

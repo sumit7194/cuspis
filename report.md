@@ -5369,3 +5369,69 @@ script `scripts/exp043_addA.py` written. Run 1 was stopped by the pressure-yello
 was already at yellow from other jobs); its logs are kept (`exp043_addA_output_run1_pressure.txt`,
 `exp043_addA_run1_pressure.wd.log`). A wait-for-green relaunch was stopped at the pause, before it ran. **No A2 or A3
 result exists yet**; A1 (the proof) stands as argued.
+
+### EXP-043 addendum A results (2026-11-20; Cuspis session, Opus 5.5)
+
+**Run.** Bridge GO; pressure level 1 at launch. Launched 22:05:18 IST with the registered command (nice 12, watchdog
+--cap-gb 1.5 --min-disk-gb 5 --stop-on-pressure-warn). Exit 0 after 106 s; peak 0.24 GB (registered estimate < 0.2 GB).
+Output `scripts/exp043_addA_output.txt`, `exp043_addA.json`, `exp043_addA.wd.log`.
+
+**Results against the registered criteria.**
+- **A2, K: PASS.** K = ∫₀^∞(⅓ − c_D)/u² du = 1.53722 > 1.233.
+- **A2, sign count: FAIL as registered.**
+  - S-law: all six pairs show exactly one sign change.
+  - D-law: five pairs show one change; **Einstein/EMI shows 2**.
+- **A2, end signs: FAIL as registered.**
+  - S-law: all six pairs have opposite end signs, each consistent across its three points.
+  - D-law Dirac/Einstein: small-t signs (+, +, −) at t = 10⁻⁶, 10⁻⁵, 10⁻⁴, which is inconsistent.
+  - D-law Einstein/EMI: equal end signs (−, −).
+- **A3, outside the edge: PASS.** At t = 0.62 and 0.8, |value| ≤ 2.8·10⁻¹¹ on every σ, and it shrinks with σ: at
+  t = 0.8 from 5.7·10⁻¹² (σ = 0.5) to 3·10⁻²³ (σ = 80).
+- **A3, inside the edge: FAIL as registered.** Spreads of 9.2·10⁻⁷ (t = 0.5) and 8.2·10⁻⁷ (t = 0.3), against 10⁻⁷.
+  The deviant value in each set is the highest σ.
+
+**Diagnostic (written after the run; changes no criterion).** Script `scripts/exp043_addA_diag.py`, output
+`exp043_addA_diag_output.txt`, 74 s, peak 0.48 GB.
+- *Einstein/EMI, D-law.* The two sign changes are at t ≈ 3.4·10⁻⁴, where |d| ≈ 1–2·10⁻⁸, and at t ≈ 0.568, just inside
+  t_max, where Einstein falls to its edge while EMI stays at 0.16.
+  - A contour with half the step and twice the range moves the small-t values by ≤ 2·10⁻¹⁰. Both sign changes are
+    resolved by about 50× or more.
+  - So: d < 0 as t → 0, d > 0 on (3.4·10⁻⁴, 0.568), d < 0 beyond. These are **two genuine sign changes** of the D-law
+    profiles, not noise.
+- *Dirac/Einstein, D-law, small t.* Einstein − ⅓ is −6.5·10⁻¹⁰, −1.2·10⁻⁸ and −2.2·10⁻⁷ at t = 10⁻⁶, 10⁻⁵ and 10⁻⁴: a
+  log-slope of 1.27. Dirac − ⅓ ≈ −t²ln²t/3 is −6.4·10⁻¹¹, −3.9·10⁻⁹ and −3.1·10⁻⁷.
+  - Einstein's departure from ⅓ dominates as t → 0, so Dirac − Einstein > 0 there. It turns negative between 10⁻⁵ and
+    10⁻⁴, below the A2 counting window [10⁻⁴, 20], and positive again inside the window.
+  - So the D-law pair has **two sign changes**, the extra one below the window; the end signs are both +.
+  - The fine contour changes Einstein by ≤ 4·10⁻¹¹ here.
+  - *Small script defect:* at t = 10⁻⁵ the Dirac value is a spline extrapolated 0.02 in ln t outside the table
+    (−3.88·10⁻⁹, against the source form's −4.42·10⁻⁹). It does not change any sign.
+- *A3 inside the edge.* A finer y-contour leaves the low-amplification values unchanged (≤ 1.4·10⁻¹⁰). It reduces the
+  deviant ones:
+  - t = 0.5, σ = 80 (amplification (t_max/t)^σ = 1.1·10⁵): from 9.2·10⁻⁷ to 1.04·10⁻⁷.
+  - t = 0.3, σ = 20 (amplification 4.9·10⁵): from 8.2·10⁻⁷ to 6.0·10⁻⁸.
+  - So the failure is the y-quadrature's discretisation error (~10⁻¹¹ absolute) times the amplification. The pre-run
+    amendment had budgeted only for double rounding.
+  - It is converging but **not demonstrated**: at the fine resolution t = 0.5, σ = 80 is still 1.04·10⁻⁷, just above
+    the tolerance.
+
+**Post-failure argument (not registered; grade: argued, and diagnosed).**
+- The two laws differ by a factor common to all four theories. By construction, M_X^S(D) = M_X^D(D)/(D − 1)
+  (`scripts/exp043_profiles.py`). So in D > 2 the difference of any two curves has the **same zeros in both laws**.
+- The S-law premise passed blind in this run: one sign change and opposite ends for all six pairs. With A1 it gives at
+  most one zero per pair, and the measured crossings (EXP-040, EXP-041) give at least one. So **one crossing per pair
+  survives, on the S-law alone.**
+- That the S-law suffices is a post-failure reading, labelled as such. The registration demanded both laws.
+- The D-law failure has a reading of its own. The D-law profile is e = ẽ − t ẽ′, and that operator can add sign
+  changes. So the D-law profiles are not a certificate, and two of them cross twice as profiles.
+- **Correction to EXP-043 / RESULT.md (16):** "every pair of profiles differs in sign exactly once" holds in the S-law
+  only. In the D-law it fails for Dirac/Einstein and Einstein/EMI.
+
+**Grades after addendum A.**
+- A1 (the lemma): argued.
+- One crossing per pair in D > 2: partially verified, via the S-law premise. The sufficiency of that premise is a
+  diagnosed post-failure argument.
+- Einstein's compact support at t_max = π/(2e): partially verified. The outside-edge test passed. The inside-edge
+  contour agreement failed at the registered resolution; it converges when refined, but is not demonstrated at 10⁻⁷.
+- **Follow-up (deferred):** register a re-run of A3 inside the edge with the y-step set from the measured floor rather
+  than double rounding, and A2 down to t = 10⁻⁶ in both laws.

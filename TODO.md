@@ -385,3 +385,14 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - Open choices for Sumit: the interacting route (EXP-042: B = 1/N, C = epsilon-expansion; D out of reach); EXP-043
   follow-ups (Paley-Wiener write-up; why pi/(2e) sits at the free-field scale); the Bridge's offer of a check without
   the dimensional reduction.
+
+## 2026-11-20 (Cuspis session, Opus 5.5): EXP-043 addendum A done
+- [x] Addendum A run (bridge GO, 106 s). A2: K PASS; count and end signs FAIL as registered, in the D-law only
+      (Dirac/Einstein and Einstein/EMI each change sign twice; diagnosed as genuine). The S-law passes all six pairs.
+      A3: outside PASS, inside FAIL (amplified quadrature floor; converges with a finer contour, not demonstrated at 1e-7).
+      One crossing per pair survives via the S-law (both laws share zeros in D): a post-failure argument. Results in
+      report.md; RESULT.md (16) corrected.
+- [ ] Optional: register an A3 re-run with the y-step set from the measured ~1e-11 floor, and an A2 count down to t = 1e-6
+      in both laws.
+- [ ] Open choices for Sumit unchanged: interacting route (1/N or epsilon-expansion); why π/(2e) sits at the free-field
+      scale; the Bridge's offer of a check without the dimensional reduction.
