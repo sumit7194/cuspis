@@ -5992,3 +5992,32 @@ as a reading of MST15's equations. Section 4 is a route, not a result. No δκ n
 
 **Grade.** (i) argued; sphere gate verified by evaluation (for conventions only); corrections 1–2 argued from MFS09
 (partly summary-depth). No δκ number yet.
+
+## EXP-051  δκ step 2, Tier-1 foundation: a 2D Euclidean lattice twisted-propagator solver must reproduce EXP-044's lattice-free w_S(b, t) — pre-registration [model: Opus 5.5]
+
+**Why.** The n → 1 formula (EXP-050) needs twisted propagators G_{(a)} at real b (CH07b). Before building the strip
+trace on them, the twisted lattice machinery must reproduce an independent known object: the scalar's w_S(b, t) from
+the Fredholm determinant (EXP-044, verified there against lattice c-functions and C0).
+
+**Method.**
+- A real scalar on a 2D square lattice (spacing 1), with an Ly × Lx box and Dirichlet outer walls. An interval cut of
+  r links sits between rows j₀ and j₀ + 1, carrying the monodromy φ⁺ = λφ⁻ with **λ = −e^{2πb}** (CH07b's bosonic
+  Z[−λ]).
+- Operator A_λ = (4 + m²)I − hopping. For links crossing the cut: A[above, below] = −λ and A[below, above] = −1/λ.
+- log Z_λ(r) = −½ log|det A_λ| + (a constant with no r dependence). w^{lat} = r ∂_r log Z_λ at fixed m = t/r, by central
+  difference (r ± 1). Sizes r and 2r, Richardson in 1/r². Box ≥ max(6r, 12/m) per side.
+- Determinant by sparse LU (SuperLU): log|det| = Σ log|U_ii|; the sign is recorded.
+
+**Prediction (falsifiable).** w^{lat}(b, t) = −½ w^{det}_{a=½+ib}(t), the identification of CH07b's w_S with our
+determinant's w, as derived in EXP-044's registration and tested there by C0.
+- Points: b ∈ {0, 0.5, 1.0} × t ∈ {1.0, 3.0}.
+- Tolerance: 3 × |Richardson − (2r value)| + 10⁻⁴.
+- *Fails if* any point misses. A miss at all points by one common factor or sign is a convention error, to be
+  diagnosed and recorded before anything else.
+
+**Must-fail control.** λ = +e^{2πb} (the fermionic sign of the twist) at b = 0.5, t = 1. It must miss the bosonic
+prediction by more than 10× the tolerance.
+
+**Tier 1 first.** One point at small r to measure time and memory. Then the full set if it is within the envelope
+(< 0.5 GB, < 1 h).
+- Script: `scripts/exp051_twisted_lattice.py`; output `exp051_output.txt`.
