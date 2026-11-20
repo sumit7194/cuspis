@@ -6629,3 +6629,36 @@ D_q(ρ) = ∫₀^{2π}dτ e^{−iqτ}[−1/(π²(cosh ρ − cos τ)²)] = −(2
   - Its two physics inputs remain **argued**: Δ_strip G^(0) = 0, and that only the linear trace T^(1) can carry a log
     (T5b item 2: the p ≥ 2 terms converge). The latter now needs re-reading with C₊ linear in α (EXP-057 (b)): each
     extra power carries C₊/2α-type factors, bounded, but not yet checked.
+
+## EXP-059  Σ̃ build, stage A: the n = 1 σ kernel in closed form, and the inverse Mehler–Fock machinery against a separately derived position-space closed form (both unverified until this run) — pre-registration [model: Opus 5.5]
+
+**Why.** The Σ̃ growth check (EXP-057's crux) needs D_σ in position space on H² × S¹_{2πn}. D̃ ~ 4k at large k, so the
+inverse transform needs a UV subtraction. Stage A tests the machinery at n = 1, where two separately derived closed forms (argued)
+exist.
+
+**Closed forms (argued; to be checked).**
+- (L) ∫₀^∞e^{−pt}P_ν(cosh t)dt = Γ((p−ν)/2)Γ((p+ν+1)/2) / [2Γ((p−ν+1)/2)Γ((p+ν+2)/2)]. Derived as the Gamma
+  structure fixed by the exact cases ν = 0 (giving 1/p) and ν = 1 (giving p/(p² − 1)). Both hold by hand.
+- So the EXP-056 n = 1 kernel ¼∫P_{−½+ik}e^{−|q|ρ}dρ gives
+  **B̃₁(k, q) = (1/8)Γ((q+½−ik)/2)Γ((q+½+ik)/2) / [Γ((q+3/2−ik)/2)Γ((q+3/2+ik)/2)]**.
+  - Its poles sit at κ = q + ½ + 2j: the threshold κ₀ = ½ + q.
+  - Its zeros sit at κ = q + 3/2 + 2j: κ* = 3/2 + q, which matches D_q's e^{−(2+q)ρ} decay (EXP-058).
+  - D̃₁ = 1/B̃₁ ~ 4k(1 + c(q)/k² + …), with c(q) = (16/3)[B₃(q/2 + ¾) − B₃(q/2 + ¼)] (Stirling with Bernoulli
+    polynomials).
+- (P) The position-space closed form, from the τ-integral (EXP-058):
+  D_q(ρ) = −(2/π)e^{−|q|ρ}(|q| sinh ρ + cosh ρ)/sinh³ρ.
+
+**Predictions.**
+- **A1:** (L) at (p, ν) = (1.3, −0.2), (2.5, 0.7 + 0.4i), (0.9, −0.5 + 1.1i), by direct quadrature, to ≤ 10⁻¹⁰.
+- **A2:** the Gamma form of B̃₁(k, q) against the EXP-056 mode-sum instrument (n = 1, α = 0) at real k ∈ {0.3, 1.7, 5},
+  q ∈ {0, 1, 2}, to ≤ 3·10⁻⁵ (the instrument floor from EXP-056's K1).
+- **A3 (the machinery):**
+  - The inverse Mehler–Fock transform f(ρ) = ∫dk (k tanh πk/2π)P_{−½+ik}(cosh ρ)F(k) of the remainder
+    R(k) = D̃₁(k, 0) − λ₁D̃₁(k, 1) − λ₂D̃₁(k, 2). Here λ₁ + λ₂ = 1 and λ₁c(1) + λ₂c(2) = c(0), so R = O(k⁻³).
+  - Plus λ₁D₁(ρ) + λ₂D₂(ρ) from (P), this must reproduce (P)'s D₀(ρ) at ρ ∈ {0.3, 1, 3} to ≤ 10⁻⁴ relative.
+- **A4 (continuation in q):** the same construction with target q = 0.5, compared against (P) continued to q = 0.5, to
+  ≤ 10⁻⁴. If A4 holds, D̃₁ at non-integer frequency has a closed-form position-space inverse, which can serve as the
+  UV reference at n ≠ 1.
+- **Must-fail:** a wrong k-space form, the Gamma form with ½ ↔ 3/2 swapped (i.e. B̃ in place of D̃), inverted the same
+  way, must miss D₀ by > 10%.
+- mpmath, minutes, < 0.3 GB.
