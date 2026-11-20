@@ -396,3 +396,19 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       in both laws.
 - [ ] Open choices for Sumit unchanged: interacting route (1/N or epsilon-expansion); why π/(2e) sits at the free-field
       scale; the Bridge's offer of a check without the dimensional reduction.
+
+## 2026-11-20 evening (Cuspis, Opus 5.5): the δκ (O(N⁰) strip coefficient) line, parked for Sumit's decision
+- [x] EXP-044 lattice-free crossings (done); EXP-045 π/(2e) dropped; EXP-046 holographic couplings: largely known;
+      EXP-047 1/N note; EXP-048 groundwork (a), the reading.
+- [ ] Groundwork (b), only on Sumit's go (the Bridge's suggested order):
+      1. read MFS09's surface-coupling β-function (eqs. 40–55) and the n → n* vs L → ∞ non-commutation at source; it
+         was summary-depth for the large-N section;
+      2. half-space first: reproduce MST15's double-trace one-loop formula, and pin down the ν ≥ ½ divergence (a
+         replica instability, a regulator or boundary-condition artefact, or the alternate-quantisation edge);
+      3. only then the strip: does the pathology reach the universal 1/w^{D−2} term? If not, that is the argument the
+         strip needs; if it does, the naive GFF difference is dead.
+- [ ] Fable, only if (b) gets stuck and Sumit asks, in the personal account. Working folder
+      /Users/sumit/Github/fable_work/corner_dkappa/ (outside every repo); BRIEF.md reviewed by the Bridge; statuses
+      SURE/CHECKED/UNSURE/LIT; verification under our own prereg and our own code. Never launched from cuspis on the
+      office account.
+- [ ] Digest §10 still open: the Paley–Wiener write-up for the edge; untruncated citer sweep (CH09, RT06, Liu–Mezei).
