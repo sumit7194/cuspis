@@ -5730,3 +5730,45 @@ the precise statement, step (a) of the registration, showed that no test of it c
   2 for scalar, Dirac and EMI alike). Only the holographic side can be deformed, and that asks a different question.
 - **What remains of it:** the band itself for Einstein. κ_E/C_T = (π²/3)·Γ(¾)⁴/2 = (π²/3)·1.127, against the free
   fields' 1.155–1.27. RESULT.md (16) and digest §9 are updated.
+
+## EXP-046  Prior-art pass: κ/C_T across holographic higher-curvature couplings (Sumit's GO, relayed by the Bridge, 2026-11-20) [model: Opus 5.5]
+
+**Question.** Is it already known why causality-allowed holographic couplings keep κ/C_T near Einstein's value?
+
+**Read at source, 2026-11-20, by fetch agents with verbatim quotes.**
+- BM15: verbatim to §4.2, eq. (121); the tail by summary only.
+- Miao15: all of it, verbatim.
+- BCR18: verbatim, including §2.1 and §7.3.
+- BCV21's corner section (§5.4) was **not** reachable this time. The ECG κ/C_T range rests on EXP-001's earlier
+  source check.
+
+**Findings.**
+- **[BM15]:** κ/C_T = (π²/6)Γ(¾)⁴ ≃ 3.7092 for every holographic theory they studied: quadratic, Gauss–Bonnet, and the
+  cubic/quartic Lovelock-type action of their eq. (55). This holds at least to first order in the couplings, because
+  one factor α multiplies both κ (eq. 57) and C_T (eq. 110). They note the result depends on the entropy functional:
+  (K K)ⁿ terms with n ≥ 2 can modify it (§4.1, eq. 116).
+- **[Miao15]:** κ/C_T is **not** universal ("in contrast to σ/C_T, κ/C_T is not universal", abstract).
+  - Eq. (94): κ/C_T = (π²/6)Γ(¾)⁴ + Σ_{m≥2} λ̄_m π⁵Γ(−¼)(â_m − ω̂_m)/(24Γ(¼)) + O(λ̄²), for general f(Riemann) with
+    Dong's functional.
+  - λ̄₂ ∼ t₄ (§4.3, with footnote 1 citing |t₄| ≤ 4). The paper does not convert the t₄ bound into a κ/C_T range.
+  - It attributes the non-universality to extrinsic-curvature terms that it parametrises but cannot fix.
+  - It presents a holographic argument for σ/C_T = π²/24 (its claim; perturbative, Dong's functional; unverified here).
+- **[BCR18]:** for ECG, t₄ = −1260μf∞²/(1 − 3μf∞²) (eq. 129). So |t₄| ≤ 4 forces a tiny coupling:
+  −0.00322 ≤ μ ≤ 0.00312 (§2.1), or 0 ≤ μ ≤ 0.003125 (§7.3, eq. 132). The two statements are not reconciled in the
+  paper; RESULT.md open item (c) already lists a t₄-sign discrepancy for ECG. With [BCV21]'s κ for ECG, this gives
+  κ/C_T ∈ [3.672, 3.747] (EXP-001).
+
+**Answer.** Largely known, with one gap.
+- To first order in the couplings, κ/C_T equals Einstein's whenever a theory's corrections enter as a common
+  rescaling: [BM15]'s quadratic, Gauss–Bonnet and Lovelock-type models, which have t₄ = 0.
+- Otherwise the first-order shift is tied to t₄-like couplings [Miao15], and in ECG the conformal-collider bound
+  |t₄| ≤ 4 makes the coupling so small (|μ| ≲ 3·10⁻³, because of the factor 1260) that κ/C_T moves by ≤ 1% [BCR18,
+  BCV21].
+- **Not found:** a bound on |κ/C_T − Einstein| from |t₄| ≤ 4 that holds for all holographic theories. It would
+  follow if the first-order shift were universally proportional to t₄ with a known coefficient, which Miao's eq. (94)
+  suggests but does not state.
+- **Caveat:** every result depends on the higher-curvature entropy functional, through extrinsic-curvature terms that
+  are not fixed (BM15 §4.1, Miao15 §4.3).
+
+**Action:** a sentence in the digest (§1, "already known"), not a project. The general t₄-bound is noted as an open
+item at low priority. Grade: partially verified (the sweep is three papers deep; BCV21 §5.4 was not re-read).

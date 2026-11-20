@@ -50,6 +50,11 @@ Already known, as far as our sweep found: the ingredients.
 - Holographic κ and C_T in general d.
 - A k/F₀ hierarchy at integer d = 3, 4, 5 (BFGLM26).
 - CH09 already notes the one-particle large-d law.
+- Why holographic theories stay near Einstein (EXP-046; read at source; partially verified). To first order, κ/C_T is
+  Einstein's for quadratic, Gauss–Bonnet and Lovelock-type couplings (BM15: one factor rescales both κ and C_T).
+  More generally the shift is tied to t₄-like couplings (Miao15), and |t₄| ≤ 4 confines ECG to |μ| ≲ 3·10⁻³ and
+  κ/C_T ∈ [3.672, 3.747] (BCR18, BCV21). No general |Δ(κ/C_T)| bound from |t₄| ≤ 4 was found; all of this depends
+  on the higher-curvature entropy functional.
 
 Not found: a C_T-normalised comparison across D, non-integer D, the D = 2 pinning, or the crossings.
 
