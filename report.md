@@ -6299,3 +6299,44 @@ is that the w-dependent two-edge part is one order higher.
 - **Trivial control:** D(0) = S(0) = 0 to solver precision.
 - **Tier 1 first:** one α at box 128² for timing and memory, then the full set. Envelope: < 1 GB, minutes, nice 12,
   watchdog. Failures are kept.
+
+### EXP-054 results: all three registered checks FAIL. The diagnosis is a lattice limit-order effect, so the run is uninformative on (b) [model: Opus 5.5]
+
+**Run** (`scripts/exp054_twist_tip.py`, `exp054_output.txt`, `exp054_results.json`; Tier 1 0.2 s, full run 17 s,
+peak 0.57 GB, nice 12, watchdog, exit 0; failures kept).
+- **Known-answer FAIL:** S/α = −0.00491 against the continuum −K₀(0.8)²/2π = −0.05087, a −90% miss. The
+  registration also wrote −0.03453, an arithmetic slip of mine. The code used the correct value.
+- **P (gap b) FAIL:** the D log-slopes are 1.90, 1.62 (r = 2) and 1.91, 1.63 (r = 4), against the registered window
+  [1.7, 2.3] on both pairs.
+- **Must-fail FAIL:** the S slopes are 1.97, 1.88 at both r, against the registered [0.7, 1.3]. As registered, this
+  means **the diagnostic cannot separate O(|α|) from O(α²), so P carries no information**.
+- The trivial control passes: D(0) = S(0) = 0 exactly.
+
+**Why the checks fired (diagnosed before acting; diagnostics after the registered run, unregistered, labelled).**
+- *On any finite lattice, G(x, x) is analytic and even in α.* A(α) is Hermitian positive definite, with entries
+  rational in e^{±2πiα}. Complex conjugation maps A(α) to A(−α), and G(x, x) is real. Measured:
+  G(+0.1) − G(−0.1) = 5·10⁻¹⁹. So every lattice quantity is O(α²) as α → 0 at fixed r/a. That includes S, which is
+  O(|α|) in the continuum (EXP-052, an exact Bessel identity).
+- *The two limits do not commute.* The continuum |α| law needs α·ln(r/a) ≫ 1.
+  - Measured lattice S/α relative to the continuum linear term: 0.63, 0.68, 0.72 at α = 0.3 for r = 4, 8, 16, rising
+    slowly toward 1.
+  - At α = 0.025 the same ratio is ≈ 0.1, with α ln r ≤ 0.07.
+- So the registered design could never have seen O(|α|) at α ≤ 0.1, r ≤ 8. The must-fail was built to catch exactly
+  this, and it did. Its firing is the reason this run tells us nothing about (b), and the reason I am not reading the
+  slopes of 1.9 as support for O(α²).
+- *The same structure sits in T7 itself.* T7's near-tip factor (1 − (ε/w)^{2α})/(2α) is the continuum form of this
+  non-uniformity. At α ln(w/ε) ≪ 1 it is log(w/ε). The order of α → 0 and ε → 0 is exactly gap (e)'s question, and
+  a lattice tip regulator meets it head on.
+
+**What (b) now needs (argued, not run).**
+- The test must take the continuum first and α → 0 second. Do lattice r → ∞ (Richardson) at fixed α ∈ [0.15, 0.4].
+  The known-answer is the exact continuum S(α) from the full mode sum, Σ_m[I_{|m+α|}K_{|m+α|} − I_{|m|}K_{|m|}]/2π,
+  not its linear term.
+- That still gives D only at α ≥ 0.15, so its α → 0 behaviour would be *inferred* from a fit. By the house rule that
+  is inference, not verification.
+- A cleaner continuum route uses the EXP-044 Fredholm form. At fixed t = mw, the two-edge interval effect is analytic
+  in λ² = sin²(πα)/π², with R̃ bounded at θ = 2α − 1 → −1. So it is O(α²) at fixed t (argued, on verified machinery).
+- But it is non-uniform as t → 0. The massless twist-field law gives w → 2Δ_α ∝ α(1 − α), which is linear in α. In
+  the 3D k_y integral the crossover region t ≲ e^{−1/α} contributes O(e^{−1/α}): non-analytic, but beyond all orders
+  at α → 0⁺. If that holds, C₊ = O(α²) up to O(e^{−1/α}). That is enough for (e)'s endpoint regularity.
+- **So (b) sharpens to a statement about the uniformity of the k_y → 0 slice.** It is argued here, not verified.

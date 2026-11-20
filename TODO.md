@@ -474,3 +474,10 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       (2) the ω_q ≠ 0 sum (Gap c): the only piece with neither a computation nor an argument;
       (3) a write-up of the contour continuation for Gap (e): the reduction to (a)+(b)+strip analyticity of g.
       Fable brief only if (2) sticks, and only on Sumit's word.
+- [x] 2026-11-21: EXP-054 (gap b, lattice) ran. All registered checks FAIL, diagnosed as lattice analyticity: G is even
+      and analytic in α on any finite lattice, and the continuum |α| law needs α ln(r/a) ≫ 1. The run is
+      uninformative on (b), and the must-fail caught it. Pre-registration arithmetic slip recorded.
+- [ ] (b) redesign, to pre-register:
+      - continuum-first (lattice r → ∞ at fixed α ≥ 0.15, with the exact mode-sum S(α) as known-answer); or
+      - better, the Fredholm route: O(sin²πα) at fixed t, plus the k_y → 0 crossover bound O(e^{−1/α}).
+      Then (c).
