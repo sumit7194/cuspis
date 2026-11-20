@@ -512,3 +512,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       A) inverse Mehler–Fock D_q at n = 1 against the closed form −(2/π)e^{−|q|ρ}(|q|sinh ρ + cosh ρ)/sinh³ρ;
       B) ∂ₙΣ̃(iα, α) at real α, with the C-symmetry check;
       C) growth along α = ½ + iy, with the L·sin²(πα) planted must-fail pre-checked.
+- [x] 2026-11-21: EXP-059 stage A PASS. B̃₁ is a Gamma ratio (verified); the inverse-MF-with-subtraction machinery is
+      verified; the D₁ position form continues to non-integer frequency (verified).
+- [ ] Stage B (pre-register first):
+      - ΔD̃ = D̃ₙ − D̃₁^Γ: a decay pre-check in k;
+      - ∂ₙΣ̃(iα, α) at real α ∈ (0, 1), with the zero-frequency alternate-branch continuation (EXP-059 design note 2);
+      - C-symmetry α ↔ 1 − α as the internal check;
+      - UV-cutoff independence as the nuisance.
+- [ ] Stage C: growth along α = ½ + iy; the must-fail is a planted L·sin²(πα).

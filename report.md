@@ -6662,3 +6662,40 @@ exist.
 - **Must-fail:** a wrong k-space form, the Gamma form with ½ ↔ 3/2 swapped (i.e. B̃ in place of D̃), inverted the same
   way, must miss D₀ by > 10%.
 - mpmath, minutes, < 0.3 GB.
+
+### EXP-059 results: stage A PASS on every clause; the must-fail fires [model: Opus 5.5]
+
+(`scripts/exp059_stageA.py`, `exp059_output.txt`; 62 s, peak 0.22 GB, watchdog.)
+- **A1 PASS:** (L) holds at all three (p, ν), including complex ν, to all 14 printed digits.
+- **A2 PASS:** the Gamma form of B̃₁(k, q) matches the EXP-056 mode-sum instrument at 9 points, rel 1.5·10⁻⁶ to
+  2.7·10⁻⁵ (tolerance 3·10⁻⁵; the instrument's known absolute offset is ~1.25·10⁻⁶).
+- **A3 PASS:** the inverse Mehler–Fock reconstruction of D₀ gives rel 3.9·10⁻⁸, 1.7·10⁻⁷, 1.8·10⁻⁶ at ρ = 0.3, 1, 3.
+- **A4 PASS:** at the non-integer frequency q = 0.5, the reconstruction matches the continued position-space closed form,
+  rel 2.8·10⁻⁸, 1.4·10⁻⁷, 3.7·10⁻⁶.
+- **Must-fail PASS (fires):** the swapped Gamma form misses D₀(1) by 224%.
+- **A slip of mine (diagnostic line):** c(q) as registered, (16/3)ΔB₃, is **4× too large**. Measured, k²(D̃/4k − 1) is
+  −0.125, 0.375, 1.875 against c = −0.5, 1.5, 7.5. The correct prefactor is 4/3. This is harmless here: the
+  subtraction weights λ depend only on ratios of c differences.
+- **Grade.**
+  - B̃₁(k, q) = (1/8)|Γ((q+½+ik)/2)/Γ((q+3/2+ik)/2)|² for real k: **verified by evaluation**.
+  - The inverse-Mehler–Fock-with-subtraction machinery: **verified** against a separately derived position-space form.
+  - The position-space closed form continued to non-integer frequency: **verified** at q = 0.5. So D₁(ω; ρ) at any real
+    ω is available as a UV reference for n ≠ 1.
+
+**Design notes for stage B (argued; recorded before any stage-B code).**
+1. *The UV organisation.* At n ≠ 1, write D̃ₙ(k, ω_q) = D̃₁^Γ(k, ω_q) + ΔD̃.
+   - The first term has a closed-form inverse, continued to ω_q = q/n (A4).
+   - ΔD̃ should decay fast in k, since the UV is local and n-independent. Only ΔD̃ needs numerical inversion, for a
+     few q. This is to be checked as a stage-B pre-check.
+   - The n-derivative of the closed-form part is then a Riemann-sum derivative over the frequency lattice.
+2. *A specification gap in T7, and its fix.* The saddle puts the internal φ zero mode, ω = 0 exactly, on the
+   alternate branch ν₀ = αₙ. That is O(n − 1) away from the regular ν = |αₙ|.
+   - In f(n, α = k/n) the internal frequency α − q/n hits 0 at q = k. A naive continuation in α, regular branch for
+     ω ≠ 0, then misses the sampled values by O(n − 1). That is exactly the order that feeds h₁.
+   - The same happens inside B̃(ω_σ) at ω_σ ∈ ℤ/n.
+   - **Fix:** continue with the alternate correction attached analytically to the partner frequency.
+     B̃_tot(ω_σ) = B̃_reg(ω_σ) + 2[g_{αₙ} − g_{|αₙ|}]·g_{ν(ω_σ)}-term, and likewise in Σ̃, where the internal
+     zero-frequency term carries D at σ-frequency α.
+   - Both pieces are analytic in the continued frequency and reproduce the sampled values exactly. If they satisfy the
+     growth bound, Carlson makes this *the* continuation.
+   - T7 does not state this. It must be built into stage B.
