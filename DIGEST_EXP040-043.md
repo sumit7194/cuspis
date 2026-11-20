@@ -14,21 +14,36 @@
 
 ## 1. Why it matters
 
-Every 3d CFT whose corner coefficient κ has been computed has κ/C_T in [3.67, 4.18]. These are the free scalar, the
-free Dirac fermion, and Einstein holography with its higher-curvature cousins. Bueno and Witczak-Krempa asked why
-(BWK16 §IX).
+**Scope of the band.** Every 3d CFT whose von Neumann corner coefficient κ has been computed has κ/C_T in
+[3.672, 4.179]:
+- the free scalar (4.179) and the free Dirac fermion (3.80);
+- Einstein holography (3.709); every quadratic or f(R) holographic model equals Einstein (BM15);
+- Einsteinian cubic gravity spans 3.672 to 3.747 over its whole allowed coupling range (BCV21), so it stays in the band.
+- The large-N Wilson–Fisher model is the one interacting entry: at leading order its entropy equals that of N free
+  scalars (WWS17, full text read), so κ = Nκ_free. C_T = N·C_T,free at the same order (argued: at N = ∞ the theory is N free scalars), so κ/C_T is the free-scalar value.
+  It is not a separate data point; no 1/N correction to κ is in print.
+
+Bueno and Witczak-Krempa asked why the band is narrow (BWK16 §IX).
 
 This project had shown that the known general constraints do not explain the band; they allow κ/C_T anywhere in
-(2.28, ∞). This digest gives a concrete answer **for the computed theories**:
-- Continued in spacetime dimension D, the three theories agree exactly at D = 2 (the anomaly), separate, and cross
-  pairwise at D = 2.75 to 2.94.
-- So at D = 3 they sit just past their crossings. The band is a crossing effect, not a D = 3 law.
+(2.28, ∞). This digest **reframes the question rather than answering it**: the right null is the same theories at
+other D. What the work supports (grades in §7), for the free scalar, free Dirac and Einstein continued in spacetime dimension D:
+- **(a)** They agree exactly at D = 2 (the anomaly) and end at large D in the reverse order, so pairwise crossings in
+  (2, ∞) are forced.
+- **(b)** For scalar/Dirac the crossing is forced into (2, 3).
+- **(c)** The Einstein-pair crossings land at 2.849 and 2.944, and that location is **unexplained**.
+- **(d)** The observed configuration is **non-generic** against a registered toy base rate: 0 of 17 toy curves have all
+  their crossings in the window.
+
+The narrow band at D = 3 is the same fact as "the pairwise crossings sit just below 3". So the sharp open question is
+(c): why the Einstein crossings land where they do.
 
 Who would care: people working on corner and strip entanglement in CFTs, and on bounds on κ (the free-scalar
 extremality conjectures, κ/F₀ bounds).
 
-What changes if it's true: the band stops being evidence for a missing universal constraint. Anyone proposing one must
-explain why it would hold at D = 3 but not at D = 4, where the same theories differ by ×3.3.
+What changes if it's right: the band of the computed theories is no longer, by itself, evidence for a missing universal
+constraint. A proposed constraint would have to explain why it holds at D = 3 but not at D = 4, where the same theories
+differ by ×3.3. It says nothing either way about interacting CFTs beyond leading large N.
 
 Already known, as far as our sweep found: the ingredients.
 - Free-field κ_D by dimensional reduction, with integer-D tables (CH09).
@@ -62,12 +77,23 @@ Not found: a C_T-normalised comparison across D, non-integer D, the D = 2 pinnin
 
 3. For scalar/Dirac, a crossing in (2, 3) is structurally forced: equal C_T per 2d particle at D = 3, c_S < c_D < 2c_S,
    and the scalar's IR logarithm. Its location is not forced.
+   **EMI's role.**
+   - EMI is a **test curve**: a model, not a CFT, and not in the band set. Einsteinian cubic gravity, which is in the
+     band, was not continued in D.
+   - EMI crosses the scalar (2.809) and Einstein (2.892) inside the window. With Dirac it crosses only at 3.659, so at
+     D = 3 EMI and Dirac have **not** crossed; there "just past their crossings" does not hold. The two stay within 2.2%
+     of each other over (2, 4). That is a second way into the band: never separating.
+   - It is **not a counterexample** to a CFT claim, because EMI is not a CFT. It **is** a counterexample to "every
+     pinned curve's crossings sit just below 3" as a general rule.
+   - EMI was not covered by the base-rate rule, which was adopted after EXP-041, so it counts as neither a pass nor a
+     fail of the clustering.
 4. Writing each curve as a Mellin transform in D of a profile e(t) with e(0⁺) = ⅓:
    - κ/C_T at D = 3 is the area under the profile, so the band is "equal profile widths to 13%";
    - Einstein's profile vanishes beyond t = π/(2e) with edge exponent 3/2.
 
 **Not claimed.**
-- Anything about interacting CFTs. No interacting curve exists, and no von Neumann interacting κ is in print.
+- Anything about interacting CFTs. No interacting curve exists. The only von Neumann interacting κ in print is large-N
+  Wilson–Fisher at leading order, which equals N free scalars (WWS17); nothing exists beyond that order.
 - That the band is explained for theories outside the computed set.
 - Why the crossings sit near D = 3; for the Einstein pairs this is unexplained.
 - Any upper bound on κ.
@@ -84,7 +110,9 @@ Not found: a C_T-normalised comparison across D, non-integer D, the D = 2 pinnin
    question: is D = 3 "close to 2", or something else?
 3. Scan D. The surprise is that the order reverses: below about 2.75 the scalar is lowest, at D = 3 it is highest. So
    there are crossings, and they sit just below 3.
-4. Is a crossing generic after pinning? Test toy pairs: no, only 25% cross, at widely spread D. So look for structure.
+4. Is a crossing generic after pinning? Test toy pairs: no, only 25% of pinned toy pairs cross at all in (2, 4), at
+   widely spread D. *This is a different statistic from §7's "16% per crossing": that one is the fraction of toy-vs-real
+   crossings landing inside the window [2.75, 2.95], in EXP-042's ensemble.* So look for structure.
    For scalar/Dirac, the C_T per particle is equal at D = 3, which forces the crossing into (2, 3).
 5. Add a fourth curve, EMI, to test the pattern. Before any fifth curve, register a base rate.
 6. Ask why each pair crosses exactly once. Write each curve as a Mellin transform in D, and count the sign changes of
@@ -124,6 +152,13 @@ What made it doable: Casini–Huerta's dimensional reduction, plus closed forms 
   with t^{D−3}. For Einstein it is the RT strip formula. The D = 2 agreement is a check of the continuation (E4:
   2π²/3 reproduced, with the scalar 0.8% low from its known log approach). It is not physics at D = 2.5.
 - **C_T at non-integer D:** the standard formulas. The Dirac trace choice cancels in κ/C_T.
+- **Normalisation conventions.**
+  - The crossings are invariant under any D-dependent factor common to all curves; for example, the overall strip and
+    κ normalisation drops out of the ratios.
+  - They would move under a theory-dependent, D-dependent convention. The only such conventions that enter are the
+    Dirac trace, which cancels, and EMI's C_T definition, which is flagged below.
+  - The relative normalisation of free fields and Einstein is anchored separately at integer D (CH09's table against the
+    RT and BFGLM26 formulas), and both reproduce the common D = 2 value 2π²/3 (E4).
 - **EMI's C_T** is defined through FLP's planar entanglement density, a choice for a model without a stress tensor. At
   d = 3 it agrees with the corner definition used elsewhere (E3), and it matches published values at d = 3, 4, 5.
 - **Profiles are a Mellin device, not a spectrum.** Einstein's D-law profile is not monotone, so it is not a
