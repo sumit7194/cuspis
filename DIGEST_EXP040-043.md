@@ -197,7 +197,11 @@ What made it doable: Casini–Huerta's dimensional reduction, plus closed forms 
   - EXP-043's main monotonicity check could not fail; a refinement found a 1.6·10⁻⁴ hump.
   - Addendum A: the D-law count FAILED as registered, and is real; the inside-edge test FAILED (quadrature floor times
     amplification).
-- **Lesson repeated:** measure the error floor before fixing a tolerance (EXP-039 V3, EXP-043 A3).
+- **Lesson repeated:** measure the error floor before fixing a tolerance (EXP-039 V3, EXP-043 A3; EXP-044 G1 and its n = 1 asymptotic check, where
+  the tolerance sat below the truncated form's first omitted term).
+- **A mistake that happened to run the safe way (EXP-044 P2).** The registration predicted Carlson's theorem would be
+  borderline ("vertical type exactly π"). Two Γ-factors decaying like e^{−π|y|/4} each give type π/2, so the theorem
+  applies with room to spare. The registered arithmetic was wrong; the conclusion is the stronger one.
 - **A novelty claim corrected:** the side session's one-particle closed form is CH09's large-d formula rewritten, so it
   is not new.
 

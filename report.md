@@ -5697,3 +5697,17 @@ So the pipeline detects a wrong boundary normalisation.
   - G2 FAILED as registered at s = 3 (no effect on D_c, measured).
   - The n = 1 asymptotic check FAILED as registered (mis-posed; the rate test was added after).
   - C0, K-mom, G4 and G3 PASS.
+
+**EXP-044 P2, the precise Carlson statement (the Bridge's request on review of dccaa96).**
+- **Carlson's theorem as used.** Let G be analytic on Re z ≥ 0, with |G(z)| ≤ Ce^{τ|z|} there for some τ < ∞, and
+  |G(iy)| ≤ Ce^{c|y|} for some c < π. If G(k) = 0 for k = 0, 1, 2, …, then G ≡ 0.
+- **Applied to** G(z) = F₁(z + D₀) − F₂(z + D₀), with **D₀ = 3**. Here F_i = M_i/[Γ(D/2 − 1)Γ(D/2)] for two
+  continuations M₁, M₂ of the same theory's κ_D-moment that agree at every integer D ≥ 3, so G(k) = 0 for k ≥ 0. Both
+  are assumed in the class "analytic on Re D ≥ 3, exponential type, vertical type < π after this Γ-normalisation".
+  - The Mellin continuation is in the class: type π/2 (argued above).
+  - Then G is in the class: a difference of two exponential-type functions is of exponential type, and its vertical
+    type is at most the larger of the two, which is < π. So G ≡ 0.
+- **Why D₀ = 3.** It is the smallest integer at which every theory here is a genuine local QFT with a strip
+  coefficient (D = 2 is the anomaly limit, not a strip). Γ(D/2 − 1) has no pole on Re D ≥ 3, and M is analytic there.
+- *What is not shown:* that a physically motivated alternative continuation would lie in the class. The uniqueness is
+  relative to the class, as stated. Grade: argued.
