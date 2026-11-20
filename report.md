@@ -6180,3 +6180,34 @@ argument.
 - §2: the error is **verified** (it follows from §1 and MFS09's own eqs. 6.27–6.28).
 - §§3–5: **argued**.
 - The referee's ∫μ_total = 0 and α₂: **unverified** by me.
+
+## EXP-053  The large-N cone gap equation from our own mode sum: must reproduce MFS09's α₂ and α′(1) — pre-registration [model: Opus 5.5]
+
+**Why.** The Bridge relayed Neon's claimed proof of Lemma U (single-cone uniformity; UNVERIFIED, kept outside the repo).
+Its machinery rests on a cone gap equation, which it says gives α₂ = −0.1651465539. A cheap check is to reproduce
+α₂ by a route other than Neon's H² × S¹ one. This checks the result and our cone mode sum (EXP-052), not Neon's
+H² × S¹ machinery itself.
+
+**Derivation (argued; from EXP-052's mode sum).**
+- At large N the saddle is λ = a/r² on (2D cone of angle 2πn) × ℝ.
+- The partial waves have ν_m = √(m²/n² + a) for m ≠ 0, and ν₀ = α on the alternate branch, with α = −√a < 0 for
+  n > 1 (MFS09 eqs. 6.27–6.28; EXP-052 §1).
+- The criticality condition is ⟨φ²⟩ₙ − ⟨φ²⟩₁ = 0. With ∫₀^∞e^{−εu}J_ν(u)²du = (1/π)Q_{ν−½}(1 + ε²/2) and
+  Q_{ν−½}(1 + ε²/2) = −log(ε/2) − γ − ψ(ν + ½) + o(1), it becomes
+  **E(n, α) ≡ π F(n) − (1/n) Σ_{m∈ℤ} [ψ(ν_m + ½) − ψ(|m|/n + ½)] = 0**,
+  with F(n) = 4πr(Gₙ − G₁) from EXP-052. The m-sum converges: its terms are O(a/m²).
+- First order: πc₁(n−1) − αψ′(½) = 0, so α = −(n−1)/4, the EXP-052 closure.
+
+**Predictions (registered before any code for E).**
+- **P1:** the root of E(2, α) in (−½, 0) is α₂ = −0.16515 ± 5·10⁻⁵ (MFS09 Table I, read at source; table precision).
+- **P2:** α_n/(n−1) → −1/4 as n → 1. At n = 1.01 it must lie within 0.01 of −1/4. Neon's −0.248317 is recorded
+  for comparison only; it is unverified.
+- **P3 (secondary, comparison only):** α₃, α₄, α₅ vs Table I (−0.26594, −0.32905, −0.36743). For n ≥ 3, 2α_n > −1 must
+  hold for the alternate branch to stay normalisable. Same tolerance.
+- **Controls.**
+  - *Known-answer:* the F(n) image values at n = ½ and ¼, as in EXP-052.
+  - *Must-fail:* with the regular branch ν₀ = +|α|, E(2, ·) must have **no root** in (−½, ½). Both terms are then
+    negative.
+  - *Sensitivity:* dropping the m ≠ 0 terms must move α₂ by more than the tolerance. Otherwise P1 does not test them.
+- **Numerics.** mpmath, a direct m-sum to M plus an Euler–Maclaurin tail, sweeping M ∈ {200, 400, 800} as the
+  nuisance parameter. Seconds, < 0.1 GB, nice 12. A must-fail failure or a P1 miss is kept and reported.
