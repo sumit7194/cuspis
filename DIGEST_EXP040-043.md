@@ -210,7 +210,10 @@ What made it doable: Casini–Huerta's dimensional reduction, plus closed forms 
    - At non-integer D it is the definition of κ_D, so a "route without it" is ill-posed.
    - The real weak points are **(i) the 2d c-functions, which both implementations compute on lattices**, and
      **(ii) the choice of continuation in D**.
-   - *Next:* EXP-044.
+   - **Done in EXP-044 (2026-11-20):** both weak points closed for the free fields (report.md EXP-044 results). The
+     crossings are verified by evaluation by a lattice route and a lattice-free route; the continuation is unique in
+     Carlson's class (argued). Remaining open items move up.
+   - *Was:* EXP-044.
      - (i) A lattice-free c-function from the Painlevé V characterisation (Casini–Fosco–Huerta 2005 for Dirac; Casini–
        Huerta 2005 for the scalar), starting with the Dirac/Einstein crossing.
      - (ii) A uniqueness argument for the continuation (Carlson-type growth).

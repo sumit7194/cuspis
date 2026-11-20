@@ -5599,3 +5599,101 @@ within the Bridge's envelope (≤ 0.5 GB, ≤ 1 h); anything larger is asked fir
   blind. Replace the small-t clauses by "the miss shrinks at the rate of the first neglected term", evidenced above.
   Its pass is foreseeable from the diagnostic, which already computed it. Proceeding to G2, G4 and the run needs the
   Bridge's OK, given the registered stop.
+- **G1′ accepted by the Bridge (2026-11-20).** It is a post-failure replacement, not a blind gate. G1 stands as
+  FAILED as registered.
+  - G1′'s small-t part carries little evidential weight, since its pass was foreseeable from the diagnostic.
+  - The gate's weight comes from the lattice clauses: blind at t = 0.3, 1, 2, and in the diagnostic at 0.01 and 0.03.
+  - The registered n = 1 asymptotic check (c_D(10⁻³) within 10⁻⁶ of the two-term form) stays as registered. Its FAIL
+    will be reported when it falls, and only then will the same rate test be added, labelled.
+
+**EXP-044 gates, run 2, under G1′** (`scripts/exp044_gates2_output.txt`). K-mom and G1 repeat run 1 exactly.
+- **G2: FAILED as registered, at one point pair only.** At t = 0.3, s = 3 (Dirac and scalar), halving (h, P) moves w by
+  4.2·10⁻⁶ relative (limit 10⁻⁸). Im(det)/|det| is 7.4·10⁻⁶ (limit 10⁻¹⁰), and the round-off heuristic is 0.5,
+  because det ~ 10⁻¹² there.
+  - The other eight points pass: ≤ 6.6·10⁻¹³ relative, Im ≤ 8·10⁻¹⁴.
+  - *Consequence, estimated:* the s = 3 node's weight π/sinh²(3π) ≈ 8·10⁻⁸ makes its contribution to c_D ≈ 10⁻⁶, so a
+    4·10⁻⁶ relative error is ~10⁻¹¹ in c_D.
+  - *Measured, not estimated:* the run's determinant variant (h/2, P + 2) propagates the solver error to D_c directly.
+    That variant, not G2, is the error-budget term.
+- **G4: PASS, by a wide margin.** The lattice-free c_D equals Impl-2's 'cinf' to |Δ| ≤ 3.8·10⁻⁹ at t = 0.101, 0.289,
+  1.04, 1.98 and 3.91 (tolerances 6.7·10⁻⁶ to 2·10⁻⁴).
+- **Asymptotic checks.** c_D(5)/(½tK₁(2t)) − 1 = 7.0·10⁻⁴ (< 10⁻³): PASS. **c_D(10⁻³): FAIL as registered**, at
+  2.2·10⁻⁶ against 10⁻⁶. It was pre-flagged as the same mis-posed truncated form; the omitted O(t²ln t) term is
+  ≈ 2.6·10⁻⁶ by the n = 2 coefficient.
+
+### EXP-044 results: the lattice-free c-functions reproduce all three crossings; the continuation in D is unique in Carlson's class [model: Opus 5.5]
+
+**Run.**
+- Run 1 crashed in G3 after the P1/P1b numbers and all variants were computed. A fixed brentq bracket (2.85, 3.05)
+  no longer contained the moved crossing. Kept: `exp044_output_run1_G3crash.txt`.
+- Fix (one variable): G3 scans D ∈ [2.2, 4.5] for the sign change.
+- Run 2: 553 s, peak 0.17 GB, nice 12, watchdog, exit 0 (`scripts/exp044_output.txt`, `exp044_results.json`). Its
+  P1/P1b numbers and variants are identical to run 1's.
+
+**P1 and P1b: PASS.**
+
+| crossing | lattice-free (this run) | EXP-040 (lattice) | difference | combined error |
+|---|---|---|---|---|
+| Dirac = Einstein | **2.94352** | 2.9435 | +0.00002 | 0.00130 |
+| scalar = Dirac | **2.75130** | 2.7513 | 0.00000 | 0.00221 |
+| scalar = Einstein | **2.84867** | 2.8487 | −0.00003 | 0.00060 |
+
+- Error-budget variants (their movement of D_c), all ≤ 10⁻⁵:
+  - t-grid ×2: ≤ 4·10⁻⁸;
+  - patch points ×2 (t_lo 2·10⁻⁵, t_hi 4): ≤ 9.5·10⁻⁶;
+  - s-quadrature 96 nodes with s_max = 7: ≤ 2·10⁻¹⁰;
+  - determinant (h/2, P + 2): ≤ 3·10⁻¹⁰.
+- The combined error is dominated by the old lattice spread. **The lattice-free values carry an uncertainty of about
+  10⁻⁵**, set by the small-t patches.
+
+**G3 (must-fail): PASS, the control fires.** With λ² × 1.05:
+- c_D(10⁻³) = 0.3535, which misses ⅓ by 0.020;
+- c_D(4)/(½tK₁(2t)) = 1.052;
+- the D/E crossing moves to 2.7546 (−0.189), and Dirac's κ/C_T at D = 3 moves from 3.8019 to 4.0487.
+
+So the pipeline detects a wrong boundary normalisation.
+
+**The FAILED n = 1 asymptotic check, with the rate test added after it fell** (`exp044_rate_n1.py`, output
+`exp044_rate_output.txt`).
+- miss/(t²|ln t|) = −0.336, −0.323, −0.322 at t = 10⁻², 10⁻³, 10⁻⁴. The miss is the omitted O(t²ln t) term, as at n = 2.
+- Below 10⁻⁴ the n = 1 pipeline shows an absolute floor of ~5·10⁻¹⁰: misses 1.6·10⁻⁹ and 4.9·10⁻¹⁰ at 10⁻⁵ and 10⁻⁶.
+  This is likely large-s/small-t conditioning (cf. G2). It does not reach D_c: below t = 10⁻⁵ the moments use the
+  source form, and the patch variant moves D_c by ≤ 10⁻⁵.
+
+**P2 (Carlson): the registered prediction FAILED, in the good direction. The registration's arithmetic was wrong.**
+- Registered: "type exactly π on vertical lines (each Γ decays as e^{−π|y|/4}), borderline". But two Γ-factors, each
+  e^{−π|y|/4}, give e^{−π|y|/2}, so the type is π/2. My registered "exactly π" was an arithmetic slip.
+- *Argument* (argued, with one measured constant). Let F(D) = M(D)/[Γ(D/2 − 1)Γ(D/2)], with M = ∫₀^∞ t^{D−3}c(t)dt.
+  1. *Bound on M.* 0 < c(t) ≤ A·tK₁(2t) for all t, with A = ⅔. This is measured on the run grid (Dirac 0.66667, the
+     t → 0 limit; scalar 0.587), with the analytic limits ⅔ at t → 0 and N_p/2·½ at large t. So |M(σ + iy)| ≤ M(σ) ≤
+     (A/4)Γ(σ/2 − 1)Γ(σ/2).
+  2. *Stirling.* For σ ≥ 3, |F(σ + iy)| ≤ (A/4)|Γ(σ/2 − 1)Γ(σ/2)/(Γ((σ + iy)/2 − 1)Γ((σ + iy)/2))|, which grows at
+     most like e^{π|y|/2}·poly. So F is analytic on Re D ≥ 3, of exponential type, with type π/2 < π along the
+     imaginary direction.
+  3. *Carlson.* Any two continuations in this class (the same Γ normalisation, exponential type, vertical type < π)
+     that agree at every integer D ≥ 3 coincide.
+- Einstein: its transform is supported on t ≤ π/(2e) (EXP-043), so |M_E(σ)| ≤ C(π/2e)^σ, and EXP-043's Stirling form
+  gives a power-law decay on vertical lines. Its continuation is unique in the same sense (argued).
+- **Consequence:** the curves, and so the crossings, are the unique continuations of the integer-D data within this
+  stated growth class. They do not depend on an arbitrary choice, though they are only as canonical as the class.
+  - Grade: argued. Stirling bounds are by hand; A is measured; the convergence and analyticity of M on Re D > 2 are
+    standard.
+
+**Analysis.**
+- **The weakest link of EXP-040–043 is closed for the free fields.**
+  - (i) The c-functions: a route with no lattice — Fredholm determinant, Nyström, CH07b continuation — reproduces the
+    lattice c_D to ≤ 4·10⁻⁹ at five nodes (G4) and all three crossings to ≤ 3·10⁻⁵.
+  - (ii) The continuation in D is the unique one in Carlson's class.
+- What this does **not** change: the crossings are still unexplained for the Einstein pairs, nothing is learned about
+  interacting CFTs, and the continuation class is stated, not derived from physics.
+
+**Grades.**
+- The three crossings: **verified by evaluation by two routes** — the lattice (EXP-040, two implementations) and the
+  lattice-free determinant. They share only the dimensional-reduction identity, which is exact for free fields.
+- The derived scalar continuation weight: verified by evaluation (C0).
+- Uniqueness of the D-continuation: argued.
+- Gate record:
+  - G1 FAILED as registered; G1′ is a post-failure replacement whose weight is in the blind lattice clauses.
+  - G2 FAILED as registered at s = 3 (no effect on D_c, measured).
+  - The n = 1 asymptotic check FAILED as registered (mis-posed; the rate test was added after).
+  - C0, K-mom, G4 and G3 PASS.

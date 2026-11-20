@@ -1,0 +1,18 @@
+22:39:10 base c(t) on 160 nodes done (50 s); c_D(1e-5) 0.33333333, c_S(1e-5) 0.293695
+22:39:10 P1/P1b base crossings: D/E 2.94352  S/E 2.84867  S/D 2.75130
+22:47:17   variant t-grid x2: D/E 2.94352 (d +3.9e-08)  S/E 2.84867 (d +1.5e-08)  S/D 2.75130 (d -3.1e-09)
+22:47:17   variant patches x2: D/E 2.94352 (d +1.8e-06)  S/E 2.84867 (d +2.7e-06)  S/D 2.75131 (d +9.5e-06)
+22:47:17   variant s: 96 nodes, smax 7: D/E 2.94352 (d -2.2e-10)  S/E 2.84867 (d -1.2e-10)  S/D 2.75130 (d +4.3e-11)
+22:47:17   variant det (h/2, P+2) [on half grid]: D/E 2.94352 (d -2.7e-10)  S/E 2.84867 (d -1.5e-10)  S/D 2.75130 (d +5.3e-11)
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp044_det.py", line 224, in <module>
+    {"tier1": tier1, "gates": gates, "run": run}[sys.argv[1]]()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/exp044_det.py", line 208, in run
+    G3 = crossings(U, base["S"], U, np.array([c_vn("D", math.exp(u), lamfac=1.05) for u in U]))
+  File "/Users/sumit/Github/corner_function/scripts/exp044_det.py", line 138, in crossings
+    return {k: brentq(f[k], *br[k], xtol=1e-9) for k in f}
+               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/optimize/_zeros_py.py", line 846, in brentq
+    r = _zeros._brentq(f, a, b, xtol, rtol, maxiter, args, full_output, disp)
+ValueError: f(a) and f(b) must have different signs

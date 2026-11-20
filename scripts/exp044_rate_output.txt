@@ -1,0 +1,7 @@
+t=0.01: c_D 0.332471669159  miss -1.547e-04  miss/(t^2|ln t|) -0.3360
+t=0.001: c_D 0.333315194230  miss -2.233e-06  miss/(t^2|ln t|) -0.3233
+t=0.0001: c_D 0.333333020948  miss -2.962e-08  miss/(t^2|ln t|) -0.3216
+t=1e-05: c_D 0.333333327316  miss -1.599e-09  miss/(t^2|ln t|) -1.3887
+t=1e-06: c_D 0.333333332778  miss -4.913e-10  miss/(t^2|ln t|) -35.5634
+A_D = max c/(t K1(2t)) on the run grid = 0.66667 at t = 1e-05; limits: t->0 0.6667, t=8 0.5000
+A_S = max c/(t K1(2t)) on the run grid = 0.58739 at t = 1e-05; limits: t->0 0.5874, t=8 0.2500

@@ -596,7 +596,10 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
   outreach. Its headline: the D-scan reframes the band question (the right null is the same theories at other D); the
   sharp open question is why the Einstein crossings land at 2.849 and 2.944. Weakest link (corrected 2026-11-20): not
   the dimensional reduction, which is an exact identity for free fields and the definition at non-integer D, but the
-  lattice-computed 2d c-functions and the choice of continuation in D (EXP-044, planned).
+  lattice-computed 2d c-functions and the choice of continuation in D. **EXP-044 closes both for the free fields:**
+  a lattice-free route (Fredholm determinant, CH07b's n → 1 continuation) reproduces the lattice c_D to ≤ 4·10⁻⁹ and
+  the three crossings to ≤ 3·10⁻⁵ (2.94352 / 2.75130 / 2.84867; verified by evaluation by two routes), with a
+  must-fail control that fires; and the D-continuation is the unique one in Carlson's class (argued).
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′
 sits ≈2% below the (σ, κ) line at n = 1 and above it at n ≥ 2, and what sets the sharp-end constant

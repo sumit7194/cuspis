@@ -1,0 +1,13 @@
+22:49:01 base c(t) on 160 nodes done (51 s); c_D(1e-5) 0.33333333, c_S(1e-5) 0.293695
+22:49:01 P1/P1b base crossings: D/E 2.94352  S/E 2.84867  S/D 2.75130
+22:56:59   variant t-grid x2: D/E 2.94352 (d +3.9e-08)  S/E 2.84867 (d +1.5e-08)  S/D 2.75130 (d -3.1e-09)
+22:56:59   variant patches x2: D/E 2.94352 (d +1.8e-06)  S/E 2.84867 (d +2.7e-06)  S/D 2.75131 (d +9.5e-06)
+22:56:59   variant s: 96 nodes, smax 7: D/E 2.94352 (d -2.2e-10)  S/E 2.84867 (d -1.2e-10)  S/D 2.75130 (d +4.3e-11)
+22:56:59   variant det (h/2, P+2) [on half grid]: D/E 2.94352 (d -2.7e-10)  S/E 2.84867 (d -1.5e-10)  S/D 2.75130 (d +5.3e-11)
+22:57:23 G3 scan: 1 D/E sign change(s) in [2.2, 4.5]; Dirac kappa/C_T at D=3 4.04869 vs base 3.80187
+22:57:23 G3 must-fail (lambda^2 x 1.05, Dirac): c_D(1e-3) = 0.353493 (1/3 miss 2.0e-02); c_D(4)/(1/2tK1) = 1.0522; D/E crossing 2.75461 (moved -0.1889)
+22:57:23 P1  D/E: determinant 2.94352 vs EXP-040 2.9435  diff +0.00002  combined error 0.00130  [PASS]
+22:57:23 P1b S/D: determinant 2.75130 vs EXP-040 2.7513  diff +0.00000  combined error 0.00221  [PASS]
+22:57:23 P1b S/E: determinant 2.84867 vs EXP-040 2.8487  diff -0.00003  combined error 0.00060  [PASS]
+22:57:23 G3 PASS (control fires)
+22:57:23 done (553 s)

@@ -1,0 +1,31 @@
+22:38:03 === K-mom: moment code on the Impl-2 tables must give 2.9435 / 2.7513 / 2.8487 to 2e-4 ===
+22:38:03   D/E: 2.94352 vs 2.9435  [PASS]
+22:38:03   S/D: 2.75130 vs 2.7513  [PASS]
+22:38:03   S/E: 2.84867 vs 2.8487  [PASS]
+22:38:03 === G1: n = 2 pipeline gate (determinant vs lattice Renyi-2) ===
+22:38:03   t=0.3: Dirac det 0.1641611 lattice 0.1644242 (tol 4.2e-04) [PASS] | scalar det 0.0759429 lattice 0.0757806 (tol 2.4e-04) [PASS]
+22:38:03   t=1.0: Dirac det 0.0427570 lattice 0.0428278 (tol 1.2e-04) [PASS] | scalar det 0.0190014 lattice 0.0189134 (tol 1.3e-04) [PASS]
+22:38:03   t=2.0: Dirac det 0.0058266 lattice 0.0058363 (tol 2.3e-05) [PASS] | scalar det 0.0026740 lattice 0.0026525 (tol 3.2e-05) [PASS]
+22:38:03   t=0.01 small-t forms: Dirac 0.2492915 vs 0.2494698 | scalar 0.16814 vs 0.14143 (weak, tol 0.02)
+22:38:03   G1 FAIL -- STOP
+22:38:03   proceeding under G1' (post-failure replacement accepted by the Bridge; report.md EXP-044)
+22:38:03 === G2: solver floor first, then halving (h, P) -> (h/2, P+2) ===
+22:38:03   S t=0.3 s=0.0: w -0.151885862020 -> -0.151885862020 rel 4.0e-14; Im(det)/|det| 0.0e+00; floor 1.6e-16; m 129->337 [PASS]
+22:38:03   D t=0.3 s=1.0: w 1.574985198261 -> 1.574985198261 rel 1.3e-13; Im(det)/|det| 7.0e-16; floor 9.5e-15; m 129->337 [PASS]
+22:38:03   S t=0.3 s=1.0: w -1.617850416938 -> -1.617850416938 rel 1.3e-13; Im(det)/|det| 1.1e-15; floor 9.9e-15; m 129->337 [PASS]
+22:38:03   D t=0.3 s=3.0: w 16.374214491970 -> 16.374283760791 rel 4.2e-06; Im(det)/|det| 7.4e-06; floor 5.0e-01; m 129->337 [FAIL]
+22:38:03   S t=0.3 s=3.0: w -16.379142585658 -> -16.379212104182 rel 4.2e-06; Im(det)/|det| 7.5e-06; floor 5.0e-01; m 129->337 [FAIL]
+22:38:03   S t=3.0 s=0.0: w -0.000739998057 -> -0.000739998057 rel 8.5e-15; Im(det)/|det| 0.0e+00; floor 1.1e-19; m 83->245 [PASS]
+22:38:03   D t=3.0 s=1.0: w 0.035085297487 -> 0.035085297487 rel 8.5e-15; Im(det)/|det| 3.5e-19; floor 8.6e-18; m 83->245 [PASS]
+22:38:03   S t=3.0 s=1.0: w -0.035349849485 -> -0.035349849485 rel 8.7e-15; Im(det)/|det| 3.3e-20; floor 8.7e-18; m 83->245 [PASS]
+22:38:03   D t=3.0 s=3.0: w 4.765372834427 -> 4.765372834430 rel 6.3e-13; Im(det)/|det| 8.0e-14; floor 5.6e-14; m 83->245 [PASS]
+22:38:03   S t=3.0 s=3.0: w -4.765373288703 -> -4.765373288706 rel 6.6e-13; Im(det)/|det| 8.4e-14; floor 5.6e-14; m 83->245 [PASS]
+22:38:03   G2 FAIL
+22:38:03 === G4: consistency with Impl-2 lattice c_D, and asymptotic checks ===
+22:38:03   t=0.10105: det 0.30623752 lattice 0.30623752 diff -3.54e-09 tol 6.7e-06 [PASS]
+22:38:03   t=0.28943: det 0.23718950 lattice 0.23718949 diff +3.83e-09 tol 4.7e-05 [PASS]
+22:38:03   t=1.04203: det 0.06928307 lattice 0.06928307 diff -2.85e-09 tol 2.0e-04 [PASS]
+22:38:03   t=1.98319: det 0.01309888 lattice 0.01309889 diff -1.90e-09 tol 1.5e-04 [PASS]
+22:38:03   t=3.91168: det 0.00036779 lattice 0.00036779 diff -1.61e-09 tol 1.8e-05 [PASS]
+22:38:03   G4 PASS
+22:38:03   asymptotics: |c_D(1e-3) - (1/3 - t^2 ln^2 t/3)| = 2.2e-06 (<1e-6: FAIL);  c_D(5)/(1/2 t K1(2t)) - 1 = 7.0e-04 (<1e-3: PASS)
