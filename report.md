@@ -6266,3 +6266,36 @@ of Neon's Lemma U argument, not the lemma itself.
 - **Net:** Neon's T7 is plausible. Its gap-equation input is now verified. Two items are owed: a direct check of
   C₊(α) = O(α²), which is cheap with the EXP-051 lattice near one edge, and the ω_q ≠ 0 sum (c). Plus a write-up of
   the continuation in (e).
+
+## EXP-054  Lemma U gap (b): is the two-edge near-tip correction O(α²)? A direct test on the unitary-twist lattice — pre-registration [model: Opus 5.5]
+
+**Why.** Neon's T7 asserts C₊(α) = O(α²), where Δ_strip G^(α) ≈ C₊(α)w^{−1−2α}(rr′)^α e^{iα(θ′−θ)} near one edge.
+EXP-053's analysis of gap (e) rests on it. A single edge changes G at O(|α|) (EXP-052, m = 0 mode only). The claim
+is that the w-dependent two-edge part is one order higher.
+
+**Setup.**
+- A complex 2D lattice scalar, operator (4 + m²) − Σ neighbours, Dirichlet box. The unitary twist e^{2πiα} sits on the
+  vertical links crossing a cut: A[above, below] = −e^{2πiα}, A[below, above] = −e^{−2πiα} (Hermitian). This is the
+  EXP-051 solver with a complex phase in place of the real continuation.
+- Coincident G(x, x) from one sparse complex LU solve with a point source.
+- Two cut geometries on the same row:
+  - "int": an interval [j₀, j₀ + w), i.e. edges at j₀ and j₀ + w;
+  - "half": a half-line [j₀, wall).
+- The point x is r sites to the left of edge 1, on the row below the cut.
+- D(α) ≡ G_int(x, x) − G_half(x, x): the effect of the second edge, felt near edge 1.
+- S(α) ≡ G_half(x, x) − G_{α=0}(x, x): the single-edge change.
+- The 3D C₊ is ∫dk_y/2π of the 2D massive pieces, so testing 2D at fixed m tests each k_y slice.
+
+**Predictions (registered before any code).**
+- **P (gap b):** at w = 32, m = 1/32 (mw = 1), r ∈ {2, 4}, box 384², α ∈ {0.025, 0.05, 0.1, 0.2}, the log-slope
+  d log|D|/d log α on the pairs (0.025, 0.05) and (0.05, 0.1) lies in [1.7, 2.3] at both r.
+  - Outcome tree: slope ≈ 2 means (b) is supported on the lattice per k_y slice. Slope ≈ 1 means (b) is false and
+    T7's uniformity argument must be revisited (EXP-053 (e) then needs C₊ = O(α) handled). Anything else is reported
+    as it falls.
+- **Must-fail (slope diagnostic):** the same fit on S(α) at the same parameters must give a slope in [0.7, 1.3]. If it
+  gives ≈ 2, the diagnostic cannot separate O(|α|) from O(α²) and P means nothing.
+- **Known-answer control:** S(α)/α at α = 0.025, m = 0.1, r = 8, box 120², must lie within 15% of the continuum
+  −K₀(mr)²/(2π) = −0.03453 (EXP-052: only the m = 0 partial wave is O(|α|)). The 15% allows for r = 8 lattice effects.
+- **Trivial control:** D(0) = S(0) = 0 to solver precision.
+- **Tier 1 first:** one α at box 128² for timing and memory, then the full set. Envelope: < 1 GB, minutes, nice 12,
+  watchdog. Failures are kept.
