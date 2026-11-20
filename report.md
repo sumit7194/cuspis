@@ -5575,3 +5575,27 @@ within the Bridge's envelope (≤ 0.5 GB, ≤ 1 h); anything larger is asked fir
   - Bookkeeping (EXP-043, Dirac law): M_D = ∫t^{D−3}c_D; M_S = (D − 1)∫t^{D−3}c_S; M_E as coded in
     `exp043_profiles.M_E_D`.
   - t_lo = 10⁻⁵ and t_hi = 8, with the source forms outside.
+
+**EXP-044 gates, run 1: G1 FAILED as registered; stopped before any n = 1 number** (`scripts/exp044_gates_output.txt`).
+- **K-mom PASS:** the Impl-2 tables give 2.94352 / 2.75130 / 2.84867 through the new moment code.
+- **G1, lattice clauses: PASS (blind).** At t = 0.3, 1 and 2 the determinant Rényi-2 c-functions match the lattice
+  (staggered Dirac, harmonic scalar; L = 100, 200, Richardson) within the registered 3 × |Richardson − 2L| + 10⁻⁶,
+  for both fields. Example: t = 1, Dirac 0.0427570 vs 0.0428278 (tol 1.2·10⁻⁴); scalar 0.0190014 vs 0.0189134 (tol
+  1.3·10⁻⁴).
+- **G1, small-t form clauses at t = 0.01: FAIL.**
+  - Dirac misses ¼(1 − t²ln²t) by 1.8·10⁻⁴. The 10⁻⁴ tolerance was set in the code, not in the registration.
+  - The scalar misses ¼ + 1/(2 ln t) by 0.027, against the registered 0.02.
+- **Diagnostic** (`scripts/exp044_g1_diag.py`, output `exp044_g1diag_output.txt`; changes no gate).
+  - At t = 0.01 and 0.03 the determinant also agrees with the lattice within the lattice's tolerance (Dirac −3.8·10⁻⁴
+    vs 5.9·10⁻⁴; scalar +1.1·10⁻⁴ vs 1.7·10⁻⁴).
+  - The misses from the truncated forms are the first neglected terms. Dirac: miss/(t²|ln t|) = −0.387, −0.374,
+    −0.368, −0.361 at t = 10⁻², 10⁻³, 10⁻⁴, 10⁻⁶; at 10⁻⁸ the miss, 6.5·10⁻¹⁵, is at the double-precision floor.
+    Scalar: miss·ln²t = 0.567, 0.617, 0.646, 0.678, 0.695, so the miss → 0 like 1/ln²t.
+  - **The check was mis-posed:** each tolerance sat below the size of the term its form omits. The determinant is
+    not at fault.
+  - The lesson is the one from A3 and the Bridge's control clause: estimate the first neglected term before fixing a
+    tolerance on a truncated form.
+- **Proposed G1′ (post-failure amendment, diagnosed; not a blind gate).** Keep the lattice clauses, which passed
+  blind. Replace the small-t clauses by "the miss shrinks at the rate of the first neglected term", evidenced above.
+  Its pass is foreseeable from the diagnostic, which already computed it. Proceeding to G2, G4 and the run needs the
+  Bridge's OK, given the registered stop.

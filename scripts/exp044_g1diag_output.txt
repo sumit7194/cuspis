@@ -1,0 +1,7 @@
+t=0.01: Dirac det 0.2492915 lattice 0.2496715 diff -3.8e-04 (lattice tol 5.9e-04) | scalar det 0.168145 lattice 0.168031 diff +1.1e-04 (tol 1.7e-04)
+t=0.03: Dirac det 0.2459753 lattice 0.2463515 diff -3.8e-04 (lattice tol 5.9e-04) | scalar det 0.150288 lattice 0.150155 diff +1.3e-04 (tol 1.9e-04)
+t=0.01: Dirac miss -1.783e-04  miss/(t^2|ln t|) -0.3872 | scalar miss +2.6718e-02  miss*ln^2 t +0.5666
+t=0.001: Dirac miss -2.585e-06  miss/(t^2|ln t|) -0.3742 | scalar miss +1.2929e-02  miss*ln^2 t +0.6170
+t=0.0001: Dirac miss -3.386e-08  miss/(t^2|ln t|) -0.3676 | scalar miss +7.6127e-03  miss*ln^2 t +0.6458
+t=1e-06: Dirac miss -4.993e-12  miss/(t^2|ln t|) -0.3614 | scalar miss +3.5493e-03  miss*ln^2 t +0.6775
+t=1e-08: Dirac miss -6.523e-15  miss/(t^2|ln t|) -3.5409 | scalar miss +2.0467e-03  miss*ln^2 t +0.6945

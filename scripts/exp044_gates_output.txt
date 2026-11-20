@@ -1,0 +1,10 @@
+22:36:24 === K-mom: moment code on the Impl-2 tables must give 2.9435 / 2.7513 / 2.8487 to 2e-4 ===
+22:36:24   D/E: 2.94352 vs 2.9435  [PASS]
+22:36:24   S/D: 2.75130 vs 2.7513  [PASS]
+22:36:24   S/E: 2.84867 vs 2.8487  [PASS]
+22:36:24 === G1: n = 2 pipeline gate (determinant vs lattice Renyi-2) ===
+22:36:24   t=0.3: Dirac det 0.1641611 lattice 0.1644242 (tol 4.2e-04) [PASS] | scalar det 0.0759429 lattice 0.0757806 (tol 2.4e-04) [PASS]
+22:36:24   t=1.0: Dirac det 0.0427570 lattice 0.0428278 (tol 1.2e-04) [PASS] | scalar det 0.0190014 lattice 0.0189134 (tol 1.3e-04) [PASS]
+22:36:24   t=2.0: Dirac det 0.0058266 lattice 0.0058363 (tol 2.3e-05) [PASS] | scalar det 0.0026740 lattice 0.0026525 (tol 3.2e-05) [PASS]
+22:36:24   t=0.01 small-t forms: Dirac 0.2492915 vs 0.2494698 | scalar 0.16814 vs 0.14143 (weak, tol 0.02)
+22:36:24   G1 FAIL -- STOP
