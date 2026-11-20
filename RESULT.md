@@ -590,7 +590,9 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
   (argued, and verified by evaluation at 13 points). By the one-crossing lemma (A1, argued) applied to the S-law
   profiles, each pair of curves crosses exactly once in D > 2. Partially verified: the S-law count is in a window plus
   end signs; that the S-law suffices is a post-failure argument, reviewed by the Bridge. The 13% band at D = 3 is the statement that the four profiles have equal width to 13%. The Einstein
-  crossings are relocated, not explained: why π/(2e) is close to the free-field mass scale is open.
+  crossings are relocated, not explained. *Update (EXP-045):* "why π/(2e) is close to the free-field scale" is not
+  an independent question. By the scaling identity ∫t^{D−3}e(t/λ)dt = λ^{D−2}M(D), Einstein's edge and its κ/C_T at
+  D = 3 are one number, so the question is the band itself for Einstein (argued; the item is dropped).
 
   *Digest for (14)–(16):* `DIGEST_EXP040-043.md`, reviewed by the Bridge on 2026-11-20 (6ed2893), not ready for
   outreach. Its headline: the D-scan reframes the band question (the right null is the same theories at other D); the

@@ -221,7 +221,8 @@ What made it doable: Casini–Huerta's dimensional reduction, plus closed forms 
      - (i) A lattice-free c-function from the Painlevé V characterisation (Casini–Fosco–Huerta 2005 for Dirac; Casini–
        Huerta 2005 for the scalar), starting with the Dirac/Einstein crossing.
      - (ii) A uniqueness argument for the continuation (Carlson-type growth).
-2. π/(2e): structure or numerology? Kill test: deform something it should track.
+2. ~~π/(2e): structure or numerology?~~ **Dropped (EXP-045):** not a separate coincidence (argued). It is equivalent to
+   Einstein's band value at D = 3 by the scaling identity, and in EXP-043's crossing form it is convention-dependent.
 3. The interacting fifth curve, via 1/N. It is the only route to new physics, and it is expensive. Registered
    rule: base rate first.
 4. The Paley–Wiener write-up for the edge, and the zero-counting lemma checked by someone else.

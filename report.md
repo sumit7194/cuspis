@@ -5711,3 +5711,22 @@ So the pipeline detects a wrong boundary normalisation.
   coefficient (D = 2 is the anomaly limit, not a strip). Γ(D/2 − 1) has no pole on Re D ≥ 3, and M is analytic there.
 - *What is not shown:* that a physically motivated alternative continuation would lie in the class. The uniqueness is
   relative to the class, as stated. Grade: argued.
+
+## EXP-045  The π/(2e) "coincidence": a kill by reduction, not by computation (Sumit's GO for the kill test, relayed by the Bridge, 2026-11-20) [model: Opus 5.5]
+
+**Outcome: not a separate coincidence (argued); the item is dropped.** No experiment was registered or run: working out
+the precise statement, step (a) of the registration, showed that no test of it can fail informatively.
+- **Reduction (argued, plus a scaling check; the Bridge checked the identity by hand).** Rescaling a profile, e(t) →
+  e(t/λ), multiplies its moment by λ^{D−2}, since ∫t^{D−3}e(t/λ)dt = λ^{D−2}M(D). That is exactly ×λ at D = 3.
+  - Einstein's profile shape is fixed by its closed form. So the edge t_max and κ_E/C_T(3) are one number seen two
+    ways: the band [3.672, 4.179] corresponds to t_max ∈ [0.572, 0.651], and π/(2e) = 0.5779 ↔ 3.7092.
+  - "The edge sits at the free-field scale" is therefore equivalent to "Einstein lies in the band at D = 3". Any
+    deformation that moves one moves the other.
+- **In EXP-043's own form it is convention-dependent (post-hoc: the numbers were already in the EXP-043 P4 table).**
+  - EXP-043 compared the edge with the free–free profile crossings, 0.54–0.60 in the Dirac law.
+  - The edge does not depend on the law (argued: compact support survives the operator 1 − t d/dt). The free–free crossings move to
+    0.31–0.42 in the scalar law.
+- **No cheap two-sided deformation exists.** The free-field scale is the universal two-particle threshold (decay rate
+  2 for scalar, Dirac and EMI alike). Only the holographic side can be deformed, and that asks a different question.
+- **What remains of it:** the band itself for Einstein. κ_E/C_T = (π²/3)·Γ(¾)⁴/2 = (π²/3)·1.127, against the free
+  fields' 1.155–1.27. RESULT.md (16) and digest §9 are updated.
