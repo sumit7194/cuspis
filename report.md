@@ -5815,3 +5815,53 @@ could leave, or stay on, the crossing pattern. Under the base-rate rule (EXP-041
 - If the interacting route is wanted, scope δκ as a project, starting with a prior-art pass on one-loop σ
   determinants for entanglement of the large-N O(N) model, at source.
 - Otherwise close this arc. The reviewed digest is its deliverable; EXP-044–046 sharpened it.
+
+## EXP-048 (groundwork (a), reading only)  The O(N⁰) strip coefficient of the large-N O(N) model: what the literature settles and where the crux sits [model: Opus 5.5]
+
+**Read at source, 2026-11-20, by fetch agents with verbatim quotes:** WWS17 (in full), MFS09 (verbatim to §IV.3.4 and
+the bibliography; §§V–VII and the large-N section by summary only), MST15, Sug16, DD07, GK14, KPS11 (see references.md).
+
+**What the sources give (partially verified sweep).**
+- **Sphere (the known-answer control).** F_O(N) = N F_s − ζ(3)/(8π²) + O(1/N), i.e. δF = −0.015224 at O(N⁰)
+  [KPS11 (71), GK14 (1.1)].
+  - This is a single log-determinant of the Hubbard–Stratonovich kernel, which pairs Δ with d − Δ mode by mode
+    [GK14 (3.4), (3.6)].
+  - The fetch agent checked the d = 3 integral (π/6)∫₀^{1/2}u(¼ − u²)tan(πu)du = −0.01521 by a Simpson rule.
+  - Sphere entanglement δS_univ = +ζ(3)/(8π²) follows only via F = −S at both fixed points (inference, not shown at
+    flow level in the sources).
+- **No O(N⁰) entanglement result for any non-sphere region** of the O(N) model is in print in these sources. WWS17
+  states the cylinder's leading term is O(N⁰) but does not compute it, and gives κ only at O(N).
+
+**Where the crux sits (two red flags for the naive identity δκ = κ_GFF(Δ = 2) − κ_GFF(Δ = 1)).**
+1. **[MST15] half-space, 3d boundary.** The double-trace difference of bulk one-loop entanglement is purely power-law,
+   as expected for a half-space, and its d = 2 formula **diverges for ν ≥ ½**.
+   - ν = ½ is exactly the O(N) double-trace point (Δ₋ = 1 → Δ₊ = 2).
+   - The authors suggest "a phase transition for ν ≥ 1/2 in our replicated theory".
+   - Also: bulk one-loop is not the total. Area-shift and Wald terms change the universal coefficient (d = 1: ν/6 →
+     ν³/6), so a GFF-only piece would not reproduce it.
+2. **[MFS09] the cone induces a surface coupling.**
+   - The replica cone "automatically induce[s]" δS = (c/2)∫φ² on the entangling surface, with its own RG flow
+     (β(c), eqs. 50–55).
+   - The limits L → ∞ and n → n* do not commute.
+   - At large N the saddle is ⟨iλ⟩ₙ = aₙ/r², with aₙ ∝ (n−1)² (summary-depth): it drops out at O(N) (consistent with
+     WWS17) but is the background for the O(N⁰) fluctuation determinant.
+
+**Sharpened crux (for any Fable brief).**
+- At O(N⁰), δSₙ = −½[log det Bₙ − n log det B₁], with Bₙ the φ-bubble on the n-sheeted cone and background
+  ⟨iλ⟩ₙ = aₙ/r².
+- The question: does the universal 1/w^{D−2} strip term of this difference equal the GFF difference
+  κ_GFF(Δ₊) − κ_GFF(Δ₋)?
+- Or do the surface coupling and the ν = ½ replica pathology (both localised at the entangling surface) contribute to
+  it, or make it ill-defined?
+- The half-space shows the pathology only in non-universal terms. Whether it reaches the universal strip term is the
+  open question.
+
+**Controls a derivation must pass (the Bridge's list, now anchored):**
+- the sphere δF = −ζ(3)/(8π²) (verified at two sources);
+- the free limit;
+- MST15's half-space power-law coefficient at ν < ½ (a known number at a different ν);
+- the n = 2 numerical cone test (direct log det of B₂ on a discretised 4π cone);
+- a must-fail non-double-trace case.
+
+**Grade:** partially verified as a sweep (seven papers, some sections summary-depth). No derivation attempted yet; that
+is groundwork step (b).

@@ -241,13 +241,14 @@ What made it doable: Casini–Huerta's dimensional reduction, plus closed forms 
     But the step from that to compact support (Paley–Wiener) is not written, and the inside-edge numerical check failed
     at its registered tolerance.
   - We cannot yet explain why the Einstein crossings sit near 2.85 and 2.94.
-- **Missing before any outreach:**
-  - the lattice-free c-function check (item 1, EXP-044);
-  - the Paley–Wiener argument;
-  - a fuller prior-art sweep (untruncated citers of CH09, RT06 and Liu–Mezei), and a re-check of the BWK16 §IX
-    quotation;
-  - a references.md entry for each new source, at stated depth;
-  - explicit attribution of Fable's contributions.
+- **Missing before any outreach (status 2026-11-20):**
+  - ~~the lattice-free c-function check~~ **done** (EXP-044: crossings by two routes, verified by evaluation);
+  - the Paley–Wiener argument for the edge: **open** (EXP-043 A3 inside-edge test FAILED as registered);
+  - a fuller prior-art sweep (untruncated citers of CH09, RT06 and Liu–Mezei): **open**;
+  - ~~re-check of the BWK16 §IX quotation~~ **done** (verbatim at source, 2026-11-20; "upper" is italic in the original);
+  - ~~a references.md entry for each new source, at stated depth~~ **done** (CFH05, CH05, CH07b, Born10, MST15, Sug16,
+    DD07, GK14, KPS11 added; BFGLM26 depth corrected);
+  - ~~explicit attribution of Fable's contributions~~ **done** (header provenance and report.md's model table).
 - **Not ready.**
 
 ## 11. Prior work, at the depth read
