@@ -1,0 +1,2 @@
+23:52:41 EXP-051 Tier 1: one point, small r
+23:52:42   t=1.0 b=0.5 r=8,16: w_lat -0.090869, -0.078310 -> Richardson -0.074123 (tol 1.3e-02); prediction -1/2 w_det = 0.071294; diff -1.45e-01; boxes 96,192; det-sign parities (0, 0),(0, 1)  [0.2 s]

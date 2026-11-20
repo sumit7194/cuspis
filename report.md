@@ -6041,3 +6041,17 @@ prediction by more than 10× the tolerance.
   - choose a w/ε range of at least two decades in which a log coefficient of size O(1)·κ_free would be resolvable;
   - state the minimum detectable log coefficient;
   - write the outcome tree so a detected log is a finding (δκ not a pure number at O(N⁰)), not a failure.
+
+**EXP-051 Tier 1 and a labelled sign amendment (before the full run).**
+- *Tier 1* (`scripts/exp051_tier1_output.txt`; 0.2 s, 0.03 GB): t = 1, b = 0.5, r = 8/16 gives Richardson w_lat = −0.0741
+  (tol 1.3·10⁻²), against the registered prediction −½w^{det} = +0.0713. Same magnitude to 4%, **opposite sign**.
+- *Diagnosis (convention).* The lattice operator built is the analytic continuation of the complex-field twisted
+  Laplacian, so Z_lat ∝ det⁻¹ is CH05's Z_a (eq. 77: Z_a ≃ 1/⟨V_aV_{1−a}⟩). w^{det} = t∂_t log Z_a is CH05's w_a. A real
+  field is half a complex one, so w_lat(real) = +½w^{det}.
+  - The registration's −½ came from identifying the lattice Z with CH07b's Z[−λ]. CH07b does not write its bosonic
+    normalisation relative to CH05, and my identification of the two was wrong.
+  - The physics chain det → c_S = −½∫π/cosh²(πs) w^{det} is unaffected: it was verified in EXP-044 (C0, G4, crossings).
+- *Amendment (post-Tier-1, labelled; one point seen).* The prediction becomes **w_lat = +½w^{det}_{½+ib}(t)**, with the
+  same tolerance and points. The remaining five points and the must-fail control are still blind tests of magnitude
+  and t, b dependence. The Tier-1 point is consistent with the amended prediction: −0.0741 vs −0.0713, within its
+  1.3·10⁻² tolerance.
