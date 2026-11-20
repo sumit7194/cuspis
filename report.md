@@ -6582,3 +6582,50 @@ labelled: `exp057_postanalysis_output.txt`.
 - "The crux is the growth of h₁": **argued**.
 - Neon's (e) conclusion (dS_tip/dn = 0): **unverified**. It now rests on the growth of h₁ = (C₊/2α)Σ̃′(iα)(1 − e^{−2αL}),
   where C₊ = −α/8 + O(α²) (EXP-057 (b), argued). That needs Σ̃′ along Im α, which we have not built.
+
+## EXP-058  Verify Neon's collapse identity (T5b item 3) on random Z_n-symmetric kernels — pre-registration; plus a correction to EXP-056's decay-rate wording [model: Opus 5.5]
+
+**Promise kept late.** TODO (2026-11-21) said to verify the collapse identity by algebra *first*, before anything was
+built on it. EXP-053–057 were built on T7 without that step. Doing it now, before the Σ̃ build.
+
+**The identity (argued).** Take replica-indexed kernels G_{ij}(x, y), circulant in i − j, with B = 2G∘G (elementwise)
+and D = B⁻¹.
+- To first order in ΔG, δB = 4G∘ΔG, so ½Tr(D δB) = 2Σ_{ij,xy} D_{ji}(y,x)G_{ij}(x,y)ΔG_{ij}(x,y) = 2Tr(Σ ΔG), with
+  Σ ≡ D∘G (D and G symmetric).
+- Parseval over the replica Fourier index then gives 2Σ_k Tr(Σ^(k)ΔG^(k)) (normalisation by construction).
+- With Δ_strip G^(0) = 0 (the untwisted sector is flat for both the strip and the cone), this is T5b's
+  2Σ_{k=1}^{n−1}Tr(Σ^(k)Δ_strip G^(k/n)).
+- **Prediction R1:** on random circulant-symmetric positive G (space size s = 6, n ∈ {2, 3, 5}) and random circulant
+  symmetric ΔG with zero k = 0 component:
+  - [½ log det B(G + tΔG)]′ at t = 0 (central difference, step 10⁻⁵) equals 2Σ_{k≥1}Tr(Σ^(k)ΔG^(k)) to ≤ 10⁻⁷
+    relative;
+  - the k-sector sum equals the direct 2Tr(ΣΔG) to ≤ 10⁻¹².
+- **Must-fail:** dropping the factor 2 from B = 2G∘G but keeping it in δB must break the match. Any O(1) mismatch
+  counts.
+
+**Correction to EXP-056's reading (verified from a closed form).** At n = 1,
+D_q(ρ) = ∫₀^{2π}dτ e^{−iqτ}[−1/(π²(cosh ρ − cos τ)²)] = −(2/π)e^{−|q|ρ}(|q| sinh ρ + cosh ρ)/sinh³ρ.
+- This uses D_flat = −4/(π²x⁴) (the transform of 4|p|) and the Weyl factor (rr′)².
+- It decays like e^{−(2+|q|)ρ}. So position-space decay goes as e^{−(½ + κ*)ρ}, where κ* is B̃'s first zero (D's
+  first pole). At n = 1, κ* = 3/2 + |q|.
+- The threshold κ₀ is a *pole of B̃*, so a *zero* of D̃, not a singularity of D. EXP-056's "decay rate ≥ κ₀ − ½" had
+  the wrong offset.
+- The correct statement: no off-axis zeros below κ₀ (EXP-056), and B̃ → +∞ at κ₀⁻, then −∞ just above it. So κ* > κ₀,
+  and D_σ decays at least as fast as e^{−(½ + κ₀)ρ} = e^{−(1 + αₙ + ν_q)ρ}. That is stronger than written.
+- Caveat: complex zeros with Im k between κ₀ and κ* were not scanned.
+
+### EXP-058 results: R1 PASS (the collapse identity is verified as linear-order algebra); the registered must-fail could not fire (my design error); a post-registration control on the k = 0 step fires [model: Opus 5.5]
+
+(`scripts/exp058_collapse_check.py`, `exp058_output.txt`; well under 1 s.)
+- **R1 PASS** at n = 2, 3, 5. The finite-difference derivative of ½log det B equals 2Σ_{k≥1}Tr(Σ^(k)ΔG^(k)) to
+  10⁻¹⁰–10⁻⁹. The sector sum equals the direct 2Tr(ΣΔG) to ≤ 3·10⁻¹⁶. The k = 0 term is ≤ 4·10⁻¹⁸.
+- **Registered must-fail: DOES NOT FIRE, and it could not.** log det(cB) = const + log det B, so the factor 2 drops out
+  of every derivative. That is a check that cannot fail, registered by me. It is recorded as a design failure, not a
+  pass.
+- **Post-registration control (labelled):** give ΔG a k = 0 component and sum over k ≥ 1 only. It mismatches by 54%,
+  32% and 8% (n = 2, 3, 5), while the all-k sum matches to ≤ 3·10⁻⁹. So the step that drops k = 0 is load-bearing, and
+  it is correct only because Δ_strip G^(0) = 0.
+- **Grade.** T5b's collapse identity is **verified** as an exact linear-order identity: the chain rule plus Parseval.
+  - Its two physics inputs remain **argued**: Δ_strip G^(0) = 0, and that only the linear trace T^(1) can carry a log
+    (T5b item 2: the p ≥ 2 terms converge). The latter now needs re-reading with C₊ linear in α (EXP-057 (b)): each
+    extra power carries C₊/2α-type factors, bounded, but not yet checked.

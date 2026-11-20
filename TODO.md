@@ -504,3 +504,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       - the growth of Σ̃′_{φ}(iα) along Im α, which needs the σ self-energy machinery (EXP-056's B̃ plus D_σ = 1/B̃
         convolved with twisted G). This is a candidate compact Fable brief, on Sumit's word only.
       - Optional: a numerical continuum check of C₊ = −|α|/8.
+- [x] 2026-11-21: EXP-058. The collapse identity is verified (an exact linear-order identity); the registered must-fail
+      could not fire (my error); the post-registration k = 0 control fires. EXP-056's decay wording is corrected:
+      D_σ ~ e^{−(½+κ*)ρ}, κ* > κ₀.
+- [ ] Before the Σ̃ build: re-read T5b item 2 (the p ≥ 2 terms carry no log) with C₊ linear.
+- [ ] Σ̃ build, staged:
+      A) inverse Mehler–Fock D_q at n = 1 against the closed form −(2/π)e^{−|q|ρ}(|q|sinh ρ + cosh ρ)/sinh³ρ;
+      B) ∂ₙΣ̃(iα, α) at real α, with the C-symmetry check;
+      C) growth along α = ½ + iy, with the L·sin²(πα) planted must-fail pre-checked.

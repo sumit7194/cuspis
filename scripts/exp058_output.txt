@@ -1,0 +1,11 @@
+n=2: d/dt (1/2) logdet B = 1.885026374993e-01; 2 sum_k Tr(S^(k) dG^(k)) = 1.885026372274e-01 (rel 1.4e-09); direct 2Tr(S dG) rel 0.0e+00; k=0 term -2.3e-18 [PASS]  | must-fail (B without 2): 1.885026e-01 vs sect 1.885026e-01 [DOES NOT FIRE]
+n=3: d/dt (1/2) logdet B = -1.393826961404e-01; 2 sum_k Tr(S^(k) dG^(k)) = -1.393826961268e-01 (rel 9.8e-11); direct 2Tr(S dG) rel 2.2e-16; k=0 term -4.2e-18 [PASS]  | must-fail (B without 2): -1.393827e-01 vs sect -1.393827e-01 [DOES NOT FIRE]
+n=5: d/dt (1/2) logdet B = 1.788448972917e-01; 2 sum_k Tr(S^(k) dG^(k)) = 1.788448972397e-01 (rel 2.9e-10); direct 2Tr(S dG) rel 3.3e-16; k=0 term 3.1e-18 [PASS]  | must-fail (B without 2): 1.788449e-01 vs sect 1.788449e-01 [DOES NOT FIRE]
+R1 PASS
+n=2: d/dt (1/2) logdet B = 1.885026374993e-01; 2 sum_k Tr(S^(k) dG^(k)) = 1.885026372274e-01 (rel 1.4e-09); direct 2Tr(S dG) rel 0.0e+00; k=0 term -2.3e-18 [PASS]  | must-fail (B without 2): 1.885026e-01 vs sect 1.885026e-01 [DOES NOT FIRE]
+n=3: d/dt (1/2) logdet B = -1.393826961404e-01; 2 sum_k Tr(S^(k) dG^(k)) = -1.393826961268e-01 (rel 9.8e-11); direct 2Tr(S dG) rel 2.2e-16; k=0 term -4.2e-18 [PASS]  | must-fail (B without 2): -1.393827e-01 vs sect -1.393827e-01 [DOES NOT FIRE]
+n=5: d/dt (1/2) logdet B = 1.788448972917e-01; 2 sum_k Tr(S^(k) dG^(k)) = 1.788448972397e-01 (rel 2.9e-10); direct 2Tr(S dG) rel 3.3e-16; k=0 term 3.1e-18 [PASS]  | must-fail (B without 2): 1.788449e-01 vs sect 1.788449e-01 [DOES NOT FIRE]
+R1 PASS
+[post-reg control] n=2: lhs 1.1156400781e-02; all-k 1.1156400747e-02 (rel 3.1e-09); k>=1 only 2.4506836047e-02 (rel 5.4e-01) -> fires
+[post-reg control] n=3: lhs -1.8195321001e-01; all-k -1.8195321001e-01 (rel 1.1e-11); k>=1 only -1.3762457365e-01 (rel 3.2e-01) -> fires
+[post-reg control] n=5: lhs -4.4447792646e-02; all-k -4.4447792605e-02 (rel 9.4e-10); k>=1 only -4.8437113738e-02 (rel 8.2e-02) -> fires
