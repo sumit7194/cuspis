@@ -1,6 +1,6 @@
 # Digest: the corner-coefficient band seen across spacetime dimension (EXP-040 to EXP-043)
 
-**Status:** draft, for the Bridge's review. Not to be cited or used for outreach before review.
+**Status:** reviewed by the Bridge, 2026-11-20 (6ed2893); not ready for outreach (§10).
 **Provenance:** human direction: Sumit.
 - Fable 5.2, in the side session "Cuspis-personal": the exploratory d-scan; the one-particle decomposition; the
   Stirling prediction of the edge π/(2e); the EXP-043 registration and results; the A1 one-crossing proof (drafted).
