@@ -5435,3 +5435,28 @@ Output `scripts/exp043_addA_output.txt`, `exp043_addA.json`, `exp043_addA.wd.log
   contour agreement failed at the registered resolution; it converges when refined, but is not demonstrated at 10⁻⁷.
 - **Follow-up (deferred):** register a re-run of A3 inside the edge with the y-step set from the measured floor rather
   than double rounding, and A2 down to t = 10⁻⁶ in both laws.
+
+**EXP-043 addendum A: reconciliation of the two sign counts (the Bridge's objection, 2026-11-20; Opus 5.5).**
+- *The objection.* If M^S = M^D/(D − 1) with the same factor for both members of a pair, then at fixed D the pairwise
+  sign changes in t should be identical in both laws. Yet the counts are 2 (D-law) and 1 (S-law).
+- *Resolution: the relation is a factor in the Mellin variable D, not along t.* Integration by parts gives
+  ∫t^{D−3}·t ẽ′ dt = −(D − 2)M[ẽ]. So M[e] = (D − 1)M[ẽ] is equivalent to the operator identity **e = (1 − t d/dt) ẽ**.
+  - Profile differences obey f_D = (1 − t d/dt) f_S. This is not a multiplicative factor at fixed t, so the sign counts
+    in t need not agree.
+  - The zeros in D of the curve differences do agree: M_X^D − M_Y^D = (D − 1)(M_X^S − M_Y^S) with D − 1 > 0.
+- *Check by evaluation* (`scripts/exp043_addA_operator_check.py`, output `exp043_addA_opcheck_output.txt`, 27 s,
+  0.18 GB). The D-law difference was compared with (1 − t d/dt) applied to the separately inverted S-law difference
+  (central difference in ln t), at 13 points around both D-law sign changes.
+  - Agreement is ≤ 10⁻⁵ relative where |f_D| ≥ 10⁻⁴, and ≤ 1.3·10⁻² where |f_D| ~ 10⁻⁸ (a cancellation regime).
+  - Every sign matches.
+- *The mechanism.* For t ≲ 10⁻³ the S-law difference is linear: Einstein − EMI ≈ +1.24t and Dirac − Einstein ≈ −1.54t.
+  The function t is in the kernel of 1 − t d/dt, so the D-law difference keeps only the subleading terms (~10⁻⁸), and
+  those change sign. Near the edge, the large f_S′ makes the operator flip the sign again.
+- *Which of the Bridge's three options:* the second, made precise. The relation holds in D, which is an operator along
+  t. Neither count is an artefact.
+- *Grades.*
+  - Bridging argument (same zeros in D, so the S-law premise suffices): argued analytically and verified by evaluation.
+  - S-law premise: partially verified. Counted in the window [10⁻⁴, 20], with consistent end signs at 10⁻⁶…10⁻⁴ and
+    20…60; below 10⁻⁶ the sign rests on the linear term.
+  - One crossing per pair: partially verified.
+  - The D-law sign counts are not a certificate.

@@ -584,9 +584,12 @@ EXP-015, confirmed in four theories, the Dirac case by a pre-registered run (EXP
   (16) *EXP-043, mass profiles.* Each curve is the Mellin transform in D of a profile e_X(t), all starting at 1/3
   (pinning); κ/C_T at D = 3 is the area. Einstein's profile is compactly supported with a sharp edge at t = π/(2e) and
   edge exponent 3/2 (predicted from Stirling asymptotics, then confirmed numerically: partially verified). In the S-law
-  every pair of profiles differs in sign exactly once (EXP-043 addendum A; in the D-law two pairs differ twice, which
-  does not matter because both laws have the same zeros in D), so by the one-crossing lemma (A1, argued) each pair of
-  curves crosses exactly once in D > 2 (partially verified; sufficiency of the S-law is a post-failure argument). The 13% band at D = 3 is the statement that the four profiles have equal width to 13%. The Einstein
+  every pair of profiles differs in sign exactly once (EXP-043 addendum A). In the D-law two pairs differ twice (measured,
+  not an artefact). Both are right: the laws are related by a factor (D − 1) in the Mellin variable D, which along t is
+  the operator e = (1 − t d/dt)ẽ, not a factor, so sign counts in t can differ while the zeros in D coincide
+  (argued, and verified by evaluation at 13 points). By the one-crossing lemma (A1, argued) applied to the S-law
+  profiles, each pair of curves crosses exactly once in D > 2. Partially verified: the S-law count is in a window plus
+  end signs; that the S-law suffices is a post-failure argument, reviewed by the Bridge. The 13% band at D = 3 is the statement that the four profiles have equal width to 13%. The Einstein
   crossings are relocated, not explained: why π/(2e) is close to the free-field mass scale is open.
 
 **Open, in order of value.** (a) The shape residual, now reduced to two numbers per theory: why σ′

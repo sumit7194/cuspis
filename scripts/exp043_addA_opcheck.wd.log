@@ -1,0 +1,11 @@
+# cmd: .venv/bin/python scripts/exp043_addA_operator_check.py
+# caps: tree <= 1.5 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.3     1   0.046    0.000   0.046        11.28        568.9           74              1
+     5.6     1   0.095    0.000   0.095        11.28        568.9           74              1
+    10.9     1   0.100    0.000   0.100        11.28        568.9           74              1
+    16.2     1   0.184    0.000   0.184        11.28        568.9           74              1
+    21.5     1   0.184    0.000   0.184        11.28        568.9           74              1
+# exit 0; wall 27 s; PEAK tree MEM 0.184 GB + CMPRS 0.000 GB = 0.184 GB

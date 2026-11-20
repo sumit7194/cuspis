@@ -1,0 +1,16 @@
+=== Einstein - EMI ===
+  t=0.0002   D-law diff -1.7455e-07   (1 - t d/dt)(S-law diff) -1.7443e-07   S-law diff +2.4865e-04   rel 7.2e-04
+  t=0.00033  D-law diff -2.7163e-08   (1 - t d/dt)(S-law diff) -2.7011e-08   S-law diff +4.1035e-04   rel 5.6e-03
+  t=0.00035  D-law diff +1.6744e-08   (1 - t d/dt)(S-law diff) +1.6911e-08   S-law diff +4.3523e-04   rel 1.0e-02
+  t=0.0005   D-law diff +5.3068e-07   (1 - t d/dt)(S-law diff) +5.3088e-07   S-law diff +6.2166e-04   rel 3.7e-04
+  t=0.01     D-law diff +6.0490e-04   (1 - t d/dt)(S-law diff) +6.0489e-04   S-law diff +1.1867e-02   rel 5.8e-06
+  t=0.3      D-law diff +1.8712e-01   (1 - t d/dt)(S-law diff) +1.8712e-01   S-law diff +6.6001e-02   rel 1.0e-06
+  t=0.55     D-law diff +9.7532e-02   (1 - t d/dt)(S-law diff) +9.7526e-02   S-law diff -5.9060e-02   rel 5.4e-05
+  t=0.565    D-law diff +2.4086e-02   (1 - t d/dt)(S-law diff) +2.4066e-02   S-law diff -6.2427e-02   rel 8.3e-04
+=== Dirac - Einstein ===
+  t=2e-05    D-law diff +1.3553e-08   (1 - t d/dt)(S-law diff) +1.3517e-08   S-law diff -3.0862e-05   rel 2.7e-03
+  t=5e-05    D-law diff +4.3429e-09   (1 - t d/dt)(S-law diff) +4.2873e-09   S-law diff -7.7174e-05   rel 1.3e-02
+  t=0.0001   D-law diff -8.9507e-08   (1 - t d/dt)(S-law diff) -8.9372e-08   S-law diff -1.5432e-04   rel 1.5e-03
+  t=0.01     D-law diff -1.0444e-03   (1 - t d/dt)(S-law diff) -1.0444e-03   S-law diff -1.4161e-02   rel 3.4e-06
+  t=0.3      D-law diff -1.9855e-01   (1 - t d/dt)(S-law diff) -1.9855e-01   S-law diff -7.1516e-02   rel 9.6e-07
+# exit 0; wall 27 s; PEAK tree MEM 0.184 GB + CMPRS 0.000 GB = 0.184 GB
