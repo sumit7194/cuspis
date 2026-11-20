@@ -1,0 +1,6 @@
+proto L=3: route1 (diff of S) 0.972659812294531  route2 (explicit) 0.972659812294531  Neon 1+L/sinh^2L 1.02989303731344
+proto L=10: route1 (diff of S) 0.999999919615009  route2 (explicit) 0.999999919615009  Neon 1+L/sinh^2L 1.00000008244615
+borderline h = L sin^2(pi a), L=5: S(1) = 2.5  (= L/2 = 2.5)
+borderline h = L sin^2(pi a), L=20: S(1) = 10.0  (= L/2 = 10.0)
+tamed sin^2 * exp(eps (a-1/2)^2), eps=0.5: S(1) = 0.0
+tamed sin^2 * exp(eps (a-1/2)^2), eps=0.05: S(1) = 0.0

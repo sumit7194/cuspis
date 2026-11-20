@@ -494,3 +494,13 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       (2) a write-up of (e)'s CH07b contour continuation;
       (3) optional: (c) at q ≥ 3 and n → 1.01;
       (4) check Neon's (a)–(e) reply against EXP-053–056 when it lands.
+- [x] 2026-11-21: EXP-057 (Neon T10).
+      - (b): reconciled; C₊ is linear (argued), and the EXP-055 scope sentence is corrected.
+      - (e): Neon's general S_h(1) = 0 claim is false as stated (counterexample sin²(πα)); its prototype closed form is
+        wrong, but there is no log; the ζ(2) aside is verified.
+      - Crux sharpened: the first-order tip term is log-free iff h₁ obeys the Abel–Plana growth bound o(e^{2π|Im α|})
+        uniformly in L.
+- [ ] Next for Lemma U:
+      - the growth of Σ̃′_{φ}(iα) along Im α, which needs the σ self-energy machinery (EXP-056's B̃ plus D_σ = 1/B̃
+        convolved with twisted G). This is a candidate compact Fable brief, on Sumit's word only.
+      - Optional: a numerical continuum check of C₊ = −|α|/8.

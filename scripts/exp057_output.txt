@@ -1,0 +1,13 @@
+Q1 a(1-a): S_h(1) = 0.0  [PASS]
+Q1 sin^2(pi a): S_h(1) = 0.5  [FAIL]
+Q1 proto L=3: S_h(1) = 0.0  [PASS]
+Q1 proto L=10: S_h(1) = 0.0  [PASS]
+Q1 FAIL
+Q1 must-fail sin^2(2 pi a) (growth e^{4 pi|Im|}): formula S(1) = 0.5 vs true 0 (predicted 1/2)  [PASS (fires)]
+Q2 proto L=3: dS/dn|1 = 0.972659812294531 vs 1 + L/sinh^2 L = 1.02989303731344  diff -0.0572  [FAIL]
+Q2 proto L=10: dS/dn|1 = 0.999999919615009 vs 1 + L/sinh^2 L = 1.00000008244615  diff -1.63e-7  [FAIL]
+Q2 FAIL
+Q3 O(1) channel L=5: dS/dn|1 = 1.6444346568   (zeta(2) = 1.64493406685; ln L = 1.60944); S(1) = -4.8859e-19
+Q3 O(1) channel L=20: dS/dn|1 = 1.64493406685   (zeta(2) = 1.64493406685; ln L = 2.99573); S(1) = -1.6804e-18
+Q3 O(1) channel L=80: dS/dn|1 = 1.64493406685   (zeta(2) = 1.64493406685; ln L = 4.38203); S(1) = -1.9178e-12
+Q4 integer-n control PASS

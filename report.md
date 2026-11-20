@@ -6539,3 +6539,46 @@ reading of (b) made the same conflation.**
 - **Q4 (integer-n control):** at n = 2, 3, 5 the continued S_h(n) must equal the direct sum to ≤ 10⁻¹² for every h above
   except the must-fail.
 - mpmath, seconds.
+
+### EXP-057 results: Q1 FAIL (my admissibility error, which yields a counterexample to Neon's general claim); Q2 FAIL (Neon's closed form is wrong, its no-log conclusion holds); Q3 verified; Q4 PASS [model: Opus 5.5]
+
+**Run** (`scripts/exp057_abel_plana.py`, `exp057_output.txt`; 17 s, 0.03 GB, watchdog). Post-registration analysis,
+labelled: `exp057_postanalysis_output.txt`.
+- **Q1 FAIL as registered.**
+  - S_h(1) = 0 to ≤ 10⁻¹⁸ for α(1−α) and the prototype at L = 3, 10.
+  - But **S_h(1) = ½ for sin²(πα)**. My registration classed sin²(πα) as admissible, but it grows as e^{2π|Im α|},
+    exactly the Abel–Plana borderline. So the Q1 clause was mis-set by me.
+  - The finding: **"S_h(1) = 0 for every h with h(0) = h(1) = 0" (Neon) is false as stated.** Counterexample:
+    h = sin²(πα), whose continuation gives S(n) = n/2 for all n, including S(1) = ½.
+- **Q1 must-fail PASS (fires):** sin²(2πα) gives ½ against the true 0, as predicted.
+- **Q2 FAIL:** dS/dn|₁ = 0.972659812294531 (L = 3) and 0.999999919615009 (L = 10). Neon's 1 + L/sinh²L gives
+  1.02989 and 1.00000008.
+  - A second route (the explicit n-derivative of the Abel–Plana form) agrees with mine to 15 digits. So Neon's closed
+    form is wrong in its correction term.
+  - Its qualitative claim (no log, → 1 as L → ∞) holds.
+- **Q3 (comparison only):** for the O(1) channel with h(0) = L, dS/dn|₁ = 1.6444347 (L = 5), and
+  1.64493406685 = ζ(2) to 12 digits at L = 20 and 80. There is no ln L drift. Neon's aside is **verified at L ≥ 20**.
+  S(1) = 0 to ≤ 10⁻¹².
+- **Q4 PASS:** the continued S_h(n) equals the direct sums at n = 2, 3, 5 for every non-must-fail h.
+
+**What this changes (post-registration, labelled; argued plus point checks).**
+- *h(0) = 0 is not the condition.* With the −h(0) term kept, Abel–Plana at n = 1 *is* the empty sum. So S_h(1) = 0 for
+  **every admissible h**, whatever h(0) is (Q3: h(0) = L, S(1) = 0). Neon's "un-lifted channel h(0) ≠ 0 gives a log"
+  is therefore not the mechanism.
+- *The mechanism is growth.* For h = L·sin²(πα), which is Carlson-borderline with an L-dependent coefficient,
+  S(1) = L/2 exactly (L = 5, 20). That is a ½·ln(w/ε) log in the first-order tip term
+  dS_tip/dn|₁ = 2S_{h₁}(1).
+  - Damping the growth with sin²(πα)·e^{ε(α−½)²} restores S(1) = 0 (ε = 0.5, 0.05).
+- **The sharpened crux (e):** Lemma U's first-order tip term is log-free if and only if h₁(α) satisfies the
+  Abel–Plana / Carlson bound |h₁(x + iy)| = o(e^{2π|y|}) uniformly in x ∈ [0, 1] and in L. A log(w/ε) needs a
+  borderline component whose coefficient grows with L.
+- *A model of the compensation, from our own closed form.* In EXP-055, W₃⁽¹⁾ = λ²(α)·c₁(α).
+  - λ² = sin²(πα)/π² is exactly borderline, but c₁ ∝ Γ(½+2α)Γ(5/2−2α) decays like e^{−2π|y|}·poly. So the product grows
+    only polynomially and is admissible.
+  - Twisted-sector quantities carry sin(πα)-type factors, which is why this condition is real and not decoration.
+
+**Grade.**
+- The counterexample and the growth mechanism: **verified by evaluation** (closed forms at points).
+- "The crux is the growth of h₁": **argued**.
+- Neon's (e) conclusion (dS_tip/dn = 0): **unverified**. It now rests on the growth of h₁ = (C₊/2α)Σ̃′(iα)(1 − e^{−2αL}),
+  where C₊ = −α/8 + O(α²) (EXP-057 (b), argued). That needs Σ̃′ along Im α, which we have not built.
