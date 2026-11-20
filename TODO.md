@@ -481,3 +481,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       - continuum-first (lattice r → ∞ at fixed α ≥ 0.15, with the exact mode-sum S(α) as known-answer); or
       - better, the Fredholm route: O(sin²πα) at fixed t, plus the k_y → 0 crossover bound O(e^{−1/α}).
       Then (c).
+- [x] 2026-11-21: EXP-055 (gap b, Fredholm). Registered P1/P2 FAIL: tolerances ignored the O(α) dependence of θ, a
+      rule-VIII lapse. The must-fail fires. Post-registration closed form: W₃⁽¹⁾/λ² = −(π/2)Γ(½+2α)Γ(5/2−2α)
+      (verified, 3 routes). The full W₃ approaches it (residual 3.6% → 0.11%), so W₃/α² → −3π²/8: the integrated (b)
+      holds (partially verified). The near-tip C₊ is still owed and needs a continuum method.
+- [ ] Gap (c), the ω_q ≠ 0 sum: scope it next. It needs the σ propagator on H² × S¹ in twisted sectors.

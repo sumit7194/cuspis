@@ -6375,3 +6375,42 @@ form is continuum. At real twist 0 < α < 1, w_S(t, α) = −t∂_t log det(1 �
     D = 3). C₊ itself is still owed.
   - The slope falls toward 1: W₃ = O(α), and T7's (b) is false. That is a finding.
 - Envelope: ~500 Fredholm evaluations at ≤ 750 nodes. Minutes, < 0.5 GB, nice 12, watchdog.
+
+### EXP-055 results: registered P1 and P2 FAIL (tolerances set without bounding an O(α) correction); the must-fail fires; post-registration analysis gives a closed form [model: Opus 5.5]
+
+**Run** (`scripts/exp055_W3.py`, `exp055_output.txt`, `exp055_results.json`, Tier 1 `exp055_tier1_output.txt`; 28 s,
+peak 0.45 GB, nice 12, watchdog, exit 0).
+- W₃(0.0125, 0.025, 0.05, 0.1) = −5.4224·10⁻⁴, −2.0416·10⁻³, −7.2977·10⁻³, −2.3842·10⁻².
+- **P1 FAIL:** slopes 1.913, **1.838**, 1.708. The second registered pair is below the 1.85 floor.
+- **P2 FAIL:** W₃/λ² = −3.4721 vs −3.2733, a 6.1% difference against the registered < 3%.
+- **Must-fail PASS (fires):** at t = 10⁻¹², the slope on α ∈ {0.1, 0.2} is 0.941.
+- **Nuisance sweep:** 240 nodes, tmin 10⁻¹⁸ and h = 0.05 all move W₃ by ≤ 2·10⁻¹³. The numbers are exact to the
+  digits shown.
+- *Warnings:* numpy's slogdet raises divide/overflow/invalid warnings on *every* call on this platform. It does so on
+  a benign 50 × 50 matrix too, with the correct result. This is spurious. w does not use the det.
+
+**Why P1 and P2 failed (a rule-VIII lapse of mine).** I set the tolerances as if the only correction to W₃/λ² were
+O(λ²). But θ = 2α − 1 makes the first-order coefficient itself depend on α at O(α). I noted this and did not bound it.
+
+**Post-registration analysis (labelled; `scripts/exp055_postanalysis_output.txt`).**
+- *The first-order coefficient in closed form.* Tr(RRᵀ) integrated over t, with ∫₀^∞e^{−t(cosh p + cosh q)}dt =
+  1/(cosh p + cosh q), and p, q = s ± x/2, gives
+  **W₃⁽¹⁾/λ² = −(π/8)∫dx e^{θx}/cosh³(x/2) = −(π/2)Γ(3/2 + θ)Γ(3/2 − θ) = −(π/2)Γ(½ + 2α)Γ(5/2 − 2α).**
+  - The x-integral is checked numerically at θ = −1, −0.5, 0.3, and the original (p, q) double integral at θ = −0.75,
+    each to ≤ 10⁻¹⁷.
+  - It is analytic at α = 0, with value −3π²/8 = −3.7011.
+  - It is symmetric under α → 1 − α (θ → −θ), which is gap (a) again for the free part.
+- *The full Fredholm W₃ against it.* (W₃/λ² − c₁(α))/c₁(α) = 0.11%, 0.40%, 1.3%, 3.6% at α = 0.0125, 0.025, 0.05, 0.1.
+  - c₁(α) accounts for the whole registered "drift": c₁(0.0125) = −3.468 vs W₃/λ² = −3.472.
+  - The residual shrinks toward 0. It is consistent with an O(α² ln²α) second-order term from the small-t log
+    enhancement. That form is inference from four points and is **not** claimed.
+- **So W₃(α) = λ²(α)·[−(π/2)Γ(½+2α)Γ(5/2−2α)] + o(α²), and W₃/α² → −3π²/8.**
+
+**Grade.**
+- Registered P1/P2: **FAIL** (kept). Must-fail: PASS.
+- The first-order closed form: **verified by evaluation** (three routes).
+- W₃ = O(α²) with a finite limit, for the free scalar in D = 3: **partially verified**. The closed-form leading term is
+  verified; the limit rests on a residual that shrinks at four points, not on a bound.
+- For Lemma U: the *integrated* necessary condition for (b) holds. The near-tip C₊(α) itself is still not extracted.
+  Combined with EXP-054's diagnosis, a direct C₊ extraction needs a continuum near-tip method. The lattice cannot do
+  it.
