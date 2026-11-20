@@ -6340,3 +6340,38 @@ peak 0.57 GB, nice 12, watchdog, exit 0; failures kept).
   the 3D k_y integral the crossover region t ≲ e^{−1/α} contributes O(e^{−1/α}): non-analytic, but beyond all orders
   at α → 0⁺. If that holds, C₊ = O(α²) up to O(e^{−1/α}). That is enough for (e)'s endpoint regularity.
 - **So (b) sharpens to a statement about the uniformity of the k_y → 0 slice.** It is argued here, not verified.
+
+## EXP-055  Lemma U gap (b), continuum route: the D = 3 two-edge free moment W₃(α) = ∫₀^∞ w_S(t, α) dt must be O(α²) — pre-registration [model: Opus 5.5]
+
+**Why.** EXP-054's lattice cannot see the |α| law (a finite lattice is analytic and even in α). The EXP-044 Fredholm
+form is continuum. At real twist 0 < α < 1, w_S(t, α) = −t∂_t log det(1 − λ²R_θR_θᵀ), with θ = 2α − 1 and
+λ² = sin²(πα)/π². This is CH05's original real-a domain; EXP-044 and EXP-051 verified the machinery at complex twists.
+- w is purely two-edge: single-edge terms do not depend on t = mw.
+- At fixed t it is analytic in λ² = O(α²). As t → 0 it crosses over to the massless twist-field law, linear in α.
+- The D = 3 moment uses the weight t^{D−3} = 1, as κ ∝ ∫c dt does. The crossover region t ≲ e^{−1/α} then weighs
+  O(e^{−1/α}).
+- **Scope.** W₃(α) = O(α²) is a *necessary* condition for T7's C₊(α) = O(α²): an O(α) near-tip two-edge mode would
+  feed W₃ at O(α) unless cancelled. It is not sufficient. C₊ is a near-tip coefficient; W₃ is an integrated trace.
+
+**Instrument pre-check (the Bridge's rule; run before registering, unregistered; `scripts/exp055_precheck_output.txt`).**
+- At t = 1 the log-slope of w in α tends to 2: 1.92, 1.83 at α = 0.025–0.1.
+- At t = 10⁻⁹ it falls to about 1: 1.37, 1.18, 0.97, 0.65 across α = 0.025–0.4.
+- w/(α(1−α)) drifts toward ≈ −2 slowly, as expected for corrections ~ 1/(α ln(1/t)).
+- The discretisation is stable to 10⁻⁷ at t = 10⁻⁹ (h 0.1 → 0.05, P + 2).
+- So this instrument **can** produce the O(|α|) signature, and a must-fail on it can fire for the right reason.
+- numpy slogdet raised divide-by-zero / overflow warnings during the pre-check. The returned w values are finite and
+  sweep-stable, since w uses the solve, not the det. Their source will be identified in the run.
+
+**Predictions.**
+- **P1:** W₃(α) at α ∈ {0.0125, 0.025, 0.05, 0.1}. The log-slopes on the pairs (0.0125, 0.025) and (0.025, 0.05) lie
+  in [1.85, 2.15].
+- **P2:** the ratios W₃(α)/λ²(α) at α = 0.0125 and 0.025 differ by < 3%: a finite first-order coefficient.
+- **Must-fail (on a point not seen in the pre-check):** at t = 10⁻¹², the log-slope of w(t, α) on α ∈ {0.1, 0.2} is
+  ≤ 1.3.
+- **Nuisance sweep:** log-t Gauss–Legendre on [ln 10⁻¹⁴, ln 20] with 120 nodes; also 240 nodes, a lower limit of
+  10⁻¹⁸, and h = 0.05. W₃ must move by < 0.5%, or the drift is reported as the error.
+- **Outcome tree.**
+  - P1 and P2 pass: the integrated necessary condition for (b) holds (verified by evaluation for the free scalar in
+    D = 3). C₊ itself is still owed.
+  - The slope falls toward 1: W₃ = O(α), and T7's (b) is false. That is a finding.
+- Envelope: ~500 Fredholm evaluations at ≤ 750 nodes. Minutes, < 0.5 GB, nice 12, watchdog.

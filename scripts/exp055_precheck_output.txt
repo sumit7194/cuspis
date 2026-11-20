@@ -1,0 +1,13 @@
+/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py:2349: RuntimeWarning: divide by zero encountered in slogdet
+  sign, logdet = _umath_linalg.slogdet(a, signature=signature)
+/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py:2349: RuntimeWarning: overflow encountered in slogdet
+  sign, logdet = _umath_linalg.slogdet(a, signature=signature)
+/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py:2349: RuntimeWarning: invalid value encountered in slogdet
+  sign, logdet = _umath_linalg.slogdet(a, signature=signature)
+t=1 (nodes 105): w = ['-3.8048e-04', '-1.4378e-03', '-5.1141e-03', '-1.5906e-02', '-3.5109e-02']  slopes ['1.92', '1.83', '1.64', '1.14']  w/(a(1-a)) ['-0.016', '-0.030', '-0.057', '-0.099', '-0.146']  [0.0s]
+t=0.001 (nodes 243): w = ['-1.1746e-02', '-3.6269e-02', '-9.6915e-02', '-2.1555e-01', '-3.6232e-01']  slopes ['1.63', '1.42', '1.15', '0.75']  w/(a(1-a)) ['-0.482', '-0.764', '-1.077', '-1.347', '-1.510']  [0.0s]
+t=1e-06 (nodes 381): w = ['-1.9279e-02', '-5.3219e-02', '-1.2721e-01', '-2.5932e-01', '-4.1509e-01']  slopes ['1.46', '1.26', '1.03', '0.68']  w/(a(1-a)) ['-0.791', '-1.120', '-1.413', '-1.621', '-1.730']  [0.0s]
+t=1e-09 (nodes 519): w = ['-2.4264e-02', '-6.2577e-02', '-1.4132e-01', '-2.7724e-01', '-4.3518e-01']  slopes ['1.37', '1.18', '0.97', '0.65']  w/(a(1-a)) ['-0.995', '-1.317', '-1.570', '-1.733', '-1.813']  [0.1s]
+sweep t=1e-9 a=0.1 h=0.1 P+0: w = -1.413173e-01
+sweep t=1e-9 a=0.1 h=0.05 P+0: w = -1.413173e-01
+sweep t=1e-9 a=0.1 h=0.1 P+2: w = -1.413173e-01
