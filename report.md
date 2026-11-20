@@ -5772,3 +5772,46 @@ the precise statement, step (a) of the registration, showed that no test of it c
 
 **Action:** a sentence in the digest (§1, "already known"), not a project. The general t₄-bound is noted as an open
 item at low priority. Grade: partially verified (the sweep is three papers deep; BCV21 §5.4 was not re-read).
+
+## EXP-047 (note, not registered)  Why the 1/N fifth curve matters, what is in print, and what its "cheapest kill step" actually costs [model: Opus 5.5]
+
+**Why it matters.** Every curve in EXP-040–044 is mean-field: free fields, classical gravity, or a model. The
+O(N) Wilson–Fisher CFT is the one interacting family with a curve in continuous D (2 < D < 4) and a controlled
+expansion. At N = ∞ its curve is the free scalar's (WWS17), so the 1/N term is the first place an interacting theory
+could leave, or stay on, the crossing pattern. Under the base-rate rule (EXP-041/042) a test must register:
+- that its crossings with the four curves fall in [2.75, 2.95];
+- the toy base rate (16% per crossing; 0/17 all-in-window);
+- what counts against.
+
+**In print (sweep 2026-11-20: two further web queries on top of EXP-042's three; partially verified).**
+- **No 1/N correction to κ, or to the strip coefficient, of the O(N) model was found**, in any D. Closest:
+  - WWS17: κ = Nκ_free at leading order; the cylinder's universal term is O(N⁰).
+  - Perlmutter, arXiv:1308.1083 (search summary only): 1/N corrections near n = 1 governed by C_T, for spheres and
+    Rényi derivatives, not κ.
+  - Lattice and NLCE: the O(N) corner coefficient is roughly ∝ N for N = 1, 2, 3 (arXiv:1409.6327, search summary);
+    the 90° von Neumann NLCE values 0.62(6)/0.61(6) are already in this record (BMW15 table), with ~10% errors.
+- **C_T at order 1/N is in print:** C_T = N C_T,free (1 − 40/(9π²N) + O(N⁻²)) in d = 3, with the general-d formula
+  in Petkou (hep-th/9506116), as restated by Diab et al. (arXiv:1601.07198). Grade: partially verified (secondary
+  source, search summary; Petkou not read at source).
+
+**Arithmetic of the kill step (argued).**
+- At order 1/N, κ/C_T = (κ/C_T)_free · [1 + (δκ/κ_free − δC_T/C_T,free)/N]. The C_T part is +40/(9π²) ≈ +0.45 at
+  D = 3; the κ part δκ is unknown.
+- The S/E curve's log-slope near its crossing is ≈ 0.74 per unit D (EXP-040 table: 0.934 at 2.75, 1.125 at 3.0). A
+  shift x/N in ln(κ/C_T) moves the crossing by ≈ −x/(0.74N). With the C_T part alone that is ≈ −0.6/N, three times the
+  window width at N = 1.
+- So the test is informative, but **only if δκ is known**: δκ/κ_free ≈ +0.45 would leave the crossing where it is.
+
+**What δκ costs.**
+- It is the O(N⁰) term of the strip entropy: the one-loop determinant of the Hubbard–Stratonovich field σ on the
+  replica geometry, with kernel the φ-bubble on the cone.
+- The dimensional reduction that made the free fields cheap does not decouple here, because the bubble couples
+  different transverse momenta.
+- Nothing in print gives it, even at D = 3. **This is a research-scale computation (multi-session, low odds), not a
+  cheap kill step.**
+
+**Recommendation (for Sumit and the Bridge).**
+- Do not register "the leading 1/N correction to one crossing at one point" as a cheap step. Its cost is that of δκ.
+- If the interacting route is wanted, scope δκ as a project, starting with a prior-art pass on one-loop σ
+  determinants for entanglement of the large-N O(N) model, at source.
+- Otherwise close this arc. The reviewed digest is its deliverable; EXP-044–046 sharpened it.
