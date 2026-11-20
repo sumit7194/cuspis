@@ -1,0 +1,23 @@
+22:33:36 EXP-044 Tier 1
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp044_det.py", line 68, in <module>
+    {"tier1": tier1}[sys.argv[1]]()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/exp044_det.py", line 59, in tier1
+    log("EXP-044 Tier 1"); C0()
+                           ~~^^
+  File "/Users/sumit/Github/corner_function/scripts/exp044_det.py", line 46, in C0
+    num = quad(lambda s: math.pi * (math.cosh(b * s) - 1) / math.sinh(math.pi * s) ** 2 if s > 1e-8 else math.pi * b * b / (2 * math.pi ** 2), 0, np.inf, limit=400, epsabs=1e-14, epsrel=1e-13)[0]
+          ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/integrate/_quadpack_py.py", line 479, in quad
+    retval = _quad(func, a, b, args, full_output, epsabs, epsrel, limit,
+                   points)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/integrate/_quadpack_py.py", line 628, in _quad
+    return _quadpack._qagie(func, bound, infbounds, args, full_output,
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                            epsabs, epsrel, limit)
+                            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp044_det.py", line 46, in <lambda>
+    num = quad(lambda s: math.pi * (math.cosh(b * s) - 1) / math.sinh(math.pi * s) ** 2 if s > 1e-8 else math.pi * b * b / (2 * math.pi ** 2), 0, np.inf, limit=400, epsabs=1e-14, epsrel=1e-13)[0]
+                                                            ~~~~~~~~~^^^^^^^^^^^^^
+OverflowError: math range error

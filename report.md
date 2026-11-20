@@ -5560,3 +5560,18 @@ below t_lo, as in EXP-040.
 minutes, < 0.5 GB, 1 core, nice 12, under the watchdog with --stop-on-pressure-warn. Launched on my own judgement
 within the Bridge's envelope (≤ 0.5 GB, ≤ 1 h); anything larger is asked first.
 - Scripts: `scripts/exp044_det.py` (C0, G1–G4, P1), output `exp044_output.txt`, `exp044_results.json`.
+
+**EXP-044 Tier 1 and a pre-run amendment (written before any c(t) or D_c is computed).**
+- *Tier 1* (`scripts/exp044_tier1_output.txt`; run 1 crashed on an overflow in the C0 test integrand, kept as
+  `exp044_tier1_run1_overflow.txt`, fixed with the exponential form).
+  - **C0 PASS:** the Dirac and scalar continuation identities hold to ≤ 1.6·10⁻¹⁴ at β = 1, 3, 5. That includes the
+    derived scalar weight −½π/cosh², checked (verified by evaluation) against a separate finite-n difference of the Dirichlet sum.
+  - The determinant reproduces the massless limits: w_D(is) → 2s² (0.49997, 7.9997 at t = 10⁻³), and w_S(½+is) →
+    −½ − 2s² − 1/ln t (CH05 (85)). Cost: 1–9 ms per determinant, peak 0.05 GB.
+- *Amendment (one variable, pre-run).*
+  - **K-mom (known-answer control for the moment code).** With the Impl-2 lattice tables in place of the determinant
+    c(t), the same moment and crossing code must reproduce EXP-040's crossings 2.9435 (D/E), 2.7513 (S/D) and 2.8487
+    (S/E) to 2·10⁻⁴.
+  - Bookkeeping (EXP-043, Dirac law): M_D = ∫t^{D−3}c_D; M_S = (D − 1)∫t^{D−3}c_S; M_E as coded in
+    `exp043_profiles.M_E_D`.
+  - t_lo = 10⁻⁵ and t_hi = 8, with the source forms outside.
