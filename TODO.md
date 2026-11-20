@@ -453,3 +453,16 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] 2026-11-21: HOLD on any Fable brief for EXP-052 (c) (Bridge): Neon is working the q ≠ 0 / continuation caveat
       in the same session; wait for its result (the Bridge relays it), then do the Opus-first pass. The Bridge
       accepted EXP-052's scale-invariance argument over ∫μ_total = 0.
+- [ ] 2026-11-21: Neon follow-up on the q ≠ 0 caveat received (Bridge summary outside the repo; UNVERIFIED). To do
+      when resuming, in the Bridge's order:
+      1. Verify the claimed collapse identity by algebra first:
+         T_n^(1) = ½Σ_q Tr[(B_cone^(q))⁻¹Δ_strip B^(q)] = 2Σ_{k=1}^{n−1} Tr(Σ_{φ,n}^{cone,(k)} Δ_strip G^(k/n)), up to
+         UV-finite ΔG·ΔG terms, using Δ_strip G^(0) ≡ 0.
+         Also check its premise that only the linear trace can carry log(w/ε), since p ≥ 2 terms need Δ̂ ≥ 1.
+      2. Then the single-cone lemma on Opus: is Σ_{φ,n}^{cone,(α)} uniform as (α, n) → (0, 1)? If it sticks, it is the
+         Fable brief, on Sumit's word only.
+      3. **Bears on EXP-050 (i):** Neon claims global angle rescaling FAILS on the strip (bipolar coordinates give n
+         separate infinities). If true, EXP-050's θ̃ = θ/n step holds for the single cone only, and the strip formula
+         must go through the q-sectors. Check this before relying on EXP-050 (i) for the strip.
+      4. Neon's numerics (w/a ≤ 8, n = 2–4; no ln w growth after a tadpole subtraction; defect-mass must-fail fires
+         at ~50× the step size) are indicative only. No n → 1 extrapolation was done.
