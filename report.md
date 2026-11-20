@@ -6508,3 +6508,34 @@ threshold allows. The large-distance decay is set by the nearest singularity of 
 - (e): argued, closing on (a), (b) and strip analyticity once the CH07b contour is named.
 - Remaining Opus work: the direct C₊, and a write-up of (e)'s continuation. A Fable brief only if one of these sticks,
   and only on Sumit's word.
+
+## EXP-057  Neon's T10 reply on Lemma U: (b) reconciled (argued), and (e)'s Abel–Plana continuation checked at points — pre-registration [model: Opus 5.5]
+
+**(b) reconciled (argued; the ingredients are verified in EXP-052): Neon's concession is right, and my EXP-053/055
+reading of (b) made the same conflation.**
+- Δ_strip G near edge 1 contains the *single-edge field of edge 2*, felt at distance w.
+- Per k_y slice that field is −(|α|/2π)K₀(k_y r₂)K₀(k_y r₂′), from the EXP-052 Bessel identity. With r₂ ≈ w and
+  ∫dk_y/2π K₀(k_y w)² = π/(4w) (∫K₀² = π²/4, verified), it is −|α|/(8w). So **C₊(α) = −|α|/8 + O(α²): linear**.
+- W₃ (EXP-055) is a different object. Integrated over all space, edge 2's single-edge field does not depend on w (it is
+  a translate of edge 2's self-field). Only the true two-edge interaction, O(α²), survives in W₃.
+- **Correction to EXP-055's scope sentence.** "W₃ = O(α²) is a necessary condition for C₊ = O(α²)" is wrong. A linear
+  C₊ does not feed W₃, because it cancels by translation. EXP-055's closed form stands as a statement about W₃ only.
+- With C₊ linear, T7's near-tip summand is h₁(α) ∝ (C₊/2α)·Σ̃′(iα)·(1 − (ε/w)^{2α}) with C₊/2α → −1/16. So
+  h₁(0) = 0 survives if Σ̃′ is regular at α = 0.
+
+**(e) checks (registered before code).**
+- *The formula.* For symmetric h, h(α) = h(1 − α), analytic in 0 ≤ Re α ≤ 1 with growth below e^{2π|Im α|} (the
+  Abel–Plana / Carlson conditions):
+  S_h(n) ≡ Σ_{k=1}^{n−1} h(k/n) = n∫₀¹h − h(0) + 2i∫₀^∞ [h(it/n) − h(−it/n)]/(e^{2πt} − 1) dt.
+  This is Abel–Plana on [0, n] for f(k) = h(k/n), less the k = 0, n endpoints. With h(0) = 0 it is Neon's formula.
+- **Q1 (an identity, argued):** Abel–Plana is exact at n = 1, so S_h(1) = 0 for every admissible h. Check to ≤ 10⁻¹²
+  for h = α(1−α), h = sin²(πα), and Neon's prototype (1 − e^{−2αL})(1 − e^{−2(1−α)L}) at L = 3, 10.
+- **Q1 must-fail (growth):** h = sin²(2πα) grows like e^{4π|Im α|} and violates the condition. The formula must give
+  S_h(1) ≠ 0 (predicted ½), against the true empty sum 0.
+- **Q2 (Neon's prototype):** dS_h/dn at n = 1 = 1 + L/sinh²L to ≤ 10⁻¹⁰ at L = 3, 10.
+- **Q3 (Neon's aside):** for h = (1 − e^{−2αL})/(2α) + (α → 1 − α), Neon says dS_h/dn|₁ → ζ(2) as L → ∞. This h has
+  h(0) ≠ 0, so the −h(0) term above is kept. The value is recorded at L = 5, 20, 80 as a comparison only (no
+  prediction of mine). A ln L or ln(w/ε) drift would be reported.
+- **Q4 (integer-n control):** at n = 2, 3, 5 the continued S_h(n) must equal the direct sum to ≤ 10⁻¹² for every h above
+  except the must-fail.
+- mpmath, seconds.
