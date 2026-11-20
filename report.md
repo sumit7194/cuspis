@@ -5460,3 +5460,103 @@ Output `scripts/exp043_addA_output.txt`, `exp043_addA.json`, `exp043_addA.wd.log
     20…60; below 10⁻⁶ the sign rests on the linear term.
   - One crossing per pair: partially verified.
   - The D-law sign counts are not a certificate.
+
+## EXP-044  A lattice-free von Neumann c-function from the Fredholm determinant and the n → 1 continuation; the Dirac/Einstein crossing recomputed — pre-registration (Sumit's GO, relayed by the Bridge and given in chat, 2026-11-20: "go with option 1, read the sources first") [model: Opus 5.5]
+
+**Why.** The weakest link of EXP-040–043 (DIGEST §9, as corrected) is that both implementations computed the 2d
+c-functions on lattices. This experiment computes the Dirac von Neumann c-function with no lattice. It uses
+- the Fredholm-determinant form of the twist correlator (CFH05 (58)–(60), (65));
+- the n → 1 continuation of CH07b (42);
+- Nyström quadrature (Born10).
+
+It then recomputes the Dirac/Einstein crossing (2.9435 in EXP-040; Einstein is a closed form). The scalar is the
+same machinery with the bosonic weight, as Part P1b.
+
+**Sources, read at source before this registration** (references.md CFH05, CH05, CH07b, Born10). The Painlevé
+routes in CFH05/CH05 give only integer-n c-functions; neither paper writes the n → 1 continuation. CH07b gives it
+in real form.
+
+**Method (derived here; the steps are labelled).**
+- *Determinant.* ⟨V_a V_{a′}⟩ ∝ det(1 − λ²R_θR_θᵀ), with θ = a − a′, λ² = (1/π²) sin(πa) sin(πa′), and
+  R_θ(u,v) = (u/v)^{θ/2} e^{−(t/4)(u+1/u+v+1/v)}/(u+v) on (0,∞) (CFH05 (58)–(60)).
+  - Dirac: a′ = −a, so λ² = −sin²(πa)/π².
+  - Scalar: a′ = 1 − a, so λ² = sin²(πa)/π², θ = 2a − 1.
+- *w.* w_a(t) = t ∂_t log det(1 − λ²RRᵀ) for Dirac, and −t ∂_t log det(…) for the scalar. Its derivation:
+  Z_a = ⟨V_aV_{−a}⟩ (Dirac) and Z_a = 1/⟨V_aV_{1−a}⟩ (scalar, CH05 (77)); and (tτ′)′ = −t d² with
+  d ~ 2λK_θ (CFH05 (62)–(64)). This reproduces w = −∫_t^∞ y u² dy (CFH05 (31), CH05 (81)), with the boundary data of
+  (33) and (83) (argued).
+- *Coordinates.* u = e^p. The symmetrised kernel is R̃(p,q) = e^{θ(p−q)/2} e^{−(t/2)(cosh p + cosh q)}/(2cosh((p−q)/2)),
+  which is entire, with doubly-exponential decay. Trapezoid nodes p_j = −P + jh carry weight h; a trapezoid rule is
+  exponentially convergent for analytic integrands in a strip (Born10 Thm 5 setting; strip half-width π here).
+  - A = (W^{1/2}R̃W)(R̃ᵀW^{1/2}): the composed kernel with the same nodes for the internal variable. The product
+    quadrature is my choice; Born10 does not treat products.
+  - ∂_t log det = −λ² tr[(I − λ²A)⁻¹ ∂_tA], with ∂_tR̃ = −½(cosh p + cosh q)R̃, so there are no finite differences.
+- *Continuation (n → 1).*
+  - Dirac: c_D(t) = ∫₀^∞ ds (π/sinh²πs) w_{a=is}(t). This is CH07b (42) with a = is: θ = 2is, λ² = sinh²(πs)/π²,
+    real and positive.
+  - Scalar: c_S(t) = −½ ∫₀^∞ ds (π/cosh²πs) w_{a=½+is}(t), with θ = 2is and λ² = cosh²(πs)/π². This is derived
+    here, not given in CH07b. It is fixed by requiring the n → 1 limit of CH05 (80) on the test functions 1 and z²,
+    and it gives c_S(0) = ⅓.
+- *Mellin moment and crossing.* M_D(D) = ∫₀^∞ t^{D−3}c_D(t) dt, using the determinant c_D on [t_lo, t_hi]:
+  - below t_lo, the source form ⅓ − ⅓t²ln²t (CFH05 (48), CH07b (44));
+  - above t_hi, ½tK₁(2t) (CFH05, CH07b (44)).
+
+  κ/C_T then follows with EXP-040's prefactors and C_T (unchanged code). D_c solves Dirac = Einstein.
+
+**Gates and controls (all registered before any determinant number is computed).**
+- **C0, continuation identity (Tier 1, analytic).** For f(a) = cos(βa) − 1, the integer-n Dirac sum continues to
+  lim_{n→1}(1/(1−n))Σ_k f(k/n) = 1 − (β/2)cot(β/2). The integral ∫₀^∞(π/sinh²πs)(cosh βs − 1)ds must equal it to
+  10⁻¹⁰ at β = 1, 3, 5.
+  - The same for the scalar form: with g(a) = cos(β(a − ½)), −½∫(π/cosh²πs)cosh(βs)ds must equal the n → 1 limit of
+    (1/(2(1−n)))Σ_{k=1}^{n−1} g(k/n), which is computed in closed form in the script.
+  - This tests my derived scalar weight on a non-polynomial function. *Fails if* either form misses by more than 10⁻¹⁰.
+- **G1, pipeline gate at n = 2 (no continuation).**
+  - Dirac: c₂ = −2w_{1/4}. Scalar: c₂ = −½w_{1/2}.
+  - Compare with lattice Rényi-2 c-functions (Dirac: staggered chain, CFH05 App. B; scalar: harmonic chain, CH05
+    App. A) at t = 0.3, 1, 2. The lattice is computed at two sizes L, 2L with Richardson in 1/L².
+  - Tolerance: 3 × |Richardson − 2L value| + 10⁻⁶. Also the small-t forms at t = 0.01: Dirac ¼(1 − t²ln²t)
+    (CFH05 (47)), scalar ¼ + 1/(2 ln t) + O(ln⁻²) (CH05 (86); a weak control, tolerance 0.02).
+  - *If G1 fails, stop: no n = 1 number is produced.*
+- **G2, solver-error floor first (condition 4).** At t = 0.3 and 3, and s = 0, 1, 3:
+  - w from (h, P) and from (h/2, P + 2);
+  - the round-off floor √m‖A‖_F·2⁻⁵³/|det| (Born10 (27), a heuristic outside its self-adjoint hypothesis).
+  - The production (h, P) must give a relative change in w ≤ 10⁻⁸ under halving, and Im(det)/|det| ≤ 10⁻¹⁰ (det
+    must be real; a diagnostic).
+- **G3, must-fail control (condition 2).** Rerun c_D with λ² multiplied by 1.05; this is a wrong boundary normalisation,
+  because d ~ 2λK_θ is the large-t datum. It must
+  - miss c_D(t → 0) = ⅓ by more than 10⁻³, or miss ½tK₁(2t) at t = 4 by more than 1%;
+  - and move D_c by more than the combined error below.
+
+  *If it does neither, the pipeline cannot detect a wrong boundary, and P1 is VOID.*
+- **G4, consistency with the lattice (condition 3).** The determinant c_D at the five Impl-2 table nodes nearest
+  t = 0.1, 0.3, 1, 2, 4 must agree with the Impl-2 'cinf' to within 3 × |cinf − two| + 10⁻⁶ (the lattice's own
+  extrapolation spread: 1.5·10⁻⁵ to 6.7·10⁻⁵ there).
+- **Asymptotic checks.** c_D(10⁻³) within 10⁻⁶ of ⅓ − ⅓t²ln²t; c_D(5)/(½tK₁(2t)) within 10⁻³ of 1.
+
+**Prediction P1 (the kill test).** D_c(Dirac = Einstein) from the determinant route equals 2.9435 within the
+combined error:
+- the EXP-040 spread for that pair, 0.0013;
+- plus the determinant error, from the G2 halving propagated to D_c;
+- plus the continuation error: s-quadrature node doubling and s_max truncation (condition 5 of the Bridge);
+- plus the moment error: the t-grid doubling and the patch points t_lo, t_hi moved by ×2.
+
+*Fails if* |ΔD_c| exceeds that sum. A failure means the lattice c-functions, or this pipeline, are wrong; it is
+diagnosed before anything else.
+
+**P1b (registered, secondary).** The same for the scalar (c_S via the bosonic weight) and the two crossings that
+involve the scalar (2.7513, 2.8487), with the same gates. The scalar's 1/ln t approach is handled by the source form
+below t_lo, as in EXP-040.
+
+**P2 (argued, can fail): uniqueness of the continuation in D.**
+- Claim to examine: two continuations of κ_D/C_T that agree at every integer D ≥ 3 coincide if both are of
+  exponential type < π in the right half-plane (Carlson).
+- *Prediction:* the Mellin form M(D) = ∫t^{D−3}c(t)dt, divided by the one-particle Γ-factor Γ(D/2−1)Γ(D/2), is of
+  type exactly π on vertical lines (each Γ decays as e^{−π|y|/4}), which is borderline for Carlson.
+- If that holds, integer-D data alone do **not** single out the continuation. Then the crossings must be stated as
+  "under the Mellin (dimensional-reduction) continuation", and the digest's §6 already says so.
+- *Fails* (good news) if a normalisation with type < π is exhibited.
+
+**Resources.** Tier 1 (C0 plus one determinant at one (s, t)) measures the cost first. The expected full run is
+minutes, < 0.5 GB, 1 core, nice 12, under the watchdog with --stop-on-pressure-warn. Launched on my own judgement
+within the Bridge's envelope (≤ 0.5 GB, ≤ 1 h); anything larger is asked first.
+- Scripts: `scripts/exp044_det.py` (C0, G1–G4, P1), output `exp044_output.txt`, `exp044_results.json`.
