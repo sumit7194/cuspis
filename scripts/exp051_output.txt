@@ -1,0 +1,8 @@
+23:53:31   t=1.0 b=0.0: lattice r=16: -0.016910  2r: -0.017896  Richardson -0.018225 | prediction -0.019001 | diff +7.76e-04 tol 1.1e-03 [PASS]  boxes 192,384 (1 s)
+23:53:32   t=1.0 b=0.5: lattice r=16: -0.078310  2r: -0.072284  Richardson -0.070275 | prediction -0.071294 | diff +1.02e-03 tol 6.1e-03 [PASS]  boxes 192,384 (1 s)
+23:53:33   t=1.0 b=1.0: lattice r=16: -0.353375  2r: -0.379560  Richardson -0.388288 | prediction -0.365845 | diff -2.24e-02 tol 2.6e-02 [PASS]  boxes 192,384 (1 s)
+23:53:34   t=3.0 b=0.0: lattice r=16: -0.000282  2r: -0.000320  Richardson -0.000333 | prediction -0.000370 | diff +3.68e-05 tol 1.4e-04 [PASS]  boxes 96,192 (0 s)
+23:53:34   t=3.0 b=0.5: lattice r=16: -0.002492  2r: -0.002036  Richardson -0.001884 | prediction -0.001801 | diff -8.31e-05 tol 5.6e-04 [PASS]  boxes 96,192 (0 s)
+23:53:34   t=3.0 b=1.0: lattice r=16: -0.013821  2r: -0.017165  Richardson -0.018280 | prediction -0.017675 | diff -6.05e-04 tol 3.4e-03 [PASS]  boxes 96,192 (0 s)
+23:53:34 PREDICTION PASS
+23:53:35 must-fail (lam = +e^(2 pi b), fermionic sign) t=1.0 b=0.5: lattice -0.035225 vs bosonic prediction -0.071294: miss 3.61e-02 [FAIL (control does not fire)]

@@ -6055,3 +6055,31 @@ prediction by more than 10× the tolerance.
   same tolerance and points. The remaining five points and the must-fail control are still blind tests of magnitude
   and t, b dependence. The Tier-1 point is consistent with the amended prediction: −0.0741 vs −0.0713, within its
   1.3·10⁻² tolerance.
+
+### EXP-051 results: the twisted lattice solver reproduces the lattice-free w at all six points; the must-fail control FAILS as registered [model: Opus 5.5]
+
+**Run** (`scripts/exp051_output.txt`, `exp051_results.json`; 7 s, peak 0.69 GB, nice 12, watchdog, exit 0).
+
+| t | b | lattice r = 16 / 32 → Richardson | +½w^{det} (Fredholm) | diff | tol |
+|---|---|---|---|---|---|
+| 1 | 0 | −0.01691 / −0.01790 → −0.01823 | −0.01900 | +7.8·10⁻⁴ | 1.1·10⁻³ |
+| 1 | 0.5 | −0.07831 / −0.07228 → −0.07028 | −0.07129 | +1.0·10⁻³ | 6.1·10⁻³ |
+| 1 | 1.0 | −0.3534 / −0.3796 → −0.3883 | −0.3658 | −2.2·10⁻² | 2.6·10⁻² |
+| 3 | 0 | −2.82·10⁻⁴ / −3.20·10⁻⁴ → −3.33·10⁻⁴ | −3.70·10⁻⁴ | +3.7·10⁻⁵ | 1.4·10⁻⁴ |
+| 3 | 0.5 | −2.49·10⁻³ / −2.04·10⁻³ → −1.88·10⁻³ | −1.80·10⁻³ | −8.3·10⁻⁵ | 5.6·10⁻⁴ |
+| 3 | 1.0 | −1.382·10⁻² / −1.717·10⁻² → −1.828·10⁻² | −1.768·10⁻² | −6.1·10⁻⁴ | 3.4·10⁻³ |
+
+- **Prediction (after the labelled sign amendment): PASS at all six points.** The diffs are 1–6% of the values,
+  inside the lattice's own Richardson tolerance. That tolerance is wide, because the r = 16 and 32 values are still
+  converging.
+- **Must-fail control (λ = +e^{2πb}, fermionic sign; t = 1, b = 0.5): FAIL as registered.** The lattice gives
+  −0.0352 against the bosonic −0.0713, a 51% difference, but that is 5.9 tolerances, not the registered 10. The
+  control separates the twist signs, but at this lattice size not by the registered margin. Kept as registered; a
+  larger r (box ≥ 768², beyond the current envelope) would tighten it.
+- **Grade.** The twisted lattice machinery is **partially verified** against the lattice-free determinant: a second
+  route to the same twisted partition functions, agreeing to the lattice's 1–6% accuracy. The sign identification is
+  a post-Tier-1 amendment, and the must-fail margin was not met.
+- **Use.** This is the foundation for the δκ strip trace (EXP-050 step 2). Its accuracy (~1–6% per twisted
+  partition function at r ≤ 32) is a first floor estimate for the step-2 floor-first registration. Full propagators,
+  not just determinants, will be needed there, which raises memory beyond the envelope; that comes with a slot
+  request.

@@ -1,0 +1,8 @@
+# cmd: ../.venv/bin/python -u -W ignore exp051_twisted_lattice.py run
+# caps: tree <= 1.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.069    0.000   0.069         8.73        640.9           62              1
+     3.8     1   0.620    0.073   0.693         8.73        640.9           50              1
+# exit 0; wall 7 s; PEAK tree MEM 0.620 GB + CMPRS 0.073 GB = 0.693 GB
