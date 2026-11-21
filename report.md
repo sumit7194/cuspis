@@ -7683,3 +7683,29 @@ Abel–Plana drop, and (5) the saddle vanishing in dim reg. Gates 3 and 5 test t
    - If they agree, **δκ is quoted with the smaller route's error, plus |δκ_SC − δκ_B| as a separate systematic.**
    - If they disagree, no δκ is quoted (unchanged).
    - The "each route ≤ 10%" bar is dropped as too loose.
+
+### δκ step 2: source reading (2026-11-21) [model: Opus 5.5]
+**[Pet95] Petkou, arXiv:hep-th/9506116.** Read at source (ar5iv) by a fetch agent with verbatim transcription. The paper
+at this ID is the letter "C_T and C_J up to next-to-leading order in 1/N in the Conformally Invariant O(N) Vector
+Model for 2<d<4". The longer "Conserved currents…" paper is hep-th/9410093 (its ref. [7]); not read.
+- Eq. (30): **C_T|_{d=3} = N(3/(2S₃²))(1 − (1/N)·40/(9π²))**, i.e. δC_T/C_T,free = −40/(9π²) = −0.45032.
+  - The normalisation is eq. (16), C_T,free = N d/((d−1)S_d²), with S_d = 2π^{d/2}/Γ(d/2) (eq. 7).
+  - The general-d form is eq. (22), with C_{T,1} as given there.
+  - This **upgrades EXP-047's secondary-source value to read at source.**
+- Eq. (19): η = μ − 1 + η₁/N, with η₁ = 2Γ(2μ−2)/(Γ(1−μ)Γ(μ)Γ(μ+1)Γ(μ−2)) and μ = d/2. Here η is φ's scaling dimension.
+  At d = 3 my evaluation gives η₁ = 4/(3π²), i.e. γ_φ = 4/(3π²N) and standard η = 2γ_φ = 8/(3π²N).
+
+**[MZJ03] Moshe & Zinn-Justin, arXiv:hep-th/0306133** (Phys. Rep. 385 (2003) 69). The ar5iv conversion had failed, so the
+arXiv PDF was fetched and its text extracted locally with pdftotext (untrusted web content; equations read only).
+- Eq. (2.7): λ couples as ½λ(φ² − Nρ), with ½(N−1) tr ln(−∇² + λ).
+- Eqs. (2.55)–(2.56): Δ_λ(p) = −(2/N)[6/u + B_Λ(p, m)]⁻¹, with B_Λ = (2π)^{−d}∫dᵈq/[(q² + m²)((p−q)² + m²)]. At
+  criticality Δ_λ = −(2/N)/B; in d = 3, B(p, 0) = 1/(8|p|) (the standard integral; my evaluation).
+- §3, "Three dimensional results" (p. 44): η = η₁/N + …, with **η₁ = 8/(3π²)**.
+
+**Normalisation anchor for SC (derived here; a known-answer check).**
+- Our convention is B = 2G∘G, D = B⁻¹ = 4|p| (D(x) = −4/(π²x⁴), EXP-058), Σ_ours = D∘G = −1/(π³|x|⁵). The physical
+  O(1/N) self-energy with MZJ's coupling is Σ_phys = Δ_λ∘G = −(4/N)Σ_ours = 4/(Nπ³|x|⁵).
+- Its dim-reg transform has p² log p coefficient (4/(Nπ³))·(2π/3) = **8/(3π²N), which is MZJ's η** and twice Petkou's
+  γ_φ, as it should be.
+- So our Σ_flat normalisation is anchored, and δS⁽⁰⁾ = ½ log det B is convention-free up to local terms.
+- **For the final number:** δ(κ/C_T)/(κ/C_T)_free = [δκ/κ_free + 40/(9π²)]/N at O(1/N).
