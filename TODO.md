@@ -598,3 +598,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] Optional, only if Sumit wants the free side sharpened: EXP-073(b) Richardson extrapolation with the exponent
       ladder {2a, 1, …}, as a new registration.
 - [ ] Not on this box: W = 128 (~15–20 GB). Deferred: the BIE coincident-trace gate (det level).
+
+## δκ status 2026-11-21 (after c49ae29)
+- [x] T35 checked (EXP-075). Its ln Λ/w is an artefact of SC's continuation, so SC is WITHDRAWN as complete (argued,
+      with cone numbers; 𝒞[c] = −1/32 ties to EXP-062).
+- [ ] T36 (Neon): the correct n → 1 continuation of the σ-sector bubble, keeping the inner k-sum. Brief at
+      neon_work/dkappa/BRIEF_T36_sector_continuation.md. Check it hard on return (P1–P4, F1–F2).
+- [ ] WRITEUP_dkappa_settled.md §7 still describes SC as the route. Update it to "withdrawn (EXP-075)" when the write-up
+      is next touched.
