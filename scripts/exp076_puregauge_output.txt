@@ -1,0 +1,7 @@
+honest n=2 q=1: logdet B^(q) - logdet B1 = +8.06e-64-4.01e-32j  (exact 0 mod 2 pi i)
+honest n=3 q=1: logdet B^(q) - logdet B1 = +5.68e-14-5.56e-17j  (exact 0 mod 2 pi i)
+honest n=4 q=3: logdet B^(q) - logdet B1 = +8.33e-65-1.29e-32j  (exact 0 mod 2 pi i)
+T36 Btilde, beta=0.0: logdet(I + B1^-1 K1) = +0.904289+3.141593j   [exact answer 0]  max|K1 - (U B1 U^-1 - B1)| = 5.977e+00
+T36 Btilde, beta=0.25: logdet(I + B1^-1 K1) = -0.307765-3.141593j   [exact answer 0]  max|K1 - (U B1 U^-1 - B1)| = 5.977e+00
+T36 Btilde, beta=0.5: logdet(I + B1^-1 K1) = +0.000000-0.000000j   [exact answer 0]  max|K1 - (U B1 U^-1 - B1)| = 5.977e+00
+T36 Btilde, beta=0.75: logdet(I + B1^-1 K1) = -0.307765+3.141593j   [exact answer 0]  max|K1 - (U B1 U^-1 - B1)| = 5.977e+00

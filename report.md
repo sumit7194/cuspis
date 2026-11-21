@@ -8462,3 +8462,42 @@ numpy only, no file or network side effects.
   split.
 - E5: P1–P3 on the cone.
 - E6: the true-bubble questions (tip S₁, small kw, large s, det zeros).
+
+### EXP-076 results (E2/E3 on toys): T36's master formula FAILS gauge consistency on straddling pairs. Neon concedes; P1 (bulk) survives; trace class on the cut UNSURE [model: Opus 5.5]
+(`scripts/exp076_eq3.py` + `_output.txt`, `scripts/exp076_puregauge.py` + `_output.txt`; seconds.)
+- **Correction of my own record:** I did **not** do a blind re-derivation of the AP continuation. I read T36's eq. (3) and
+  tested it. "E2" here means comparison with integer-n sums on toys, as designed.
+- **Implementation check.** My eq. (2)–(3) reproduces T36's polynomial toy (g = a(1 − a)) exactly, up to its stated factor
+  2: K₁/C₁ = 2.000000 at β = 0.25, 0.5, 0.7.
+- **Straddle toy, g = e^{2πia} − 1 (G₁ = 1, B₁ = 2).**
+  - At integer n = 2, 3, 5, every sector satisfies B^{(q)} = 2 + 4Ḡ_n + K_n = 2e^{2πiq/n} exactly. This is gauge
+    covariant **only because 4Ḡ_n = −4** (aliasing).
+  - At n = 1, eq. (3)'s tails vanish identically (4·10⁻¹⁴), and K₁ = 2(e^{2πiβ} + 1). So K₁^{(0)} = 4, against T36's
+    "≡ 0"; and K₁(½) = 0, against the gauge-required −4.
+- **Pure-gauge 1D toy** (the EXP-072 toy; exact answer 0 for every β; **a control I omitted from the T36 brief, my
+  oversight**):
+  - honest integer-n sectors: log det B^{(q)} − log det B₁ = 0 to ≤ 6·10⁻¹⁴;
+  - T36's B̃ = B₁ + K₁ gives log det(I + B₁⁻¹K₁) = +0.904 + iπ (β = 0), −0.308 ∓ iπ (β = ¼, ¾), 0 (β = ½);
+  - max |K₁ − (UB₁U⁻¹ − B₁)| = 5.98.
+  - **T36's formula (6), in the cut gauge, is falsified.**
+- **Neon's follow-up** (`T36_full.md`, appended) **concedes (A).**
+  - The tails do not supply −2B₁; the G₁ × regular straddle term survives. The cause is the Carlson-borderline straddle
+    factor and the n = 1 jump of 4G₁∘ΔḠ_n.
+  - It keeps P1 for non-straddling pairs and downgrades trace class on the cut to UNSURE.
+  - It proposes a covariant splitting G^{(a)} = W^aG₁ + δG_cov^{(a)}, where W is the cut phase and δG_cov has a
+    shadow-boundary discontinuity at the edges.
+- **My assessment of the proposed fix (argued).**
+  - Covariance fixes the −2B₁. But |W^{±a}| on Re a = ½ is still up to e^{2π|s|}: the inner-sum summand stays at
+    Carlson's threshold.
+  - An observation for the next round (argued): a phase factor whose modulus is bounded strictly below e^{2π|s|} would make the
+    inner-sum continuation unique. One example is a Wilson line along the straight segment x → y, whose subtended angle
+    is ≤ π, giving ≤ e^{π|s|}. The price is a jump where the segment passes through an edge (the "shadow line"). Whether
+    that jump is harmless is the trace-class question.
+  - I have not derived anything beyond this.
+- **Grade.**
+  - T36 eq. (2)–(3) as an n = 1 continuation in the cut gauge: **falsified** (pure-gauge toy, straddle toy).
+  - T36's P1 for non-straddling pairs: argued, agreed.
+  - T36's integer-n split: verified (algebra and toy).
+  - The covariant fix: unverified.
+- **No change to the δκ status:** no admissible n → 1 formula is in hand. The withdrawals (SC, T36 as written) are kept
+  as controls. **Any future candidate must pass the pure-gauge-zero test** (`exp076_puregauge.py`) in addition to P1–P4.
