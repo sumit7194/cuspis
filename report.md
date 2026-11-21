@@ -8937,8 +8937,12 @@ otherwise INCONCLUSIVE.**
 **r = 8 amendment** (Sumit's yes, relayed by the Bridge; decided without reference to any EXP-081 value).
 - **The point:** W = 2, r = 8, slice 34×32 = 1088 sites, N_y = 64 (c = 2), saddle included. Free partner at the same
   geometry.
-- **It runs regardless of what EXP-081 shows.** It runs detached, one process: watchdog cap 8 GB, stop-on-pressure-warn,
-  disk floor 5 GB, nice 12, 1 core. Per-β checkpoints (`route_i_ckpt`); the crash-then-resume test is required beforehand.
+- **It runs regardless of what EXP-081 shows.** It runs detached, one process, launched on Sumit's word.
+  - **Per Sumit's instruction (relayed by the Bridge, after cbd4278): no memory cap and no pressure stop for this night
+    run only.** Daytime runs keep their guards.
+  - A disk floor is pending his word (~2 GB recommended).
+  - Per-β checkpoints (`route_i_ckpt`); the crash-then-resume test is required beforehand.
+  - A result file plus a completion marker (finished / crashed / killed) are written to disk.
 - **Two fit versions, both pre-specified:**
   - **(a) without r = 8** (as registered): train r = 2..5, held out r = 6, σ_ho scaled ×6.
   - **(b) with r = 8:** train r = 2..6, **held out r = 8**, σ_ho scaled by (1/6)/(1/6 − 1/8) = 4; central = mean of A and B
