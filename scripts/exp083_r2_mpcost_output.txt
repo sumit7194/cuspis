@@ -1,0 +1,5 @@
+P=2 (N=32, Ny=8): inverse 0.12s, Hadamard-acc 0.005s, det 0.12s -> per n=8: 40 inv + 4096 Had + 64 det = 0.6 min (arm a); arm b ~ +0.2 min
+P=2 (N=32, Ny=8): inverse 0.12s, Hadamard-acc 0.005s, det 0.12s -> per n=16: 80 inv + 16384 Had + 128 det = 1.8 min (arm a); arm b ~ +0.5 min
+P=4 (N=96, Ny=16): inverse 2.62s, Hadamard-acc 0.048s, det 3.69s -> per n=6: 54 inv + 9216 Had + 96 det = 15.6 min (arm a); arm b ~ +7.1 min
+P=4 (N=96, Ny=16): inverse 2.62s, Hadamard-acc 0.048s, det 3.69s -> per n=12: 108 inv + 36864 Had + 192 det = 46.0 min (arm a); arm b ~ +14.2 min
+maxrss 0.10 GB

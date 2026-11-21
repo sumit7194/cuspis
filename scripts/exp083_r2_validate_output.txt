@@ -1,0 +1,33 @@
+[     0s] W2P2: log det B1 direct -616.269780053041 sector -616.269780053041 diff 0.0e+00
+[     0s]    n=2 arm (a): direct -5.554239687496 sector -5.554239687496 |diff| 2.3e-13
+[     0s]    n=2 arm (b): direct +0.302974382456 sector +0.302974382456 |diff| 4.5e-13 | sigma diff 1.7e-15
+[     0s]    n=3 arm (a): direct -8.548837550453 sector -8.548837550452 |diff| 9.1e-13
+[     0s]    n=3 arm (b): direct +0.468421886738 sector +0.468421886739 |diff| 4.5e-13 | sigma diff 2.3e-15
+[     0s]    n=4 arm (a): direct -11.408365569307 sector -11.408365569306 |diff| 9.1e-13
+[     0s]    n=4 arm (b): direct +0.625281625634 sector +0.625281625634 |diff| 4.5e-13 | sigma diff 1.6e-15
+[     0s]    n=5 arm (a): direct -14.260909424289 sector -14.260909424290 |diff| 9.1e-13
+[     0s]    n=5 arm (b): direct +0.781638722189 sector +0.781638722187 |diff| 1.4e-12 | sigma diff 2.4e-15
+[     0s]    n=6 arm (a): direct -17.113111464276 sector -17.113111464275 |diff| 4.5e-13
+[     0s]    n=6 arm (b): direct +0.937968288905 sector +0.937968288903 |diff| 1.8e-12 | sigma diff 1.8e-15
+[     0s] W4P2: log det B1 direct -616.269780053041 sector -616.269780053041 diff 0.0e+00
+[     0s]    n=2 arm (a): direct -5.148568542900 sector -5.148568542900 |diff| 2.3e-13
+[     0s]    n=2 arm (b): direct +0.275821206994 sector +0.275821206993 |diff| 2.3e-13 | sigma diff 1.7e-15
+[     0s]    n=3 arm (a): direct -7.857852008528 sector -7.857852008529 |diff| 2.3e-13
+[     0s]    n=3 arm (b): direct +0.421811754456 sector +0.421811754456 |diff| 2.3e-13 | sigma diff 2.7e-15
+[     0s]    n=4 arm (a): direct -10.481077198720 sector -10.481077198720 |diff| 0.0e+00
+[     0s]    n=4 arm (b): direct +0.562675422053 sector +0.562675422052 |diff| 9.1e-13 | sigma diff 2.2e-15
+[     0s]    n=5 arm (a): direct -13.101463862788 sector -13.101463862788 |diff| 0.0e+00
+[     0s]    n=5 arm (b): direct +0.703352737854 sector +0.703352737853 |diff| 9.1e-13 | sigma diff 2.1e-15
+[     0s]    n=6 arm (a): direct -15.721760115878 sector -15.721760115876 |diff| 1.4e-12
+[     0s]    n=6 arm (b): direct +0.844023559059 sector +0.844023559057 |diff| 1.8e-12 | sigma diff 1.6e-15
+[     0s] W2P4: log det B1 direct -3561.150332335138 sector -3561.150332335138 diff 4.5e-13
+[     0s]    n=2 arm (a): direct -25.277136753437 sector -25.277136753436 |diff| 9.1e-13
+[     1s]    n=2 arm (b): direct +1.319639860386 sector +1.319639860385 |diff| 9.1e-13 | sigma diff 2.3e-15
+[     1s]    n=3 arm (a): direct -39.804774591392 sector -39.804774591390 |diff| 1.8e-12
+[     1s]    n=3 arm (b): direct +2.118642576745 sector +2.118642576745 |diff| 0.0e+00 | sigma diff 2.4e-15
+[     1s] W4P4: log det B1 direct -3561.150332335138 sector -3561.150332335138 diff 4.5e-13
+[     1s]    n=2 arm (a): direct -26.857000314772 sector -26.857000314773 |diff| 9.1e-13
+[     1s]    n=2 arm (b): direct +1.416075932851 sector +1.416075932847 |diff| 3.6e-12 | sigma diff 2.0e-15
+[     1s]    n=3 arm (a): direct -41.859424812041 sector -41.859424812043 |diff| 1.8e-12
+[     1s]    n=3 arm (b): direct +2.235529263118 sector +2.235529263124 |diff| 5.5e-12 | sigma diff 2.7e-15
+[     1s] WORST |diff| 5.5e-12 -> PASS; max |arg det| in sector form 3.8e-17

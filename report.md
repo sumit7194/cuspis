@@ -9992,3 +9992,23 @@ measures peak RSS on a dry run before declaring.
   **not** validate the +2.4.
 - Any fail (either arm, any geometry): **the +2.4 is suspended**.
 - A pass at P = 4: the continuation is validated on 081b's own geometries.
+
+### EXP-083 R2: the decomposition is validated (edit 2 PASS); mpmath costs measured; the honest-fit referee also needs n ≳ 30 at ≥ 100 digits [model: Opus 5.5]
+- **Edit 2, the sector decomposition against the direct n-sheet manifold** (`exp083_sector.py`, `exp083_r2_validate.*`):
+  - **PASS, worst |ΔQ(n)| = 5.5·10⁻¹².** Both arms; P = 2 at n = 2…6, P = 4 at n = 2, 3.
+  - The honest saddles σ_n agree to ≤ 2.7·10⁻¹⁵. The sector determinants are real (max |arg| 4·10⁻¹⁷).
+  - **Verified.** The high-precision referee's data path rests on a checked identity.
+- **mpmath cost, 50 digits** (`exp083_r2_mpcost.*`; peak 0.10 GB):
+  - P = 2: an N = 32 inverse takes 0.12 s, a determinant 0.12 s, a Hadamard multiply-accumulate 0.005 s. That is
+    0.6 min per n at n = 8 and 1.8 min at n = 16.
+  - P = 4: 2.6 s, 3.7 s and 0.048 s, giving 16 min per n at n = 6 and **46 min at n = 12** (Hadamard-dominated, ∝ n²N_y²).
+  - **P = 4 n ≤ 12 on mpmath is ≈ 25 h for both geometries and both arms. Not feasible in the day.**
+- **A design fact found while costing (argued from Tier-1's base counts): the fit needs more data than registered.**
+  - At P = 2, W2 has 10 distinct single bases, all > 10⁻⁴. M1 (singles + confluent) has 22 columns; M4 (with products)
+    ≈ 43. n ≤ 16 is underdetermined.
+  - A complete fixed-base fit needs n ≳ 30–45, with precision such that b_min^n stays visible: ~120 digits for b = 10⁻⁴
+    at n = 30.
+  - On mpmath at 120 digits: ≈ 2.4 h per geometry and arm at P = 2, ≈ 10 h in total. Arb (C-level ball arithmetic) is
+    expected to be one to two orders faster. **The python-flint installation (awaiting Sumit's word) is the enabling
+    step even for P = 2.**
+- **Status:** R2 is paused at "decomposition validated, engine cost measured". Nothing is compared with production.
