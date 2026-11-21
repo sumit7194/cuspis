@@ -8646,3 +8646,56 @@ its log).**
   - the conceptual point that P4′ cannot detect a wrong continuation;
   - and that uniqueness must be checked as type < π **in n** for the total. Type 0 in α and β is not enough, because
     off-lattice changes like sin(πnβ)h(β) keep every integer value. (Argued.)
+
+## EXP-078  Referee of T40's continuation on P4′ (after the EXP-077 retraction): T40's values agree with the Carlson interpolant of the honest data — verification of external work (pre-check level) [model: Opus 5.5]
+**Data.** Honest Q(n) and h₀(n) at **120 digits**, n = 1..90, via the exact sector decomposition (`scripts/exp078_sectors_hp120.py`,
+`exp078_sectors_hp120.json`; 19 min, 0.08 GB). Q(2..5) agrees with the 45-digit run.
+
+**Route (b): exact-base fits with held-out validation** (the Bridge's design; `scripts/exp078_basefit.py`, `_output.txt`).
+- The bases are products of the lattice poles, computed here at 120 digits: z²det H(z) is a quartic with roots
+  a₁ = 1/86.0238796476516, a₂ = 1/302.758146996721 and their inverses. So s₁ = 0.708975576916634563, s₂ = 0.909241732139280637,
+  matching the Bridge and T40b.
+- The model is Q = An + B + Σ_b P_b(n)bⁿ, fit on n ≤ 20 (or ≤ 30) and scored on held-out n up to 90:
+
+| base set | held-out residual | Q′(1) | Q(1.5) |
+|---|---|---|---|
+| a₁(1), a₂(1) | 1·10⁻¹² | −1.386889 | −0.4030626 |
+| + a₁²(2) | 3·10⁻²⁴ | −1.386337 | −0.4030553 |
+| + a₁a₂(2) | 2·10⁻³⁸ | −1.3869069 | −0.40305629 |
+| + a₂²(1) | 5·10⁻⁴⁸ | −1.3869195 | −0.40305630 |
+| + a₁³(1) | 5·10⁻⁵⁸ | −1.3869046 | −0.40305629 |
+| (a₂², a₁³ at multiplicity 2) | 2·10⁻⁶⁷ | −1.3870933 | −0.40305633 |
+
+- Both training windows give identical values to ≤ 10⁻⁹. Larger sets are unidentifiable at 120 digits: those bases
+  matter only at n ≤ 3.
+- **Q(1.5) is stable at −0.4030563 ± 4·10⁻⁸ from the third set on; T40's is −0.403056284.**
+- **Q′(1) has not fully stopped moving: −1.38691 ± 2·10⁻⁴ (measured model spread; T40: −1.386872).** The boundary
+  derivative is the least identifiable quantity, because tiny bases enter it with b ln b weights.
+
+**Route (a): raw Newton to k = 360** (`scripts/exp078_newton350.py`, `_output.txt`).
+- The sign flip at k = 110 is confirmed (term +3.7·10⁻⁷). Terms peak at +1.36·10⁻⁴ near k = 160.
+- Partial sums climb back: −1.42072 (k = 109) → −1.41594 (160) → −1.40099 (300) → −1.39769 (360), still rising.
+- Shanks on post-crossing windows gives Q′(1) = −1.3858 to −1.3863 and Q(1.5) = −0.4030534 to −0.4030539. The Shanks
+  values drift; on Q(1.5) the bias is ~3·10⁻⁶ against route (b).
+
+**Grade.**
+- On the P4′ stand-in, T40's continuation **agrees with the Carlson interpolant of the honest data**:
+  - Q(1.5) to ~2·10⁻⁸;
+  - Q′(1) within the measured model spread of 2·10⁻⁴;
+  - routes (a) and (b) are independent of T40's formulas.
+- **Verified at that level, on this toy.**
+- **The EXP-077 disagreement claim stays retracted.** The revised P5 for any future candidate is Q(1.5) = −0.4030563
+  (±10⁻⁷) and Q′(1) = −1.3869 (±3·10⁻⁴).
+- T40b's own Carlson-hypothesis checks were not independently redone here: holomorphy (winding numbers,
+  Cauchy–Riemann) and the growth table to b = 10. My EXP-077 probe of T40's Q_cont to b = 6 is consistent with them.
+- **What remains open for T40** (its own UNSURE items, unchanged):
+  - the uniform 3D two-edge growth bound;
+  - S₁ of the subtracted relative operator down to k = 0;
+  - zero-freeness of det B₁^{(½+is)} in the 3D continuum (B is real non-symmetric there).
+  - **The toy stand-in says nothing about these.**
+
+**Lesson (recorded for the fleet).**
+- For Carlson-type continuation checks, the honest-data remainder can be **confluent** (n·aⁿ from double poles).
+- Newton series then show a false minimum near k ≈ 1/a. Completely-monotone planted controls cannot detect that.
+- **Exact-base fits with held-out validation** are the well-conditioned referee. Report their model spread as the
+  error.
