@@ -7315,3 +7315,42 @@ So the integrated 1.9% comes from small u, where κ_max → 1. **A referee at a 
 - It does not test the C₊ channel (σ_{·1}σ_{·1}) directly, but that channel uses the same σ expansion. Together with
   the T20 comparison (agreement at first resummation order), this is **strong but indirect** support for the CH05
   route over T20-v₀ at higher orders. The BIE referee (EXP-064 design) remains the direct test.
+
+## EXP-065  Stage C: growth of C₊ on the CH07b line a = ½ + iy, CH05 route — pre-registration [model: Opus 5.5]
+**Context (honest ordering).** The Bridge asked for the controls to be pre-run alone, and they were
+(`scripts/exp065_precheck_line*`, `exp065_precheck_t23_line*`). Those pre-checks already show the answer: |C₊| decays on
+y ≤ 4. This registration fixes the gate and the clauses before the **production** run, which adds a finer y-grid out to
+5 and a nuisance ladder. Evidence that bears on the route, from today:
+- Resummation ratio: three independent constructions agree at three twists to 5–6 digits (Bridge seal V28, b93cb63):
+  my CH05 route, Neon T23's first-principles legs, and the Bridge's re-implementation.
+- First-order term, absolute:
+  - at a = ½, where the b-scale is fixed by symmetry, it equals T23's closed form to 2·10⁻⁷ and excludes Born by 27%;
+  - on the line (|b| = √h), it equals |T23| to ≤ 2.5·10⁻⁷ for y = 0…4.
+- The u-ODE on the line equals the Fredholm determinant (EXP-063 pre-check 2).
+- The reflection sign is fixed by the CFT cross channel (EXP-064).
+
+**Method.**
+- |C₊(½ + iy)| = |∫₀^∞ s^{2a+1} b u ds| / |8π²a(1 − a)(2a + 1)|.
+- b = √h·e^{iΦ}, with Φ′ = 2y(u² − h)/(th). This is derived on the line: the b-equations at a and ā add to the
+  h-equation. C-symmetry gives b(a)b(ā) = h, and a constant phase drops out.
+- The linear version uses the linearised u-ODE.
+
+**Clauses (fixed now).**
+- **G1 (the Lemma U (e) gate):** the local rate of |C₊| on y ∈ [2, 4], ln(|C₊(4)|/|C₊(2)|)/2, is ≤ 2π − 1 = 5.283.
+- **P (planted, must fire):** |C₊|·5|sin²(πa)| has rate on [3, 4] within 1 of 2π. Pre-check: 5.38–5.57.
+- **T (linear term):** |C₊^lin| equals |T23 closed form| to ≤ 10⁻⁶ relative at every y.
+- **N (nuisance):** the spread of |C₊| over (t₀, t₁, rtol) ∈ {(18, 10⁻⁷, 10⁻¹¹), (14, 10⁻⁵, 10⁻¹¹), (18, 10⁻⁷, 10⁻⁹)}
+  is ≤ 10⁻⁵ relative.
+
+**Control table.**
+
+| clause | the input that makes it fire | pre-check (file) | what firing means |
+|---|---|---|---|
+| P | L·sin²(πa) factor | yes; rate 5.4–5.6 (`exp065_precheck_line_output.txt`) | the rate code detects borderline 2π growth |
+| G1 must-fail | Born linear term (rate π) times a resolvent-norm factor ~e^{2πy} (the EXP-060 worst case) | yes; T20-v₀ local rate ≈ 7 > 2π (`exp063_precheck_t20_dichotomy*`) | G1 can fail for a structure that is not excluded a priori |
+| sign | flipped reflection sign | yes; mirror −1 in the CFT cross channel (`exp064_precheck_cft_cross*`) | the σ machinery's sign is not arbitrary |
+
+**What G1 decides, and what it does not.**
+- A PASS on y ≤ 5 means that C₊, and therefore h₁ and f₀ (whose other factors are polynomial: EXP-061 pre-check 7 and
+  EXP-062), grows far below 2π on the measured range. That is numerical support for "no log(w/ε)" in Lemma U (e).
+- **An analytic all-y bound is still open.** The result is to be phrased as measured to y = 5, not proven.

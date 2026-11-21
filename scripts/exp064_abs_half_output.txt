@@ -1,0 +1,2 @@
+t1=1e-05: C+lin(1/2) = -0.00513299   C+full(1/2) = -0.00599705   ratio 1.168335   Born closed form -1/(8 pi^3) = -0.00403144   lin/Born 1.273240
+t1=1e-07: C+lin(1/2) = -0.00513299   C+full(1/2) = -0.00599707   ratio 1.168338   Born closed form -1/(8 pi^3) = -0.00403144   lin/Born 1.273240

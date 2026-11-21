@@ -1,0 +1,17 @@
+y=0.0: |C+lin| 5.132991e-03  |C+| 5.997069e-03  |ratio| 1.1683  planted |C+|*5|sin^2| 2.9985e-02  (status 0,0)
+y=0.5: |C+lin| 5.796405e-03  |C+| 7.921994e-03  |ratio| 1.3667  planted |C+|*5|sin^2| 2.4938e-01  (status 0,0)
+y=1.0: |C+lin| 4.983029e-03  |C+| 9.200766e-03  |ratio| 1.8464  planted |C+|*5|sin^2| 6.1817e+00  (status 0,0)
+y=1.5: |C+lin| 3.678098e-03  |C+| 8.575752e-03  |ratio| 2.3316  planted |C+|*5|sin^2| 1.3286e+02  (status 0,0)
+y=2.0: |C+lin| 2.717182e-03  |C+| 7.077359e-03  |ratio| 2.6047  planted |C+|*5|sin^2| 2.5368e+03  (status 0,0)
+y=2.5: |C+lin| 2.073934e-03  |C+| 5.326306e-03  |ratio| 2.5682  planted |C+|*5|sin^2| 4.4179e+04  (status 0,0)
+y=3.0: |C+lin| 1.636486e-03  |C+| 3.663847e-03  |ratio| 2.2389  planted |C+|*5|sin^2| 7.0324e+05  (status 0,0)
+y=3.5: |C+lin| 1.328358e-03  |C+| 2.330229e-03  |ratio| 1.7542  planted |C+|*5|sin^2| 1.0350e+07  (status 0,0)
+y=4.0: |C+lin| 1.103584e-03  |C+| 1.632122e-03  |ratio| 1.4789  planted |C+|*5|sin^2| 1.6775e+08  (status 0,0)
+  y 0.0->0.5: rate lin +0.243  full +0.557  planted +4.237
+  y 0.5->1.0: rate lin -0.302  full +0.299  planted +6.421
+  y 1.0->1.5: rate lin -0.607  full -0.141  planted +6.135
+  y 1.5->2.0: rate lin -0.606  full -0.384  planted +5.899
+  y 2.0->2.5: rate lin -0.540  full -0.568  planted +5.715
+  y 2.5->3.0: rate lin -0.474  full -0.748  planted +5.535
+  y 3.0->3.5: rate lin -0.417  full -0.905  planted +5.378
+  y 3.5->4.0: rate lin -0.371  full -0.712  planted +5.571

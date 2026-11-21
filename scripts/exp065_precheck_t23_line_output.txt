@@ -1,0 +1,9 @@
+y=0.0: CH05 |C+lin| 5.132991e-03   |T23 closed form| 5.132991e-03  rel -2.5e-08   |Born| 4.0314e-03
+y=0.5: CH05 |C+lin| 5.796405e-03   |T23 closed form| 5.796405e-03  rel -6.0e-08   |Born| 6.8987e-03
+y=1.0: CH05 |C+lin| 4.983029e-03   |T23 closed form| 4.983029e-03  rel +5.9e-08   |Born| 1.5330e-02
+y=1.5: CH05 |C+lin| 3.678098e-03   |T23 closed form| 3.678098e-03  rel +7.6e-09   |Born| 3.6759e-02
+y=2.0: CH05 |C+lin| 2.717182e-03   |T23 closed form| 2.717182e-03  rel +5.7e-09   |Born| 9.8415e-02
+y=2.5: CH05 |C+lin| 2.073934e-03   |T23 closed form| 2.073934e-03  rel +3.4e-08   |Born| 2.8969e-01
+y=3.0: CH05 |C+lin| 1.636486e-03   |T23 closed form| 1.636486e-03  rel +2.5e-07   |Born| 9.1741e-01
+y=3.5: CH05 |C+lin| 1.328358e-03   |T23 closed form| 1.328358e-03  rel +1.2e-07   |Born| 3.0726e+00
+y=4.0: CH05 |C+lin| 1.103584e-03   |T23 closed form| 1.103584e-03  rel -1.2e-07   |Born| 1.0750e+01
