@@ -9148,3 +9148,19 @@ re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB
   cumulative sum up to it is ≤ 10⁻⁷, and T0/T1 apply beyond it. The geometry is flagged.
 - **N2′ needs |log det| of the production B̃₀.** The running referee stores only the relative error, so the analyzer
   recomputes the production log det of B̃₀ (npt = 24, same call as the referee). Then impact = rel·|log det|·π/cosh²(πs).
+
+**EXP-081 amendments: one table (the Bridge asked for this in the write-up).**
+Every amendment was registered before the quantity it affects was seen, except the S2 window, which is labelled.
+
+| # | Commit | Amendment | What it changed | Why |
+|---|---|---|---|---|
+| 1 | af4969e | EXP-081 registration | Lean P1 edge-configuration design, controls, sign rule | Baseline |
+| 2 | cbd4278 | EXP-081a | Saddle term T_saddle added to Q′(1), with engine-path controls S1–S4 | P0 had checked the saddle term only analytically; the engine omitted it |
+| 3 | 1df7ee1 | S2 window (**post-registration**) | S2 acceptance window revised after it failed as registered | The window ignored box suppression of d·r. Diagnosed by a code-path check plus box-scaling extrapolation (−0.0301 vs −1/32). The original failure is kept |
+| 4 | 0ab92d4 | EXP-081b registration | Edge configuration → strip pair (W = 2, 4 in one box); cancels edge-local terms | The edge configuration had intrinsic e^{2π Im α} conditioning breakdown for long cuts (halt in ba4f228) |
+| 5 | 10e8dee | N1′ | Per-node reliability on the worst-conditioned G matrices | Cost of a full direct-inverse g(s) |
+| 6 | 7c61bb9 | N1″ | Reliability at the g level: stable vs direct G, ≤ 10⁻⁸ relative at s ≈ 1..5 | N1′ was too strict (8·10⁻⁷ at s = 1 while g matched) and too slow (263 s/node) |
+| 7 | d13faaa | VOID rule | An N2 referee disagreement where N1″ says "reliable" voids the verdict | N1″ cannot catch an error both double-precision routes share |
+| 8 | b61f7a0 | N1‴ / N2′ | Tolerance on the **impact on Q′(1)**, ≤ 10⁻⁷ absolute, instead of 10⁻⁸ relative in g | 10⁻⁸ relative was miscalibrated: 4·10⁻⁷ relative at s ≈ 2 has ~10⁻⁹ impact. Original-rule outcome still reported |
+| 9 | a206381 | Cumulative | Summed impact over all nodes ≤ s_max, ≤ 10⁻⁷ per geometry; reported next to each R | Per-node checks alone could let many small errors add up |
+| 10 | 019439c | Cumulative details | Interpolation range, s_max lowering on failure, source of \|log det\| for N2′ | Left open by #9 |
