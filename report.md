@@ -7430,3 +7430,57 @@ y ≤ 4. This registration fixes the gate and the clauses before the **productio
   ΔC = −(λ/4π)B_T23 slice by slice), C₊ at real twist is settled by four routes.
 - On the CH07b line, the growth result (EXP-065) rests on the same verified machinery, continued analytically. It
   remains partially verified (measured to y = 5; analytic all-y bound open, Neon T26 working on it).
+
+## Lemma U: consolidated status (2026-11-21) [model: Opus 5.5]
+**Statement.** In the large-N O(N) model at O(N⁰), the first-order (in n − 1) tip contribution to the strip
+coefficient δκ contains no log(w/ε). Then δκ is a finite pure number at this order, as EXP-052's mutual-information
+argument (argued) requires.
+
+**Structure (as corrected today).**
+- The tip term is dS_tip/dn|₁ = (d/dn)S_{f₀}(n)|₁ + S_{h₁}(1). S_h is the Abel–Plana / CH07b continuation of
+  Σ_{k=1}^{n−1} h(k/n).
+- f₀(α) = f(1, α) ∝ C₊(α)·Σ̃₁(iα, α)·(1 − e^{−2αL})/(2α).
+- h₁ ∝ C₊(α)·Σ̃′(iα)·(1 − e^{−2αL})/(2α), with L = ln(w/ε).
+- A log can arise only if f₀ or h₁ grows like e^{2π|y|} along α = ½ + iy (EXP-057: a planted L·sin²(πα) gives exactly
+  that).
+- **f₀ ≠ 0 was not in Neon's T7.** T7 claim 3, "Σ̃₁(iα, α) ≡ 0", is false in both continuations (EXP-061, verified
+  by two routes; Neon T20 concurs and traces T7's slip to a ψ-argument shift).
+
+**The gaps, with grades.**
+
+| gap | content | grade | where |
+|---|---|---|---|
+| (a) | the α → 1 end mirrors α → 0 (charge conjugation) | argued (plus Neon's lattice check, unverified) | EXP-053, T10 |
+| (b) | C₊ = −α/8 + O(α²): linear, regular at α → 0 | argued; consistent with the T23 closed form and the BIE small-twist trend | EXP-057, EXP-066 |
+| (c) | no off-axis zeros of the σ kernel in the strip, so σ propagators decay uniformly | partially verified (8 cases) | EXP-056 |
+| (d) | regulator dependence is local | argued; local on-shell terms are polynomials c₀ + c₂ω² (scheme-dependent, no growth) | EXP-061 (with the T20 correction) |
+| continuation family | the physical twisted family (internal φ twisted, σ untwisted), as in the standard free-field Z_a continuation | argued | EXP-061 |
+| (e) | growth of f₀ and h₁ on α = ½ + iy is far below 2π | see below | |
+
+**Gap (e), factor by factor.**
+- *Σ̃₁(iα, α), the n = 1 on-shell self-energy:* its twisted value is [1 + 4a² − 24a(1 − a)]/(12π²) in our scheme.
+  This is **verified** at real a by two routes; on the line it continues to its polynomial (|·| ~ y², verified at
+  y ≤ 2).
+- *Σ̃′, its n-derivative:* computed as three pieces, whose inputs are checked by two implementations or the gap
+  equation. Its growth is polynomial: |Σ̃′| ≈ 0.29 and 0.51 at y = 1 and 2, and the image piece's imaginary part is
+  linear to y = 3. **Partially verified**; total by a single route.
+- *C₊, the near-tip coefficient of the strip correction:*
+  - at real twist, **verified by four routes**:
+    1. CH05 Painlevé (this repo);
+    2. Neon T23 (first-principles legs);
+    3. the Bridge's re-implementation (blind match to 5–6 digits);
+    4. Neon T25 (direct BIE; shape to 4·10⁻⁵ and cross channel to 2·10⁻⁴; EXP-066);
+  - the first-order term is T23's closed form, not Born;
+  - on the line, |C₊| does not grow on y ≤ 5: rate −0.77 on [2, 4], with the linear term matching T23 to 4·10⁻¹³
+    (EXP-065). **Partially verified (measured range).**
+
+**Conclusion.**
+- On the measured range (y ≤ 5 for C₊; y ≤ 3 for Σ̃′; y ≤ 2 for the n = 1 factor), every factor of f₀ and h₁ grows far
+  below 2π. **The first-order tip term carries no log(w/ε): partially verified.**
+- **Open, stated plainly:**
+  1. An analytic bound |C₊(½ + iy)| = o(e^{2π|y|}) for all y (Neon T26 is working on it), and the same for Σ̃′.
+  2. Rigour for gaps (a), (b) and (d) and for the choice of continuation family; all argued.
+  3. Gap (c) beyond the 8 sampled cases.
+  4. The p ≥ 2 terms (T5b item 2) are argued log-free; a re-read with C₊ linear is pending.
+- **Not done:** the finite value of δκ, which now needs the f₀ term. That is the next real computation (TODO A3 in
+  the ideas file).
