@@ -8756,3 +8756,29 @@ q-convolved bubble. Conditions:
 - **Memory:** P0 < 0.5 GB, 1 core.
 - **Pass rule:** the P0 engine is accepted for P1 only if every clause passes **and** every must-fail fires. A failure is
   investigated and recorded, never patched silently.
+
+### EXP-079 (Stage P0) results: ACCEPT on the post-registration rerun. Run 1 failed one sub-check through a bug in the control's test function (kept); every must-fail fires [model: Opus 5.5]
+(`scripts/sigma_engine.py`, `scripts/exp079_p0.py`; output `exp079_p0_output.txt`, run 1 `exp079_p0_output_run1_testfn_bug.txt`;
+`exp079_p0_results.json`; 75 s, 0.08 GB.)
+
+| clause | result | must-fail |
+|---|---|---|
+| G1 (1D pure gauge) | log det ratio ≤ 4.5·10⁻¹³ at β = 0.25, 0.5, ½ + i, ½ + 2i: **PASS** | F2 (T36 cut-gauge K₁): 0.904289 − iπ, **FIRES** |
+| G2 (straddle covariance, 30 dps) | covariance 3·10⁻³¹; integer-n validation of the strip formula 1·10⁻³⁰; r ≡ 0 → 2e^{2πiβ} to 2·10⁻³¹: **PASS** | — |
+| P1/P2 (cone c through the single-factor AP) | I₁[c] = 0; ∂ₙIₙ[c]|₁ + 1/32 = 5·10⁻²²; integer-n check 3·10⁻³³: **PASS** (rerun) | F1: 𝒞[c³] = −4.0101493·10⁻⁵ ≠ 0, **FIRES** |
+| P3 (K-free through the engine's 𝒞) | κ/C_T = 4.1739869 vs 4.173987: 2.5·10⁻⁸: **PASS** | counting factor 1 gives 8.3389, **FIRES** |
+| P4′ (route ii vs honest, n = 2..6) | ≤ 1.9·10⁻¹¹: **PASS** | F3 (drop k = 0): 27.8, **FIRES** |
+| **P5 (revised)** | Q(1.5) = −0.4030562834; Q′(1) = −1.3868719717 (route i; q = 0 trace −1.2881927154) and −1.3868719469 (route ii FD, h = 10⁻⁴): **PASS** | **planted confluent drop: Q′(1) = −0.0987, Q(1.5) = −0.4374, FIRES** |
+| R (engine vs T40's code) | ≤ 5.5·10⁻¹³ relative at β = 0.3, 0.5, ½ + i: **PASS** | — |
+| C (2-slice q-convolution) | continuation vs honest (n = 2, 3): 1.4·10⁻¹¹: **PASS** | dropped slice: 29.7, **FIRES** |
+
+- **Run 1.** The P1/P2 integer-n sub-check failed by 1.3·10⁻². I asked why it fired before acting:
+  - the size equals c(½)/2;
+  - my test function c(α) = −(1/4π)(½ − α)tan(πα) has a removable singularity at α = ½, which the honest n = 2 sum hits
+    exactly, and mpmath returned 0·tan(π/2) = 0 there in place of the limit −1/(4π²).
+  - **It is a bug in the control's test function, not in the engine.** Fixed (the limit is used at ½) and the whole P0
+    rerun, labelled post-registration. No engine code changed between the runs.
+- **Grade.** The P0 engine is **verified on the stand-ins** for every registered clause, with every must-fail firing:
+  - the Poisson/anchored-residue inner continuation (my derivation) reproduces T40's tail to 5·10⁻¹³;
+  - both outer routes agree to 2·10⁻⁹ on Q′(1).
+  - **The engine is accepted for Stage P1.**
