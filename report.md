@@ -9926,3 +9926,32 @@ if > 1 GB.
 
 **Comparisons, the consequence and the must-fires** are as registered in cd9e134 (dd = 1, saddle-off and pure gauge are
 must-fires; s_cut 1.5 is a diagnostic).
+
+### EXP-083 R1 (i), P = 2 completeness gate: FAILED → STOP, as registered. Diagnosis: the pencil arm cannot see the bases; the adequate models themselves disagree by up to 0.023 [model: Opus 5.5]
+(`scripts/exp083_models.py`, `exp083_p2gate.py`, `exp083_p2gate_output.txt`. The run was **killed by the watchdog at
+1.90 GB > 1.5 GB cap** during W4P2 arm (b) at large n. My < 1 GB estimate was wrong at n ≈ 60. The 40-digit spot-check
+did not run.)
+- **Completed before the kill:** W2P2 arms (a) and (b), W4P2 arm (a). All M1–M4 fits are "adequate" (held-out residuals
+  ≤ 1.6·10⁻¹¹ relative, for both the last-n and the interior hold-outs).
+- **Gate result:** pencil vs M1. W2P2 (a): 1 base recovered, |Δ| = 0.137, **FAIL**. W2P2 (b) and W4P2 (a): 0 bases
+  recovered, **FAIL**. Registered consequence: **STOP**, and P = 4 is not run.
+- **Why it fired (asked before acting):** my pencil (a Hankel on second differences, global SVD rank threshold) recovers
+  at most one base. The bases decay below the threshold within a few n. **So the FAIL measures the pencil, not
+  demonstrated incompleteness.**
+  - In float64 no base-free arm can see bases with b² ≲ 10⁻¹³|Q|. Those bases still carry C·b·ln b in Q′. This limit is
+    fundamental.
+- **The informative part: adequate models disagree.**
+  - W2P2 arm (b): M1/M2 give Q′ = +0.82058…+0.82060; M3/M4 (with product bases) give +0.84063…+0.84322. **Spread 0.023.**
+  - W4P2 arm (a): spread 0.0019. W2P2 arm (a): ≈ 0.02 including the n-range (Tier-1, n ≤ 20: −11.289; here, n ≤ 60:
+    −11.308).
+  - All of these models pass the held-out tests at ≤ 10⁻¹¹. **This is the second instance of "a held-out check cannot
+    see an incomplete base set".**
+- **Consequence:**
+  - With rule A (tolerance 3 × spread) and the 0.191 stop rule on δQ′ (spreads in quadrature), P = 4 needs per-geometry
+    spreads ≲ 0.045. P = 2 arm (b) is already at 0.023, and Tier-1 showed larger spreads at P = 4.
+  - **The integer-n referee, as a float64 fit-based method, is very unlikely to be discriminating at P = 4.** (Argued,
+    not run, per the STOP.)
+- **Grade:** the registered gate failed. Model incompleteness is **not demonstrated**: the pencil is uninformative. But the
+  referee's own model ambiguity (≈ 2·10⁻² at P = 2) is measured, and that is what limits EXP-083.
+- **Separately recorded:** the arm (b) integer data are small and positive (Q(2) = +0.30 at W2P2), while arm (a) is large
+  and negative (−5.55). The honest saddle effect is large, as T_sad is in production.

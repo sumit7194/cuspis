@@ -1,0 +1,54 @@
+[    16s] W2P2 arm (a): Q(2..5) -5.5542396875 -8.5488375505 -11.4083655693 -14.2609094243 ... Q(60) -171.131122
+[    16s]      M1 floor0.0001 hold-last      : Q'(1) -11.30518062  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M1 floor0.0001 hold-interior  : Q'(1) -11.30518947  held-out rel 6.5e-14  ADEQUATE
+[    16s]      M2 floor0.0001 hold-last      : Q'(1) -11.30518062  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M2 floor0.0001 hold-interior  : Q'(1) -11.30518947  held-out rel 6.5e-14  ADEQUATE
+[    16s]      M3 floor0.0001 hold-last      : Q'(1) -11.30787615  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M3 floor0.0001 hold-interior  : Q'(1) -11.30788562  held-out rel 6.3e-14  ADEQUATE
+[    16s]      M4 floor0.0001 hold-last      : Q'(1) -11.30787615  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M4 floor0.0001 hold-interior  : Q'(1) -11.30788562  held-out rel 6.3e-14  ADEQUATE
+[    16s]      M1 floor1e-06 hold-last       : Q'(1) -11.30518062  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M1 floor1e-06 hold-interior   : Q'(1) -11.30518947  held-out rel 6.5e-14  ADEQUATE
+[    16s]      M2 floor1e-06 hold-last       : Q'(1) -11.30518062  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M2 floor1e-06 hold-interior   : Q'(1) -11.30518947  held-out rel 6.5e-14  ADEQUATE
+[    16s]      M3 floor1e-06 hold-last       : Q'(1) -11.30824343  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M3 floor1e-06 hold-interior   : Q'(1) -11.30825282  held-out rel 6.4e-14  ADEQUATE
+[    16s]      M4 floor1e-06 hold-last       : Q'(1) -11.30824343  held-out rel 1.8e-13  ADEQUATE
+[    16s]      M4 floor1e-06 hold-interior   : Q'(1) -11.30825282  held-out rel 6.4e-14  ADEQUATE
+[    16s]      pencil (1 bases): Q'(1) -11.16822912 held-out rel 2.9e-08 | GATE |M1 - pencil| = 1.37e-01 -> FAIL -> STOP
+[    30s] W2P2 arm (b): Q(2..5) +0.3029743825 +0.4684218867 +0.6252816256 +0.7816387222 ... Q(60) +9.379684
+[    30s]      M1 floor0.0001 hold-last      : Q'(1) +0.82059959  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M1 floor0.0001 hold-interior  : Q'(1) +0.82058295  held-out rel 1.6e-11  ADEQUATE
+[    30s]      M2 floor0.0001 hold-last      : Q'(1) +0.82059959  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M2 floor0.0001 hold-interior  : Q'(1) +0.82058295  held-out rel 1.6e-11  ADEQUATE
+[    30s]      M3 floor0.0001 hold-last      : Q'(1) +0.84064990  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M3 floor0.0001 hold-interior  : Q'(1) +0.84063183  held-out rel 1.6e-11  ADEQUATE
+[    30s]      M4 floor0.0001 hold-last      : Q'(1) +0.84064990  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M4 floor0.0001 hold-interior  : Q'(1) +0.84063183  held-out rel 1.6e-11  ADEQUATE
+[    30s]      M1 floor1e-06 hold-last       : Q'(1) +0.82059959  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M1 floor1e-06 hold-interior   : Q'(1) +0.82058295  held-out rel 1.6e-11  ADEQUATE
+[    30s]      M2 floor1e-06 hold-last       : Q'(1) +0.82059959  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M2 floor1e-06 hold-interior   : Q'(1) +0.82058295  held-out rel 1.6e-11  ADEQUATE
+[    30s]      M3 floor1e-06 hold-last       : Q'(1) +0.84322138  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M3 floor1e-06 hold-interior   : Q'(1) +0.84320310  held-out rel 1.6e-11  ADEQUATE
+[    30s]      M4 floor1e-06 hold-last       : Q'(1) +0.84322138  held-out rel 3.8e-12  ADEQUATE
+[    30s]      M4 floor1e-06 hold-interior   : Q'(1) +0.84320310  held-out rel 1.6e-11  ADEQUATE
+[    30s]      pencil (0 bases): Q'(1) +nan held-out rel nan | GATE |M1 - pencil| = nan -> FAIL -> STOP
+[    45s] W4P2 arm (a): Q(2..5) -5.1485685429 -7.8578520085 -10.4810771987 -13.1014638628 ... Q(60) -157.217602
+[    45s]      M1 floor0.0001 hold-last      : Q'(1) -11.18603811  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M1 floor0.0001 hold-interior  : Q'(1) -11.18605765  held-out rel 6.1e-14  ADEQUATE
+[    45s]      M2 floor0.0001 hold-last      : Q'(1) -11.18603811  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M2 floor0.0001 hold-interior  : Q'(1) -11.18605765  held-out rel 6.1e-14  ADEQUATE
+[    45s]      M3 floor0.0001 hold-last      : Q'(1) -11.18428351  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M3 floor0.0001 hold-interior  : Q'(1) -11.18430592  held-out rel 6.2e-14  ADEQUATE
+[    45s]      M4 floor0.0001 hold-last      : Q'(1) -11.18428351  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M4 floor0.0001 hold-interior  : Q'(1) -11.18430592  held-out rel 6.2e-14  ADEQUATE
+[    45s]      M1 floor1e-06 hold-last       : Q'(1) -11.18603811  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M1 floor1e-06 hold-interior   : Q'(1) -11.18605765  held-out rel 6.1e-14  ADEQUATE
+[    45s]      M2 floor1e-06 hold-last       : Q'(1) -11.18603811  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M2 floor1e-06 hold-interior   : Q'(1) -11.18605765  held-out rel 6.1e-14  ADEQUATE
+[    45s]      M3 floor1e-06 hold-last       : Q'(1) -11.18413240  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M3 floor1e-06 hold-interior   : Q'(1) -11.18415583  held-out rel 6.6e-14  ADEQUATE
+[    45s]      M4 floor1e-06 hold-last       : Q'(1) -11.18413240  held-out rel 3.9e-13  ADEQUATE
+[    45s]      M4 floor1e-06 hold-interior   : Q'(1) -11.18415583  held-out rel 6.6e-14  ADEQUATE
+[    45s]      pencil (0 bases): Q'(1) +nan held-out rel nan | GATE |M1 - pencil| = nan -> FAIL -> STOP
