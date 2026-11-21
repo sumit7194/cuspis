@@ -9029,3 +9029,57 @@ night run uses **launch variant (b)**, run from `scripts/`:
 - Neon T46 (continuum infinite-volume BIE; unverified) independently reports the same two obstructions: the unsaddled IR×UV
   divergence, and straddle amplification for s ≳ 0.9.
 - The full EXP-081b registration awaits the Bridge's OK on the redesign.
+
+## EXP-081b  Strip-pair redesign of the lean P1 — pre-registration (replaces the EXP-081/081a geometry; the Bridge's OK) [model: Opus 5.5]
+**Disclosure.** Seen before this registration:
+- the EXP-081 no-saddle values (R = −48.5, −69.4);
+- the EXP-081a saddle-included edge-design values (R = 1.82, 3.62, −237, 21.5; the edge numerics are broken);
+- the free-side strip-pair numbers above.
+No σ strip-pair value has been computed.
+
+**Design.**
+- Two strips of widths W₁ = 2 and W₂ = 4, each centred in the same Dirichlet box: Lx = 2P + 4, Lt = 2P, cut row P − 1,
+  N_y = 4P (c = 2).
+- **P ∈ {4, 6, 8, 10, 12} (P = 12 held out).** Saddle included (EXP-081a term). Stable Woodbury. Pole cutoff s_cut = 3.
+- s(W) = S(W)/N_y, δκ_lat(P) = −[s^σ(2) − s^σ(4)]/(½ − ¼), κ_lat(P) the same on the free side, **R(P) = δκ_lat/κ_lat.**
+- **Stated premise:** the strip-pair difference cancels edge-local terms, but not their finite-box dependence (the two
+  strips' edges sit at different distances from the walls).
+  - The box systematic is measured on the free side (about ±4% across forms and windows; EXP-081a note) and **assumed to
+    transfer to σ.**
+  - Route (ii) (σ alone ÷ κ_free) checks that assumption. A route disagreement widens the interval to the union.
+
+**Extrapolation.**
+- Forms **A:** X∞ + a/P + b/P²; **B:** X∞ + a/P + c·ln(P)/P. Train P ∈ {4, 6, 8, 10}, held out P = 12.
+- σ_ho = |pred(12) − X(12)| × 6 (from the held-out step in 1/P, 1/10 → 1/12, to the extrapolation 1/10 → 0).
+- σ_spread = |A − B|/2. Central = mean of A and B refit on P = 4..12.
+- Routes: (i) R(P) directly; (ii) δκ_lat(P) then ÷ 0.0396481.
+- **Lattice nuisance:** a (W₁, W₂) = (4, 8) pair at P = 8 (σ and free). σ_W = |R_{(4,8)}(8) − R_{(2,4)}(8)|, added in
+  quadrature.
+
+**Numerical reliability (new).**
+- **N1, per-geometry s_max.** At each 𝒞 node, g(s) by stable Woodbury and by direct inverse must agree to ≤ 10⁻⁸ (relative,
+  summed over k). s_max is the largest node below which all nodes pass. The 𝒞 integral is truncated at s_max.
+- **N2, extended-precision referee** (mpmath, 40 digits, same formulas, npt = 24 per segment). Geometry: W = 4 strip,
+  P = 4 (12×8), N_y = 8. Compare the double-precision production with the referee on:
+  - (a) every tail ingredient G_p(β ∓ is_j) (all p, all poles) at β = ½ + is, s ∈ {1, 2, 3}, i.e. **Im α = s ± s_j**;
+  - (b) the k = 0 bubble B̃₀(β) and its log det at s ∈ {1, 2, 3}.
+  - **Pass:** relative agreement ≤ 10⁻⁸ wherever N1 declares the production value reliable. A failure means N1 is not
+    trustworthy, and the run is INCONCLUSIVE.
+- **N3, 𝒞 tail.** Beyond s_max, either (T1) a fit of g(s) = a + bs² + cs³ on the reliable nodes with s ≥ 1, integrated
+  analytically against the weight, or (T0) the tail set to zero. **Both are reported; the sign is decided only if both
+  agree.**
+- **N4, pole cutoff.** At P = 6, s_cut = 2.5 vs 3: R changes by ≤ 10⁻⁶ relative.
+
+**Carried over (tolerances unchanged).**
+- K: the free planted control under both forms (train P = 4..10). The κ∞ 2σ interval must contain 0.0396481, and P = 12
+  must be predicted within the interval.
+- N_y: c = 3 vs c = 2 at P = 6, ≤ 1%.
+- s-quad: 16 vs 12 points at P = 6, ≤ 10⁻³.
+- F (must-fire): drop the confluent double-pole residues at P = 4; the shift must exceed the final σ.
+
+**Sign rule.** Decided only if the 2σ interval of R∞ + 0.4503 excludes 0 **under both tail versions T1 and T0**;
+otherwise INCONCLUSIVE.
+
+**Resources.** A fresh process per geometry. The peak at P = 12 (N₂D = 672, N_y = 48) is ~1.4 GB, measured-law estimate,
+re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB.
+- The r = 8 night point becomes a P = 16 pair. Its memory is re-measured and re-registered separately before scheduling.
