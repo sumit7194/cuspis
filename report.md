@@ -8423,3 +8423,42 @@ numpy only, no file or network side effects.
   - the free (K-free) reduction;
   - the honest n = 2, 3 sums;
   - must-fail: SC's F(1, β) form must be flagged by the cubic-log test.
+
+## EXP-076  Check of Neon T36 (corrected sector continuation): first read and check design, recorded before reading its eq. (3) [model: Opus 5.5]
+**Source.** `neon_work/dkappa/T36_summary.md` (UNVERIFIED).
+- Claim: S⁽⁰⁾ = ½𝒞[T] + ½T_saddle + ½𝒞[log det(I + B₁⁻¹K₁^{(β)})].
+- K₁^{(β)} = 2∫₀¹da ΔG^{(a)}ΔG^{({β−a})} + AP tails (its eq. 3), with K₁^{(0)} = K₁^{(1)} = 0.
+
+**Agreed so far.**
+- The integer-n split B_n^{(q)} = B₁ + 4G₁∘ΔḠ_n + K_n^{(q)}, with ΔḠ_n = (1/n)Σ_kΔG^{(k/n)} and
+  K_n^{(q)} = (2/n)Σ_kΔG^{(k/n)}ΔG^{((q−k)/n)}, is correct algebra.
+- K is bilinear in ΔG with no G₁ factor, so the **same-side** (bulk) cubic log of T35/EXP-075 is absent. (Argued.)
+
+**Concern (A), straddle pairs (argued, written before reading eq. 3).**
+- In the cut gauge, ΔG^{(a)} ≈ (e^{2πia} − 1)G₁ + e^{2πia}h^{(a)} for x, x′ straddling the cut. Here h is the regular
+  part.
+- So the straddle part of ΔḠ_n is (1/n)Σ_k(e^{2πik/n} − 1)G₁ = −G₁ for every integer n ≥ 2, but 0 at n = 1. T36's
+  "4G₁∘ΔḠ_n = O(n − 1)" fails on straddling pairs: it is an aliasing term Σ_k e^{2πik/n}.
+- At integer n, the straddle of B_n^{(q)} is e^{2πiq/n}(B₁ + 4G₁·a_n-type terms) (gauge covariance). Check on a pure
+  straddle scalar toy with G₁ = 1, B₁ = 2: 2 − 4 + 2(e^{2πiq/n} + 1) = 2e^{2πiq/n}.
+- **Requirement at n = 1:**
+  - straddle(K₁^{(β)}) = (e^{2πiβ} − 1)B₁ exactly;
+  - the G₁ × (regular) straddle terms, 2e^{2πiβ}∫₀¹h − 2∫₀¹e^{2πia}h^{(a)} + tails, must vanish.
+  - T36's main integral alone gives (e^{2πiβ} + 1)B₁, so its AP tails must supply exactly −2B₁.
+  - Otherwise T35's order −1 problem returns, localised on the cut, and the formula is not gauge-consistent.
+
+**Concern (B), Carlson is borderline.**
+- The straddle factors e^{2πia} grow like e^{2π|s|} on Re a = ½, exactly Carlson's threshold.
+- A sequence like Σ_k e^{2πik/n} = δ_{n,1} has continuations of type π, so it is non-unique at the boundary.
+- So admissibility must be argued on gauge-invariant combinations, not on ΔGΔG in the cut gauge.
+
+**Check design (E1–E6).**
+- E1: obtain T36's full text, including eq. 3 (requested from the Bridge).
+- E2: compare eq. 3 with the exact integer-n inner sums on trigonometric and polynomial toys. Carlson-unique
+  continuations come from Faulhaber closed forms.
+- E3: straddle consistency on the single-edge cone (c(a) from the ψ formula, EXP-075). The B₁-coefficient must be
+  e^{2πiβ} − 1 and the G₁-coefficient 0. **This decides (A).**
+- E4: P4 on an explicit lattice replica manifold (n = 2, 3, 4 sheets glued): exact Σ_q log det B_n^{(q)} against the
+  split.
+- E5: P1–P3 on the cone.
+- E6: the true-bubble questions (tip S₁, small kw, large s, det zeros).
