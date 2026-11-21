@@ -8019,3 +8019,69 @@ log-scale ambiguity.
 - **(2) In parallel:** a separate derivation (not yet attempted) of why the δκ formula should be invariant under φ rescaling (a good Neon
   brief).
 - Once (1) or (2) settles it, register Tier 1 + ‖X‖ with the Bridge's decision rule.
+
+### δκ: the Tier-1/Tier-2 split is gauge-dependent, so option (i) cannot deliver (argued + toy check); Z-checkpoint corrected [model: Opus 5.5]
+**Correction to the previous entry's Z-factor checkpoint.**
+- My step "Tr((−∇²)∂ₙG̃ₙ) = −Tr(G̃∂ₙ(−∇²ₙ)), tied to ∂ₙ log det" is a formal manipulation. It is wrong here, because the
+  twist changes the operator's *domain* (boundary conditions), not its local action.
+- For a ΔG that is smooth at coincidence and harmonic (Helmholtz per slice) in both arguments, the local term
+  c(−∇² + k²) contributes exactly 0. With Friedrichs (regular) tip modes, ∮(f∂g − g∂f) → 0 at the tip, so there is no
+  tip delta either. The same Taylor argument shows the log-divergent piece of Tr(Σ_flat ΔG) is ∝ ∇²ΔG = 0, so only
+  power divergences remain (argued).
+- **So the Z-ambiguity is not a separate problem. It is a symptom of the one below:** ΔG^{(β)} = G^{(β)} − G₁ is *not*
+  smooth at coincidence across the twist cut.
+
+**The problem (argued).**
+- In the SC formula, G^{(β)} is twisted by e^{2πiβ} across a cut ending on the two edges. The cut's placement is a gauge
+  choice: moving it is G^{(β)} → U G^{(β)} U⁻¹ for a single-valued U. Exact quantities, i.e.
+  log det(2G₁G^{(β)}) − log det B₁ and Tr(B₁⁻¹·2(G^{(α)}G^{(−α)} − G₁²)), are invariant under it. The flat B₁, G₁, Σ_flat
+  are not covariant, so **every truncation of the expansion in ΔG is gauge-dependent.**
+- Concretely:
+  - for x, x′ straddling the cut, ΔG^{(β)}(x′, x) ≈ c·G₁(x′, x), with c = e^{±2πiβ} − 1;
+  - so X_β ≈ c·B₁⁻¹P₊B₁P₋ near the cut. That is a scale-invariant operator of norm O(|c|), and Tr X has a cut-area
+    divergence that the exact log det does not have;
+  - on the 𝒞-weighted line β = ½ + is, |c| = 1 + e^{−2πs} ∈ (1, 2]. **There is no small parameter.**
+- In T(α), the straddle-singular parts of the "linear" and "quadratic" pieces are c + c̄ and |c|². These cancel
+  exactly (c + c̄ + |c|² = 0 for a unimodular phase; for complex β, c₊ + c₋ + c₊c₋ = 0 with c₋ = e^{−2πiβ} − 1). **So
+  the two pieces are the same order by construction.**
+- Hence the registered "Tier-2/Tier-1 ratio" and ‖X‖ would measure the gauge, not the physics.
+- I expect the L/w coefficient of Tier 1 alone to depend on the cut placement (for example strip vs its complement).
+  This is unverified: it would need the strip machinery to show.
+
+**Pre-check P3: a pure-gauge toy with a known answer (`scripts/exp072_gauge_toy.py`, output `_output.txt`).**
+- Setup: 1D lattice G₁ = (−Δ + m²)⁻¹, B₁ = 2G₁∘G₁, U = a step phase e^{iφ}, G^{(±a)} = U^{±1}G₁U^{∓1}.
+- The exact answers are 0.
+- φ = π + 0.5i (complex, CH07b-like):
+  - log det(1 + X) = 1·10⁻¹⁵;
+  - but Tr X = 1.846, −½Tr X² = −3.549, ‖X‖₂ = 3.24.
+- In T: L = 3.692 and Q = −3.692, so **Q/L = −1.000000** at every φ tested. L + Q matches the exact T = 0 to 2·10⁻¹⁴.
+- The must-fail input φ = 0 gives all zeros. The check can fire, and it did fire in its first run: a toy bug (U† used
+  in place of U⁻¹ for complex φ) gave a nonzero exact T. That bug run is kept as `exp072_gauge_toy_output_v1_bug.txt`.
+- Grade:
+  - the algebra is **verified** on the toy;
+  - that the same happens on the strip with edges is **argued** (the straddle structure is local, so the edges cannot
+    remove it).
+
+**What survives (argued).**
+- **T(α) needs no expansion at all.** It is one gauge-invariant trace, Tr(B₁⁻¹·2(G^{(α)}G^{(−α)} − G₁²)).
+  - The phases cancel pointwise across the cut.
+  - On each side the coincident log coefficient ∝ ∇²ΔG = 0, so there is no Z-ambiguity (only power divergences).
+  - Its cost is the double-k "q-convolution" (two twisted propagators per pair), i.e. Tier-2-class.
+- **F₁(β) = ½ log det(1 + X_β)** is non-perturbative in X and needs the full Fredholm log det (option ii), or a
+  gauge-invariant reorganisation that does not exist yet.
+- The P1 self-energy closed form and the BIE inputs (EXP-069) are unaffected.
+- The single-sheet plane-wave "cut reduction" of the previous entry inherits the cut gauge. Its "connected trace
+  converges" claim ignored the straddle. **It is superseded.**
+
+**Consequence for the plan.**
+- Option (i), as registered in intent (Tier 1 + ‖X‖ decision rule), would mechanically return "Tier 2 needed", for a
+  gauge reason that is now visible without running it. So I am **not** registering EXP-072 as Tier 1.
+- The decision goes back to Sumit with these options:
+  - **(ii′)** full SC: T(α) as one gauge-invariant trace + F₁ as a full Fredholm log det (multiscale code, days–weeks);
+  - **(iii)** integer-n honest sums at n = 2, 3 (also non-perturbative; it shares most of the machinery);
+  - **(iv)** pause and write up;
+  - **(v)** a theory brief first: find a gauge-invariant, edge-localised representation of
+    log det(2G₁G^{(β)})/det B₁, a CFH-type analogue for the σ-bubble. That would restore a small parameter like the
+    λ² of the free-scalar Fredholm determinant (whose linear term gave 85–90% of C₊).
+- My recommendation: (v) as a Neon brief (it costs no compute), with (iv)'s write-up in parallel; (ii′) only if (v)
+  fails.
