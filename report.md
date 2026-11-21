@@ -7891,3 +7891,35 @@ y = 2, as an input to the SC trace. A failure of V1 or V2 means my own BIE build
 - the CH05 resummation shape (0.07%).
 It can supply twisted strip propagators for the SC trace. The CH07b weight π/cosh²(πy) ~ e^{−2πy} suppresses y ≥ 2,
 where the BIE is least precise.
+
+## EXP-071  δκ step 4 (K-free, narrow): the SC continuation and counting factor reproduce the free-scalar κ — pre-registration [model: Opus 5.5]
+**Scope, stated honestly.**
+- The free theory has the sector continuation and twisted propagators, but **no σ-bubble**. So the SC code paths for
+  the q = 0 split and the half-twisted-bubble log det cannot be exercised by a free control.
+- They get their own gate, the registered n = 2, 3 honest-sum check, in the SC registration.
+- The BIE coincident-trace gate (w_S^BIE = 2m²∫[G_a − G₀]_conn vs Fredholm) is moved to the SC numerical-design note,
+  because its implementation depends on that design. It is not dropped.
+- Pre-checks have already shown the KF0/KF1 answers (`exp071_precheck{,2}_output.txt`): this registration fixes
+  windows and the must-fail before the formal run.
+
+**Clauses.**
+- **KF0:** `exp071_sc.C_line` equals the exact (d/dn)Σ_{q=1}^{n−1}g(q/n)|₁ for g = cos(β(a − ½)), β = 1, 2, to ≤ 10⁻¹⁰.
+  This fixes the continuation's sign and normalisation. The exact value b/(2 sin(b/2)) follows from EXP-044's verified
+  C0 identity.
+- **KF1 (must-pass):** −½·C_line[w_S(t, ·)] (½ = the real-scalar counting factor), fed through EXP-044's tails and the
+  EXP-040 prefactor, gives κ/C_T inside [4.17258, 4.17526].
+  - That is the EXP-040 two-implementation bracket [4.17358 (Impl-2), 4.17426 (Impl-1)], widened by 10⁻³ ≈ 3× its
+    spread.
+  - **Primary target: the EXP-040 bracket.** Secondary: κ vs [CHL09] 0.0397 (3 figures) to 5·10⁻⁵.
+  - The ladder (nt, ns, smax) spread is reported. The pre-check spread is ≈ 6·10⁻⁶.
+- **KF-must-fail:** counting factor 1 instead of ½ must land outside the KF1 window (expected ≈ 2×).
+
+**Control table.**
+
+| clause | the input that makes it fire | pre-check (file) | what firing means |
+|---|---|---|---|
+| KF0 | a sign- or factor-wrong continuation | yes; exact match to 2.5·10⁻¹⁴ (`exp071_precheck_output.txt`) | the 𝒞 line integral is the n → 1 derivative |
+| KF1 | wrong counting or wrong continuation | yes; 4.173987 (`exp071_precheck2_output.txt`) | the free κ is reproduced through SC's own continuation |
+| must-fail | counting factor 1 | arithmetic: κ scales linearly in the factor, so 2× | KF1 can detect the factor it is meant to fix |
+
+`scripts/exp071_run.py`; ~1 min; < 0.1 GB.
