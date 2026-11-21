@@ -587,3 +587,14 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       strip machinery to show.
 - [x] Z-factor checkpoint resolved (argued): for a smooth harmonic ΔG the local term contributes 0. The earlier free-entropy
       link was a formal error.
+
+## δκ checkpoint 2026-11-21 (after 3c3d395): HOLD for Sumit
+- [x] (v) T31 brief sent; T31 returned (UNVERIFIED). First pass and code read: EXP-073 (its σ numbers use a 2D stand-in
+      bubble).
+- [x] EXP-073(b): T31's free K1 test. INCONCLUSIVE as registered; consistent with CFH at the few-% level.
+- [x] (iv) Write-up `WRITEUP_dkappa_settled.md` (Bridge-read fixes in b32f81b).
+- [ ] DECISION (Sumit): how to settle σ-side well-posedness of det(I − K_σ) with the true 3D q-convolved bubble per slice.
+      This is the open question for δκ.
+- [ ] Optional, only if Sumit wants the free side sharpened: EXP-073(b) Richardson extrapolation with the exponent
+      ladder {2a, 1, …}, as a new registration.
+- [ ] Not on this box: W = 128 (~15–20 GB). Deferred: the BIE coincident-trace gate (det level).
