@@ -7024,3 +7024,41 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
 - *Known answer:* at n = 1 the machinery returns Σ̃_tw,1 (pre-check 6) exactly.
 - *Must-fail:* drop the δ-piece of (II). The result must move by more than the noise; pre-check the size first.
 - *Stage C:* (I)–(III) on a = ½ + iy, compared with polynomial growth, and the planted L·sin²(πa) row must show rate 2π.
+
+**Stage-B pre-checks, EXP-062 series (unregistered), and a correction to the stage-B design above.** [model: Opus 5.5]
+- *Correction (my error in the design, caught by a gap-equation check):*
+  - The closed forms G^{(n)} and G_tw^{(n)} use ν = 0 at zero frequency, and |aₙ| is itself first order in (n − 1).
+  - So the zero-mode correction relative to them is Zₙ = g_{aₙ} − g₀ ≈ aₙġ = −(n−1)ġ/4, not −(n−1)ġ/2. The design
+    combined the ν = 0 reference with EXP-059's g_{aₙ} − g_{|aₙ|}, which belongs to a different reference.
+  - Piece (III) becomes −(1/8π)·f.p.∫dμ P_{α−½}D₁(α; ρ)ġ, and the bubble's zero-mode term is −(1/2π)ġ g_{|q|}.
+- *Pre-check (`exp062_precheck_gapcancel_output.txt`; verified).*
+  - ∂ₙ of the untwisted cone coincident shift (H² frame) = −1/32 = −0.03125 (EXP-052's −π/8 over 4π).
+  - ġ(0) = −ψ′(½)/(2π) = −π/4.
+  - The zero-mode shift derivative is (1/2π)a′(1)ġ(0) = +1/32. The sum is −5·10⁻¹⁴.
+  - So the gap equation makes the total untwisted coincident shift stationary at n = 1, and the zero-mode
+    normalisation is fixed by an independent check.
+  - Consequence (argued): ∂ₙB has no 1/|x| term, so D̃′ decays at large k, and the design's "δ-piece" in (II) is
+    absent.
+- *Pre-check 1 (`exp062_precheck_image*`).*
+  - Gate: R(n = 1) = Σ_tw to 2·10⁻¹⁶.
+  - ∂ₙR ~ A/ρ³ at small ρ.
+- *Pre-check 2 (`exp062_precheck_shift*`).*
+  - Analytic coincident shift of the twisted propagator on S¹_{2πn}:
+    δG_tw^{(n)}(α) = (1/4π²)∫₀^∞[h_n − coth(t/2)]/(2sinh(t/2))dt, with h_n = (1/n)[e^{−αt} + e^{−(1/n−α)t}]/(1 − e^{−t/n}).
+  - It reproduces −S(α)/(4π²) at n = 1 and EXP-052's cone shift at α = 0, to all printed digits. Run 1 lost digits
+    to h − coth cancellation near t = 0; it is kept as `_run1_cancel`.
+  - Predicted A(0.35) = −(2/π)∂ₙδG_tw = −4.861·10⁻⁴. Measured ρ³∂ₙR = −4.612·10⁻⁴ (ρ = 0.1) and −4.843·10⁻⁴ (0.03),
+    converging as O(ρ²). **Verified** (parameter-free).
+- *Pre-check 4 (`exp062_zeromode*`; one crash kept: the mpmath complex-degree typing).* Piece (III), corrected
+  normalisation.
+  - ġ(10⁻⁶) = −π/4 to 12 digits.
+  - (III)(0.35) = 0.071929 and (III)(0.5) = 0.0795772 (→ 1/(4π) = 0.0795775 within the ρ₀ trend; noted, not used).
+  - On the line a = ½ + iy, |(III)| = 0.100, 0.131, 0.180 at y = 1, 2, 4: polynomial (argued bound: linear).
+- *Pre-check 5 (`exp062_precheck_bubble*`).*
+  - The τ-space bubble at n = 1 equals e^{−|q|ρ}/(8π sinh ρ) to ≤ 2·10⁻¹⁵ (q = 0, 1, 2).
+  - ΔB′_q(ρ) (∂ₙ at the moving lattice frequency, Gamma-family derivative subtracted, corrected zero mode) stays
+    bounded as ρ → 0: ≈ 9.95·10⁻³, 9.0·10⁻⁴, 1.3·10⁻⁴ for q = 0, 1, 3, approached ~ρ². This is consistent with the
+    gap cancellation (no ln ρ, hence no δ-piece).
+  - D̃′(k, q) = −D̃₁²ΔB̃′ does not depend on α, so one table serves stage B (real α) and stage C (the line). For
+    Re α < ¾ (which includes the line) the H² Parseval pairing with W_q(k; α) = MF[P_{α−½}g_{|α−q|}] converges
+    absolutely.

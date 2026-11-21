@@ -1,0 +1,32 @@
+gdot(1e-6) = -0.785398163397   -pi/4 = -0.785398163397
+a=0.35: (III) at rho0=1e-2,1e-3,1e-4: (0.07194199794 + 0.0j), (0.07193021085 + 0.0j), (0.071928975 + 0.0j)
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp062_zeromode.py", line 24, in <module>
+    o = piece3(a)
+  File "/Users/sumit/Github/corner_function/scripts/exp062_zeromode.py", line 16, in piece3
+    tail = quad(F, [1, 4, 10, 25, 45])
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 746, in quad
+    v, err = rule.summation(f, points[0], prec, epsilon, m, verbose)
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 233, in summation
+    result = self.sum_next(f, nodes, degree, prec, results, verbose)
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 308, in sum_next
+    S += self.ctx.fdot((w,f(x)) for (x,w) in nodes)
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/ctx_mp_python.py", line 938, in fdot
+    for a, b in A:
+                ^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 308, in <genexpr>
+    S += self.ctx.fdot((w,f(x)) for (x,w) in nodes)
+                          ~^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp062_zeromode.py", line 15, in <lambda>
+    a = mpc(a); F = lambda r: 2 * pi * sinh(r) * legenp(a - 0.5, 0, cosh(r), type=3) * D1(a, r) * gdot(r)
+                                                 ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/orthogonal.py", line 372, in legenp
+    return ctx.legendre(n, z, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/ctx_mp_python.py", line 1023, in f_wrapped
+    retval = f(ctx, *args, **kwargs)
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/orthogonal.py", line 353, in legendre
+    n = int(n)
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'mpc'

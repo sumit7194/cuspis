@@ -1,0 +1,8 @@
+# cmd: ../.venv/bin/python -u -W ignore exp062_piece2_table.py 8
+# caps: tree <= 2.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.059    0.000   0.059        11.05        688.9           67              1
+     5.9     1   0.059    0.000   0.059        11.05        688.9           67              1
+    11.3     1   0.059    0.000   0.059        11.05        688.9           67              1
