@@ -1,4 +1,5 @@
-"""EXP-081c route (registered 8fcfb84): one geometry per process, 081c numerics (exp081c_numerics, refine = 1).
+"""EXP-081c route (registered 8fcfb84; amendment R1 440b49f): one geometry per process, 081c numerics (exp081c_numerics,
+adaptive refinement "auto" with divergence guard; per-call step counts recorded per node; non-convergence tiers of R1).
 Usage: python exp081c_route.py W P Wbox mode      mode = "posctl" (positive control vs 081b) | "target" (W8P8 + checks)
 Production: t0 (inner_beta0, dn), T_saddle (full-matrix residue diagonals), g at the 48 C-nodes of route_b (cpts 12,
 panels 0-0.5-1.5-3-6, npt 40); checkpointed in exp081c_results/<tag>_ckpt.json.
@@ -20,8 +21,13 @@ def put(k, v):
 T0 = time.time()
 def log(*a): print(f"[{time.time()-T0:7.0f}s]", *a, flush=True)
 Lx, Lt = 2 * P + Wb, 2 * P; x0 = P + (Wb - W) // 2; Ny = 4 * P
-def geom(refine):
-    S = S3.Strip3D(Lx, Lt, Ny, list(range(x0, x0 + W)), P - 1, s_cut=3.0); U = C.install(S, refine=refine); return S, U
+def geom(refine, extra=0):
+    C.ExactSlice.reset_stats()
+    S = S3.Strip3D(Lx, Lt, Ny, list(range(x0, x0 + W)), P - 1, s_cut=3.0); U = C.install(S, refine=refine)
+    for sl in U.values(): sl.extra = extra
+    return S, U
+def stats(): st_ = C.ExactSlice.STATS; return dict(calls=st_["calls"], unconverged=st_["unconverged"], maxsteps=st_["maxsteps"], hist={str(k): v for k, v in st_.get("hist", {}).items()}, bad=[str(b) for b in st_.get("bad", [])[:5]])
+TIER = 2.986170475685039
 x, w = np.polynomial.legendre.leggauss(12); NODES = []
 for lo, hi in zip((0.0, 0.5, 1.5, 3.0), (0.5, 1.5, 3.0, 6.0)):
     for xi, wi in zip(x, w):
@@ -32,12 +38,20 @@ key = lambda s: f"g|{s:.15f}"
 # ---------------- production ----------------
 need = ("t0" not in st) or ("tsad" not in st) or any(key(s) not in st for s, _ in NODES)
 if need:
-    S, U = geom(1); log(f"{tag}: 081c numerics installed (refine 1, {len(U)} unique slices, residues by contour)")
+    t1 = time.time(); S, U = geom("auto"); put("stats|install", stats())
+    log(f"{tag}: 081c numerics installed (adaptive refinement, {len(U)} unique slices, residues by contour) {stats()['calls']} G, unconverged {stats()['unconverged']} ({time.time()-t1:.0f}s)")
+    if st["stats|install"]["unconverged"]: log("NON-CONVERGED G in residues -> STOP (amendment R1)"); sys.exit(4)
     B1 = S.B1(); ld1 = [S3.logdet(B1[k]) for k in range(Ny)]
-    if "t0" not in st: put("t0", C.t0_term(S, B1)); log(f"t0 {st['t0']:+.12f}")
-    if "tsad" not in st: put("tsad", C.saddle_term_c(S, B1)); log(f"tsad {st['tsad']:+.12f}")
+    for nm, fn in (("t0", lambda: C.t0_term(S, B1)), ("tsad", lambda: C.saddle_term_c(S, B1))):
+        if nm not in st:
+            C.ExactSlice.reset_stats(); t1 = time.time(); put(nm, fn()); put(f"stats|{nm}", dict(stats(), sec=time.time() - t1))
+            log(f"{nm} {st[nm]:+.12f}  G calls {st['stats|'+nm]['calls']} unconverged {st['stats|'+nm]['unconverged']} ({time.time()-t1:.0f}s)")
+            if st[f"stats|{nm}"]["unconverged"]: log(f"NON-CONVERGED G in {nm} -> STOP (amendment R1)"); sys.exit(4)
     for s, _ in NODES:
-        if key(s) not in st: put(key(s), C.g_node(S, s, ld1)); log(f"g({s:.4f}) done")
+        if key(s) not in st:
+            C.ExactSlice.reset_stats(); t1 = time.time(); put(key(s), C.g_node(S, s, ld1)); put(f"stats|{s:.15f}", dict(stats(), sec=time.time() - t1))
+            sn = st[f"stats|{s:.15f}"]; log(f"g({s:.4f}) done: {sn['calls']} G, steps hist {sn['hist']}, unconverged {sn['unconverged']} ({sn['sec']:.0f}s)")
+            if sn["unconverged"] and s < TIER: log(f"NON-CONVERGED G at s={s:.4f} < {TIER:.3f} -> STOP (amendment R1)"); sys.exit(4)
     del S, U, B1
 Sval = 0.5 * (st["t0"] + st["tsad"] + sum(wt * st[key(s)] for s, wt in NODES))
 log(f"{tag}: production complete; S (all nodes) computed")
@@ -57,17 +71,17 @@ if mode == "posctl":
 
 # ---------------- target checks (W8P8) ----------------
 if "planted" not in st:
-    S, U = geom(1); B1 = S.B1(); ld1 = [S3.logdet(B1[k]) for k in range(Ny)]; eps = 1.2e-9; s1 = CHK[0]
+    S, U = geom("auto"); B1 = S.B1(); ld1 = [S3.logdet(B1[k]) for k in range(Ny)]; eps = 1.2e-9; s1 = CHK[0]
     for sl in U.values(): sl.scale = 1.0 + eps
     gp = C.g_node(S, s1, ld1); dg = gp - st[key(s1)]; pred = 2 * eps * S.N * Ny
     impact = abs(dg) * np.pi / np.cosh(np.pi * s1) ** 2
     put("planted", dict(s=s1, dg=dg, pred=pred, impact=impact, fires=bool(impact > 1e-7), match=bool(abs(dg / pred - 1) <= 0.1)))
     log(f"planted must-fire at s={s1:.4f}: dg {dg:.4e} (pred {pred:.4e}, ratio {dg/pred:.4f}), impact {impact:.2e} -> "
         f"{'FIRES' if impact > 1e-7 else 'DOES NOT FIRE'}, match {'OK' if abs(dg/pred-1) <= 0.1 else 'FAIL'}")
-    if "b2b" not in st:
-        S2, U2 = geom(2); B12 = S2.B1(); ld12 = [S3.logdet(B12[k]) for k in range(Ny)]
+    if "b2b" not in st and "b2b_skip" not in st:
+        S2, U2 = geom("auto", extra=1); B12 = S2.B1(); ld12 = [S3.logdet(B12[k]) for k in range(Ny)]
         g2 = C.g_node(S2, CHK[1], ld12); rel = abs(g2 - st[key(CHK[1])]) / abs(g2)
-        put("b2b", dict(s=CHK[1], g_refine2=g2, rel=rel, pass_=bool(rel <= 1e-12))); log(f"B2b at s={CHK[1]:.4f}: refine 2 vs 1 rel {rel:.1e} -> {'PASS' if rel <= 1e-12 else 'FAIL'}")
+        put("b2b", dict(s=CHK[1], g_plus1=g2, rel=rel, pass_=bool(rel <= 1e-12))); log(f"B2b at s={CHK[1]:.4f}: converged+1 vs converged rel {rel:.1e} -> {'PASS' if rel <= 1e-12 else 'FAIL'}")
         del S2, U2, B12
     del S, U, B1
 if "n1c" not in st:
@@ -77,7 +91,7 @@ if "n1c" not in st:
         for j, sj in enumerate(sl.s):
             if sj > 3.0: continue
             r = min(1e-6, 0.3 * min([abs(sj - sk) for sk in sl.s if sk != sj] + [1.0]))
-            sl.refine = 1; Rr = sl.residue(1j * sj, r); sl.refine = 0
+            sl.refine = "auto"; Rr = sl.residue(1j * sj, r); sl.refine = 0
             rres = max(rres, np.abs(Rr - sl.Rp[j]).max() / np.abs(Rr).max())
     t0u = C.t0_term(S0, B1); arms = {}
     for s in CHK: arms[f"{s:.15f}"] = C.g_node(S0, s, ld1); log(f"N1'''c unrefined arm g({s:.4f}) done")

@@ -1,4 +1,4 @@
-"""EXP-081c Step 0 (registered 8fcfb84, amendment B1): refined G vs a 40-digit reference at every N1'''c checkpoint node of
+"""EXP-081c Step 0 (registered 8fcfb84, amendment B1; rerun under amendment R1 440b49f: adaptive refinement): refined G vs a 40-digit reference at every N1'''c checkpoint node of
 W8P8 box8, at the node's largest |Im alpha| (= s + max pole <= s_cut), on the slice/column with the largest
 |G_refined - G_unrefined|. Reference: mixed-precision iterative refinement (float64 solves, mpmath residual at 40 digits,
 <= 6 steps, converged if max|residual| <= 1e-25), else mpmath LU at 60 digits. Tolerance 1e-12 (column max, relative).
@@ -27,10 +27,11 @@ print(f"double-double residual vs mpmath residual (3 columns, slice 3, Im a = 1.
 for s in (0.937383295744266, 1.974126375751365, 2.986170475685039, 3.94825275150273, 5.05174724849727):
     t0 = time.time(); a = 0.5 + 1j * (s + smaxp); best = (-1, None, None)
     for p, sl in U.items():
-        G1 = sl.G_raw(a, refine=1); G0 = sl.G_raw(a, refine=0); d = np.abs(G1 - G0); j = int(np.argmax(d.max(axis=0)))
+        G1 = sl.G_raw(a, refine="auto"); G0 = sl.G_raw(a, refine=0); d = np.abs(G1 - G0); j = int(np.argmax(d.max(axis=0)))
         if d[:, j].max() / np.abs(G1).max() > best[0]: best = (d[:, j].max() / np.abs(G1).max(), p, j)
     _, p, j = best; sl = U[p]; H, z = sl.H(a); ref, how = mpref(H, j)
-    e1 = np.abs(sl.G_raw(a, 1)[:, j] - ref).max() / np.abs(ref).max(); e0 = np.abs(sl.G_raw(a, 0)[:, j] - ref).max() / np.abs(ref).max()
-    ok = e1 <= 1e-12; out[f"{s:.3f}"] = dict(im_alpha=s + smaxp, p=p, col=j, err_refined=e1, err_unrefined=e0, ref=how, pass_=bool(ok))
-    print(f"node s={s:.3f}: Im a {s + smaxp:.3f}, slice {p}, col {j}: refined {e1:.1e} | unrefined {e0:.1e} | ref: {how} -> {'PASS' if ok else 'FAIL'}  ({time.time()-t0:.0f}s)", flush=True)
+    C.ExactSlice.reset_stats(); Ga = sl.G_raw(a, "auto"); stp = dict(C.ExactSlice.STATS)
+    e1 = np.abs(Ga[:, j] - ref).max() / np.abs(ref).max(); e0 = np.abs(sl.G_raw(a, 0)[:, j] - ref).max() / np.abs(ref).max()
+    ok = e1 <= 1e-12 and stp["unconverged"] == 0; out[f"{s:.3f}"] = dict(steps=stp["maxsteps"], converged=stp["unconverged"] == 0, im_alpha=s + smaxp, p=p, col=j, err_refined=e1, err_unrefined=e0, ref=how, pass_=bool(ok))
+    print(f"node s={s:.3f}: Im a {s + smaxp:.3f}, slice {p}, col {j}: refined (auto, {stp['maxsteps']} steps, {'converged' if stp['unconverged'] == 0 else 'NOT CONVERGED'}) {e1:.1e} | unrefined {e0:.1e} | ref: {how} -> {'PASS' if ok else 'FAIL'}  ({time.time()-t0:.0f}s)", flush=True)
 json.dump(out, open("exp081c_step0_results.json", "w"), indent=1)

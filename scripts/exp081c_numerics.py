@@ -2,7 +2,7 @@
 
 G(alpha) = direct inverse of the EXACT integer-stencil H(alpha) = (4 + m2) I - adjacency, with the cut links twisted
 (H[u,l] = -z, H[l,u] = -1/z, z = exp(2 pi i alpha); same convention as EXP-081b production, here built directly rather than
-as inv(G0) + correction). Then `refine` steps of iterative refinement G <- G + G R, R = I - H G, with the residual
+as inv(G0) + correction). Then `refine` steps of iterative refinement (or "auto": until the relative correction <= 1e-15, max 8; registered fix after Step 0 run 1) G <- G + G R, R = I - H G, with the residual
 evaluated in double-double arithmetic using the stencil structure (exact enough: every product is an error-free
 TwoProd, every sum a TwoSum).
 Residues: full N x N matrices, 32-point contour of the same G, radius min(1e-6, 0.3 x pole spacing) as in sigma3d._poles.
@@ -84,9 +84,26 @@ class ExactSlice:
             s, e = _two_sum(eye, -acc.hi); out.append(s + (e - acc.lo))
         return out[0] + 1j * out[1]
 
-    def G_raw(self, a, refine=None):
-        H, z = self.H(a); G = np.linalg.inv(H)
-        for _ in range(self.refine if refine is None else refine): G = G + G @ self.residual(G, z)
+    STATS = {"calls": 0, "steps": 0, "maxsteps": 0, "unconverged": 0}
+    @staticmethod
+    def reset_stats():
+        ExactSlice.STATS.clear(); ExactSlice.STATS.update(calls=0, steps=0, maxsteps=0, unconverged=0, hist={}, bad=[])
+    def G_raw(self, a, refine=None, extra=None):
+        """refine: int = fixed number of steps; "auto" = iterate until max|G R|/max|G| <= 1e-15 (at most 8 steps), then
+        `extra` further steps (default self.extra, 0)."""
+        H, z = self.H(a); G = np.linalg.inv(H); mode = self.refine if refine is None else refine
+        if mode != "auto":
+            for _ in range(mode): G = G + G @ self.residual(G, z)
+            return G
+        st = ExactSlice.STATS; st["calls"] += 1; k = 0; prev = np.inf; conv = False
+        for k in range(1, 9):
+            dG = G @ self.residual(G, z); G = G + dG; c = np.abs(dG).max()
+            if c <= 1e-15 * np.abs(G).max(): conv = True; break
+            if c >= prev: break                                   # divergence guard (amendment R1)
+            prev = c
+        if not conv: st["unconverged"] += 1; st.setdefault("bad", []).append(complex(a))
+        st["steps"] += k; st["maxsteps"] = max(st["maxsteps"], k); st.setdefault("hist", {}); st["hist"][k] = st["hist"].get(k, 0) + 1
+        for _ in range(getattr(self, "extra", 0) if extra is None else extra): G = G + G @ self.residual(G, z)
         return G
 
     def G(self, a):
