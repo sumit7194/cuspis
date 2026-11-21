@@ -7484,3 +7484,34 @@ argument (argued) requires.
   4. The p ≥ 2 terms (T5b item 2) are argued log-free; a re-read with C₊ linear is pending.
 - **Not done:** the finite value of δκ, which now needs the f₀ term. That is the next real computation (TODO A3 in
   the ideas file).
+
+## EXP-067  Check of Neon T26 (conditional all-y bound on |C₊(½ + iy)|), Steps 1–4 and the bound — verification of external work, bounded check at the Bridge's request [model: Opus 5.5]
+**T26's claim** (`neon_work/dkappa/T26_summary.md`, unverified). Wherever κ_max(u; y) < 1 for all u,
+|C₊(½ + iy)| ≤ B(y) = (1/(8π²(¼ + y²)))∫₀^∞du[−ln det(1 − λ²RᵀR)].
+
+**Checks** (`scripts/exp067_check_t26*`; own kernel code; u = 1, y = 0–3 unless stated).
+- **(i) R is Hermitian on the line**, exactly; min eig(hR) ≥ −10⁻¹⁶ (positive semidefinite to round-off).
+- **(ii) The rank-2 identity** −dRᵀ/du = ¼(w_R v_Lᵀ + v_R w_Lᵀ) holds, with v_L = e^{ap}E, w_R = e^{(1−a)p}E,
+  v_R = e^{−ap}E, w_L = e^{(a−1)p}E: 6·10⁻¹¹ on a fixed grid. (A first test showed 0.43. That was my flaw: the grid
+  extent moved with u inside the finite difference.)
+- **(iii) The parity step** d/du ln det(1 − λ²RᵀR) = λ²⟨v_L, v_L⟩_M holds, with M = (1 − λ²RᵀR)⁻¹Rᵀ: agreement
+  ≤ 10⁻¹² at y ≤ 2 and 3·10⁻⁴ at y = 3 (finite-difference level).
+- **(iv) The Cauchy–Schwarz ratio** |λ⟨w_L, v_L⟩_M|/((π/cosh πy)H) = 0.959, 0.904, 0.615, 0.131, reproducing T26's
+  0.96, 0.90, 0.62, 0.13.
+- **(v) The bound against my measured |C₊|** (EXP-065): B(y) = 7.238·10⁻³, 1.901·10⁻², 3.540·10⁻², 5.199·10⁻²,
+  6.781·10⁻² at y = 0…4. **The bound holds at every y** (ratios 0.83, 0.48, 0.20, 0.07, 0.02).
+  - My B matches T26's to ≤ 0.3% for y ≤ 3. At y = 4, mine is 6.78·10⁻², stable to 0.2% under h, P and q-range,
+    against T26's 6.22·10⁻²: theirs appears ~9% low. That does not affect validity.
+
+**Not checked here:**
+- the identification of the C₊ integrand with λ⟨w_L, v_L⟩_M inside T23's resummed formula (Step 3's premise) beyond
+  the end-to-end inequality (v);
+- Step 4's integration by parts and Γ/cosh cancellation, beyond (v);
+- Step 5's asymptotic bounds on Tr B_u.
+
+**Grade.** Steps 1–4 of T26 are **verified numerically at the sampled points**. The conditional bound is consistent
+with every measured |C₊|.
+**The theorem remains conditional on gap (I):** κ_max(u; y) < 1 for all u, y, with a margin
+1 − κ_max ≥ c(u)e^{−A|y|}. EXP-060 measured κ_max < 1 on t ∈ [0.1, 3], y ≤ 3.5, with 1 − κ_max ~ e^{−2πy}·poly
+(inference), which would give B(y) = O(y²). **Gap (I) is the remaining analytic step.** T26 points to the CFH
+Painlevé/τ connection; our verified Painlevé u on the line (EXP-063 pre-check 2) is a possible tool.

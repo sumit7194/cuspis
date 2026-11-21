@@ -1,0 +1,9 @@
+y=0.0: (i) max|R-R^dag| 0.0e+00, min eig(hR) -5.77e-17 | (ii) rank-2 rel mismatch 4.3e-01 | (iii) H_fd +3.800280e-02  lam^2<vL,vL>_M +3.800280e-02+0.0e+00j | (iv) CS ratio 0.959 (T26: 0.96/0.90/0.62/0.13) | det sign +1
+y=1.0: (i) max|R-R^dag| 0.0e+00, min eig(hR) -1.12e-16 | (ii) rank-2 rel mismatch 4.3e-01 | (iii) H_fd +7.316890e-01  lam^2<vL,vL>_M +7.316890e-01+0.0e+00j | (iv) CS ratio 0.904 (T26: 0.96/0.90/0.62/0.13) | det sign +1
+y=2.0: (i) max|R-R^dag| 0.0e+00, min eig(hR) -1.02e-16 | (ii) rank-2 rel mismatch 4.3e-01 | (iii) H_fd +4.671574e+00  lam^2<vL,vL>_M +4.671574e+00-1.3e-12j | (iv) CS ratio 0.615 (T26: 0.96/0.90/0.62/0.13) | det sign +1
+y=3.0: (i) max|R-R^dag| 0.0e+00, min eig(hR) -1.02e-16 | (ii) rank-2 rel mismatch 4.3e-01 | (iii) H_fd +1.265417e+01  lam^2<vL,vL>_M +1.265085e+01+6.1e-08j | (iv) CS ratio 0.131 (T26: 0.96/0.90/0.62/0.13) | det sign +1
+(v) y=0: B(y) = 7.2381e-03   measured |C+| 5.9970e-03   ratio 0.829   [bound holds]
+(v) y=1: B(y) = 1.9006e-02   measured |C+| 9.2010e-03   ratio 0.484   [bound holds]
+(v) y=2: B(y) = 3.5399e-02   measured |C+| 7.0770e-03   ratio 0.200   [bound holds]
+(v) y=3: B(y) = 5.1989e-02   measured |C+| 3.6640e-03   ratio 0.070   [bound holds]
+(v) y=4: B(y) = 6.7813e-02   measured |C+| 1.5270e-03   ratio 0.023   [bound holds]

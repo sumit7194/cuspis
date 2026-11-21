@@ -1,0 +1,7 @@
+(ii) y=0.0: rank-2 rel mismatch (fixed grid) 6.4e-11
+(ii) y=2.0: rank-2 rel mismatch (fixed grid) 6.4e-11
+(ii) y=3.0: rank-2 rel mismatch (fixed grid) 6.4e-11
+(v) y=4 h=0.1 Pextra=1.0 qlo=-9: B = 6.78178e-02
+(v) y=4 h=0.05 Pextra=1.0 qlo=-9: B = 6.79283e-02
+(v) y=4 h=0.1 Pextra=3.0 qlo=-9: B = 6.78046e-02
+(v) y=4 h=0.1 Pextra=1.0 qlo=-12: B = 6.78218e-02
