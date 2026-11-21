@@ -7177,3 +7177,18 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
     large-t Born limit.
   - On the line, u and h are real (the real ODE), and b follows from b′/b = [−(1 − 2a)u² + tuu′ − 2ah]/(th).
   - So C₊'s y-growth is read off from real ODE solutions, with no overlap to choose.
+- **CH05 route, pre-check 2: verified** (`scripts/exp063_precheck_painleve_u*`).
+  - CH05's ODE (52) for u(t), integrated inward from the boundary data (79) u ~ (2/π)sin(aπ)K_{1−2a}(t), gives
+    w(t) = −∫_t^∞ y u² dy.
+  - At a = 0.3 this equals EXP-044's Fredholm w_S(t, a) to ≤ 2·10⁻¹³ (t = 3…0.1).
+  - On the CH07b line, where the ODE and data are real (Im of the data ≤ 10⁻³⁶), the agreement is ≤ 9·10⁻¹¹ at
+    y = 0.5 and 1, and ≤ 3·10⁻⁶ at y = 2. The deviation grows with y and at small t, from integration-tolerance
+    and/or Fredholm discretisation; not yet separated.
+  - So the real Painlevé system on the line is the same object as the EXP-060 resolvent, by two implementations,
+    and its normalisation (79) is right.
+- **Normalisation-free form of the test (argued).** b's scale is a symmetry (b → λb, c → c/λ) shared by the Born and
+  the resummed C₊. So the resummation ratio ρ(t, y) = ∫_t^∞ b u / ∫_t^∞ b_lin u_lin, with both b's normalised to the
+  same large-t asymptote b ~ e^{−t}/t (derived from (49)–(51)), does not depend on that scale.
+  - C₊'s growth rate on the line = Born's (π, T17/T20 closed form) + the growth rate of the t^{2a}-weighted ratio.
+  - Log-free needs the ratio's rate < π. **Gate for the registration: ratio rate ≤ π − 1 on y ∈ [2, 4]**; within 1 of π
+    is inconclusive.
