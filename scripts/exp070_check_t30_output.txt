@@ -1,0 +1,11 @@
+(a) max |K_iw(u)| / bound over the grid = 0.4046  [holds]
+(b) u=1.0 y=0.0: Parseval 1.3858086813e-02  direct 1.3858086813e-02  rel -7.1e-15
+(b) u=1.0 y=2.0: Parseval 1.3999327836e+00  direct 1.3999327836e+00  rel +9.1e-15
+(b) u=0.1 y=1.0: Parseval 1.7323267445e+00  direct 1.7323267445e+00  rel +2.8e-14
+(b) u=3.0 y=3.0: Parseval 8.6992801738e-01  direct 8.6992801738e-01  rel +4.9e-14
+(c) max Tr B_u / [(1+|y|)^2 (1 + ln+(1/u) + ln(1+|y|))^2] = 0.0353 at (u, y) = (1, 2)  (bounded => C1 ~ this)
+(d) u=1.0 y=1.0: 1-kappa_max = 7.165e-01  T30 margin m = 3.820e-11  [m <= gap]
+(d) u=1.0 y=2.0: 1-kappa_max = 6.999e-02  T30 margin m = 1.118e-16  [m <= gap]
+(d) u=3.0 y=2.0: 1-kappa_max = 8.278e-01  T30 margin m = 2.214e-16  [m <= gap]
+(d) u=3.0 y=3.0: 1-kappa_max = 2.426e-01  T30 margin m = 6.481e-22  [m <= gap]
+(d) u=0.3 y=1.0: 1-kappa_max = 2.154e-01  T30 margin m = 2.109e-11  [m <= gap]

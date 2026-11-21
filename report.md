@@ -7787,3 +7787,36 @@ changes:
 
 **What it decides.** Whether the complex-twist strip propagator from the BIE can be trusted on the CH07b line, up to
 y = 2, as an input to the SC trace. A failure of V1 or V2 means my own BIE build comes back on the table.
+
+## EXP-070  Check of Neon T30 (gap II: a polynomial all-y bound on |C₊(½ + iy)|) and of T26's Step-5 bound it rests on — verification of external work [model: Opus 5.5]
+**T30's claim** (unverified, `neon_work/dkappa/T30_summary.md`).
+- 1 − κ_max ≥ e^{−4π|y|}/(30000L²) on the bulk u < π|y| + 1, with L = arccosh((2π|y| + 10)/u).
+- Hence |C₊(½ + iy)| ≤ C(1 + |y|)²(1 + ln(1 + |y|))³ for **all** y.
+- It uses T27 (EXP-068) and T26's Step-5 Parseval bound on Tr B_u.
+
+**Checks** (`scripts/exp070_check_t30*`, 59 s).
+- **(a) T26 Step 5's Bessel bound** |K_{iw}(u)| ≤ e·e^{−π|w|/2}·K₀(2u/(π(1 + |w|))): it holds on the grid
+  u ∈ {10⁻³, …, 5}, w ∈ {0, …, 40}, with the largest ratio 0.40. *The contour-shift derivation itself was not checked
+  line by line.*
+- **(b) The Parseval formula** Tr B_u = (2cosh²πy/π²)∫dw K_{iw}(u)²(w − 2y)/sinh(π(w − 2y)) equals my direct matrix
+  trace to ≤ 5·10⁻¹⁴ at four (u, y).
+- **(c) The bound shape:** Tr B_u/[(1 + |y|)²(1 + ln⁺(1/u) + ln(1 + |y|))²] ≤ 0.035 over u ∈ [10⁻⁴, 10] and
+  y ∈ [0, 6]. Bounded, so any C₁ ≥ 0.035 works on the sampled region.
+- **(d) T30's margin** m(u, y) ≤ the measured 1 − κ_max at five double-precision-resolvable points. It is very loose
+  (10⁻¹¹ to 10⁻²²), as T30 states.
+- **Hand-check of T30's Step 2–3 constants:**
+  - low frequency: W ≥ π²w²/(3cosh²πy), since cosh²πy + sinh²1 ≤ 3cosh²πy;
+  - high frequency: W ≥ 1/(3cosh²πy), since 4.14cosh² ≥ cosh² + 1.38;
+  - the symbol bound π/cosh(π(|y| − 1/π)) ≤ 2πe·e^{−π|y|};
+  - the 1D Sobolev step ‖g‖²_∞ ≤ ‖g‖‖g′‖.
+  - All consistent. Step 4 (the spatial cutoff and the δ choice) and the final assembly were hand-checked by the Bridge,
+    not by me.
+
+**Grade.**
+- T26's Step-5 bound and the Parseval formula: **verified numerically** (the derivation of the Bessel bound not
+  line-checked).
+- T30 Steps 1–3: **consistent** (my constants check). Step 4: the Bridge's check plus my numerical (d).
+- **Lemma U (e), the all-y analytic bound:** it holds if T30's Step 4 and T26's contour-shift step are right. Both are
+  checked by one reader plus numerics, so the grade is **partially verified, close to complete**.
+- Together with the measured EXP-065 (y ≤ 5), the first-order tip term's log-freeness now has an analytic all-y
+  argument, every ingredient of which has been checked at least numerically.
