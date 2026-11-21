@@ -9126,3 +9126,14 @@ re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB
   The G-level and B̃₀ relative errors are reported descriptively. The VOID rule (Bridge) applies to N2′.
 - **The analysis is re-run from the checkpoints** (no recompute). **The outcome under the original N1″/N2 rules is also
   reported, for transparency.**
+
+**EXP-081b: N1‴ made cumulative (the Bridge; registered before any analysis).**
+- The impact rule N1‴/N2′ is **primary**. Per-node: I(s) ≤ 10⁻⁷.
+- **Cumulative:** Σ over all 𝒞 nodes up to s_max of |g_stable − g_direct|·π/cosh²(πs)·(quadrature weight) ≤ 10⁻⁷ (Q′(1)
+  units) per geometry.
+  - g_direct exists only at the five checkpoints. At other nodes, |g_stable − g_direct| is **estimated** by log-linear
+    interpolation in s of the checkpoint relative errors, times |g(node)| (stated as an estimate).
+  - The summed impact is reported next to each R.
+- The original N1″/N2 outcome is reported side by side.
+- **Final write-up:** one table of all EXP-081 amendments (a, b, N1′, N1″, N1‴/N2′, cumulative), each with what it changed and
+  why. Every one was registered before the quantity of interest was seen.
