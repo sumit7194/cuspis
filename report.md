@@ -8329,3 +8329,27 @@ numpy only, no file or network side effects.
 - **Planted (must be told apart):** wherever the verdict is PASS, the CFH value at t × 1.03 must lie outside 3σ_tot of
   f_B. Otherwise that PASS is downgraded to INCONCLUSIVE.
 - **Overall:** PASS if all 8 PASS; FAIL if any FAIL; otherwise INCONCLUSIVE.
+
+### EXP-074 results: OVERALL INCONCLUSIVE as registered (all-8 rule). λ₁ PASSES at all four (a, t) to ≤ 0.4% of CFH; λ₂ PASSES at one and is uninformative (σ_tot > 2%) at three; no FAIL [model: Opus 5.5]
+(`scripts/exp074_run.py`, `exp074_output.txt`, `exp074_results.json`; seconds of compute.)
+
+| (a, t) | λ₁: f_B/λ_CFH − 1 | σ_tot/λ | verdict | λ₂: f_B/λ_CFH − 1 | σ_tot/λ | verdict |
+|---|---|---|---|---|---|---|
+| (0.3, 1) | +0.0006 | 0.0004 | PASS (1.4σ) | −0.0027 | 0.029 | INCONCLUSIVE |
+| (0.3, 2) | +0.0008 | 0.0019 | PASS (0.4σ) | −0.0108 | 0.075 | INCONCLUSIVE |
+| (½ + ½i, 1) | −0.0040 | 0.0081 | PASS (0.5σ) | +0.0084 | 0.0071 | PASS (1.2σ) |
+| (½ + ½i, 2) | +0.0017 | 0.0087 | PASS (0.2σ) | +0.0284 | 0.034 | INCONCLUSIVE |
+
+- **Planted t × 1.03:** it shifts CFH by 7–17%. It is told apart (> 3σ_tot) at every PASS.
+- **Comparison with the EXP-073(b) free-exponent fits (1.4–4.7% off for λ₁):** the ladder fits bring λ₁ to ≤ 0.4%. The
+  complex-twist sign change is absorbed by the predicted W⁻¹cos/sin(ln W) pair. Model A's residuals are ≤ 5·10⁻⁵
+  absolute (≤ 0.1% of λ₁).
+- **Grade.**
+  - T31's free isospectrality (TGTG K_free ↔ CFH λ²RRᵀ): for the **leading eigenvalue**, **verified at ≤ 0.4%** at two
+    twists (real and complex) × two t. This is two routes, lattice TGTG and the continuum Fredholm operator, with the
+    planted kernel told apart.
+  - For λ₂: consistent (≤ 2.8%) but under-resolved at 3 of 4 points.
+  - Overall, as registered: **INCONCLUSIVE.** The rule needed all 8.
+  - The exponent ladder itself is argued. It is supported by the known-answer control and by the fit residuals.
+- **What it means for δκ:** the free factorisation that T31 builds on is sound at the level that matters for the
+  determinant (λ₁ dominates log det(I − K)). **It does not touch the σ-side question (T35).**

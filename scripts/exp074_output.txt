@@ -1,0 +1,9 @@
+a=0.3 t=1.0 lam1: f_B=9.634361e-03 f_A=9.638315e-03 (A resid 1.6e-07) CFH=9.628619e-03 rel=+0.0006 sigma_tot/lam=0.0004 |f_B-CFH|/sigma_tot=1.44 planted rel=-0.078 -> PASS
+a=0.3 t=1.0 lam2: f_B=1.375931e-04 f_A=1.416527e-04 (A resid 1.7e-07) CFH=1.379594e-04 rel=-0.0027 sigma_tot/lam=0.0294 |f_B-CFH|/sigma_tot=0.09 planted rel=-0.109 -> INCONCLUSIVE
+a=0.3 t=2.0 lam1: f_B=7.618137e-04 f_A=7.632600e-04 (A resid 6.0e-08) CFH=7.611906e-04 rel=+0.0008 sigma_tot/lam=0.0019 |f_B-CFH|/sigma_tot=0.43 planted rel=-0.134 -> PASS
+a=0.3 t=2.0 lam2: f_B=4.576762e-06 f_A=4.923443e-06 (A resid 1.4e-08) CFH=4.626606e-06 rel=-0.0108 sigma_tot/lam=0.0749 |f_B-CFH|/sigma_tot=0.14 planted rel=-0.168 -> INCONCLUSIVE
+a=(0.5+0.5j) t=1.0 lam1: f_B=5.356027e-02 f_A=5.399618e-02 (A resid 4.7e-05) CFH=5.377513e-02 rel=-0.0040 sigma_tot/lam=0.0081 |f_B-CFH|/sigma_tot=0.49 planted rel=-0.070 -> PASS
+a=(0.5+0.5j) t=1.0 lam2: f_B=1.067224e-03 f_A=1.059741e-03 (A resid 8.1e-07) CFH=1.058342e-03 rel=+0.0084 sigma_tot/lam=0.0071 |f_B-CFH|/sigma_tot=1.19 planted rel=-0.107 -> PASS
+a=(0.5+0.5j) t=2.0 lam1: f_B=5.124718e-03 f_A=5.169121e-03 (A resid 4.8e-06) CFH=5.115901e-03 rel=+0.0017 sigma_tot/lam=0.0087 |f_B-CFH|/sigma_tot=0.20 planted rel=-0.128 -> PASS
+a=(0.5+0.5j) t=2.0 lam2: f_B=3.802744e-05 f_A=3.676714e-05 (A resid 1.4e-07) CFH=3.697755e-05 rel=+0.0284 sigma_tot/lam=0.0341 |f_B-CFH|/sigma_tot=0.83 planted rel=-0.167 -> INCONCLUSIVE
+OVERALL: INCONCLUSIVE
