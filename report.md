@@ -8572,3 +8572,25 @@ numpy only, no file or network side effects.
   interpolants pass it.
   - Future must-pass **P5**: Q′(1) on the P4′ lattice equals the Newton-series value −1.420722 (±0.008).
   - The honest 45-digit data are `scripts/exp077_Qhp.json`.
+
+**EXP-077 addendum: a third route by the Bridge (its own code, from `exp077_Qhp.json` only; reported 2026-11-21, recorded here with attribution).**
+- **Direct Newton summation with no acceleration**, extending Q(n) linearly beyond n = 60 (the data are linear to 7·10⁻³⁸
+  from n = 30). The partial sums are:
+
+  | k | partial sum |
+  |---|---|
+  | 59 | −1.401073 |
+  | 80 | −1.416080 |
+  | 100 | −1.420370 |
+  | 110 | **−1.420722** |
+
+  At k = 110 the terms are ~4·10⁻⁷. 45-digit rounding takes over at k ≳ 130.
+- **This matches my Levin value with no extrapolation model.** The terms stay negative through k ≈ 105, wherever the data
+  can resolve them. That supports the monotone-sign premise.
+- **Grade update:** P5's Carlson/Newton Q′(1) = −1.42072 is **verified** on the P4′ lattice by two routes:
+  - Levin, with a measured bias;
+  - raw summation to k = 110 (the Bridge's code).
+- **Caution recorded (the Bridge's):** a Prony/matrix-pencil exponential fit gave −1.386, close to T40's value. But it was
+  ill-conditioned (nearly coincident rates, cancelling amplitudes ±1444, ±8·10⁶), so it is an artefact. **Prony is not a
+  safe derivative estimator here.**
+- T40b (the follow-up to Neon, sent by the Bridge) is pending.
