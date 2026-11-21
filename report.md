@@ -9255,3 +9255,37 @@ Every amendment was registered before the quantity it affects was seen, except t
 - **Grade:** verified, for pole counts and positions below s_cut, for all 15 production geometries. No R is flagged.
 - **Recorded as a finding:** production's pole finder loses roots near z ≲ 10⁻¹⁰ (s ≳ 3.6). Any future run with
   s_cut > 3.5 must re-run this census.
+
+**T46b grading (Neon /u/2, P2 continuum route; `neon_work/dkappa/T46b_full.md`, code `T46b_code/brief_p2_prototype.py`).**
+Read in full; the code was run from a scratch copy with `python -I`. Everything below is UNVERIFIED except where graded.
+- **The delivered code covers only part of the claims.**
+  - In the code: BIE, K-free, the per-mode Parseval α-coefficients, the conformal grid, cell-averaged G₀, the d·r control,
+    T_saddle.
+  - **Not in the code:** the B^{(β)} assembly, T₁, T₂/𝒞[g], the D scaling, the 50-digit referee, the r_max table, the
+    z-scan, the plateau subtraction.
+  - So the Obstruction-2 table, the r_max cancellation and the prototype δκ cannot be checked: **unverified**.
+- **d·r → −1/32 (P2 cone): partially verified.** Reproduced (−0.031249 at r = 0.05). It converges in M toward −1/32 for
+  r ≤ 0.1: relative error 8·10⁻⁵ → 2·10⁻⁵ → 1·10⁻⁵ for M = 32, 48, 64 at r = 0.05. At r = 0.2 the offset is −4.4·10⁻⁴,
+  independent of M: a finite-w correction (r/w = 0.1), not an error.
+- **K-free: partially verified, with a caveat.**
+  - Reproduced (0.03966777, 5·10⁻⁴). In M the error falls roughly like M^{−2.5}: 3.3·10⁻³, 1.1·10⁻³, 5.0·10⁻⁴, 2.4·10⁻⁴,
+    1.2·10⁻⁴ for M = 64 … 192 at z_max = 5.
+  - **But z_max is not a harmless truncation.** Raising it to 8 adds +1.6% (M = 64) or +0.1% (M = 192). The large-z
+    integrand should be exponentially small, and is not at finite M. This is a resolution error that z_max = 5 hides.
+  - The σ prototype ran at M = 16–20, so its large-z (z up to 6.5) values carry this error much more strongly.
+- **Saddle fold: algebra checked.** T46b's ΔB_saddle = −2∫₀^∞dp/π[G_{q₁}∘(G_{q₂}DG_{q₂}) + (1 ↔ 2)] with
+  q₁,₂ = k/2 ± p equals my −4∫dq/2π Ĝ_q∘(Ĝ_{k−q}D_σ̇Ĝ_{k−q}) (substitute q = k/2 + p and fold p < 0). The r_max
+  cancellation table is unverified (no code).
+- **s_max = 1 truncation: the justification is wrong as stated.** "99.6% of the 𝒞 weight" counts the weight, not
+  weight × g, and g grows with s.
+  - Measured on the lattice (single geometries W = 2 and W = 4, P = 4): s > 1 carries **2.7% of 𝒞[g] (−0.040 per
+    geometry)**, 7× the 0.37% weight fraction. s > 2 carries 4·10⁻⁴.
+  - Disclosure: the two single-geometry s > 1 parts differ by 8·10⁻⁴. That is a fragment of the P = 4 pair numerator,
+    not an R value.
+  - T46b's own estimate of the connected signal is ~0.05. So the truncation is not negligible unless shown to cancel in
+    the connected combination.
+- **Prototype δκ/κ_free ≈ −0.2 ± 0.5:** not a result (T46b says the same). Q′(1; z) moves by 0.4–0.6 between
+  (N_θ, M) = (16, 16) and (20, 20), against a signal of ~0.05.
+- **Strip pair in infinite volume (the Bridge's suggestion (ii)).** With the w-scaled conformal grid, W and 2W are the
+  same computation with z rescaled. ∫dz[f(z) − f(2z)] = ½∫(f − f_∞), so the plateau f_∞ is still needed. The pair cancels
+  edge discretisation error only on a W-independent near-edge mesh, as on the lattice.
