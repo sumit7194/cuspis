@@ -7664,3 +7664,22 @@ Painlevé/τ connection; our verified Painlevé u on the line (EXP-063 pre-check
 
 **Grade.** Everything in this note is **argued**. The two load-bearing steps are (3) the continuation with the
 Abel–Plana drop, and (5) the saddle vanishing in dim reg. Gates 3 and 5 test them.
+
+**Amendments to the δκ formula note (the Bridge's read, 2026-11-21), adopted before any code.** [model: Opus 5.5]
+1. *Saddle term: from "argued scaleless" to a measured must-pass.*
+   - Precisely: 2Tr(Σ_flat K_zm) = −2∫d³z ∂ₙσ*(z)·C, where C = (G₁Σ_flatG₁)(z, z) is built only from flat propagators.
+     It is a translation-invariant constant (C = 0 in dim reg; C ∝ cutoff powers, possibly with logs, otherwise).
+   - All the strip's scales (w, and m per k_y slice) sit in ∂ₙσ*(z). Its transverse integral can carry a log near the
+     edges. So "no L/w" is not automatic for a cutoff scheme.
+   - **Must-pass:** evaluate the term with an explicit cutoff ladder (≥ 3 rungs, ≥ 2 decades in w/ε). It must be
+     polynomial in the cutoff, with **no L/w and no (L/w)·log(w/ε) component.** A log would feed δκ.
+2. *Abel–Plana drop, a control that can fail (must-fire).*
+   - Add F̃(n, β) = F(n, β) + c·sin²(πnβ). It is unchanged at every β = q/n for integer n, so the honest sums at
+     n = 2, 3 are unchanged, but it grows like e^{2πn|Im β|}, which is not admissible.
+   - The continuation formula applied to F̃ must **disagree** with the honest sums at n = 2, 3. This is the EXP-057 Q1
+     must-fail mechanism. Pre-check the size of the disagreement first.
+3. *Decision rule, wording fixed.*
+   - Agreement = |δκ_SC − δκ_B| ≤ 3 × the combined error.
+   - If they agree, **δκ is quoted with the smaller route's error, plus |δκ_SC − δκ_B| as a separate systematic.**
+   - If they disagree, no δκ is quoted (unchanged).
+   - The "each route ≤ 10%" bar is dropped as too loose.
