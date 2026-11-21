@@ -529,3 +529,10 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] Open after EXP-060 (whatever its outcome): C₊ at complex α as an actual resolvent matrix element. It needs the
       near-tip coupling vector in the CFH05 rapidity representation, which I have not derived. The control is Neon's
       Born closed form (T17, unverified) and the α → 0 limit −α/8 (EXP-057, argued).
+- [x] 2026-11-21: EXP-060.
+      - No resolvent poles on the CH07b line: partially verified, with 1 of 60 points VOID at round-off.
+      - The resolvent norm grows ~e^{2πy} (inference), so the norm bound does not close (e).
+      - w_S stays polynomial (R3 PASS).
+      - The det-sign detector is blind to even crossings (my design error; the κ clause carries R1).
+- [ ] **Crux of (e) now:** C₊(½ + iy) as a resolvent matrix element. Derive the near-tip coupling vector in the
+      rapidity form. Controls: Neon's Born closed form (T17, unverified) at first order in λ, and −α/8 as α → 0.

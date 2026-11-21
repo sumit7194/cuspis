@@ -6801,3 +6801,58 @@ a heuristic.
   the near-tip coupling vector have an O(1) overlap with the top eigenvectors as κ_max → 1?
 
 `scripts/exp060_run.py`; numpy; seconds; < 0.2 GB.
+
+### EXP-060 results: no resolvent poles on the grid (R1 as registered FAILS on one sub-clause at one point, round-off; diagnosed); the resolvent norm grows at a local rate rising toward 2π; R3 PASS and its must-fire fires; the det-sign detector is blind to even crossings (my design error) [model: Opus 5.5]
+
+(`scripts/exp060_run.py`, `exp060_output.txt`, `exp060_results.json`; 5 s, 0.04 GB, watchdog.)
+
+**R1 (as registered): FAIL at 1 of 60 points. Diagnosis: round-off, not a pole.**
+- At t = 0.1, y = 3.5 the stability sub-clause fired: 1 − κ_max = 7.49·10⁻⁸ vs 7.47·10⁻⁸ under (h/2, P + 2), a drift
+  of 3.2·10⁻³ against a tolerance of 10⁻³.
+- A post-run sweep over five (h, P) settings gives 7.49, 7.70, 7.62, 7.47 and 7.54·10⁻⁸. That is non-monotone ±2%
+  scatter, a round-off floor of about 1.5·10⁻⁹ absolute, not a discretisation trend.
+- κ_max < 1 holds in all five settings, by more than 40 times the scatter. Per the control table this point is
+  **VOID** for the stability clause. The other sub-clauses (real spectrum within round-off, κ_max < 1, det > 0) hold
+  there.
+- At the other 59 points every sub-clause holds:
+  - |Im κ| ≤ 7.9·10⁻⁶ against the λ²-scaled round-off tolerance;
+  - 1 − κ_max > 0;
+  - det > 0;
+  - stability ≤ 9.8·10⁻⁴.
+
+**Detector control: FAILS as registered at t = 0.1. My design error, recorded.**
+- λ² × 1.0204 pushed *two* eigenvalues past 1 (1.0200 and 1.0152), so det stayed positive (+6.2·10⁻⁷).
+- A det-sign test is blind to an even number of crossings.
+- The κ criterion fired at all four t: κ_max = 1.020. The det sign fired at t = 0.3, 1 and 3.
+- **Consequence:** R1's "det > 0" adds nothing beyond κ_max < 1. The no-pole evidence rests on the eigenvalue
+  clause, which the control shows can fire.
+
+**R2 (characterisation).**
+
+| t | 1 − κ_max at y = 1 / 2 / 3 / 3.5 | λ²(1 − κ_max) at y = 2 / 3 / 3.5 | local γ at y = 3.5 | #κ > 0.99 at y = 3.5 |
+|---|---|---|---|---|
+| 0.1 | 6.6·10⁻² / 3.6·10⁻⁴ / 1.3·10⁻⁶ / 7.5·10⁻⁸ | 2.6 / 5.2 / 6.7 | 5.86 | 6 |
+| 0.3 | 0.22 / 2.7·10⁻³ / 1.5·10⁻⁵ / 1.1·10⁻⁶ | 19 / 60 / 97 | 5.35 | 4 |
+| 1 | 0.72 / 7.0·10⁻² / 1.2·10⁻³ / 1.2·10⁻⁴ | 508 / 4.6·10³ / 1.1·10⁴ | 4.57 | 2 |
+| 3 | 0.99 / 0.83 / 0.24 / 7.0·10⁻² | 6.0·10³ / 9.4·10⁵ / 6.3·10⁶ | 2.67 | 0 |
+
+- The local rate rises with y at every t, and is higher at smaller t.
+- At t = 0.1, λ²(1 − κ_max) grows roughly linearly in y over y ∈ [2, 3.5].
+- Reading (inference from a finite range, **unverified**): 1 − κ_max ~ e^{−2πy}·poly(y) asymptotically, with the
+  crossover pushed to larger y as t grows. So ‖(1 − λ²A)⁻¹‖ ~ e^{2πy}/poly, and a norm bound gives C₊ a rate of up
+  to 3π.
+
+**R3: PASS. Must-fire: FIRES.**
+- |w_S| ≤ 1 + 2y² at all 60 points; the largest is 24.05 against 25.5 at t = 0.1, y = 3.5.
+- The resolvent trace Σκ/(1 − κ) at t = 0.3, y = 3 is 6.8·10⁴ against the bound 19.
+- So the same e^{2πy}-growing resolvent produces a polynomially bounded physical quantity, w_S, and an exponentially
+  growing unphysical one. The structure of the matrix element decides.
+
+**Grades.**
+- "No resolvent poles on Re a = ½" (T17's ASSUMED part): **partially verified** on t ∈ [0.1, 3], y ≤ 3.5. One point
+  is VOID at round-off; the eigenvalue clause can fire.
+- "Uniform resolvent bound along the line": **refuted** at the norm level on the measured range; its asymptotic form
+  is unverified. T17's "per-order O(1) plus resummation" therefore does not bound C₊, and Neon's growth conclusion
+  for C₊ is **unverified**.
+- The crux of (e) is restated: the overlap of the near-tip coupling vector with the top eigenvectors of λ²A as
+  κ_max → 1. R3 shows such overlaps can be suppressed (w_S), but C₊ has not been computed.
