@@ -10565,3 +10565,26 @@ driver `exp083_armb_c1.py`, committed with this text. No C1/C2 number has been c
   Route (ii) at P = 4 per n will be measured by the arm-(a) chain first.
 - **Heavy runs (C1 P ≥ 6, all of C2) start after ~07:30**, per the Bridge (CPU saturated until then). C1 at P ≤ 4 is light
   and runs now.
+
+### EXP-083 R3′ arm (b) C1, light geometries (P = 2, 4): production T_sad = independent FD to ≤ 3·10⁻⁹ relative; all four plants fire; one solver amendment [model: Opus 5.5]
+(`scripts/exp083_armb/c1_W{2,4}P{2,4}box4c2.{out,json}`. Kept: `*_run1_gaptol.out` (gap tolerance) and `*_run2_jsoncrash.out`
+(numpy bool in json.dump, after all numbers were printed; rerun identical).)
+- **Amendment (solver, not the comparison):** the registered gap tolerance |F| ≤ 10⁻¹⁴ is below F's float64 noise floor.
+  - Run 1 histories stagnate at 1·10⁻¹⁴ … 3·10⁻¹³. F is a sum of M = 64 O(0.3) diagonals.
+  - The solver now stops after 6 non-improving steps and returns the best iterate if it is < 10⁻¹² (reached: ≤ 4.1·10⁻¹⁴).
+  - Any σ error this leaves appears in the registered FD drift, which enters τ. τ and the plants are unchanged.
+- **Production reproduction:** fresh `saddle_term` = stored 081b/R2 `tsad` to ≤ 4·10⁻¹³ at all four.
+
+| geometry | T_prod | T_FD (lin) | rel diff | FD drift | σ̇ vector rel | s_cut 3 vs ∞ on σ̇ | plants / τ (P1, P2, P3, P4) |
+|---|---|---|---|---|---|---|---|
+| W2P2 | 11.845129046 | 11.845129021 | 2.2·10⁻⁹ | 1.0·10⁻⁹ | 1.8·10⁻⁹ | 0 | 2·10⁶, 1·10⁶, 5·10⁵, 1.7·10⁵ |
+| W4P2 | 11.763878313 | 11.763878346 | 2.8·10⁻⁹ | 2.0·10⁻⁹ | 1.5·10⁻⁹ | 2.6·10⁻⁷ | 2·10⁶, 1·10⁶, 5·10⁵, 1.5·10⁵ |
+| W2P4 | 45.571704321 | 45.571704327 | 1.2·10⁻¹⁰ | 3.3·10⁻¹⁰ | 1.5·10⁻⁹ | 0 | 2·10⁶, 1·10⁶, 5·10⁵, 1.3·10⁵ |
+| W4P4 | 51.066274533 | 51.066274588 | 1.1·10⁻⁹ | 2.7·10⁻¹⁰ | 1.8·10⁻⁹ | 3.2·10⁻⁷ | 2·10⁶, 1·10⁶, 5·10⁵, 1.2·10⁵ |
+
+- **PASS at all four** (τ = 10⁻⁶ relative). The real agreement is ~10⁻⁹, at the FD drift level. All plants FIRE.
+  - P4 (k-index B1[0] → B1[1]) moves T by 12–17%. So C1 resolves assembly errors of that class by a factor of ~10⁵ margin.
+- The s_cut = 3 truncation in production's σ̇ is ≤ 3·10⁻⁷ relative at W = 4. It is negligible.
+- Grade: **verified at P = 2, 4** for the assembly class. Shared machinery: QEP poles and residues, and the Poisson kernel,
+  which is integer-validated. Not a validation of the +2.4. The heavy geometries (P6–P12, 12 runs) are queued behind a
+  07:30 gate (`run_armb_c1_heavy.sh`).

@@ -60,7 +60,7 @@ tau = max(1e-6, 10 * drift) * abs(T_prod); res["tau"] = tau; dlt = abs(T_lin - T
 res["verdict"] = "PASS" if dlt <= tau else "FAIL"
 if drift > 1e-7: res["verdict"] += " (precision-limited: FD drift > 1e-7)"
 plants = dict(P1_signflip=-T_prod, P2_off=0.0, P3_half=T_prod / 2, P4_kindex=res["T_P4"])
-res["plants"] = {k: (None if v is None else dict(T=v, delta=abs(T_lin - v), ratio=abs(T_lin - v) / tau, fires=abs(T_lin - v) > 10 * tau)) for k, v in plants.items()}
+res["plants"] = {k: (None if v is None else dict(T=v, delta=abs(T_lin - v), ratio=abs(T_lin - v) / tau, fires=bool(abs(T_lin - v) > 10 * tau))) for k, v in plants.items()}
 if sd_prod is not None:
     res["sdot_vec_rel"] = float(np.abs(sdot - sd_prod).max() / np.abs(sd_prod).max())
 log(f"C1 W{W}P{P}box{WB}c{C}: |T_FD - T_prod| = {dlt:.2e} (rel {dlt/abs(T_prod):.1e}) vs tau {tau:.2e} -> {res['verdict']}; "

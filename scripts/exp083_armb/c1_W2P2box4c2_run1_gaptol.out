@@ -1,0 +1,11 @@
+[     0s] production T_sad +11.845129046147 (stored 11.845129046147033); gapcheck 4.0e-16; planted k-index T +13.845970392875
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb_c1.py", line 44, in <module>
+    gap = AB.Gap(g, s_cut=3.0, target="self"); hs = (4e-3, 2e-3, 1e-3); sd = sigdot(gap, hs)
+                                                                             ~~~~~~^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb_c1.py", line 41, in sigdot
+    sp, ip = gap.solve(1 + h, J=J0, tol=1e-14); sm, im_ = gap.solve(1 - h, J=J0, tol=1e-14)
+                                                          ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb.py", line 88, in solve
+    raise RuntimeError(f"continued gap not converged n={n}: |F| history {hist[-5:]}")
+RuntimeError: continued gap not converged n=0.999: |F| history [2.8382851624542127e-13, 7.083222897108499e-14, 7.718825578706401e-14, 1.2878587085651816e-14, 4.926614671774132e-14]

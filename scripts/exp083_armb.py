@@ -77,11 +77,17 @@ class Gap:
             e = np.zeros(N); e[y] = h
             J[:, y] = (self.F(sig + e, n)[0] - self.F(sig - e, n)[0]) / (2 * h)
         return J
-    def solve(self, n, sig0=None, tol=1e-13, itmax=40, J=None):
+    def solve(self, n, sig0=None, tol=1e-13, itmax=40, J=None, noise_ceiling=1e-12):
         sig = np.zeros(self.g.N) if sig0 is None else np.array(sig0, float)
         F, im = self.F(sig, n); J = self.jac(sig, n) if J is None else J.copy(); hist = [float(np.abs(F).max())]
+        best = (hist[0], sig.copy(), im)
         for it in range(itmax):
             if hist[-1] < tol: return sig, dict(it=it, F=hist[-1], hist=hist, imag=im, J=J)
+            if hist[-1] < best[0]: best = (hist[-1], sig.copy(), im)
+            # amendment (C1 run 1): |F| stagnates at the float64 noise floor 1e-14..3e-13 (sum of M = 64 O(0.3) diagonals);
+            # stop on 6 non-improving steps and return the best iterate if it is below the noise ceiling 1e-12
+            if it >= 6 and min(hist[-6:]) > best[0] and best[0] < noise_ceiling:
+                return best[1], dict(it=it, F=best[0], hist=hist, imag=best[2], J=J, stagnated=True)
             ds = -np.linalg.solve(J, F); sig = sig + ds
             Fn, im = self.F(sig, n); J += np.outer(Fn - F - J @ ds, ds) / (ds @ ds); F = Fn; hist.append(float(np.abs(F).max()))
             if it in (8, 16, 24) and hist[-1] > 1e-3 * hist[-9]: J = self.jac(sig, n)            # stalled -> fresh FD Jacobian
