@@ -8238,3 +8238,57 @@ numpy only, no file or network side effects.
 - The C1 identity re-passes (≤ 4·10⁻¹³).
 - Measured LU fill: 0.36 GB at W = 32, t = 1, and 0.38 GB at W = 64, t = 2. The expected peak is ~2.5–3 GB at W = 64,
   t = 1 only; it was declared to the Bridge before the relaunch (fleet rule).
+
+### EXP-073(b) results: OVERALL INCONCLUSIVE as registered. t = 1: K1-spec FAILS the 2% clause at both twists; t = 2: nuisance clause fails (λ₃ only). Descriptively the lattice spectra approach CFH and land within 1–5%, and the planted t × 1.03 kernel is told apart everywhere [model: Opus 5.5]
+(`scripts/exp073_k1_run.py` reading `exp073_k1_cache.json`; output `exp073_k1_output.txt`.
+- Light steps: `exp073_k1_output_part.txt`, peak 1.55 GB.
+- Heavy W = 64, t = 1 steps: `exp073_k1_heavy{A,B}_output.txt`, peaks 4.2 / 3.5 GB, run one at a time in a slot the
+  Bridge cleared.
+- Killed runs kept: `_killed1`, `_killed2`.)
+
+| (a, t) | λ₁ rel. to CFH, raw W = 8/16/32/64 | 3-pt extrap. rel. (λ₁, λ₂, λ₃) | p (λ₁) | log det extrap. rel. | nuisance | verdict |
+|---|---|---|---|---|---|---|
+| (0.3, 1) | 0.37 / 0.26 / 0.18 / 0.12 | 0.014, **0.028**, 0.004 | 0.52 | 0.015 | 8.7·10⁻⁴ | **FAIL** (λ₂ > 2%) |
+| (0.3, 2) | 0.51 / 0.36 / 0.25 / 0.17 | 0.033, 0.050, 0.010 | 0.47 | 0.034 | **3.6·10⁻³** | INCONCLUSIVE |
+| (½ + ½i, 1) | 0.23 / 0.079 / 0.0055 / 0.015 (crosses) | **0.023**, 0.055, 0.082 | 1.85 | 0.022 | 7.9·10⁻⁴ | **FAIL** (non-monotone, λ₁ > 2%) |
+| (½ + ½i, 2) | 0.45 / 0.21 / 0.055 / 0.0064 | 0.047, 0.16, 0.32 | 1.33 | 0.046 | **3.2·10⁻³** | INCONCLUSIVE |
+
+- **Sign:** the same as CFH everywhere (positive real on both twists). So "isospectral" is not contradicted by a sign
+  or factor.
+- **Planted** t × 1.03 (a 6–15% shift): told apart at all four points.
+- **Nuisance diagnosis.** Only λ₃ fails, at |λ₃| ~ 4·10⁻⁸ to 6·10⁻⁷ for t = 2. λ₁ moves by ≤ 1.2·10⁻⁴ and λ₂ by
+  ≤ 8·10⁻⁴. The verdict stays INCONCLUSIVE as registered.
+
+**Analysis (not changing any verdict).**
+- *Where the fail comes from.* Convergence in W is slow: λ₁'s error falls like W^{−0.5} at a = 0.3, close to the
+  w^{−2a} tip rate T31 named. At the complex twist the error **changes sign** between W = 32 and 64, so it is
+  non-monotone.
+- A free-exponent 3-point fit on such a sequence carries a few-% systematic. I did not bound that before fixing the 2%
+  tolerance (a rule VIII slip). **The 2% is kept and not loosened after the fact.**
+- *What the data do show (descriptive).*
+  - All four λ₁ extrapolations land within 1.4–4.7% of CFH.
+  - The finest raw points are within 0.6% (complex, t = 2) and 1.5% (complex, t = 1).
+  - The log det extrapolations are within 1.5–4.6%.
+  - A 3% t-shift of the CFH kernel is resolved everywhere.
+  - That is **consistent with T31's free factorisation (TGTG K_free isospectral to λ²RRᵀ) at the few-% level. It is
+    not verified at 2%.**
+- *T31's own K1 miss (×2).* At W ≤ 8 our lattice is also 37–71% off. In our larger box the sequence keeps closing. So
+  T31's factor 2 is mostly small W plus its 4w × 3w box. Its "w^{−2β} tip convergence" explanation is **supported**
+  here, which revises my EXP-073 first-pass remark. That remark was based on fitting its box-contaminated points.
+- *What this does and does not bear on.*
+  - The determinant side follows anyway from exact algebra plus CFH's own result, which EXP-071 checks through κ_free.
+  - The new content tested here is the spectrum-level (TGTG ↔ CFH) correspondence.
+  - **It says nothing about the σ side.** T31's σ numbers use a 2D stand-in bubble (EXP-073 addendum), and the
+    continuum trace-class question for the true 3D bubble is open.
+
+**Grade.** T31 K1:
+- registered test **INCONCLUSIVE** overall (t = 1 FAIL at 2%, t = 2 nuisance);
+- descriptively **partially verified at the few-% level** (convergence toward CFH, correct sign, resolution better
+  than a 3% kernel shift).
+
+**What would decide it at ≤ 1%.**
+- (i) Larger W at t = 1 (W = 128 is ~4× the memory, about 15–20 GB: not on this box).
+- (ii) A lattice-free route: the BIE coincident-trace gate (2m²∫[G_a − G₀]_conn vs Fredholm), deferred from EXP-071.
+  This tests the det level, not the spectrum.
+- (iii) Richardson extrapolation with the theoretically known exponent ladder {2a, 1, …} in place of a free p. That
+  would need its own registration.

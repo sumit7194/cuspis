@@ -10,19 +10,35 @@ def fit3(Ws, f):
     roots = [brentq(g, ps[i], ps[i + 1]) for i in range(len(ps) - 1) if np.isfinite(v[i]) and np.sign(v[i]) != np.sign(v[i + 1])]
     if not roots: return np.nan, np.nan
     p = roots[0]; c = (f[0] - f[1]) / (Ws[0] ** -p - Ws[1] ** -p); return f[0] - c * Ws[0] ** -p, p
-res = {}; Ws = (8, 16, 32, 64); allpass = True; inconcl = False
+import os
+CACHE = "exp073_k1_cache.json"
+cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
+SKIP = os.environ.get("EXP073_SKIP", "")          # e.g. "64@1.0": defer the heavy step (scheduling only)
+def step(W, t, a, **kw):
+    k = f"{a}|{t}|{W}|{kw.get('pad_over_m', 8.0)}|{kw.get('D_over_m', 8.0)}"
+    if k not in cache:
+        if f"{W}@{t}" in SKIP and not kw: return None
+        pressure_guard(); t0 = time.time(); Ks, info = Kfree(W, t, a, **kw)
+        ev = top(np.linalg.eigvals(Ks)); ld = logdet_IK(Ks)
+        cache[k] = dict(ev=[[e.real, e.imag] for e in ev], ld=[ld.real, ld.imag], N=info['N'], P=info['P'], sec=time.time() - t0)
+        json.dump(cache, open(CACHE, "w"), indent=1)
+    c = cache[k]; return np.array([complex(*e) for e in c['ev']]), complex(*c['ld']), c
+res = {}; Ws = (8, 16, 32, 64); allpass = True; inconcl = False; missing = False
 for a in (0.3, 0.5 + 0.5j):
     for t in (1.0, 2.0):
         key = f"a={a},t={t}"; cf = top(cfh_eigs(t, a, h=0.05)); cfp = top(cfh_eigs(t, a, h=0.05, scale_t=1.03))
         cfdet = complex(np.sum(np.log(1 - cfh_eigs(t, a, h=0.05))))
         rows = {}
         for W in Ws:
-            pressure_guard(); t0 = time.time(); Ks, info = Kfree(W, t, a); ev = top(np.linalg.eigvals(Ks)); ld = logdet_IK(Ks)
-            rows[W] = (ev, ld)
+            out = step(W, t, a)
+            if out is None:
+                print(f"{key} W={W}: deferred (EXP073_SKIP)", flush=True); missing = True; continue
+            ev, ld, info = out; rows[W] = (ev, ld)
             print(f"{key} W={W} N={info['N']} |P|={info['P']}: top3 {np.round(ev, 7)}  logdet(I-K) {ld:+.7e}  "
-                  f"rel to CFH {np.round(np.abs(ev/cf-1), 4)}  [{time.time()-t0:.0f}s]", flush=True)
+                  f"rel to CFH {np.round(np.abs(ev/cf-1), 4)}  [{info['sec']:.0f}s]", flush=True)
         # nuisance at W=32
-        pressure_guard(); Ksn, _ = Kfree(32, t, a, pad_over_m=6.0, D_over_m=6.0); evn = top(np.linalg.eigvals(Ksn))
+        evn = step(32, t, a, pad_over_m=6.0, D_over_m=6.0)[0]
+        if len(rows) < len(Ws): continue
         nuis = float(np.max(np.abs(evn / rows[32][0] - 1)))
         ext = []; ps = []
         for k in range(3):
@@ -46,5 +62,5 @@ for a in (0.3, 0.5 + 0.5j):
         res[key] = dict(cfh=[str(c) for c in cf], cfh_planted=str(cfp[0]), rows={W: ([str(e) for e in rows[W][0]], str(rows[W][1])) for W in Ws},
                         extrap=ext, p=ps, relext=relext, mono=mono, sign_ok=sign_ok, nuis=nuis, spec_pass=spec_pass,
                         planted_apart=planted_apart, det_extrap=dfi, det_p=dp, cfh_det=str(cfdet))
-print("OVERALL K1-spec:", "INCONCLUSIVE" if inconcl else ("PASS" if allpass else "FAIL"), flush=True)
+print("OVERALL K1-spec:", "INCOMPLETE (deferred steps)" if missing else ("INCONCLUSIVE" if inconcl else ("PASS" if allpass else "FAIL")), flush=True)
 json.dump(res, open("exp073_k1_results.json", "w"), indent=1, default=str)
