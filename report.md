@@ -7984,3 +7984,38 @@ S⁽⁰⁾_univ = 𝒞[F₁(β)] + ½𝒞[T(α)], with ΔG^{(β)} = G^{(β)} −
 
 **My recommendation:** (i) first. It needs the cut reduction plus its brute-force gate (both needed in every option)
 and the ‖X‖ size estimate, about 1–2 sessions. Then decide between (ii) and (iii) on the measured ‖X‖.
+
+### δκ Tier 1: the cut reduction (argued), and a theory checkpoint before registration (the Z-factor term) [model: Opus 5.5]
+**Pre-check P1 (`scripts/exp072_precheck_output.txt`).** The per-slice self-energy is
+Σ̂_k(ρ) = ∫dy e^{iky}Σ(√(ρ² + y²)) = −(2k²/(3π³ρ²))K₂(kρ). This matches direct quadrature to ≤ 3·10⁻⁷ (the oscillatory
+tail). At short distance Σ̂_k ~ −4/(3π³ρ⁴) + k²/(3π³ρ²): degree −4 = −d−2 in 2D, so its finite part carries a local
+log-scale ambiguity.
+
+**Cut reduction (argued).**
+- Tr(Σ̂_k ΔĜ_k) = ∫d²p/(2π)² Σ̃_k(p) W(p), with W(p) = ∫∫e^{ip·(x−x′)}ΔĜ_k(x′, x).
+- ΔĜ_k is exactly the BIE layer potential, so W(p) = (p² + k²)⁻¹∫_S dξ e^{ip_xξ}[ip_y φ_p(ξ) − ψ_p(ξ)] (signs to be fixed
+  in code). Here (φ_p, ψ_p) are the jump densities for the incident plane wave e^{−ip·x}/(p² + k²).
+- So each p costs **one extra BIE right-hand side**, with no finite parts.
+- The near-tip regular modes give W_conn ~ p^{−4−2Re a}. The connected trace with Σ̃ ~ p² log p converges for Re a > 0,
+  which includes the whole CH07b line.
+- Single-edge pieces carry tip singularities, ~p^{−2−2a}, and edge-local divergences. They are subtracted.
+
+**Theory checkpoint (argued; it blocks the Tier-1 registration).**
+- Σ_flat is defined up to a local term c(k² + p²), the φ wave-function-renormalisation ambiguity (Σ̃ ∝ p²log(p²/μ²)).
+  In SC that term contributes c·𝒞[2Tr((−∇²)(ΔG^{(β)} + …))].
+- Formally Tr((−∇²)∂ₙG̃ₙ) = −Tr(G̃ ∂ₙ(−∇²ₙ)) is tied to ∂ₙ log det(−∇²ₙ), i.e. to the free entropy, which has a universal
+  κ_free·L/w piece. Equivalently, in the W route, ∫d²p (k² + p²)W_conn(p) converges and need not vanish.
+- But a rescaling φ → Z^{½}φ cannot change an entropy. **So the c-dependence must cancel against something in the
+  O(N⁰) bookkeeping, or the trace must vanish.** I have not identified which.
+- My step-1 note filed local terms as "L/ε only" (argued). **For this bulk Z-term that argument looks wrong.**
+- Until it is resolved, a Tier-1 number would be scheme-dependent by c·(something ∝ κ_free).
+
+**Proposed resolution path.**
+- **(1) Measure it first:** the universal L/w coefficient of 𝒞[Tr((−∇²)ΔG_conn)], via the W route with Σ̃ → p² + k².
+  - If it is zero, the issue is moot (argued), and that is a must-pass gate.
+  - If it is non-zero, the scheme must be fixed by a physical condition. Candidate: the on-shell/conformal
+    normalisation in which the full O(1/N) propagator has the CFT form with no p²-local term, consistent with the
+    anomalous dimension.
+- **(2) In parallel:** a separate derivation (not yet attempted) of why the δκ formula should be invariant under φ rescaling (a good Neon
+  brief).
+- Once (1) or (2) settles it, register Tier 1 + ‖X‖ with the Bridge's decision rule.
