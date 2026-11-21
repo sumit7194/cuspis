@@ -7942,3 +7942,45 @@ where the BIE is least precise.
     δκ/κ_free ratios.
 - **Grade:** the SC continuation (𝒞 line integral), its sign and the real-scalar counting factor are **verified** against
   the free κ. The free-scalar κ = 0.039648 (three of our routes) is in mild tension with CHL09's printed 3rd figure.
+
+### δκ: SC numerical design and cost assessment (argued; written before any SC trace code; a decision point) [model: Opus 5.5]
+**What SC needs** (from the step-1 note).
+S⁽⁰⁾_univ = 𝒞[F₁(β)] + ½𝒞[T(α)], with ΔG^{(β)} = G^{(β)} − G₁ the strip's twisted-minus-flat propagator:
+- F₁(β) = ½ Tr log(1 + X_β), where X_β = B₁⁻¹·(2G₁∘ΔG^{(β)}) is a 3D operator. Its linear part is Tr(Σ_flat ΔG^{(β)}).
+- T(α) = 2Tr(Σ_flat(ΔG^{(α)} + ΔG^{(−α)})) + 2Tr(B₁⁻¹·ΔG^{(α)}∘ΔG^{(−α)}).
+- Universal part: subtract the single-edge (cone) pieces of each.
+- Everything is translation-invariant along the strip. So **every operator is diagonal in k_y**; the pointwise products
+  G₁∘ΔG become q-convolutions inside each k_y.
+
+**Tier 1: the linear terms (tractable).**
+- Per slice, ΔĜ_k is exactly the BIE layer potential, so ΔĜ_k(x′, x) = ∫_S[φ_x ∂_ηG₀ − ψ_x G₀].
+- Tr(Σ̂_k ΔĜ_k) then reduces to integrals of the jump densities against the known kernel Σ̂_k∗G₀, whose Fourier form is
+  ∝ log(p² + k²). That is the "cut reduction"; its exact bilinear form is still to be written.
+- Cost: one BIE solve per (mass, β), with the densities for O(10²) source points. Manageable: hours.
+- Gate: cut-reduced vs brute force (a finite-part 2D double integral, Σ̂_k ~ |x|⁻⁴ per slice) at two slices and one
+  complex β (the Bridge's point 1).
+
+**Tier 2: the nonlinear terms (the real cost).**
+- These are the q = 0 sector's 2Tr(B₁⁻¹ΔG^{(α)}∘ΔG^{(−α)}) and the log det of the half-twisted bubble beyond linear
+  order.
+- They need X̂_β(k) as a 2D operator per k: K̂(k; x, x′) = ∫dq/2π Ĝ₁(q; x − x′)ΔĜ_{k−q}(x, x′), at all point pairs.
+- Then log det_{2D}(1 + X̂) per k, then ∫dk, then 𝒞 over β.
+- At small k the strip correction ΔĜ extends to ~1/k ≫ w, so the transverse grid must be multiscale (log-polar around
+  the strip).
+- Rough cost: ~10³ BIE solves (masses × β), each followed by N² pair evaluations with N ~ 10³. **That is days to weeks
+  of compute at 1–2 cores, plus a new multiscale Fredholm-determinant code.**
+- I do not yet know how large Tier 2 is relative to Tier 1. **That is the first thing to find out**, cheaply:
+  - bound ‖X̂_β(k)‖ (for example its Hilbert–Schmidt norm on a coarse grid) at a few (k, β);
+  - if ‖X‖ ≪ 1 the quadratic term is a small correction and Tier 2 can be estimated rather than computed.
+
+**Options for the decision (Sumit / the Bridge).**
+- **(i)** Tier 1 only, plus a measured size estimate of Tier 2. That gives δκ to the precision the size estimate allows.
+  This is honest if ‖X‖ is small.
+- **(ii)** The full SC (Tiers 1 + 2): a multi-week numerical project. It would give the complete answer (unverified until done).
+- **(iii)** An integer-n route as the cross-check: the full O(N⁰) Rényi correction at n = 2, 3 on the strip (honest
+  sector sums, no continuation), which the registered honest-sum gate needs anyway. It also gives a δκ_n trend.
+- **(iv)** Pause δκ here and write up what is settled: Lemma U verified/argued as graded; the SC formula and its
+  validated inputs (BIE at complex twist, the continuation and counting, the Σ normalisation).
+
+**My recommendation:** (i) first. It needs the cut reduction plus its brute-force gate (both needed in every option)
+and the ‖X‖ size estimate, about 1–2 sessions. Then decide between (ii) and (iii) on the measured ‖X‖.
