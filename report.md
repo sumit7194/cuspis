@@ -10323,3 +10323,151 @@ geometry. route_b produced the 081b numbers.
 - Arb P = 4 arm (a), n ≤ 12: ≈ 1 h for both geometries, < 0.6 GB.
 - Route (ii) at P = 4 with tightened quadrature: ≈ 2 h per geometry (measured first).
 - One job at a time, nice 12.
+
+### EXP-083 R3′ step 1 (late entry; the run was committed at 332830a without a report entry, which is a recording slip): port quadrature, visibility scaled, and two deviations from the registration [model: Opus 5.5]
+(`scripts/exp083_r3p_quad.py`, `exp083_r3p_quad2.py` and their outputs; `exp083_r3p_run.py`; `run_083_r3p.sh`.)
+- **Goal:** the registration asked for port δ ≤ 10⁻¹¹ at W2P2, with the reached δ stated otherwise.
+- **Outer quadrature (Mx × Mt × tmax), inner npt 40:**
+  - The deviation falls from 5·10⁻⁸…3·10⁻⁶ (24 × 48, tmax 4) to 2·10⁻¹⁰…4·10⁻⁸ (96 × 96, tmax 6).
+  - Mx 24 → 48 changes nothing, so the β path is converged. The tail (Mt, tmax) and the inner npt dominate.
+- **Inner discretization (npt, npt0) with outer (Mt, tmax):**
+  - At npt 120, npt0 512, Mt 160, tmax 8: n = 2…6 deviations are 9.6·10⁻¹¹, 9·10⁻¹⁴, 9.5·10⁻¹², 6.3·10⁻¹¹, 2.2·10⁻¹⁰.
+  - These are the production settings for the chain.
+- **n = 1 floor:** |Q_cont(1)| = 3.6·10⁻⁹ under every setting.
+  - It does not move with any quadrature parameter, so it is set by production's pole/residue precision, not by the port.
+- **Reached δ, stated:** ~10⁻¹³…2·10⁻¹⁰ at n ≥ 2, and 3.6·10⁻⁹ at n = 1. This misses the registered 10⁻¹¹.
+  - Per the registered fallback, the visibility claim is scaled.
+  - The ~10⁻⁹ floor sees a mode at n = 2 only if r ≳ 10⁻⁹ / |ln r| scale. The committed scaling is r ≳ 2·10⁻⁶ (s ≲ 2.0)
+    with the slope bound recomputed at that δ when the chain is graded. **Partially verified** (W2P2 only).
+- **Deviation 1 (not recorded at the time):**
+  - The registration says P = 4 integers n = 1…12, planted n ≤ 3. The chain runs the P = 4 port at n ≤ 6 and planted
+    n ≤ 2 (sed at 332830a).
+  - Reason (reconstructed now, not written down then): per-n port cost grows with slice size (96 sites at P = 4 against 32
+    at P = 2). This is a deviation, and the P = 4 conclusion will be scoped to n ≤ 6.
+- **Deviation 2 (resource slip):**
+  - Registered estimate for Arb P = 4 arm (a), n ≤ 12: < 0.6 GB.
+  - Measured: W2P4 peaked at **1.38 GB** (wall 511 s, n ≤ 12 complete). W4P4 was **killed by the 1.5 GB watchdog at
+    1.92 GB** during n = 10, after n ≤ 9 had been written.
+  - The estimate was off by ×2.3 to ×3+. The W2P4 run was over 1 GB and was not declared beforehand.
+  - The watchdog did its job. W4P4 n ≤ 9 covers the port's n ≤ 6. n = 10…12 at W4P4 are not produced. A rerun at
+    ~3 GB (measured × 1.5) would need a declaration first.
+
+### T46g grade (Neon, relayed by the Bridge; UNVERIFIED on arrival): ε = 0.1 saddle-on slope, the n-general saddle, its hidden thresholds, and which object is "T46d" [model: Opus 5.5]
+(`scripts/t46g_grade/`: `make_patched.py` builds instrumented scratch copies of Neon's file (sha256 426e751b…; Neon's code is
+not committed); `drv_ntf.py`, `census.py`, `drv_mp.py`; outputs `item2_output.txt`, `item3_output.txt`,
+`ntf_sweep_output.txt`, `census_output.txt`, `mp_inject_output.txt`. I read the whole file (781 lines) first and ran
+everything from a scratch copy with `python -I`.)
+
+**(0) Reproduction.**
+- item2, saddle on, from the scratch copy (90 s, 0.07 GB):
+  - ε = 0.1: Q′(1) = **+0.0037422534** exact (T1 + T_sad + T2), FD +0.0037422557 (diff 2.4·10⁻⁹).
+  - ε = 1: +0.0260134048.
+  - Integers n = 2…12 match its own honest saddle-on Q(n) to ≤ 10⁻¹⁰.
+- Its honest saddle-on column against mine (EXP-082b, independent code): ε = 0.1, n = 2: 0.000997169385 vs 0.000997169380;
+  n = 12: 0.005985927186 vs 0.005985927142.
+  - Agreement is 5·10⁻¹² to 4·10⁻¹¹, which is two implementations. **Verified.**
+
+**(1) Is +0.0037423 inside my honest-fit spread at ε = 0.1?** Yes, but the spread is wide.
+- My fits (EXP-082b): 1b +3.945·10⁻³; 1b+conf **+3.740·10⁻³**; 2b +3.623·10⁻³; 2b+conf +3.587·10⁻³; 3b +1.911·10⁻³.
+  - The spread is a factor of 2.
+  - The best-held-out model (1b+conf: hold-out n = 16 at 7·10⁻¹¹, n = 6, 7 at 7·10⁻¹⁰) differs from T46g by 2.2·10⁻⁶
+    (6·10⁻⁴ relative).
+- Caveats carried from R2/R3:
+  - Fixed-base fits are an incomplete base set. Integer agreement is ill-conditioned for small-r modes.
+  - So "inside the spread" is consistency, not validation.
+- The honest Q(n) at ε = 0.1 is almost exactly linear for n ≥ 3 (step 4.98827·10⁻⁴). The n = 1 slope (7.5× larger)
+  lives entirely in the n = 1…3 structure.
+- Grade: **consistent; partially verified.**
+
+**(2) Is its n-general saddle the right object, with no hidden threshold?**
+- *Object:* it is the right object. Grade: argued, plus integer-verified.
+  - The gap is Σ_{q∈q0}(dq/π)[A_n[G_q^{(σ)}]_xx − G0_xx] = 0. It is sheet-symmetric: one σ on every sheet, t → −t
+    symmetrised.
+  - A_n is the continued single-factor sheet average. At integer n it is (1/n)Σ_j G(j/n), which is the same gap my Arb
+    arm (b) solves.
+  - The Jacobian is analytic (−½Σ(dq/π)B^{(0)}_{n,q}).
+  - At integer n its σ_n reproduces the honest saddle-on Q(n) to ≤ 10⁻¹⁰.
+  - Not checked: the continued A_n between integers. No referee exists for that, and that is the R3 lesson.
+- *Thresholds in the code:*
+  - `noise_tol` on δ = λ − ¼: 32 eps‖G_tb‖ or 16× the most negative eigenvalue (real σ), 64 eps‖G_tb‖ (complex σ);
+  - the sym_eig cluster tolerance 1e-8;
+  - close_pm/mp 1e-6 when |w − 1| < 1e-10;
+  - K_conv "close" 1e-4;
+  - the integer-α test 1e-13.
+  - Only `noise_tol` decides which modes exist, so it is the one of the R3 class (mode visibility).
+- *`noise_tol` sweep:* the noise_tol factor was swept over 1/16 … 65536 (6 decades).
+  - The n = 1 slope is identical to 12 digits for factors 1 … 4096.
+  - It moves by 2.4·10⁻⁷ (×1/16) and 3.7·10⁻⁷ (×65536) at ε = 0.1, and by 9.5·10⁻⁸ and 3.5·10⁻⁸ at ε = 1.
+  - The plateau is structural, not a fit artefact. The float64 δ spectrum has a gap: no eigenvalue between 10⁻¹¹ and
+    10⁻¹⁴, and 72 entries of either sign below 10⁻¹⁴ (noise-shaped).
+- ***60-digit census (mpmath) of the n = 1 cut spectrum (σ = 0), every q:***
+  - The 72 sub-10⁻¹⁴ float64 entries are **not noise**. At each q there are 2 exact zeros (|δ| ~ 10⁻⁶⁷…10⁻⁷⁸ at 60 digits).
+  - There are also **14 genuine positive modes with δ between ~10⁻²¹ and ~10⁻¹⁵**. They are identical at ε = 0.1 and
+    ε = 1 to the printed 3 digits, so they are ε-independent.
+  - Float64 cannot resolve them (it returns either sign at that size), so `noise_tol` drops all of them. **The hidden
+    threshold is real and does discard genuine modes.**
+- ***What dropping them costs (injection):***
+  - I injected the 60-digit (M₋^{±½}, δ, Y) into T46g's own `eval_exact_n1_slope` (float64 downstream) and swept the
+    keep-floor.
+  - Pipeline control: floor 10⁻¹⁴ reproduces the original to 7·10⁻¹⁴ (ε = 0.1) and 8·10⁻¹⁴ (ε = 1). It is faithful.
+  - Keeping every genuine mode (floor 10⁻²⁰ … 10⁻⁴⁰; the result saturates by 10⁻²⁰) shifts the slope by
+    **−1.23·10⁻⁸ (ε = 0.1)** and **−4.32·10⁻⁹ (ε = 1)**. Only T2 moves. T1 and T_sad are unchanged to 10⁻¹².
+  - Partial floors are not monotone (floor 10⁻¹⁶ gives −4.9·10⁻⁸). Near-degenerate pairs enter one at a time.
+- ***Known-answer control, ε = 0 (pure gauge, Q(n) ≡ 0, so the slope must be 0):***
+  - The original (modes dropped) gives 1.2·10⁻¹³. Passes.
+  - With every genuine mode kept, it gives **−5.25·10⁻⁹**. This fails at 5·10⁻⁹.
+  - So the float64 downstream evaluation of r ~ 10⁻²⁰…10⁻¹⁵ modes carries an error of that size. The ε = 0.1 shift of
+    −1.2·10⁻⁸ is therefore not resolved from zero by more than ×2.
+- Grade for (2):
+  - The threshold is real but **not load-bearing: |effect on Q′(1)| ≲ 2·10⁻⁸** (5·10⁻⁶ relative at ε = 0.1). This is
+    20× below the 2.2·10⁻⁶ fit agreement in (1). **Partially verified** (60-digit spectrum; float64 downstream; ε = 0
+    residual 5·10⁻⁹).
+  - Correction to my own expectation: the per-mode ∂ₙ grows like −2 ln r, so I expected sub-noise modes could matter.
+    Here their weights are small enough that they do not.
+  - This is one geometry family. It is not a general bound.
+- *Method note for Strip3D:* the same census + injection would test production's own sub-visibility modes (R3′ scales
+  visibility to r ≳ 2·10⁻⁶). Proposed, not run.
+
+**(3) Cost of porting the n-general saddle to Strip3D for an R3′ arm (b).** Estimate only. Argued; nothing built.
+- *Scope that suffices:* real n only (integers 1…n_max and n = 1 ± h for the slope).
+  - At real n, σ_n is real, so production's pole finder (real z < 1, reciprocal pairs) still applies unchanged.
+  - Complex-n σ (T46g item 2(b)) would need a complex-pole redesign of `Slice._poles`. It is not needed, because the growth
+    test was shown non-discriminating in R3.
+- *Build:*
+  - `Slice` takes a site vector σ (N = Lx·Lt: 32 at P = 2, 96 at P = 4, 320 at P = 8).
+  - The continued gap diagonal comes from existing data: diag(A·Res K·Aᵀ) per pole, with the p(n) weights of production's
+    `inner`.
+  - Newton with an FD Jacobian (N rebuilds per iteration).
+  - QCont(σ_n) for route (ii). Roughly 200–300 lines.
+- *Controls before use:*
+  - (i) continued gap diagonal at integer n vs the direct (1/n)Σ_j G(j/n), ≤ 10⁻¹²;
+  - (ii) σ_1 = 0;
+  - (iii) σ_n at integers vs `exp083_sector.sector_saddle` and Arb arm (b);
+  - (iv) FD Q_cont^sad′(1) vs production's T_sad. This is the real value of arm (b): an independent check of
+    production's T_sad.
+- *Compute:*
+  - The slice rebuild is cheap (an N×N inverse plus a 4W×4W QEP plus 32 contour points per pole). Per Newton iteration:
+    ~seconds at P = 2, ~1–2 min at P = 4 (FD Jacobian).
+  - Route (ii) per n as arm (a): ~47 s at P = 2 measured. P = 4 is not yet measured.
+  - At P = 2, n ≤ 72: ~2 h. At P = 4, n ≤ 6: ~2–4 h.
+  - The honest Arb arm (b) at P = 4 is the memory risk: arm (a) alone took 1.4–1.9 GB+. That run must be declared, at
+    ~3 GB.
+- *Effort:* about a day of build plus controls.
+- *Inherited thresholds:* the QEP filters, the merge, the residue radius. These are production's own, already in R3′'s
+  inventory.
+
+**Which object is "T46d".**
+- **The actual T46d** is Neon's delivered T46d code, which I ran directly (EXP-082, R3 void 57ef389).
+  - It has a mode threshold at 10⁻¹⁰.
+  - Integers pass: Q_cont(1) = 5·10⁻¹³; n = 2, 3 equal honest to 10 digits.
+  - Its slope is wrong by a lot: +0.0021 against honest −0.321 at ε = 1.
+- **T46g item 3's "T46d masked-cross"** is a reimplementation inside T46g (r_floor 10⁻¹⁰ **and drop_cross = True**). I
+  reproduced its numbers (52 s).
+  - Its slope is −0.32360 against true −0.32086 at ε = 1, only 0.0027 off.
+  - Its integers fail visibly: Q(1) = 6.3·10⁻⁴, n = 2 off by 6·10⁻⁶.
+  - So it is a different, milder known-bad, whose defect (dropped cross terms) integers can see.
+- **Its must-fail outcome says nothing about the actual T46d.** The actual T46d remains the integer-invisible known-bad
+  that voided R3.
+
+**Status of the +2.4:** unchanged. **UNVALIDATED against honest data.** T46g supports the ε-family continuation, which is
+not the production lattice.
