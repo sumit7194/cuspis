@@ -8975,3 +8975,18 @@ otherwise INCONCLUSIVE.**
 - **Revised S2 (POST-REGISTRATION, labelled):** the box-extrapolated d·r must lie within 10% of −1/32. It does (3.7%), with
   the code-path checks above.
 - **Production proceeds on that basis.** The Bridge has been told, with a veto.
+
+**T40d grade** (Neon, `neon_work/dkappa/T40d_full.md`; summary read, code not run) [model: Opus 5.5]
+- **(A) q = 0.**
+  - The exact two-edge solution via the bipolar map ζ = ln(z/(z − w)), giving an O(1/|σ|) bound: **plausible** (the
+    classical conformal map of the plane minus a segment), **unverified** here.
+  - The continuum jump δĜ₀(it) = −e^{−tΔΦ}sin(t|Δξ|)/(2πt) is a concrete, checkable formula. It is an unverified structural
+    lead for P2, already labelled as such by the Bridge.
+  - q > 0 is **open**, with a precisely stated obstruction (q²Ω² is not H₀-bounded, Ω ~ |z|²/w).
+- **(B)** log det_ren(k = 0) is finite, and ∫dk converges with a |k| cusp: **argued**, and consistent with the expected
+  infinite-volume form.
+- **(C), (D)** g₁ expansions and winding certificates on 3D cubic 10×6×12 / 14×8×12 (and N_y = 8) boxes, w = 2:
+  - finite-box, r ≈ 2–3, honestly labelled;
+  - **not directly comparable to my P1** (different box shapes, Lt ≠ 2·pad), and not continuum evidence;
+  - F4 fires.
+- **Grade:** structural leads (A, B) are unverified; numerics (C, D) are finite-box only.
