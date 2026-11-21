@@ -10012,3 +10012,20 @@ measures peak RSS on a dry run before declaring.
     expected to be one to two orders faster. **The python-flint installation (awaiting Sumit's word) is the enabling
     step even for P = 2.**
 - **Status:** R2 is paused at "decomposition validated, engine cost measured". Nothing is compared with production.
+
+### EXP-083 R2 amendment A1 (before any referee number): Arb engine, data ranges sized to the base counts, separable DFT [model: Opus 5.5]
+- **Engine:** Arb ball arithmetic via **python-flint 0.9.0**, installed on Sumit's direct word and pinned (ef07c0f).
+  prec = 400 bits (~120 digits). Ball radii are reported; a radius > 10⁻⁶⁰ on any Q(n) is a STOP.
+- **Measured cost** (`exp083_r2_arbcost.*`, 0.11 GB): N = 32 inverse 0.001 s, determinant 0.002 s; N = 96 inverse
+  0.08 s, determinant 0.24 s. A Python-level Hadamard is 0.4 ms (N = 32) and 4.8 ms (N = 96).
+- **Sector sum by separable 2D cyclic DFT** over (slice p, replica q):
+  Σ_{p,q} A_{p,q} ∘ A_{k−p,Q−q} = (1/(nN_y)) Σ_{a,b} ω^{−ak−bQ} (Â_{a,b} ∘ Â_{a,b}), with Â the forward DFT.
+  - This is an exact identity. It is checked against the direct double sum at P = 2, n = 2, 3 to ≤ 10⁻¹⁰⁰ before use.
+- **Data ranges replace "n ≤ 16":** P = 2 uses n ≤ 48; P = 4 uses n ≤ 56. The reason: M1–M4 have up to ~43 (P = 2) and
+  ~48 (P = 4) columns, from the Tier-1 own-pole counts, and the system must not be underdetermined.
+  - The data-range drift in the spread uses n ≤ 36 vs n ≤ 48 (P = 2) and n ≤ 44 vs n ≤ 56 (P = 4).
+  - The fits use mpmath QR least squares at 130 digits.
+- **Resources:** P = 2 ≈ 40 min in total (daytime). P = 4 ≈ 8 h, 4 jobs, < 0.5 GB each, run one at a time, at night,
+  after P = 2 passes. The night needs Sumit's word, per the standing rule.
+- **Arm (b) saddle:** float64 σ_n, refined by quasi-Newton with an Arb residual and the float64 Jacobian until
+  |F| ≤ 10⁻¹⁰⁰ (≤ 12 steps, else STOP).

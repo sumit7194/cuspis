@@ -1,0 +1,5 @@
+P=2 (N=32): inv 0.001s, Hadamard 0.0004s, det 0.002s (ball radius 2.6e-120) -> per n=16: 0.11 min (arm a)
+P=2 (N=32): inv 0.001s, Hadamard 0.0004s, det 0.002s (ball radius 2.6e-120) -> per n=40: 0.65 min (arm a)
+P=4 (N=96): inv 0.081s, Hadamard 0.0048s, det 0.237s (ball radius 9.8e-120) -> per n=12: 3.86 min (arm a)
+P=4 (N=96): inv 0.081s, Hadamard 0.0048s, det 0.237s (ball radius 9.8e-120) -> per n=24: 13.64 min (arm a)
+maxrss 0.11 GB
