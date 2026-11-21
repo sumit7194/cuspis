@@ -1,0 +1,1 @@
+a=0.2: direct f.p. at x_min=1e-6, 1e-8: +nan, +nan   target -0.022628398  diff +nan  (Legendre-only would be +0.020601974)  [761s]

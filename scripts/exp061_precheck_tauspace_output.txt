@@ -1,0 +1,8 @@
+control a=0 rho=0.5 tau=0.3: G_tw 1.355644333146e-01  closed 1.355644333146e-01
+control a=0 rho=1.2 tau=2.0: G_tw 3.770806937435e-02  closed 3.770806937435e-02
+a=0.35 rho=0.1: tau-space -4.145486923607e+02 (Im +1.8e-14)  freq-sum -4.145486923621e+02  rel -3.3e-12
+a=0.35 rho=0.5: tau-space -5.506518661379e-01 (Im -6.6e-17)  freq-sum -5.506518661381e-01  rel -2.4e-13
+a=0.35 rho=1.5: tau-space -3.212701082275e-03 (Im -2.7e-20)  freq-sum -3.212701082274e-03  rel +4.6e-14
+a=0.5 rho=0.1: tau-space -4.132055193957e+02 (Im +1.1e-14)  freq-sum -4.132055193971e+02  rel -3.4e-12
+a=0.5 rho=0.5: tau-space -5.363499512190e-01 (Im +3.5e-18)  freq-sum -5.363499512192e-01  rel -2.4e-13
+a=0.5 rho=1.5: tau-space -2.701313191588e-03 (Im -1.1e-19)  freq-sum -2.701313191588e-03  rel +5.0e-14

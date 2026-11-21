@@ -6948,3 +6948,49 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
   - Locality classification and the covariant-scheme value: **argued**.
   - "f(1, α) ≠ 0 in the standard family": **partially verified**. It needs C₊(α) ≠ 0 (EXP-057 (b), argued) and
     the twisted family being the right one (argued).
+
+**Pre-check 5: a second implementation of the twisted kernel (τ-space).** [model: Opus 5.5]
+(`scripts/exp061_precheck_tauspace.py`, `_output.txt`.)
+- Summing the geometric series inside Q's Laplace representation gives
+  G_tw(ρ, τ) = (1/4π²)∫_ρ^∞dt [e^{−a(t−iτ)}/(1 − e^{−(t−iτ)}) + e^{−(1−a)(t+iτ)}/(1 − e^{−(t+iτ)})]/√(2cosh t − 2cosh ρ).
+- Then Σ_tw,a(ρ) = ∫₀^{2π}dτ e^{−iaτ}D(ρ, τ)G_tw(ρ, τ).
+- The control at a = 0 reproduces 1/(4π√(2(cosh ρ − cos τ))) to all printed digits.
+- At a = 0.35 and 0.5, ρ = 0.1, 0.5, 1.5, the τ-space route equals the frequency-sum route to ≤ 3.4·10⁻¹².
+- **Grade: the twisted Σ_a(ρ) input is verified by two implementations.**
+- The τ-space form is analytic in a and takes complex a directly, which stage C uses.
+
+**Pre-check 6: the twisted on-shell total by an independent route — verified.** [model: Opus 5.5]
+(`scripts/exp061_precheck_onshell_direct.py`; outputs `_run2_partial` (a = 0.2) and `_run3` (a = 0.5, 0.8).)
+- Method:
+  - the τ-space kernel (pre-check 5), with one finite part in x = c − 1;
+  - analytic subtractions −(2/3π²)x⁻² and 2πc_a(2x)^{−3/2};
+  - nothing from the frequency-sum route or from the ρ-variable Δ finite part.
+- Two failures kept:
+  - *run 1 (NaN):* 2cosh t − 2cosh ρ cancelled to 0 in double at tiny ρ. Fixed with the exact product form
+    4 sinh((t+ρ)/2) sinh((t−ρ)/2).
+  - *run 2:* stopped by the watchdog at system memory-pressure level 2, from other jobs (this run's tree was 0.11 GB),
+    after a = 0.2 had completed. Run 3 resumed a = 0.5, 0.8.
+- Results, against [1 + 4a² − 24a(1 − a)]/(12π²) in the same scheme:
+  - a = 0.2: −0.0226265 vs −0.0226284;
+  - a = 0.5: −0.0337714 vs −0.0337737;
+  - a = 0.8: −0.0023622 vs −0.0023642.
+  - All differ by ≤ 2.3·10⁻⁶, shrinking as x_min goes 10⁻⁶ → 10⁻⁸. That is the dropped O(√x_min) piece.
+  - Legendre alone would differ by 0.043, 0.068 and 0.043.
+- **Grade: the twisted on-shell value is verified (two independent routes).** In this scheme,
+  Σ̃_tw,1(ia, a) = [1 + 4a² − 24a(1 − a)]/(12π²). Its non-local part −2a(1 − a)/π² is verified; the locality
+  classification stays argued.
+
+**Pre-check 7: the n = 1 factor on the CH07b line a = ½ + iy (stage C for f₀'s Σ factor).** [model: Opus 5.5]
+(`scripts/exp061_precheck_complex.py`, `_output.txt`; 440 s, 0.11 GB.)
+- The τ-space twisted kernel at complex a, minus the Legendre form at complex degree, with the finite part in ρ and
+  c_a = S(a)/(2π³) at complex a.
+- Analyticity predicts f.p.[Δ] = −8a(1 − a)/(3π²) = −8(¼ + y²)/(3π²): real, growing like y².
+- Measured at ρ₀ = 0.02, 0.01, 0.005:
+  - the residuals from the prediction halve with ρ₀ at y = 0.5, 1 and 2 (e.g. y = 2: 8.6, 4.3, 2.1·10⁻³);
+  - the imaginary parts fall like ρ₀²;
+  - the O(ρ₀) Richardson limits are −0.1350958 (pred. −0.1350949), −0.3377400 (−0.3377373) and −1.148320 (−1.148307).
+- The real-a control at a = 0.35 is within 1.6·10⁻⁶ of the closed form.
+- **Grade:** the n = 1 twisted on-shell factor continues to its polynomial on the line, |Σ̃₁| ~ y². Verified at
+  y ∈ {0.5, 1, 2} for the Δ-part; the Legendre part is a polynomial continued by analyticity (argued, elementary).
+  - So f₀'s growth along ½ + iy is exactly C₊'s growth times a quadratic, and the log question for f₀ is the C₊
+    question.

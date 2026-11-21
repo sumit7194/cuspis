@@ -550,3 +550,13 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       analytic large-q coefficients. Needed before "partially verified" can become "verified".
 - [ ] Re-derive the h₁ framework with f₀ ≠ 0, i.e. Σ̃′ on top of a non-zero n = 1 value. Stage B's target is still
       ∂ₙΣ̃ₙ(iα, α) in the twisted family.
+- [x] EXP-061 pre-checks 5–7.
+      - The twisted kernel is verified by two implementations (τ-space vs frequency sum, 3e-12).
+      - The twisted on-shell total is verified by two routes (2e-6).
+      - On the CH07b line, the n = 1 factor grows like y² (verified at y = 0.5, 1, 2).
+- [ ] Remaining for Lemma U (e):
+      (i) C₊(½ + iy), the crux; waits on the Neon integrands (queued, pending Sumit) or my own rapidity derivation;
+      (ii) Σ̃′ (∂ₙ at n = 1, twisted family) growth: the stage B/C build.
+          - Plan: image form of the Riemann-sum derivative (argued: UV-finite, since the j = 0 image does not depend on n);
+          - the zero-mode term −(1/4π)D₁(α; ρ)ġ;
+          - ∂ₙD at fixed frequency via −D̃₁²B̃′.

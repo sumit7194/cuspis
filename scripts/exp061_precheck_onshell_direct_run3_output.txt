@@ -1,0 +1,2 @@
+a=0.5: direct f.p. at x_min=1e-6, 1e-8: -0.033767756, -0.033771449   target -0.033773728  diff +2.3e-06  (Legendre-only would be +0.033773728)  [53s]
+a=0.8: direct f.p. at x_min=1e-6, 1e-8: -0.002361626, -0.002362219   target -0.002364161  diff +1.9e-06  (Legendre-only would be +0.040866211)  [105s]
