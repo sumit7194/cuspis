@@ -7062,3 +7062,51 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
   - D̃′(k, q) = −D̃₁²ΔB̃′ does not depend on α, so one table serves stage B (real α) and stage C (the line). For
     Re α < ¾ (which includes the line) the H² Parseval pairing with W_q(k; α) = MF[P_{α−½}g_{|α−q|}] converges
     absolutely.
+
+### Stage B/C results so far: Σ̃′ = (I) + (II)′ + (III) in the twisted family (EXP-062 series; pre-check level, unregistered) [model: Opus 5.5]
+- **Piece (II)′ input, two implementations.** At n = 1.05 and 1.02 (q = 1, k = 0.5, 2, 5), the τ-space bubble agrees
+  with EXP-056's frequency-space mode-sum instrument (M = 400).
+  - The relative differences are 8.8, 4.3, 2.5·10⁻⁵ at n = 1.05 and 1.5, 0.9, 1.0·10⁻⁵ at n = 1.02.
+  - At k = 0.5 they fall by 5.8, against 6.25 = ((0.05)/(0.02))² expected for the dropped aₙ² terms. The smaller
+    ratios at larger k sit at the instrument's own M-truncation floor of ~10⁻⁵.
+  - **Verified to linear order** (`exp062_precheck_bubble_xcheck*`).
+- **The D̃′(k, q) table** (`exp062_piece2_table*`, `exp062_piece2_q0_extend*`).
+  - q = 0–8; does not depend on α (by construction).
+  - Every q shows k²D̃′ → 0.4–0.5 (D̃′ ~ 1/k², as a ρ² ln ρ input predicts; no δ-piece).
+  - The first q = 0 row was spoiled by a ρ-cutoff at 16: the integrand there was 1.1·10⁻⁴, and its ~10⁻⁴/k tail
+    mimicked a non-decaying D̃′. With ρ_max = 50 vs 60 the redo agrees to 10⁻⁸.
+  - The last k-node (≈ 40) is under-resolved at q = 0 (16 nodes per unit ρ-panel), so pairings are reported at
+    k_max = 20, 30, 40.
+  - Runs were stopped three times by system memory-pressure level 2, from other jobs. They were resumed by a wrapper
+    that keeps the stop-at-yellow policy and waits for level 1 (`exp062_run_table_resilient.sh`).
+- **(II)′ at real α** (`exp062_piece2_pair_output.txt`): −0.017224 (α = 0.35) and −0.016207 (α = 0.5), at k_max = 40
+  and |q| ≤ 8.
+  - At α = ½ the q ↔ 1 − q symmetry holds (q = 0 and q = 1 contributions are equal).
+  - Tails, extrapolated (inference with analytically motivated exponents):
+    - the k-tail goes as 1/k² (step ratio 2.6 vs 2.86 expected), +5·10⁻⁵;
+    - the q-tail goes as 1/q², about −(5–8)·10⁻⁴.
+  - So the real-α values are good to ~10⁻³ absolute.
+- **(II)′ on the line a = ½ + iy** (`exp062_piece2_line_output.txt`): −8.5·10⁻³, −1.3·10⁻³, +6.2·10⁻⁴, +6.0·10⁻⁴
+  at y = 0.5, 1, 2, 3, with imaginary parts ~10⁻⁵. Bounded and decaying, with no exponential growth; the cutoff
+  sweeps change values by ~10⁻⁴ only.
+- **(I) at real α** (`exp062_image_onshell*`): f.p. 0.037105 (α = 0.35) and 0.067499 (α = 0.5) at ρ₀ = 0.005, O(ρ₀)
+  convergence; Richardson limits 0.03717 and 0.06756.
+  - (I) and (II)′ are separately family-dependent (Gamma interpolation of D₁ in frequency); only their sum is physical.
+- **(III)** (above): 0.071929 (α = 0.35), 0.079577 (α = ½); on the line |(III)| = 0.10–0.18 for y ≤ 4.
+- **Σ̃′ at real α** (sum, ≈ 10⁻³ precision): (I) + (II)′ + (III) = 0.0372 − 0.0172 + 0.0719 ≈ 0.091 (α = 0.35) and
+  0.0676 − 0.0162 + 0.0796 ≈ 0.130 (α = ½), each with q-tail −(5–8)·10⁻⁴ included.
+  - Graded **partially verified**: each piece's input has a two-implementation or known-answer check, but the total
+    has a single route and extrapolated tails.
+- **(I) on the line** (`exp062_image_line_output.txt`; run 1 failed on argv parsing of a complex a and is kept as
+  `_run1_argv`): f.p. ≈ 0.0673 + 0.20i (y = 1) and 0.0670 + 0.40i (y = 2) at ρ₀ = 0.005. The imaginary part grows
+  linearly, ≈ 0.2y.
+  - The y = 2 run had a node with a 12% step-size difference in ∂ₙR (Richardson-combined). Its value is reliable for
+    the trend, not to many digits.
+- **Stage C reading for Σ̃′ (partially verified, y ≤ 2 for the full sum; y ≤ 3–4 for (II)′ and (III)):**
+  - |Σ̃′(½ + iy)| ≈ 0.29 (y = 1) and 0.51 (y = 2), a local rate ln(0.51/0.29) ≈ 0.56, compared with π and 2π.
+  - Each piece is at most linear in y on the range computed, as the argued bounds say. The planted L·sin²(πa) factor
+    grows at exactly 2π (its |·| ratio between y = 1 and 2 is e^{2π}·(1 + O(e^{−2π}))), so a growth of that size
+    would have been unmistakable.
+  - **Conclusion (partially verified):** the Σ̃′ factor of h₁ grows polynomially on the CH07b line. With f₀'s factor
+    (pre-check 7, y²), every factor of the tip term except C₊ is now polynomial on the line. **The log question for
+    (e) is now exactly the growth rate of C₊(½ + iy)**: log-free if that rate is < 2π, and T17's Born value is π.

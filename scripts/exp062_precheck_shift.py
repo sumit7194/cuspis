@@ -9,7 +9,7 @@ def h(t, n, a): return (exp(-a * t) + exp(-(1 / n - a) * t)) / (n * (-mp.expm1(-
 def _ig(t, n, a):
     extra = int(mp.ceil(2 * max(0, -mp.log10(t)))) + 15          # run 1 lost digits to h - coth cancellation near t = 0
     with mp.workdps(mp.dps + extra):
-        t = mp.mpf(t); v = (h(t, mp.mpf(n), mp.mpf(a)) - coth(t / 2)) / (2 * sinh(t / 2))
+        t = mp.mpf(t); v = (h(t, mp.mpf(n), mp.mpc(a) if isinstance(a, (complex, mp.mpc)) else mp.mpf(a)) - coth(t / 2)) / (2 * sinh(t / 2))
     return +v
 def dG(n, a):
     return quad(lambda t: _ig(t, n, a), [0, 1, 5, 20, inf]) / (4 * pi ** 2)

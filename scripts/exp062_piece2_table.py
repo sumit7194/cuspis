@@ -23,8 +23,10 @@ def k_nodes(K=40.0, width=2.0, nper=12):
 
 if __name__ == "__main__":
     Qmax = int(sys.argv[1]) if len(sys.argv) > 1 else 8
-    kk, wk = k_nodes(); out = {"k": kk, "wk": wk}
-    for q in range(0, Qmax + 1):
+    q0 = int(sys.argv[2]) if len(sys.argv) > 2 else 0          # resume (run 1 was stopped by system memory pressure after q=3)
+    kk, wk = k_nodes(); fn = os.path.join(os.path.dirname(os.path.abspath(__file__)), "exp062_piece2_table.npz")
+    out = dict(np.load(fn)) if q0 > 0 else {"k": kk, "wk": wk}
+    for q in range(q0, Qmax + 1):
         t0 = time.time(); rmax = float(min(16, max(6, int(36 / (q + 1)))))
         R, W = rho_nodes(rmax)
         vals = np.array([(lambda v1, v2: v1 + (v1 - v2) / 3)(dBp(q, r, 1e-3), dBp(q, r, 2e-3)) for r in R])

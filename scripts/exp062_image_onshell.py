@@ -14,7 +14,8 @@ def dnR(a, r):
     return d1 + (d1 - d2) / 3, abs(d1 - d2)
 
 def image_fp(a, rmax=22.0, nper=10):
-    A = float(-(2 / mp.pi) * (dG(1 + mpf('1e-6'), mpf(a)) - dG(1 - mpf('1e-6'), mpf(a))) / mpf('2e-6'))
+    A = complex(-(2 / mp.pi) * (dG(1 + mpf('1e-6'), mpc(a)) - dG(1 - mpf('1e-6'), mpc(a))) / mpf('2e-6'))
+    A = A.real if A.imag == 0 else A
     xs, ws = np.polynomial.legendre.leggauss(nper); panels = []
     el = [0.005, 0.01, 0.02, 0.05, 0.1, 0.25, 0.5, 1.0]
     for lo, hi in zip(el[:-1], el[1:]):
@@ -27,15 +28,16 @@ def image_fp(a, rmax=22.0, nper=10):
     for lo, Rg, W in panels:
         v = 0
         for r, w in zip(Rg, W):
-            P = complex(legenp(mpc(a) - mpf(0.5), 0, mp.cosh(mpf(r)), type=3))
+            nu = mpc(a) - mpf(0.5); nu = nu.real if nu.imag == 0 else nu   # run 1 crashed: mpmath rejects 0+0j degree
+            P = complex(legenp(nu, 0, mp.cosh(mpf(r)), type=3))
             d, e = dnR(a, r); maxstep = max(maxstep, e / max(abs(d), 1e-300))
             v += w * 2 * np.pi * np.sinh(r) * P * d
         contrib.append((lo, v))
     return A, {r0: sum(v for lo, v in contrib if lo >= r0 - 1e-12) - 2 * np.pi * A / r0 for r0 in (0.02, 0.01, 0.005)}, maxstep
 
 if __name__ == "__main__":
-    alist = [float(v) for v in sys.argv[1:]] or [0.35, 0.5]
+    alist = [(lambda z: z.real if z.imag == 0 else z)(complex(v)) for v in sys.argv[1:]] or [0.35, 0.5]
     for a in alist:
         t0 = time.time(); A, o, ms = image_fp(a)
-        print(f"a={a}: A={A:+.10e}; f.p.[image] at rho0 " + ", ".join(f"{k}: {v.real:+.9f}{v.imag:+.1e}j" for k, v in o.items())
+        print(f"a={a}: A={A}; f.p.[image] at rho0 " + ", ".join(f"{k}: {v.real:+.9f}{v.imag:+.1e}j" for k, v in o.items())
               + f"  (max rel step-diff {ms:.1e})  [{time.time()-t0:.0f}s]", flush=True)

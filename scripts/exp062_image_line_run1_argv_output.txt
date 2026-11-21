@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp062_image_onshell.py", line 38, in <module>
+    alist = [float(v) for v in sys.argv[1:]] or [0.35, 0.5]
+             ~~~~~^^^
+ValueError: could not convert string to float: '0.5+1j'

@@ -560,3 +560,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
           - Plan: image form of the Riemann-sum derivative (argued: UV-finite, since the j = 0 image does not depend on n);
           - the zero-mode term −(1/4π)D₁(α; ρ)ġ;
           - ∂ₙD at fixed frequency via −D̃₁²B̃′.
+- [x] 2026-11-21: stage B/C for Σ̃′ (twisted family, EXP-062 series).
+      - (II)′ input verified by two implementations to linear order.
+      - Σ̃′(α = 0.35) ≈ 0.091 and Σ̃′(½) ≈ 0.130 (±10⁻³, partially verified).
+      - On the line, |Σ̃′| grows polynomially (y ≤ 2 full sum; y ≤ 3–4 pieces).
+      - The (e) crux is now only C₊(½ + iy). T20 (Neon) is asked for the per-order integrands.
+- [ ] y = 3 for piece (I) (running), to test the linear trend.
+- [ ] Optional: a full finite-difference two-implementation check of Σ̃′ total (lattice D_n at n = 1 ± δ). It was not
+      done; the total currently has a single route.

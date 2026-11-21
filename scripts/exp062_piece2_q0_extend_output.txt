@@ -1,0 +1,4 @@
+rmax=50.0: weighted integrand at cut +1.37e-11; k^2 D~'_0 at k=5,10,20,30,40: +5.6157e-01 +5.1184e-01 +5.0285e-01 +5.0236e-01 -5.1157e+00  [251s]
+rmax=60.0: weighted integrand at cut +1.11e-13; k^2 D~'_0 at k=5,10,20,30,40: +5.6157e-01 +5.1185e-01 +5.0285e-01 +5.0236e-01 -5.1157e+00  [282s]
+max |D~'_0(rmax 60) - D~'_0(rmax 50)| over k-grid: 9.51e-09
+table q=0 replaced by rmax=60 version

@@ -1,0 +1,16 @@
+a=0.35: A=-4.8611705695e-04; f.p.[image] at rho0 0.02: +0.036931090-1.5e-11j, 0.01: +0.037044733-2.5e-11j, 0.005: +0.037104789-5.9e-11j  (max rel step-diff 2.0e-03)  [510s]
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp062_image_onshell.py", line 39, in <module>
+    t0 = time.time(); A, o, ms = image_fp(a)
+                                 ~~~~~~~~^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp062_image_onshell.py", line 30, in image_fp
+    P = complex(legenp(mpc(a) - mpf(0.5), 0, mp.cosh(mpf(r)), type=3))
+                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/orthogonal.py", line 372, in legenp
+    return ctx.legendre(n, z, **kwargs)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/ctx_mp_python.py", line 1023, in f_wrapped
+    retval = f(ctx, *args, **kwargs)
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/orthogonal.py", line 353, in legendre
+    n = int(n)
+TypeError: int() argument must be a string, a bytes-like object or a real number, not 'mpc'
