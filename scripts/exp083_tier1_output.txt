@@ -1,0 +1,42 @@
+[     0s] pure-gauge (wall-to-wall) honest Q(n), n=2,3,4: ['+2.3e-13', '-2.3e-13', '-4.5e-13']
+[     0s] W2P2: own poles (full-operator scan) vs production QEP, s<=3.5: MATCH
+[     1s] W2P2: honest Q(n) n=2..20: -5.55423969 -8.54883755 -11.40836557 -14.26090942 -17.11311146 -19.96529759 -22.81748299 -25.66966837 -28.52185374 -31.37403912 -34.22622449 -37.07840986 -39.93059524 -42.78278061 -45.63496599 -48.48715136 -51.33933673 -54.19152211 -57.04370748
+[     1s]    fixed floor 0.0001 conf False: Q'(1) -283.175484  (10 bases, rms 1.3e-08, held-out 1.0e-08)
+[     1s]    fixed floor 0.0001 conf True: Q'(1) -11.288809  (10 bases, rms 7.5e-13, held-out 2.3e-12)
+[     1s]    fixed floor 1e-06 conf False: Q'(1) -283.175484  (10 bases, rms 1.3e-08, held-out 1.0e-08)
+[     1s]    fixed floor 1e-06 conf True : Q'(1) -11.288809  (10 bases, rms 7.5e-13, held-out 2.3e-12)
+[     1s]    fixed floor 1e-07 conf False: Q'(1) -283.175484  (10 bases, rms 1.3e-08, held-out 1.0e-08)
+[     1s]    fixed floor 1e-07 conf True : Q'(1) -11.288809  (10 bases, rms 7.5e-13, held-out 2.3e-12)
+[     1s]    free 2                      : Q'(1) -11.232175  (2 bases, rms 1.1e-06, held-out 1.2e-06)
+[     1s]    free 3                      : Q'(1) -11.880100  (1 bases, rms 6.2e-03, held-out 3.6e-03)
+[     1s]    free 4                      : Q'(1) -11.935353  (1 bases, rms 6.7e-03, held-out 3.8e-03)
+[     1s]    drift over fits with held-out < 1e-6: 2.72e+02 (6 fits); Kronecker gap (n>=2 fit extrapolated to n=1, should be 0): -2.771e+02
+[     1s] W4P2: own poles (full-operator scan) vs production QEP, s<=3.5: MATCH
+[     2s] W4P2: honest Q(n) n=2..20: -5.14856854 -7.85785201 -10.48107720 -13.10146386 -15.72176012 -18.34205357 -20.96234694 -23.58264031 -26.20293368 -28.82322704 -31.44352041 -34.06381378 -36.68410715 -39.30440051 -41.92469388 -44.54498725 -47.16528062 -49.78557398 -52.40586735
+[     2s]    fixed floor 0.0001 conf False: Q'(1) -20.635285  (10 bases, rms 5.6e-10, held-out 4.2e-10)
+[     2s]    fixed floor 0.0001 conf True: Q'(1) -11.169269  (10 bases, rms 9.4e-13, held-out 9.6e-13)
+[     2s]    fixed floor 1e-06 conf False: Q'(1) -20.635285  (10 bases, rms 5.6e-10, held-out 4.2e-10)
+[     2s]    fixed floor 1e-06 conf True : Q'(1) -11.169269  (10 bases, rms 9.4e-13, held-out 9.6e-13)
+[     2s]    fixed floor 1e-07 conf False: Q'(1) -20.635297  (11 bases, rms 5.6e-10, held-out 4.2e-10)
+[     2s]    fixed floor 1e-07 conf True : Q'(1) -11.169269  (11 bases, rms 9.4e-13, held-out 9.7e-13)
+[     2s]    free 2                      : Q'(1) -11.260990  (2 bases, rms 1.6e-08, held-out 1.7e-08)
+[     2s]    drift over fits with held-out < 1e-6: 9.47e+00 (7 fits); Kronecker gap (n>=2 fit extrapolated to n=1, should be 0): -1.649e+01
+[     3s] W2P4: own poles (full-operator scan) vs production QEP, s<=3.5: MATCH
+[     6s] W2P4: honest Q(n) n=2..12: -25.27713675 -39.80477459 -53.23403910 -66.55649199 -79.86899405 -93.18059605 -106.49211849 -119.80363403 -133.11514898 -146.42666389 -159.73817879
+[     6s]    fixed floor 0.0001 conf False: Q'(1) +4749.395061  (18 bases, rms 6.8e-08, held-out 1.7e-07)
+[     6s]    fixed floor 0.0001 conf True: Q'(1) -43.626148  (18 bases, rms 6.1e-12, held-out 1.5e-11)
+[     6s]    fixed floor 1e-06 conf False: Q'(1) +4749.395061  (18 bases, rms 6.8e-08, held-out 1.7e-07)
+[     6s]    fixed floor 1e-06 conf True : Q'(1) -43.626148  (18 bases, rms 6.1e-12, held-out 1.5e-11)
+[     6s]    fixed floor 1e-07 conf False: Q'(1) +4749.395061  (18 bases, rms 6.8e-08, held-out 1.7e-07)
+[     6s]    fixed floor 1e-07 conf True : Q'(1) -43.626148  (18 bases, rms 6.1e-12, held-out 1.5e-11)
+[     6s]    drift over fits with held-out < 1e-6: 4.79e+03 (6 fits); Kronecker gap (n>=2 fit extrapolated to n=1, should be 0): +5.749e+03
+[     8s] W4P4: own poles (full-operator scan) vs production QEP, s<=3.5: MATCH
+[    11s] W4P4: honest Q(n) n=2..12: -26.85700031 -41.85942481 -55.91963419 -69.90717530 -83.88915996 -97.87072599 -111.85226107 -125.83379390 -139.81532657 -153.79685923 -167.77839188
+[    11s]    fixed floor 0.0001 conf False: Q'(1) +216.361604  (18 bases, rms 1.3e-08, held-out 3.2e-08)
+[    11s]    fixed floor 0.0001 conf True: Q'(1) -48.765152  (18 bases, rms 1.1e-11, held-out 1.7e-11)
+[    11s]    fixed floor 1e-06 conf False: Q'(1) +216.437315  (20 bases, rms 1.3e-08, held-out 3.2e-08)
+[    11s]    fixed floor 1e-06 conf True : Q'(1) -48.765154  (20 bases, rms 1.1e-11, held-out 1.7e-11)
+[    11s]    fixed floor 1e-07 conf False: Q'(1) +216.439390  (23 bases, rms 1.3e-08, held-out 3.2e-08)
+[    11s]    fixed floor 1e-07 conf True : Q'(1) -48.765062  (23 bases, rms 1.1e-11, held-out 1.7e-11)
+[    11s]    free 2                      : Q'(1) -49.055383  (2 bases, rms 3.1e-06, held-out 6.2e-06)
+[    11s]    drift over fits with held-out < 1e-6: 2.65e+02 (6 fits); Kronecker gap (n>=2 fit extrapolated to n=1, should be 0): +3.347e+02

@@ -9855,3 +9855,35 @@ saddle, i.e. the gap condition is G_n[σ](x,x) = G₁(x,x) pointwise.
 4. Report.
 
 **Consequence (unchanged):** disagreement beyond tolerance suspends the +2.4, and 081c's sign with it.
+
+### EXP-083 Tier-1 feasibility (honest side only): NON-DISCRIMINATING as designed. Redesign proposed (registered rule 2) [model: Opus 5.5]
+(`scripts/exp083_honest.py`, `exp083_tier1.py`, `exp083_tier1_output.txt`, `exp083_tier1_results.json`; 11 s, 0.59 GB.
+No comparison with the continuation was made.)
+- **Must-pass:** the pure-gauge (wall-to-wall) honest Q(n) at n = 2, 3, 4 is ≤ 4.5·10⁻¹³. PASS.
+- **Own poles (full-operator sign-change scan) vs production QEP, s ≤ 3.5:** MATCH for W2P2, W4P2, W2P4 and W4P4.
+- **Honest Q(n)** (arm a): n ≤ 20 at P = 2, n ≤ 12 at P = 4. Linear in n at large n.
+- **Fits** (last n held out):
+
+  | | W2P2 | W4P2 | W2P4 | W4P4 |
+  |---|---|---|---|---|
+  | fixed own-pole bases, no confluent terms | −283.2 | −20.6 | +4749 | +216.4 |
+  | fixed + confluent n·bⁿ | −11.2888 | −11.1693 | −43.6261 | −48.7652 |
+  | free-base (matrix pencil) | −11.232 | −11.261 | — | −49.055 |
+
+  - Fixed bases without confluent terms: **nonsense**. The models are incomplete, although the held-out errors are 10⁻⁸;
+    a held-out check at the last n does not catch this.
+  - Fixed + confluent: held-out errors ~10⁻¹¹, stable to ≤ 10⁻⁴ across pole floors 10⁻⁴…10⁻⁷.
+  - Free-base: only 2 bases are recoverable with n ≤ 12. Held-out errors 10⁻⁸…6·10⁻⁶. No estimate for W2P4.
+- **Registered discriminating-power test:**
+  - The base-free arm must agree with the fixed-base referee within the drift (edit 1b). It differs by 0.06–0.09 at P = 2
+    and **0.29 at W4P4**.
+  - A δQ′ tolerance set by that disagreement exceeds the half-gap 0.19112. **EXP-083 is NON-DISCRIMINATING as designed**
+    and goes to redesign (registered rule 2), not to a verdict.
+- **Lesson:** fixed-base fits that reproduce held-out data to 10⁻⁸ can still give Q′ wrong by 10²–10³ when the base set is
+  incomplete. The confluent n·bⁿ terms are essential.
+- **Redesign proposal (to the Bridge):**
+  - (i) P = 2 with n up to 60, plus a 40-digit spot-check at n ≤ 10. Run the free-base pencil with many bases and require
+    the fixed + confluent model to agree with it to ≤ 10⁻³. This validates model completeness where data are cheap.
+  - (ii) P = 4 with n up to 24. Measure the cost first; ≈ 1 h is estimated.
+  - (iii) Discriminating-power test redefined as: drift among adequate models (held-out ≤ 10⁻⁹ relative) at P = 4, plus
+    the base-free arm required at P = 2 only. Its tolerance must be < 0.191 or the experiment stops.
