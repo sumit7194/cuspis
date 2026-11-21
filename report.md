@@ -7574,3 +7574,93 @@ Painlevé/τ connection; our verified Painlevé u on the line (EXP-063 pre-check
 6. production at 1–2 cores.
 
 **Size:** 2–4 sessions. No sister needed beyond Neon's verified BIE code (or my own build if K-BIE fails).
+
+### δκ step 1: formula note, with a correction to the staged plan (argued throughout; no code) [model: Opus 5.5]
+**Correction to the plan (my error, caught while writing this note).**
+- Route A as written used EXP-050's derivation, which maps Mₙ to M₁ by a global angle rescaling θ̃ = θ/n. That is valid
+  for a single cone (one branch line).
+- **It is not valid for the strip, which has two branch lines.** Neon's T5b item 1 said so: "global angle rescaling
+  fails on the strip". I missed it when drafting the plan.
+- So Route A must be rebuilt from the replica-Fourier sector decomposition. The rebuilt formula, below, is the new
+  primary route ("SC").
+
+**1. Starting point.**
+- At O(N⁰): log Zₙ ⊃ −½ log det Bₙ, with Bₙ the σ fluctuation kernel on the n-sheeted strip manifold in the leading
+  saddle background.
+- The O(1/N) shift of the saddle does not enter at O(N⁰), by stationarity.
+- S⁽⁰⁾ = ½∂ₙ[log det Bₙ − n log det B₁]|_{n=1}, with B = 2G∘G (EXP-058 convention; D = B⁻¹, Σ = D∘G).
+
+**2. Sector decomposition (exact at integer n).**
+- In replica-Fourier variables, G(x_i, y_j) = (1/n)Σ_k e^{2πik(i−j)/n}G^{(k/n)}(x, y), where G^{(α)} is the free
+  propagator twisted by e^{2πiα} across the strip.
+- So Bₙ is block-diagonal in the σ-sector index q:
+  B_n^{(q/n)} = (2/n)Σ_{k=0}^{n−1} G^{(k/n)}·G^{((q−k)/n)} (pointwise product), and log det Bₙ = Σ_{q=0}^{n−1} log det B_n^{(q/n)}.
+- (The saddle background enters G^{(0)} at O(n − 1) through the alternate zero mode, EXP-052/EXP-062.)
+
+**3. Continuation to n → 1 (the step that replaces the angle rescaling).**
+- Write F(n, β) = ½ log det B_n^{(β)}, continued in β by the twisted family (the physical one, EXP-061).
+- Split q = 0 from q ≥ 1:
+  S⁽⁰⁾ = ∂ₙF(n, 0)|₁ − F(1, 0) + (d/dn)Σ_{q=1}^{n−1}F(n, q/n)|₁.
+- In the last term, F(n, β) = F(1, β) + (n − 1)∂ₙF(1, β) + …. Exactly as in Lemma U, the ∂ₙF part contributes
+  S_{∂ₙF}(1) = 0 (Abel–Plana: the empty sum) **provided ∂ₙF is admissible along ½ + iy**.
+- What remains is 𝒞[F(1, ·)], where 𝒞[g] ≡ (d/dn)Σ_{q=1}^{n−1}g(q/n)|₁ = ∫₀^∞ds (π/cosh²πs)·g(½ + is) for symmetric g
+  (the EXP-044 C0 identity, verified to 10⁻¹⁰; its sign is to be re-checked against C0 in code).
+- At n = 1 the inner sum has only k = 0, so B₁^{(β)} = 2G₁·G^{(β)}: **one untwisted flat propagator and one twisted
+  strip propagator.**
+- The q = 0 term: B_n^{(0)} = (2/n)Σ_k G^{(k/n)}G^{(−k/n)}, so ∂ₙB_n^{(0)}|₁ = −B₁ + 2𝒞[G^{(α)}G^{(−α)}] + 4G₁K_zm.
+  - Here K_zm is the saddle (alternate-zero-mode) change of G^{(0)}.
+  - Its contribution, 2Tr(Σ_flat K_zm) = −2∫∂ₙσ*·(G₁Σ_flatG₁)(z, z), is a scaleless flat integral. It **vanishes in
+    dim reg**, and in cutoff it is a local term. So the saddle does not reach L/w (argued; this replaces EXP-052's
+    "flat tadpole × w-independent ∫μ" argument).
+
+**Result: the SC formula (argued).**
+- S⁽⁰⁾ = ½ 𝒞[ Tr(B₁⁻¹·2G^{(α)}G^{(−α)}) − Tr 1 ] + 𝒞[ ½ log det(2G₁G^{(β)}) − ½ log det B₁ ] + (local terms).
+  The −Tr 1 and −F(1, 0) bookkeeping terms cancel against 𝒞[const] = const.
+- **Only n = 1 objects appear:**
+  - the flat B₁ and Σ_flat (untwisted);
+  - free twisted strip propagators G^{(α)}, at α = ½ + is on the CH07b line.
+- **No Σ̃′ and no n-derivative of the self-energy.**
+- Expanding in ΔG^{(α)} = G^{(α)} − G₁:
+  - the linear part is 𝒞[2Tr(Σ_flat(ΔG^{(α)} + ΔG^{(−α)}))/2 + Tr(Σ_flat ΔG^{(β)})] (real/complex counting factors to
+    be fixed by K-free);
+  - beyond that there is a quadratic term 𝒞[Tr(B₁⁻¹ΔG^{(α)}ΔG^{(−α)})], plus the higher orders of the log det in the
+    σ-twisted sectors. All are n = 1 objects.
+- The universal L/w term comes from the two-edge connected part, after subtracting the single-edge (cone) pieces.
+  Those are edge-local: L/ε and constants.
+
+**How this relates to the other routes.**
+- *T5b/Route B* expands around the n-cone, with twisted Σ^{(k)} and p ≥ 2 terms. *SC* expands around n = 1, with
+  untwisted Σ_flat, twisted strip propagators and an explicit quadratic term. The two are different organisations;
+  **only their totals must agree.**
+- The earlier "harmonic-off-cut" reduction applies to the Σ_flat-linear pieces of SC: ΔG is harmonic off the cut. It
+  does not apply to the log det of the twisted bubble.
+
+**Gates and controls for the revised plan** (the Bridge's points 1–6, adopted; numbers to be fixed in the registration).
+1. *Reduction gate (must-pass, before any production use).* Any cut-reduced trace must equal a brute-force trace at two
+   slices (one small w, one moderate) and one complex a.
+2. *Complex-a BIE (must-pass).*
+   - It must reproduce on the line the CH05 near-tip coefficients (EXP-065) and EXP-044's w_S.
+   - At least one point at y ≥ 2, where κ_max → 1; record the BIE's own ladder error there.
+3. *Abel–Plana drop (registered as a prediction, not an assumption).*
+   - S_{∂ₙF}(1) = 0 needs ∂ₙF admissible on the line. Measure the growth of ∂ₙF(1, ½ + is) with the planted
+     L·sin² row; Σ̃′'s polynomial growth (EXP-062) is the analogue.
+   - **Also a direct check:** compute (d/dn)Σ_{q=1}^{n−1}F(n, q/n) at n = 2, 3 (honest finite sums), and verify that
+     the continuation formula reproduces them (EXP-044 C0 style).
+4. *SC vs Route B decision rule (pre-registered now).*
+   - Agreement = |δκ_SC − δκ_B| ≤ 3 × the combined ladder error, with neither route's error > 10% of its value.
+   - If they disagree: no δκ is quoted. The disagreement is reported with both decompositions' term-by-term values, and
+     the first step to locate it is the n = 2 honest-sum check (gate 3), which both routes must pass.
+   - No reconciliation term may be added after the fact.
+5. *K-free (must-pass).* The same sector continuation applied to the free O(N) entropy (log Zₙ = Σ_k log Z^{(k/n)}) must
+   reproduce κ_free:
+   - 0.03965 per real scalar from our EXP-040 Impl-2 (κ₃/C_T = 4.1743 × C_T = 3/(32π²); partially verified);
+   - 0.0397 from [CHL09] Table 1 (complex 0.0794 halved, 3 figures).
+   - It fixes the real/complex counting factors in SC.
+6. *At source:*
+   - Σ_flat's normalisation (the O(1/N) self-energy coefficient, equivalently η₁ = 8/(3π²N), equation numbers to be
+     quoted);
+   - C_T's 1/N coefficient (Petkou hep-th/9506116, eq. to be quoted). Currently held only via a secondary source
+     (EXP-047, partially verified).
+
+**Grade.** Everything in this note is **argued**. The two load-bearing steps are (3) the continuation with the
+Abel–Plana drop, and (5) the saddle vanishing in dim reg. Gates 3 and 5 test them.
