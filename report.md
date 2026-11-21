@@ -9764,3 +9764,36 @@ control.**
   - If the integer data do not vanish, reading (i) is live. That would be recorded as a surprise.
 - **Then:** an estimate of Q′(1; ε) from the integer data (fixed-base / Newton with n = 8 held out; drift reported),
   compared with T1 + T2 from the threshold code and from P1 + P2.
+
+### EXP-082 results: reading (ii). The integer data → 0 linearly in ε; T46d's continuation hits every integer but its n → 1 slope is wrong even at ε = 1 [model: Opus 5.5]
+(`scripts/exp082_honest_eps.py`, `exp082_fit.py`, `exp082_intcheck.py` and their outputs. Run 1 is kept as
+`exp082_output_run1_duplicate_links.txt`.)
+- **Run 1: the must-pass fired.** Q(n; 0) came out ≈ −21n, not 0.
+  - Cause (mine): T46d's `closed_loop` cut list contains two j = 0 links twice (L0 = −2 on them). My gluing re-added
+    the full link once per listing.
+  - Fixed by de-duplicating. The geometry code was unchanged.
+- **Run 2: the must-pass passes.** Q(n; 0) ≤ 7·10⁻¹³ for n = 2…8.
+- **Independent check of the honest code:** T46d's continued sector formula Σ_Q log det(B1 + ΣΔB(n, Q/n)) at n = 2, 3
+  equals my n-sheet manifold Q(n) to 9 digits (ε = 1 and 10⁻²). These are two implementations of the integer data.
+  **Verified.**
+- **Integer data:** at every n, Q(n; ε) ∝ ε¹, not ε² as I predicted. The power was wrong; the qualitative prediction
+  holds: every integer datum → 0.
+  - Structure: Q(1) = 0, and Q(n) ≈ A·n + Σ C_b bⁿ for n ≥ 2, with small b (≈ 10⁻² at ε = 1, shrinking with ε).
+- **Q′(1; ε) from the honest data** (Q(1) = 0 included, n ≤ 7 fitted, n = 8 held out; 1-base / 2-base models):
+
+  | ε | 1 | 10⁻¹ | 10⁻² | 10⁻³ | 10⁻⁴ |
+  |---|---|---|---|---|---|
+  | honest-data Q′(1) | −0.339 / −0.316 | −0.0457 / −0.0436 | −0.00587 / −0.00585 | −7.2·10⁻⁴ / −6.9·10⁻⁴ | −8.6·10⁻⁵ / −7.4·10⁻⁵ |
+  | T46d continuation (threshold), T1 + T2 | +0.0021 | +0.417 | +0.590 | +0.730 | +0.866 |
+
+  - Held-out n = 8 errors are 4·10⁻⁶ … 10⁻¹⁴. Model drift (1 vs 2 bases) is ≤ 15%.
+  - **The honest Q′ → 0 like ε·|ln b|. The continuation grows like ln(1/ε) with the wrong sign, and is already wrong at
+    ε = 1** (T46d's own must-fail geometry).
+- **Grade.**
+  - Reading (ii) is **verified on this family**: the continuation as implemented (threshold) is non-admissible for
+    near-¼ spectra. It reproduces every integer and gets the n → 1 slope wrong. My P1 + P2 patch is numerically unusable
+    there (check (c)).
+  - The sealed P3 premise ("Q′ → 0 continuously") is **correct for the true continuation**. It was the threshold code's
+    ln(1/ε) growth, not physics, that seemed to contradict it. The P3 grade moves from "unsupported" to **partially
+    verified (this family)**. No working implementation exists yet.
+  - **T46e must reproduce this table**, the Bridge's referee rule.

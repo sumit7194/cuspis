@@ -1,0 +1,2 @@
+eps=1.0: n=2: Q_cont -1.19164690e-01 vs honest -1.19164690e-01 | n=3: Q_cont -1.79613386e-01 vs honest -1.79613386e-01
+eps=0.01: n=2: Q_cont -1.14148289e-03 vs honest -1.14148289e-03 | n=3: Q_cont -1.71230385e-03 vs honest -1.71230385e-03
