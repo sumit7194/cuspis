@@ -9106,3 +9106,9 @@ re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB
   - Tails T0 and T1 apply beyond s_max as registered.
 - **Disclosure:** the N1′ dry run computed one single-strip σ ingredient (W = 2 in the P = 4 pair box): S = 0.98859907. That
   is not an R value. It is discarded and recomputed under N1″.
+
+**EXP-081b verdict rule, clarified (the Bridge, before any result).**
+- N1″ is an internal-consistency check between two double-precision routes. It cannot catch an error the two routes
+  share.
+- **The N2 40-digit referee is the decisive reliability test.** If N2 disagrees beyond tolerance anywhere N1″ called
+  production reliable, **the EXP-081b verdict is VOID until resolved** (not merely "pending").
