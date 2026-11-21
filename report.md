@@ -7709,3 +7709,38 @@ arXiv PDF was fetched and its text extracted locally with pdftotext (untrusted w
   γ_φ, as it should be.
 - So our Σ_flat normalisation is anchored, and δS⁽⁰⁾ = ½ log det B is convention-free up to local terms.
 - **For the final number:** δ(κ/C_T)/(κ/C_T)_free = [δκ/κ_free + 40/(9π²)]/N at O(1/N).
+
+## EXP-068  Check of Neon T27 (gap (I) of T26: κ_max < 1 everywhere on the CH07b line) — verification of external work [model: Opus 5.5]
+**T27's claim** (`neon_work/dkappa/T27_summary.md`, unverified). On Re a = ½, κ_max(u; y) < 1 for all u > 0 and all
+real y. The argument:
+1. −dRᵀ/du = ¼(w_R w_R† + v_R v_R†) ⪰ 0;
+2. integrating from u = 0 gives R_uᵀ ≺ K_yᵀ (Loewner);
+3. κ_max ≤ λ²‖K_yᵀK_y‖ = sup_w cosh²(πy)/(cosh²(πy) + sinh²(πw)) = 1, strictly below for u > 0.
+
+**Checks.**
+- **Step 1, algebra:** it follows from my EXP-067 rank-2 identity (verified to 6·10⁻¹¹), because v_L = conj(w_R) and
+  w_L = conj(v_R) on the line.
+  - *Numerically:* the finite-difference −dRᵀ/du is exactly Hermitian, with minimum eigenvalue −9·10⁻¹³ at y = 1, 3
+    (finite-difference noise). PSD.
+- **Step 3, algebra:**
+  - A sound route: spec(R̄R) = spec(R̄^{½}RR̄^{½}), and conjugation preserves the Loewner order, so
+    κ_max ≤ ρ(λ²K̄_yK_y), with K_y = U K₀ U† a shifted Fourier multiplier.
+  - The symbol identity cosh(π(w − y))cosh(π(w + y)) = cosh²(πy) + sinh²(πw) holds to 6·10⁻¹⁵, and
+    sup_w λ²π²/(cosh²(πy) + sinh²(πw)) = 1.000000000000000 at y = 0.5, 2, 4.
+- **Step 2's corollary:** κ_max decreases in u. At y = 2 and u = 0.1, 0.3, 1, 3 it is 0.9996366, 0.9973419, 0.9300058,
+  0.1721986. This is monotone, and it reproduces EXP-060's independent non-Hermitian values (1 − κ = 6.9994·10⁻² at
+  u = 1).
+- **B(4):**
+  - The Hermitian-eigenvalue route fails in double precision at y = 4, small u: λ² ≈ 10¹⁰ times round-off pushes the
+    computed κ to ≥ 1.
+  - So **my EXP-067 B(4) = 6.78·10⁻² (non-Hermitian slogdet) is unreliable at y = 4.** T27's Hankel-split value
+    6.871·10⁻² (with more digits) supersedes it.
+  - No conclusion changes: the bound holds with a large margin either way. I did not reproduce T27's 30-digit table.
+
+**Grade.**
+- **Gap (I) of T26: verified** (algebra checked; each step confirmed numerically at sampled points). With T26 (EXP-067),
+  |C₊(½ + iy)| ≤ B(y) < ∞ for every y.
+- **Gap (II)** (a bulk margin 1 − κ_max ≥ c(u)e^{−A|y|}, needed for polynomial growth of B) **remains open**. T27's
+  table and EXP-060 are consistent with A = 2π, by inference.
+- **Lemma U (e) status update:** the all-y bound is now reduced to gap (II), a quantitative spectral-margin estimate.
+  The measured result (EXP-065, to y = 5) stands as partially verified.
