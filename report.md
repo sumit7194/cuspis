@@ -6994,3 +6994,33 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
   y ∈ {0.5, 1, 2} for the Δ-part; the Legendre part is a polynomial continued by analyticity (argued, elementary).
   - So f₀'s growth along ½ + iy is exactly C₊'s growth times a quadratic, and the log question for f₀ is the C₊
     question.
+
+### Stage-B design for Σ̃′ in the twisted family (argued; written before any stage-B code, for a cold resume) [model: Opus 5.5]
+Σₙ(α; ρ) = (1/2πn)Σ_q Dₙ(q/n; ρ)g_{|α−q/n|}(ρ) + (1/2πn)Dₙ(α; ρ)Zₙ(ρ), with Zₙ = g_{aₙ} − g_{|aₙ|} ≈ −(n−1)ġ/2,
+ġ = ∂_νg_ν|₀ and aₙ = −(n−1)/4 (EXP-053). The aₙ² terms are O((n−1)²) uniformly for α bounded away from {0, 1} (argued).
+
+∂ₙ at n = 1 has three pieces:
+- **(I) Image/Riemann piece.** R(n) = ∫₀^{2πn}dτ e^{−iατ}D^{(n)}(ρ, τ)G_tw^{(n)}(ρ, τ). Both factors are closed forms:
+  - D^{(n)} = −(1/(π²n))[−sinh ρ ∂_ρK + cosh ρ K]/sinh³ρ, with K = sinh(ρ/n)/(cosh(ρ/n) − cos(τ/n)). This is the
+    geometric sum of D₁'s continued-frequency closed form, and it reduces to D at n = 1 (checked by hand).
+  - G_tw^{(n)} is pre-check 5's form with 1 → 1/n in the denominators and (1−a) → (1/n − α), valid while nα < 1.
+  - By Poisson (argued), the j = 0 image of each does not depend on n, so ∂ₙR is UV-singular only through D·∂ₙ(coincident shift),
+    ~ ρ⁻³: a non-even degree, so the finite part is unique.
+  - The coefficient ∂ₙδG_tw^{(n)}(0) is analytic (a ψ-sum on the lattice ℤ/n). Derive it, don't fit it.
+- **(II) ∂ₙD at fixed integer frequency.** D̃′(k, q) = −D̃₁(k, q)²B̃′(k, q).
+  - B′_q(ρ) = ∂ₙ of the τ-space bubble 2G^{(n)}G_tw^{s=q,(n)}, plus the zero-mode term −(1/π)ġ g_{|q|}.
+  - **UV subtlety:** if B̃′ ~ b_q/k² at large k, then D̃′ → −16b_q, a constant. That is a δ-function in H², and it
+    multiplies the twisted coincident shift δG_tw(α − q) (finite part), not g(0).
+  - So b_q must be derived analytically and the δ-piece taken in dim-reg form, Σ_q(−16b_q)·δG-type terms. A
+    finite-part integral over ρ would mis-handle it.
+- **(III) Zero mode.** −(1/4π)·f.p.∫dμ P_{α−½}D₁(α; ρ)ġ(ρ). D₁ at complex frequency is closed (EXP-059 A4) and
+  ġ(0) = −ψ′(½)/(2π) is finite, so the singularity is ~ρ⁻² and the finite part is unique.
+  - Growth on the line: linear in |y| (|e^{−αρ}| = e^{−ρ/2}).
+
+**Controls to register (each needs a pre-check per the control table).**
+- *Two implementations:*
+  - (I)+(II)+(III) against a finite difference of the full twisted Σ̃ₙ at n = 1 ± δ, δ ∈ {0.02, 0.05}.
+  - D̃ₙ comes from the EXP-056 mode sum with three-point Richardson (EXP-060 pre-check) and the alternate zero mode.
+- *Known answer:* at n = 1 the machinery returns Σ̃_tw,1 (pre-check 6) exactly.
+- *Must-fail:* drop the δ-piece of (II). The result must move by more than the noise; pre-check the size first.
+- *Stage C:* (I)–(III) on a = ½ + iy, compared with polynomial growth, and the planted L·sin²(πa) row must show rate 2π.
