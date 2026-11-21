@@ -8699,3 +8699,60 @@ its log).**
 - Newton series then show a false minimum near k ≈ 1/a. Completely-monotone planted controls cannot detect that.
 - **Exact-base fits with held-out validation** are the well-conditioned referee. Report their model spread as the
   error.
+
+## δκ production: design note, and EXP-079 (Stage P0, the engine on stand-ins) — pre-registration [model: Opus 5.5]
+**Go.** The Bridge, guiding Cuspis decisions for Sumit (2026-11-21), after EXP-078: σ-side production for the true
+q-convolved bubble. Conditions:
+- prereg first;
+- every earlier control runs through the production engine on the stand-ins before any physical number;
+- a planted break that P5 must catch;
+- the memory peak declared.
+
+**The formula being implemented (T40; verified on the P4′ toy by EXP-078; argued in general).**
+- S⁽⁰⁾ = ½Q′(1), with Q′(1) = Tr(B₁⁻¹∂ₙB_n^{(0)}|₁) + 𝒞[g₁], where:
+  - g₁(β) = log det B₁^{(β)} − log det B₁;
+  - 𝒞[g] = ∫₀^∞ds (π/cosh²πs) g(½ + is);
+  - B_n^{(β)} is the continued inner sector sum, (2/n)Σ_k G^{(k/n)}∘G^{(β−k/n)} at integer n.
+- The saddle enters through the q = 0 term. The universal part is the two-edge connected combination
+  (strip − edge₁ − edge₂ + flat).
+
+**Staging (each stage separately registered).**
+- **P0 (this registration): the engine on stand-ins.** No physical number.
+- **P1: a 3D cubic-lattice strip.**
+  - y-translation invariance, so N_y Fourier slices with lattice masses m_q² = 2(1 − cos q). The q-convolution is then
+    a discrete sum over slices.
+  - Dense 2D slice operators, poles s_j(q) per slice, the two-edge connected combination, and a W-scan.
+  - It will be registered with its memory peak, once P0 passes.
+- **P2: continuum extrapolation** (lattice spacing → 0 at fixed physical W), with the exponent ladder learned in EXP-074
+  and EXP-078, and fixed-base / held-out fits as the extrapolator.
+
+**P0 engine (`scripts/sigma_engine.py`).** The propagator provider is G(α) (and G_q(α) for slices). Ingredients:
+- **Poles:** the zeros of z^{R}det H(z) (Laurent degree R), giving the poles α = ±is_j, and residues by a small-circle
+  contour.
+- **Inner continuation — my implementation, a separate construction from T40's strip-AP:**
+  - for 1-periodic meromorphic F(α) = 2G^{(α)}∘G^{(β−α)}, use (1/n)Σ_{k=0}^{n−1}F(k/n) = ∫₀¹F dα + Σ_{Im α_p<0}(−2πi)Res_p[F/(e^{2πinα}−1)]
+    + Σ_{Im α_p>0}(2πi)Res_p[F/(e^{−2πinα}−1)] (Poisson with residue-evaluated Fourier coefficients);
+  - residues by contour (this handles the β = 0 double pole);
+  - continued in n by direct substitution.
+- **Outer, two routes:**
+  - (i) T40's n = 1 formula;
+  - (ii) my own outer continuation Q_cont(n) = g_n(0) + [continuation of Σ_{q=1}^{n−1}g_n(q/n) by the 𝒞-type Abel–Plana
+    in q at fixed n], then a finite-difference derivative at n = 1.
+- **Optional:** a q-convolution layer (slices), exercised in P0 on a 2-slice stand-in for code coverage only.
+
+**P0 clauses (all through the engine; expected values fixed now).**
+
+| clause | stand-in | pass criterion | must-fail / firing input |
+|---|---|---|---|
+| G1 | 1D pure-gauge toy (N = 240, m² = 0.09) | log det B₁^{(β)} − log det B₁ = 0 to ≤ 10⁻¹⁰ (mod 2πi), β ∈ {0.25, 0.5, ½ + i, ½ + 2i} | the T36 cut-gauge K₁ gives +0.904 + iπ (F2) |
+| G2 | scalar straddle toy, g = e^{2πiα}(1 + r), r = α(1 − α) | B̃[g] = e^{2πiβ}B̃[g̃] to ≤ 10⁻²⁰ at β ∈ {0.25, 0.5, ½ + i} | — |
+| P1/P2 | scalar cone function c(α) (ψ-formula) through the inner routine | I₁[c] = 0 to ≤ 10⁻²⁰; ∂ₙIₙ[c]|₁ = −1/32 to ≤ 10⁻¹² | SC's local term ∝ 𝒞[c³] = −4.01015·10⁻⁵ ≠ 0 (F1) |
+| P3 | free scalar, CFH w_S through the outer routine | κ/C_T = 4.173987 to ≤ 10⁻⁵ relative (the EXP-071 machinery) | counting factor 1 gives ≈ 2× |
+| P4′ | 6×4 replica stand-in | engine Q_cont(n) = honest Q(n) at n = 2..6 to ≤ 10⁻¹⁰ | F3: dropping the k = 0 term is caught |
+| **P5 (revised)** | 6×4 stand-in | Q(1.5) = −0.4030563 ± 10⁻⁷; Q′(1) = −1.3869 ± 3·10⁻⁴, **both outer routes** | **planted: drop the β = 0 double-pole (confluent) residue contribution from B_n^{(0)}; P5 must fire** |
+| R | two-implementation | engine B₁^{(β)} vs T40's code (P4′ section, scratch copy) at 3 β, including ½ + i | agreement ≤ 10⁻¹⁰ |
+| C | q-convolution layer | a 2-slice stand-in reproduces its own honest integer-n sums | dropping one slice must fire |
+
+- **Memory:** P0 < 0.5 GB, 1 core.
+- **Pass rule:** the P0 engine is accepted for P1 only if every clause passes **and** every must-fail fires. A failure is
+  investigated and recorded, never patched silently.
