@@ -1,0 +1,76 @@
+
+===== rule orig =====
+[      0s] free kappa_lat: {4: 0.01766, 6: 0.025702, 8: 0.029716, 10: 0.03199, 12: 0.033406}
+[      0s] free (planted control K): A train 0.041159 all 0.040742 ho 1.5e-04 | B train 0.040696 all 0.040033 ho 1.4e-04 -> 0.040387 +- 0.000991
+[      0s] K: 0.040387 +- 0.000991 vs 0.0396481 [PASS]
+[      0s] [S_T0] delta_kappa_lat {P: value} = {4: 0.044718, 6: 0.071255, 8: 0.085142, 10: 0.092195, 12: 0.095578}; R = {4: 2.5322, 6: 2.7724, 8: 2.8652, 10: 2.8820, 12: 2.8611}
+[      0s] [S_T0] route (i) R: A train 2.904230 all 2.793045 ho 4.1e-02 | B train 2.673334 all 2.510163 ho 3.4e-02 -> 2.651604 +- 0.284338
+[      0s] [S_T0] route (ii) delta_kappa_lat: A train 0.122893 all 0.117430 ho 2.0e-03 | B train 0.121111 all 0.111833 ho 1.9e-03 -> 0.114631 +- 0.012439
+[      0s] [S_T0] Ny 4.8e-04 [PASS]; s-quad 2.9e-04 [PASS]; s_cut 2.5 vs 3: 1.5e-04 [FAIL]; sigma_W (4,8) pair: R48 31.9634 vs R(8) 2.8652 -> 29.0982
+[      0s] [S_T0] routes: (i) 2.6516 +- 0.2843, (ii) 2.8912 +- 0.3137, premise OK; R_inf = 2.6516 +- 29.0996; R_inf + 0.4503 = 3.1019 (2 sigma 58.1992); must-fire shift 4.5300 [does not fire]
+[      0s] [S_T1] delta_kappa_lat {P: value} = {4: nan, 6: nan, 8: nan, 10: nan, 12: nan}; R = {4: nan, 6: nan, 8: nan, 10: nan, 12: nan}
+[      0s] [S_T1] route (i) R: A train nan all nan ho nan | B train nan all nan ho nan -> nan +- nan
+[      0s] [S_T1] route (ii) delta_kappa_lat: A train nan all nan ho nan | B train nan all nan ho nan -> nan +- nan
+[      0s] [S_T1] Ny nan [FAIL->sys]; s-quad nan [FAIL->sys]; s_cut 2.5 vs 3: nan [FAIL]; sigma_W (4,8) pair: R48 nan vs R(8) nan -> nan
+[      0s] [S_T1] routes: (i) nan +- nan, (ii) nan +- nan, premise FAILS (union); R_inf = nan +- nan; R_inf + 0.4503 = nan (2 sigma nan); must-fire shift nan [does not fire]
+[      0s] VERDICT: INCONCLUSIVE
+--- reliability per geometry (rule orig): s_max, cumulative impact (estimate) ---
+  sigma_W2_P10_box4_c2_cp12_sc3.0_dd0: s_max 3.95  cum 1.2e-12
+  sigma_W2_P12_box4_c2_cp12_sc3.0_dd0: s_max 3.95  cum 2.2e-12
+  sigma_W2_P4_box4_c2_cp12_sc3.0_dd0: s_max 3.95  cum 9.1e-15
+  sigma_W2_P4_box4_c2_cp12_sc3.0_dd1: s_max 3.95  cum 9.1e-15
+  sigma_W2_P6_box4_c2_cp12_sc2.5_dd0: s_max 3.95  cum 2.3e-13
+  sigma_W2_P6_box4_c2_cp12_sc3.0_dd0: s_max 3.95  cum 2.3e-13
+  sigma_W2_P6_box4_c2_cp16_sc3.0_dd0: s_max 2.99  cum 1.6e-13
+  sigma_W2_P6_box4_c3_cp12_sc3.0_dd0: s_max 3.95  cum 1.3e-13
+  sigma_W2_P8_box4_c2_cp12_sc3.0_dd0: s_max 3.95  cum 6.0e-13
+  sigma_W4_P10_box4_c2_cp12_sc3.0_dd0: s_max 0.94  cum 9.3e-10
+  sigma_W4_P12_box4_c2_cp12_sc3.0_dd0: s_max 0.94  cum 1.9e-09
+  sigma_W4_P4_box4_c2_cp12_sc3.0_dd0: s_max 0.94  cum 6.4e-10
+  sigma_W4_P4_box4_c2_cp12_sc3.0_dd1: s_max 0.94  cum 6.4e-10
+  sigma_W4_P6_box4_c2_cp12_sc2.5_dd0: s_max 0.94  cum 3.3e-10
+  sigma_W4_P6_box4_c2_cp12_sc3.0_dd0: s_max 0.94  cum 9.3e-10
+  sigma_W4_P6_box4_c2_cp16_sc3.0_dd0: s_max 0.95  cum 1.1e-09
+  sigma_W4_P6_box4_c3_cp12_sc3.0_dd0: s_max 0.94  cum 5.5e-10
+  sigma_W4_P8_box4_c2_cp12_sc3.0_dd0: s_max 0.94  cum 4.2e-10
+  sigma_W4_P8_box8_c2_cp12_sc3.0_dd0: s_max 0.94  cum 3.2e-12
+  sigma_W8_P8_box8_c2_cp12_sc3.0_dd0: s_max 0.00  cum 0.0e+00
+N2 (orig): PASS (applied at s <= production s_max 0.94); {"1.0": {"tail_ingredients": 3.7752729258076795e-08, "B0": 1.766460104826203e-12, "logdet": 2.6627385402092827e-12, "logdet_mp": -208.37856842676254, "impact": 1.2972336425724297e-11, "mustfire_impact": 1.273431260982622e-06}, "2.0": {"tail_ingredients": 1.6832299270080614e-07, "B0": 6.616001342192429e-13, "logdet": 2.538638292499535e-09, "logdet_mp": -214.94443307086513, "impact": 2.3912690774760222e-11, "mustfire_impact": 1.8571012319994848e-09}, "3.0": {"tail_ingredients": 2.3549622775201757e-07, "B0": 3.1931277152926014e-12, "logdet": 7.747565937510242e-07, "logdet_mp": -227.61086722427845, "impact": 1.4431451358521846e-11, "mustfire_impact": 1.6989458488975523e-11}}
+
+===== rule impact =====
+[      0s] free kappa_lat: {4: 0.01766, 6: 0.025702, 8: 0.029716, 10: 0.03199, 12: 0.033406}
+[      0s] free (planted control K): A train 0.041159 all 0.040742 ho 1.5e-04 | B train 0.040696 all 0.040033 ho 1.4e-04 -> 0.040387 +- 0.000991
+[      0s] K: 0.040387 +- 0.000991 vs 0.0396481 [PASS]
+[      0s] [S_T0] delta_kappa_lat {P: value} = {4: 0.039827, 6: 0.065276, 8: 0.078571, 10: 0.085257, 12: 0.088391}; R = {4: 2.2552, 6: 2.5397, 8: 2.6441, 10: 2.6651, 12: 2.6460}
+[      0s] [S_T0] route (i) R: A train 2.678211 all 2.568823 ho 4.0e-02 | B train 2.397803 all 2.244256 ho 3.2e-02 -> 2.406539 +- 0.291937
+[      0s] [S_T0] route (ii) delta_kappa_lat: A train 0.114369 all 0.108916 ho 2.0e-03 | B train 0.112364 all 0.103134 ho 1.9e-03 -> 0.106025 +- 0.012437
+[      0s] [S_T0] Ny 6.6e-04 [PASS]; s-quad 7.2e-10 [PASS]; s_cut 2.5 vs 3: 1.6e-04 [FAIL]; sigma_W (4,8) pair: R48 32.7160 vs R(8) 2.6441 -> 30.0719
+[      0s] [S_T0] routes: (i) 2.4065 +- 0.2919, (ii) 2.6742 +- 0.3137, premise OK; R_inf = 2.4065 +- 30.0734; R_inf + 0.4503 = 2.8568 (2 sigma 60.1467); must-fire shift 4.5300 [does not fire]
+[      0s] [S_T1] delta_kappa_lat {P: value} = {4: 0.039827, 6: 0.065276, 8: 0.078571, 10: 0.085257, 12: 0.088391}; R = {4: 2.2552, 6: 2.5397, 8: 2.6441, 10: 2.6651, 12: 2.6460}
+[      0s] [S_T1] route (i) R: A train 2.678211 all 2.568823 ho 4.0e-02 | B train 2.397803 all 2.244256 ho 3.2e-02 -> 2.406539 +- 0.291937
+[      0s] [S_T1] route (ii) delta_kappa_lat: A train 0.114369 all 0.108916 ho 2.0e-03 | B train 0.112364 all 0.103134 ho 1.9e-03 -> 0.106025 +- 0.012437
+[      0s] [S_T1] Ny 6.6e-04 [PASS]; s-quad 7.2e-10 [PASS]; s_cut 2.5 vs 3: 1.6e-04 [FAIL]; sigma_W (4,8) pair: R48 nan vs R(8) 2.6441 -> nan
+[      0s] [S_T1] routes: (i) 2.4065 +- 0.2919, (ii) 2.6742 +- 0.3137, premise OK; R_inf = 2.4065 +- nan; R_inf + 0.4503 = 2.8568 (2 sigma nan); must-fire shift 4.5300 [does not fire]
+[      0s] VERDICT: INCONCLUSIVE
+--- reliability per geometry (rule impact): s_max, cumulative impact (estimate) ---
+  sigma_W2_P10_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 1.2e-12
+  sigma_W2_P12_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 2.2e-12
+  sigma_W2_P4_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 1.1e-14
+  sigma_W2_P4_box4_c2_cp12_sc3.0_dd1: s_max 6.00  cum 1.1e-14
+  sigma_W2_P6_box4_c2_cp12_sc2.5_dd0: s_max 6.00  cum 2.3e-13
+  sigma_W2_P6_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 2.3e-13
+  sigma_W2_P6_box4_c2_cp16_sc3.0_dd0: s_max 6.00  cum 1.6e-13
+  sigma_W2_P6_box4_c3_cp12_sc3.0_dd0: s_max 6.00  cum 1.3e-13
+  sigma_W2_P8_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 6.0e-13
+  sigma_W4_P10_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 4.9e-09
+  sigma_W4_P12_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 5.8e-09
+  sigma_W4_P4_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 2.6e-09
+  sigma_W4_P4_box4_c2_cp12_sc3.0_dd1: s_max 6.00  cum 2.6e-09
+  sigma_W4_P6_box4_c2_cp12_sc2.5_dd0: s_max 6.00  cum 1.8e-09
+  sigma_W4_P6_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 3.3e-09
+  sigma_W4_P6_box4_c2_cp16_sc3.0_dd0: s_max 6.00  cum 2.2e-09
+  sigma_W4_P6_box4_c3_cp12_sc3.0_dd0: s_max 6.00  cum 3.0e-09
+  sigma_W4_P8_box4_c2_cp12_sc3.0_dd0: s_max 6.00  cum 4.2e-09
+  sigma_W4_P8_box8_c2_cp12_sc3.0_dd0: s_max 6.00  cum 5.4e-09
+  sigma_W8_P8_box8_c2_cp12_sc3.0_dd0: s_max 0.00  cum 0.0e+00  [LOWERED: cum at per-node s_max 2.0e-07]
+N2' (impact + own-pole census): PASS; pole census PASS; census must-fire FIRES; s=1.0: impact 1.3e-11 (must-fire 1.3e-06); s=2.0: impact 2.4e-11 (must-fire 1.9e-09); s=3.0: impact 1.4e-11 (must-fire 1.7e-11)

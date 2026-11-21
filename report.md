@@ -9397,3 +9397,74 @@ is not negligible: **argued (consistent; not reproduced by me).**
   - T0 and T2 reported separately, for strip and edge, as local slopes for z up to 10 and N_θ = 16, 20, 24, 32.
 - The lattice strip pair (EXP-081b) cancels this edge function exactly by construction. That is why it is the primary
   route; P2 is a cross-check.
+
+### EXP-081b result: INCONCLUSIVE under both rules, as registered. The lattice nuisance σ_W is the sole cause; one production-code bug found by the N_y control and fixed [model: Opus 5.5]
+
+**Runs.**
+- The driver finished all 20 geometries (W2P12 resumed from its checkpoint at the 3.2 GB cap; peak 2.25 GB).
+- It then crashed in its own summary: `int(np.sign(nan))` for the T1 tail, which is undefined when s_max < 1. Output kept:
+  `exp081b_output_run2_crashed_at_summary.txt`. Fix: sign = 0 when R∞ is not finite. `decided` was already False for
+  NaN, so no verdict changes.
+- `exp081b_analyze.py` hard-coded 12-point node weights and failed (KeyError) on the cp16 geometry. Fix: the node rule is
+  read from the tag. Control: the analyzer's orig-rule S_T0 equals the workers' own route_b S_T0 **exactly (difference 0)
+  for all 20 geometries** (crashed output kept: `exp081b_analyze_output_crash1.txt`).
+
+**Bug found by the registered N_y control (post-run fix; declared here).**
+- *What fired:* N_y (c = 3 vs 2 at P = 6) gave a relative change of 3.1 against ≤ 1%. All components scale ×1.5 with N_y
+  except **t0 of W4P6 c3**. The per-slice decomposition (`exp081b_t0perk.py`) puts the defect in a single slice:
+  t0[k = 0] = −9.81 against a smooth −5.8 (c = 2: −5.91).
+- *Ruled out:*
+  - a near-confluent pair split by s_cut (closest split pair 0.04; `exp081b_t0diag.py`);
+  - the confluent contour (rad 10⁻⁴…10⁻⁶, M 32/64: unchanged; `exp081b_t0k0.py`).
+- *Cause:* `inner_beta0` merges coincident poles of the two factors when |Δs| < 10⁻⁹ and integrates the merged pair by a
+  contour of radius rad = 10⁻⁵. Mirror slices p and N_y − p are the same slice, but their QEP poles are computed
+  separately and agree only to ~10⁻⁹ near s ≈ 2.9.
+  - In W4P6 c3 the pair p = 6/30 at s = 2.886212 differs by **1.1·10⁻⁹**, so it was not merged. It was treated as two
+    simple poles 10⁻⁹ apart, whose 1/Δ terms cancel catastrophically (`exp081b_t0merge.py`).
+- *Fix:* merge tolerance 10⁻⁹ → 10⁻²·rad = 10⁻⁷ (`sigma3d.py`). The contour is exact for any pair inside it.
+- *Scope check, which would fire on any other change:* replaying the merge decisions for every (k, p) of every driver
+  geometry at both tolerances (`exp081b_mergecheck.py`) gives **0 changed decisions everywhere except W4P6 c3 (2 of
+  1296)**. So every other geometry is computed identically under the fix.
+  - Margin before the fix: production mirror mismatches 3·10⁻¹⁰ … 8.6·10⁻¹⁰, against a 10⁻⁹ threshold. They were safe,
+    but narrowly.
+- *Rerun:* W4P6 c3 only (old outputs kept as `*_prebugfix*`). Its S_T0 went 1.268 → 3.233, against 1.5 × 2.151 = 3.227
+  expected. **N_y now passes: 4.8·10⁻⁴ (orig), 6.6·10⁻⁴ (impact).**
+  - The verdict is the same with or without the fix (below): before the fix, N_y would have added
+    3.1 × |R| ≈ 7.5 to σ.
+
+**Results** (`exp081b_analyze_output.txt`, `exp081b_results_{impact,orig}.json`).
+- **Planted control K: PASS** (0.040387 ± 0.000991 vs 0.0396481; held-out P = 12 inside).
+- **N2′ referee (primary): PASS** (impact ≤ 2.4·10⁻¹¹, own-pole census clean, census must-fire fires). **N2 (orig):
+  PASS.** VOID is not triggered.
+- **Impact rule (primary).**
+  - Every W = 2 and W = 4 geometry is reliable over the full range, s_max = 6, with cumulative impact ≤ 5.8·10⁻⁹. So
+    T1 = T0.
+  - R(P) = 2.2552, 2.5397, 2.6441, 2.6651, 2.6460 for P = 4…12.
+  - Route (i) 2.4065 ± 0.2919; route (ii) 2.6742 ± 0.3137. The premise holds.
+  - N_y 6.6·10⁻⁴ PASS; s-quad 7·10⁻¹⁰ PASS; **N4 s_cut 1.6·10⁻⁴ FAIL (registered ≤ 10⁻⁶; no consequence was registered
+    for an N4 failure)**.
+  - **σ_W = 30.07: the (4, 8) pair at P = 8 gives R48 = 32.7.**
+    - Its W = 8 geometry fails reliability at the first checkpoint: cumulative impact 2.0·10⁻⁷ > 10⁻⁷, so s_max is
+      lowered to 0 and its 𝒞 term is dropped entirely.
+    - R∞ = 2.41 ± 30.07 (T0); T1 is undefined (σ_W NaN, fewer than 3 reliable nodes for the W = 8 fit). The must-fire
+      shift 4.53 does not exceed σ.
+    - **INCONCLUSIVE.**
+- **Original rule.**
+  - The W = 4 geometries stop at s_max = 0.94, so T1 is undefined. R(P) = 2.53, 2.77, 2.87, 2.88, 2.86.
+  - W = 8 s_max = 0 gives σ_W = 29.1. **INCONCLUSIVE.**
+- **The revised S2 window used in EXP-081a/b is post-registration** (row 3 of the amendments table); it does not enter
+  this verdict.
+
+**Descriptive only, NOT a verdict (post-registration; σ_W excluded by me, which the registration does not allow):**
+- Impact rule, R∞ = 2.41 ± 0.29 (routes only). R∞ + 0.4503 = 2.86, about 10 route-σ from zero, positive.
+- N4's 1.6·10⁻⁴ relative is ~4·10⁻⁴ absolute on R, far below 0.29 (argued).
+- The registered verdict stays INCONCLUSIVE. Whether to remeasure the W = 8 nuisance with numerics that pass N1‴ (e.g.
+  direct-inverse G for that one geometry) needs a registered amendment and the Bridge's OK *before* it is computed. The
+  value above is now seen, which must be disclosed in any such amendment.
+
+**Grades.**
+- Verdict: INCONCLUSIVE (as registered).
+- The t0 merge bug: verified (cause located to one pair; fix scope verified by decision replay; rerun consistent with
+  N_y scaling).
+- R(P) values under the impact rule: partially verified (N2′ referee at W4P4 only; reliability rules applied to every
+  geometry).

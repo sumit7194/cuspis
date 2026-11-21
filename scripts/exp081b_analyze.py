@@ -20,7 +20,7 @@ def rel_interp(checks):
 def S_from_ckpt(tag, rule):
     st = json.load(open(os.path.join(OUT, tag + "_ckpt.json")))
     nodes = sorted((float(k.split("|")[1]), v[0]) for k, v in st.items() if k.startswith("g|"))
-    x, w = np.polynomial.legendre.leggauss(12); wt = {}
+    import re; x, w = np.polynomial.legendre.leggauss(int(re.search(r"_cp(\d+)_", tag).group(1))); wt = {}   # node rule = route_b(cpts) of this geometry
     for lo, hi in zip((0.0, 0.5, 1.5, 3.0), (0.5, 1.5, 3.0, 6.0)):
         for xi, wi in zip(x, w):
             si = 0.5 * (hi - lo) * (xi + 1) + lo; wt[f"{si:.15f}"] = 0.5 * (hi - lo) * wi * np.pi / np.cosh(np.pi * si) ** 2

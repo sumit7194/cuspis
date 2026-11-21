@@ -1,0 +1,14 @@
+W2 P4 c2 box4 Ny 16: max |ds(p) - ds(Ny-p)| = 6.4e-15 at p=5 (s=1.2144461231655412); pairs missing the 1e-9 merge: 0
+W4 P4 c2 box4 Ny 16: max |ds(p) - ds(Ny-p)| = 3.9e-10 at p=3 (s=2.7148192607013275); pairs missing the 1e-9 merge: 0
+W2 P6 c2 box4 Ny 24: max |ds(p) - ds(Ny-p)| = 5.8e-15 at p=8 (s=1.2381304742494332); pairs missing the 1e-9 merge: 0
+W4 P6 c2 box4 Ny 24: max |ds(p) - ds(Ny-p)| = 8.6e-10 at p=5 (s=2.8405996949630548); pairs missing the 1e-9 merge: 0
+W2 P8 c2 box4 Ny 32: max |ds(p) - ds(Ny-p)| = 1.4e-14 at p=10 (s=1.2144447459630634); pairs missing the 1e-9 merge: 0
+W4 P8 c2 box4 Ny 32: max |ds(p) - ds(Ny-p)| = 5.0e-10 at p=5 (s=2.8252621165183065); pairs missing the 1e-9 merge: 0
+W2 P10 c2 box4 Ny 40: max |ds(p) - ds(Ny-p)| = 7.5e-15 at p=14 (s=1.2551933253320482); pairs missing the 1e-9 merge: 0
+W4 P10 c2 box4 Ny 40: max |ds(p) - ds(Ny-p)| = 3.0e-10 at p=9 (s=2.9423493614770995); pairs missing the 1e-9 merge: 0
+W2 P12 c2 box4 Ny 48: max |ds(p) - ds(Ny-p)| = 1.4e-14 at p=18 (s=1.2775580247569573); pairs missing the 1e-9 merge: 0
+W4 P12 c2 box4 Ny 48: max |ds(p) - ds(Ny-p)| = 5.0e-10 at p=11 (s=2.966986085082545); pairs missing the 1e-9 merge: 0
+W2 P6 c3 box4 Ny 36: max |ds(p) - ds(Ny-p)| = 1.5e-14 at p=14 (s=1.288276940461506); pairs missing the 1e-9 merge: 0
+W4 P6 c3 box4 Ny 36: max |ds(p) - ds(Ny-p)| = 1.1e-09 at p=6 (s=2.8862122597920856); pairs missing the 1e-9 merge: 1 -> [(6, 2.886212, '1.1e-09')]
+W4 P8 c2 box8 Ny 32: max |ds(p) - ds(Ny-p)| = 3.9e-10 at p=5 (s=2.8252565182236853); pairs missing the 1e-9 merge: 0
+W8 P8 c2 box8 Ny 32: max |ds(p) - ds(Ny-p)| = 2.7e-10 at p=5 (s=2.5701518306771853); pairs missing the 1e-9 merge: 0

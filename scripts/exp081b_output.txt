@@ -1,0 +1,88 @@
+[      0s] free kappa_lat: {4: 0.01766, 6: 0.025702, 8: 0.029716, 10: 0.03199, 12: 0.033406}
+[      0s] free (planted control K): A train 0.041159 all 0.040742 ho 1.5e-04 | B train 0.040696 all 0.040033 ho 1.4e-04 -> 0.040387 +- 0.000991
+[      0s] K: 0.040387 +- 0.000991 vs 0.0396481 [PASS]
+# exit 0; wall 22 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+[     22s] sigma_W2_P4_box4_c2_cp12_sc3.0_dd0: S_T0 0.9885990727 S_T1 0.9885990703 s_max 3.95 checks [(0.94, '5e-15'), (1.97, '1e-13'), (2.99, '2e-11'), (3.95, '7e-09'), (5.05, '6e-06')]  [22s]
+# exit 0; wall 22 s; PEAK tree MEM 0.056 GB + CMPRS 0.000 GB = 0.056 GB
+[     44s] sigma_W4_P4_box4_c2_cp12_sc3.0_dd0: S_T0 1.1674717272 S_T1 nan s_max 0.94 checks [(0.94, '4e-10'), (1.97, '4e-07'), (2.99, '2e-05'), (3.95, '3e-03'), (5.05, '6e-01')]  [22s]
+# exit 0; wall 144 s; PEAK tree MEM 0.126 GB + CMPRS 0.000 GB = 0.126 GB
+[    188s] sigma_W2_P6_box4_c2_cp12_sc3.0_dd0: S_T0 1.7235656633 S_T1 1.7235656597 s_max 3.95 checks [(0.94, '9e-14'), (1.97, '1e-13'), (2.99, '1e-11'), (3.95, '8e-09'), (5.05, '6e-07')]  [144s]
+# exit 0; wall 165 s; PEAK tree MEM 0.126 GB + CMPRS 0.000 GB = 0.126 GB
+[    354s] sigma_W4_P6_box4_c2_cp12_sc3.0_dd0: S_T0 2.1510976392 S_T1 nan s_max 0.94 checks [(0.94, '4e-10'), (1.97, '2e-08'), (2.99, '4e-05'), (3.95, '7e-03'), (5.05, '6e-01')]  [166s]
+# exit 0; wall 564 s; PEAK tree MEM 0.339 GB + CMPRS 0.000 GB = 0.339 GB
+[    918s] sigma_W2_P8_box4_c2_cp12_sc3.0_dd0: S_T0 2.4223954951 S_T1 2.4223954903 s_max 3.95 checks [(0.94, '2e-13'), (1.97, '1e-13'), (2.99, '2e-11'), (3.95, '5e-09'), (5.05, '4e-06')]  [564s]
+# exit 0; wall 645 s; PEAK tree MEM 0.342 GB + CMPRS 0.000 GB = 0.342 GB
+[   1563s] sigma_W4_P8_box4_c2_cp12_sc3.0_dd0: S_T0 3.1035296136 S_T1 nan s_max 0.94 checks [(0.94, '1e-10'), (1.97, '4e-08'), (2.99, '4e-05'), (3.95, '1e-02'), (5.05, '5e-01')]  [645s]
+# exit 0; wall 1768 s; PEAK tree MEM 0.847 GB + CMPRS 0.000 GB = 0.847 GB
+[   3331s] sigma_W2_P10_box4_c2_cp12_sc3.0_dd0: S_T0 3.0775278583 S_T1 3.0775278522 s_max 3.95 checks [(0.94, '3e-13'), (1.97, '3e-13'), (2.99, '4e-11'), (3.95, '6e-09'), (5.05, '3e-06')]  [1768s]
+# exit 0; wall 1971 s; PEAK tree MEM 0.785 GB + CMPRS 0.229 GB = 1.015 GB
+[   5302s] sigma_W4_P10_box4_c2_cp12_sc3.0_dd0: S_T0 3.9994773021 S_T1 nan s_max 0.94 checks [(0.94, '2e-10'), (1.97, '9e-08'), (2.99, '2e-05'), (3.95, '7e-03'), (5.05, '5e-01')]  [1971s]
+# exit -15; wall 2612 s; PEAK tree MEM 1.901 GB + CMPRS 0.352 GB = 2.253 GB; KILLED: tree footprint 2.25 GB > cap 2.2 GB
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_run.py", line 61, in <module>
+    for W in (2, 4): sigma(W, P)
+                     ~~~~~^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_run.py", line 21, in sigma
+    if not os.path.exists(f): raise RuntimeError(f"worker failed: {tag} (exit {r.returncode}); see {tag}.wd.log")
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: worker failed: sigma_W2_P12_box4_c2_cp12_sc3.0_dd0 (exit 99); see sigma_W2_P12_box4_c2_cp12_sc3.0_dd0.wd.log
+# ---- relaunch 2026-11-21 21:34 IST: P12 W2 worker killed at 2.25 GB > 2.2 GB cap; cap raised to 3.2 GB; resume from worker checkpoint ----
+[      0s] free kappa_lat: {4: 0.01766, 6: 0.025702, 8: 0.029716, 10: 0.03199, 12: 0.033406}
+[      0s] free (planted control K): A train 0.041159 all 0.040742 ho 1.5e-04 | B train 0.040696 all 0.040033 ho 1.4e-04 -> 0.040387 +- 0.000991
+[      0s] K: 0.040387 +- 0.000991 vs 0.0396481 [PASS]
+# exit 0; wall 1946 s; PEAK tree MEM 1.900 GB + CMPRS 0.722 GB = 2.622 GB
+[   1946s] sigma_W2_P12_box4_c2_cp12_sc3.0_dd0: S_T0 3.6926382019 S_T1 3.6926381947 s_max 3.95 checks [(0.94, '4e-13'), (1.97, '7e-14'), (2.99, '3e-11'), (3.95, '9e-09'), (5.05, '6e-06')]  [1946s]
+# exit 0; wall 5481 s; PEAK tree MEM 1.902 GB + CMPRS 1.093 GB = 2.995 GB
+[   7427s] sigma_W4_P12_box4_c2_cp12_sc3.0_dd0: S_T0 4.8395765765 S_T1 nan s_max 0.94 checks [(0.94, '3e-10'), (1.97, '7e-08'), (2.99, '1e-05'), (3.95, '8e-03'), (5.05, '5e-01')]  [5481s]
+# exit 0; wall 236 s; PEAK tree MEM 0.164 GB + CMPRS 0.000 GB = 0.164 GB
+[   7663s] sigma_W2_P6_box4_c3_cp12_sc3.0_dd0: S_T0 2.5916821377 S_T1 2.5916821322 s_max 3.95 checks [(0.94, '4e-14'), (1.97, '4e-14'), (2.99, '3e-12'), (3.95, '2e-09'), (5.05, '3e-06')]  [236s]
+# exit 0; wall 181 s; PEAK tree MEM 0.123 GB + CMPRS 0.000 GB = 0.123 GB
+[   7845s] sigma_W2_P6_box4_c2_cp16_sc3.0_dd0: S_T0 1.7235682470 S_T1 1.7235655486 s_max 2.99 checks [(0.95, '7e-14'), (2.04, '1e-14'), (2.99, '4e-11'), (4.08, '1e-08'), (4.92, '2e-06')]  [181s]
+# exit 0; wall 143 s; PEAK tree MEM 0.122 GB + CMPRS 0.000 GB = 0.122 GB
+[   7988s] sigma_W2_P6_box4_c2_cp12_sc2.5_dd0: S_T0 1.7235656633 S_T1 1.7235656597 s_max 3.95 checks [(0.94, '9e-14'), (1.97, '1e-13'), (2.99, '1e-11'), (3.95, '8e-09'), (5.05, '6e-07')]  [143s]
+# exit 0; wall 22 s; PEAK tree MEM 0.056 GB + CMPRS 0.000 GB = 0.056 GB
+[   8010s] sigma_W2_P4_box4_c2_cp12_sc3.0_dd1: S_T0 3.6385357259 S_T1 3.6385357235 s_max 3.95 checks [(0.94, '5e-15'), (1.97, '1e-13'), (2.99, '2e-11'), (3.95, '7e-09'), (5.05, '6e-06')]  [22s]
+# exit 0; wall 854 s; PEAK tree MEM 0.427 GB + CMPRS 0.079 GB = 0.506 GB
+[   8864s] sigma_W4_P8_box8_c2_cp12_sc3.0_dd0: S_T0 3.1404779992 S_T1 nan s_max 0.94 checks [(0.94, '9e-13'), (1.97, '8e-08'), (2.99, '7e-05'), (3.95, '1e-02'), (5.05, '5e-01')]  [854s]
+# exit 0; wall 265 s; PEAK tree MEM 0.163 GB + CMPRS 0.000 GB = 0.163 GB
+[   9129s] sigma_W4_P6_box4_c3_cp12_sc3.0_dd0: S_T0 1.2676844579 S_T1 nan s_max 0.94 checks [(0.94, '1e-10'), (1.97, '1e-07'), (2.99, '8e-06'), (3.95, '5e-03'), (5.05, '5e-01')]  [265s]
+# exit 0; wall 187 s; PEAK tree MEM 0.122 GB + CMPRS 0.000 GB = 0.122 GB
+[   9316s] sigma_W4_P6_box4_c2_cp16_sc3.0_dd0: S_T0 2.1512257528 S_T1 nan s_max 0.95 checks [(0.95, '5e-10'), (2.04, '5e-08'), (2.99, '7e-08'), (4.08, '2e-02'), (4.92, '4e-01')]  [187s]
+# exit 0; wall 149 s; PEAK tree MEM 0.124 GB + CMPRS 0.000 GB = 0.124 GB
+[   9465s] sigma_W4_P6_box4_c2_cp12_sc2.5_dd0: S_T0 2.1510342822 S_T1 nan s_max 0.94 checks [(0.94, '1e-10'), (1.97, '5e-08'), (2.99, '1e-05'), (3.95, '6e-03'), (5.05, '5e-01')]  [149s]
+# exit 0; wall 22 s; PEAK tree MEM 0.055 GB + CMPRS 0.000 GB = 0.055 GB
+[   9487s] sigma_W4_P4_box4_c2_cp12_sc3.0_dd1: S_T0 4.1374083138 S_T1 nan s_max 0.94 checks [(0.94, '4e-10'), (1.97, '4e-07'), (2.99, '2e-05'), (3.95, '3e-03'), (5.05, '6e-01')]  [22s]
+# exit 0; wall 802 s; PEAK tree MEM 0.458 GB + CMPRS 0.000 GB = 0.458 GB
+[  10289s] sigma_W8_P8_box8_c2_cp12_sc3.0_dd0: S_T0 5.4089935736 S_T1 nan s_max 0.00 checks [(0.94, '6e-08'), (1.97, '2e-04'), (2.99, '2e+00'), (3.95, '1e+00'), (5.05, '1e+00')]  [802s]
+[  10289s] [S_T0] delta_kappa_lat {P: value} = {4: 0.044718, 6: 0.071255, 8: 0.085142, 10: 0.092195, 12: 0.095578}; R = {4: 2.5322, 6: 2.7724, 8: 2.8652, 10: 2.8820, 12: 2.8611}
+[  10289s] [S_T0] route (i) R: A train 2.904230 all 2.793045 ho 4.1e-02 | B train 2.673334 all 2.510163 ho 3.4e-02 -> 2.651604 +- 0.284338
+[  10289s] [S_T0] route (ii) delta_kappa_lat: A train 0.122893 all 0.117430 ho 2.0e-03 | B train 0.121111 all 0.111833 ho 1.9e-03 -> 0.114631 +- 0.012439
+[  10289s] [S_T0] Ny 3.1e+00 [FAIL->sys]; s-quad 2.9e-04 [PASS]; s_cut 2.5 vs 3: 1.5e-04 [FAIL]; sigma_W (4,8) pair: R48 31.9634 vs R(8) 2.8652 -> 29.0982
+[  10289s] [S_T0] routes: (i) 2.6516 +- 0.2843, (ii) 2.8912 +- 0.3137, premise OK; R_inf = 2.6516 +- 30.2129; R_inf + 0.4503 = 3.1019 (2 sigma 60.4258); must-fire shift 4.5300 [does not fire]
+[  10289s] [S_T1] delta_kappa_lat {P: value} = {4: nan, 6: nan, 8: nan, 10: nan, 12: nan}; R = {4: nan, 6: nan, 8: nan, 10: nan, 12: nan}
+[  10289s] [S_T1] route (i) R: A train nan all nan ho nan | B train nan all nan ho nan -> nan +- nan
+[  10289s] [S_T1] route (ii) delta_kappa_lat: A train nan all nan ho nan | B train nan all nan ho nan -> nan +- nan
+[  10289s] [S_T1] Ny nan [FAIL->sys]; s-quad nan [FAIL->sys]; s_cut 2.5 vs 3: nan [FAIL]; sigma_W (4,8) pair: R48 nan vs R(8) nan -> nan
+[  10289s] [S_T1] routes: (i) nan +- nan, (ii) nan +- nan, premise FAILS (union); R_inf = nan +- nan; R_inf + 0.4503 = nan (2 sigma nan); must-fire shift nan [does not fire]
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_run.py", line 87, in <module>
+    decided=bool(abs(Rq + 0.4503) > 2 * sg), sign=int(np.sign(Rq + 0.4503)), ny=ny, squad=sq, scut=sc, sigW=sigW, mustfire=dd_shift)
+                                                  ~~~^^^^^^^^^^^^^^^^^^^^^^
+ValueError: cannot convert float NaN to integer
+# ---- rerun 2026-11-22 00:31 IST: sigma3d inner_beta0 merge tol 1e-9 -> 1e-2*rad (bug found by N_y control); only W4P6c3 recomputed (merge-decision replay: no other geometry changes); NaN-sign guard ----
+[      0s] free kappa_lat: {4: 0.01766, 6: 0.025702, 8: 0.029716, 10: 0.03199, 12: 0.033406}
+[      0s] free (planted control K): A train 0.041159 all 0.040742 ho 1.5e-04 | B train 0.040696 all 0.040033 ho 1.4e-04 -> 0.040387 +- 0.000991
+[      0s] K: 0.040387 +- 0.000991 vs 0.0396481 [PASS]
+# exit 0; wall 248 s; PEAK tree MEM 0.167 GB + CMPRS 0.000 GB = 0.167 GB
+[    248s] sigma_W4_P6_box4_c3_cp12_sc3.0_dd0: S_T0 3.2332891037 S_T1 nan s_max 0.94 checks [(0.94, '1e-10'), (1.97, '1e-07'), (2.99, '8e-06'), (3.95, '5e-03'), (5.05, '5e-01')]  [248s]
+[    248s] [S_T0] delta_kappa_lat {P: value} = {4: 0.044718, 6: 0.071255, 8: 0.085142, 10: 0.092195, 12: 0.095578}; R = {4: 2.5322, 6: 2.7724, 8: 2.8652, 10: 2.8820, 12: 2.8611}
+[    248s] [S_T0] route (i) R: A train 2.904230 all 2.793045 ho 4.1e-02 | B train 2.673334 all 2.510163 ho 3.4e-02 -> 2.651604 +- 0.284338
+[    248s] [S_T0] route (ii) delta_kappa_lat: A train 0.122893 all 0.117430 ho 2.0e-03 | B train 0.121111 all 0.111833 ho 1.9e-03 -> 0.114631 +- 0.012439
+[    248s] [S_T0] Ny 4.8e-04 [PASS]; s-quad 2.9e-04 [PASS]; s_cut 2.5 vs 3: 1.5e-04 [FAIL]; sigma_W (4,8) pair: R48 31.9634 vs R(8) 2.8652 -> 29.0982
+[    248s] [S_T0] routes: (i) 2.6516 +- 0.2843, (ii) 2.8912 +- 0.3137, premise OK; R_inf = 2.6516 +- 29.0996; R_inf + 0.4503 = 3.1019 (2 sigma 58.1992); must-fire shift 4.5300 [does not fire]
+[    248s] [S_T1] delta_kappa_lat {P: value} = {4: nan, 6: nan, 8: nan, 10: nan, 12: nan}; R = {4: nan, 6: nan, 8: nan, 10: nan, 12: nan}
+[    248s] [S_T1] route (i) R: A train nan all nan ho nan | B train nan all nan ho nan -> nan +- nan
+[    248s] [S_T1] route (ii) delta_kappa_lat: A train nan all nan ho nan | B train nan all nan ho nan -> nan +- nan
+[    248s] [S_T1] Ny nan [FAIL->sys]; s-quad nan [FAIL->sys]; s_cut 2.5 vs 3: nan [FAIL]; sigma_W (4,8) pair: R48 nan vs R(8) nan -> nan
+[    248s] [S_T1] routes: (i) nan +- nan, (ii) nan +- nan, premise FAILS (union); R_inf = nan +- nan; R_inf + 0.4503 = nan (2 sigma nan); must-fire shift nan [does not fire]
+[    248s] VERDICT: INCONCLUSIVE

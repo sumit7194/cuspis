@@ -1,0 +1,17 @@
+# cmd: ../.venv/bin/python -u -W ignore exp081b_referee.py
+# caps: tree <= 1.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.5     1   0.044    0.000   0.044        13.17        712.9           66              1
+     6.1     1   0.099    0.000   0.099        13.17        712.9           66              1
+    11.6     1   0.155    0.000   0.155        13.17        712.9           66              1
+    17.1     1   0.199    0.000   0.199        13.17        712.9           66              1
+    22.7     1   0.244    0.000   0.244        13.17        712.9           66              1
+    28.2     1   0.295    0.000   0.295        13.17        712.9           66              1
+    33.7     1   0.297    0.000   0.297        13.17        712.9           66              1
+    39.2     1   0.297    0.000   0.297        13.17        712.9           66              1
+    44.8     1   0.297    0.000   0.297        13.17        712.9           66              1
+    50.3     1   0.298    0.000   0.298        13.17        712.9           66              1
+    55.8     1   0.298    0.000   0.298        13.17        712.9           66              1
+# watchdog received signal 15: stopping child group

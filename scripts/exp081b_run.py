@@ -84,7 +84,7 @@ if __name__ == "__main__":
         log(f"[{tail}] routes: (i) {Ri:.4f} +- {si:.4f}, (ii) {Rii:.4f} +- {sii:.4f}, premise {'OK' if premise else 'FAILS (union)'}; "
             f"R_inf = {Rq:.4f} +- {sg:.4f}; R_inf + 0.4503 = {Rq + 0.4503:.4f} (2 sigma {2*sg:.4f}); must-fire shift {dd_shift:.4f} [{'FIRES' if dd_shift > sg else 'does not fire'}]")
         out[tail] = dict(dk=dk, R=R, route_i=[Ri, si], route_ii=[Rii, sii], premise=bool(premise), R_inf=[Rq, sg], stat=Rq + 0.4503,
-                         decided=bool(abs(Rq + 0.4503) > 2 * sg), sign=int(np.sign(Rq + 0.4503)), ny=ny, squad=sq, scut=sc, sigW=sigW, mustfire=dd_shift)
+                         decided=bool(abs(Rq + 0.4503) > 2 * sg), sign=(int(np.sign(Rq + 0.4503)) if np.isfinite(Rq) else 0), ny=ny, squad=sq, scut=sc, sigW=sigW, mustfire=dd_shift)
     both = K_pass and out["S_T0"]["decided"] and out["S_T1"]["decided"] and out["S_T0"]["sign"] == out["S_T1"]["sign"]
     verdict = ("INCONCLUSIVE (planted control K failed)" if not K_pass else
                (f"DECIDED (both tails agree): delta(kappa/C_T) {'> 0' if out['S_T0']['sign'] > 0 else '< 0'} (pending the N2 referee)" if both else "INCONCLUSIVE"))

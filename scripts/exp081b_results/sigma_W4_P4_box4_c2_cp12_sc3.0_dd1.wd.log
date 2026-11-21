@@ -1,0 +1,10 @@
+# cmd: /Users/sumit/Github/corner_function/scripts/../.venv/bin/python -u -W ignore /Users/sumit/Github/corner_function/scripts/exp081b_worker.py 4 4 4 2 12 3.0 1
+# caps: tree <= 3.2 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.5     1   0.045    0.000   0.045        13.90        720.9           62              1
+     6.0     1   0.054    0.000   0.054        13.90        720.9           62              1
+    11.6     1   0.054    0.000   0.054        13.90        720.9           62              1
+    17.1     1   0.055    0.000   0.055        13.90        720.9           62              1
+# exit 0; wall 22 s; PEAK tree MEM 0.055 GB + CMPRS 0.000 GB = 0.055 GB

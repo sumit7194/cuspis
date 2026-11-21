@@ -1,0 +1,28 @@
+[      0s] free kappa_lat: {4: 0.01766, 6: 0.025702, 8: 0.029716, 10: 0.03199, 12: 0.033406}
+[      0s] free (planted control K): A train 0.041159 all 0.040742 ho 1.5e-04 | B train 0.040696 all 0.040033 ho 1.4e-04 -> 0.040387 +- 0.000991
+[      0s] K: 0.040387 +- 0.000991 vs 0.0396481 [PASS]
+# exit 0; wall 22 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+[     22s] sigma_W2_P4_box4_c2_cp12_sc3.0_dd0: S_T0 0.9885990727 S_T1 0.9885990703 s_max 3.95 checks [(0.94, '5e-15'), (1.97, '1e-13'), (2.99, '2e-11'), (3.95, '7e-09'), (5.05, '6e-06')]  [22s]
+# exit 0; wall 22 s; PEAK tree MEM 0.056 GB + CMPRS 0.000 GB = 0.056 GB
+[     44s] sigma_W4_P4_box4_c2_cp12_sc3.0_dd0: S_T0 1.1674717272 S_T1 nan s_max 0.94 checks [(0.94, '4e-10'), (1.97, '4e-07'), (2.99, '2e-05'), (3.95, '3e-03'), (5.05, '6e-01')]  [22s]
+# exit 0; wall 144 s; PEAK tree MEM 0.126 GB + CMPRS 0.000 GB = 0.126 GB
+[    188s] sigma_W2_P6_box4_c2_cp12_sc3.0_dd0: S_T0 1.7235656633 S_T1 1.7235656597 s_max 3.95 checks [(0.94, '9e-14'), (1.97, '1e-13'), (2.99, '1e-11'), (3.95, '8e-09'), (5.05, '6e-07')]  [144s]
+# exit 0; wall 165 s; PEAK tree MEM 0.126 GB + CMPRS 0.000 GB = 0.126 GB
+[    354s] sigma_W4_P6_box4_c2_cp12_sc3.0_dd0: S_T0 2.1510976392 S_T1 nan s_max 0.94 checks [(0.94, '4e-10'), (1.97, '2e-08'), (2.99, '4e-05'), (3.95, '7e-03'), (5.05, '6e-01')]  [166s]
+# exit 0; wall 564 s; PEAK tree MEM 0.339 GB + CMPRS 0.000 GB = 0.339 GB
+[    918s] sigma_W2_P8_box4_c2_cp12_sc3.0_dd0: S_T0 2.4223954951 S_T1 2.4223954903 s_max 3.95 checks [(0.94, '2e-13'), (1.97, '1e-13'), (2.99, '2e-11'), (3.95, '5e-09'), (5.05, '4e-06')]  [564s]
+# exit 0; wall 645 s; PEAK tree MEM 0.342 GB + CMPRS 0.000 GB = 0.342 GB
+[   1563s] sigma_W4_P8_box4_c2_cp12_sc3.0_dd0: S_T0 3.1035296136 S_T1 nan s_max 0.94 checks [(0.94, '1e-10'), (1.97, '4e-08'), (2.99, '4e-05'), (3.95, '1e-02'), (5.05, '5e-01')]  [645s]
+# exit 0; wall 1768 s; PEAK tree MEM 0.847 GB + CMPRS 0.000 GB = 0.847 GB
+[   3331s] sigma_W2_P10_box4_c2_cp12_sc3.0_dd0: S_T0 3.0775278583 S_T1 3.0775278522 s_max 3.95 checks [(0.94, '3e-13'), (1.97, '3e-13'), (2.99, '4e-11'), (3.95, '6e-09'), (5.05, '3e-06')]  [1768s]
+# exit 0; wall 1971 s; PEAK tree MEM 0.785 GB + CMPRS 0.229 GB = 1.015 GB
+[   5302s] sigma_W4_P10_box4_c2_cp12_sc3.0_dd0: S_T0 3.9994773021 S_T1 nan s_max 0.94 checks [(0.94, '2e-10'), (1.97, '9e-08'), (2.99, '2e-05'), (3.95, '7e-03'), (5.05, '5e-01')]  [1971s]
+# exit -15; wall 2612 s; PEAK tree MEM 1.901 GB + CMPRS 0.352 GB = 2.253 GB; KILLED: tree footprint 2.25 GB > cap 2.2 GB
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_run.py", line 61, in <module>
+    for W in (2, 4): sigma(W, P)
+                     ~~~~~^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_run.py", line 21, in sigma
+    if not os.path.exists(f): raise RuntimeError(f"worker failed: {tag} (exit {r.returncode}); see {tag}.wd.log")
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: worker failed: sigma_W2_P12_box4_c2_cp12_sc3.0_dd0 (exit 99); see sigma_W2_P12_box4_c2_cp12_sc3.0_dd0.wd.log

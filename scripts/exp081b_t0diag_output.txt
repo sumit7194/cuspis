@@ -1,0 +1,16 @@
+W4 P6 c2 (Ny 24): closest distinct-slice pole pairs: |ds| 2.9e-03 (p11 s=1.274671, q12 s=1.277608); |ds| 2.9e-03 (p12 s=1.277608, q13 s=1.274671)
+   closest pairs SPLIT by s_cut=3: |ds| 2.0e-01 (p4 s=2.886212, q6 s=3.085093); |ds| 2.0e-01 (p6 s=3.085093, q4 s=2.886212)
+W4 P6 c3 (Ny 36): closest distinct-slice pole pairs: |ds| 5.4e-04 (p17 s=1.278150, q18 s=1.277608); |ds| 5.4e-04 (p18 s=1.277608, q19 s=1.278150)
+   closest pairs SPLIT by s_cut=3: |ds| 1.2e-01 (p7 s=3.043370, q28 s=2.925791); |ds| 1.2e-01 (p28 s=2.925791, q29 s=3.043370)
+W2 P6 c2 (Ny 24): closest distinct-slice pole pairs: |ds| 3.2e-03 (p8 s=1.238130, q11 s=1.234937); |ds| 3.2e-03 (p11 s=1.234937, q8 s=1.238130)
+   closest pairs SPLIT by s_cut=3: none
+W2 P6 c3 (Ny 36): closest distinct-slice pole pairs: |ds| 5.0e-04 (p17 s=1.238629, q24 s=1.238130); |ds| 5.0e-04 (p24 s=1.238130, q17 s=1.238629)
+   closest pairs SPLIT by s_cut=3: none
+W4 P4 c2 (Ny 16): closest distinct-slice pole pairs: |ds| 6.6e-03 (p5 s=3.596239, q10 s=3.602803); |ds| 6.6e-03 (p10 s=3.602803, q11 s=3.596239)
+   closest pairs SPLIT by s_cut=3: |ds| 3.5e-01 (p2 s=2.662230, q13 s=3.010685); |ds| 3.5e-01 (p13 s=3.010685, q14 s=2.662230)
+W4 P8 c2 (Ny 32): closest distinct-slice pole pairs: |ds| 2.0e-04 (p15 s=1.277411, q16 s=1.277608); |ds| 2.0e-04 (p16 s=1.277608, q17 s=1.277411)
+   closest pairs SPLIT by s_cut=3: |ds| 1.0e-01 (p7 s=2.904773, q26 s=3.004685); |ds| 1.0e-01 (p26 s=3.004685, q7 s=2.904773)
+W4 P10 c2 (Ny 40): closest distinct-slice pole pairs: |ds| 7.7e-04 (p6 s=2.788460, q8 s=2.787686); |ds| 7.7e-04 (p8 s=2.787686, q6 s=2.788460)
+   closest pairs SPLIT by s_cut=3: |ds| 1.3e-01 (p8 s=3.073788, q31 s=2.942349); |ds| 1.3e-01 (p31 s=2.942349, q32 s=3.073788)
+W4 P12 c2 (Ny 48): closest distinct-slice pole pairs: |ds| 7.9e-04 (p17 s=3.733338, q21 s=3.732546); |ds| 7.9e-04 (p21 s=3.732546, q17 s=3.733338)
+   closest pairs SPLIT by s_cut=3: |ds| 3.8e-02 (p9 s=3.004684, q37 s=2.966986); |ds| 3.8e-02 (p9 s=3.004684, q11 s=2.966986)

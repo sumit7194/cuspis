@@ -1,0 +1,16 @@
+W2 P4 box4 c2 s_cut3.0: (k,p) pairs 256, decisions differing 1e-9 vs 1e-7: 0
+W4 P4 box4 c2 s_cut3.0: (k,p) pairs 256, decisions differing 1e-9 vs 1e-7: 0
+W2 P6 box4 c2 s_cut3.0: (k,p) pairs 576, decisions differing 1e-9 vs 1e-7: 0
+W4 P6 box4 c2 s_cut3.0: (k,p) pairs 576, decisions differing 1e-9 vs 1e-7: 0
+W2 P8 box4 c2 s_cut3.0: (k,p) pairs 1024, decisions differing 1e-9 vs 1e-7: 0
+W4 P8 box4 c2 s_cut3.0: (k,p) pairs 1024, decisions differing 1e-9 vs 1e-7: 0
+W2 P10 box4 c2 s_cut3.0: (k,p) pairs 1600, decisions differing 1e-9 vs 1e-7: 0
+W4 P10 box4 c2 s_cut3.0: (k,p) pairs 1600, decisions differing 1e-9 vs 1e-7: 0
+W2 P12 box4 c2 s_cut3.0: (k,p) pairs 2304, decisions differing 1e-9 vs 1e-7: 0
+W4 P12 box4 c2 s_cut3.0: (k,p) pairs 2304, decisions differing 1e-9 vs 1e-7: 0
+W2 P6 box4 c3 s_cut3.0: (k,p) pairs 1296, decisions differing 1e-9 vs 1e-7: 0
+W4 P6 box4 c3 s_cut3.0: (k,p) pairs 1296, decisions differing 1e-9 vs 1e-7: 2
+W2 P6 box4 c2 s_cut2.5: (k,p) pairs 576, decisions differing 1e-9 vs 1e-7: 0
+W4 P6 box4 c2 s_cut2.5: (k,p) pairs 576, decisions differing 1e-9 vs 1e-7: 0
+W4 P8 box8 c2 s_cut3.0: (k,p) pairs 1024, decisions differing 1e-9 vs 1e-7: 0
+W8 P8 box8 c2 s_cut3.0: (k,p) pairs 1024, decisions differing 1e-9 vs 1e-7: 0

@@ -1,0 +1,68 @@
+W4 P6 c2 Ny 24: sum t0 -105.231172
+   k= 0 kappa/pi=0.0000 t0[k]=-5.908640 cond(B1)=5.3e+00
+   k= 1 kappa/pi=0.0833 t0[k]=-5.775268 cond(B1)=4.8e+00
+   k= 2 kappa/pi=0.1667 t0[k]=-5.464489 cond(B1)=4.0e+00
+   k= 3 kappa/pi=0.2500 t0[k]=-5.096537 cond(B1)=3.3e+00
+   k= 4 kappa/pi=0.3333 t0[k]=-4.739873 cond(B1)=2.8e+00
+   k= 5 kappa/pi=0.4167 t0[k]=-4.421387 cond(B1)=2.5e+00
+   k= 6 kappa/pi=0.5000 t0[k]=-4.149899 cond(B1)=2.3e+00
+   k= 7 kappa/pi=0.5833 t0[k]=-3.926751 cond(B1)=2.1e+00
+   k= 8 kappa/pi=0.6667 t0[k]=-3.750094 cond(B1)=2.0e+00
+   k= 9 kappa/pi=0.7500 t0[k]=-3.616954 cond(B1)=1.9e+00
+   k=10 kappa/pi=0.8333 t0[k]=-3.524329 cond(B1)=1.9e+00
+   k=11 kappa/pi=0.9167 t0[k]=-3.469790 cond(B1)=1.8e+00
+   k=12 kappa/pi=1.0000 t0[k]=-3.451787 cond(B1)=1.8e+00
+W4 P6 c3 Ny 36: sum t0 -161.239678
+   k= 0 kappa/pi=0.0000 t0[k]=-9.814691 cond(B1)=5.2e+00
+   k= 1 kappa/pi=0.0556 t0[k]=-5.824042 cond(B1)=5.0e+00
+   k= 2 kappa/pi=0.1111 t0[k]=-5.664880 cond(B1)=4.5e+00
+   k= 3 kappa/pi=0.1667 t0[k]=-5.445805 cond(B1)=4.0e+00
+   k= 4 kappa/pi=0.2222 t0[k]=-5.202572 cond(B1)=3.5e+00
+   k= 5 kappa/pi=0.2778 t0[k]=-4.957899 cond(B1)=3.1e+00
+   k= 6 kappa/pi=0.3333 t0[k]=-4.724144 cond(B1)=2.8e+00
+   k= 7 kappa/pi=0.3889 t0[k]=-4.507591 cond(B1)=2.6e+00
+   k= 8 kappa/pi=0.4444 t0[k]=-4.311225 cond(B1)=2.4e+00
+   k= 9 kappa/pi=0.5000 t0[k]=-4.136206 cond(B1)=2.3e+00
+   k=10 kappa/pi=0.5556 t0[k]=-3.982649 cond(B1)=2.2e+00
+   k=11 kappa/pi=0.6111 t0[k]=-3.850073 cond(B1)=2.1e+00
+   k=12 kappa/pi=0.6667 t0[k]=-3.737687 cond(B1)=2.0e+00
+   k=13 kappa/pi=0.7222 t0[k]=-3.644577 cond(B1)=1.9e+00
+   k=14 kappa/pi=0.7778 t0[k]=-3.569830 cond(B1)=1.9e+00
+   k=15 kappa/pi=0.8333 t0[k]=-3.512623 cond(B1)=1.9e+00
+   k=16 kappa/pi=0.8889 t0[k]=-3.472271 cond(B1)=1.8e+00
+   k=17 kappa/pi=0.9444 t0[k]=-3.448268 cond(B1)=1.8e+00
+   k=18 kappa/pi=1.0000 t0[k]=-3.440302 cond(B1)=1.8e+00
+W2 P6 c2 Ny 24: sum t0 -89.653707
+   k= 0 kappa/pi=0.0000 t0[k]=-5.014650 cond(B1)=5.3e+00
+   k= 1 kappa/pi=0.0833 t0[k]=-4.901228 cond(B1)=4.8e+00
+   k= 2 kappa/pi=0.1667 t0[k]=-4.640217 cond(B1)=4.0e+00
+   k= 3 kappa/pi=0.2500 t0[k]=-4.333158 cond(B1)=3.3e+00
+   k= 4 kappa/pi=0.3333 t0[k]=-4.035517 cond(B1)=2.8e+00
+   k= 5 kappa/pi=0.4167 t0[k]=-3.768906 cond(B1)=2.5e+00
+   k= 6 kappa/pi=0.5000 t0[k]=-3.540802 cond(B1)=2.3e+00
+   k= 7 kappa/pi=0.5833 t0[k]=-3.352693 cond(B1)=2.1e+00
+   k= 8 kappa/pi=0.6667 t0[k]=-3.203378 cond(B1)=2.0e+00
+   k= 9 kappa/pi=0.7500 t0[k]=-3.090613 cond(B1)=1.9e+00
+   k=10 kappa/pi=0.8333 t0[k]=-3.012048 cond(B1)=1.9e+00
+   k=11 kappa/pi=0.9167 t0[k]=-2.965743 cond(B1)=1.8e+00
+   k=12 kappa/pi=1.0000 t0[k]=-2.950451 cond(B1)=1.8e+00
+W2 P6 c3 Ny 36: sum t0 -133.979157
+   k= 0 kappa/pi=0.0000 t0[k]=-4.991164 cond(B1)=5.2e+00
+   k= 1 kappa/pi=0.0556 t0[k]=-4.940705 cond(B1)=5.0e+00
+   k= 2 kappa/pi=0.1111 t0[k]=-4.806399 cond(B1)=4.5e+00
+   k= 3 kappa/pi=0.1667 t0[k]=-4.622808 cond(B1)=4.0e+00
+   k= 4 kappa/pi=0.2222 t0[k]=-4.419854 cond(B1)=3.5e+00
+   k= 5 kappa/pi=0.2778 t0[k]=-4.215921 cond(B1)=3.1e+00
+   k= 6 kappa/pi=0.3333 t0[k]=-4.020865 cond(B1)=2.8e+00
+   k= 7 kappa/pi=0.3889 t0[k]=-3.839767 cond(B1)=2.6e+00
+   k= 8 kappa/pi=0.4444 t0[k]=-3.675139 cond(B1)=2.4e+00
+   k= 9 kappa/pi=0.5000 t0[k]=-3.528049 cond(B1)=2.3e+00
+   k=10 kappa/pi=0.5556 t0[k]=-3.398709 cond(B1)=2.2e+00
+   k=11 kappa/pi=0.6111 t0[k]=-3.286825 cond(B1)=2.1e+00
+   k=12 kappa/pi=0.6667 t0[k]=-3.191824 cond(B1)=2.0e+00
+   k=13 kappa/pi=0.7222 t0[k]=-3.113009 cond(B1)=1.9e+00
+   k=14 kappa/pi=0.7778 t0[k]=-3.049668 cond(B1)=1.9e+00
+   k=15 kappa/pi=0.8333 t0[k]=-3.001148 cond(B1)=1.9e+00
+   k=16 kappa/pi=0.8889 t0[k]=-2.966903 cond(B1)=1.8e+00
+   k=17 kappa/pi=0.9444 t0[k]=-2.946523 cond(B1)=1.8e+00
+   k=18 kappa/pi=1.0000 t0[k]=-2.939759 cond(B1)=1.8e+00

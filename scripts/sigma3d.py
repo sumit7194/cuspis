@@ -139,7 +139,7 @@ class Strip3D:
                        [(a0, "b") for sj in sb.s if sj <= self.s_cut for a0 in (-1j * sj, 1j * sj)]
                 merged = []
                 for a0, tag in locs:
-                    hit = [m for m in merged if abs(m[0] - a0) < 1e-9]
+                    hit = [m for m in merged if abs(m[0] - a0) < 1e-2 * rad]   # EXP-081b fix: was 1e-9 < QEP pole accuracy (~1e-9 at s~2.9); contour of radius rad is exact for any pair inside it
                     if hit: hit[0][1].add(tag)
                     else: merged.append([a0, {tag}])
                 for a0, tags in merged:

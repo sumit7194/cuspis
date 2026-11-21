@@ -1,0 +1,23 @@
+
+===== rule orig =====
+[      0s] free kappa_lat: {4: 0.01766, 6: 0.025702, 8: 0.029716, 10: 0.03199, 12: 0.033406}
+[      0s] free (planted control K): A train 0.041159 all 0.040742 ho 1.5e-04 | B train 0.040696 all 0.040033 ho 1.4e-04 -> 0.040387 +- 0.000991
+[      0s] K: 0.040387 +- 0.000991 vs 0.0396481 [PASS]
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_analyze.py", line 71, in <module>
+    exec(open(os.path.join(HERE, "exp081b_run.py")).read().split('if __name__ == "__main__":')[1].replace("\n    ", "\n").replace('"exp081b_results.json"', f'"exp081b_results_{rule}.json"'),
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+         dict(R.__dict__, sigma=sig))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 11, in <module>
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_analyze.py", line 68, in sig
+    return S_from_ckpt(f"sigma_W{W}_P{P}_box{Wbox}_c{c}_cp{cpts}_sc{s_cut}_dd{int(dd)}", rule)
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_analyze.py", line 39, in S_from_ckpt
+    c_at = cum(smax); flag = False
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_analyze.py", line 38, in <lambda>
+    cum = lambda sm: sum(wt[k] * ri(float(k)) * abs(g) for k, g in gmap.items() if float(k) <= sm)
+                     ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_analyze.py", line 38, in <genexpr>
+    cum = lambda sm: sum(wt[k] * ri(float(k)) * abs(g) for k, g in gmap.items() if float(k) <= sm)
+                         ~~^^^
+KeyError: '0.002649766252088'

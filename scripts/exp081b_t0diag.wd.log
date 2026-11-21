@@ -1,0 +1,7 @@
+# cmd: ../.venv/bin/python -u -W ignore exp081b_t0diag.py
+# caps: tree <= 2.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.5     1   0.061    0.000   0.061        13.90        720.9           63              1
+# exit 0; wall 5 s; PEAK tree MEM 0.061 GB + CMPRS 0.000 GB = 0.061 GB
