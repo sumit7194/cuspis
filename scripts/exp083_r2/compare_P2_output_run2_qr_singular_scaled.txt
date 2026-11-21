@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp083_r2_compare.py", line 94, in <module>
+    out, adeq, mean, spread = referee(W, arm, poles, g.Ny)
+                              ~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_r2_compare.py", line 74, in referee
+    out[f"{name} f{mp.nstr(floor,1)} n<={nmax} {hn}"] = fit(ns, Qs, hold, **kw)
+                                                        ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_r2_compare.py", line 48, in fit
+    c, _ = mp.qr_solve(A, mp.matrix(y)); c = [c[j] / sc[j] for j in range(A.cols)]
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/matrices/linalg.py", line 407, in qr_solve
+    H, p, x, r = ctx.householder(ctx.extend(A, b))
+                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/matrices/linalg.py", line 341, in householder
+    raise ValueError('matrix is numerically singular')
+ValueError: matrix is numerically singular

@@ -10191,3 +10191,37 @@ adequacy** (held-out > 10⁻⁴⁰), not merely shift Q′. If it stays adequate
   20 columns, and with products of the top 6 about 62, so the data must reach n ≳ 64.
 - **The amendment is not declared non-discriminating.** It proceeds after R2's P = 2 arms (the Bridge's order). Estimated
   ~20 min for arm (a) and ~2 h for arm (b) at n ≤ 64, < 0.3 GB.
+
+### EXP-083 R2 at P = 2: STOP (registered rule: model completeness). The fitted-base referee cannot certify; its "AGREE" lines are vacuous [model: Opus 5.5]
+(`scripts/exp083_r2_compare.py`, `exp083_r2/compare_P2_output.txt`. Earlier attempts are kept:
+`…_run1_qr_singular` (mpmath QR absolute-eps test at 130 digits), `…_run2_qr_singular_scaled`, `…_run3_singular_model`.
+Fixes applied, none a model change:
+- column scaling;
+- fit arithmetic at 300 digits (registered: 130; the data remain at ~110 digits);
+- per-model capture of exactly singular designs, logged.)
+
+**Data (verified):** Arb Q(n), n ≤ 72, W2P2 and W4P2, arms (a) and (b). Ball radii ≤ 10⁻¹¹⁰. The sector/DFT identity is
+checked (1.6·10⁻¹¹⁷). Arm (b)'s Arb saddle has |F| ≤ 10⁻¹⁰⁵.
+
+**Own poles** at ~110 digits: 10 per geometry (W2P2: s = 0.523 … 1.329).
+
+**Fits:**
+- **The last-n hold-out at n = 56/72 is uninformative.** All bases have decayed by then, so any model reproduces the
+  last point. M3's −848.9 passes at 8·10⁻⁹⁰.
+- **The interior hold-out (n = 6, 7) is the informative test, and NO model passes it at the registered 10⁻⁴⁰.** M1/M2:
+  8.5·10⁻²⁰; M3/M4: 2.6·10⁻¹⁷.
+  - Q(n) = Σ log det(·) contains products of the pole bases to **all orders** (the log det nonlinearity). Singles +
+    confluent + pairwise products are incomplete at the 10⁻²⁰ level for small n.
+  - M3/M4 at n ≤ 72 (62–64 columns) are exactly singular designs and were excluded.
+- **Registered outcome:**
+  - W2P2 arm (a): spread 838. Arm (b) fits diverge (10²²–10⁴⁹).
+  - W4P2 arm (a): spread 1.2·10⁻⁴, above the required 10⁻⁶. Arm (b) diverges.
+  - **The spread > 10⁻³ rule fires: STOP.** The printed "AGREE" for W2P2 arm (a) (tolerance 2.5·10³) is vacuous and is
+    not counted.
+- **Descriptive only (single model, not a verdict):** M1, last-n hold. W2P2 −11.16245 vs continuation t0 + 𝒞 −11.26152
+  (Δ 0.099); W4P2 −11.18150 vs −11.18183 (Δ 3·10⁻⁴). The dd = 1 must-fire disagrees by 2.29 at W4P2 (it fires).
+- **Grade: the R2 referee is non-discriminating as executed.** The production σ-continuation is neither validated nor
+  falsified at P = 2.
+- **Lesson (third instance):** precision is not the bottleneck. The integer-n fit referee needs the complete analytic
+  base set of log det Σ(·), including all-order products and saddle-induced structure. That set grows combinatorially.
+  A fixed-base fit cannot certify Q′(1) for multi-pole systems, even at 120 digits.

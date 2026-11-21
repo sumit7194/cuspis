@@ -1,0 +1,144 @@
+     M3 n<=72 last: SINGULAR design (62 cols) -> excluded
+     M3 n<=72 interior: SINGULAR design (62 cols) -> excluded
+     M4 n<=72 last: SINGULAR design (62 cols) -> excluded
+     M4 n<=72 interior: SINGULAR design (62 cols) -> excluded
+W2P2 arm (a): 12 adequate of 24 fitted; referee Q'(1) = -290.410504635199, spread 838.0
+     M1 f0.0001 n<=56 last       : -11.1624548366736  held-out 7.6e-59
+     M1 f0.0001 n<=56 interior   : -8.90851465823588  held-out 8.5e-20
+     M2 f0.0001 n<=56 last       : -11.1624548366736  held-out 7.6e-59
+     M2 f0.0001 n<=56 interior   : -8.90851465823588  held-out 8.5e-20
+     M3 f0.0001 n<=56 last       : -848.869062615101  held-out 8.1e-90
+     M3 f0.0001 n<=56 interior   : -159912.383183967  held-out 2.6e-17
+     M4 f0.0001 n<=56 last       : -848.869062615101  held-out 8.1e-90
+     M4 f0.0001 n<=56 interior   : -159912.383183967  held-out 2.6e-17
+     M1 f0.0001 n<=72 last       : -11.1624493987572  held-out 4.0e-59
+     M1 f0.0001 n<=72 interior   : -8.90839651025361  held-out 8.5e-20
+     M2 f0.0001 n<=72 last       : -11.1624493987572  held-out 4.0e-59
+     M2 f0.0001 n<=72 interior   : -8.90839651025361  held-out 8.5e-20
+     M3 f0.0001 n<=72 last       : -848.944156725229  held-out 3.8e-90
+     M3 f0.0001 n<=72 interior   : -159927.150142692  held-out 2.6e-17
+     M4 f0.0001 n<=72 last       : -848.944156725229  held-out 3.8e-90
+     M4 f0.0001 n<=72 interior   : -159927.150142692  held-out 2.6e-17
+     M1 f1.0e-6 n<=56 last       : -11.1624548366736  held-out 7.6e-59
+     M1 f1.0e-6 n<=56 interior   : -8.90851465823588  held-out 8.5e-20
+     M2 f1.0e-6 n<=56 last       : -11.1624548366736  held-out 7.6e-59
+     M2 f1.0e-6 n<=56 interior   : -8.90851465823588  held-out 8.5e-20
+     M1 f1.0e-6 n<=72 last       : -11.1624493987572  held-out 4.0e-59
+     M1 f1.0e-6 n<=72 interior   : -8.90839651025361  held-out 8.5e-20
+     M2 f1.0e-6 n<=72 last       : -11.1624493987572  held-out 4.0e-59
+     M2 f1.0e-6 n<=72 interior   : -8.90839651025361  held-out 8.5e-20
+     M3 n<=72 last: SINGULAR design (62 cols) -> excluded
+     M3 n<=72 interior: SINGULAR design (62 cols) -> excluded
+     M4 n<=72 last: SINGULAR design (62 cols) -> excluded
+     M4 n<=72 interior: SINGULAR design (62 cols) -> excluded
+W2P2 arm (b): 4 adequate of 24 fitted; referee Q'(1) = -8.62855719255446e+43, spread 2.43e+41
+     M1 f0.0001 n<=56 last       : -4.73885365454118e+22  held-out 2.0e-32
+     M1 f0.0001 n<=56 interior   : -6.19258855508775e+26  held-out 4.9e+8
+     M2 f0.0001 n<=56 last       : -4.73885365454118e+22  held-out 2.0e-32
+     M2 f0.0001 n<=56 interior   : -6.19258855508775e+26  held-out 4.9e+8
+     M3 f0.0001 n<=56 last       : -8.61639581309076e+43  held-out 4.8e-46
+     M3 f0.0001 n<=56 interior   : -1.31338205707559e+49  held-out 4.2e+28
+     M4 f0.0001 n<=56 last       : -8.61639581309076e+43  held-out 4.8e-46
+     M4 f0.0001 n<=56 interior   : -1.31338205707559e+49  held-out 4.2e+28
+     M1 f0.0001 n<=72 last       : -4.74653859826582e+22  held-out 1.0e-32
+     M1 f0.0001 n<=72 interior   : -6.20307441203481e+26  held-out 4.9e+8
+     M2 f0.0001 n<=72 last       : -4.74653859826582e+22  held-out 1.0e-32
+     M2 f0.0001 n<=72 interior   : -6.20307441203481e+26  held-out 4.9e+8
+     M3 f0.0001 n<=72 last       : -8.64071857201816e+43  held-out 2.3e-46
+     M3 f0.0001 n<=72 interior   : -1.31733531387209e+49  held-out 4.2e+28
+     M4 f0.0001 n<=72 last       : -8.64071857201816e+43  held-out 2.3e-46
+     M4 f0.0001 n<=72 interior   : -1.31733531387209e+49  held-out 4.2e+28
+     M1 f1.0e-6 n<=56 last       : -4.73885365454118e+22  held-out 2.0e-32
+     M1 f1.0e-6 n<=56 interior   : -6.19258855508775e+26  held-out 4.9e+8
+     M2 f1.0e-6 n<=56 last       : -4.73885365454118e+22  held-out 2.0e-32
+     M2 f1.0e-6 n<=56 interior   : -6.19258855508775e+26  held-out 4.9e+8
+     M1 f1.0e-6 n<=72 last       : -4.74653859826582e+22  held-out 1.0e-32
+     M1 f1.0e-6 n<=72 interior   : -6.20307441203481e+26  held-out 4.9e+8
+     M2 f1.0e-6 n<=72 last       : -4.74653859826582e+22  held-out 1.0e-32
+     M2 f1.0e-6 n<=72 interior   : -6.20307441203481e+26  held-out 4.9e+8
+   production base  : t0 -10.755841839999 tsad +11.845129046147 C -0.505676992285 | t0+C -11.261518832284 | t0+tsad+C +0.583610213863  checks [(np.float64(0.94), '3e-14'), (np.float64(1.97), '2e-13'), (np.float64(2.99), '2e-12'), (np.float64(3.95), '1e-08'), (np.float64(5.05), '3e-06')]
+   production dd1   : t0 -8.461542214596 tsad +11.845129046147 C -0.505676992285 | t0+C -8.967219206881 | t0+tsad+C +2.877909839266  checks [(np.float64(0.94), '3e-14'), (np.float64(1.97), '2e-13'), (np.float64(2.99), '2e-12'), (np.float64(3.95), '1e-08'), (np.float64(5.05), '3e-06')]
+   production scinf : t0 -10.755841839999 tsad +11.845129046147 C -0.505676992285 | t0+C -11.261518832284 | t0+tsad+C +0.583610213863  checks [(np.float64(0.94), '3e-14'), (np.float64(1.97), '2e-13'), (np.float64(2.99), '2e-12'), (np.float64(3.95), '1e-08'), (np.float64(5.05), '3e-06')]
+   production sc1.5 : t0 -10.755841839999 tsad +11.845129046147 C -0.505676992285 | t0+C -11.261518832284 | t0+tsad+C +0.583610213863  checks [(np.float64(0.94), '3e-14'), (np.float64(1.97), '2e-13'), (np.float64(2.99), '2e-12'), (np.float64(3.95), '1e-08'), (np.float64(5.05), '3e-06')]
+     M3 n<=72 last: SINGULAR design (64 cols) -> excluded
+     M3 n<=72 interior: SINGULAR design (64 cols) -> excluded
+     M4 n<=72 last: SINGULAR design (64 cols) -> excluded
+     M4 n<=72 interior: SINGULAR design (64 cols) -> excluded
+W4P2 arm (a): 12 adequate of 24 fitted; referee Q'(1) = -11.1814987774789, spread 0.000123
+     M1 f0.0001 n<=56 last       : -11.1814578672439  held-out 1.3e-61
+     M1 f0.0001 n<=56 interior   : -11.1812031236876  held-out 1.4e-23
+     M2 f0.0001 n<=56 last       : -11.1814578672439  held-out 1.3e-61
+     M2 f0.0001 n<=56 interior   : -11.1812031236876  held-out 1.4e-23
+     M3 f0.0001 n<=56 last       : -11.1815805972085  held-out 5.7e-104
+     M3 f0.0001 n<=56 interior   : -11.1867331959347  held-out 5.6e-25
+     M4 f0.0001 n<=56 last       : -11.1815805972085  held-out 5.7e-104
+     M4 f0.0001 n<=56 interior   : -11.1867331959347  held-out 5.6e-25
+     M1 f0.0001 n<=72 last       : -11.1814578660044  held-out 7.0e-62
+     M1 f0.0001 n<=72 interior   : -11.1812031182161  held-out 1.4e-23
+     M2 f0.0001 n<=72 last       : -11.1814578660044  held-out 7.0e-62
+     M2 f0.0001 n<=72 interior   : -11.1812031182161  held-out 1.4e-23
+     M3 f0.0001 n<=72 last       : -11.1815806011681  held-out 2.6e-104
+     M3 f0.0001 n<=72 interior   : -11.1867335066449  held-out 5.6e-25
+     M4 f0.0001 n<=72 last       : -11.1815806011681  held-out 2.6e-104
+     M4 f0.0001 n<=72 interior   : -11.1867335066449  held-out 5.6e-25
+     M1 f1.0e-6 n<=56 last       : -11.1814578672439  held-out 1.3e-61
+     M1 f1.0e-6 n<=56 interior   : -11.1812031236876  held-out 1.4e-23
+     M2 f1.0e-6 n<=56 last       : -11.1814578672439  held-out 1.3e-61
+     M2 f1.0e-6 n<=56 interior   : -11.1812031236876  held-out 1.4e-23
+     M1 f1.0e-6 n<=72 last       : -11.1814578660044  held-out 7.0e-62
+     M1 f1.0e-6 n<=72 interior   : -11.1812031182161  held-out 1.4e-23
+     M2 f1.0e-6 n<=72 last       : -11.1814578660044  held-out 7.0e-62
+     M2 f1.0e-6 n<=72 interior   : -11.1812031182161  held-out 1.4e-23
+     M3 n<=72 last: SINGULAR design (64 cols) -> excluded
+     M3 n<=72 interior: SINGULAR design (64 cols) -> excluded
+     M4 n<=72 last: SINGULAR design (64 cols) -> excluded
+     M4 n<=72 interior: SINGULAR design (64 cols) -> excluded
+W4P2 arm (b): 4 adequate of 24 fitted; referee Q'(1) = -4.88661303194265e+41, spread 1.04e+39
+     M1 f0.0001 n<=56 last       : -3.34401853882869e+17  held-out 7.0e-37
+     M1 f0.0001 n<=56 interior   : -1.68166050935088e+21  held-out 2.3e+3
+     M2 f0.0001 n<=56 last       : -3.34401853882869e+17  held-out 7.0e-37
+     M2 f0.0001 n<=56 interior   : -1.68166050935088e+21  held-out 2.3e+3
+     M3 f0.0001 n<=56 last       : -4.88140176923483e+41  held-out 2.8e-55
+     M3 f0.0001 n<=56 interior   : -4.42215710664172e+46  held-out 9.9e+25
+     M4 f0.0001 n<=56 last       : -4.88140176923483e+41  held-out 2.8e-55
+     M4 f0.0001 n<=56 interior   : -4.42215710664172e+46  held-out 9.9e+25
+     M1 f0.0001 n<=72 last       : -3.34760390995297e+17  held-out 3.8e-37
+     M1 f0.0001 n<=72 interior   : -1.68353826807511e+21  held-out 2.3e+3
+     M2 f0.0001 n<=72 last       : -3.34760390995297e+17  held-out 3.8e-37
+     M2 f0.0001 n<=72 interior   : -1.68353826807511e+21  held-out 2.3e+3
+     M3 f0.0001 n<=72 last       : -4.89182429465047e+41  held-out 1.3e-55
+     M3 f0.0001 n<=72 interior   : -4.43227425360617e+46  held-out 9.9e+25
+     M4 f0.0001 n<=72 last       : -4.89182429465047e+41  held-out 1.3e-55
+     M4 f0.0001 n<=72 interior   : -4.43227425360617e+46  held-out 9.9e+25
+     M1 f1.0e-6 n<=56 last       : -3.34401853882869e+17  held-out 7.0e-37
+     M1 f1.0e-6 n<=56 interior   : -1.68166050935088e+21  held-out 2.3e+3
+     M2 f1.0e-6 n<=56 last       : -3.34401853882869e+17  held-out 7.0e-37
+     M2 f1.0e-6 n<=56 interior   : -1.68166050935088e+21  held-out 2.3e+3
+     M1 f1.0e-6 n<=72 last       : -3.34760390995297e+17  held-out 3.8e-37
+     M1 f1.0e-6 n<=72 interior   : -1.68353826807511e+21  held-out 2.3e+3
+     M2 f1.0e-6 n<=72 last       : -3.34760390995297e+17  held-out 3.8e-37
+     M2 f1.0e-6 n<=72 interior   : -1.68353826807511e+21  held-out 2.3e+3
+   production base  : t0 -10.688703709715 tsad +11.763878313252 C -0.493130507699 | t0+C -11.181834217414 | t0+tsad+C +0.582044095837  checks [(np.float64(0.94), '2e-08'), (np.float64(1.97), '2e-06'), (np.float64(2.99), '5e-05'), (np.float64(3.95), '6e-02'), (np.float64(5.05), '1e+00')]
+   production dd1   : t0 -8.400891670947 tsad +11.763878313252 C -0.493130507699 | t0+C -8.894022178646 | t0+tsad+C +2.869856134606  checks [(np.float64(0.94), '2e-08'), (np.float64(1.97), '2e-06'), (np.float64(2.99), '5e-05'), (np.float64(3.95), '6e-02'), (np.float64(5.05), '1e+00')]
+   production scinf : t0 -10.688706224511 tsad +11.763881019400 C -0.493130455564 | t0+C -11.181836680075 | t0+tsad+C +0.582044339325  checks [(np.float64(0.94), '1e-08'), (np.float64(1.97), '2e-06'), (np.float64(2.99), '7e-06'), (np.float64(3.95), '9e-02'), (np.float64(5.05), '1e+00')]
+   production sc1.5 : t0 -10.688285104845 tsad +11.763396981658 C -0.493154224433 | t0+C -11.181439329278 | t0+tsad+C +0.581957652380  checks [(np.float64(0.94), '7e-12'), (np.float64(1.97), '3e-08'), (np.float64(2.99), '3e-05'), (np.float64(3.95), '4e-02'), (np.float64(5.05), '1e+00')]
+
+=== VERDICT (registered R2+A1+A2: adequate = held-out <= 1e-40; |cont - referee| <= 3 x spread; spread <= 1e-6 required, > 1e-3 STOP) ===
+  W2P2 arm (a) vs base : cont -11.261518832284 ref -290.410504635199 |diff| 279.0 tol 2.51e+3 -> AGREE
+  W2P2 arm (a) vs scinf: cont -11.261518832284 ref -290.410504635199 |diff| 279.0 tol 2.51e+3 -> AGREE
+  W2P2 arm (a) vs dd1  : cont -8.967219206881 ref -290.410504635199 |diff| 281.0 tol 2.51e+3 -> AGREE
+  W2P2 arm (a) vs sc1.5: cont -11.261518832284 ref -290.410504635199 |diff| 279.0 tol 2.51e+3 -> AGREE
+  W2P2 arm (b) vs base : cont +0.583610213863 ref -8.62855719255446e+43 |diff| 8.63e+43 tol 7.3e+41 -> DISAGREE
+  W2P2 arm (b) vs scinf: cont +0.583610213863 ref -8.62855719255446e+43 |diff| 8.63e+43 tol 7.3e+41 -> DISAGREE
+  W2P2 arm (b) vs dd1  : cont +2.877909839266 ref -8.62855719255446e+43 |diff| 8.63e+43 tol 7.3e+41 -> DISAGREE
+  W2P2 arm (b) vs sc1.5: cont +0.583610213863 ref -8.62855719255446e+43 |diff| 8.63e+43 tol 7.3e+41 -> DISAGREE
+  W2P2 saddle-off (t0+C) vs referee (b): |diff| 8.63e+43 -> FIRES
+  W4P2 arm (a) vs base : cont -11.181834217414 ref -11.1814987774789 |diff| 0.000335 tol 0.000368 -> AGREE
+  W4P2 arm (a) vs scinf: cont -11.181836680075 ref -11.1814987774789 |diff| 0.000338 tol 0.000368 -> AGREE
+  W4P2 arm (a) vs dd1  : cont -8.894022178646 ref -11.1814987774789 |diff| 2.29 tol 0.000368 -> DISAGREE
+  W4P2 arm (a) vs sc1.5: cont -11.181439329278 ref -11.1814987774789 |diff| 5.94e-5 tol 0.000368 -> AGREE
+  W4P2 arm (b) vs base : cont +0.582044095837 ref -4.88661303194265e+41 |diff| 4.89e+41 tol 3.13e+39 -> DISAGREE
+  W4P2 arm (b) vs scinf: cont +0.582044339325 ref -4.88661303194265e+41 |diff| 4.89e+41 tol 3.13e+39 -> DISAGREE
+  W4P2 arm (b) vs dd1  : cont +2.869856134606 ref -4.88661303194265e+41 |diff| 4.89e+41 tol 3.13e+39 -> DISAGREE
+  W4P2 arm (b) vs sc1.5: cont +0.581957652380 ref -4.88661303194265e+41 |diff| 4.89e+41 tol 3.13e+39 -> DISAGREE
+  W4P2 saddle-off (t0+C) vs referee (b): |diff| 4.89e+41 -> FIRES

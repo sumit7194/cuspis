@@ -6,7 +6,7 @@ from flint import acb_mat, acb, arb, ctx
 import sigma3d as S3
 from exp083_honest import Geom
 from exp083_arb import ArbGeom
-ctx.prec = 400; mp.mp.dps = 130
+ctx.prec = 400; mp.mp.dps = 300   # fits at 300 digits (registered 130; mpmath QR absolute-eps test failed at 130, run1/run2 kept)
 P, NLO, NHI = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]); OUT = "exp083_r2"
 
 def own_poles_hp(g):
@@ -41,7 +41,11 @@ def fit(ns, Qs, hold, singles, n2=(), prods=()):
         for b in n2: r += [n ** 2 * b ** n]
         for b in prods: r += [b ** n, n * b ** n]
         rows.append(r); y.append(q)
-    A = mp.matrix(rows); c, _ = mp.qr_solve(A, mp.matrix(y))
+    A = mp.matrix(rows)
+    sc = [mp.sqrt(mp.fsum(A[i, j] ** 2 for i in range(A.rows))) for j in range(A.cols)]   # column scaling: mpmath's Householder
+    for j in range(A.cols):                                                                # tests an ABSOLUTE squared column norm
+        for i in range(A.rows): A[i, j] /= sc[j]                                           # vs eps; scaling is exact algebra
+    c, _ = mp.qr_solve(A, mp.matrix(y)); c = [c[j] / sc[j] for j in range(A.cols)]
     def ev(n):
         r = [mp.mpf(n), mp.mpf(1)] + sum(([b ** n, n * b ** n] for b in singles), []) + [n ** 2 * b ** n for b in n2] + sum(([b ** n, n * b ** n] for b in prods), [])
         return sum(ci * ri for ci, ri in zip(c, r))
@@ -64,11 +68,13 @@ def referee(W, arm, poles, Ny):
         for nmax in (NLO, NHI):
             ns = list(range(1, nmax + 1)); Qs = [Qd[n] for n in ns]
             for name, kw in models.items():
-                for hn, hold in (("last", {nmax}), ("interior", {20, 21} if P == 2 else {9, 10})):
+                for hn, hold in (("last", {nmax}), ("interior", {6, 7})):
                     cols = 2 + 2 * len(kw["singles"]) + len(kw.get("n2", ())) + 2 * len(kw.get("prods", ()))
                     if cols > nmax - len(hold): out[f"{name} f{mp.nstr(floor,1)} n<={nmax} {hn}"] = None; continue
-                    out[f"{name} f{mp.nstr(floor,1)} n<={nmax} {hn}"] = fit(ns, Qs, hold, **kw)
-    adequate = {k: v for k, v in out.items() if v is not None and v[1] <= mp.mpf("1e-9")}
+                    try: out[f"{name} f{mp.nstr(floor,1)} n<={nmax} {hn}"] = fit(ns, Qs, hold, **kw)
+                    except ValueError as e:                               # exactly singular design (coinciding bases): excluded, logged
+                        out[f"{name} f{mp.nstr(floor,1)} n<={nmax} {hn}"] = None; print(f"     {name} n<={nmax} {hn}: SINGULAR design ({cols} cols) -> excluded", flush=True)
+    adequate = {k: v for k, v in out.items() if v is not None and v[1] <= mp.mpf("1e-40")}
     vals = [v[0] for v in adequate.values()]
     spread = (max(vals) - min(vals)) if vals else mp.inf
     return out, adequate, (mp.fsum(vals) / len(vals) if vals else mp.nan), spread
@@ -95,7 +101,7 @@ if __name__ == "__main__":
         prod = {k: production(W, **kw) for k, kw in (("base", {}), ("dd1", dict(dd=True)), ("scinf", dict(s_cut=np.inf)), ("sc1.5", dict(s_cut=1.5)))}
         res[f"W{W}prod"] = prod
         for k, v in prod.items(): print(f"   production {k:6s}: t0 {v['t0']:+.12f} tsad {v['tsad']:+.12f} C {v['C']:+.12f} | t0+C {v['t0']+v['C']:+.12f} | t0+tsad+C {v['t0']+v['tsad']+v['C']:+.12f}  checks {[(round(a,2), f'{b:.0e}') for a, b in v['checks']]}", flush=True)
-    print("\n=== VERDICT (registered criteria: |cont - referee| <= 3 x spread; spread <= 1e-6 required, > 1e-3 STOP) ===", flush=True)
+    print("\n=== VERDICT (registered R2+A1+A2: adequate = held-out <= 1e-40; |cont - referee| <= 3 x spread; spread <= 1e-6 required, > 1e-3 STOP) ===", flush=True)
     verdict = {}
     for W in (2, 4):
         pb = res[f"W{W}prod"]

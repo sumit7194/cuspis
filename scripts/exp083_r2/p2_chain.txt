@@ -1,11 +1,5 @@
-Traceback (most recent call last):
-  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 120, in <module>
-    main()
-    ~~~~^^
-  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 112, in main
-    time.sleep(a.interval)
-    ~~~~~~~~~~^^^^^^^^^^^^
-  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 82, in on_term
-    try: os.killpg(child.pid, signal.SIGTERM)
-         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-PermissionError: [Errno 1] Operation not permitted
+# exit 0; wall 981 s; PEAK tree MEM 0.497 GB + CMPRS 0.049 GB = 0.546 GB
+# exit 0; wall 1129 s; PEAK tree MEM 0.641 GB + CMPRS 0.228 GB = 0.868 GB
+# exit 0; wall 982 s; PEAK tree MEM 0.504 GB + CMPRS 0.037 GB = 0.541 GB
+# exit 0; wall 1158 s; PEAK tree MEM 0.372 GB + CMPRS 0.035 GB = 0.407 GB
+P=2 data complete Sun Nov 22 03:17:09 IST 2026
