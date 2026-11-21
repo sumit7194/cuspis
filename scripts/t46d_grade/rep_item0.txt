@@ -1,0 +1,30 @@
+================================================================================
+ITEM 0: Reconcile Code & Report + True End-to-End 50-Digit mpmath Referee
+================================================================================
+[Geometry A: Conformal Elliptic Strip w=2, N_th=12, mu_max=3.0, N_pts=72, r_max/w=4.46, k=1.0]
+  At q=3.75, all 6 modes (lam - 0.25): 3.33e-12 9.90e-12 8.14e-06 8.61e-06 7.83e-02 7.84e-02
+  -> act_tol=1e-11 drops the first 2 modes (3.33e-12, 9.90e-12), corrupting B_sc at s>=2!
+
+  --- act_tol=1e-11 (delivered T46c) ---
+    s=0.0: g_sc= -0.979515 +0.000j | max|B_raw|=3.9e-01 max|B_sc|=3.9e-01
+    s=1.0: g_sc= -6.165243 -0.000j | max|B_raw|=1.9e+01 max|B_sc|=2.5e-01
+    s=2.0: g_sc=-15.381386 -0.000j | max|B_raw|=5.9e+03 max|B_sc|=6.7e+00
+    s=3.0: g_sc=-15.522046 +0.000j | max|B_raw|=1.5e+06 max|B_sc|=1.2e+03
+    s=4.0: g_sc=-18.580840 +0.000j | max|B_raw|=3.4e+08 max|B_sc|=2.2e+05
+
+  --- act_tol=0.0 (all modes kept) ---
+    s=0.0: g_sc= -0.980518 -0.000j | max|B_raw|=3.9e-01 max|B_sc|=3.9e-01
+    s=1.0: g_sc= -6.292819 +0.000j | max|B_raw|=1.9e+01 max|B_sc|=2.5e-01
+    s=2.0: g_sc=-22.967027 -0.000j | max|B_raw|=5.9e+03 max|B_sc|=1.9e-01
+    s=3.0: g_sc=-44.915921 -0.000j | max|B_raw|=1.6e+06 max|B_sc|=6.5e-01
+    s=4.0: g_sc=-60.347561 -0.000j | max|B_raw|=3.5e+08 max|B_sc|=6.8e+00
+
+--- TRUE End-to-End 50-Digit mpmath Referee (ALL of G0, lams, Phi_s, Psi_a, B_1^(beta), det in 50-digit mpmath) ---
+[Geometry B: Conformal Elliptic Strip w=2, N_th=8, mu_max=2.0, N_pts=24, W=4, r_max/w=1.81, k=1.0, dq=0.5]
+  s=0.0: TRUE_mp50= -0.737606 +0.000j | float64_D= -0.737606 -0.000j | TRUE_err=8.11e-15 | max|B_raw|=1.8e-01 max|B_sc|=1.8e-01
+  s=1.0: TRUE_mp50= -4.950271 +0.000j | float64_D= -4.950271 -0.000j | TRUE_err=6.42e-12 | max|B_raw|=7.7e+00 max|B_sc|=1.2e-01
+  s=2.0: TRUE_mp50=-19.241313 +0.000j | float64_D=-19.241313 -0.000j | TRUE_err=6.67e-09 | max|B_raw|=1.7e+03 max|B_sc|=1.5e-01
+  s=3.0: TRUE_mp50=-36.927910 +0.000j | float64_D=-36.926179 +0.000j | TRUE_err=1.73e-03 | max|B_raw|=2.0e+05 max|B_sc|=2.6e-01
+  s=4.0: TRUE_mp50=-58.452779 +0.000j | float64_D=-55.725902 +3.142j | TRUE_err=4.16e+00 | max|B_raw|=8.2e+06 max|B_sc|=2.0e-01
+
+[Completed --table item0 in 68.9s | Peak RAM: 3.3 MB]

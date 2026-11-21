@@ -1,0 +1,23 @@
+  modes with 0 < r <= 1e-8: 219, r == 0: 117, of 656
+  threshold 1e-8: z=4 T0 +1.519184 T2 -1.120905 | z=8 T0 +1.169976 T2 -0.894000
+  threshold 1e-10: z=4 T0 +1.451810 T2 -1.120536 | z=8 T0 +1.135168 T2 -0.893496
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-sumit-Github-corner-function/c9ec831f-1e60-4339-b54f-389fe70e25f7/scratchpad/t46d/run/t46d_e.py", line 11, in <module>
+    out = [eng.eval_K(K, s_max=2.5, n_s1=8, n_s2=4) for K in (8, 16)]
+           ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/claude-501/-Users-sumit-Github-corner-function/c9ec831f-1e60-4339-b54f-389fe70e25f7/scratchpad/t46d/run/t46d_thr_1e-12.py", line 482, in eval_K
+    T2 = eval_T2_interval(0.0, min(1.0, s_max), n_s1) + eval_T2_interval(1.0, s_max, n_s2)
+                                                        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/claude-501/-Users-sumit-Github-corner-function/c9ec831f-1e60-4339-b54f-389fe70e25f7/scratchpad/t46d/run/t46d_thr_1e-12.py", line 478, in eval_T2_interval
+    _, logabs = np.linalg.slogdet(linalg.cho_solve(B1_cho, B_sc))
+                                  ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 230, in cho_solve
+    return _cho_solve(c, b, lower, overwrite_b=overwrite_b, check_finite=check_finite)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/_lib/_util.py", line 1181, in wrapper
+    return f(*arrays, *other_args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 236, in _cho_solve
+    b1 = asarray_chkfinite(b)
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/lib/_function_base_impl.py", line 673, in asarray_chkfinite
+    raise ValueError(
+        "array must not contain infs or NaNs")
+ValueError: array must not contain infs or NaNs

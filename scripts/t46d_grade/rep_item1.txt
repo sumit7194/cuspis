@@ -1,0 +1,35 @@
+================================================================================
+ITEM 1: Pure Gauge THROUGH THE PRODUCTION PIPELINE + Must-Fail Variant
+================================================================================
+
+--- PASS: Closed t=0 cocycle (all t=0 links twisted) ---
+[Geometry: Conformal Elliptic N_th=12, mu_max=3.0, N_pts=72, W_cut=18, r_max/w=4.46]
+  Production Woodbury check (q=0.7, alpha=0.25): rel_err = 5.05e-15
+  max(lams - 0.25) = 8.99e-15, S_free_2d = 0.00e+00
+  Production k=1.0: s=0:+2.11e-13 | s=1:-6.80e-12 | s=2:+9.12e-07 | s=3:+6.34e-01
+  Production k=1.0: T1=+0.000e+00 | Tsad=+0.000e+00 | T2=-1.385e-10 | Q'(1)=-1.385e-10
+
+--- MUST-FAIL: 1 outermost theta=0 link omitted ---
+[Geometry: Conformal Elliptic N_th=12, mu_max=3.0, N_pts=72, W_cut=17, r_max/w=4.46]
+  Production Woodbury check (q=0.7, alpha=0.25): rel_err = 5.98e-15
+  max(lams - 0.25) = 1.01e-04, S_free_2d = 1.03e-03
+Traceback (most recent call last):
+  File "/private/tmp/claude-501/-Users-sumit-Github-corner-function/c9ec831f-1e60-4339-b54f-389fe70e25f7/scratchpad/t46d/code/brief_p2_t46d.py", line 806, in <module>
+    main()
+    ~~~~^^
+  File "/private/tmp/claude-501/-Users-sumit-Github-corner-function/c9ec831f-1e60-4339-b54f-389fe70e25f7/scratchpad/t46d/code/brief_p2_t46d.py", line 795, in main
+    if args.table in ("item1", "all"): run_item1()
+                                       ~~~~~~~~~^^
+  File "/private/tmp/claude-501/-Users-sumit-Github-corner-function/c9ec831f-1e60-4339-b54f-389fe70e25f7/scratchpad/t46d/code/brief_p2_t46d.py", line 654, in run_item1
+    sgn, lg = np.linalg.slogdet(linalg.cho_solve(B1_cho, B_sc))
+                                ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 230, in cho_solve
+    return _cho_solve(c, b, lower, overwrite_b=overwrite_b, check_finite=check_finite)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/_lib/_util.py", line 1181, in wrapper
+    return f(*arrays, *other_args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 236, in _cho_solve
+    b1 = asarray_chkfinite(b)
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/lib/_function_base_impl.py", line 673, in asarray_chkfinite
+    raise ValueError(
+        "array must not contain infs or NaNs")
+ValueError: array must not contain infs or NaNs

@@ -9613,3 +9613,72 @@ headline reads "N4 prediction failed" and it is root-caused before any write-up.
 - **Reported:** the step-count distribution per node, and the real wall time against the +20–50% estimate.
 - **B2a (run before this amendment; unaffected by refinement depth): PASS.** 3570 (slice, α) pairs at s ≈ 1.974 match
   exactly (max relative entry difference 0.0). The wrong-link must-fire FIRES (1.2). `scripts/exp081c_b2a_output.txt`.
+
+### T46d (Neon, P2 continuum) graded, with corrections to my T46c grade. T2 is healthy; T0 is threshold-dependent and unconverged in N_θ, so the infinite-volume route cannot yet serve as the sign check [model: Opus 5.5]
+**Source.** `neon_work/dkappa/T46d_full.md` and `T46d_code/brief_p2_t46d.py` (805 lines, sha256 d19d380d…d139), UNVERIFIED on
+arrival.
+- I read the code in full. It makes no network calls and writes no files; `os` is used only to set thread variables.
+- Run from a scratch copy with `python -I`, under the watchdog (peak ≤ 0.51 GB). Checks and outputs are in
+  `scripts/t46d_grade/`.
+
+**Reproduction (items 0, 1, 2): partially verified.**
+- The 50-digit referee values match exactly (−0.737606, −4.950271, −19.241313, −36.927910, −58.452779). Float64 errors
+  are 8·10⁻¹⁵, 6·10⁻¹², 7·10⁻⁹, 1.7·10⁻³ and 4.2 at s = 0…4.
+- The float values in the breakdown region (s ≥ 3) vary between runs, as Neon states.
+- The pure gauge through the production pipeline reproduces: T1 = T_sad = 0, T2 ~ 10⁻¹⁰, g(2) ~ 10⁻⁶.
+- The parabolic-edge Woodbury check (4.8·10⁻¹⁶) and free slopes (−1/6 within 0.2% at N_θ = 32, k ≤ 5) reproduce.
+- **The referee is a real end-to-end chain, on a toy geometry (N = 24).** It checks the float64 implementation of the
+  Parseval formulas, not the formulas themselves. Those are checked by the pure gauge.
+
+**The Bridge's question (1): do the fixes change numbers I graded in T46c? Yes, both do** (`t46d_a.txt`; same configuration
+N_θ 16, μ_max 4, dq 0.25, Q 16, s_max 2.5):
+
+| fix | effect |
+|---|---|
+| I_f1 / r → 0 | T0 +0.02 … +0.03 |
+| act_tol 10⁻¹¹ → 0 | T2 −0.045 … −0.067 |
+
+- **Correction to my T46c grade (b1f8c2d):**
+  - "T2's slope drifts +0.34 → +0.23" was produced by T46c's act_tol bug. **Withdrawn.**
+  - With both fixes, the T2 slope is +0.318, +0.325, +0.331 on [2,4], [4,6], [6,8], rising toward +1/3 as T46d reports.
+  - "c_log not supported" still stands: it now rests on T0 (below).
+- **Second correction:** my hypothesis for N_θ = 20's odd slopes ("a midline node when N_θ ≡ 2 mod 4") was misapplied:
+  20 ≡ 0 (mod 4). Neon noticed. **Withdrawn.** It had been labelled unverified.
+
+**The Bridge's question (2): is the s_max = 2.5 tail bounded? Yes (partially verified / argued).**
+- Float error up to 2.5, at production size: the pure-gauge g (exact answer 0) at N_θ = 16 and 24, Q 16, is ≤ 2·10⁻⁶ at
+  s = 2, ≤ 2·10⁻⁴ at 2.25 and ≤ 1.8·10⁻³ at 2.5 (`t46d_b.txt`).
+  - Weighted by π/cosh²(πs) that is ≤ 4·10⁻⁹. The cocycle has more cut links (26–40) than the strip, so this bound is
+    conservative.
+- The dropped tail: ∫_{2.5}^∞ π/cosh²(πs)|g| ≤ (1 − tanh 2.5π)·max|g| ≈ 3·10⁻⁷·|g|, i.e. ~10⁻⁵ per z for |g| ≲ 60. This
+  assumes g grows polynomially, which the referee values to s = 4 support (argued).
+- Negligible next to the issues below.
+
+**The Bridge's question (3): is T0's steepening at z ≥ 6 a mesh effect or real? Neither is established. T0 is not under
+control.**
+- **Not Q_max:** 16 → 48 moves the slopes by ≤ 0.009 (`t46d_c.txt`). Neon's suspected cause is refuted.
+  - T0's level does shift by about −0.075 with Q_max, almost independently of z (a UV constant).
+- **Not dq** (0.5 → 0.25: ≤ 0.018) and **not the box** (μ_max 2.5 → 4.5: ≤ 0.006; `t46d_d.txt`).
+- **Unconverged and non-monotonic in N_θ, in a matched box:** slope on [4,6] is −0.428 (N_θ 16), −0.433 (24), −0.328 (32).
+  On [8,10]: −0.552, −0.653, −0.688.
+- **New finding: T0 depends on the code's arbitrary r → 0 threshold** (`t46d_e.txt`).
+  - The hard-coded 10⁻¹⁰ decides whether a mode's pole tail is kept. In this configuration 219 of 656 modes have
+    0 < r ≤ 10⁻⁸, and 117 have r = 0 (clipped).
+  - Moving the threshold 10⁻¹⁰ → 10⁻⁸ shifts T0 by +0.067 (z = 4) and +0.035 (z = 8). That changes its slope by ~0.05,
+    the size of the expected signal. T2 moves by only 4·10⁻⁴.
+  - At 10⁻¹² the code produces NaN.
+  - At n = 1 the tail weight 2B·r^{n−1}/(1 − rⁿ) does not vanish as r → 0, while a mode at r = 0 exactly has no pole. The
+    r → 0, n → 1 limit is non-uniform, and the threshold picks a branch.
+  - **This is a formula-level issue, not a numerical one:** T0 needs a derived, threshold-independent treatment of the
+    near-¼ modes before any of its values or slopes mean anything.
+- **So the infinite-volume route cannot yet be the independent sign check against EXP-081c.**
+
+**The rest:**
+- **T2 (strip):** slopes are stable across N_θ to ~0.3% and → +1/3. Strip − 2·edge for T2 → 0 (from T46d's table, not
+  rerun). **Partially verified (the slopes reproduce in my run a).** T2 is the healthier half.
+- **Edge T0:** the parabolic edge's cut runs into the Dirichlet outer boundary (r_bnd 6–7). Its T0 slopes (−1.1 to −2.6)
+  are dominated by that cut-end, so strip − 2·edge for T0 is not a clean test (argued from the geometry).
+- **Item 4 (κ_free +1.3%): not a convergence demonstration.**
+  - N_θ 32/40/48 give +1.34/+1.31/+1.18% in the same box.
+  - N_θ = 64 (+3.17%) used r_max/w = 35.6 against ~160, so it is not like-for-like (the Bridge's point).
+  - The δ(kh²) curve is an observation, not a mechanism. The residual stays **unexplained.**
