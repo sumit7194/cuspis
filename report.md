@@ -7515,3 +7515,62 @@ with every measured |C₊|.
 1 − κ_max ≥ c(u)e^{−A|y|}. EXP-060 measured κ_max < 1 on t ∈ [0.1, 3], y ≤ 3.5, with 1 − κ_max ~ e^{−2πy}·poly
 (inference), which would give B(y) = O(y²). **Gap (I) is the remaining analytic step.** T26 points to the CFH
 Painlevé/τ connection; our verified Painlevé u on the line (EXP-063 pre-check 2) is a possible tool.
+
+## δκ finite value at O(N⁰): staged plan (DRAFT for the Bridge's read; no code yet) [model: Opus 5.5]
+**Target.** δκ, the O(N⁰) coefficient in κ_{O(N)} = Nκ_free + δκ + O(1/N) for the strip (S ⊃ −κL/w, D = 3).
+- Then δ(κ/C_T) at O(1/N) needs C_T's own 1/N coefficient, to be read at source (Petkou 1995; not cited from memory).
+- The physics question: is the interacting κ/C_T above or below the free scalar's? (BACKLOG #5.)
+
+**Two routes to the same number (argued; to be reconciled).**
+- **Route A (primary): EXP-050's exact first-order formula about flat space.**
+  - δS⁽⁰⁾ = ½Tr(B₁⁻¹∂ₙB̃ₙ|₁) = 2Tr(Σ_flat·K), with K = ∂ₙG̃ₙ|₁ and Σ_flat = B₁⁻¹∘G₁ the flat O(1/N)-type
+    self-energy. Add the O(n − 1) saddle term (EXP-052) and contact terms (argued harmless: local on Σ, EXP-050).
+  - It is exact at O(n − 1): no expansion in the strip correction, so no separate p ≥ 2 terms.
+  - K comes from the free twisted strip propagators via the CH07b continuation, as in EXP-044:
+    K = ∫₀^∞ds (π/cosh²πs)·[G^tw_{½+is} − G_flat]·(scalar normalisation, fixed by EXP-044's verified weight).
+- **Route B (cross-check of the linear part): T5b/T7 collapse plus Lemma U.**
+  - dS_strip/dn|₁ = S′_{f₀}(1) + S_{h₁}(1) + (p ≥ 2 terms), and S_{h₁}(1) = 0 because Abel–Plana gives the empty sum
+    for admissible h₁.
+  - So the linear part is ∫₀^∞ds (π/cosh²πs)·f₀(½ + is), with f₀(α) = 2Tr(Σ₁^tw,(α)Δ_strip G^(α)): **only n = 1
+    objects**. Σ̃′ (stage B) feeds only admissibility, not the value.
+  - The p ≥ 2 terms are finite (argued) but must be computed separately. That is why Route A is primary.
+
+**Pieces and status.**
+
+| piece | content | status |
+|---|---|---|
+| A1 | formula and measure bookkeeping (angle rescaling, n log det B₁), saddle at O(n − 1) | argued (EXP-050, EXP-052); a short consolidated derivation is owed before registering |
+| A2 | twisted strip propagator G^tw_a(x, x′) per k_y slice, full (not just near-tip), at complex a = ½ + is | available at real a (Neon's BIE, verified EXP-066). BIE is analytic in a (twist enters via −(i/2)cot πa); **complex-a runs not yet done**. CH05 gives near-tip coefficients only |
+| A3 | Σ_flat in a consistent scheme (dim-reg: Σ(p) = A p² log p², A from η₁, at source) | to read at source; normalisation is a known-answer item |
+| A4 | the trace Tr(Σ_flat·ΔK) | **argued simplification:** ΔK (the two-edge connected part) is harmonic off the cut, so Σ_flat ∝ −∇² log(−∇²) reduces the trace to bilinears of the cut jump densities (exactly what the BIE solves for); per slice, −∇² → k_y² − ∇²₂D |
+| A5 | universal extraction | subtract single-edge twisted parts (edge-local, L/ε) and keep L/w; the UV power divergence is local (L/ε) |
+| A6 | CH07b line integral convergence | needs the Route-A integrand to grow < e^{2πs}: a Lemma-U-type statement for the full trace. The near-tip part is covered by EXP-065 (C₊); the bulk part is expected benign; **to be measured** |
+| B1 | f₀ full trace (Route B linear part) | n = 1 objects only: τ-space twisted Σ₁ (verified EXP-061) × BIE ΔG; optional cross-check |
+
+**Known-answer controls (pre-run before any registration).**
+- **K-free:** the same K and CH07b continuation, applied to the free O(N) entropy, must reproduce κ_free = 0.0397 per
+  real scalar (CH09; EXP-044's lattice-free c-functions already reproduce the c-functions). This tests A2, A5 and the
+  continuation normalisation.
+- **K-sphere:** conventions (done, EXP-050).
+- **K-BIE:** complex-a BIE runs must reproduce the CH05 near-tip coefficients on the line (EXP-065) and EXP-044's w_S
+  on the line. A must-pass, already verified at real a.
+- **Must-fail:** a planted L·log(w/ε) term must be detected by the w/ε-ladder.
+- **Two-implementation, partial:** the cut-reduced trace (A4) against a brute-force 2D trace at one slice.
+
+**Remaining subtleties (named, not solved):**
+1. reconciling Route A with Route B's linear part (they are different linearisations; the agreement of totals is the
+   test);
+2. the saddle term on the strip at O(n − 1) (EXP-052 argued it gives only a flat tadpole times a w-independent
+   integral, so no L/w; re-check);
+3. scheme: dim-reg Σ_flat vs the finite-part schemes used in EXP-061 (local terms → L/ε only, argued);
+4. the replica limit commuting with the cutoff limit for Route A (the A6 growth measurement addresses the log part).
+
+**Order of work (each step reported before the next):**
+1. A1 consolidated derivation (a note);
+2. A3 at source;
+3. A2 complex-a BIE plus K-BIE;
+4. K-free;
+5. pre-registration of the δκ run with a control table;
+6. production at 1–2 cores.
+
+**Size:** 2–4 sessions. No sister needed beyond Neon's verified BIE code (or my own build if K-BIE fails).
