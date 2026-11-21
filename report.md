@@ -7287,3 +7287,31 @@ So the integrated 1.9% comes from small u, where κ_max → 1. **A referee at a 
 - A second α (0.2) is descriptive.
 
 **Cost:** multi-hour (hypersingular quadrature, graded meshes, near-singular evaluation off S).
+
+**EXP-064 pre-check: an exact CFT test of the CH05-route machinery (cross channel).** [model: Opus 5.5]
+(`scripts/exp064_precheck_cft_cross*`)
+- *What is tested.* The same σ-matching and reflection-sign steps that give dc/dL = −m²bu/(8πa(1 − a)) predict the
+  cross coefficient e of (z − L₁)^a(z′ − L₁)^{1−a} in G:
+  e(t) = (m/(16πa(1 − a)))∫_t^∞(h + u²)dt′, which equals −m w(t)/(8πa(1 − a)t) by CH05 identities.
+- *Independent exact value (argued, elementary).* In the massless two-tip theory, the conformal map
+  w = (z − L₁)/(z − L₂) sends the interval to a single tip. Expanding the singular term
+  (1/(4πa))w^a w′^{−a}·[(z′ − L₂)/(z − L₂)]^a gives **e_CFT = 1/(4πL), for every a.**
+- *Result.* 4πt·e(t), computed directly from ∫(h + u²):
+
+  | t | a = 0.3 | a = 0.5 | a = 0.2 |
+  |---|---|---|---|
+  | 1 | 0.064 | 0.076 | 0.050 |
+  | 10⁻² | 0.634 | 0.673 | 0.570 |
+  | 10⁻⁴ | 0.786 | 0.813 | 0.737 |
+  | 10⁻⁶ | 0.848 | 0.869 | 0.810 |
+
+  - This approaches +1 in 1/ln(1/t): (1 − x)ln(1/t) ≈ 1.7, 2.0, 2.1 at a = 0.3. That is the scalar's zero-mode log
+    approach, the same as w(t) → −2a(1 − a).
+  - The planted reflection-sign flip gives the mirror values, approaching −1. **The must-fail fires.**
+- **Grade:**
+  - sign: **verified** (decisive);
+  - normalisation: consistent with the CFT value within the expected 1/log approach;
+  - structure (no extra terms in ∂_{L₂}G): supported at the fully resummed end, in the cross channel.
+- It does not test the C₊ channel (σ_{·1}σ_{·1}) directly, but that channel uses the same σ expansion. Together with
+  the T20 comparison (agreement at first resummation order), this is **strong but indirect** support for the CH05
+  route over T20-v₀ at higher orders. The BIE referee (EXP-064 design) remains the direct test.
