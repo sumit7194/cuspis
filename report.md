@@ -10281,3 +10281,45 @@ tail beyond T46d's float range; the tail was capped at t ≤ 2.5 inside T46d's v
     the N4 geometric-convergence measurement (EXP-081c prerequisites).
   - **The +2.4 stays UNVALIDATED against honest data.** EXP-083 ends here unless a continuation evaluated in Arb (to
     precision ≪ r_min) is built.
+
+## EXP-083 R3′ — visibility-scoped integer referee, ARM (a) ONLY (no saddle). REGISTERED (the Bridge's reframing + my amendments, 2026-11-22) [model: Opus 5.5]
+**Claim tested:** the production lattice continuation (Strip3D, without saddle) reproduces the honest integer data for
+every mode **visible** at the comparison precision. Modes below precision (beyond s_cut) are bounded internally (N4).
+**Not tested:** T_sad, which carries the +2.4's sign (saddle-off R = −48.5). Arm (b) waits on T46g. A pass here does
+**not** validate the +2.4.
+
+**Every threshold-keyed branch in sigma3d** (from the code), with its control:
+
+| branch | threshold | control |
+|---|---|---|
+| s_cut (tails, residues, β = 0 terms, saddle d) | 3.0 | sub-cut class bounded by N4 (ΔR ≈ 2·10⁻⁵, geometric); **visible known-bad**: s_cut lowered below a kept pole (P = 2: 1.2; P = 4: 1.5) must FAIL (a) |
+| inner_beta0 cross-factor merge | 10⁻²·rad (rad 10⁻⁵) | **planted**: tol 10⁻¹⁵ (splits mirror pairs) must FAIL (a) |
+| QEP filters (Im 10⁻⁸, reciprocal 10⁻⁶) and cluster merge 10⁻⁷z | — | the own-pole census (independent full-operator scan, MATCH at P = 2, 4); **planted**: drop one visible pole (the smallest-s pole of one slice) must FAIL (a) |
+| residue contour radius | min(10⁻⁶, 0.3 Δs) | **planted**: one residue × (1 + 10⁻⁶) must FAIL (a) at the stated δ, or the visibility claim is narrowed accordingly |
+| confluent residues | — | **planted**: dd = 1 must FAIL (a) |
+| route_b's s_max (N1/N1‴) | — | not in route (ii). Covered by the route (ii) ⇄ route_b consistency below |
+
+**(a) Integers:** route (ii) Q_cont(n) (the Strip3D port; same inner / inner_beta0 as production) against Arb honest Q(n).
+- P = 2 (W2, W4): n = 1…72. P = 4 (W2P4, W4P4, 081b's own geometries): n = 1…12. New Arb arm-(a) data at P = 4.
+- The port's quadrature is tightened until its integer deviation **δ ≤ 10⁻¹¹**, or the reached δ is stated and the
+  visibility claim is scaled to it.
+- Pass: max |Q_cont(n) − Q_honest(n)| ≤ max(δ, 10⁻¹¹) at every n, with Q_cont(1) = 0 to the same level.
+
+**Route link:** the finite-difference Q′(1) of route (ii) must agree with route_b's t0 + 𝒞 to ≤ 10⁻⁵ relative per
+geometry. route_b produced the 081b numbers.
+
+**Slope bound (argued, per mechanism):** a mis-handled visible mode with r ≥ r_min contributes a slope error
+≲ δ·|ln r_min|/r_min. At P = 4, r_min_kept = 6.5·10⁻⁹, so δ = 10⁻¹¹ gives ≲ 0.03, below the 0.191 half-gap.
+- The multi-term adversarial case (cancellations among several kept poles at the few integers where each is visible) is
+  **not excluded**. The planted controls stand in for the realistic mechanisms. Stated as a limit.
+
+**Consequence:**
+- Pass: "arm (a) of the lattice continuation reproduces honest integer data at P = 2 and 4 for all modes above δ, per
+  mechanism (partially verified); the sub-cut class is bounded internally (N4); T_sad untested."
+- Any fail of (a) by production, or any planted control NOT failing: **arm (a) unvalidated**, and EXP-083 ends with that
+  record.
+
+**Resources:**
+- Arb P = 4 arm (a), n ≤ 12: ≈ 1 h for both geometries, < 0.6 GB.
+- Route (ii) at P = 4 with tightened quadrature: ≈ 2 h per geometry (measured first).
+- One job at a time, nice 12.
