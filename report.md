@@ -10046,3 +10046,48 @@ measures peak RSS on a dry run before declaring.
 - **P = 4 under these rules:** 18–23 bases mean M4 ≫ 100 columns, so n ≳ 120 is needed. That is not feasible (cost ∝ n³).
   **R2 is therefore P = 2 code validation**, unless a P = 4 model family with fewer columns is registered later with
   stated reasons.
+
+### T46e (Neon) graded on the decisive gate: its new threshold-free T1 PASSES the EXP-082 honest ε-family table with r_floor ≥ 10⁻¹⁰, FAILS at r_floor = 0; its own T2 returns NaN on the family [model: Opus 5.5]
+**Source.** `neon_work/dkappa/T46e_code/brief_p2_t46e.py` (671 lines, sha256 08a4fc73…), UNVERIFIED on arrival.
+- I read the code in full. It makes no network calls and writes no files. It was run unchanged from a scratch copy with
+  `python -I`.
+- The gate is `scripts/t46e_epsgate.py`, outputs `t46e_epsgate_output.txt`. Run 1 crashed on T46e's own T2 at ε = 0.1;
+  it is kept as `…_run1_crash.txt`.
+
+**What the code does (read).**
+- `pair_dB_dn_continuous`: n → 1 at fixed r, using ψ(r) = ln r/(1 − r)² exactly.
+  - All modes stay in the α-averaged propagators.
+  - Pair kernels K_diff and K_conv carry analytic one-sided limits K_conv(r, 0) = ψ(r)/r. This is the §3 pair combination
+    of my sealed derivation, done for T0.
+- Not adopted: my P2. r still comes from the cancelling (2√λ − 1)/(2√λ + 1) with λ clipped at ¼. Modes with r ≤ r_floor
+  get ψ = 0.
+- T2 is unchanged in form (`exact_alpha_pair_coeffs`, with a hard-coded threshold of 10⁻¹²).
+
+**The gate.** No saddle: T1_new + T2 against the honest integer-data Q′(1; ε) of EXP-082.
+
+| ε | honest Q′(1) (1-base / 2-base) | T46e T1 + T2, floor 10⁻¹⁰ (= 10⁻⁸) | floor 0 |
+|---|---|---|---|
+| 1 | −0.339 / −0.316 | **−0.3209** | −0.0166 |
+| 10⁻¹ | −0.0457 / −0.0436 | **−0.0436** ᵃ | +0.968 ᵃ |
+| 10⁻² | −0.00587 / −0.00585 | **−0.00571** ᵃ | +0.164 ᵃ |
+| 10⁻³ | −7.2·10⁻⁴ / −6.9·10⁻⁴ | **−7.01·10⁻⁴** ᵃ | +0.795 ᵃ |
+| 10⁻⁴ | −8.6·10⁻⁵ / −7.4·10⁻⁵ | **−6.6·10⁻⁵ … −8.3·10⁻⁵** ᵃ | +0.411 ᵃ |
+
+ᵃ T46e's own T2 returns NaN for ε ≤ 0.1. These entries use T46d's T2 (threshold 10⁻¹⁰), which is small here (|T2| ≈
+10⁻³ at ε = 1). The ε = 10⁻⁴ range covers T1_new + T2[T46d] and T1_new alone.
+
+**Grades.**
+- **T46e's new T1, with a floor excluding round-off modes (≥ 10⁻¹⁰): PASSES the honest gate at every ε, within the
+  honest-fit spread.** Partially verified (this family; no saddle). It is the first continuation in this programme to
+  pass an honest-data slope test on a near-¼ spectrum. The threshold code gave +0.002 … +0.87.
+- **"Invariant across floors including 0": false on this family.** At floor 0, modes whose r is cancellation noise (λ at
+  the ¼ clip) enter with ψ ≈ ln r ~ −37, and the result is wrong by O(1).
+  - This is exactly the sealed P2 issue (r unresolved at round-off). In practice the floor is a round-off exclusion and
+    must sit above the r-resolution: invariant on [10⁻¹⁰, 10⁻⁸] here, catastrophic at 0.
+  - The P2 remedy (stable λ − ¼) would make the floor unnecessary. Not adopted by T46e.
+- **T2: unresolved.** T46e's own T2 returns NaN on the ε-family for ε ≤ 0.1. With the Bridge's flag (item 1, a +0.165 vs
+  +0.328 floor effect), T2 still needs the pair-tail combination.
+- **Items 1–3: not graded here.** The Bridge's flags stand: T2 is not floor-clean; the edge offset is −0.067 UNSURE; the
+  κ_free series converges slowly from above.
+- **Implication for the sealed derivation:** P1 (n → 1 at fixed r) is supported by T46e's T1 passing the gate. P2's
+  concern is confirmed: floor 0 fails. P3's continuity for the true continuation was already shown by EXP-082.
