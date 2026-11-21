@@ -1,0 +1,5 @@
+node s=0.937: max Im alpha = 3.919; cond(H) over p in (0, Ny/4, Ny/2) = 1.4e+20; cond*eps = 1.6e+04
+node s=1.974: max Im alpha = 4.955; cond(H) over p in (0, Ny/4, Ny/2) = 5.7e+25; cond*eps = 6.3e+09
+node s=2.986: max Im alpha = 5.968; cond(H) over p in (0, Ny/4, Ny/2) = 1.7e+31; cond*eps = 1.9e+15
+node s=3.948: max Im alpha = 6.930; cond(H) over p in (0, Ny/4, Ny/2) = 4.6e+34; cond*eps = 5.1e+18
+node s=5.052: max Im alpha = 8.033; cond(H) over p in (0, Ny/4, Ny/2) = 6.3e+37; cond*eps = 7.0e+21

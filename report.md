@@ -9499,3 +9499,73 @@ is not negligible: **argued (consistent; not reproduced by me).**
   F_crit = N·F_s − ζ(3)/(8π²) + O(1/N), with F_s ≈ 0.0638 (eq. 41). So δF = −0.238 F_s.
   - **Partially verified** (ar5iv HTML via a fetch agent, not checked against the PDF).
 - Draft: `notes/EXP-081c_draft.md`.
+
+## EXP-081c  Re-measurement of the EXP-081b lattice nuisance σ_W — REGISTRATION (the Bridge's approval with edits A–E and B2a/B2b, 2026-11-22) [model: Opus 5.5]
+**Text.** `notes/EXP-081c_draft.md` as committed in d50f6de (§0–§11) is registered, with the amendments below. Where they
+differ, the amendments govern. EXP-081b stays INCONCLUSIVE on the record, unchanged. Nothing of 081c has been computed.
+One pre-registration matrix property was measured (`scripts/exp081c_cond.py`): cond₂(H(α)) at the largest |Im α| per
+checkpoint node is 10²⁰ … 10³⁷, although the measured errors are far smaller. The 2-norm is dominated by the few twist
+entries, so it is **not** used as a gate.
+
+**A. Must-fire for N1‴c (planted; decides voidness).**
+- At the checkpoint node s = 0.937383…, every G(α) entering B(β) and every residue derived from G is multiplied by
+  (1 + ε), ε = 1.2·10⁻⁹. B1 is untouched.
+- B_k then scales by (1 + ε)², so the predicted Δg = 2ε·N·N_y = 2.949·10⁻⁵ (N = 384, N_y = 32), and the predicted
+  impact = Δg·π/cosh²(0.937π) = 1.02·10⁻⁶ (10× threshold).
+- **It must fire, and the measured Δg must match 2.949·10⁻⁵ within 10%. Otherwise N1‴c is void → INCONCLUSIVE.**
+- The second must-fire is the 081b Woodbury g of W8P8 (stored checkpoints) against the 081c production g at the same
+  nodes. It is reported; if only it fails to fire, nothing is voided.
+
+**B. Independence of the W8P8 checks.**
+- **B1, Step 0 extended.**
+  - Reference columns at every N1‴c checkpoint node (s ≈ 0.94, 1.97, 2.99, 3.95, 5.05), at that node's largest |Im α|.
+    One slice per node, the column holding the largest |G_refined − G_unrefined|.
+  - The reference is 40-digit mixed-precision iterative refinement (float64 solves, mpmath residual). If that fails to
+    converge (residual > 10⁻²⁵ after 6 steps), it is an mpmath LU solve at 60 digits.
+  - Tolerance on refined G: ≤ 10⁻¹² relative (column max).
+  - At s ≈ 0.94 and 1.97, failure means STOP. At s ≈ 2.99, 3.95 and 5.05, failure caps W8P8's s_max at the last passing
+    checkpoint below it; T0 and T1 are then both reported as in 081b. This rule is fixed now; Step 0 has not been run.
+- **B2a, independent H(α) build.**
+  - Written by a separate sub-agent from a physics-only specification: the lattice, the Dirichlet box, m², and the
+    monodromy rule "a hop from the lower cut site to its upper partner carries z = e^{2πiα}; the reverse carries 1/z", on
+    the links (x, tcut) ↔ (x, tcut + 1), x ∈ cutx.
+  - The sub-agent is given no access to `sigma3d.py` or any `exp081*` code. Its code header says so.
+  - I (Cuspis) have read the production code, so I do not write this arm.
+  - It is compared entrywise with the 081c production H(α) at every distinct (slice, α) of the s ≈ 1.97 node. It must
+    be exact (≤ 10⁻¹⁵ relative, max entry).
+  - **Must-fire:** the same comparison with one twist link deliberately wrong (its twist moved to a non-cut neighbour
+    link) must fail. Otherwise B2a is void → INCONCLUSIVE.
+- **B2b.** At s ≈ 1.97, g with one refinement step vs two steps. ≤ 10⁻¹² relative on g, or INCONCLUSIVE.
+- **Why there is no 40-digit g arm:** it would cost ~13 days. The positive controls (W4P8 b8, W2P8 b4) compare the new
+  exact-H path with 081b's inv(G0)-based path, so at W = 2 and 4 the build is already checked against an independent
+  route. B2a extends that to W = 8. The solve is covered by B1, and the g-assembly (inner(), unchanged since 081b) by the
+  N2′ mpmath referee and the positive controls.
+
+**C. N4c prediction check.** |ΔR| (s_cut 3.0 → 3.5, P = 6) ≤ 10⁻⁴, five times the pre-stated 2·10⁻⁵. If it fails, the
+headline reads "N4 prediction failed" and it is root-caused before any write-up. 2|ΔR| is added in quadrature regardless
+(rule of §7).
+
+**D. ρ wording.**
+- ρ ≤ 0.10 reads **"resolution-stable to 10% under one doubling"**, never "continuum-ready". Under a λ/W² term, a pass
+  still allows an artefact up to ~2ρR.
+- ρ > 0.10 reads "the (2, 4) pair is not resolution-stable under one doubling", and a refinement series is registered
+  separately.
+- **Richardson value 2·R48(P8, b8) − R24(P4, b4)** (same physical geometry): reported, **DESCRIPTIVE**, labelled as such.
+
+**E. Draft §10 item 1, regraded.**
+- If K's +1.9% excess were λ-type (κ − 0.75λ at (2, 4)), one doubling should move free κ_lat by about −0.9%. The
+  measured shift is **+0.47%**.
+- The claim "K's excess is of this kind (argued)" is regraded to **not supported by the refinement sign.**
+- Caveat: the refinement comparison is at the P = 4 geometry, while K is P-extrapolated, so the two may not be
+  like-for-like.
+
+**Implementation details registered now.**
+- In the 081c numerics, slices p > N_y/2 are the same objects as slice N_y − p. That gives exact mirror symmetry and
+  removes the 081b merge hazard at its root. Effect on the positive controls: ~10⁻¹⁶ in m².
+- Residues are full N×N matrices, from a 32-point contour of the production G. The radius is min(10⁻⁶, 0.3 × the pole
+  spacing), as in `_poles`.
+- The saddle's coincident term uses diag(Res G) directly.
+- The N1‴c unrefined arm uses unrefined G and residues from unrefined G.
+- Memory: W8P8 measured 0.33 GB in the dry run, plus ~0.4 GB of residue storage (17 slices × ≤ 5 poles × 2 × N²
+  complex). **Declared peak 1.1 GB** (× 1.5). Watchdog cap 1.5 GB, nice 12, one job at a time, daytime.
+- KPS −0.238: to be checked against the PDF before any write-up (TODO.md).
