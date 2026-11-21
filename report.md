@@ -9748,3 +9748,19 @@ control.**
      decisive test for T46e, and the Bridge's "small-r variant of the T40 stand-in" requirement already points at it.
   3. What survives from the seal: E1/E2 (verified), the non-commuting limits, and the threshold's discontinuity
      (observed). What does not survive: P3. P1–P2 survive as a prescription only, with no working implementation.
+
+## EXP-082  Honest integer-n referee on the ε-family (perturbed pure gauge) — brief registration (the Bridge's request, 2026-11-22) [model: Opus 5.5]
+- **System:** T46d's conformal-elliptic broken cocycle, N_θ 12, μ_max 3, with the untwisted outer link's hopping set to
+  −ε, for ε ∈ {1, 10⁻¹, 10⁻², 10⁻³, 10⁻⁴, 10⁻⁶, 10⁻⁸, 0}. Slice k = 1 with T46d's q-grid (dq 0.5, Q_max 4, centred pairs).
+- **Honest Q(n; ε)**, n = 2…8, no continuation:
+  - the n-sheet manifold glues every twisted link (cut_top on sheet s ↔ cut_bot on sheet s + 1);
+  - G_q⁽ⁿ⁾ = (L0⁽ⁿ⁾ + q²W)⁻¹, B_n = Σ_pairs w·2 G_{q₁}⁽ⁿ⁾∘G_{q₂}⁽ⁿ⁾;
+  - Q(n) = log det B_n − n log det B₁.
+  - There is no saddle in the honest Q, so the continuation counterpart is T1 + T2 (not T_sad).
+- **Must-pass:** at ε = 0 (exact gauge), Q(n) = 0 at every n to ≤ 10⁻¹⁰.
+- **Prediction (registered now): reading (ii).** The integer data scale as Q(n; ε) = O(ε²) (or ε² ln ε) as ε → 0 at
+  every n. Then any admissible continuation with ε-uniform bounds has Q′ → 0, and the threshold code's ln(1/ε)-growing
+  Q′ is a continuation artefact.
+  - If the integer data do not vanish, reading (i) is live. That would be recorded as a surprise.
+- **Then:** an estimate of Q′(1; ε) from the integer data (fixed-base / Newton with n = 8 held out; drift reported),
+  compared with T1 + T2 from the threshold code and from P1 + P2.
