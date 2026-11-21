@@ -9194,3 +9194,22 @@ Every amendment was registered before the quantity it affects was seen, except t
   - the N2′ impact evaluated in the referee;
   - a must-fire: one production residue scaled by 1 + 10⁻⁴.
   - The tolerance and the pass rule are unchanged.
+
+**EXP-081b N2 referee run 2: the Bridge's terms (ruling received before run 2 produced any comparison).**
+- Run 1's FIRE stays on record with its diagnosis. Both fixes (right poles, same s_cut) are legitimate.
+- **The referee must not be seeded by production.** A first run-2 version refined poles starting from production's. It was
+  stopped before any comparison was printed; its partial output is kept as `scripts/exp081b_referee_output_run2seeded_stopped.txt`.
+- **Run 2 as run:**
+  - **Own poles.** On every slice, the referee finds its own poles with a 50-digit sign-change scan of
+    F(s) = z^W det(I + M C(z)) on a 1/2000 grid over [0, s_cut], refining each bracket with a bracketing solver. Near-touch
+    minima of |F| without a sign change (possible double or very close pairs) are reported, and fire if present.
+  - **Own geometry.** The referee builds the cut links itself.
+  - **Census.** Only after that is its pole list compared with production's (s ≤ s_cut): same count, positions within
+    10⁻⁶. **A missing or extra pole below s_cut fires N2′.**
+  - **Must-fires:**
+    1. one production residue scaled by 1 + 10⁻⁴;
+    2. the census on slice 4 with the cut raised to s ≤ 4, where production is known to miss s = 3.9476. It must report a
+       mismatch.
+  - Everything else is unchanged. **The VOID rule applies to run 2.**
+- **Unregistered diagnostic:** a pole census over every production geometry. A missed pole **below** s_cut in any geometry
+  flags that geometry's R before the verdict.
