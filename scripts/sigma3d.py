@@ -67,8 +67,9 @@ class Slice:
         return RK                                            # store Res K (2W x 2W); Res G = -A (Res K) A^T on demand
 
 class Strip3D:
-    def __init__(self, Lx, Lt, Ny, cutx, tcut):
+    def __init__(self, Lx, Lt, Ny, cutx, tcut, s_cut=np.inf, drop_double=False):
         self.Lx, self.Lt, self.Ny, self.cutx, self.tcut = Lx, Lt, Ny, list(cutx), tcut
+        self.s_cut, self.drop_double = s_cut, drop_double
         idx = lambda x, t: x * Lt + t
         self.sl = [Slice(Lx, Lt, 2 - 2 * np.cos(2 * np.pi * p / Ny), cutx, tcut, idx) for p in range(Ny)]
         self.N = Lx * Lt
@@ -101,6 +102,7 @@ class Strip3D:
         Gm, Gp = Fa, Fb                                   # reuse buffers for the tail partners
         for p, sp in enumerate(self.sl):
             for j, sj in enumerate(sp.s):
+                if sj > self.s_cut: continue
                 f = 2j * np.pi / np.expm1(2 * np.pi * n * sj)
                 self.Garr(beta - 1j * sj, Gm); self.Garr(beta + 1j * sj, Gp)
                 Rp_, Rm_ = sp.Rfull(sp.Rp[j]), sp.Rfull(sp.Rm[j])
@@ -126,7 +128,8 @@ class Strip3D:
         for k in range(Ny):
             for p in range(Ny):
                 q = (k - p) % Ny; sa, sb = self.sl[p], self.sl[q]
-                locs = [(a0, "a") for sj in sa.s for a0 in (1j * sj, -1j * sj)] + [(a0, "b") for sj in sb.s for a0 in (-1j * sj, 1j * sj)]
+                locs = [(a0, "a") for sj in sa.s if sj <= self.s_cut for a0 in (1j * sj, -1j * sj)] + \
+                       [(a0, "b") for sj in sb.s if sj <= self.s_cut for a0 in (-1j * sj, 1j * sj)]
                 merged = []
                 for a0, tag in locs:
                     hit = [m for m in merged if abs(m[0] - a0) < 1e-9]
@@ -135,6 +138,7 @@ class Strip3D:
                 for a0, tags in merged:
                     up = a0.imag > 0
                     if len(tags) == 2:
+                        if self.drop_double: continue            # planted break (EXP-081 must-fire)
                         tot = 0
                         for t in th:
                             dz = rad * np.exp(1j * t); al = a0 + dz
@@ -161,6 +165,7 @@ def C_line(g, nseg=(0.0, 0.5, 1.5, 3.0, 6.0), npt=16):
     return tot
 
 def route_i(S, npt=40, cpts=16, smax=6.0):
+    npt = getattr(S, 'npt', npt)
     """Q'(1) = sum_k [ Tr(B1k^{-1} d_n B^(0)_{n,k}|_1) + C[ logdet B_{1,k}^(beta) - logdet B1k ] ]  (per-k pieces returned too)."""
     B1 = S.B1(); ld1 = [logdet(B1[k]) for k in range(S.Ny)]
     dB0 = S.inner_beta0(1.0, dn=True)
@@ -270,3 +275,54 @@ class FreeStripK(FreeStrip):
         self.kw = np.array(self.kw)
     def S_per_L(self, cpts=16, smax=6.0):
         return 0.5 * np.sum(self.kw * C_line(self.gk, nseg=(0.0, 0.5, 1.5, 3.0, smax), npt=cpts))
+
+# ------------------------------------------------------------------ saddle term (EXP-081a) ------------------------------
+def _kdn(al, up, n=1.0):
+    e = np.exp(-2j * np.pi * n * al) if up else np.exp(2j * np.pi * n * al)
+    return 2j * np.pi * al * e / (e - 1) ** 2
+
+def coincident_dn(S):
+    """d(x) = d/dn [ (1/n) sum_k DeltaG_3D^(k/n)(x,x) ] at n=1, DeltaG_3D(x,x) = (1/Ny) sum_q [G_q^(a) - G0_q](x,x).
+    Single-factor Poisson continuation: only the pole tails depend on n; residue diagonals from the 2W x 2W Res K."""
+    d = np.zeros(S.N, dtype=complex)
+    for sp in S.sl:
+        for j, sj in enumerate(sp.s):
+            if sj > S.s_cut: continue
+            for RK, a0, up in ((sp.Rp[j], 1j * sj, True), (sp.Rm[j], -1j * sj, False)):
+                diagR = -np.sum((sp.A @ RK) * sp.A, axis=1)                  # diag(-A RK A^T)
+                d += (2j * np.pi) * diagR * (_kdn(a0, up) if up else _kdn(a0, up))
+    return d / S.Ny
+
+def saddle_term(S, B1=None, return_checks=False):
+    """T_saddle = sum_k Tr(B1k^{-1} dB_k^sad),  dB_k^sad = -(4/Ny) sum_q G0_q o (G0_{k-q} D G0_{k-q}),  D = diag(sigdot),
+    sigdot = 2 B1_{k=0}^{-1} d  (gap equation at O(n-1), y-independent saddle)."""
+    B1 = S.B1() if B1 is None else B1
+    d = coincident_dn(S); sig = np.linalg.solve(B1[0], 2 * d)
+    G0 = np.array([s.G0 for s in S.sl], dtype=complex)
+    H = np.array([g @ (sig[:, None] * g) for g in G0])                          # G0_q D G0_q
+    gapcheck = np.max(np.abs(np.mean([np.diag(h) for h in H], axis=0) - d)) / max(np.max(np.abs(d)), 1e-300)
+    acc = np.zeros_like(G0); S.conv_into(acc, G0, H, -4.0 / S.Ny); del H, G0
+    T = sum(np.trace(np.linalg.solve(B1[k], acc[k])) for k in range(S.Ny))
+    return (T, d, sig, gapcheck) if return_checks else T
+
+def route_i_ckpt(S, ckpt, cpts=12, smax=6.0, npt=40, with_saddle=True):
+    """route (i) with the saddle term and per-beta checkpointing (json at `ckpt`): Q'(1) = sum_k t0_k + T_saddle + C[g]."""
+    import json, os
+    st = json.load(open(ckpt)) if os.path.exists(ckpt) else {}
+    def put(k, v):
+        st[k] = v; tmp = ckpt + ".tmp"; json.dump(st, open(tmp, "w")); os.replace(tmp, ckpt)
+    B1 = S.B1(); ld1 = [logdet(B1[k]) for k in range(S.Ny)]
+    if "t0" not in st:
+        dB0 = S.inner_beta0(1.0, dn=True)
+        put("t0", float(sum(np.trace(np.linalg.solve(B1[k], dB0[k])) for k in range(S.Ny)).real)); del dB0
+    if with_saddle and "tsad" not in st:
+        put("tsad", float(saddle_term(S, B1).real))
+    x, w = leggauss(cpts); tot = 0.0
+    for lo, hi in zip((0.0, 0.5, 1.5, 3.0), (0.5, 1.5, 3.0, smax)):
+        for xi, wi in zip(x, w):
+            si = 0.5 * (hi - lo) * (xi + 1) + lo; key = f"g|{si:.15f}"
+            if key not in st:
+                Bb = S.inner(1.0, 0.5 + 1j * si, npt)
+                put(key, float(sum((logdet(Bb[k]) - ld1[k]).real for k in range(S.Ny)))); del Bb
+            tot += 0.5 * (hi - lo) * wi * np.pi / np.cosh(np.pi * si) ** 2 * st[key]
+    return st["t0"] + (st.get("tsad", 0.0) if with_saddle else 0.0) + tot, st

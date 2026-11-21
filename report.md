@@ -8901,3 +8901,47 @@ otherwise INCONCLUSIVE.**
 - 1 core, nice 12, watchdog. Measured peak ~1.3 GB (W = 2, r = 6, and W = 3, r = 4).
 - Order: free side, then σ by increasing r, then nuisances. Per-configuration results are cached for resume.
 - Estimated ~5 h.
+
+## EXP-081a  Amendment: the saddle term added to the engine; engine-path controls; the r = 8 rung — registered before any saddle-included value is computed [model: Opus 5.5]
+**What happened, stated plainly.**
+- The EXP-081 production run was **stopped by me** after its first two points: W = 2, no saddle.
+  - r = 2: δκ_lat = −0.61646762, R = −48.534388;
+  - r = 3: δκ_lat = −1.24010686, R = −69.382529.
+  - **These values were seen.** A "universal" term growing with the box is physically impossible, and diagnosing it
+    showed the engine **omits the saddle term**.
+- The registered formula says "the saddle enters through the q = 0 term". P0's P2 checked the −1/32 + 1/32 cancellation
+  **only analytically**, so it could not fail on the engine path.
+- **Root cause (the Bridge's rule): every control must exercise the production code path.**
+- Without the saddle, the q = 0 trace keeps the gap-violating local term 4G₁∘(∂ₙ coincident shift). On a lattice this is
+  power-divergent (∝ Λ²∫d²x a(x), a ~ c/r), hence box-growing. (Argued.)
+
+**The saddle term** (`sigma3d.py`: `coincident_dn`, `saddle_term`, `route_i_ckpt`).
+- d(x) = ∂ₙ[(1/n)Σ_k ΔG^{(k/n)}_{3D}(x, x)]|₁, from single-factor Poisson pole tails with residue diagonals.
+- σ̇ = 2B̂_{1,0}⁻¹d (gap equation at O(n − 1), with σ̇ uniform in y).
+- T_saddle = Σ_k Tr(B̂_{1,k}⁻¹·[−(4/N_y)Σ_q Ĝ_q∘(Ĝ_{k−q}D_σ̇Ĝ_{k−q})]).
+- **Q′(1) = route_i + T_saddle.** The cached route_i pieces are reused; the term is additive.
+
+**Engine-path controls (tolerances and windows fixed now).**
+
+| clause | what (through the engine) | criterion |
+|---|---|---|
+| S1 normalisation | (1/N_y)Σ_q diag(Ĝ_qD_σ̇Ĝ_q) vs d, at W = 2, r = 2 | max relative difference ≤ 10⁻¹⁰ |
+| **S2 lattice P2** | single edge (edge cut), P = 12 (26×24 slice), N_y = 48. Sites (x, t) with x ∈ {P − 1, P}, t = tcut + 1 + m, m ∈ {2, 3, 4}; distance to the edge point (P − ½, tcut + ½) is r ≈ √(¼ + (m + ½)²) | mean of d·r over the window within **20%** of −1/32 = −0.03125 |
+| **S3 must-fail regression** | saddle OFF via `route_i_ckpt(with_saddle=False)`, W = 2, r = 2 and 3 | reproduces R = −48.534388 and −69.382529 to ≤ 10⁻⁶ relative |
+| **S4 pure gauge (G1 on the production path)** | wall-to-wall cut x ∈ [0, Lx − 1] (pure gauge in the Dirichlet box), W = 2-sized box at r = 2, N_y = 16, saddle ON | total Q′(1) = 0 to ≤ 10⁻⁸ relative to |route_i|, and T_saddle = 0 |
+| S5 box diagnostic (**not pass/fail**) | R with the saddle at r = 2, 3, 4 | reported, with its trend |
+
+- All EXP-081 clauses (K, Ny, s-quad, F, E), the extrapolation forms and routes, and the sign rule are **unchanged**,
+  applied to the saddle-included R(r).
+
+**r = 8 amendment** (Sumit's yes, relayed by the Bridge; decided without reference to any EXP-081 value).
+- **The point:** W = 2, r = 8, slice 34×32 = 1088 sites, N_y = 64 (c = 2), saddle included. Free partner at the same
+  geometry.
+- **It runs regardless of what EXP-081 shows.** It runs detached, one process: watchdog cap 8 GB, stop-on-pressure-warn,
+  disk floor 5 GB, nice 12, 1 core. Per-β checkpoints (`route_i_ckpt`); the crash-then-resume test is required beforehand.
+- **Two fit versions, both pre-specified:**
+  - **(a) without r = 8** (as registered): train r = 2..5, held out r = 6, σ_ho scaled ×6.
+  - **(b) with r = 8:** train r = 2..6, **held out r = 8**, σ_ho scaled by (1/6)/(1/6 − 1/8) = 4; central = mean of A and B
+    refit on r = 2..8. Planted control K applies identically, with free r = 8 held out.
+- **Primary:** version (b) if the night run completes; otherwise **(a) stands as registered.** Acceptance and sign
+  rules are the same for both. Both versions are always reported.
