@@ -7923,3 +7923,22 @@ where the BIE is least precise.
 | must-fail | counting factor 1 | arithmetic: κ scales linearly in the factor, so 2× | KF1 can detect the factor it is meant to fix |
 
 `scripts/exp071_run.py`; ~1 min; < 0.1 GB.
+
+### EXP-071 results: KF0 PASS, KF1 PASS (primary), must-fail FIRES; the secondary CHL09 clause FAILS narrowly (diagnosed) [model: Opus 5.5]
+(`scripts/exp071_run.py`, `exp071_output.txt`, `exp071_results.json`; 65 s.)
+- **KF0 PASS:** C_line equals the exact (d/dn)Σ g(q/n)|₁: 2.5·10⁻¹⁴ (β = 1) and 8.5·10⁻¹² (β = 2).
+- **KF1 PASS:** κ/C_T = 4.173987, with ladder 4.173993, 4.173987, 4.173987 (spread 6.2·10⁻⁶), inside the window
+  [4.17258, 4.17526]. So κ_free = 0.0396481 per real scalar.
+- **Must-fail FIRES:** counting factor 1 gives 8.338891, i.e. 1.9978×, outside the window.
+- **Secondary (κ vs [CHL09] 0.0397, tolerance 5·10⁻⁵): FAIL** as registered, with a miss of 5.2·10⁻⁵.
+  - *Diagnosis:* all three of our implementations agree on the complex-scalar value 0.07930 (≈ 0.07929–0.07930):
+    EXP-040's two lattice routes, 4.17426 and 4.17358, and this Fredholm/SC route.
+  - [CHL09] Table 1 prints 0.0794.
+  - My tolerance was also too generous in the wrong way: halving a 3-figure complex value halves its rounding interval,
+    to ±2.5·10⁻⁵.
+  - So either CHL09's last digit is off, or it carries numerical error beyond rounding. Quantum's coordination note (its
+    claim, unverified here) flags that table for errors beyond rounding in another entry.
+  - **Not resolved here.** It does not affect δκ, whose normalisation is anchored by the primary KF1 and by
+    δκ/κ_free ratios.
+- **Grade:** the SC continuation (𝒞 line integral), its sign and the real-scalar counting factor are **verified** against
+  the free κ. The free-scalar κ = 0.039648 (three of our routes) is in mild tension with CHL09's printed 3rd figure.

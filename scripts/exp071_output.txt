@@ -1,0 +1,6 @@
+KF0 beta=1.0: C_line 1.0429148214668 exact 1.0429148214667 rel 2.5e-14
+KF0 beta=2.0: C_line 1.1883951057680 exact 1.1883951057781 rel 8.5e-12
+KF0 PASS
+KF1 kappa/C_T = 4.173987 (ladder 4.173993, 4.173987, 4.173987; spread 6.2e-06)  window [4.17258, 4.17526] [PASS]
+    kappa = 0.0396481  vs CHL09 0.0397: diff -5.2e-05 [FAIL]
+KF-must-fail (counting factor 1): kappa/C_T = 8.338891 ratio to KF1 1.9978 [FIRES]
