@@ -1,0 +1,14 @@
+W4 P4: census to s<=3.5 -> production pole lists complete
+   s_cut 2.00: t0 -47.283732200 tsad +51.062928667 X +3.779196467  (poles in (2, s_cut]: 0)
+   s_cut 2.50: t0 -47.286327576 tsad +51.066088014 X +3.779760438  dX vs prev +5.64e-04  (poles in (2, s_cut]: 5)
+   s_cut 2.75: t0 -47.286456811 tsad +51.066274533 X +3.779817722  dX vs prev +5.73e-05  (poles in (2, s_cut]: 9)
+   s_cut 3.00: t0 -47.286456811 tsad +51.066274533 X +3.779817722  dX vs prev +0.00e+00  (poles in (2, s_cut]: 9)
+   s_cut 3.25: t0 -47.286466698 tsad +51.066291537 X +3.779824840  dX vs prev +7.12e-06  (poles in (2, s_cut]: 13)
+   s_cut 3.50: t0 -47.286467734 tsad +51.066293653 X +3.779825920  dX vs prev +1.08e-06  (poles in (2, s_cut]: 17)
+W4 P6: census to s<=3.5 -> production pole lists complete
+   s_cut 2.00: t0 -105.223687116 tsad +112.023647515 X +6.799960399  (poles in (2, s_cut]: 0)
+   s_cut 2.50: t0 -105.230906583 tsad +112.032148421 X +6.801241838  dX vs prev +1.28e-03  (poles in (2, s_cut]: 7)
+   s_cut 2.75: t0 -105.231137550 tsad +112.032470842 X +6.801333292  dX vs prev +9.15e-05  (poles in (2, s_cut]: 11)
+   s_cut 3.00: t0 -105.231172408 tsad +112.032525216 X +6.801352808  dX vs prev +1.95e-05  (poles in (2, s_cut]: 15)
+   s_cut 3.25: t0 -105.231178525 tsad +112.032536165 X +6.801357640  dX vs prev +4.83e-06  (poles in (2, s_cut]: 19)
+   s_cut 3.50: t0 -105.231180049 tsad +112.032539336 X +6.801359287  dX vs prev +1.65e-06  (poles in (2, s_cut]: 25)

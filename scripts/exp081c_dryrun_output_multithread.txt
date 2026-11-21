@@ -1,0 +1,3 @@
+G calls: inner(beta) 11328 (overhead 9s), inner_beta0(dn) 35604 (overhead 12s); poles<=3 per unique slice: [5, 5, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+N=384: one complex inverse 5.2 ms; one refinement-size step (2 matmuls) 3.1 ms
+estimate W8P8 direct+refined: C-nodes+checks 1.5 h, t0 0.1 h, total 1.6 h (+ the same again for the Woodbury-vs-direct t0 comparison: already done in production); maxrss 0.37 GB

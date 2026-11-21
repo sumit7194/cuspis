@@ -1,0 +1,8 @@
+node s=0.937: 141 alphas x 17 slices (24s). worst |Gw-Gde|/max: 4.8e-06 (p0 Im a +3.910; |Gdp-Gde| 1.7e-05); 4.1e-06 (p1 Im a +3.910; |Gdp-Gde| 1.6e-05); 3.5e-06 (p0 Im a +3.919; |Gdp-Gde| 1.8e-05) | max over all |Gdp-Gde|/max 1.8e-05
+   ref column (p0, Im a +3.910, col 200; final residual 1.6e-32): Woodbury 4.8e-06 | direct-prod 1.6e-05 | direct-exactH0 3.6e-09
+   ref column (p1, Im a +3.910, col 200; final residual 2.2e-32): Woodbury 4.1e-06 | direct-prod 1.6e-05 | direct-exactH0 4.4e-09
+   ref column (p0, Im a +3.919, col 200; final residual 1.3e-32): Woodbury 3.5e-06 | direct-prod 1.7e-05 | direct-exactH0 2.1e-09
+node s=1.974: 141 alphas x 17 slices (23s). worst |Gw-Gde|/max: 1.7e-03 (p4 Im a +4.947; |Gdp-Gde| 2.2e-03); 1.4e-03 (p2 Im a +4.955; |Gdp-Gde| 5.6e-03); 1.4e-03 (p4 Im a +4.955; |Gdp-Gde| 2.3e-03) | max over all |Gdp-Gde|/max 9.7e-03
+   ref column (p4, Im a +4.947, col 200; final residual 1.9e-29): Woodbury 1.7e-03 | direct-prod 2.2e-03 | direct-exactH0 2.5e-08
+   ref column (p2, Im a +4.955, col 184; final residual 1.5e-29): Woodbury 1.4e-03 | direct-prod 3.0e-03 | direct-exactH0 1.3e-07
+   ref column (p4, Im a +4.955, col 200; final residual 2.8e-29): Woodbury 1.4e-03 | direct-prod 2.3e-03 | direct-exactH0 1.1e-08

@@ -9456,7 +9456,9 @@ is not negligible: **argued (consistent; not reproduced by me).**
   this verdict.
 
 **Descriptive only, NOT a verdict (post-registration; σ_W excluded by me, which the registration does not allow):**
-- Impact rule, R∞ = 2.41 ± 0.29 (routes only). R∞ + 0.4503 = 2.86, about 10 route-σ from zero, positive.
+- Impact rule, R∞ = 2.41 ± 0.29 (routes only). ~~R∞ + 0.4503 = 2.86, about 10 route-σ from zero, positive.~~
+  **[Withdrawn 2026-11-22, the Bridge's ruling:** ±0.29 omits exactly the resolution systematic σ_W, so no σ-count from it
+  may be quoted anywhere. The same phrase is in commit 62ab26f's message and the 62ab26f Bridge message; this note supersedes them.**]**
 - N4's 1.6·10⁻⁴ relative is ~4·10⁻⁴ absolute on R, far below 0.29 (argued).
 - The registered verdict stays INCONCLUSIVE. Whether to remeasure the W = 8 nuisance with numerics that pass N1‴ (e.g.
   direct-inverse G for that one geometry) needs a registered amendment and the Bridge's OK *before* it is computed. The
@@ -9468,3 +9470,32 @@ is not negligible: **argued (consistent; not reproduced by me).**
   N_y scaling).
 - R(P) values under the impact rule: partially verified (N2′ referee at W4P4 only; reliability rules applied to every
   geometry).
+
+### EXP-081c prerequisites run, and draft registration sent to the Bridge (not registered; nothing of 081c computed) [model: Opus 5.5]
+- **The Bridge's decision (2026-11-22):** 081b stays INCONCLUSIVE, unchanged. The nuisance is re-measured as a new
+  experiment, EXP-081c. The draft goes to the Bridge before any computation. The "10σ" phrase is withdrawn (above).
+- **N4 root cause** (`scripts/exp081c_n4diag.py`): a mis-specified tolerance, not a numerics error. **Verified** on W4P4
+  and W4P6, census complete to s = 3.5.
+  - X = t0 + T_sad converges geometrically in s_cut. W4P6 increments: 1.3·10⁻³, 9.1·10⁻⁵, 2.0·10⁻⁵, 4.8·10⁻⁶, 1.6·10⁻⁶
+    per 0.5/0.25 step.
+  - The 081b test measured the (2.5, 3] contribution, not the remainder beyond 3. The remainder is
+    X(3.5) − X(3) = 6.5·10⁻⁶, i.e. ΔR ≈ 2·10⁻⁵.
+- **W = 8 G accuracy** (`scripts/exp081c_w8diag.py`; G level, no g, S or R). Errors against 40-digit mixed-precision
+  reference columns, at the worst tail ingredients of the 081b checkpoint nodes:
+
+  | node | Woodbury | 081b `_G_direct` | direct inverse of the exact integer H(α) |
+  |---|---|---|---|
+  | s = 0.94 | 4.8·10⁻⁶ | 1.6·10⁻⁵ | ≤ 4·10⁻⁹ |
+  | s = 1.97 | 1.7·10⁻³ | 2.2·10⁻³ | ≤ 1.3·10⁻⁷ |
+
+  - **081b's N1 reference was the weaker method at W = 8:** it builds H0 = inv(G0), a double inversion. **Verified**
+    (6 reference columns).
+  - For W = 2 and 4, two different methods agreed under N1‴, and the independent N2′ mpmath referee holds.
+- **Resource dry run** (`scripts/exp081c_dryrun.py`; dummy G): W8P8 with direct-inverse G takes ≈ 1.6 h, one core, peak
+  0.33 GB.
+- **Free side, resolution at fixed physical geometry:** κ_lat for (4,8)@P8 box 8 = 0.017743, against 0.017660 for
+  (2,4)@P4 box 4 (its 2× coarser twin). That is +0.47%. **Verified** (computed).
+- **F prior read at source:** Klebanov–Pufu–Safdi, arXiv:1105.4598, eq. (71):
+  F_crit = N·F_s − ζ(3)/(8π²) + O(1/N), with F_s ≈ 0.0638 (eq. 41). So δF = −0.238 F_s.
+  - **Partially verified** (ar5iv HTML via a fetch agent, not checked against the PDF).
+- Draft: `notes/EXP-081c_draft.md`.
