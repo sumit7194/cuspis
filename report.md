@@ -8782,3 +8782,41 @@ q-convolved bubble. Conditions:
   - the Poisson/anchored-residue inner continuation (my derivation) reproduces T40's tail to 5·10⁻¹³;
   - both outer routes agree to 2·10⁻⁹ on Q′(1).
   - **The engine is accepted for Stage P1.**
+
+## EXP-080  Stage P1 pre-checks (3D slice layer) and the free-side calibration — pre-registration level, no σ number [model: Opus 5.5]
+(`scripts/sigma3d.py`, `exp080_precheck*.py`, `exp080_memprobe.py`, `exp080_timing.py`, `exp080_free_scan*.py` and their outputs.)
+
+**Pre-checks (all pass).**
+- (a1) The 3D log det(2G∘G) equals Σ_k log det B̂_k to 2.8·10⁻¹⁴.
+- (a2) Honest slice-sector sums equal a **directly glued 3D replica manifold**: exact at n = 2, 1.1·10⁻¹³ at n = 3.
+- (a3) Engine continuation vs honest at integer n: 5·10⁻¹¹ and 2·10⁻¹².
+- (a4) The same at production sizes: W = 4 (20×16, N_y = 16) to 1.0·10⁻¹⁰; W = 6 (30×24, N_y = 8) to 1.1·10⁻¹⁰. Poles beyond
+  s ≈ 4 are dropped by the solver; this check shows them to be negligible at the 1e-10 level.
+- (b) Interior vs exterior cut gauge: Q(2) identical; route-(i) Q′(1) equal to 7.6·10⁻⁸.
+
+**Fixes made along the way (recorded).**
+- **Pole finder.** Vandermonde interpolation of z^W det(I + MC(z)) was ill-conditioned for degree-deficient cuts and wide
+  coefficient ranges. It was replaced by the quadratic eigenvalue problem z²(MC₁) + z(I + MC₀) + MC₋₁ = 0, linearised,
+  with reciprocal-pair filtering and cluster merging.
+- **Memory.** Two overshoots, both killed by my watchdog and logged by the Bridge in fleet/INCIDENTS.md:
+  - 4.4 GB from FFT copies;
+  - 4.6 GB from full-matrix residues (up to 12 per slice, 8 MB each).
+  - Fixes: preallocated (N_y, N, N) arrays, row-blocked FFT convolution, residues stored as 2W×2W Res K.
+  - Measured afterwards: 0.89 GB at W = 6, N_y = 16 (11 s per β). The cost of a full route-(i) evaluation for one
+    configuration at W = 4, N_y = 16, 48 β-points is 183 s.
+
+**Free-side calibration (known answer κ_free = 0.0396481 per real scalar).**
+- The free twisted log det per slice reduces to the 2W×2W determinant det(I + MC(z)) (Woodbury), so it is cheap. Here
+  κ_lat = −(W/L)·[S(strip) − S(edge₁) − S(edge₂)] on the Dirichlet-box lattice, with the same outer continuation as the
+  σ side.
+
+| setting | finding |
+|---|---|
+| finite periodic L = N_y | κ_lat depends strongly on both the box ratio r = pad/W and N_y/W, and **overshoots** when the box exceeds L (1.48× at r = 8, N_y/W = 4): a dimensional crossover. Finite L must be removed first. |
+| L = ∞ (continuous k, ∫dk/2π) | κ_lat/κ_free = 0.32, 0.55, 0.73, 0.85, 0.92 at r = 2, 4, 8, 16, 32 (W = 4). W = 2, 8 agree within ~3%, so lattice-spacing effects are small. |
+| box extrapolation | the deficit falls like ≈ 1/r. Richardson in {1/r, 1/r²}: from r = (4, 8, 16) → 0.989; from (2, 4, 8) → 0.961. |
+
+- **Consequence for the σ side.** The dominant systematic is the **box**. The σ side needs dense N₂D² bubbles per slice.
+  - Reaching r ≈ 8 at L = ∞ means N₂D ≈ 1100 at W = 2, with a fine k-grid (N_y ≳ 4 × box).
+  - That is ≈ 7 GB in the FFT layout: **not feasible on this box as built.**
+  - This is a design decision. It goes to the Bridge before any P1 registration.

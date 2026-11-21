@@ -1,0 +1,10 @@
+slice poles s(p): [[0.541013, 0.802067], [1.005866, 1.131594], [1.242568, 1.3296], [1.005866, 1.131594]]
+(a1) logdet 3D -229.5567879307  sum_k slices -229.5567879307  diff 2.8e-14
+(a2) n=2: honest slices -3.2889439660  direct 3D replica -3.2889439660  diff 0.0e+00
+(a2) n=3: honest slices -5.0752278054  direct 3D replica -5.0752278054  diff 1.1e-13
+(a3) n=2: max rel |engine - honest| over q, k = 5.1e-11
+(a3) n=3: max rel |engine - honest| over q, k = 1.7e-12
+(b) Q(2) interior -3.2889439660 exterior -3.2889439660 diff 0.0e+00;  Q'(1) interior -6.3588760905 exterior -6.3588760143 diff 7.6e-08  [2s]
+(a4) W=4 20x16 Ny=16: poles per slice [4, 4, 4, 4, 4, 4]...; n=2 max rel |engine - honest| = 1.0e-10
+(a4) W=6 30x24 Ny=8: poles per slice [6, 4, 4, 2, 3, 4]...; n=2 max rel |engine - honest| = 1.1e-10
+(c) W=4 slice 20x16 Ny=16: build 0.1s, one beta 3.4s, maxrss 1.10 GB
