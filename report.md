@@ -8085,3 +8085,65 @@ log-scale ambiguity.
     λ² of the free-scalar Fredholm determinant (whose linear term gave 85–90% of C₊).
 - My recommendation: (v) as a Neon brief (it costs no compute), with (iv)'s write-up in parallel; (ii′) only if (v)
   fails.
+
+## EXP-073  Check of Neon T31 (gauge-invariant σ-bubble representation): first pass, from the summary only — verification of external work [model: Opus 5.5]
+**Source.** `neon_work/dkappa/T31_summary.md` (UNVERIFIED), answering my brief `BRIEF_T31_gauge_invariant.md`. The
+script is not downloaded and has not been read, so nothing of Neon's has been run here.
+
+**What T31 claims.**
+- (1) A canonical exterior-ray-cut gauge, reached by spanning-tree parallel transport. This makes B_can entry-wise
+  invariant.
+- (2) Δ₂F₁ = ½ log det(I − K_σ), with K_σ = I − B(1)⁻¹B_can B(2)⁻¹B₁, where B(j) is the single-edge bubble with an
+  exterior cut.
+- (3) Δ₂T is gauge-invariant entry by entry.
+- (4) The controls: the toy gives 0; a planted non-covariant term is caught; ρ < 1 only for kw ≳ π|s|.
+
+**My first-pass assessment (argued unless stated).**
+- *What is new and what is not.*
+  - Gauge invariance of the **exact** log det was never in question: for matrices, det(V⁻¹BV) = det B. The
+    obstruction (77f10d0) concerned **truncations**.
+  - T31's real content is therefore:
+    - (a) a definite canonical gauge, so a truncation is at least well-defined;
+    - (b) the connected combination written as one determinant;
+    - (c) a measured ρ.
+  - (2) is the product rule for finite matrices, det B_can det B₁/(det B(1) det B(2)). It is correct algebra there.
+  - (3) matches my own observation in 77f10d0 (the product G^{(α)}G^{(−α)} is untwisted).
+- *Continuum well-posedness is not addressed.*
+  - Expand with δⱼ = B(j) − B₁ and B_can ≈ B(1) + B(2) − B₁ + B_conn.
+  - K_σ then contains −B(2)⁻¹δ₂B(1)⁻¹δ₂ + B(1)⁻¹δ₂B(2)⁻¹δ₂. Each term carries two O(1) straddle operators on the same
+    exterior ray, and they cancel only to the extent that B(1)⁻¹ ≈ B(2)⁻¹ near ray 2, which is false at O(1).
+  - So I − K_σ being "1 + trace class" in the continuum is not evident. T31's own warning that M12 and M_conn each carry
+    O(e^{2πs}) pieces, ~1166 against ‖K_σ‖ ~ 1.35, fits this.
+  - On a finite lattice every determinant is finite, so lattice numbers cannot show convergence.
+- *The quantitative claims come from strips of w = 4–8 lattice sites.*
+  - "Edge-localised: 99.75% within 3 sites of the edges" is not meaningful at w = 4–8.
+  - The ρ and truncation-error table (K4) is lattice-dominated.
+- *K1 fails numerically, as T31 itself reports.* I fitted T31's three lattice points to f∞ + c·w^{−p} (inline,
+  2026-11-21):
+  - β = 0.3:
+    - with p forced to 2β = 0.6 (T31's own explanation), f∞ = −0.00205 against the continuum −0.002633, 22% off;
+    - a free fit gives p = 0.18, f∞ = −0.0040, 53% off the other way.
+  - β = ½ + ½i: the differences are not consistent with any monotone power law. A forced p = 1 gives f∞ = −0.0193
+    against −0.01662 (16% off), with a residual of 6·10⁻⁴.
+  - **So T31's "slow w^{−2β} tip convergence" explanation is not supported by its own data.** With only three points
+    this is not a refutation either.
+  - T31's anchor (0.039614, 0.09%) is the continuum CFH route, i.e. the same structure EXP-071 already checks to
+    6·10⁻⁶. It does not test the new factorisation.
+- *Even at face value,* the small parameter covers only kw ≳ π|s|. The L/w integral runs over all kw down to 0, so the
+  full determinant is needed in the low-kw corner anyway. This is a **partial result** under the brief's own criteria
+  (a small parameter only in a regime).
+
+**Grade.**
+- (2) as finite-matrix algebra: argued (it is the product rule).
+- (2) as a continuum Fredholm determinant: **unverified, with a specific doubt** (the non-trace-class straddle terms).
+- (3): argued, and agrees with my own note.
+- K1: **fails as reported.**
+- K4: lattice-only, not evidence about the continuum.
+
+**What would settle it.**
+1. Read the script in full, to check whether B is the true 3D bubble per transverse slice (a q-convolution) or a 2D
+   stand-in.
+2. Test the K1 analytic claim, "K_free = (G₁T₁)(G₁T₂) is isospectral to λ²RRᵀ", in the continuum against our CFH
+   Fredholm code. This is cheap and is the decisive test of the edge factorisation.
+3. Run a refinement test (lattice spacing → 0 at fixed w) of log det(I − K_σ) for the free analogue. It must converge
+   if I − K_σ is a genuine Fredholm determinant.
