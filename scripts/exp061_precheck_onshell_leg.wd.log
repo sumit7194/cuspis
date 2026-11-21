@@ -1,0 +1,16 @@
+# cmd: ../.venv/bin/python -u -W ignore exp061_precheck_onshell_leg.py
+# caps: tree <= 2.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.012    0.000   0.012        11.04        680.9           66              1
+     5.8     1   0.014    0.000   0.014        11.04        680.9           67              1
+    11.1     1   0.014    0.000   0.014        11.04        680.9           68              1
+    16.5     1   0.014    0.000   0.014        11.04        680.9           68              1
+    21.9     1   0.014    0.000   0.014        11.04        680.9           68              1
+    27.3     1   0.014    0.000   0.014        11.04        680.9           68              1
+    32.7     1   0.014    0.000   0.014        11.04        680.9           68              1
+    38.1     1   0.014    0.000   0.014        11.04        680.9           68              1
+    43.4     1   0.014    0.000   0.014        11.04        680.9           68              1
+    48.8     1   0.014    0.000   0.014        11.04        680.9           68              1
+# exit 0; wall 54 s; PEAK tree MEM 0.014 GB + CMPRS 0.000 GB = 0.014 GB

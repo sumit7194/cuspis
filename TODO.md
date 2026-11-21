@@ -542,3 +542,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       - Next: (i) verify the Legendre on-shell zero; (ii) compute the twisted on-shell value via the finite part of
         Δ's transform.
       - Then re-pose the h₁ framework as f₀ + (n−1)h₁ if f₀ ≠ 0.
+- [x] 2026-11-21 (EXP-061 pre-checks 3–4): T7 claim 3 fails in both continuations.
+      - In a covariant scheme (argued), Σ̃_tw,1(iα, α) = −2α(1−α)/π² (non-local part verified by evaluation).
+      - So f₀ = f(1, α) ≠ 0, and the tip term = d/dn S_{f₀} + S_{h₁}.
+      - The crux stays C₊'s growth along ½ + iy, now for both f₀ and h₁.
+- [ ] Second implementation of the twisted on-shell total: per-q finite parts plus a zeta-regularised q-sum with
+      analytic large-q coefficients. Needed before "partially verified" can become "verified".
+- [ ] Re-derive the h₁ framework with f₀ ≠ 0, i.e. Σ̃′ on top of a non-zero n = 1 value. Stage B's target is still
+      ∂ₙΣ̃ₙ(iα, α) in the twisted family.

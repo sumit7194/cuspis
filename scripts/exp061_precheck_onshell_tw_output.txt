@@ -1,0 +1,7 @@
+twisted sum a=0.35 rho=0.7: numpy -1.275366917012e-01  mpmath -1.275366917012e-01  rel -2.2e-16
+twisted sum a=0.5 rho=0.1: numpy -4.132055193971e+02  mpmath -4.132055193971e+02  rel -5.6e-16
+a=0.2: c_a=0.011042122; f.p. of Delta part at rho0=0.04: -0.043264770, 0.02: -0.043249387, 0.01: -0.043240330  | Sigma~_Leg on-shell +0.020601974  => Sigma~_tw on-shell -0.022638356  [5s]
+a=0.35: c_a=0.014914051; f.p. of Delta part at rho0=0.04: -0.061470877, 0.02: -0.061472380, 0.01: -0.061470992  | Sigma~_Leg on-shell +0.027947760  => Sigma~_tw on-shell -0.033523232  [5s]
+a=0.5: c_a=0.016125767; f.p. of Delta part at rho0=0.04: -0.067533914, 0.02: -0.067544074, 0.01: -0.067546611  | Sigma~_Leg on-shell +0.033773728  => Sigma~_tw on-shell -0.033772883  [4s]
+a=0.65: c_a=0.014914051; f.p. of Delta part at rho0=0.04: -0.061469117, 0.02: -0.061471931, 0.01: -0.061470878  | Sigma~_Leg on-shell +0.038079878  => Sigma~_tw on-shell -0.023391000  [5s]
+a=0.8: c_a=0.011042122; f.p. of Delta part at rho0=0.04: -0.043262344, 0.02: -0.043248769, 0.01: -0.043240174  | Sigma~_Leg on-shell +0.040866211  => Sigma~_tw on-shell -0.002373963  [5s]

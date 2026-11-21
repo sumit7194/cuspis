@@ -6901,3 +6901,50 @@ a heuristic.
 - *Grades:* the difference and its coefficient: **verified by evaluation**. The reading for T7: **argued**. The on-shell
   value of the twisted Σ̃₁: **open** (next pre-check: confirm the Legendre on-shell zero, then the finite part of Δ's
   on-shell transform).
+
+**Pre-checks 3–4: the on-shell n = 1 self-energy in both continuations. T7 claim 3 fails in both.** [model: Opus 5.5]
+(`scripts/exp061_precheck_onshell_leg{,2}.py`, `exp061_precheck_onshell_tw{,2}.py`, with their outputs. Two crashed
+runs are kept: the first passed a complex-typed degree with zero imaginary part to mpmath legenp; the second hit Q's
+pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
+- *Legendre continuation.* Σ̃_Leg(k, ω) = −(4/(3π²))·f.p.∫₁^∞ P_{−½+ik}Q″_{ω−½} dc.
+  - Near c = 1, P·Q″ = ½(c−1)⁻² + B(c−1)⁻¹ + (integrable), with B = −(k² + ω²)/4 (derived). So the log coefficient
+    vanishes exactly on-shell.
+  - f.p. = lim[I(1+ε) − 1/(2ε) + B ln ε]. The ε-sweep 10⁻⁴…10⁻⁸ converges like ε.
+  - **On-shell result:** f.p. = (ν² − ν − 1)/4 with ν = ω − ½, i.e. **Σ̃_Leg(iω, ω) = (1 + 8ω − 4ω²)/(12π²).**
+    - The form was read off ω = 0.1, 0.2, 0.35.
+    - It was then **verified at unseen points** (predictions stated in the script before the run): ω = 0.5, 0.65, 0.8
+      to ≤ 9·10⁻⁹, and ω = 1, 1.5, 2, 3 to ≤ 1.1·10⁻⁶ (the ε-drift level).
+  - Off-shell (k = 1) the values converge equally well, which checks B.
+- *Twisted (physical) continuation.* Σ̃_tw = Σ̃_Leg + f.p.∫2π sinh ρ P_{a−½}Δ_a dρ, where Δ = twisted − Legendre
+  ~ c_a/ρ³ + O(1/ρ). Here c_a = S(a)/(2π³) is analytic (pre-check 2). No log, so the Δ-part has no scheme constant.
+  - The numpy twisted sum (EXP-056 spectral g) matches the mpmath sum to ≤ 6·10⁻¹⁶.
+  - **f.p.[Δ-part] = −32a(1 − a)/(12π²) = −8a(1 − a)/(3π²).**
+    - The form was read off a = 0.2, 0.35, 0.5.
+    - It was **verified at unseen a = 0.1, 0.27, 0.9.** The residuals are 2.1·10⁻⁵, 1.1·10⁻⁵, 5.5·10⁻⁶ at
+      ρ₀ = 0.02, 0.01, 0.005: O(ρ₀), extrapolating to ≲ 10⁻⁷.
+  - So, in this finite-part scheme, **Σ̃_tw(ia, a) = [1 + 4a² − 24a(1 − a)]/(12π²).**
+- *Which parts are scheme-independent (argued).*
+  - Σ is even in τ, so local counterterms in the H² frame give on-shell c₀ + c₂ω², even when the regulator treats ρ
+    and τ differently.
+  - The a(1 − a) pieces contain a term linear in |a|, so (argued) they are non-local and scheme-independent:
+    - Legendre: +2a(1 − a)/(3π²);
+    - twisted: −2a(1 − a)/π².
+  - At the physical integer frequencies a = 0, 1 both vanish. In flat space the O(1/N) self-energy annihilates the
+    ω = 0, 1 harmonic modes (the integrals converge for ω < 2). So in a covariant scheme the local part c₀ + c₂ω²
+    vanishes, and **Σ̃_tw,1(iα, α) = −2α(1 − α)/π²** (argued).
+- **Consequences.**
+  - **T7 claim 3, "Σ̃_{φ,1}(iα, α) ≡ 0", is false in both continuations.** The non-zero values are verified by
+    evaluation; the claim that local terms cannot cancel them is argued. My guess at the slip (unverified, Neon's
+    derivation not seen): a ψ pole at k = iα cancels the (k² + α²) zero.
+  - So f₀(α) = f(1, α) ≠ 0. In the twisted family, f₀ ∝ −C₊(α)(1 − α)(1 − e^{−2αL})/π², which is regular at α → 0
+    since C₊ ~ −α/8. That puts dS_tip/dn|₁ = (d/dn)S_{f₀}|₁ + S_{h₁}(1) in the CH07b free-field form plus h₁.
+  - An O(1) channel without growth gives no log (EXP-057 Q3). So the log question still reduces to the growth along
+    ½ + iy of C₊, which multiplies both f₀ and h₁ (EXP-060: open). δκ's finite value gains the f₀ term.
+- **Grades.**
+  - Legendre on-shell closed form (this scheme): **verified by evaluation**.
+  - Δ-part closed form: **verified by evaluation** at 3 unseen points.
+  - The twisted on-shell value: **partially verified**. It comes by one route (Legendre + Δ), each part verified, with
+    no second independent implementation of the total.
+  - Locality classification and the covariant-scheme value: **argued**.
+  - "f(1, α) ≠ 0 in the standard family": **partially verified**. It needs C₊(α) ≠ 0 (EXP-057 (b), argued) and
+    the twisted family being the right one (argued).

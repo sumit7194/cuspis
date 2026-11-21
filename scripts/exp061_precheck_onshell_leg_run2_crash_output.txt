@@ -1,0 +1,54 @@
+w=0.1 on-shell k=i w: f.p. at eps=1e-4,1e-6,1e-8: -0.110030608056, -0.110000460831, -0.110000006155   -> Sigma~_Leg = 0.0148604411
+w=0.1 off-shell k=1: f.p. at eps=1e-4,1e-6,1e-8: -0.288003517803, -0.287965465985, -0.287964932254   -> Sigma~_Leg = 0.03890259704
+w=0.2 on-shell k=i w: f.p. at eps=1e-4,1e-6,1e-8: -0.152522854752, -0.152500362139, -0.152500004956   -> Sigma~_Leg = 0.02060197468
+w=0.2 off-shell k=1: f.p. at eps=1e-4,1e-6,1e-8: -0.309151968515, -0.309121046756, -0.309120605276   -> Sigma~_Leg = 0.04176062082
+w=0.35 on-shell k=i w: f.p. at eps=1e-4,1e-6,1e-8: -0.206881927695, -0.206875147354, -0.206875002253   -> Sigma~_Leg = 0.02794776013
+w=0.35 off-shell k=1: f.p. at eps=1e-4,1e-6,1e-8: -0.334415470104, -0.334398732054, -0.334398487372   -> Sigma~_Leg = 0.04517553407
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp061_precheck_onshell_leg.py", line 23, in <module>
+    vals = [fp(k, w, mpf(e)) for e in ('1e-4', '1e-6', '1e-8')]
+            ~~^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp061_precheck_onshell_leg.py", line 19, in fp
+    return re(Iint(mu, nu, eps) - 1 / (2 * eps) + B * log(eps))
+              ~~~~^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp061_precheck_onshell_leg.py", line 16, in Iint
+    return quad(f, [log(eps), -8, -3, 0, 3, 8, 20, 40])
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 746, in quad
+    v, err = rule.summation(f, points[0], prec, epsilon, m, verbose)
+             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 233, in summation
+    result = self.sum_next(f, nodes, degree, prec, results, verbose)
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 308, in sum_next
+    S += self.ctx.fdot((w,f(x)) for (x,w) in nodes)
+         ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/ctx_mp_python.py", line 938, in fdot
+    for a, b in A:
+                ^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/calculus/quadrature.py", line 308, in <genexpr>
+    S += self.ctx.fdot((w,f(x)) for (x,w) in nodes)
+                          ~^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp061_precheck_onshell_leg.py", line 15, in <lambda>
+    f = lambda s: exp(s) * re(legenp(mu, 0, 1 + exp(s), type=3)) * Qpp(nu, 1 + exp(s))
+                                                                   ~~~^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp061_precheck_onshell_leg.py", line 10, in Qpp
+    c = mpf(c); Q0 = re(legenq(nu, 0, c, type=3)); Qm = re(legenq(nu - 1, 0, c, type=3))
+                                                           ~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/orthogonal.py", line 424, in legenq
+    return ctx.hypercomb(h, [n, m], **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/hypergeometric.py", line 125, in hypercomb
+    v = ctx.fprod([ctx.hyper(a_s, b_s, z, **kwargs)] + \
+                   ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/hypergeometric.py", line 226, in hyper
+    if   q == 1: return ctx._hyp2f1(a_s, b_s, z, **kwargs)
+                        ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/hypergeometric.py", line 465, in _hyp2f1
+    v = ctx.hypercomb(h, [a,b], **kwargs)
+  File "/Users/sumit/Github/corner_function/.venv/lib/python3.14/site-packages/mpmath/functions/hypergeometric.py", line 76, in hypercomb
+    raise ValueError(_hypercomb_msg % (orig, ctx.prec))
+ValueError: 
+hypercomb() failed to converge to the requested 4211 bits of accuracy
+using a working precision of 4221 bits. The function value may be zero or
+infinite; try passing zeroprec=N or infprec=M to bound finite values between
+2^(-N) and 2^M. Otherwise try a higher maxprec or maxterms.
+
