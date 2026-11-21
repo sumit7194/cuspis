@@ -14,12 +14,12 @@ def ldet(M):
     s, l = np.linalg.slogdet(M); return l + 1j * np.angle(s)
 
 class QCont:
-    def __init__(self, S, npt=40):
-        self.S, self.npt = S, npt; B1 = S.B1(); self.ld1 = np.array([ldet(B1[k]) for k in range(S.Ny)])
+    def __init__(self, S, npt=40, npt0=64):
+        self.S, self.npt, self.npt0 = S, npt, npt0; B1 = S.B1(); self.ld1 = np.array([ldet(B1[k]) for k in range(S.Ny)])
     def gk(self, n, b):
         B = self.S.inner(n, b, self.npt); return np.array([ldet(B[k]) for k in range(self.S.Ny)]) - self.ld1
     def q0(self, n):
-        B = self.S.inner_beta0(n); return np.array([ldet(B[k]) for k in range(self.S.Ny)]) - self.ld1
+        B = self.S.inner_beta0(n, npt=self.npt0); return np.array([ldet(B[k]) for k in range(self.S.Ny)]) - self.ld1
     @staticmethod
     def unwrap_path(vals):
         """vals: (npoints, Ny) complex log dets along a path; unwrap imaginary parts per k along the path."""
