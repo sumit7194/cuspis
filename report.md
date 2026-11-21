@@ -9231,3 +9231,27 @@ Every amendment was registered before the quantity it affects was seen, except t
   tail ingredients (2·10⁻⁷ > 10⁻⁸) would have failed had it been applied.
 - **Grade:** the referee result is **verified for this one geometry** (W = 4, P = 4). It is not a statement about P ≥ 6.
   The VOID rule is not triggered.
+
+**EXP-081b pole census over every production geometry (unregistered diagnostic, the Bridge): no missed pole below s_cut.**
+- **Question.** Does production's quadratic-eigenproblem pole finder miss or invent any pole with s ≤ s_cut = 3, in any of
+  the 15 σ geometries the driver uses (the main grid and the nuisance geometries)?
+- **Two methods, neither seeded by production's pole list.** Both use production's float64 M, so they check the pole
+  finder, not G₀; the referee checked G₀ at 40 digits for W = 4, P = 4.
+  1. **Grid census** (`scripts/exp081b_census.py`): float64 sign-change scan of F(s) = det((I + M C(z))D), D = diag(1, z, …),
+     whose entries are all O(1), on a 1/2000 grid.
+     - *Pass 1* (kept: `_pass1`) "missed" close production pairs in W8P8 (spacing 5·10⁻⁵–2.5·10⁻⁴, inside one grid
+       cell). It flagged them only as near-touch minima. That was the census's limitation, not production's.
+     - *Pass 2* rescans each near-touch locally at step 10⁻⁷: **all 15 geometries MATCH**.
+     - **Residual blind spot:** a close pair whose dip lands between grid minima.
+  2. **Grid-free census** (`scripts/exp081b_census_poly.py`): every column of (I + MC)D is linear in z, so F is a
+     polynomial of degree ≤ 2W. Coefficients come from an exact DFT of unit-circle samples; all roots from mp.polyroots;
+     real roots with s ∈ (0, 3] are kept.
+     - *Pass 1* at 50 digits (kept: `_pass1`) lost W8P8's real root at s = 2.676: the coefficients span 10⁻⁵¹–1, so
+       |Im z| = 4·10⁻¹⁹ failed an absolute 10⁻²⁵ realness cut.
+     - *Pass 2* at 120 digits, with a relative realness cut: **all 15 geometries MATCH**. Max |Δs| is ≤ 2·10⁻¹⁴ for
+       W = 2, 1·10⁻¹⁰–8·10⁻¹⁰ for W = 4, 3·10⁻⁹ for W = 8.
+- **Control (both methods):** W4P4 with the cut raised to 4.0 → **FIRES**. Both report production's misses at
+  s = 3.9081 and 3.9476 on slices 7 and 8, above the production cut.
+- **Grade:** verified, for pole counts and positions below s_cut, for all 15 production geometries. No R is flagged.
+- **Recorded as a finding:** production's pole finder loses roots near z ≲ 10⁻¹⁰ (s ≳ 3.6). Any future run with
+  s_cut > 3.5 must re-run this census.
