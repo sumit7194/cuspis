@@ -8990,3 +8990,12 @@ otherwise INCONCLUSIVE.**
   - **not directly comparable to my P1** (different box shapes, Lt ≠ 2·pad), and not continuum evidence;
   - F4 fires.
 - **Grade:** structural leads (A, B) are unverified; numerics (C, D) are finite-box only.
+
+**EXP-081a night-run prep note (2026-11-21):** Sumit's answer, relayed by the Bridge: **keep a 2 GB disk floor.** The
+night run uses **launch variant (b)**, run from `scripts/`:
+`OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 nohup nice -n 12 ../.venv/bin/python tools/watchdog.py --log exp081_r8.wd.log --cap-gb 1000 --min-swap-mb 0 --min-sysfree-pct 0 --min-disk-gb 2 --stdout exp081_r8_night.log -- ../.venv/bin/python -u -W ignore exp081_r8_night.py > /dev/null 2>&1 &`
+- The memory cap and the swap and sysfree stops are neutralised; the disk floor is 2 GB only; no pressure stop.
+- It is one process.
+- It starts only after the daytime EXP-081a production finishes (the cache file is shared), on the night Sumit picks.
+- Outcome markers: `exp081_r8_STATUS.txt` (FINISHED / CRASHED / RUNNING-without-a-process = killed) and
+  `exp081_r8_result.txt`.
