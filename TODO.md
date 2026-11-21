@@ -523,3 +523,9 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] **Checkpoint 2026-11-21 ~04:00: the Σ̃ build is paused before stage B.** Resume from report.md "Stage-B instrument
       pre-check, and a checkpoint". Every new pre-registration carries a control table with a pre-check file per
       must-fail (the mechanism for tonight's four registration slips).
+- [x] 2026-11-21 morning: resumed on the Bridge's relay of Sumit's word (Opus, stage B then C, no Fable). Inserted
+      EXP-060 (the resummation gap: the round-trip spectrum on a = ½ + iy) before stage B. It is cheap, and it tests
+      T17's ASSUMED part.
+- [ ] Open after EXP-060 (whatever its outcome): C₊ at complex α as an actual resolvent matrix element. It needs the
+      near-tip coupling vector in the CFH05 rapidity representation, which I have not derived. The control is Neon's
+      Born closed form (T17, unverified) and the α → 0 limit −α/8 (EXP-057, argued).

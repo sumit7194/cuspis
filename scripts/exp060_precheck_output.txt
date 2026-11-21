@@ -1,0 +1,26 @@
+t=0.03 Re a=0.5: m=175 min|det|=3.656e-54 max|Im/det|=9.7e-01 sign changes of Re det along y: 1
+   Re det: +5.105e-01 +1.544e-01 +1.737e-03 +3.055e-07 +5.459e-13 +7.393e-21 +6.052e-31 +3.817e-43 -3.642e-54
+t=0.03 Re a=0.0: m=175 min|det|=1.497e-51 max|Im/det|=9.9e-01 sign changes of Re det along y: 10
+   Re det: +1.000e+00 -6.716e-01 +1.418e-02 -5.082e-07 -6.262e-12 -1.750e-20 +6.673e-30 +2.418e-42 +1.497e-51
+t=0.3 Re a=0.5: m=129 min|det|=2.080e-26 max|Im/det|=3.1e-01 sign changes of Re det along y: 0
+   Re det: +8.817e-01 +6.575e-01 +1.630e-01 +6.592e-03 +2.767e-05 +8.886e-09 +1.734e-13 +1.706e-19 +1.979e-26
+t=0.3 Re a=0.0: m=129 min|det|=1.797e-25 max|Im/det|=9.9e-01 sign changes of Re det along y: 6
+   Re det: +1.000e+00 +9.928e-01 -2.150e-01 -9.721e-03 +9.308e-05 -3.614e-08 +7.428e-13 -7.771e-19 +8.500e-26
+t=1.0 Re a=0.5: m=105 min|det|=2.143e-12 max|Im/det|=8.0e-03 sign changes of Re det along y: 0
+   Re det: +9.861e-01 +9.452e-01 +7.072e-01 +2.787e-01 +3.861e-02 +1.376e-03 +9.967e-06 +1.216e-08 +2.143e-12
+t=1.0 Re a=0.0: m=105 min|det|=5.938e-12 max|Im/det|=9.8e-01 sign changes of Re det along y: 3
+   Re det: +1.000e+00 +1.044e+00 +8.753e-01 +1.113e-01 -6.430e-02 -1.855e-03 +2.111e-05 +7.119e-09 -5.810e-12
+t=3.0 Re a=0.5: m=83 min|det|=3.937e-03 max|Im/det|=3.1e-08 sign changes of Re det along y: 0
+   Re det: +9.999e-01 +9.995e-01 +9.943e-01 +9.597e-01 +8.252e-01 +5.364e-01 +2.154e-01 +4.419e-02 +3.937e-03
+t=3.0 Re a=0.0: m=83 min|det|=6.411e-03 max|Im/det|=1.0e+00 sign changes of Re det along y: 1
+   Re det: +1.000e+00 +1.001e+00 +1.004e+00 +1.008e+00 +9.223e-01 +5.629e-01 +1.125e-01 -2.498e-02 -6.162e-03
+h-halving t=0.3 a=(0.5+2j): 2.7671517227e-05+4.0063332339e-15j vs 2.7671517226e-05+1.1873692275e-15j rel 1.1e-10
+h-halving t=0.3 a=2j: 9.3081794987e-05-3.8201812090e-05j vs 9.3081795008e-05-3.8201812090e-05j rel 2.0e-10
+--- pre-check 2 ---
+t=0.3 y=1.0: 1-kmax 2.154354e-01 (h/2,P+2: 2.154354e-01)  max|Im k| 5.9e-16  min Re k -3.6e-16  #k>0.99: 0
+t=0.3 y=2.0: 1-kmax 2.658136e-03 (h/2,P+2: 2.658136e-03)  max|Im k| 4.7e-12  min Re k -2.7e-13  #k>0.99: 1
+t=0.3 y=3.0: 1-kmax 1.546268e-05 (h/2,P+2: 1.546229e-05)  max|Im k| 1.2e-07  min Re k -5.2e-09  #k>0.99: 3
+t=1.0 y=1.0: 1-kmax 7.165033e-01 (h/2,P+2: 7.165033e-01)  max|Im k| 7.3e-17  min Re k -7.3e-17  #k>0.99: 0
+t=1.0 y=2.0: 1-kmax 6.999424e-02 (h/2,P+2: 6.999424e-02)  max|Im k| 5.2e-13  min Re k -5.0e-14  #k>0.99: 0
+t=1.0 y=3.0: 1-kmax 1.186387e-03 (h/2,P+2: 1.186387e-03)  max|Im k| 8.8e-09  min Re k -9.0e-10  #k>0.99: 1
+detector control (lam^2 x 1.0968 at t=1,y=2): kmax 1.02000  det -1.0210e-02+2.7933e-15j  [FIRES]

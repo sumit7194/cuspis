@@ -6737,3 +6737,67 @@ Any must-fail row without a pre-check file is not registered.
    - The checks: C-symmetry f(α) = f(1 − α), and independence of the small-ρ cutoff.
 5. Stage C: |A(½ + iy)| e^{−2π|y|} for y up to ~3, with a control-table row "the planted L·sin²(πα) factor must show a
    growth rate of 2π".
+
+## EXP-060  The resummation gap (Neon T17 "ASSUMED"): the round-trip operator λ²RRᵀ on the CH07b line a = ½ + iy — pre-registration [model: Opus 5.5]
+
+**Resumed on the Bridge's relay of Sumit's word (2026-11-21 morning): "RESUME WITH OPUS from your report.md spec
+(stage B, then stage C). No Fable."** EXP-060 is a cheap insertion before stage B. It tests the one assumption in
+Neon's T15/T17 growth argument (both unverified; outside this repo) that our own machinery can reach directly.
+- T17 claims that each multiple-reflection order of C₊ grows at rate π along α = ½ + iy, and **assumes** that the
+  resummation (1 − round trip)⁻¹ has no poles there.
+- In EXP-044's Fredholm form the round trip is λ²A, with A = RRᵀ, θ = 2a − 1 and λ² = sin²(πa)/π² (the scalar
+  convention, CFH05 (58)–(60)). On the line, θ = 2iy and λ² = cosh²(πy)/π² > 0.
+
+**What is derived here (a two-line argument; verified by the algebra below).**
+- At θ = 2iy the symmetrised kernel is Hermitian, R̃(q, p) = conj R̃(p, q). So Rᵀ = R̄, and det(1 − λ²RR̄) is real:
+  its conjugate is det(1 − λ²R̄R), which equals det(1 − λ²RR̄) by det(1 − XY) = det(1 − YX).
+- Realness does not exclude zeros.
+
+**Motivation (heuristic, not derived).** On this line the monodromy e^{2πia} = −e^{−2πy} is a real negative number.
+Mode by mode, a twisted Gaussian trace then has positive factors. That suggests no zeros. The pre-check does not
+support the naive form of this: the constants c_j in κ_j = s/(s + c_j) vary with y (pre-check numbers, unverified as a general claim). So the heuristic stays
+a heuristic.
+
+**Pre-check findings** (`scripts/exp060_precheck.py`, `exp060_precheck_output.txt`; run before this text).
+- At t ∈ {0.3, 1} and y ∈ {1, 2, 3}, the eigenvalues κ_j of λ²A are real to ≤ 1.2·10⁻⁷ (round-off, ∝ λ²) and lie in
+  [0, 1).
+- κ_max → 1 as y grows: 1 − κ_max = 0.215, 2.66·10⁻³, 1.55·10⁻⁵ at t = 0.3, y = 1, 2, 3.
+  - These are stable to ≤ 2.5·10⁻⁶ relative under (h, P) → (h/2, P + 2).
+  - λ²(1 − κ_max) = 2.9, 19, 60 at t = 0.3, y = 1, 2, 3. That is slower than any exponential on this range, so
+    1 − κ_max ≈ e^{−2πy}·(slowly varying). *Inference from three points, not a measurement.*
+- Consequences:
+  - The Born series converges at every y. (This corrects a corollary I sent the Bridge before the pre-check.)
+  - ‖(1 − λ²A)⁻¹‖ = 1/(1 − κ_max) grows like e^{~2πy}. A norm bound on the resummation would give C₊ a rate of up
+    to π + 2π.
+  - So "per order O(1)" plus "no poles" does not by itself bound C₊'s growth. The matrix element matters.
+
+**Predictions.** Grid: t ∈ {0.1, 0.3, 1, 3}, y ∈ {0, 0.25, …, 3.5}; production h = 0.1, P = arccosh(max(2, 90/t)).
+- **R1 (no resolvent poles on the line).** At every grid point, all four of these hold:
+  - every κ has |Im κ| ≤ 10⁻¹³·max(λ², 1) and Re κ ≥ −10⁻¹³·max(λ², 1) (the round-off scale measured in the
+    pre-check);
+  - κ_max < 1;
+  - det > 0;
+  - 1 − κ_max is stable to ≤ 10⁻³ relative under (h/2, P + 2), wherever 1 − κ_max ≥ 10⁻¹⁰.
+- **R2 (characterisation, no pass/fail).** Report 1 − κ_max, λ²(1 − κ_max), the local rate
+  γ = −Δln(1 − κ_max)/Δy, and the count of κ > 0.99.
+  - Expectation from the pre-check (not a test): γ rises toward 2π, and the count grows with y.
+- **R3 (control: the same resolvent inside a physical quantity).** |w_S(t, ½ + iy)| ≤ 1 + 2y² at every grid point.
+  - The bound is the massless value ½ + 2y² (EXP-044 tier 1; mass lowers |w|), plus ½.
+  - w_S = −t∂ₜ log det involves (1 − κ_j)⁻¹ only through ∂ₜκ_j/(1 − κ_j). If R3 holds while R2 shows e^{2πy}
+    resolvent growth, the growth does not reach every resolvent-built quantity.
+
+**Control table.**
+
+| clause | the input that makes it fire | pre-check run? (file) | what firing means |
+|---|---|---|---|
+| R1 detector | λ² × 1.02/κ_max at y = 2 (all four t) | yes: t = 1 gives κ = 1.020, det = −1.02·10⁻²; `exp060_precheck_output.txt` | the code reports an eigenvalue crossing 1 as a negative det. Without this, R1's "det > 0" would be decoration |
+| R1 discretisation | (h, P) → (h/2, P + 2) drift > 10⁻³ in 1 − κ_max | yes: ≤ 2.5·10⁻⁶ at y ≤ 3; same file | the top eigenvalue is not resolved; R1 is VOID at that point |
+| R3 must-fire | Σκ/(1 − κ), a resolvent trace without the ∂ₜ structure, at t = 0.3, y = 3, must exceed 1 + 2y² = 19 | yes: 1 − κ_max = 1.55·10⁻⁵ in the pre-check file, so the sum is ≥ 6.4·10⁴ | the R3 bound can tell resolvent-growing quantities from polynomial ones |
+
+**What R1–R3 can and cannot decide.**
+- R1 tests T17's "no poles" assumption on a grid: a finite range, so at best *partially verified*.
+- R2 shows whether a norm argument can close (e). Per the pre-check, it cannot.
+- None of R1–R3 computes C₊ at complex α. That remains open after this experiment, with the crux restated as: does
+  the near-tip coupling vector have an O(1) overlap with the top eigenvectors as κ_max → 1?
+
+`scripts/exp060_run.py`; numpy; seconds; < 0.2 GB.
