@@ -1,0 +1,9 @@
+[     0s] (i) W4P2 sigma=0 poles/slice [3, 4] s_min 0.582 s_cut inf: max|A_n cont - direct| n=1..6: 3.5e-12 2.0e-14 5.0e-16 3.3e-16 3.9e-16 3.3e-16
+[     0s] (i) W4P2 sigma=0 poles/slice [3, 4] s_min 0.582 s_cut 3.0: max|A_n cont - direct| n=1..6: 3.1e-10 2.0e-14 5.0e-16 3.3e-16 3.9e-16 3.3e-16
+[     0s] (i) W4P2 sigma=rand(1e-2) poles/slice [2, 3, 4] s_min 0.583 s_cut inf: max|A_n cont - direct| n=1..6: 5.4e-12 1.0e-15 3.9e-16 3.3e-16 3.9e-16 2.8e-16
+[     0s] (i) W4P2 sigma=rand(1e-2) poles/slice [2, 3, 4] s_min 0.583 s_cut 3.0: max|A_n cont - direct| n=1..6: 3.1e-10 1.0e-15 3.9e-16 3.3e-16 3.9e-16 2.8e-16
+[     0s] (ii) target self: |F(sigma=0; n=1)| = 0.0e+00
+[     0s] (ii) target direct: |F(sigma=0; n=1)| = 1.0e-12
+[     2s] (iii) n=2: continued gap |F| 7.4e-14 in 5 it (imag 3.2e-19); honest saddle it 3; max|sigma_cont - sigma_honest| = 1.1e-12 (|sigma| 4.47e-02); nfev 70
+[     2s] (iii) n=3: continued gap |F| 2.8e-14 in 5 it (imag 2.7e-19); honest saddle it 3; max|sigma_cont - sigma_honest| = 3.2e-13 (|sigma| 4.55e-02); nfev 76
+[     2s] (iii) n=4: continued gap |F| 7.7e-14 in 5 it (imag 2.5e-19); honest saddle it 3; max|sigma_cont - sigma_honest| = 9.9e-13 (|sigma| 4.55e-02); nfev 82

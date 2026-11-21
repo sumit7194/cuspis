@@ -1,0 +1,34 @@
+[     0s] (i) W4P2 sigma=0 poles/slice [3, 4] s_min 0.582 s_cut inf: max|A_n cont - direct| n=1..6: nan nan nan nan nan nan
+[     0s] (i) W4P2 sigma=0 poles/slice [3, 4] s_min 0.582 s_cut 3.0: max|A_n cont - direct| n=1..6: nan nan nan nan nan nan
+[     0s] (i) W4P2 sigma=rand(1e-2) poles/slice [2, 3, 4] s_min 0.583 s_cut inf: max|A_n cont - direct| n=1..6: nan nan nan nan nan nan
+[     0s] (i) W4P2 sigma=rand(1e-2) poles/slice [2, 3, 4] s_min 0.583 s_cut 3.0: max|A_n cont - direct| n=1..6: nan nan nan nan nan nan
+[     0s] (ii) target self: |F(sigma=0; n=1)| = nan
+[     0s] (ii) target direct: |F(sigma=0; n=1)| = nan
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb_tier1.py", line 21, in <module>
+    sc, info = gp.solve(float(n), J=J); J = info["J"]
+               ~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb.py", line 80, in solve
+    Fn, im = self.F(sig, n); J += np.outer(Fn - F - J @ ds, ds) / (ds @ ds); F = Fn; hist.append(float(np.abs(F).max()))
+             ~~~~~~^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb.py", line 66, in F
+    self.nfev += 1; v = ydiag(strip_sigma(self.g, sig), n, self.M, self.s_cut)
+                              ~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb.py", line 34, in strip_sigma
+    half = {p: SliceS(g.Lx, g.Lt, 2 - 2 * np.cos(2 * np.pi * p / g.Ny), g.cutx, g.tcut, idx, sig) for p in range(g.Ny // 2 + 1)}
+               ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb.py", line 27, in __init__
+    self.s, self.Rp, self.Rm = ([], [], []) if self.W == 0 else self._poles()
+                                                                ~~~~~~~~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/sigma3d.py", line 58, in _poles
+    ev = sla.eig(np.block([[Z, I], [-A0, -A1]]), np.block([[I, Z], [Z, A2]]), right=False)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/_lib/_util.py", line 1181, in wrapper
+    return f(*arrays, *other_args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp.py", line 213, in eig
+    a1 = _asarray_validated(a, check_finite=check_finite)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/_lib/_util.py", line 468, in _asarray_validated
+    a = toarray(a)
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/lib/_function_base_impl.py", line 673, in asarray_chkfinite
+    raise ValueError(
+        "array must not contain infs or NaNs")
+ValueError: array must not contain infs or NaNs

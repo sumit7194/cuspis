@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp083_armb_tier1.py", line 7, in <module>
+    W, P = int(sys.argv[1]), int(sys.argv[2]); g = Geom(W, P); T0 = time.time(); rng = np.random.default_rng(83)
+           ~~~^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '2 4'

@@ -10471,3 +10471,97 @@ everything from a scratch copy with `python -I`.)
 
 **Status of the +2.4:** unchanged. **UNVALIDATED against honest data.** T46g supports the ε-family continuation, which is
 not the production lattice.
+
+## EXP-083 R3′ arm (b): the n-general replica saddle on the production lattice; T_sad independent check (C1) and arm-(b) integers (C2). Registered before any comparison number [model: Opus 5.5]
+(Bridge go, 2026-11-22: "Strip3D arm (b), real n: YES". Build `scripts/exp083_armb.py`; Tier-1 `exp083_armb_tier1.py`; C1
+driver `exp083_armb_c1.py`, committed with this text. No C1/C2 number has been computed.)
+
+**Why.**
+- T_sad carries the +2.4's sign: saddle-off R = −48.5.
+- Production computes T_sad by linear response: σ̇ = 2B1₀⁻¹d, then dB^sad = −(4/N_y)Σ_q G0_q∘(G0_{k−q}DG0_{k−q}), then the
+  trace. That is the assembly class that failed in 081a. Nothing independent has checked it.
+
+**The build (real n only).**
+- Production's `Slice` with H0 → H0 + diag σ, built from production's own QEP poles and residues.
+- Continued single-factor sheet average:
+  A_n[G](x,x) = (1/M)Σ_j G(j/M)(x,x) + Σ_poles 2πi diag(Res G)[k_n − k_M], with k_n = ±1/expm1(2πns) and M = 64.
+  Its n-derivative at 1 is production's `_kdn`.
+- Gap: (1/N_y)Σ_p A_n[G_p^σ](x,x) = target. Solved by quasi-Newton.
+- Real n keeps σ real, so the real-pole QEP applies unchanged.
+
+**Tier-1 build controls (already run; these are not comparison numbers).**
+- **(i)** At integer n = 1…6, A_n equals the direct (1/n)Σ_j G(j/n) diagonal, at σ = 0 and at a seeded random σ (10⁻²).
+  - With s_cut = ∞: ≤ 3.5·10⁻¹³ (W2P2), 5.4·10⁻¹² (W4P2), 9.1·10⁻¹³ (W2P4), 6.6·10⁻¹² (W4P4).
+  - With s_cut = 3 at W = 4: n = 1 is off by 3.1·10⁻¹⁰ (P2) and 1.4·10⁻⁹ (P4), from the dropped s > 3 poles. n ≥ 2 is
+    unaffected (≤ 4·10⁻¹⁴).
+  - Hence C1 uses s_cut = 3 on both sides, and reports the s_cut = ∞ effect separately.
+- **(ii)** σ₁ = 0. The self target is exact by construction. The direct target has a residual 2·10⁻¹⁴ … 1·10⁻¹².
+- **(iii)** At n = 2, 3, 4, σ_n from the continued gap (direct target) equals the honest n-sheet saddle (`Geom.saddle`,
+  independent code) to **≤ 1.1·10⁻¹²** at W2P2, W4P2, W2P4, W4P4, with |σ| ≈ 0.045–0.071.
+- Run 1 at W = 4 is kept (`*_output_run1_nan.txt`). The k_M term used complex expm1, which overflows to inf + nan·i for
+  2π·64·s > 709. Fixed by evaluating it in real arithmetic, since a₀ is purely imaginary. A crash bug, not a result.
+
+**C1: production T_sad against FD of the continued saddle.**
+- *Geometries:*
+  - all 081b production geometries with a stored T_sad: W ∈ {2, 4} × P ∈ {4, 6, 8, 10, 12}, box 4, c 2;
+  - P6 c3 (W2, W4); W4P8 and W8P8 at box 8;
+  - plus the R3′ geometries W2P2 and W4P2.
+- *Production side:*
+  - `sigma3d.saddle_term` on a fresh production Strip3D (s_cut 3), checked against the stored 081b `tsad`.
+  - At P = 12 (memory), the stored value only.
+- *FD side:*
+  - σ(1 ± h) for h ∈ {4, 2, 1}·10⁻³ from the continued gap: s_cut 3, self target, |F| ≤ 10⁻¹⁴, Jacobian seed from direct
+    inverses.
+  - σ̇ by Richardson.
+  - T_lin = d/dt Σ_k log det B1_k(tσ̇) and T_dir = d/dh Σ_k log det B1_k(σ(1+h)). Both come from `exp083_honest.Geom`
+    (direct inverses, independent of Strip3D). Both Richardson-extrapolated.
+  - FD drift = the largest relative spread among (T_lin at two t-pairs, T_dir at two h-pairs, T_lin vs T_dir).
+- *Tolerance:* τ = max(10⁻⁶, 10 × FD drift)·|T_prod|.
+  - PASS if |T_lin − T_prod| ≤ τ.
+  - If the FD drift exceeds 10⁻⁷, the geometry is "precision-limited", not a pass.
+  - Also reported: the σ̇ vector, max|σ̇_FD − σ̇_prod| / max|σ̇_prod|.
+- *Plants (production side, each must FIRE, i.e. |T_FD − T_plant| > 10τ):*
+  - P1: T_sad sign-flipped. Since T_sad is linear in d, this is the same as flipping the gap source.
+  - P2: saddle off.
+  - P3: σ̇/2.
+  - P4: production `saddle_term` source-patched B1[0] → B1[1] (k-index), at P ≤ 10.
+  - The continuum −1/32 + 1/32 cone pieces have no separate handle in the lattice T_sad. P1 and P2 are the lattice form of
+    the Bridge's planted must-fire.
+  - P4 is the sharp one. If it does not fire, that is recorded as C1's resolution limit, not hidden.
+- *Independence, stated:*
+  - Shared with production: the QEP poles and residues, and the Poisson kernel family k_n. That family is integer-validated
+    by (i) and (iii).
+  - Independent: the linear-response algebra (factor 2, sign, k = 0 slice), the dB^sad Hadamard/convolution structure and
+    its 4/N_y, the trace, and B1 itself (direct inverses).
+  - **So C1 checks production's T_sad assembly, which is the 081a class. It does not check the continuation of the
+    sheet average.** That continuation is shared, and validated only at integers and for poles with s ≤ 3.
+- *Consequence:*
+  - PASS at every geometry and every plant fires: "production T_sad equals an independent FD of the continued replica saddle
+    to τ at all 081b geometries; the assembly class is excluded (partially verified: shared pole machinery)". **This does
+    not validate the +2.4.**
+  - FAIL at any geometry: **the +2.4 is suspended**, and T_sad is diagnosed before anything else.
+  - Any plant that does not fire: C1's resolution is stated as limited to that plant's size.
+
+**C2: arm-(b) integers through route (ii).**
+- *Method:* the route-(ii) port (same QCont as arm (a)) on `strip_sigma(g, σ_n)`, plus n(ld1(σ) − ld1(0)). Compared with
+  honest arm (b) in Arb.
+- *Coverage:*
+  - P = 2 (W2, W4): n = 1…24, against the existing `exp083_r2/W{2,4}P2b.json` (n ≤ 72).
+  - P = 4 (W2, W4): n = 1…6, against new Arb arm-(b) data.
+- *Pass:* |dev_b(n)| ≤ max(3·dev_a(n), 10⁻¹⁰), where dev_a(n) is the arm-(a) port deviation at the same geometry and n.
+- *Plants:* σ = 0 against honest arm (b) must FAIL. σ_n × (1 + 10⁻⁶) is a reported sensitivity probe.
+- *Also:* the FD of route-(ii) Q_cont^sad minus the arm-(a) route-(ii) FD gives a route-(ii) T_sad. It must agree with C1 to
+  10⁻⁴ relative (the route-(ii) n = 1 floor is 3.6·10⁻⁹/h).
+- *Consequence:* as arm (a). A pass is "arm (b) reproduces honest integers above δ (partially verified)". Any production
+  fail or non-firing plant leaves arm (b) unvalidated.
+
+**Resources (declared).**
+- C1 P ≤ 4: seconds, < 0.1 GB.
+- C1 P6–P10: production B1/saddle arrays N_y·N²·16 B each, about 4–5 of them. Formula: P10 ≈ 0.75 GB, P8 ≤ 0.4 GB. Cap
+  1.5 GB. Minutes to tens of minutes each.
+- C1 P12: no production arrays. ≈ 0.2 GB.
+- C2 P = 2: route (ii) ≈ 47 s per n, so ≈ 40 min for both W. < 0.2 GB.
+- **C2 Arb P = 4 arm (b), n ≤ 6: declared at ~3 GB** (arm (a) was measured at 1.92 GB at kill, × 1.5), cap 3.2 GB.
+  Route (ii) at P = 4 per n will be measured by the arm-(a) chain first.
+- **Heavy runs (C1 P ≥ 6, all of C2) start after ~07:30**, per the Bridge (CPU saturated until then). C1 at P ≤ 4 is light
+  and runs now.
