@@ -9955,3 +9955,40 @@ did not run.)
   referee's own model ambiguity (≈ 2·10⁻² at P = 2) is measured, and that is what limits EXP-083.
 - **Separately recorded:** the arm (b) integer data are small and positive (Q(2) = +0.30 at W2P2), while arm (a) is large
   and negative (−5.55). The honest saddle effect is large, as T_sad is in production.
+
+## EXP-083 R2 — REGISTERED (the Bridge's edits 1–5, 2026-11-22): high-precision honest referee via the exact replica-sector decomposition [model: Opus 5.5]
+**Resource slip, recorded (edit 3):** the R1 gate run was killed at 1.90 GB against a < 1 GB estimate. Every R2 run
+measures peak RSS on a dry run before declaring.
+
+**Honest data (no continuation; integer n only).** Q(n) = Σ_{Q=0}^{n−1} Σ_k log det B^{(Q,k)} − n Σ_k log det B₁^{(k)}, where
+
+  B^{(Q,k)} = (2/(n N_y)) Σ_{p,q} G_p(q/n) ∘ G_{k−p}((Q − q)/n).
+
+- G_p(α) is the DIRECT inverse of the single-sheet twisted operator: H[u,l] = −e^{2πiα}, H[l,u] = −e^{−2πiα} on the cut
+  links. No Woodbury, no poles, no tails.
+- Arm (b): the honest replica saddle σ_n, sheet-symmetric and y-independent, solved in sector form. The sheet-diagonal
+  block is (1/n)Σ_q G(q/n), and the off-diagonal blocks come from the inverse replica Fourier transform.
+- **Edit 2: the decomposition itself is validated first.** Sector Q(n) = direct n-sheet manifold Q(n) (EXP-082-style
+  gluing, float64) at n = 2…6, both arms, P = 2, to ≤ 10⁻⁹; and at P = 4, n = 2, 3. Otherwise STOP.
+
+**Engine (edit 1).**
+- Arb / FLINT ball arithmetic via python-flint (pinned) **if its installation is approved**. python-flint is not
+  installed; only Homebrew libflint 3.6.0 is. Installing it is a PyPI download, which needs Sumit's direct word. Requested
+  through the Bridge.
+- Until then the engine is mpmath (50 digits).
+- The cost of each engine is measured. P = 4 (081b's W2P4, W4P4) is run only if the measured cost makes n ≤ 12 feasible;
+  otherwise R2 is P = 2 code validation, with the measured cost stated.
+
+**Referee Q′(1):** fixed-base fits (own poles + confluent + products: M1–M4) on the high-precision data, n ≤ 16 (P = 2).
+- Completeness: the spread over M1–M4 and the data ranges is ≤ 10⁻⁶.
+- **Discriminating power (edit 4):** with a spread ≤ 10⁻⁶ the tolerance 3 × spread is ~10⁻⁶, five orders below the
+  0.191 half-gap. **The test discriminates.** If the spread exceeds 10⁻³, STOP: the model is incomplete.
+
+**Comparisons:** production route_b Q′ (t0 + 𝒞 vs arm a; t0 + T_sad + 𝒞 vs arm b; s_cut 3 and ∞) per geometry, within
+3 × spread. Must-fires: dd = 1, saddle-off, pure gauge. s_cut 1.5 is a diagnostic.
+
+**Consequences (edit 5):**
+- A pass at P = 2 only means "the production pipeline reproduces honest Q′ at P = 2 (partially verified)". It does
+  **not** validate the +2.4.
+- Any fail (either arm, any geometry): **the +2.4 is suspended**.
+- A pass at P = 4: the continuation is validated on 081b's own geometries.
