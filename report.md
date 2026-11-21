@@ -7860,3 +7860,34 @@ y = 2, as an input to the SC trace. A failure of V1 or V2 means my own BIE build
   norm, the inside and outside pieces are integrals of the same ‖D_u g‖² over disjoint p-regions, so they **add**:
   0.0346 + 0.00025 = 0.035. No triangle inequality is needed there. The only triangle is f_low + f_high in the
   S-seminorm, giving √0.035 + 0.01 < 0.20 and 1 − ‖f‖²_S > 0.96. **T30's 0.96 is correct.** The grade is unchanged.
+
+### EXP-069 results: the complex-twist BIE passes on the CH07b line (V1, V2 PASS; P fires) [model: Opus 5.5]
+(`scripts/exp069_run.py`, `exp069_output.txt`, `exp069_results.json`; 3021 s, 0.14 GB, watchdog.)
+
+**V1 (independent Fredholm anchor): PASS at all five points.**
+
+| (w, y) | E_BIE | E_pred | \|E/E_pred − 1\| | tolerance | \|Im E\|/\|E\| |
+|---|---|---|---|---|---|
+| (0.3, 0.5) | 0.12046 ± 9.9·10⁻⁴ | 0.12032 | 1.2·10⁻³ | 2.5·10⁻² | 1.6·10⁻⁴ |
+| (0.3, 1) | 0.17160 ± 4.9·10⁻⁴ | 0.17166 | 3.5·10⁻⁴ | 8.6·10⁻³ | 6.9·10⁻⁵ |
+| (0.3, 2) | 0.21527 ± 2.3·10⁻³ | 0.21804 | 1.4·10⁻² | 3.2·10⁻² | 5.5·10⁻³ |
+| (1, 1) | 0.023273 ± 1.5·10⁻⁴ | 0.023290 | 7.8·10⁻⁴ | 1.9·10⁻² | 1.5·10⁻⁴ |
+| (0.1, 1) | 0.63537 ± 1.5·10⁻³ | 0.63555 | 2.9·10⁻⁴ | 7.0·10⁻³ | 5.6·10⁻⁵ |
+
+**V2 (shape against CH05, y = 1): PASS.** k(w) = ΔC_BIE/∫_w^∞ b̂u = −2.86804 − 0.35044i, −2.86944 − 0.35142i,
+−2.87113 − 0.35282i at w = 0.1, 0.3, 1. The maximum deviation is 2.0·10⁻³, i.e. 0.07%, against a 3σ tolerance of
+7.3·10⁻² (2.5%).
+
+**P: FIRES.** The planted 2% normalisation moves E by 7.0σ at (0.3, 1).
+
+**V3 (descriptive).**
+- The relative ladder error on E is 0.8%, 0.3%, 1.1% at y = 0.5, 1, 2. The y = 0.5 value is larger than y = 1's, which
+  is not monotone; not diagnosed.
+- |Im E|/|E| (zero in exact arithmetic) tracks the error: ≤ 1.6·10⁻⁴ for y ≤ 1, and 5.5·10⁻³ at y = 2.
+- So y = 2 is the hard point, as expected (κ_max → 1, and the e^{∓yθ} mode conditioning).
+
+**Grade.** The complex-twist BIE is **verified** on the CH07b line against two independent anchors:
+- the Fredholm determinant (absolute, to ≤ 1.2·10⁻³ for y ≤ 1 and 1.4% at y = 2);
+- the CH05 resummation shape (0.07%).
+It can supply twisted strip propagators for the SC trace. The CH07b weight π/cosh²(πy) ~ e^{−2πy} suppresses y ≥ 2,
+where the BIE is least precise.
