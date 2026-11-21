@@ -1,0 +1,1 @@
+B2a: 3570 (slice, alpha) pairs (210 alphas x 17 slices): max rel entry diff 0.0e+00 -> PASS; must-fire (wrong link) max rel diff 1.2e+00 -> FIRES

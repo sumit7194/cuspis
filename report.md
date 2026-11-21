@@ -9594,3 +9594,22 @@ headline reads "N4 prediction failed" and it is root-caused before any write-up.
   - Rerun Step 0 with the same nodes and tolerances.
   - B2b becomes "converged vs converged + 1 extra step".
   - The N1‴c unrefined arm stays unrefined.
+
+### EXP-081c amendment R1 (registered before the Step 0 rerun; the Bridge's OK with conditions, 2026-11-22) [model: Opus 5.5]
+- The Step 0 run-1 STOP (be7f9cf) stays on the record as a registered failure.
+- **Refinement depth:** "one step" is replaced by **adaptive refinement**.
+  - Iterate G ← G + G·R until max|G·R|/max|G| ≤ 10⁻¹⁵, at most 8 steps.
+  - **Divergence guard:** if a correction is not smaller than the previous one (contraction ≥ 1), stop for that α and
+    flag it non-converged. Running out of the 8 steps is also non-converged.
+  - The 10⁻¹⁵ criterion is only a stopping proxy. **Step 0's 40-digit comparison stays the referee**, with the same
+    nodes, the same 10⁻¹² tolerance and the same tiers.
+- **Non-convergence tiers:**
+  - In Step 0: at s ≈ 0.94 or 1.97 → STOP; at s ≥ 2.99 → W8P8's s_max is capped at the last passing node.
+  - In production: any non-converged G at a 𝒞-node with s < 2.986 (the third checkpoint), or in t0 / T_sad → STOP. At a
+    node s ≥ 2.986 → s_max is capped below the first node with a non-converged G. T0 and T1 are reported, as in 081b.
+- **B2b** becomes "converged vs converged + one extra step", ≤ 10⁻¹² relative on g at s ≈ 1.974.
+- The N1‴c comparison arm stays unrefined, so it is conservative. Its impact at s ≈ 2 is ~8·10⁻¹¹, far inside 10⁻⁷
+  (the Bridge's check).
+- **Reported:** the step-count distribution per node, and the real wall time against the +20–50% estimate.
+- **B2a (run before this amendment; unaffected by refinement depth): PASS.** 3570 (slice, α) pairs at s ≈ 1.974 match
+  exactly (max relative entry difference 0.0). The wrong-link must-fire FIRES (1.2). `scripts/exp081c_b2a_output.txt`.
