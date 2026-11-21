@@ -9083,3 +9083,14 @@ otherwise INCONCLUSIVE.
 **Resources.** A fresh process per geometry. The peak at P = 12 (N₂D = 672, N_y = 48) is ~1.4 GB, measured-law estimate,
 re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB.
 - The r = 8 night point becomes a P = 16 pair. Its memory is re-measured and re-registered separately before scheduling.
+
+**EXP-081b amendment N1′ (registered before any σ strip-pair value; implementation cost).**
+- As written, N1 (g(s) via a direct dense inverse for every quadrature G at every 𝒞 node) costs ~10 h per configuration at
+  P = 12 (7680 dense 672-site inverses per β).
+- **N1′:** at each 𝒞 node, compute stable-Woodbury vs direct-inverse agreement on the **worst-conditioned** matrices that
+  enter that node's B̃:
+  - every tail ingredient G_p(β ∓ is_j), at Im α = s ± s_j;
+  - the main-segment endpoint G_p(β), the largest |Im α| on the segments.
+  - All must agree to ≤ 10⁻⁸ (max relative) for the node to count as reliable. s_max is defined as before.
+- Interior quadrature points have smaller |Im α|, and g is a smooth function of these matrices.
+- The N2 extended-precision referee is unchanged; it remains the separate (higher-precision) test of whether N1′ can be trusted.
