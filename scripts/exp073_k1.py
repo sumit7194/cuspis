@@ -14,7 +14,7 @@ import scipy.sparse as sp
 import scipy.sparse.linalg as spla
 
 def lattice(W, t, pad_over_m, a, which, D=None):
-    """Return dict with sparse H for which in {'flat','e1','e2','can','int'} plus geometry. m*a_lat = t/W."""
+    """Return dict with sparse H for which in {'flat','e1','e2','can','int'} plus geometry. m*a_lat = t/W. (vectorised build)"""
     ma = t / W
     pad = int(math.ceil(pad_over_m / ma))
     Nx = W + 1 + 2 * pad; Ny = 2 * pad
@@ -23,25 +23,19 @@ def lattice(W, t, pad_over_m, a, which, D=None):
     N = Nx * Ny
     idx = lambda i, j: i * Ny + j
     ph = np.exp(-2j * np.pi * a)           # exterior-gauge phase
-    rows, cols, vals = [], [], []
-    diag = 4.0 + ma * ma
-    for i in range(Nx):
-        for j in range(Ny):
-            s = idx(i, j)
-            rows.append(s); cols.append(s); vals.append(diag)
-            if i + 1 < Nx:
-                rows += [s, idx(i + 1, j)]; cols += [idx(i + 1, j), s]; vals += [-1.0, -1.0]
-            if j + 1 < Ny:
-                f = 1.0
-                if j == j0:
-                    on1 = i <= i1; on2 = i >= i2; inside = i1 < i < i2
-                    if which == 'can' and (on1 or on2): f = ph
-                    elif which == 'e1' and on1: f = ph
-                    elif which == 'e2' and on2: f = ph
-                    elif which == 'int' and inside: f = np.exp(2j * np.pi * a)
-                # hopping up (j -> j+1) carries f, down carries 1/f  (gauge map U H U^{-1}, valid for complex a)
-                rows += [idx(i, j + 1), s]; cols += [s, idx(i, j + 1)]; vals += [-f, -1.0 / f]
-    H = sp.csc_matrix((np.array(vals, complex), (rows, cols)), shape=(N, N))
+    I, J = np.meshgrid(np.arange(Nx), np.arange(Ny), indexing="ij"); S = I * Ny + J
+    rows = [S.ravel()]; cols = [S.ravel()]; vals = [np.full(N, 4.0 + ma * ma, complex)]
+    a_ = S[:-1, :].ravel(); b_ = S[1:, :].ravel()                     # horizontal links
+    rows += [a_, b_]; cols += [b_, a_]; vals += [np.full(a_.size, -1.0, complex)] * 2
+    lo = S[:, :-1]; hi = S[:, 1:]; f = np.ones(lo.shape, complex)      # vertical links (j -> j+1)
+    xi = np.arange(Nx); on1 = xi <= i1; on2 = xi >= i2; inside = (xi > i1) & (xi < i2)
+    if which == 'can': f[on1 | on2, j0] = ph
+    elif which == 'e1': f[on1, j0] = ph
+    elif which == 'e2': f[on2, j0] = ph
+    elif which == 'int': f[inside, j0] = np.exp(2j * np.pi * a)
+    # hopping up (j -> j+1) carries f, down carries 1/f  (gauge map U H U^{-1}, valid for complex a)
+    rows += [hi.ravel(), lo.ravel()]; cols += [lo.ravel(), hi.ravel()]; vals += [-f.ravel(), -1.0 / f.ravel()]
+    H = sp.csc_matrix((np.concatenate(vals), (np.concatenate(rows), np.concatenate(cols))), shape=(N, N))
     return dict(H=H, Nx=Nx, Ny=Ny, j0=j0, i1=i1, i2=i2, idx=idx, ma=ma, pad=pad)
 
 def ray_support(g, ray, D):
@@ -68,23 +62,22 @@ def logdet_lu(H):
     sgn = (-1) ** (parity(lu.perm_r) + parity(lu.perm_c))
     return np.sum(np.log(d.astype(complex))) + (0j if sgn > 0 else 1j * np.pi), lu
 
-def Kfree(W, t, a, pad_over_m=8.0, D_over_m=8.0):
-    """small matrix whose spectrum = nonzero spectrum of K_free = G(1)T1 G(2)T2 (supports truncated at D)."""
-    gs = {k: lattice(W, t, pad_over_m, a, k) for k in ('flat', 'e1', 'e2')}
-    g = gs['flat']; D = int(math.ceil(D_over_m / g['ma']))
-    P1 = ray_support(g, 1, D); P2 = ray_support(g, 2, D)
-    T1 = (gs['e1']['H'] - g['H'])[P1][:, P1].toarray()
-    T2 = (gs['e2']['H'] - g['H'])[P2][:, P2].toarray()
-    lu1 = spla.splu(gs['e1']['H'], permc_spec="COLAMD"); lu2 = spla.splu(gs['e2']['H'], permc_spec="COLAMD")
-    N = g['H'].shape[0]
-    def block_solve(lu, src, keep, chunk=64):   # columns G[keep, src] in chunks (memory: N x chunk)
+def Kfree(W, t, a, pad_over_m=8.0, D_over_m=8.0, perm="MMD_AT_PLUS_A"):
+    """small matrix whose spectrum = nonzero spectrum of K_free = G(1)T1 G(2)T2 (supports truncated at D).
+    Memory-lean: one lattice / one LU alive at a time."""
+    import gc
+    g = lattice(W, t, pad_over_m, a, 'flat'); Hf = g['H']; D = int(math.ceil(D_over_m / g['ma']))
+    P1 = ray_support(g, 1, D); P2 = ray_support(g, 2, D); N = Hf.shape[0]
+    def block_solve(lu, src, keep, chunk=16):   # columns G[keep, src] in chunks (memory: N x chunk)
         out = np.empty((len(keep), len(src)), complex)
         for c0 in range(0, len(src), chunk):
             cs = src[c0:c0 + chunk]; E = np.zeros((N, len(cs)), complex); E[cs, np.arange(len(cs))] = 1
             out[:, c0:c0 + len(cs)] = lu.solve(E)[keep]
         return out
-    G1_P2P1 = block_solve(lu1, P1, P2)    # G(1)[P2, P1]
-    G2_P1P2 = block_solve(lu2, P2, P1)    # G(2)[P1, P2]
+    H1 = lattice(W, t, pad_over_m, a, 'e1')['H']; T1 = (H1 - Hf)[P1][:, P1].toarray()
+    lu = spla.splu(H1, permc_spec=perm); del H1; G1_P2P1 = block_solve(lu, P1, P2); del lu; gc.collect()
+    H2 = lattice(W, t, pad_over_m, a, 'e2')['H']; T2 = (H2 - Hf)[P2][:, P2].toarray()
+    lu = spla.splu(H2, permc_spec=perm); del H2; G2_P1P2 = block_solve(lu, P2, P1); del lu; gc.collect()
     Ks = T2 @ G1_P2P1 @ T1 @ G2_P1P2      # spectrum = nonzero spec of G(1)T1G(2)T2 (cyclic)
     return Ks, dict(N=N, P=len(P1), D=D, pad=g['pad'])
 
@@ -106,3 +99,20 @@ def cfh_eigs(t, a, h=0.1, P=None, scale_t=1.0, scale_lam=1.0):
 
 def top(ev, k=3):
     ev = np.asarray(ev); return ev[np.argsort(-np.abs(ev))][:k]
+
+def pressure_guard(min_free_pct=40, wait_s=60, max_wait_s=3600):
+    """Fleet rule: before each heavy step, wait until macOS memory_pressure reports >= min_free_pct free. [model: Opus 5.5]"""
+    import subprocess, re, time
+    waited = 0
+    while True:
+        try:
+            out = subprocess.run(["memory_pressure"], capture_output=True, text=True, timeout=30).stdout
+            free = int(re.search(r"free percentage:\s*(\d+)%", out).group(1))
+        except Exception:
+            free = 100
+        if free >= min_free_pct:
+            return free
+        if waited >= max_wait_s:
+            raise SystemExit(f"pressure_guard: free {free}% < {min_free_pct}% for {waited}s; stopping (resume later)")
+        print(f"pressure_guard: free {free}% < {min_free_pct}%, waiting {wait_s}s", flush=True)
+        time.sleep(wait_s); waited += wait_s

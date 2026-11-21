@@ -1,7 +1,7 @@
 """EXP-073(b) production: registered in report.md (see 'EXP-073(b) ... pre-registration'). [model: Opus 5.5]"""
 import json, time, math, numpy as np
 from scipy.optimize import brentq
-from exp073_k1 import Kfree, cfh_eigs, top
+from exp073_k1 import Kfree, cfh_eigs, top, pressure_guard
 def logdet_IK(Ks): return complex(np.sum(np.log(np.linalg.eigvals(np.eye(len(Ks)) - Ks))))
 def fit3(Ws, f):
     f = np.asarray(f, float); r = (f[0] - f[1]) / (f[1] - f[2]) if f[1] != f[2] else np.nan
@@ -17,12 +17,12 @@ for a in (0.3, 0.5 + 0.5j):
         cfdet = complex(np.sum(np.log(1 - cfh_eigs(t, a, h=0.05))))
         rows = {}
         for W in Ws:
-            t0 = time.time(); Ks, info = Kfree(W, t, a); ev = top(np.linalg.eigvals(Ks)); ld = logdet_IK(Ks)
+            pressure_guard(); t0 = time.time(); Ks, info = Kfree(W, t, a); ev = top(np.linalg.eigvals(Ks)); ld = logdet_IK(Ks)
             rows[W] = (ev, ld)
             print(f"{key} W={W} N={info['N']} |P|={info['P']}: top3 {np.round(ev, 7)}  logdet(I-K) {ld:+.7e}  "
                   f"rel to CFH {np.round(np.abs(ev/cf-1), 4)}  [{time.time()-t0:.0f}s]", flush=True)
         # nuisance at W=32
-        Ksn, _ = Kfree(32, t, a, pad_over_m=6.0, D_over_m=6.0); evn = top(np.linalg.eigvals(Ksn))
+        pressure_guard(); Ksn, _ = Kfree(32, t, a, pad_over_m=6.0, D_over_m=6.0); evn = top(np.linalg.eigvals(Ksn))
         nuis = float(np.max(np.abs(evn / rows[32][0] - 1)))
         ext = []; ps = []
         for k in range(3):

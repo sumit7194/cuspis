@@ -8226,3 +8226,15 @@ numpy only, no file or network side effects.
 - **K4** uses Lx × Lt = 26 × 18, w = 6.
 - **Consequence:** T31's σ-side claims are not evidence about the physical bubble. EXP-073(b), now running, is the
   first proper test of its free-scalar factorisation.
+
+**EXP-073(b) run 1: infrastructure stop (kept).**
+- The watchdog stopped the first production run at memory-pressure level 2, during W = 64, t = 1: peak 3.1 GB resident
+  + 1.3 GB compressed. It was co-scheduled with another fleet job, whose own guard also stopped.
+- Output kept as `scripts/exp073_k1_output_killed1.txt`. Rows W ≤ 32 at a = 0.3, t = 1 had completed.
+- **Fix (same registered computation, no clause or point changed):**
+  - vectorised build; one lattice and one LU alive at a time;
+  - MMD_AT_PLUS_A ordering; solve chunk 16;
+  - a `pressure_guard` (memory_pressure free ≥ 40%) before every heavy step.
+- The C1 identity re-passes (≤ 4·10⁻¹³).
+- Measured LU fill: 0.36 GB at W = 32, t = 1, and 0.38 GB at W = 64, t = 2. The expected peak is ~2.5–3 GB at W = 64,
+  t = 1 only; it was declared to the Bridge before the relaunch (fleet rule).
