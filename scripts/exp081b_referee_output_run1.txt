@@ -1,0 +1,7 @@
+[     0s] building 40-digit slices ...
+[    31s] done
+[    40s] production N1'' checks: [(np.float64(0.9373832957442656), 6.854655886531611e-10), (np.float64(1.974126375751365), 3.8285373762342744e-07), (np.float64(2.9861704756850393), 2.723640233812397e-06), (np.float64(3.94825275150273), 0.0113714142384971), (np.float64(5.05174724849727), 0.7129497994116492)] s_max 0.9373832957442656
+[   373s] s=1.0: (a) max rel err of tail ingredients G(beta -+ i s_j) = 4.4e+09;  (b) B~_0 max rel err 7.6e-01, logdet rel err 1.6e-01
+[   708s] s=2.0: (a) max rel err of tail ingredients G(beta -+ i s_j) = 3.4e+08;  (b) B~_0 max rel err 5.8e-01, logdet rel err 1.4e-01
+[  1046s] s=3.0: (a) max rel err of tail ingredients G(beta -+ i s_j) = 6.9e+05;  (b) B~_0 max rel err 2.5e-01, logdet rel err 1.2e-01
+[  1046s] N2 referee: PASS (criterion applied at s <= s_max = 0.94)

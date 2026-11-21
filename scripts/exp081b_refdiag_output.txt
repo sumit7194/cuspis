@@ -1,0 +1,7 @@
+poles per slice: [[np.float64(0.441), np.float64(0.5846), np.float64(1.7574), np.float64(2.2271)], [np.float64(0.7534), np.float64(0.7958), np.float64(2.2972), np.float64(2.6622)], [np.float64(1.0472), np.float64(1.0575), np.float64(3.0877), np.float64(3.332)], [np.float64(1.2202), np.float64(1.2246), np.float64(3.6028), np.float64(3.7902)], [np.float64(1.2776), np.float64(1.2809), np.float64(3.7763)], [np.float64(1.2202), np.float64(1.2246), np.float64(3.6028), np.float64(3.7902)], [np.float64(1.0472), np.float64(1.0575), np.float64(3.0877), np.float64(3.332)], [np.float64(0.7534), np.float64(0.7958), np.float64(2.2972), np.float64(2.6622)]]
+s=1.0 sg=-1 Im a=-1.227: |G|max 1.84e+02  stable-vs-mpdirect 1.2e-13  direct-vs-mpdirect 9.6e-14  mpWood-vs-mpdirect 0.0e+00
+s=1.0 sg=+1 Im a=+3.227: |G|max 2.92e+04  stable-vs-mpdirect 2.3e-11  direct-vs-mpdirect 4.8e-11  mpWood-vs-mpdirect 0.0e+00
+s=2.0 sg=-1 Im a=-0.227: |G|max 8.77e-01  stable-vs-mpdirect 1.0e-15  direct-vs-mpdirect 1.0e-15  mpWood-vs-mpdirect 0.0e+00
+s=2.0 sg=+1 Im a=+4.227: |G|max 2.92e+04  stable-vs-mpdirect 3.4e-11  direct-vs-mpdirect 5.0e-11  mpWood-vs-mpdirect 0.0e+00
+s=3.0 sg=-1 Im a=+0.773: |G|max 1.32e+01  stable-vs-mpdirect 5.7e-15  direct-vs-mpdirect 4.2e-15  mpWood-vs-mpdirect 0.0e+00
+s=3.0 sg=+1 Im a=+5.227: |G|max 2.92e+04  stable-vs-mpdirect 3.2e-11  direct-vs-mpdirect 5.3e-11  mpWood-vs-mpdirect 1.0e-41

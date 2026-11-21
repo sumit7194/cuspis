@@ -1,0 +1,15 @@
+p=0: sign-change roots in s in [0.1, 6]: [0.4410203753, 0.5846375468, 1.7573879786, 2.227134957]
+      production poles:                [np.float64(0.4410203753), np.float64(0.5846375468), np.float64(1.7573879786), np.float64(2.227134957)]
+      |F(prod s_j)|: ['3.6e-20', '2.9e-21', '1.5e-24', '5.1e-25'];  F scale on grid: 7.8e-02
+p=1: sign-change roots in s in [0.1, 6]: [0.7534228834, 0.7957816867, 2.2971657874, 2.6622298494]
+      production poles:                [np.float64(0.7534228834), np.float64(0.7957816867), np.float64(2.2971657875), np.float64(2.6622298494)]
+      |F(prod s_j)|: ['2.7e-22', '9.9e-23', '2.6e-27', '4.0e-29'];  F scale on grid: 8.0e-02
+p=2: sign-change roots in s in [0.1, 6]: [1.0471938443, 1.0575358339, 3.0876559629, 3.3320356505]
+      production poles:                [np.float64(1.0471938443), np.float64(1.0575358339), np.float64(3.0876559637), np.float64(3.3320356523)]
+      |F(prod s_j)|: ['3.4e-27', '2.8e-27', '1.1e-31', '5.1e-32'];  F scale on grid: 8.1e-02
+p=3: sign-change roots in s in [0.1, 6]: [1.2202334516, 1.2246390751, 3.6028025983, 3.7901882489]
+      production poles:                [np.float64(1.2202334516), np.float64(1.2246390751), np.float64(3.6028026574), np.float64(3.7901883468)]
+      |F(prod s_j)|: ['1.1e-28', '1.0e-28', '1.2e-33', '6.1e-34'];  F scale on grid: 8.1e-02
+p=4: sign-change roots in s in [0.1, 6]: [1.2776086794, 1.2809334097, 3.7762598434, 3.9476085896]
+      production poles:                [np.float64(1.2776086794), np.float64(1.2809334097), np.float64(3.7762598631)]
+      |F(prod s_j)|: ['1.5e-30', '1.8e-30', '2.1e-35'];  F scale on grid: 8.1e-02

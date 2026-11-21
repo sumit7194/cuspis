@@ -612,3 +612,5 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] Neon T40 (= our BRIEF_T37_admissible_continuation.md; renumbered by the Bridge because T37 exists elsewhere): an
       admissible (strictly sub-Carlson) n → 1 continuation. Check on return: G1, G2, P1 (computed), P2, P3, P4′
       (through the continuation), F1–F3. Standing must-pass: scripts/exp076_puregauge.py.
+
+- [ ] EXP-081b (unregistered diagnostic): pole census for every production geometry: sign-change scan of F(s) = z^W det(I+MC) vs production poles for s <= s_cut (slice p=4 of W4P4 missed s=3.9476 > s_cut; check none is missed below s_cut).

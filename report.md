@@ -9164,3 +9164,33 @@ Every amendment was registered before the quantity it affects was seen, except t
 | 8 | b61f7a0 | N1‴ / N2′ | Tolerance on the **impact on Q′(1)**, ≤ 10⁻⁷ absolute, instead of 10⁻⁸ relative in g | 10⁻⁸ relative was miscalibrated: 4·10⁻⁷ relative at s ≈ 2 has ~10⁻⁹ impact. Original-rule outcome still reported |
 | 9 | a206381 | Cumulative | Summed impact over all nodes ≤ s_max, ≤ 10⁻⁷ per geometry; reported next to each R | Per-node checks alone could let many small errors add up |
 | 10 | 019439c | Cumulative details | Interpolation range, s_max lowering on failure, source of \|log det\| for N2′ | Left open by #9 |
+
+**EXP-081b N2 referee, run 1: FIRED. Diagnosed as two referee-side bugs; the run is kept.**
+- **Run 1 output** (`scripts/exp081b_referee_output_run1.txt`, `_results_run1.json`, code `exp081b_referee_run1.py`):
+  - tail-ingredient relative error 4·10⁹ / 3·10⁸ / 7·10⁵ at s = 1 / 2 / 3;
+  - B̃₀ relative error 0.76 / 0.58 / 0.25;
+  - log det relative error 0.16 / 0.14 / 0.12.
+  - Under the original N2 rule it "passed" vacuously (production s_max = 0.94, below every referee s). Under N2′ it would
+    have failed, and the verdict would be VOID.
+- **Why it fired** (diagnostics kept as `scripts/exp081b_refdiag{,2,3,4}.py` and `_output.txt`):
+  1. *Production G matches 40-digit mpmath.* On slice 0, at all six tail points (s = 1, 2, 3; ± the top pole), stable
+     Woodbury G agrees with an mp direct inverse of H to 10⁻¹¹–10⁻¹⁵ relative. The referee's own mp Woodbury matches mp
+     direct to 10⁻⁴¹.
+  2. *The referee's pole refinement went to wrong roots.* findroot in z on the unscaled det(I + M C(z)) is ill-conditioned
+     for z ≲ 10⁻⁵ (the 1/z terms). For every pole with s_j ≳ 1.7 it converged to another root: −0.44, 0.75, −1.05, …. The
+     referee then evaluated G at the wrong points.
+  3. *Production poles match a root-finder-free root count* (verified for the W = 4, P = 4 referee geometry only). A sign-change scan of the O(1)-scaled F(s) = z^W det(I + M C)
+     at 50 digits, on a 1/400 grid in s ∈ [0.1, 6], needs no root finder. The production poles match it:
+     - to ≤ 10⁻⁹ for every pole with s_j < 3;
+     - to 2·10⁻⁸–10⁻⁷ for the poles at 3.6–3.8.
+  4. *The referee did not apply s_cut.* Its B̃₀ used every pole. Production drops s_j > s_cut = 3.0. So even with correct
+     poles it was not the same object.
+- **Side finding (production; harmless here).** Slice p = 4 misses one pole, at s = 3.9476: the reciprocal-pair filter
+  dropped it. It lies above s_cut = 3.0, so no production tail uses it. **Open:** a pole census (sign-change scan vs.
+  production, s ≤ s_cut) for every production geometry. That is an unregistered diagnostic; logged in TODO.md.
+- **Run 2** (`scripts/exp081b_referee.py`), changes only:
+  - poles refined in s on F (abort if a pole moves > 10⁻⁶ from production);
+  - the same s_cut as production;
+  - the N2′ impact evaluated in the referee;
+  - a must-fire: one production residue scaled by 1 + 10⁻⁴.
+  - The tolerance and the pass rule are unchanged.
