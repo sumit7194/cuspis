@@ -1,0 +1,5 @@
+KNOWN-ANSWER (true ladder + unmodelled W^-2 term; 200 random draws per twist, sizes like the data):
+  a=0.3: recovered within 3 sigma_sys in 199/200; worst |f-L| = 0.037
+  a=(0.5+0.5j): recovered within 3 sigma_sys in 195/200; worst |f-L| = 0.062
+MUST-FAIL (real a=0.3 model, but true leading exponent 0.3 instead of 0.6):
+  flagged (|f-L| > 3 sigma_sys or sigma_sys > 2%) in 200/200

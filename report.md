@@ -8292,3 +8292,40 @@ numpy only, no file or network side effects.
   This tests the det level, not the spectrum.
 - (iii) Richardson extrapolation with the theoretically known exponent ladder {2a, 1, …} in place of a free p. That
   would need its own registration.
+
+## EXP-074  Richardson re-analysis of the EXP-073(b) data with the tip-exponent ladder — pre-registration [model: Opus 5.5]
+**Honest ordering.**
+- This re-analyses data **already seen** (`scripts/exp073_k1_cache.json`, EXP-073(b) results). Only the extrapolation
+  method is new, and it is fixed here before any fit of the real data.
+- The Bridge's decision (2026-11-21): option (iii), cheap, to give the free side a sharper test. Seconds of compute,
+  < 0.1 GB.
+
+**Exponent ladder (argued).**
+- Lattice corrections enter through the regular tip modes r^{ν}, ν ∈ {a, 1 − a, 1 + a, …}, as (a_lat/w)^{2ν}, plus an
+  analytic W⁻¹ (the edge position is fixed only to O(a_lat)).
+- Real a = 0.3: {0.6, 1, 1.4, …}.
+- Complex a = ½ + ½i: W^{−2a}, W^{−2(1−a)} = W⁻¹e^{∓i ln W}, a conjugate pair giving W⁻¹cos/sin(ln W), plus W⁻¹. **This
+  predicts the sign-changing approach seen in EXP-073(b).**
+
+**Method (`scripts/exp074_richardson.py`).**
+- Model A (3 parameters, least squares on W = 8, 16, 32, 64):
+  - real a: f∞ + c₁W^{−2a} + c₂W⁻¹;
+  - complex a: f∞ + W⁻¹(A cos(2y ln W) + B sin(2y ln W)).
+- Model B = A + the next term: W^{−2(1−a)} for real a, W⁻¹ for complex a. It has 4 parameters, an exact fit.
+- Central value f_B. σ_sys = |f_A − f_B|; σ_tot = √(σ_sys² + (n·λ)²), with n the EXP-073(b) nuisance for that
+  eigenvalue.
+- Eigenvalues λ₁ and λ₂ only. λ₃ is excluded because it is ≤ 10⁻⁶ at t = 2, and the EXP-073(b) nuisance failure sits
+  entirely in λ₃. That exclusion is stated now, not after the fits.
+
+**Controls run alone (`scripts/exp074_controls_output.txt`).**
+- Known answer: synthetic sequences with the true ladder **plus an unmodelled W⁻² term**, sized like the data, 200 draws
+  each. The limit is recovered within 3σ_sys in 199/200 (real) and 195/200 (complex) draws.
+- Must-fail: a true leading exponent of 0.3 under the 0.6 model is flagged (|f − L| > 3σ_sys or σ_sys > 2%) in 200/200.
+
+**Clauses (fixed now).** For each of the 8 cases (a, t, λ_k):
+- **PASS:** |f_B − λ_CFH| ≤ 3σ_tot **and** σ_tot/λ_CFH ≤ 2% (the test is informative).
+- **FAIL:** |f_B − λ_CFH| > 3σ_tot with σ_tot/λ_CFH ≤ 2%.
+- **INCONCLUSIVE:** σ_tot/λ_CFH > 2%.
+- **Planted (must be told apart):** wherever the verdict is PASS, the CFH value at t × 1.03 must lie outside 3σ_tot of
+  f_B. Otherwise that PASS is downgraded to INCONCLUSIVE.
+- **Overall:** PASS if all 8 PASS; FAIL if any FAIL; otherwise INCONCLUSIVE.
