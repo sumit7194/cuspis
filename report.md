@@ -9569,3 +9569,28 @@ headline reads "N4 prediction failed" and it is root-caused before any write-up.
 - Memory: W8P8 measured 0.33 GB in the dry run, plus ~0.4 GB of residue storage (17 slices × ≤ 5 poles × 2 × N²
   complex). **Declared peak 1.1 GB** (× 1.5). Watchdog cap 1.5 GB, nice 12, one job at a time, daytime.
 - KPS −0.238: to be checked against the PDF before any write-up (TODO.md).
+
+### EXP-081c Step 0 run 1: STOP (as registered). One refinement step is not enough at Im α ≥ 5 (kept) [model: Opus 5.5]
+- The double-double residual was tested against an mpmath residual first: max relative difference 2.6·10⁻¹⁸. **PASS.**
+- Results (`exp081c_step0_run1_output.txt`). Each row is the worst slice and column at that node's largest |Im α|:
+
+  | node s | Im α | refined (1 step) | unrefined | reference | result |
+  |---|---|---|---|---|---|
+  | 0.937 | 3.92 | 2.5·10⁻¹⁷ | 6.2·10⁻⁹ | mixed precision | **PASS** |
+  | 1.974 | 4.96 | **2.7·10⁻¹²** | 1.9·10⁻⁶ | mixed precision | **FAIL** (> 10⁻¹²) |
+  | 2.986 | 5.97 | 3.1·10⁻¹⁰ | 1.9·10⁻⁵ | 60-digit LU | FAIL |
+  | 3.948 | 6.93 | 3.0·10⁻⁸ | 3.1·10⁻⁴ | 60-digit LU | FAIL |
+  | 5.052 | 8.03 | 4.2·10⁻⁴ | 4.2·10⁻² | 60-digit LU | FAIL |
+
+- **Registered consequence: failure at s ≈ 1.97 → STOP; fix the implementation.** No production quantity has been
+  computed.
+- **Diagnosis:** the code is correct; the refinement depth is too shallow. Each step multiplies the error by about the
+  unrefined error (contraction factors 1.4·10⁻⁶, 1.6·10⁻⁵, 1·10⁻⁴, 1·10⁻² at the four failing nodes). That is textbook
+  iterative refinement with an O(1)-accurate residual. Two steps would give ~4·10⁻¹⁸ at s ≈ 1.97, and ~5·10⁻¹⁵ at
+  s ≈ 2.99.
+- Proposed fix, sent to the Bridge (it changes the registered "one step"):
+  - **adaptive refinement**: iterate until the relative correction max|G·R|/max|G| ≤ 10⁻¹⁵, at most 8 steps; the step
+    count is recorded.
+  - Rerun Step 0 with the same nodes and tolerances.
+  - B2b becomes "converged vs converged + 1 extra step".
+  - The N1‴c unrefined arm stays unrefined.

@@ -1,0 +1,48 @@
+{
+ "dd_unit": 2.6101217024744533e-18,
+ "0.937": {
+  "im_alpha": 3.9187357061011476,
+  "p": 1,
+  "col": 200,
+  "err_refined": 2.5384096509919386e-17,
+  "err_unrefined": 6.172335097076996e-09,
+  "ref": "mixed-precision, 3 steps, residual 3.3e-32",
+  "pass_": true
+ },
+ "1.974": {
+  "im_alpha": 4.955478786108246,
+  "p": 0,
+  "col": 200,
+  "err_refined": 2.6864543725398177e-12,
+  "err_unrefined": 1.9313350826010953e-06,
+  "ref": "mixed-precision, 4 steps, residual 1.5e-27",
+  "pass_": false
+ },
+ "2.986": {
+  "im_alpha": 5.9675228860419205,
+  "p": 5,
+  "col": 200,
+  "err_refined": 3.0581206103771124e-10,
+  "err_unrefined": 1.872584338121719e-05,
+  "ref": "mpmath LU 60 digits (refinement did not converge), residual 6.8e-48",
+  "pass_": false
+ },
+ "3.948": {
+  "im_alpha": 6.9296051618596115,
+  "p": 7,
+  "col": 200,
+  "err_refined": 2.986016099149298e-08,
+  "err_unrefined": 0.0003088331031995223,
+  "ref": "mpmath LU 60 digits (refinement did not converge), residual 1.6e-45",
+  "pass_": false
+ },
+ "5.052": {
+  "im_alpha": 8.033099658854152,
+  "p": 9,
+  "col": 200,
+  "err_refined": 0.0004223642975576847,
+  "err_unrefined": 0.04187554193046089,
+  "ref": "mpmath LU 60 digits (refinement did not converge), residual 7.0e-43",
+  "pass_": false
+ }
+}
