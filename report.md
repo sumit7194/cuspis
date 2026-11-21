@@ -9112,3 +9112,17 @@ re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB
   share.
 - **The N2 40-digit referee is the decisive reliability test.** If N2 disagrees beyond tolerance anywhere N1″ called
   production reliable, **the EXP-081b verdict is VOID until resolved** (not merely "pending").
+
+**EXP-081b amendment N1‴ / N2′ (registered before any strip-pair R value and before any N2 referee output).**
+- **Prompted by a numerical diagnostic, not by a result.** The worker log for W = 4, P = 4 shows N1″ g-level relative
+  disagreements of 4·10⁻¹⁰, 4·10⁻⁷, 2·10⁻⁵, 3·10⁻³, 0.6 at s ≈ 0.9, 2.0, 3.0, 4.0, 5.0. So s_max = 0.94 and T1 is
+  undefined (no reliable s ≥ 1 nodes).
+- But a relative tolerance on g is not tied to the impact on S: 4·10⁻⁷ × |g(2)| ~ 10² × π/cosh²(2π) ≈ 4·10⁻⁵ gives ~10⁻⁹ in
+  Q′(1). **My 10⁻⁸ relative tolerance was miscalibrated (rule VIII).**
+- **N1‴:** a checkpoint s is reliable if its **impact** I(s) = |g_stable(s) − g_direct(s)|·π/cosh²(πs) ≤ **10⁻⁷**. That is
+  absolute, in Q′(1) units; the connected strip-pair differences are O(10⁻²–10⁻¹) per unit length × N_y. s_max and the
+  T0/T1 tails follow as before.
+- **N2′:** the referee passes if, at every s ∈ {1, 2, 3}, the impact |log det_production − log det_mp|·π/cosh²(πs) ≤ 10⁻⁷.
+  The G-level and B̃₀ relative errors are reported descriptively. The VOID rule (Bridge) applies to N2′.
+- **The analysis is re-run from the checkpoints** (no recompute). **The outcome under the original N1″/N2 rules is also
+  reported, for transparency.**
