@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp083_r3_t46d_growth.py", line 27, in <module>
+    print(f"Q_cont(1) = {Q(1.0):.3e}; n=2: {Q(2.0).real:+.10f} vs honest {hon['2']:+.10f}; n=3: {Q(3.0).real:+.10f} vs honest {hon['3']:+.10f}  ({time.time()-T0:.0f}s)", flush=True)
+                         ~^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_r3_t46d_growth.py", line 23, in Q
+    gp = unwrap([g(n, e)] + [g(n, e + 1j * t) for t in ts])[1:]; gm = unwrap([g(n, e)] + [g(n, e - 1j * t) for t in ts])[1:]
+                             ~^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp083_r3_t46d_growth.py", line 15, in g
+    s, l = np.linalg.slogdet(linalg.cho_solve(cho, (up[:, None] * B) * um[None, :])); return l + 1j * np.angle(s)
+                             ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 230, in cho_solve
+    return _cho_solve(c, b, lower, overwrite_b=overwrite_b, check_finite=check_finite)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/_lib/_util.py", line 1181, in wrapper
+    return f(*arrays, *other_args, **kwargs)
+  File "/opt/homebrew/lib/python3.14/site-packages/scipy/linalg/_decomp_cholesky.py", line 236, in _cho_solve
+    b1 = asarray_chkfinite(b)
+  File "/opt/homebrew/lib/python3.14/site-packages/numpy/lib/_function_base_impl.py", line 673, in asarray_chkfinite
+    raise ValueError(
+        "array must not contain infs or NaNs")
+ValueError: array must not contain infs or NaNs

@@ -1,0 +1,2 @@
+eps=1: threshold 1e-10 (delivered): Q_cont(1) = +5.4001e-13 (phase +1.2e-31) | threshold removed: Q_cont(1) = +1.4013e+03 (phase -3.1e+00)
+eps=0.01: threshold 1e-10 (delivered): Q_cont(1) = -1.8474e-12 (phase +1.8e-29) | threshold removed: Q_cont(1) = +1.2528e+03 (phase -5.3e-03)

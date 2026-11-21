@@ -10251,3 +10251,33 @@ checked (1.6·10⁻¹¹⁷). Arm (b)'s Arb saddle has |F| ≤ 10⁻¹⁰⁵.
   - the planted sin(πn)·h on P4′;
   - T46d's n-general Q_cont on the ε-family (known-bad: expected to fail at n = 1).
   - Then register R3.
+
+### EXP-083 R3 (Carlson integers + growth), Tier-1 controls: the KNOWN-BAD PASSES BOTH tests → R3 is VOID before registration (the Bridge's rule c) [model: Opus 5.5]
+(`scripts/exp083_r3_t46d_n1.*`, `exp083_r3_t46d_growth.py`, `exp083_r3_t46d_growth_output.txt`. Run 1 is kept: NaN on the
+tail beyond T46d's float range; the tail was capped at t ≤ 2.5 inside T46d's validated range.)
+- **Known-bad: T46d's threshold continuation on the EXP-082 ε-family, ε = 1.** Its slope is wrong: T1 + T2 = +0.0021
+  against honest −0.32 (EXP-082; T46e/T46f −0.321).
+  - **(a) Integers:** Q_cont(1) = 5.3·10⁻¹³. n = 2: −0.1191646903 vs honest −0.1191646903. n = 3: −0.1796133863 vs
+    −0.1796133863. **PASSES.**
+    - This corrects my argued note above: the threshold failure is **not** visible at n = 1. With the threshold *removed*,
+      Q_cont(1) = +1.4·10³, which is the near-¼ float instability again.
+  - **(b) Growth:** log|Q_cont(c + it)|/t at t = 20 is −0.04 (c = 1), +0.006 (1.5), +0.010 (3), with |Q| ~ 1. Type ≈ 0.
+    **PASSES** (a few t points gave NaN, T46d's float limits).
+- **The known-good controls also pass:** P4′ (EXP-079 route ii) and the Strip3D W2P2 port both show type ≈ 0 and match
+  the integers.
+- **So the growth test cannot separate known-good from known-bad.** Per the Bridge's control rule (c), **R3 is void**. It
+  is not registered.
+- **Why (argued; consistent with every failure in EXP-082/083):** Carlson uniqueness is ill-conditioned for small-r modes.
+  - The threshold and true continuations differ at n ≥ 2 by Σ weight·2Br·r^{n−1}/(1 − rⁿ), about 10⁻¹⁰ at n = 2 for
+    r ≲ 10⁻¹⁰. That is below a float64 continuation's integer precision. At n = 1 the pair terms cancel.
+  - The slope difference is Σ weight·2Br·ln r = O(1). The difference function has type 0, so (b) cannot see it.
+  - Integer data at precision δ constrain these modes' slope contributions only on a scale of ~δ/r. Arb honest data (δ ~
+    10⁻¹¹⁰) would expose them, but only against a continuation that is itself evaluated to ≪ r. The float64 production
+    continuation is not.
+- **Consequence for the programme:**
+  - **No integer-n referee, fit-based (R1/R2) or fit-free (R3), can validate a float64 continuation's handling of modes
+    with r below its own precision.**
+  - For the lattice route that class is the poles beyond s_cut = 3 (r < 6.5·10⁻⁹). It is controlled only internally, by
+    the N4 geometric-convergence measurement (EXP-081c prerequisites).
+  - **The +2.4 stays UNVALIDATED against honest data.** EXP-083 ends here unless a continuation evaluated in Arb (to
+    precision ≪ r_min) is built.
