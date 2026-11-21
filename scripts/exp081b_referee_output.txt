@@ -1,0 +1,18 @@
+[     0s] building 40-digit slices (own poles by sign-change scan) ...
+[    95s] done
+[    95s] slice 0: production [np.float64(0.4410203753), np.float64(0.5846375468), np.float64(1.7573879786), np.float64(2.227134957)]  referee [0.4410203753, 0.5846375468, 1.7573879786, 2.227134957]  MATCH
+[    95s] slice 1: production [np.float64(0.7534228834), np.float64(0.7957816867), np.float64(2.2971657875), np.float64(2.6622298494)]  referee [0.7534228834, 0.7957816867, 2.2971657874, 2.6622298494]  MATCH
+[    95s] slice 2: production [np.float64(1.0471938443), np.float64(1.0575358339)]  referee [1.0471938443, 1.0575358339]  MATCH
+[    95s] slice 3: production [np.float64(1.2202334516), np.float64(1.2246390751)]  referee [1.2202334516, 1.2246390751]  MATCH
+[    95s] slice 4: production [np.float64(1.2776086794), np.float64(1.2809334097)]  referee [1.2776086794, 1.2809334097]  MATCH
+[    95s] slice 5: production [np.float64(1.2202334516), np.float64(1.2246390751)]  referee [1.2202334516, 1.2246390751]  MATCH
+[    95s] slice 6: production [np.float64(1.0471938443), np.float64(1.0575358339)]  referee [1.0471938443, 1.0575358339]  MATCH
+[    95s] slice 7: production [np.float64(0.7534228834), np.float64(0.7957816867), np.float64(2.2971657875), np.float64(2.6622298494)]  referee [0.7534228834, 0.7957816867, 2.2971657874, 2.6622298494]  MATCH
+[    95s] pole census (s <= s_cut = 3.0): PASS
+[   106s] census must-fire (slice 4, s <= 4): production [np.float64(1.277609), np.float64(1.280933), np.float64(3.77626)] referee [1.277609, 1.280933, 3.77626, 3.947609] -> FIRES
+[   106s] production N1'' checks: [(np.float64(0.9373832957442656), 6.854655886531611e-10), (np.float64(1.974126375751365), 3.8285373762342744e-07), (np.float64(2.9861704756850393), 2.723640233812397e-06), (np.float64(3.94825275150273), 0.0113714142384971), (np.float64(5.05174724849727), 0.7129497994116492)] s_max 0.9373832957442656
+[   409s] s=1.0: (a) max rel err of tail ingredients G(beta -+ i s_j) = 3.8e-08;  (b) B~_0 max rel err 1.8e-12, logdet rel err 2.7e-12; N2' impact 1.3e-11 [PASS]; must-fire (residue x(1+1e-4)) impact 1.3e-06 [FIRES]
+[   710s] s=2.0: (a) max rel err of tail ingredients G(beta -+ i s_j) = 1.7e-07;  (b) B~_0 max rel err 6.6e-13, logdet rel err 2.5e-09; N2' impact 2.4e-11 [PASS]; must-fire (residue x(1+1e-4)) impact 1.9e-09 [does not fire]
+[  1011s] s=3.0: (a) max rel err of tail ingredients G(beta -+ i s_j) = 2.4e-07;  (b) B~_0 max rel err 3.2e-12, logdet rel err 7.7e-07; N2' impact 1.4e-11 [PASS]; must-fire (residue x(1+1e-4)) impact 1.7e-11 [does not fire]
+[  1011s] N2 referee (orig rule): PASS (criterion applied at s <= s_max = 0.94)
+[  1011s] N2' referee (impact rule + own-pole census, primary): PASS

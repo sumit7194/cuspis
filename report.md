@@ -9213,3 +9213,21 @@ Every amendment was registered before the quantity it affects was seen, except t
   - Everything else is unchanged. **The VOID rule applies to run 2.**
 - **Unregistered diagnostic:** a pole census over every production geometry. A missed pole **below** s_cut in any geometry
   flags that geometry's R before the verdict.
+
+**EXP-081b N2′ referee, run 2 (own poles; the Bridge's terms): PASS.** Output: `scripts/exp081b_referee_output.txt`,
+`exp081b_referee_results.json`. Geometry: W = 4 in the P = 4 pair box, N_y = 8, s_cut = 3.
+- **Own-pole census (s ≤ 3):** all 8 slices MATCH production (same count; positions agree to ≤ 10⁻¹⁰ at the printed
+  precision). No near-touch minima. **Census must-fire** (slice 4 with the cut raised to 4.0): the referee finds
+  3.947609, which production lacks → **FIRES**, as required.
+- **Impact on Q′(1)** at s = 1, 2, 3: **1.3·10⁻¹¹, 2.4·10⁻¹¹, 1.4·10⁻¹¹** (tolerance 10⁻⁷) → **PASS**.
+  - Descriptive: log det relative error 2.7·10⁻¹², 2.5·10⁻⁹, 7.7·10⁻⁷; B̃₀ max relative error ≤ 3·10⁻¹²; tail ingredients
+    G(β ∓ is_j) max relative error 4·10⁻⁸ / 2·10⁻⁷ / 2·10⁻⁷.
+  - The log det relative error grows with s while B̃₀ stays at 10⁻¹². That is conditioning of log det, damped by
+    π/cosh²(πs) in the impact.
+- **Residue must-fire** (production with slice 0's lowest-pole residue × (1 + 10⁻⁴)): impact 1.3·10⁻⁶ at s = 1 →
+  **FIRES**. At s = 2 and 3 the impacts are 1.9·10⁻⁹ and 1.7·10⁻¹¹ → does not fire, because the cosh⁻² weight suppresses
+  them. So the referee detects a 10⁻⁴ residue error through s = 1 only. That is stated as the limit of this control.
+- **Original N2 rule:** PASS, but vacuously (production s_max = 0.94 under N1″, below every referee s). Under that rule the
+  tail ingredients (2·10⁻⁷ > 10⁻⁸) would have failed had it been applied.
+- **Grade:** the referee result is **verified for this one geometry** (W = 4, P = 4). It is not a statement about P ≥ 6.
+  The VOID rule is not triggered.
