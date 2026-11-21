@@ -9289,3 +9289,29 @@ Read in full; the code was run from a scratch copy with `python -I`. Everything 
 - **Strip pair in infinite volume (the Bridge's suggestion (ii)).** With the w-scaled conformal grid, W and 2W are the
   same computation with z rescaled. ∫dz[f(z) − f(2z)] = ½∫(f − f_∞), so the plateau f_∞ is still needed. The pair cancels
   edge discretisation error only on a W-independent near-edge mesh, as on the lattice.
+
+### EXP-081b driver run 1: W = 2, P = 12 stopped by the watchdog (kept); resumed at a 3.2 GB cap
+
+- **What happened (21:33 IST, 2026-11-21).** The driver finished 8 of 20 geometries: W = 2 and 4 at P = 4, 6, 8, 10.
+  The W = 2, P = 12 worker was then stopped by its watchdog at 2612 s. Its footprint was 2.25 GB (1.90 resident + 0.35
+  compressed), against the 2.2 GB cap. The driver raised on the missing result file and exited with code 1. No R value
+  had been computed or viewed.
+- **Memory record.** The steady resident set was 1.59 GB, with transient spikes to 1.90 GB (at start and at the kill).
+  Compressed memory grew 0 → 0.24 → 0.35 GB over the run. Earlier peaks (MEM + CMPRS) were 0.85 GB for W2P10 and
+  1.01 GB for W4P10.
+- **Cause: a cap set on the wrong metric, by me.** The dry run (`exp081b_memdry.py`, W4P12) measured maxrss 1.54 GB.
+  The watchdog caps resident + compressed memory, which maxrss does not include, and the dry run ran one β, not a full
+  run.
+  - This is the second time: EXP-081 r = 6 was stopped the same way (1.94 GB against 1.8).
+  - **Mechanism, not promise:** future dry runs that set a cap run under the watchdog, and the cap is set from the
+    watchdog's peak (MEM + CMPRS) with ≥ 40% headroom. Added to TODO.md.
+- **Fix: only the cap changes, 2.2 → 3.2 GB** (`exp081b_run.py`, one line).
+  - Declared to the Bridge before relaunch, with the measured peak and a W4P12 estimate of ~2.7 GB.
+  - The worker resumes from its own checkpoint: 48 of ~53 g-nodes were done. The cap does not enter the
+    per-node computation, so the checkpointed values stand (argued from the code).
+  - Nothing else changes: one process, nice 12, 5 GB disk floor, pressure stop on.
+- **Kept:**
+  - `exp081b_results/sigma_W2_P12_*_run1_killed.{wd.log,out}`;
+  - the checkpoint at the kill (`*_ckpt_at_kill.json`);
+  - the driver stdout at the kill (`exp081b_output_run1.txt`).
+  - `exp081b_output.txt` continues after a relaunch marker.
