@@ -1,0 +1,9 @@
+# cmd: ../.venv/bin/python -u -W ignore exp082b_saddle.py /private/tmp/claude-501/-Users-sumit-Github-corner-function/c9ec831f-1e60-4339-b54f-389fe70e25f7/scratchpad/t46d/code
+# caps: tree <= 1.5 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.6     1   0.115    0.000   0.115        13.76        720.9           64              1
+     6.4     1   0.433    0.028   0.461        13.76        720.9           63              1
+    12.2     1   0.841    0.025   0.866        13.76        720.9           62              1
+# exit 0; wall 17 s; PEAK tree MEM 0.841 GB + CMPRS 0.025 GB = 0.866 GB

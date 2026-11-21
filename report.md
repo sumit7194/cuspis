@@ -10091,3 +10091,55 @@ measures peak RSS on a dry run before declaring.
   κ_free series converges slowly from above.
 - **Implication for the sealed derivation:** P1 (n → 1 at fixed r) is supported by T46e's T1 passing the gate. P2's
   concern is confirmed: floor 0 fails. P3's continuity for the true continuation was already shown by EXP-082.
+
+### T46f (Neon) graded on MY ε-family: saddle-OFF PASSES at floor 0 with its own T2; saddle-ON agrees for ε ≤ 0.1, but ε = 1 is UNDECIDABLE from float64 integer data (model ambiguity ×7) [model: Opus 5.5]
+**Source.** `T46f_code/brief_p2_t46f.py` (570 lines, sha256 551d4ea3…). Read in full; no network, no file writes. Run
+unchanged from a scratch copy (`scripts/t46f_gate.py`), except a noise_tol multiplier hook used only for the sensitivity
+runs.
+- **The Bridge's flag 1 is confirmed by reading the code.** T46f's `eps_family` sets L0[it,ib] = −ε and **shifts both
+  diagonals by (ε − 1)**. My EXP-082 family scales only the hopping. They are different systems for ε < 1, which explains
+  T46f's 1.4–1.6× values. The gate therefore uses my definition (hopping only).
+- **What T46f does:**
+  - P2 is adopted: λ − ¼ from M₋^{½}[½(G_tb + G_tbᵀ) − G_s G_a]M₋^{−½}, with a PSD round-off clip (`noise_tol`).
+  - T0 and T2 both use rank-1 chiral factors with analytic one-sided limits at r = 0. T2 gets the pair combination
+    (sealed §3).
+  - Its honest reference is the sector decomposition with direct inverses: same author.
+
+**Saddle OFF (my family; floor 0; its own T2; `t46f_gate_output.txt`):**
+
+| ε | honest Q′(1) (EXP-082 fits) | T46f T1 + T2 |
+|---|---|---|
+| 1 | −0.339 / −0.316 | −0.32086 |
+| 10⁻¹ | −0.0457 / −0.0436 | −0.043965 |
+| 10⁻² | −0.00587 / −0.00585 | −0.0057077 |
+| 10⁻³ | −7.2·10⁻⁴ / −6.9·10⁻⁴ | −7.0217·10⁻⁴ |
+| 10⁻⁴ | −8.6·10⁻⁵ / −7.4·10⁻⁵ | −8.3359·10⁻⁵ |
+
+- noise_tol × 10 and × 0.1 leave every printed digit unchanged, so the clip plays no role here (the Bridge's flag 3).
+- **Grade: PASS, partially verified** (this family). This is the first continuation to pass at floor 0 with no
+  substitutions and no NaN.
+
+**Saddle ON: my own honest replica-saddle data** (`scripts/exp082b_saddle.py`, independent of T46f: n-sheet manifold, Newton
+on the gap equation, n ≤ 16; fits in `exp082b_fit.py`):
+- **The two implementations agree on the honest data.** At ε = 1, my Q(2..5) = 1.0243164755·10⁻², 1.5446609089·10⁻²,
+  2.0596028820·10⁻², 2.5745039484·10⁻² equal T46f's printed values to all printed digits. **Verified** (two
+  implementations).
+- Continuation (T46f T1 + T_sad + T2): +0.026014, +0.0037423, +4.8949·10⁻⁴, +6.0433·10⁻⁵, +7.1910·10⁻⁶.
+  - T_sad ≈ −1.09 T1, a ~12× cancellation.
+- **ε ≤ 10⁻¹:** honest fits with confluent terms (held-out ≲ 10⁻⁸) give 0.00359–0.00374, (4.82–5.09)·10⁻⁴,
+  (4.3–6.3)·10⁻⁵, (4.0–7.2)·10⁻⁶ (5–60% spread at the smallest ε). The continuation lies inside every spread.
+  **Consistent (partially verified).**
+- **ε = 1: undecidable from these data.**
+  - My free-base 2b + confluent fit gives +0.02621 (held-out 2·10⁻¹², interior 5·10⁻¹¹). 1b + confluent gives +0.02637.
+  - T46f's physical-base M = 2 / M = 3 (b = 4.888·10⁻³, 6.934·10⁻⁵, 3.0·10⁻⁶) gives +0.0040 / +0.0036 (held-out
+    4·10⁻¹³).
+  - Both fit to ~10⁻¹² and differ 7×. Fits with poorly identified tiny bases even give +1.46 at held-out 4·10⁻⁹. **The
+    Bridge's flag 2 stands. The "SURE" label is not supported.**
+  - **Mechanism (argued, consistent with the sealed derivation):** a near-¼ mode's coefficient scales like Br/r, so it
+    contributes ~Br·ln r to Q′ however small r is. With the saddle ON, these modes enter through d = ΣBr·ψ(r). Adding
+    the 6.9·10⁻⁵ base shifts Q′ by −0.022. Float64 integer data cannot pin all such bases.
+  - **Remedy:** Arb high-precision honest data (the EXP-083 R2 machinery) with the complete physical base set (all modes,
+    all q). That makes the tiny bases identifiable. This is the same tool as EXP-083 R2 and the same question as its
+    arm (b).
+- **Run hygiene:** importing `exp082_honest_eps` re-executed its module-level loop (no `__main__` guard). It is
+  deterministic: `exp082_results.json` is unchanged per git.
