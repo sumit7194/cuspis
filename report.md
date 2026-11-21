@@ -8515,3 +8515,60 @@ numpy only, no file or network side effects.
   - P1 computed rather than asserted;
   - P4′ evaluated through the continuation;
   - F1–F3.
+
+## EXP-077  Check of Neon T40 (answer to the T37 brief): the unsplit-summand construction is sound in idea, but its continuation's Q′(1) disagrees with the Carlson (Newton) interpolant of the honest integer data on P4′ — verification of external work (pre-check level, unregistered) [model: Opus 5.5]
+**Source.**
+- `neon_work/dkappa/T40_full.md` (UNVERIFIED).
+- Its P4′ code (lines 127–190, numpy only, read in full) was run from a scratch copy with `python -I`. Nothing else of
+  T40 was run.
+
+**Agreed (argued).**
+- Keeping the inner summand unsplit, F_β(α) = 2G^{(α)}G^{({β−α})}, cancels the gauge phases e^{±iαΔθ} between the two
+  factors, so its α-type is 0.
+- The closed form c(½ + is) = −(s/4π)coth(πs) matches my ψ-route values (s = 0.5, 1, 4).
+
+**Checks.**
+1. **T40's Q_cont reproduces the honest integer Q(n)** at n = 1, …, 6 (and n = 8 is consistent with the linear regime),
+   to ≤ 4·10⁻¹⁰. Its Q′(1) by central difference is −1.38687 (h = 10⁻³ and 10⁻⁴ agree). **Reproduced.**
+2. **An independent route to Q′(1), with no Abel–Plana formula** (`scripts/exp077_newton_hp.py`, `exp077_Qhp.json`).
+   - Honest Q(n), n = 1..60, at 45 digits via the exact sector decomposition. It cross-checks the direct lattice values
+     to 12 digits.
+   - The Newton forward-difference derivative series Σ(−1)^{k+1}Δ^kQ(1)/k. **All 59 terms are negative**, and the
+     partial sum at K = 59 is **−1.4011, already below T40's −1.3869.**
+   - Levin-u limit: **−1.420722**, stable to 2·10⁻⁸ for K = 40, 50, 59. Independently, a central difference of the
+     Levin-accelerated Newton interpolant gives −1.420724.
+   - (Wynn/Shanks is unstable on this sequence, −1.706 at K = 30, so my earlier double-precision Wynn value −1.427 is
+     **withdrawn**. It was right only by luck.)
+3. **Planted control** (`scripts/exp077_planted.py`, at the Bridge's request). Same pipeline, same K, synthetic
+   completely-monotone remainders of the same shape with known derivative.
+   - Levin error ≤ 7·10⁻⁶ for exponential mixtures, and ±7.6·10⁻³ for a power-corrected remainder (the worst case).
+   - The raw partial sums always lie above (less negative than) the exact value, with all terms negative.
+   - **Measured bias ≤ 8·10⁻³ against a 0.034 discrepancy.**
+4. **Shape of the honest data.** Δ²Q(n) decays geometrically, with ratios 0.0208 → 0.0122 at n = 1 → 18 (power-corrected
+   exponential, not super-exponential). That is consistent with a completely-monotone (Hausdorff-moment) remainder.
+   - For such a remainder the Newton series converges to the type-0 (Carlson) interpolant, and its derivative series has
+     all terms negative, so the limit is below every partial sum. (Argued: complete monotonicity is not proved, only
+     consistent with the data.)
+5. **Off the integers**, the converged Newton interpolant and T40's Q_cont differ:
+   - Q(1.5) = −0.4036408 (Newton) vs −0.4030563 (T40);
+   - Q(2.5) = −0.7455685 vs −0.7455724.
+   - This is an alternating, decaying difference D(n), shaped like sin(πn)·e^{−c n}.
+6. **Unresolved tension (stated plainly).** Along n = 1 + ib, neither T40's Q_cont (b ≤ 6) nor the Levin-accelerated
+   Newton interpolant (b ≤ 3, poorly converged at b = 3) showed e^{πb} growth. But two type < π interpolants of the same
+   data must coincide (Carlson). So at least one of the following holds:
+   - T40's Q_cont is not analytic or not admissible somewhere in Re n ≥ 1. A candidate mechanism (argued): its residue
+     terms ∝ e^{−2πinβ}, of type 2πβ in Im n;
+   - its off-integer numerics are inaccurate;
+   - the Newton function's complex values are mis-extrapolated.
+   - The real-n slope comparison (2, 3) does not depend on the complex-n probes.
+
+**Grade.**
+- T40's C2 "Carlson-unique continuation", on P4′: its slope at n = 1, Q′(1) = −1.38687, **disagrees** with the
+  Carlson/Newton value −1.42072 (±0.008, the measured extrapolator bias), a gap of 0.034.
+  - That disagreement is **partially verified**: data verified (two codes); bias measured by planted controls; the
+    monotone-sign bound rests on complete monotonicity, which is argued.
+  - So T40's continuation is **not established**, even though it passes P4′.
+- **Lesson (my brief's weakness):** P4′, "hits the integers", **cannot detect** a wrong continuation. Any two
+  interpolants pass it.
+  - Future must-pass **P5**: Q′(1) on the P4′ lattice equals the Newton-series value −1.420722 (±0.008).
+  - The honest 45-digit data are `scripts/exp077_Qhp.json`.

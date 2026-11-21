@@ -1,0 +1,8 @@
+single rho=0.0206      K=40: raw -1.37199731  Levin -1.4578567175  exact -1.45785654107  Levin-exact -1.76e-7  all terms<0 True
+single rho=0.0206      K=59: raw -1.41334457  Levin -1.45785654114  exact -1.45785654107  Levin-exact -7.28e-11  all terms<0 True
+mixture 0.012..0.05    K=40: raw -1.4016362  Levin -1.53395674266  exact -1.53395343246  Levin-exact -3.31e-6  all terms<0 True
+mixture 0.012..0.05    K=59: raw -1.45359168  Levin -1.53395565761  exact -1.53395343246  Levin-exact -2.23e-6  all terms<0 True
+mixture 0.008..0.04    K=40: raw -1.40954206  Levin -1.57063594019  exact -1.57043945623  Levin-exact -0.000196  all terms<0 True
+mixture 0.008..0.04    K=59: raw -1.46520037  Levin -1.57043314473  exact -1.57043945623  Levin-exact 6.31e-6  all terms<0 True
+power-corrected n^-2   K=40: raw -1.54205614  Levin -2.20935812313  exact -2.21641533068  Levin-exact 0.00706  all terms<0 True
+power-corrected n^-2   K=59: raw -1.64189719  Levin -2.22404623582  exact -2.21641533068  Levin-exact -0.00763  all terms<0 True
