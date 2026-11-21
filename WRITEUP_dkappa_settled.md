@@ -20,7 +20,8 @@
   - Here C_T = N C_T,free(1 − 40/(9π²N)), from Petkou [Pet95], eq. (30).
 
 **What is settled.**
-1. **δκ is finite at this order.** The first-order tip term carries no log(w/ε): Lemma U (e) for all y.
+1. **δκ is finite at this order** (partially verified; see §1). The first-order tip term carries no log(w/ε). Lemma U
+   (e) holds for all y; the other gaps are graded in §1.
 2. The tip coefficient C₊ at real twist.
 3. Its first-order term.
 4. The complex-twist BIE instrument.
@@ -71,8 +72,9 @@ with numerical spot checks.
     ~y² on the line);
   - Σ̃′ is polynomial to y = 3 (partially verified; no all-y bound).
 - **Lemma U overall:** (e) is verified; (c) is partially verified; (a), (b), (d) and the continuation family are argued.
-  **The no-log conclusion is therefore partially verified as a whole.** Its weakest links are the argued gaps, not the
-  growth.
+  **The no-log conclusion is therefore partially verified as a whole.** C₊'s growth is verified for all y. Σ̃′'s growth
+  (the h₁ factor) is measured only to y = 3 (§8 item 3). The argued gaps (a), (b), (d) and the choice of continuation
+  family are the other weak links.
 
 ## 2. C₊, the near-tip coefficient: four routes at real twist (verified)
 
