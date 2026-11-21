@@ -9137,3 +9137,14 @@ re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB
 - The original N1″/N2 outcome is reported side by side.
 - **Final write-up:** one table of all EXP-081 amendments (a, b, N1′, N1″, N1‴/N2′, cumulative), each with what it changed and
   why. Every one was registered before the quantity of interest was seen.
+
+**EXP-081b cumulative criterion: two implementation details left open above, fixed before any analysis output.**
+- **Interpolation range.**
+  - Below the first checkpoint (s < ~0.94): the first checkpoint's relative error, held constant. This is conservative,
+    because the errors grow with s.
+  - Above the last checkpoint (only reached if s_max = 6): log-linear extrapolation from the last two checkpoints.
+  - Relative errors are floored at 10⁻¹⁶.
+- **If the cumulative sum exceeds 10⁻⁷** at the per-node s_max: s_max is lowered to the largest checkpoint at which the
+  cumulative sum up to it is ≤ 10⁻⁷, and T0/T1 apply beyond it. The geometry is flagged.
+- **N2′ needs |log det| of the production B̃₀.** The running referee stores only the relative error, so the analyzer
+  recomputes the production log det of B̃₀ (npt = 24, same call as the referee). Then impact = rel·|log det|·π/cosh²(πs).
