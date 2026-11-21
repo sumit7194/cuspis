@@ -1,0 +1,1 @@
+W=2 r=6 Ny=48: one beta 40s, maxrss 1.35 GB

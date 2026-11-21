@@ -8846,3 +8846,58 @@ q-convolved bubble. Conditions:
   - Numerics: valid for a tiny box, but **not evidence about the continuum**.
 - **Next ask for Neon, if wanted (T40d is already out):** redo items (2) and (3) with the box ratio r ≥ 8 at L = ∞, or in
   infinite volume.
+
+## EXP-081  Lean P1: first sign estimate of δκ/κ_free on the 3D lattice, with a measured uncertainty — pre-registration [model: Opus 5.5]
+**Decision.** Option 3 (the Bridge, for Sumit, 2026-11-21): the lean P1 now; the matrix-free P2 is designed in parallel
+(Neon brief `BRIEF_P2_matrixfree.md`).
+
+**Pre-checks** (`scripts/exp081_precheck*.py`, `exp081_memdry*`; free side and memory only, **no σ value computed**).
+- N_y = c·(2·pad): **c = 2** puts the free κ_lat within 0.54% (r = 2) down to 0.04% (r = 6) of L = ∞. c = 4 is exact to 10⁻⁵.
+- Edge₁ ≡ edge₂ by reflection to 10⁻¹⁵, so one edge computation per geometry.
+- σ peak measured: 1.24 GB at W = 2, r = 6, N_y = 48 (40 s per β). A third memory overshoot (2.74 GB at N_y = 96, an
+  estimate not computed from the measured scaling) was killed by the watchdog and declared.
+
+**Geometry.**
+- pad P = rW, slice Lx = W + 2P, Lt = 2P, cut row t = P − 1, N_y = 4P.
+- Strip cut x ∈ [P, P + W − 1]; edge cut x ∈ [P, Lx − 1].
+- **W = 2, r ∈ {2, 3, 4, 5, 6} (primary); W = 3, r ∈ {2, 3, 4} (lattice-spacing nuisance).**
+
+**Quantities (engine EXP-079/080).**
+- σ side: S⁽⁰⁾ = ½Q′(1) by route (i), 𝒞 on segments (0, 0.5, 1.5, 3, 6) × 12 Gauss points.
+- Free side, per real scalar: S = ½𝒞[log det H^{(β)} − log det H₀], same 𝒞, same N_y.
+- Connected per length: s_c = [S(strip) − 2S(edge)]/N_y.
+- δκ_lat(r) = −W·s_c^σ, κ_lat(r) = −W·s_c^free, and **R(r) = δκ_lat/κ_lat**.
+
+**Extrapolation (fixed now).**
+- Training r ∈ {2, 3, 4, 5}; **held out r = 6** (W = 2). Two forms, 3 parameters each, least squares, 1 dof:
+  - **A:** X(r) = X∞ + a/r + b/r²;
+  - **B:** X(r) = X∞ + a/r + c·ln(r)/r.
+- Uncertainty per route and form:
+  - σ_ho = |pred(6) − X(6)| × 6 (scaled from the held-out step in u = 1/r, 1/5 → 1/6, to the extrapolation 1/5 → 0;
+    deliberately conservative);
+  - σ_spread = |X∞^A − X∞^B|/2.
+- Final central value: the mean of A and B refit on r = 2..6. σ = √(σ_ho,max² + σ_spread²).
+- **Routes to R∞:**
+  - (i) extrapolate R(r) directly;
+  - (ii) extrapolate δκ_lat(r) alone, then divide by κ_free = 0.0396481.
+  - **If |R∞^(i) − R∞^(ii)| exceeds √(σ_i² + σ_ii²)**, the ratio premise fails. Report the union interval and say so.
+    Otherwise quote route (i).
+- **Lattice nuisance:** σ_W = |R_{W=3}(4) − R_{W=2}(4)|, added in quadrature.
+
+**Clauses (control table).**
+
+| clause | what | criterion | if it fails |
+|---|---|---|---|
+| **K (planted control, run first)** | free κ_lat(r) through both forms, training r = 2..5 | κ∞ interval (both forms) contains 0.0396481, **and** the held-out r = 6 is predicted within that interval | the extrapolation model is rejected; the overall verdict is INCONCLUSIVE |
+| Ny | σ δκ_lat at c = 3 (N_y = 6P) vs c = 2, at W = 2, r ∈ {2, 3} | change ≤ 1% | the difference is added as a systematic, and reported |
+| s-quad | σ δκ_lat with 16 vs 12 points per segment, W = 2, r = 3 | change ≤ 10⁻³ relative | the difference is added as a systematic |
+| F (must-fire) | production engine with the β = 0 double-pole (confluent) residues dropped, W = 2, r = 2 | δκ_lat changes by more than the final σ | if it does not fire, the test cannot see the confluent sector; report it |
+| E | edge₂ computed once (W = 2, r = 2) | equals edge₁ to ≤ 10⁻⁸ relative | investigate before using edge-reuse |
+
+**Sign rule.** δ(κ/C_T)/(κ/C_T)_free = (R∞ + 0.4503)/N. **Decided only if the 2σ interval of R∞ + 0.4503 excludes 0;
+otherwise INCONCLUSIVE.**
+
+**Resources.**
+- 1 core, nice 12, watchdog. Measured peak ~1.3 GB (W = 2, r = 6, and W = 3, r = 4).
+- Order: free side, then σ by increasing r, then nuisances. Per-configuration results are cached for resume.
+- Estimated ~5 h.
