@@ -7820,3 +7820,39 @@ y = 2, as an input to the SC trace. A failure of V1 or V2 means my own BIE build
   checked by one reader plus numerics, so the grade is **partially verified, close to complete**.
 - Together with the measured EXP-065 (y ≤ 5), the first-order tip term's log-freeness now has an analytic all-y
   argument, every ingredient of which has been checked at least numerically.
+
+**EXP-070 addendum: line-check of T30 Step 4; T26's contour-shift step line-checked by the Bridge.** [model: Opus 5.5]
+- *T26 Step 5, Bessel bound (the Bridge's line-check, 2026-11-21).*
+  - Shift p → p − iθ sgn(w) in K_{iw}(u) = ½∫e^{−iwp}e^{−u cosh p}dp. This is legal: the integrand is entire with
+    uniform decay in the strip.
+  - That gives |K_{iw}| ≤ e^{−|w|θ}K₀(u cos θ). With θ = π/2 − 1/(1 + |w|) and Jordan's inequality, the stated bound
+    follows.
+  - Numerics: mine (EXP-070 (a), max ratio 0.40) and the Bridge's (30 digits, max ratio 0.976).
+- *T30 Step 4, my line-check.*
+  - With T27's factorisation, κ_max ≤ sup over unit f of ‖f‖²_S, with ‖f‖²_S = λ²‖K̄^{½}D_u K^{½}f‖² (D_u = E_u). And
+    1 − ‖f‖²_S ≥ T1[f] = ∫W|f̂|², because λ² × symbol = 1 − W.
+  - **Branch A:** if T1 ≥ δ²/(3cosh²πy), the gap is at least that.
+  - **Branch B:** otherwise ‖f_high‖ < δ and ‖f′_low‖ < δ/π (Step 2), so ‖g‖²_∞ ≤ 2e·e^{−π|y|}δ, with g = K^{½}f_low
+    (Step 3).
+  - Split g at |p| = L = arccosh((2π|y| + 10)/u), with λ²‖K̄^{½}‖² ≤ e^{2π|y|}/π:
+    - inside: ≤ (e^{2π|y|}/π)·2L·2e·e^{−π|y|}δ = (4e/π)Le^{π|y|}δ;
+    - outside: ≤ (e^{2π|y|}/π)·e^{−(2π|y|+10)}·2πe·e^{−π|y|} = 2e^{−9}e^{−π|y|}.
+    - Both constants are reproduced exactly.
+  - With δ = 1/(100Le^{π|y|}), inside = 4e/(100π) = 0.0346.
+  - Seminorm triangle: ‖f‖_S ≤ ‖f_low‖_S + ‖f_high‖ < √0.0346 + √(2e⁻⁹) + δ ≈ 0.20. That uses T27's operator norm ≤ 1.
+  - **Nit:** combining inside and outside needs (‖a‖ + ‖b‖)², which is ≈ 0.041, not ‖a‖² + ‖b‖² ≈ 0.035. So Branch B
+    gives 1 − ‖f‖²_S > 0.95, not 0.96. **No effect:** the bound is min(δ²/(3cosh²πy), 0.95) = 1/(30000L²e^{2π|y|}cosh²πy),
+    as claimed.
+- **Grade:** every step of T26 + T27 + T30 is now line-checked by at least two readers (the Bridge and me), plus
+  numerics:
+  - T27 (EXP-068);
+  - T26 Steps 1–4 (EXP-067);
+  - T26 Step 5 (the Bridge, plus EXP-070 (a)–(c));
+  - T30 Steps 1–4 (the Bridge, plus this note).
+  - **Lemma U (e): |C₊(½ + iy)| ≤ C(1 + |y|)²(1 + ln(1 + |y|))³ = o(e^{2π|y|}) for all y. VERIFIED** (analytic, two-reader
+    line-check, numerical spot checks). The first-order tip term carries no log(w/ε).
+- *What this does not cover* (unchanged from the Lemma U status note):
+  - gaps (a), (b) and (d) and the choice of continuation family: argued;
+  - gap (c): partially verified;
+  - Σ̃′'s growth: partially verified, polynomial to y = 3 (its own all-y bound is not proved);
+  - the n = 1 factor: verified.
