@@ -8204,3 +8204,25 @@ D = 6/m.
 
 1 core, nice 12, watchdog. The estimate is ≲ 1 h (the largest LU, ~1.1·10⁶ sites, takes ~10–20 s, plus ~2·10³ chunked
 solves).
+
+**EXP-073 addendum: T31's script read in full (not run).** `neon_work/dkappa/T31_code/verify_t31_sigma_bubble.py`, 266 lines,
+numpy only, no file or network side effects.
+- **First question answered: B is a 2D stand-in.** Its header reads "single-mass 2D Hadamard stand-in 2·G_{1,k}∘G^{(β)}_k
+  (not the 3D q-convolved bubble)".
+  - So every σ-side number in T31 is a property of a toy bubble, not of the physical B̂_k = 2∫dq/2π Ĝ_{1,q}∘Ĝ^{(β)}_{k−q}:
+    K4's ρ and truncation errors, the M12/M_conn cancellation, and "edge-localised 99.75%".
+  - The two have different short-distance (straddle) structure, which is exactly where my well-posedness doubt sits.
+- **K1 lattice set-up.**
+  - Box 4w × 3w with open boundaries at m = 1.5/w: the box wall is ~1.5w ≈ 2.3/m from the strip, and the rays end there.
+  - Dense matrices at w = 4–8.
+  - So the factor-2 K1 miss is plausibly box- and lattice-dominated. It is not a test of the factorisation.
+  - The CFH routine uses the same kernel convention as ours (R ∝ e^{(β−½)(p−p′)}).
+- **K2 and K3 pass by construction.**
+  - For a pure-gauge twist, spanning-tree canonicalisation is exactly the inverse gauge map, so B_can = B₀ and
+    K_σ = 0.
+  - Interior and exterior cuts canonicalise to the same B_can.
+  - These are correct and required, but they cannot fail for a correct implementation of the transport. The planted
+    +0.01·B₀ does fire.
+- **K4** uses Lx × Lt = 26 × 18, w = 6.
+- **Consequence:** T31's σ-side claims are not evidence about the physical bubble. EXP-073(b), now running, is the
+  first proper test of its free-scalar factorisation.
