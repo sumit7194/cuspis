@@ -1,0 +1,3 @@
+n=2: Q(n) = logdet B_n - n logdet B_1 = -0.5909488834  (sign +1)
+n=3: Q(n) = logdet B_n - n logdet B_1 = -0.8955548763  (sign +1)
+n=4: Q(n) = logdet B_n - n logdet B_1 = -1.1942093378  (sign +1)

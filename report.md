@@ -8501,3 +8501,17 @@ numpy only, no file or network side effects.
   - The covariant fix: unverified.
 - **No change to the δκ status:** no admissible n → 1 formula is in hand. The withdrawals (SC, T36 as written) are kept
   as controls. **Any future candidate must pass the pure-gauge-zero test** (`exp076_puregauge.py`) in addition to P1–P4.
+
+**EXP-076/077 addendum: T36 code read in full (not run), and P4 reference values reproduced with own code (verified to 10 digits).** [model: Opus 5.5]
+- `neon_work/dkappa/T36_code/` (2 scripts, numpy/mpmath/sympy, no I/O) was read in full and not run.
+  - **Its P1 "cubic UV log coefficient = 0" is a printed literal** (`verify_t36_continuation.py` line 62), not a
+    computation: a check that cannot fail.
+  - Its P4 checks only the integer-n split. Its 1-site toy uses a polynomial closed form for C_n(β), so the toy's
+    "direct" Q′(1) is honest for that toy.
+- `scripts/exp077_p4_reference.py` (own code, own site ordering) reproduces the integer-n replica-manifold values
+  Q(2), Q(3), Q(4) = −0.5909488834, −0.8955548763, −1.1942093378 to all 10 digits. These serve as T37's P4′ targets.
+- The T37 brief (`neon_work/dkappa/BRIEF_T37_admissible_continuation.md`, drafted at the Bridge's request) carries:
+  - G1 (pure-gauge zero) and G2 (straddle covariance) as must-passes;
+  - P1 computed rather than asserted;
+  - P4′ evaluated through the continuation;
+  - F1–F3.
