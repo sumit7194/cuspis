@@ -8999,3 +8999,33 @@ night run uses **launch variant (b)**, run from `scripts/`:
 - It starts only after the daytime EXP-081a production finishes (the cache file is shared), on the night Sumit picks.
 - Outcome markers: `exp081_r8_STATUS.txt` (FINISHED / CRASHED / RUNNING-without-a-process = killed) and
   `exp081_r8_result.txt`.
+
+### EXP-081a halted; numerical diagnosis of the edge configuration; strip-pair redesign proposed (EXP-081b) [model: Opus 5.5]
+**Halted** (`scripts/exp081_output.txt`).
+- The watchdog stopped the run at the start of W = 2, r = 6: footprint 1.94 GB against the 1.8 GB cap, memory accumulated
+  across geometries in one process.
+- **Seen, saddle-included, edge design:** R = 1.82 (r = 2), 3.62 (r = 3), −237 (r = 4), 21.5 (r = 5). The strip values
+  and T_saddle are smooth; the edge route-(i) pieces are not.
+
+**Diagnosis** (`exp081_edgediag.py`, `exp081_sreliab.py`, `exp081_stableK.py` + outputs).
+- Integer-n checks pass for the edge at r = 4 (≤ 2·10⁻⁸). They never probe large Im α.
+- **The edge's g(s) breaks down for s ≳ 1.5–2:**
+  - G via Woodbury and via direct inverse disagree (−21.71 vs −21.62 at s = 1.5; −39.7 vs −58.8 at s = 2);
+  - generic matrix balancing changes nothing, so **the log det is not the problem; G evaluation is.**
+- **Part of it was my Woodbury form** K = C(I + MC)⁻¹, with C ∝ 1/z. The identical form (C⁻¹ + M)⁻¹ is now used away from
+  z = 1. It agrees with direct inverse to 10⁻¹⁰ (Im α = 2) and 4·10⁻⁸ (Im α = 3).
+- **Beyond that the error grows as e^{2π Im α}·ε in any double-precision method** (10⁻⁵ at 4, 10⁻² at 5): intrinsic
+  conditioning from the straddle factor of a long (edge-to-wall) cut.
+  - The tails need G(β ∓ is_j) at Im α = s + s_j, up to 5–6.
+  - The r = 4 edge also has a pole at s = 4.04 (absent at r = 3, 5), which plausibly explains its anomalous q = 0
+    trace.
+- **A short cut (the 2-link strip) is numerically fine.** Four variants agree to all digits up to s = 3.5.
+
+**Redesign (free side only; no σ).** A strip pair in the same box: W₁ = 2, W₂ = 4, centred, Lx = 2P + 4, Lt = 2P,
+δκ_lat = −[s(2) − s(4)]/(½ − ¼). The edge-local terms cancel exactly, and both cuts are short.
+- Free κ_lat/κ_free = 0.44, 0.65, 0.75, 0.81, 0.84 at P = 4, 6, 8, 10, 12; 0.95 at P = 64; (3, 6) pair 0.979 at P = 64.
+  That is much better box behaviour than the edge design.
+- Fits: on P = 4..10, 1.038 (A) and 1.026 (B); on 6..12, 1.003 and 0.969. **Measured box systematic about ±4%.**
+- Neon T46 (continuum infinite-volume BIE; unverified) independently reports the same two obstructions: the unsaddled IR×UV
+  divergence, and straddle amplification for s ≳ 0.9.
+- The full EXP-081b registration awaits the Bridge's OK on the redesign.

@@ -31,8 +31,15 @@ class Slice:
             Cm[2 * j + 1, 2 * j] = -(z - 1); Cm[2 * j, 2 * j + 1] = -(1 / z - 1)
         return Cm
     def K(self, a):
+        """K = C (I + M C)^{-1} = (C^{-1} + M)^{-1}. The second form is used away from z = 1 (|z - 1| > 0.5): C ~ 1/z is
+        huge for |Im a| >> 1 and the first form loses all precision there (EXP-081a diagnosis); C^{-1} has entries ~1 and ~z."""
         z = np.exp(2j * np.pi * a); Cm = self.C(z)
-        return Cm @ np.linalg.inv(np.eye(2 * self.W) + self.M @ Cm)
+        if abs(z - 1) <= 0.5:
+            return Cm @ np.linalg.inv(np.eye(2 * self.W) + self.M @ Cm)
+        Ci = np.zeros_like(Cm)
+        for j in range(self.W):          # per-link 2x2 block [[0, c01], [c10, 0]] -> inverse [[0, 1/c10], [1/c01, 0]]
+            Ci[2 * j, 2 * j + 1] = 1.0 / Cm[2 * j + 1, 2 * j]; Ci[2 * j + 1, 2 * j] = 1.0 / Cm[2 * j, 2 * j + 1]
+        return np.linalg.inv(Ci + self.M)
     def G(self, a):
         if self.W == 0: return self.G0.astype(complex)
         return self.G0 - self.A @ self.K(a) @ self.A.T

@@ -1,9 +1,15 @@
-[      0s] S1 normalisation: max rel |diag(G D G) - d| = 6.9e-16 [PASS]
-[      0s] S2 lattice P2: d*r over window = [np.float64(-0.01902), np.float64(-0.01906), np.float64(-0.01562), np.float64(-0.01567), np.float64(-0.01246), np.float64(-0.01251)], mean -0.01572 vs -1/32 = -0.03125 [FAIL]
-[     10s] sigma W=2 r=2 strip c=2 cpts=12 dd=False saddle=False: S = -20.4557954200 (T_saddle None)  [10s]
-[     22s] sigma W=2 r=2 edge c=2 cpts=12 dd=False saddle=False: S = -12.6937681858 (T_saddle None)  [12s]
-[     73s] sigma W=2 r=3 strip c=2 cpts=12 dd=False saddle=False: S = -43.9735423971 (T_saddle None)  [52s]
-[    141s] sigma W=2 r=3 edge c=2 cpts=12 dd=False saddle=False: S = -29.4274123783 (T_saddle None)  [68s]
-[    141s] S3 saddle-OFF regression: R = {2: -48.534387841348746, 3: -69.38252930830063} vs seen {2: -48.534388, 3: -69.382529} [PASS]
-[    166s] S4 pure gauge (wall-to-wall cut, saddle ON): Q'(1) = 4.50e-08, T_saddle = 0.00e+00 (ref |route_i| 40.91) [PASS]
-[    166s] CONTROL FAILURE: production not started (investigate)
+[      0s] free kappa_lat W=2: {2: 0.012702, 3: 0.017873, 4: 0.021386, 5: 0.023894, 6: 0.025769}
+[      0s] free kappa_lat (planted control K): A train 0.036080 all 0.036412 (ho err 1.23e-04); B train 0.040934 all 0.040871 (ho err 1.32e-05) -> 0.038641 +- 0.002348
+[      0s] K: kappa_inf = 0.038641 +- 0.002348 vs 0.0396481 (train-only A 0.036080, B 0.040934) [PASS]
+[     11s] sigma W=2 r=2 strip c=2 cpts=12 dd=False saddle=True: S = 0.9534621817 (T_saddle 42.818515203420134)  [11s]
+[     23s] sigma W=2 r=2 edge c=2 cpts=12 dd=False saddle=True: S = 0.5693772628 (T_saddle 26.526290897120298)  [12s]
+[     23s] W=2 r=2: delta_kappa_lat = 0.02316154, kappa_lat = 0.01270167, R = 1.823504
+[     75s] sigma W=2 r=3 strip c=2 cpts=12 dd=False saddle=True: S = 1.6991870210 (T_saddle 91.34545883634323)  [52s]
+[    137s] sigma W=2 r=3 edge c=2 cpts=12 dd=False saddle=True: S = 1.2375471423 (T_saddle 61.32991904106735)  [62s]
+[    137s] W=2 r=3: delta_kappa_lat = 0.06465894, kappa_lat = 0.01787347, R = 3.617592
+[    402s] sigma W=2 r=4 strip c=2 cpts=12 dd=False saddle=True: S = 2.4093706673 (T_saddle 153.8278538419259)  [265s]
+[    666s] sigma W=2 r=4 edge c=2 cpts=12 dd=False saddle=True: S = -39.3659439156 (T_saddle 109.94369422194663)  [264s]
+[    666s] W=2 r=4: delta_kappa_lat = -5.07132866, kappa_lat = 0.02138579, R = -237.135459
+[   1361s] sigma W=2 r=5 strip c=2 cpts=12 dd=False saddle=True: S = 3.0739923249 (T_saddle 229.10098366774096)  [695s]
+[   2078s] sigma W=2 r=5 edge c=2 cpts=12 dd=False saddle=True: S = 6.6689020176 (T_saddle 172.25335230751438)  [717s]
+[   2078s] W=2 r=5: delta_kappa_lat = 0.51319059, kappa_lat = 0.02389409, R = 21.477720

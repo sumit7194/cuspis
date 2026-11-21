@@ -1,0 +1,24 @@
+alpha=(0.5+0.25j): max|G_stable - G_direct|/max|G| = 8.4e-15
+alpha=(0.1+0.25j): max|G_stable - G_direct|/max|G| = 2.8e-15
+alpha=(0.9-0.25j): max|G_stable - G_direct|/max|G| = 5.5e-15
+alpha=(0.5+1j): max|G_stable - G_direct|/max|G| = 3.8e-13
+alpha=(0.1+1j): max|G_stable - G_direct|/max|G| = 3.5e-13
+alpha=(0.9-1j): max|G_stable - G_direct|/max|G| = 4.3e-13
+alpha=(0.5+2j): max|G_stable - G_direct|/max|G| = 1.3e-10
+alpha=(0.1+2j): max|G_stable - G_direct|/max|G| = 1.3e-10
+alpha=(0.9-2j): max|G_stable - G_direct|/max|G| = 1.2e-10
+alpha=(0.5+3j): max|G_stable - G_direct|/max|G| = 3.9e-08
+alpha=(0.1+3j): max|G_stable - G_direct|/max|G| = 2.7e-08
+alpha=(0.9-3j): max|G_stable - G_direct|/max|G| = 3.1e-08
+alpha=(0.5+4j): max|G_stable - G_direct|/max|G| = 1.5e-05
+alpha=(0.1+4j): max|G_stable - G_direct|/max|G| = 1.8e-05
+alpha=(0.9-4j): max|G_stable - G_direct|/max|G| = 1.7e-05
+alpha=(0.5+5j): max|G_stable - G_direct|/max|G| = 8.9e-03
+alpha=(0.1+5j): max|G_stable - G_direct|/max|G| = 7.7e-03
+alpha=(0.9-5j): max|G_stable - G_direct|/max|G| = 1.0e-02
+edge poles s (slices 0,1): [[0.443731, 1.497595, 2.884858], [0.523259, 1.649737, 3.031016]]
+s=1.5: edge g (stable Woodbury) = -21.516773
+s=2.0: edge g (stable Woodbury) = -30.096331
+s=2.5: edge g (stable Woodbury) = +630.189236
+s=3.0: edge g (stable Woodbury) = +1698.809916
+s=3.5: edge g (stable Woodbury) = +2679.816786

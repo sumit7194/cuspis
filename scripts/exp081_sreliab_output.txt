@@ -1,0 +1,16 @@
+--- strip (W=2 r=3) ---
+s=0.5: g woodbury -3.364779 | woodbury+bal -3.364779 | direct -3.364779 | direct+bal -3.364779 | max|B| 3.6e-01
+s=1.0: g woodbury -11.127527 | woodbury+bal -11.127527 | direct -11.127527 | direct+bal -11.127527 | max|B| 5.1e+00
+s=1.5: g woodbury -40.095084 | woodbury+bal -40.095084 | direct -40.095084 | direct+bal -40.095084 | max|B| 5.3e+01
+s=2.0: g woodbury -107.005021 | woodbury+bal -107.005021 | direct -107.005021 | direct+bal -107.005021 | max|B| 4.6e+02
+s=2.5: g woodbury -210.404968 | woodbury+bal -210.404968 | direct -210.404968 | direct+bal -210.404968 | max|B| 1.3e+03
+s=3.0: g woodbury -350.335252 | woodbury+bal -350.335252 | direct -350.335252 | direct+bal -350.335252 | max|B| 2.2e+03
+s=3.5: g woodbury -500.324017 | woodbury+bal -500.324017 | direct -500.324017 | direct+bal -500.324017 | max|B| 2.3e+03
+--- edge (W=2 r=3) ---
+s=0.5: g woodbury -1.700601 | woodbury+bal -1.700601 | direct -1.700600 | direct+bal -1.700600 | max|B| 5.6e-01
+s=1.0: g woodbury -5.429860 | woodbury+bal -5.429860 | direct -5.429813 | direct+bal -5.429813 | max|B| 1.3e+01
+s=1.5: g woodbury -21.710986 | woodbury+bal -21.710986 | direct -21.620135 | direct+bal -21.620135 | max|B| 2.9e+02
+s=2.0: g woodbury -39.722171 | woodbury+bal -39.722171 | direct -58.845030 | direct+bal -58.845030 | max|B| 6.3e+03
+s=2.5: g woodbury +646.382262 | woodbury+bal +646.382262 | direct -116.948691 | direct+bal -116.948691 | max|B| 1.4e+05
+s=3.0: g woodbury +1628.689395 | woodbury+bal +1628.689395 | direct -194.911572 | direct+bal -194.911572 | max|B| 3.2e+06
+s=3.5: g woodbury +2674.240912 | woodbury+bal +2674.240912 | direct -285.914571 | direct+bal -285.914571 | max|B| 6.8e+07
