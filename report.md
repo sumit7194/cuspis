@@ -8820,3 +8820,29 @@ q-convolved bubble. Conditions:
   - Reaching r ≈ 8 at L = ∞ means N₂D ≈ 1100 at W = 2, with a fine k-grid (N_y ≳ 4 × box).
   - That is ≈ 7 GB in the FFT layout: **not feasible on this box as built.**
   - This is a design decision. It goes to the Bridge before any P1 registration.
+
+**T40c grade** (Neon, `neon_work/dkappa/T40c_full.md`; summary and claims read; code not run) [model: Opus 5.5]
+- **Controls.**
+  - G1, G2, P1–P5 and F1–F3 restate values already held (EXP-078/079). They are consistent, but they are not new evidence.
+  - **New: F4**, a planted zero at ½ + 0.7i, is detected as winding W = +1 at all five k. So its zero-freeness test can
+    fire (a useful must-fail).
+- **Item (1), growth.**
+  - The single-propagator bound ‖(I + 4sin²(πα)M_q)⁻¹‖ ≤ 1/sin(πa), uniform in q, is claimed SURE. **Not checked by me.**
+  - For two edges the bound reaches only O(e^{π|σ|}) per propagator, so the product sits at Carlson's threshold. **Open**,
+    in its own labelling.
+  - The 50-dps two-edge numerics up to s = 12 are bounded or decaying (suggestive).
+- **Item (2), S₁ and small kw.**
+  - The "TRUE 3D" numerics are on a **10×6 box with w = 2**, i.e. box ratio r ≈ 2. My EXP-080 free calibration puts the
+    lattice κ at only **32%** of the continuum at r = 2.
+  - So the quoted small-kw behaviour (c₀ − 0.0298k²) and ‖K_rel‖_{S₁} = 3.87 are **finite-box** statements. In infinite
+    volume the expected behaviour is O(|k|) (B_{1,k} = 1/(8πρ) − |k|/(8π) + …).
+  - The two-cone subtraction being L/w-free: argued (its SURE), consistent with my own construction.
+- **Item (3), zero-freeness.** The winding certificate W = 0 covers [0.40, 0.60]×[0, 2.5] **on that box only**. The large-kw
+  tail is plausible; continuum and large-|s| remain open.
+- **Consistent with my engine.** For q₁ ≠ q₂ both Abel–Plana tails must be kept. That is exactly `inner_pair`, which passed
+  EXP-079 clause C and pre-check EXP-080 (a2).
+- **Grade.**
+  - Analytic items: unverified (two open, one claimed proved and unchecked).
+  - Numerics: valid for a tiny box, but **not evidence about the continuum**.
+- **Next ask for Neon, if wanted (T40d is already out):** redo items (2) and (3) with the box ratio r ≥ 8 at L = ∞, or in
+  infinite volume.
