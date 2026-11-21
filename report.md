@@ -7856,3 +7856,7 @@ y = 2, as an input to the SC trace. A failure of V1 or V2 means my own BIE build
   - gap (c): partially verified;
   - Σ̃′'s growth: partially verified, polynomial to y = 3 (its own all-y bound is not proved);
   - the n = 1 factor: verified.
+- **Correction to my "nit" above (my error, pointed out by the Bridge).** Once ‖K̄^{½}‖² is pulled out as an operator
+  norm, the inside and outside pieces are integrals of the same ‖D_u g‖² over disjoint p-regions, so they **add**:
+  0.0346 + 0.00025 = 0.035. No triangle inequality is needed there. The only triangle is f_low + f_high in the
+  S-seminorm, giving √0.035 + 0.01 < 0.20 and 1 − ‖f‖²_S > 0.96. **T30's 0.96 is correct.** The grade is unchanged.
