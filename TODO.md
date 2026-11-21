@@ -577,3 +577,13 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       - an analytic all-y growth bound for C₊ (and Σ̃′);
       - the BIE referee (Neon T25) result, to be checked;
       - re-derive the full δκ tip term with f₀ ≠ 0 (twisted family) for the finite value.
+
+## δκ status 2026-11-21 (after 77f10d0)
+- [ ] DECISION PENDING (Sumit, via the Bridge): option (i) cannot give a physical number. The Tier-1/Tier-2 split is
+      gauge-dependent: the twist-cut straddle makes ‖X‖ O(1), and the linear and quadratic q=0 pieces cancel there.
+      This is argued, and verified on a pure-gauge toy. Options: (ii′) full SC / (iii) integer-n / (iv) write-up /
+      (v) Neon theory brief for a gauge-invariant edge representation. Recommended: (v) + (iv).
+- [ ] Unverified: Tier-1's L/w coefficient changes with cut placement on the strip (strip vs complement). Needs the
+      strip machinery to show.
+- [x] Z-factor checkpoint resolved (argued): for a smooth harmonic ΔG the local term contributes 0. The earlier free-entropy
+      link was a formal error.
