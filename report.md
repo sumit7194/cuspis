@@ -8949,3 +8949,29 @@ otherwise INCONCLUSIVE.**
     refit on r = 2..8. Planted control K applies identically, with free r = 8 held out.
 - **Primary:** version (b) if the night run completes; otherwise **(a) stands as registered.** Acceptance and sign
   rules are the same for both. Both versions are always reported.
+
+### EXP-081a controls: S1, S3, S4 PASS; S2 FAILED as registered, diagnosed as a mis-specified window (box suppression), not an engine error [model: Opus 5.5]
+(`scripts/exp081_output.txt`, `exp081_s2diag.py` + `_output.txt`.)
+
+| clause | result |
+|---|---|
+| S1 normalisation | 6.9·10⁻¹⁶: **PASS** |
+| **S2 lattice P2** (registered window P = 12, r ≈ 2.5–4.5) | mean d·r = −0.01572 vs −1/32: **FAIL as registered** |
+| S3 saddle-OFF regression | R = −48.5343878, −69.3825293 vs seen −48.534388, −69.382529: **PASS** (the switch toggles exactly the saddle term) |
+| S4 pure gauge (wall-to-wall cut, saddle ON) | Q′(1) = 4.5·10⁻⁸ (|route_i| = 40.9), T_saddle = 0: **PASS** (the saddle adds nothing where there is no edge) |
+
+**Why S2 fired** (asked before acting; `exp081_s2diag.py`).
+- **Code path checked.** The continued single-factor average equals the honest (1/n)Σ_kΔG^{(k/n)}(x, x) at n = 2, 3 to
+  2·10⁻¹⁶ and 3·10⁻¹⁷. A finite-difference derivative of the continuation equals `coincident_dn` to 2·10⁻⁸.
+- **Physics.** With sparse per-slice data at L = ∞ for larger boxes, d·r is a scaling function of r/P that tends to
+  −1/32 as r/P → 0:
+  - r = 2.55: d·r = −0.0190 (P = 12), −0.0243 (P = 24), −0.0274 (P = 48);
+  - equal r/P agrees across boxes, e.g. −0.0243 (P = 24, r = 2.55) and −0.0253 (P = 48, r = 4.53), so lattice spacing is
+    secondary;
+  - a linear extrapolation of the P = 48 points to r/P → 0 gives ≈ −0.0301, **3.7% from −1/32.**
+- **So the registered window (r/P ≈ 0.2–0.4) sat where the box suppresses d by 40–60%.** A correct engine could not pass
+  it. **The fault is my control design:** I did not bound box effects on this local quantity before fixing the window
+  (rule VIII).
+- **Revised S2 (POST-REGISTRATION, labelled):** the box-extrapolated d·r must lie within 10% of −1/32. It does (3.7%), with
+  the code-path checks above.
+- **Production proceeds on that basis.** The Bridge has been told, with a veto.

@@ -1,0 +1,6 @@
+(1) n=2: max |cont - honest| at window sites = 2.1e-16 (values ~2.4e-03)
+(1) n=3: max |cont - honest| at window sites = 3.2e-17 (values ~2.5e-03)
+(1) d by FD of the continuation vs coincident_dn: max rel diff 2.0e-08
+(2) single edge, box P=12, L=inf: (r, d*r) = [(np.float64(2.55), np.float64(-0.019)), (np.float64(2.55), np.float64(-0.01904)), (np.float64(3.54), np.float64(-0.01559)), (np.float64(3.54), np.float64(-0.01564)), (np.float64(4.53), np.float64(-0.01243)), (np.float64(4.53), np.float64(-0.01248))]
+(2) single edge, box P=24, L=inf: (r, d*r) = [(np.float64(2.55), np.float64(-0.02431)), (np.float64(2.55), np.float64(-0.02431)), (np.float64(4.53), np.float64(-0.02028)), (np.float64(4.53), np.float64(-0.0203)), (np.float64(6.52), np.float64(-0.01641)), (np.float64(6.52), np.float64(-0.01643)), (np.float64(8.51), np.float64(-0.01298)), (np.float64(8.51), np.float64(-0.013))]
+(2) single edge, box P=48, L=inf: (r, d*r) = [(np.float64(2.55), np.float64(-0.02736)), (np.float64(2.55), np.float64(-0.02736)), (np.float64(4.53), np.float64(-0.02531)), (np.float64(4.53), np.float64(-0.02531)), (np.float64(8.51), np.float64(-0.02082)), (np.float64(8.51), np.float64(-0.02082)), (np.float64(12.51), np.float64(-0.01676)), (np.float64(12.51), np.float64(-0.01676)), (np.float64(16.51), np.float64(-0.01321)), (np.float64(16.51), np.float64(-0.01322))]

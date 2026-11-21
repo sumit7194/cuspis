@@ -1,0 +1,9 @@
+[      0s] S1 normalisation: max rel |diag(G D G) - d| = 6.9e-16 [PASS]
+[      0s] S2 lattice P2: d*r over window = [np.float64(-0.01902), np.float64(-0.01906), np.float64(-0.01562), np.float64(-0.01567), np.float64(-0.01246), np.float64(-0.01251)], mean -0.01572 vs -1/32 = -0.03125 [FAIL]
+[     10s] sigma W=2 r=2 strip c=2 cpts=12 dd=False saddle=False: S = -20.4557954200 (T_saddle None)  [10s]
+[     22s] sigma W=2 r=2 edge c=2 cpts=12 dd=False saddle=False: S = -12.6937681858 (T_saddle None)  [12s]
+[     73s] sigma W=2 r=3 strip c=2 cpts=12 dd=False saddle=False: S = -43.9735423971 (T_saddle None)  [52s]
+[    141s] sigma W=2 r=3 edge c=2 cpts=12 dd=False saddle=False: S = -29.4274123783 (T_saddle None)  [68s]
+[    141s] S3 saddle-OFF regression: R = {2: -48.534387841348746, 3: -69.38252930830063} vs seen {2: -48.534388, 3: -69.382529} [PASS]
+[    166s] S4 pure gauge (wall-to-wall cut, saddle ON): Q'(1) = 4.50e-08, T_saddle = 0.00e+00 (ref |route_i| 40.91) [PASS]
+[    166s] CONTROL FAILURE: production not started (investigate)
