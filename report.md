@@ -9682,3 +9682,39 @@ control.**
   - N_θ 32/40/48 give +1.34/+1.31/+1.18% in the same box.
   - N_θ = 64 (+3.17%) used r_max/w = 35.6 against ~160, so it is not like-for-like (the Bridge's point).
   - The δ(kh²) curve is an observation, not a mechanism. The residual stays **unexplained.**
+
+### Sealed r → 0 derivation (30c6d8a) and its numerical checks, run after sealing [model: Opus 5.5]
+- **Sealed before T46e returned:** `notes/T46e_sealed_derivation_r_to_0.md`, graded "argued" throughout.
+- **(a) Identity check (`scripts/t46d_grade/seal_a.*`): verified.**
+  - At 50 digits, (1/n)Σ_k f(k/n) = A + 2Br·r^{n−1}/(1 − rⁿ) at n = 1…6, to ≤ 1·10⁻⁵⁰, for r = 10⁻², 10⁻⁶, 10⁻¹², 10⁻²⁰.
+  - ∂ₙ at n = 1 equals 2Br·ln r/(1 − r)², matching a 50-digit finite difference: 9.03, 27.63, 55.26, 92.10.
+  - **In this parametrisation Br = B·r → −1 is the finite coefficient** (A → 2), so the exact per-mode n-derivative
+    **grows like −2 ln r**.
+  - The Bridge's wording note ("r ln r → 0") treats B as finite. It does not hold here: B ∝ 1/r, as the sealed §1 states.
+    Whether the total stays finite is decided by the mode weights, which (b) measures.
+- **(b) T46d engine under P1 + P2** (scratch patch: no threshold; stable λ − ¼; stable f; `seal_b.*`). Configuration of the
+  T46d grade: N_θ 16, μ_max 4, dq 0.25, Q 16, s_max 2.5.
+
+  | | T0 (z = 4 / 8) | T2 (z = 4 / 8) |
+  |---|---|---|
+  | delivered (threshold 10⁻¹⁰) | 1.451810 / 1.135168 | −1.120536 / −0.893496 |
+  | P1 + P2 | **1.313776 / 0.992413** | −1.111514 / −0.874510 |
+
+  - No NaN.
+  - P2 spectrum: 656 modes. 31 sit at the round-off floor (λ − ¼ ≤ 0); 185 have 0 < λ − ¼ < 10⁻¹⁴, the smallest 6·10⁻²¹.
+  - **The threshold biased T0 by about +0.14, nearly z-independently:** the z-dependence of the shift is 5·10⁻³ over
+    ln 2.
+- **(b2) Sensitivity required by P2 (`seal_b2.*`).**
+  - **T0 is resolved.**
+    - Floor modes set to λ − ¼ = 10⁻²² or 10⁻³⁰: ΔT0 ≤ 2·10⁻³ (z-dependence 7.5·10⁻⁴), identical for both values.
+    - Every λ − ¼ < 10⁻¹⁴ scaled ×10 or ×0.1: ΔT0 = ∓6.5·10⁻⁵.
+    - The sealed prediction "T0 independent of any cutoff below the floor" holds in this configuration: **partially
+      verified** (one configuration).
+  - **T2 is not resolved under P1.** The same ×10 / ×0.1 scalings move T2 by −1.1·10⁻² / +1.3·10⁻² at z = 8, linearly in
+    ln r.
+    - This is the sealed §3 mechanism: two near-¼ modes produce pair tails that cancel only when evaluated together.
+    - The delivered threshold hid it by dropping those tails (T2 moved only 4·10⁻⁴ under threshold changes).
+    - **Consequence:** T2 needs the near-¼ pair tails combined algebraically before evaluation. Alternatively, a proof
+      that their exact combination → 0 as r → 0, which would make dropping them legitimate. Not done here; this is an
+      open item for T46e grading.
+- **(c) Perturbed pure gauge:** not run yet.

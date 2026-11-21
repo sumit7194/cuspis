@@ -1,0 +1,3 @@
+  delivered (threshold 1e-10): z=4 T0 +1.451810 T2 -1.120536 | z=8 T0 +1.135168 T2 -0.893496
+  P2 spectrum: 656 modes; lambda-1/4 <= 0 (round-off floor): 31; 0 < lambda-1/4 < 1e-14: 185; min positive 6.1e-21
+  P1+P2 (no threshold, stable lambda-1/4): z=4 T0 +1.313776 T2 -1.111514 | z=8 T0 +0.992413 T2 -0.874510
