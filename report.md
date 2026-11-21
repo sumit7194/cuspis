@@ -9797,3 +9797,61 @@ control.**
     ln(1/ε) growth, not physics, that seemed to contradict it. The P3 grade moves from "unsupported" to **partially
     verified (this family)**. No working implementation exists yet.
   - **T46e must reproduce this table**, the Bridge's referee rule.
+
+## EXP-083  Honest integer-n referee for the lattice σ continuation (Strip3D: QEP poles, s_cut, saddle) — REGISTRATION (draft 77013fc + the Bridge's edits 1–5, 2026-11-22) [model: Opus 5.5]
+**Text.** `notes/EXP-083_draft.md` at 77013fc is registered, with the amendments below; they govern where they differ.
+Nothing has been computed. It may run in parallel with 081c (each < 1 GB, nice 12, watchdog).
+
+**1. Referee independence** (no seeding by production poles):
+- **(1a) An independent pole set** per slice: zeros of det H(α) of the FULL N×N twisted slice operator. zH(z) =
+  zH0 + (z² − z)E_ul + (1 − z)E_lu is quadratic in z, so it is linearised to a 2N×2N generalised eigenproblem. This is a
+  different operator and a different method from production's 2W QEP on the Woodbury M. It is census-compared with the
+  QEP; any mismatch below s = 3 is reported. These own poles are the bases of the fixed-base fits.
+- **(1b) A base-free arm:** free-base (Prony / matrix-pencil) fits on the same honest data. They must agree with the
+  fixed-base referee within the drift. Both are reported.
+
+**2. Discriminating power, computed from the 081b record before any EXP-083 number:**
+- κ_lat(4) = 0.017660, and δQ′ ≡ Q′(W2) − Q′(W4) = −8·δκ_lat at P = 4 (N_y = 16).
+- Production R(4) = 2.2552 (impact rule) gives **δQ′ = −0.31862**. The threshold R = −0.4503 gives **δQ′ = +0.06362**.
+  **Gap 0.38224, half-gap 0.19112.**
+- **If the Tier-1 feasibility drift implies a δQ′ tolerance wider than 0.19112, EXP-083 is NON-DISCRIMINATING.** It is
+  then redesigned, not run as a verdict.
+
+**3. Saddle correspondence (argued).** Premise kept from production: the coupling is tuned so that σ₁ = 0 is the n = 1
+saddle, i.e. the gap condition is G_n[σ](x,x) = G₁(x,x) pointwise.
+- Large N: Z_n = ∫Dσ e^{−N W_n[σ]}, with W_n[σ] = ½ Tr log(−∇² + σ)_{M_n} − ½∫σ/g. The saddle σ_n has
+  δW_n/δσ = 0, i.e. G_n[σ_n](x,x) = G₁(x,x).
+- log Z_n = −N W_n[σ_n] − ½ log det W_n″[σ_n] + O(1/N), and W_n″ ∝ G_n∘G_n = B_n/2.
+- **The O(N) term contributes nothing at O(N⁰).** σ_n is the exact saddle of W_n. The O(1/N) correction to the saddle
+  enters only through W_n″·δσ² = N·O(N⁻²).
+- The constant normalisations of W″ cancel between log det B_n and n·log det B₁ (equal site counts nN).
+- So the integer-n O(N⁰) Rényi term is −½ Q(n)/(1 − n), with **Q(n) = log det B_n[σ_n] − n log det B₁**. That is
+  exactly arm (b).
+- Its continuation: S⁽⁰⁾ = ½Q′(1), with Q′(1) = d/dn log det B_n[σ_n] at n = 1. This splits into
+  - Tr(B₁⁻¹ ∂ₙB_n|_σ), which is t0 + 𝒞 (the q = 0 sector trace plus the continued sectors), and
+  - Tr(B₁⁻¹ (δB/δσ)·∂ₙσ_n).
+- With δG = −G δσ G, δB[σ̇] = −4 G∘(G σ̇ G). The linearised gap equation gives Σ_y G₁(x,y)² σ̇(y) = ∂ₙG_n(x,x)|_σ,
+  i.e. σ̇ = 2 B₁,₍k=0₎⁻¹ d. That is exactly `saddle_term` / `coincident_dn`, so the second term is T_sad.
+- Arm (a) (σ fixed at 0) corresponds to t0 + 𝒞.
+- *Caveats, stated:* σ_n is taken y-independent and sheet-symmetric (the strip's symmetries). The bulk-value premise is
+  production's.
+
+**4. Saddle must-fire.** route_b with T_sad omitted must disagree with referee (b).
+- At W4P4, T_sad ≈ +51.07 against t0 ≈ −47.29, and saddle-off R = −48.5 in EXP-081. So it is expected to fire at
+  P = 4 by a large margin.
+- At P = 2 it is reported whether it fires.
+
+**5. Must-fires, which void the referee if they fail:**
+- the planted drop of confluent residues (dd = 1);
+- saddle-off (vs b);
+- the pure-gauge (wall-to-wall cut) honest Q(n) = 0 to ≤ 10⁻¹⁰.
+**s_cut = 1.5 is a DIAGNOSTIC** (reported; it may legitimately not fire).
+
+**Order.**
+1. Tier-1 feasibility, honest side only (P = 2, W = 2, no saddle): fit drift → tolerance, and the discriminating-power
+   test of item 2 using the P = 4 drift estimate.
+2. P = 2: arms (a) and (b), comparisons and must-fires.
+3. P = 4: the same, plus the δQ′ verdict.
+4. Report.
+
+**Consequence (unchanged):** disagreement beyond tolerance suspends the +2.4, and 081c's sign with it.
