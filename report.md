@@ -7110,3 +7110,70 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
   - **Conclusion (partially verified):** the Σ̃′ factor of h₁ grows polynomially on the CH07b line. With f₀'s factor
     (pre-check 7, y²), every factor of the tip term except C₊ is now polynomial on the line. **The log question for
     (e) is now exactly the growth rate of C₊(½ + iy)**: log-free if that rate is < 2π, and T17's Born value is π.
+
+### C₊ at complex α: the source reading, and a route that needs no Fredholm coupling vector (spec; argued; before any code) [model: Opus 5.5]
+**Sources, re-read by a fetch agent with equations transcribed (2026-11-21).**
+- *CFH05 (Dirac):* no twisted Green function and no local expansion. d(x) is defined only by its ODE (63) and boundary
+  condition (64), not as a resolvent matrix element. So my plan to take a coupling vector from CFH05 had no source.
+- *CH05 (scalar), Section 2, the twisted Green function G with the cut [L₂, L₁]:*
+  - local expansion (15): G(z, z′) ~ (z − L₁)^a S₁(z′) + (z̄ − L₁)^{1−a} S₂(z′);
+  - ∂_{L₁}G = S(z)†AS(z′) (20), with A = −4πa(1 − a)σ₁ (26);
+  - leading singularity of S at L₁ (27);
+  - ∂_{L₂}S(z) = γS(Rz) (22), with γ = (m/2)(u b; c u) (45);
+  - constraints (46)–(51), and the ODE (52) for u(t), t = mL, with u → (2/π)sin(aπ)K_{1−2a}(t) (79).
+  - CH05 writes no regular part of S's expansion and no same-endpoint coefficient. Sources: ar5iv transcriptions,
+    with rendering artefacts noted at (17) and (31).
+
+**Route (argued; every step to be checked).**
+- C₊ per k_y slice is the coefficient of (z − L₁)^a(z̄′ − L₁)^a in G, which is the regular (z̄′ − L₁)^a term of S₁(z′)
+  as z′ → L₁.
+- Its L-derivative follows from the L₂ analogue of (20) via the reflection (14): ∂_{L₂}G(z, z′) = (sign)S(Rz)†AS(Rz′).
+  With z, z′ near L₁, Rz and Rz′ sit near L₂, where S is an ordinary wave with coefficients s_{ij}. So
+  dC₊/dL = (bilinear in the s_{ij}).
+- The s_{ij} follow from (22) evaluated near L₂: the (z − L₂)^{a−1} terms of ∂_{L₂}S match γ times S(Rz)'s singular
+  part at L₁. That makes s ∝ b, c over 4πa(1 − a).
+- b and c come from (49)–(50) given u and h = bc, with h fixed by (46)–(51); u comes from (52).
+- **On the CH07b line all of this is real.** (a − ½)² = −y² and sin(πa) = cosh(πy), so (52) is a real ODE, integrated
+  inward from the Bessel boundary data. No Fredholm resolvent or coupling vector is needed.
+- Finally, C₊w^{−1−2a} = ∫dk_y/2π ĉ(a, |k_y|w).
+
+**Controls to pre-run before any registration (Bridge's spec, adopted).**
+- *Born limit:* at large t, the route must reproduce the single-reflection term, checked against Neon's T17 C₊^Born
+  closed form (unverified, Neon-checked by 2D quadrature) and its α → 0 limit −α/8 (EXP-057 (b), argued). Born alone
+  on the line must show rate π.
+- *Planted L·sin²(πa):* it must show rate 2π and be flagged.
+- *Every code path a clause uses must be exercised by a pre-check* (the Bridge's lesson today).
+- *Gate, stated in advance:* the measured local rate of C₊ on y ∈ [2, 4] must be < 2π − 1 for "log-free"; a rate
+  within 1 of 2π is inconclusive.
+
+**Neon T20 (unverified; `neon_work/dkappa/T20_summary.md`), read 2026-11-21 ~11:45, and Cuspis's first checks.** [model: Opus 5.5]
+- *Retraction by Neon:* T17's higher-order reflection integrals were diagonal-in-u proxies. Only Born was exact. So
+  "every order grows at rate π" is withdrawn.
+- *T20's resummed C₊:*
+  - C₊ = −(λ/(4π²Γ(1+α)²))∫dq e^q(e^q/2)^{2α} vᵀ(1 − λ²RᵀR)⁻¹Rᵀv, with u = k_y w = e^q.
+  - The kernel is EXP-044's R̃ with θ = 2α − 1 and t = u.
+  - Neon's controls: the Szegő coefficient 2α(1 − α), and Born with v₀ reproduced to 2·10⁻⁷.
+  - **The outer vector v is UNSURE by Neon's own label.**
+- **Cuspis reproduction of the dichotomy** (`scripts/exp063_precheck_t20_dichotomy*`; own kernel code, u = 1). The
+  bare form |F| (no λ) on a = ½ + iy, y = 0, 1, 2, 3, 3.5:
+  - v₀: 0.31, 0.24, 0.32, 0.93, 1.87;
+  - v_α = e^{αp}v₀: 0.38, 0.13, 1.6·10⁻², 1.4·10⁻³, 3.6·10⁻⁴;
+  - v_osc: decays faster still.
+  - λ|F(v₀)| = 1.78·10⁴ at y = 3.5 reproduces Neon's 1.8·10⁴. Its local rate is ≈ 4.5; with the 1/Γ(1+α)²
+    near-tip factor (rate ≈ π − 2/y) that gives ≈ 7, Neon's 7.07.
+  - With v_α, the total rate is ≈ 3 < 2π.
+  - **So the log question is decided by the outer vector. T20 does not settle it, and neither does EXP-060.**
+- *Calibration of my EXP-061 grading (correction).* T20's dim-reg on-shell value on H² × S¹ is 2a/(3π²). The value I
+  had argued as "the covariant-scheme value" is 2a(1 − a)/(3π²). They differ by a local 2a²/(3π²). So my "local part
+  vanishes in a covariant scheme" was wrong as stated: H²-frame dim reg retains a local ω² term.
+  - Only the non-local a(1 − a) coefficients (+2/(3π²) Legendre, −2/π² twisted) stand as scheme-independent.
+  - The verified finite-part values themselves are unaffected, and so is the growth conclusion.
+- **Why the CH05 route decides it.** It never chooses an outer vector. The same-tip coefficient's L-derivative follows
+  from the L₂-side wave coefficients of S, which (22) fixes in terms of γ. Derived so far (argued; signs and
+  conventions to be checked by the controls):
+  - σ_{i1} = γ_{i2}/(4πa(1 − a)) and σ_{i2} = γ_{i1}/(4πa(1 − a));
+  - hence dc/dL = −m²bu/(8πa(1 − a)) (sign to be fixed by Born).
+  - b's overall scale is not fixed by (46)–(51): they are invariant under b → λb, c → c/λ. It must be fixed by the
+    large-t Born limit.
+  - On the line, u and h are real (the real ODE), and b follows from b′/b = [−(1 − 2a)u² + tuu′ − 2ah]/(th).
+  - So C₊'s y-growth is read off from real ODE solutions, with no overlap to choose.

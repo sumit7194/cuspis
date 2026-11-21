@@ -1,0 +1,5 @@
+y=0.0: 1-kappa_max 9.86e-01  |F|: v0 3.115e-01  v_a 3.751e-01  v_osc 3.115e-01
+y=1.0: 1-kappa_max 7.17e-01  |F|: v0 2.375e-01  v_a 1.337e-01  v_osc 1.045e-01
+y=2.0: 1-kappa_max 7.00e-02  |F|: v0 3.183e-01  v_a 1.578e-02  v_osc 7.542e-03
+y=3.0: 1-kappa_max 1.19e-03  |F|: v0 9.336e-01  v_a 1.360e-03  v_osc 1.324e-04
+y=3.5: 1-kappa_max 1.24e-04  |F|: v0 1.870e+00  v_a 3.638e-04  v_osc 8.030e-05
