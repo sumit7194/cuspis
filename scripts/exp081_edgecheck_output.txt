@@ -1,0 +1,4 @@
+strip: poles/slice [2, 2, 2, 2, 2, 2, 2, 2]  n=2: max rel |engine - honest| = 1.3e-11
+strip: poles/slice [2, 2, 2, 2, 2, 2, 2, 2]  n=3: max rel |engine - honest| = 4.4e-13
+edge: poles/slice [3, 2, 2, 2, 2, 2, 2, 2]  n=2: max rel |engine - honest| = 4.9e-11
+edge: poles/slice [3, 2, 2, 2, 2, 2, 2, 2]  n=3: max rel |engine - honest| = 2.1e-12

@@ -1,0 +1,1 @@
+reference 1.021309491602 (5s); killed child after ~2s with 17 checkpoint entries; resumed 1.021309491602; diff 0.0e+00 [PASS]

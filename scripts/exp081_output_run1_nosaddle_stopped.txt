@@ -1,0 +1,9 @@
+[      0s] free kappa_lat W=2: {2: 0.012702, 3: 0.017873, 4: 0.021386, 5: 0.023894, 6: 0.025769}
+[      0s] free kappa_lat (planted control K): A train 0.036080 all 0.036412 (ho err 1.23e-04); B train 0.040934 all 0.040871 (ho err 1.32e-05) -> 0.038641 +- 0.002348
+[      0s] K: kappa_inf = 0.038641 +- 0.002348 vs 0.0396481 (train-only A 0.036080, B 0.040934) [PASS]
+[     10s] sigma W=2 r=2 strip c=2 cpts=12 dd=False: S = -20.4557954200  [10s]
+[     22s] sigma W=2 r=2 edge c=2 cpts=12 dd=False: S = -12.6937681858  [12s]
+[     22s] W=2 r=2: delta_kappa_lat = -0.61646762, kappa_lat = 0.01270167, R = -48.534388
+[     86s] sigma W=2 r=3 strip c=2 cpts=12 dd=False: S = -43.9735423971  [64s]
+[    163s] sigma W=2 r=3 edge c=2 cpts=12 dd=False: S = -29.4274123783  [77s]
+[    163s] W=2 r=3: delta_kappa_lat = -1.24010686, kappa_lat = 0.01787347, R = -69.382529

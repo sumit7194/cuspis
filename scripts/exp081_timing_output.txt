@@ -1,0 +1,4 @@
+edge W=2 r=4 Ny=32 s_cut=inf npt=40: poles used/slice min 1 max 4; one beta 6s; max rel diff vs (inf,40) 0.0e+00; maxrss 0.26 GB
+edge W=2 r=4 Ny=32 s_cut=inf npt=24: poles used/slice min 1 max 4; one beta 4s; max rel diff vs (inf,40) 1.3e-15; maxrss 0.31 GB
+edge W=2 r=4 Ny=32 s_cut=2.5 npt=40: poles used/slice min 1 max 2; one beta 5s; max rel diff vs (inf,40) 3.0e-08; maxrss 0.37 GB
+edge W=2 r=4 Ny=32 s_cut=2.5 npt=24: poles used/slice min 1 max 2; one beta 4s; max rel diff vs (inf,40) 3.0e-08; maxrss 0.37 GB

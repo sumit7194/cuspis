@@ -54,7 +54,7 @@ class Slice:
         cand.sort(reverse=True); merged = []
         for z in cand:
             if not merged or abs(z - merged[-1]) > 1e-7 * z: merged.append(z)
-        if not merged: raise ValueError(f"slice poles: none found among {ev}")
+        if not merged: return [], [], []                               # e.g. a wall-to-wall (pure-gauge) cut: no poles
         s = [-np.log(z) / (2 * np.pi) for z in merged]
         rads = [min(1e-6, 0.3 * min([abs(si - sj) for sj in s if sj != si] + [1.0])) for si in s]
         Rp = [self.residue_K(1j * sj, rad=r) for sj, r in zip(s, rads)]; Rm = [self.residue_K(-1j * sj, rad=r) for sj, r in zip(s, rads)]

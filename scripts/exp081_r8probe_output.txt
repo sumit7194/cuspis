@@ -1,0 +1,4 @@
+Ny=8 strip: build 0s, one beta 14s, q=0 derivative term 15s, maxrss so far 0.71 GB
+Ny=8 edge: build 0s, one beta 16s, q=0 derivative term 18s, maxrss so far 0.72 GB
+Ny=16 strip: build 0s, one beta 37s, q=0 derivative term 42s, maxrss so far 1.57 GB
+Ny=16 edge: build 0s, one beta 40s, q=0 derivative term 43s, maxrss so far 1.57 GB
