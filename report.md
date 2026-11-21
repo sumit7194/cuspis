@@ -6856,3 +6856,48 @@ a heuristic.
   for C₊ is **unverified**.
 - The crux of (e) is restated: the overlap of the near-tip coupling vector with the top eigenvectors of λ²A as
   κ_max → 1. R3 shows such overlaps can be suppressed (w_S), but C₊ has not been computed.
+
+## Stage B pre-checks (EXP-061 series; unregistered characterisation, run before any stage-B registration) — a second continuation gap in T7 [model: Opus 5.5]
+
+**Pre-check 1: the UV scheme** (`scripts/exp061_precheck_fp.py`, `_output.txt`).
+- The Hadamard finite part of the closed-form D_q(ρ) = −(2/π)e^{−qρ}(q sinh ρ + cosh ρ)/sinh³ρ on H², integrated
+  against P_{−½+ik}, equals the dim-reg Gamma form D̃₁(k, q) to ≤ 10⁻²⁰.
+  - The test covers 20 points: q ∈ {0, 0.5, 1, 2, 3} (0.5 and 3 unseen by EXP-059) and k ∈ {0.3, 2, 5, 9}.
+  - A first attempt was off by ~10⁻³ at q = 1, 2. That was catastrophic cancellation in the subtracted integrand
+    near ρ = 0 (tanh–sinh nodes at ρ ~ 10⁻³⁰), fixed with precision that rises as ρ → 0. The failed attempt is
+    kept in the transcript, not as a file.
+- **Grade: verified.** A ρ⁻³ singularity on H² (non-even degree in 2D) has a unique finite part, and it is the
+  dim-reg value. So D at n = 1 needs no inverse transform; stage B can work in position space with finite parts.
+
+**Pre-check 2: two continuations of Σ̃₁ to non-integer external frequency** (`scripts/exp061_precheck_sigma1.py`,
+`_output.txt`; 91 s).
+- *Legendre (Laplace-in-ω) form.* From (c − cos τ)^{−5/2} = (4/3)∂_c²(c − cos τ)^{−1/2} and Heine's series, the
+  n = 1 self-energy Σ = D·G = −1/(4√2π³(c − cos τ)^{5/2}) has frequency components
+  Σ₁(ω; ρ) = −(2/(3π³))∂_c²Q_{|ω|−½}(c), with c = cosh ρ. Continue in ω through Q.
+- *Twisted (frequency-sum) form.* (1/2π)Σ_q D_q(ρ)g_{|ω−q|}(ρ): a φ carrying an AB flux ω, with σ untwisted. This is
+  the physical twisted family, the one the free-field Z_a continuation (CH05/CFH05, CH07b) uses.
+- **At integer ω the two forms and the direct τ-integral agree to ≤ 10⁻²⁵ (verified).**
+- **At non-integer ω they differ by 17–41%** (ρ = 0.7, 1.5; ω = 0.35, 0.8) (verified by evaluation).
+- **The mechanism (argued, then tested parameter-free, post hoc).** At short distance D ≈ −4/(π²|x|⁴), and the twisted
+  propagator has a constant coincident shift
+  δG_tw(ω) = −S(ω)/(4π²), where S(ω) = ψ(ω+½) − ψ(½) + Σ_{q≥1}[ψ(q−ω+½) + ψ(q+ω+½) − 2ψ(q+½)].
+  - This predicts Δ = twisted − Legendre ≈ S(ω)/(2π³ρ³).
+  - Measured ρ³Δ at ρ = 0.01: 0.0149139 and 0.0161255 at ω = 0.35 and 0.5. Predicted: 0.0149141 and 0.0161258. The
+    relative differences are 1.3·10⁻⁵ and 1.7·10⁻⁵, and the residual scales as ρ².
+  - The Legendre form therefore carries no coincident shift.
+- **Consequence for T7 (argued; the on-shell number is not yet computed).**
+  - T7 claim 3, "Σ̃_{φ,1}(iα, α) ≡ 0", is a statement about the Legendre continuation. Neon's derivation is not seen;
+    the claim is unverified by us in either form.
+  - In the twisted family, Σ̃₁ = Legendre + D·δG_tw(α) + a smooth remainder. In dim reg, D·δG_tw contributes
+    δG_tw(α)·D̃₁(iα, α), with D̃₁(iα, α) = 8Γ(¾)Γ(α + ¾)/(Γ(¼)Γ(α + ¼)) ≠ 0. So **f(1, α) = 0 is likely false in the
+    standard twisted family** (unverified until the on-shell value is computed).
+  - If so, the first-order tip term is dS/dn|₁ = (d/dn)S_{f₀}(n)|₁ + S_{h₁}(1), with f₀(α) = f(1, α) ≠ 0. That is
+    the CH07b free-field structure plus h₁.
+  - Log-freeness then needs f₀, as well as h₁, to obey the growth bound o(e^{2π|y|}) on the line. Both carry C₊, so
+    the crux is unchanged (C₊'s growth, EXP-060). The finite value of δκ does change.
+  - Which family is right is a continuation-in-n question. The twisted family is the one that reproduces the
+    established free-field continuation (EXP-044 used it). I take the twisted family as the default, *argued*, not
+    proven.
+- *Grades:* the difference and its coefficient: **verified by evaluation**. The reading for T7: **argued**. The on-shell
+  value of the twisted Σ̃₁: **open** (next pre-check: confirm the Legendre on-shell zero, then the finite part of Δ's
+  on-shell transform).

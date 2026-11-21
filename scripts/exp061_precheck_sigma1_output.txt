@@ -1,0 +1,16 @@
+rho=0.7 w=0: Legendre -0.170879875922  freq-sum -0.170879875922  rel 0.0  tau-integral -0.170879875922
+rho=0.7 w=1: Legendre -0.148103856892  freq-sum -0.148103856892  rel 2.58e-26  tau-integral -0.148103856892
+rho=0.7 w=0.35: Legendre -0.166291911147  freq-sum -0.127536691701  rel -0.233
+rho=0.7 w=0.8: Legendre -0.154642660831  freq-sum -0.12751022251  rel -0.175
+rho=1.5 w=0: Legendre -0.00650266604387  freq-sum -0.00650266604387  rel 2.58e-26  tau-integral -0.00650266604387
+rho=1.5 w=1: Legendre -0.00332167776252  freq-sum -0.00332167776252  rel -7.75e-26  tau-integral -0.00332167776252
+rho=1.5 w=0.35: Legendre -0.00543175381451  freq-sum -0.00321270108227  rel -0.409
+rho=1.5 w=0.8: Legendre -0.00392674155857  freq-sum -0.00259769525794  rel -0.338
+w=0.35 rho=0.3: Delta = sum - Legendre = 0.5436164078;  rho^3*Delta = 0.014677643  (Legendre -5.24383)
+w=0.35 rho=0.1: Delta = sum - Legendre = 14.89223886;  rho^3*Delta = 0.014892239  (Legendre -429.441)
+w=0.35 rho=0.03: Delta = sum - Legendre = 552.3048744;  rho^3*Delta = 0.014912232  (Legendre -53082.5)
+w=0.35 rho=0.01: Delta = sum - Legendre = 14913.85377;  rho^3*Delta = 0.014913854  (Legendre -4.30015e+6)
+w=0.5 rho=0.3: Delta = sum - Legendre = 0.5857372319;  rho^3*Delta = 0.015814905  (Legendre -5.22734)
+w=0.5 rho=0.1: Delta = sum - Legendre = 16.09622125;  rho^3*Delta = 0.016096221  (Legendre -429.302)
+w=0.5 rho=0.03: Delta = sum - Legendre = 597.158365;  rho^3*Delta = 0.016123276  (Legendre -53081.0)
+w=0.5 rho=0.01: Delta = sum - Legendre = 16125.49577;  rho^3*Delta = 0.016125496  (Legendre -4.30013e+6)

@@ -536,3 +536,9 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       - The det-sign detector is blind to even crossings (my design error; the κ clause carries R1).
 - [ ] **Crux of (e) now:** C₊(½ + iy) as a resolvent matrix element. Derive the near-tip coupling vector in the
       rapidity form. Controls: Neon's Born closed form (T17, unverified) at first order in λ, and −α/8 as α → 0.
+- [ ] Stage-B pre-checks (EXP-061 series) found a 2nd T7 continuation gap.
+      - Σ̃₁(iα, α) = 0 is a property of the Legendre continuation. The physical twisted family differs by
+        D·δG_tw(α) (coefficient verified to 1.3e-5).
+      - Next: (i) verify the Legendre on-shell zero; (ii) compute the twisted on-shell value via the finite part of
+        Δ's transform.
+      - Then re-pose the h₁ framework as f₀ + (n−1)h₁ if f₀ ≠ 0.
