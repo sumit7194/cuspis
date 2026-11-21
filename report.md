@@ -7354,3 +7354,47 @@ y ≤ 4. This registration fixes the gate and the clauses before the **productio
 - A PASS on y ≤ 5 means that C₊, and therefore h₁ and f₀ (whose other factors are polynomial: EXP-061 pre-check 7 and
   EXP-062), grows far below 2π on the measured range. That is numerical support for "no log(w/ε)" in Lemma U (e).
 - **An analytic all-y bound is still open.** The result is to be phrased as measured to y = 5, not proven.
+
+### EXP-065 results: G1 PASS (|C₊| decays on the CH07b line to y = 5); planted 2π fires; T and N FAILED as registered (t₀ unconverged, caught by N); post-registration rerun with a converged t₀ ladder [model: Opus 5.5]
+(`scripts/exp065_run.py`; registered output kept as `exp065_output_registered_run.txt`; diagnostics in
+`exp065_diag_{nuisance,t0}_output.txt`; post-registration rerun `exp065_rerun.py`, `_output.txt`, `_results.json`.)
+
+**Registered run.**
+- **G1 PASS:** rate of |C₊| on [2, 4] = −0.73 (gate ≤ 5.283).
+- **P PASS (fires):** planted rate 5.47 on [3, 4].
+- **T FAIL:** |C₊^lin|/|T23| − 1 = −1.6·10⁻⁶ and −4.1·10⁻⁶ at y = 4.75 and 5, against 10⁻⁶. Everywhere else ≤ 6·10⁻⁷.
+- **N FAIL:** the nuisance spread grows from ≤ 2·10⁻⁶ (y ≤ 2.25) to 0.47 at y = 4.
+
+**Diagnosis (why N fired; it fired correctly).**
+- The inward integration starts at t₀ from the linear Bessel data. At large y, cosh(πy) makes u(t₀) ~ 10⁻² at
+  t₀ = 14–18, so the linear data misstate the nonlinear solution and the error is amplified inward.
+- A t₀ ladder 18…34 shows convergence from t₀ ≥ 26: y = 4: 1.63211, 1.52778, 1.52749, 1.52750, 1.52750 (·10⁻³);
+  y = 5: converged to 2·10⁻⁴.
+- t₁ and rtol are converged at the 10⁻⁵ level.
+- **My registered production rung (t₀ = 18) was unconverged for y ≥ 3, and so were the pre-check values there. That
+  was my design error: a ladder centred on an unconverged rung. N exposed it.**
+
+**Post-registration rerun (labelled; t₀ ∈ {30, 26, 34}).**
+- |C₊| at y = 0, 1, 2, 3, 4, 5: 5.997, 9.201, 7.077, 3.664, 1.527, 1.393 (·10⁻³). Its maximum is ≈ 9.2·10⁻³ near y = 1;
+  after that it decays and levels off.
+- **G1 PASS:** rate on [2, 4] = −0.77. **P PASS.** **T PASS:** ≤ 4·10⁻¹³ at all y.
+- **N still FAILS at y ≥ 3.5** (2.8·10⁻⁴ at y = 4, 1.2·10⁻² at y = 5). That is the rtol = 10⁻¹¹ rung, which the
+  rtol diagnostic says is short at large y. It does not move G1 (±10⁻⁴ in the rate).
+- Ratio |C₊/C₊^lin|: 1.17 at y = 0, peaking at 2.63 (y ≈ 2.25), then 1.38 at y = 4 and 1.73 at y = 5. Bounded.
+- Linear term (= T23 closed form on the line): rate −0.45 on [2, 4], decaying polynomially. T23's predicted Stirling
+  rate 0 is consistent with this on the measured range (partially verified; Born's would be π).
+
+**Grade.**
+- On the CH07b line, |C₊(½ + iy)| does not grow on y ≤ 5. Its local rate on [2, 4] is −0.77, against the borderline
+  2π. **Partially verified:**
+  - CH05 route, with its derived step argued and corroborated by the three-construction blind match and the T23
+    absolute match;
+  - measured range y ≤ 5;
+  - nuisance-controlled to ≤ 3·10⁻⁴ for y ≤ 4.
+- **For Lemma U (e):** every factor of the tip terms f₀ and h₁ is now measured, or argued, to grow far below 2π on the
+  line:
+  - C₊: this experiment;
+  - the n = 1 Σ̃ factor: y² (EXP-061 pre-check 7);
+  - Σ̃′: polynomial to y = 3 (EXP-062).
+  - So the first-order tip term carries **no log(w/ε) on the measured range. An analytic all-y bound is open.**
+  - Pending: the direct BIE referee (Neon T25), which is unverified until checked.

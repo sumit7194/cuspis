@@ -1,0 +1,24 @@
+y=0.0: |C+| 5.9970692e-03 (nuisance spread 2.2e-07)  |C+lin| 5.1329911e-03  vs T23 rel -1.6e-12  ratio 1.1683
+y=0.25: |C+| 6.6560748e-03 (nuisance spread 1.7e-07)  |C+lin| 5.4593871e-03  vs T23 rel -9.4e-13  ratio 1.2192
+y=0.5: |C+| 7.9219943e-03 (nuisance spread 9.4e-08)  |C+lin| 5.7964053e-03  vs T23 rel +7.9e-13  ratio 1.3667
+y=0.75: |C+| 8.8568825e-03 (nuisance spread 4.9e-08)  |C+lin| 5.5774770e-03  vs T23 rel +7.0e-13  ratio 1.5880
+y=1.0: |C+| 9.2007656e-03 (nuisance spread 2.6e-08)  |C+lin| 4.9830287e-03  vs T23 rel +5.2e-13  ratio 1.8464
+y=1.25: |C+| 9.0549458e-03 (nuisance spread 1.2e-08)  |C+lin| 4.3021999e-03  vs T23 rel +1.3e-13  ratio 2.1047
+y=1.5: |C+| 8.5757515e-03 (nuisance spread 3.7e-09)  |C+lin| 3.6780980e-03  vs T23 rel +7.3e-14  ratio 2.3316
+y=1.75: |C+| 7.8873102e-03 (nuisance spread 2.0e-09)  |C+lin| 3.1505482e-03  vs T23 rel -7.5e-14  ratio 2.5035
+y=2.0: |C+| 7.0773588e-03 (nuisance spread 6.8e-09)  |C+lin| 2.7171820e-03  vs T23 rel -2.1e-13  ratio 2.6047
+y=2.25: |C+| 6.2082393e-03 (nuisance spread 2.4e-08)  |C+lin| 2.3634951e-03  vs T23 rel -2.3e-13  ratio 2.6267
+y=2.5: |C+| 5.3263054e-03 (nuisance spread 3.7e-08)  |C+lin| 2.0739339e-03  vs T23 rel -2.6e-13  ratio 2.5682
+y=2.75: |C+| 4.4680150e-03 (nuisance spread 1.1e-07)  |C+lin| 1.8351470e-03  vs T23 rel -2.8e-13  ratio 2.4347
+y=3.0: |C+| 3.6638237e-03 (nuisance spread 5.5e-07)  |C+lin| 1.6364856e-03  vs T23 rel -3.8e-13  ratio 2.2388
+y=3.25: |C+| 2.9410493e-03 (nuisance spread 3.0e-06)  |C+lin| 1.4696804e-03  vs T23 rel -3.4e-13  ratio 2.0011
+y=3.5: |C+| 2.3263799e-03 (nuisance spread 1.7e-05)  |C+lin| 1.3283578e-03  vs T23 rel -3.6e-13  ratio 1.7513
+y=3.75: |C+| 1.8472815e-03 (nuisance spread 7.3e-05)  |C+lin| 1.2075986e-03  vs T23 rel -3.7e-13  ratio 1.5297
+y=4.0: |C+| 1.5274951e-03 (nuisance spread 2.8e-04)  |C+lin| 1.1035841e-03  vs T23 rel -2.9e-13  ratio 1.3841
+y=4.25: |C+| 1.3689390e-03 (nuisance spread 9.5e-04)  |C+lin| 1.0133275e-03  vs T23 rel -2.0e-13  ratio 1.3509
+y=4.5: |C+| 1.3331923e-03 (nuisance spread 2.8e-03)  |C+lin| 9.3447238e-04  vs T23 rel -2.0e-13  ratio 1.4267
+y=4.75: |C+| 1.3580832e-03 (nuisance spread 6.3e-03)  |C+lin| 8.6514316e-04  vs T23 rel -3.2e-13  ratio 1.5698
+y=5.0: |C+| 1.3929473e-03 (nuisance spread 1.2e-02)  |C+lin| 8.0383414e-04  vs T23 rel -3.5e-13  ratio 1.7329
+G1: rate of |C+| on [2,4] = -0.7666 (gate <= 5.2832) [PASS];  linear-term rate -0.4505
+P : planted rate on [3,4] = +5.4083 (within 1 of 2pi) [PASS (fires)]
+T : |C+lin| = |T23| to 1e-6 at all y [PASS];  N: nuisance spread <= 1e-5 [FAIL]

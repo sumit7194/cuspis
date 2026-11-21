@@ -568,3 +568,12 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] y = 3 for piece (I) (running), to test the linear trend.
 - [ ] Optional: a full finite-difference two-implementation check of Σ̃′ total (lattice D_n at n = 1 ± δ). It was not
       done; the total currently has a single route.
+- [x] 2026-11-21: EXP-065 stage C.
+      - |C₊| on the CH07b line does not grow (rate −0.77 on [2, 4], y ≤ 5); G1 PASS.
+      - The registered N caught an unconverged t₀ (my ladder design error); the post-registration rerun converged.
+      - The blind ratio match (3 constructions) and T23's absolute first-order term were matched at a = ½ and along
+        the line.
+- [ ] Lemma U (e), open items:
+      - an analytic all-y growth bound for C₊ (and Σ̃′);
+      - the BIE referee (Neon T25) result, to be checked;
+      - re-derive the full δκ tip term with f₀ ≠ 0 (twisted family) for the finite value.
