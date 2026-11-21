@@ -333,3 +333,74 @@ def route_i_ckpt(S, ckpt, cpts=12, smax=6.0, npt=40, with_saddle=True):
                 put(key, float(sum((logdet(Bb[k]) - ld1[k]).real for k in range(S.Ny)))); del Bb
             tot += 0.5 * (hi - lo) * wi * np.pi / np.cosh(np.pi * si) ** 2 * st[key]
     return st["t0"] + (st.get("tsad", 0.0) if with_saddle else 0.0) + tot, st
+
+# ------------------------------------------------------------------ EXP-081b: reliability + two-tail route -------------
+def _G_direct(sl, a):
+    if not hasattr(sl, "_H0"): sl._H0 = np.linalg.inv(sl.G0)
+    z = np.exp(2j * np.pi * a); H = sl._H0.astype(complex)
+    for (l, u) in sl.links: H[u, l] += -(z - 1); H[l, u] += -(1 / z - 1)
+    return np.linalg.inv(H)
+
+def node_reliability(S, beta):
+    """N1': max relative difference, stable Woodbury vs direct inverse, over the worst-conditioned G's of node beta:
+    all tail ingredients G_p(beta -+ i s_j) (poles of every slice, s_j <= s_cut) and the segment endpoints G_p(beta)."""
+    worst = 0.0
+    alphas = [beta] + [beta + sgn * 1j * sj for sp in S.sl for sj in sp.s if sj <= S.s_cut for sgn in (-1, 1)]
+    for a in alphas:
+        for sl in S.sl:
+            Gw = sl.G(a); Gd = _G_direct(sl, a)
+            worst = max(worst, np.abs(Gw - Gd).max() / np.abs(Gd).max())
+    return worst
+
+def route_b(S, ckpt, cpts=12, smax=6.0, npt=40, with_saddle=True, tol=1e-8):
+    """EXP-081b route: q=0 trace + saddle + C[g] with per-node reliability (N1'); returns S^(0) for tails T0 (zero beyond
+    s_max) and T1 (fit a + b s^2 + c s^3 on reliable nodes s>=1), plus s_max. Per-node checkpoints in json."""
+    import json, os
+    st = json.load(open(ckpt)) if os.path.exists(ckpt) else {}
+    def put(k, v):
+        st[k] = v; tmp = ckpt + ".tmp"; json.dump(st, open(tmp, "w")); os.replace(tmp, ckpt)
+    B1 = S.B1(); ld1 = [logdet(B1[k]) for k in range(S.Ny)]
+    if "t0" not in st:
+        dB0 = S.inner_beta0(1.0, dn=True)
+        put("t0", float(sum(np.trace(np.linalg.solve(B1[k], dB0[k])) for k in range(S.Ny)).real)); del dB0
+    if with_saddle and "tsad" not in st:
+        put("tsad", float(saddle_term(S, B1).real))
+    x, w = leggauss(cpts); nodes = []
+    for lo, hi in zip((0.0, 0.5, 1.5, 3.0), (0.5, 1.5, 3.0, smax)):
+        for xi, wi in zip(x, w):
+            si = 0.5 * (hi - lo) * (xi + 1) + lo; wt = 0.5 * (hi - lo) * wi * np.pi / np.cosh(np.pi * si) ** 2
+            key = f"g|{si:.15f}"
+            if key not in st:
+                Bb = S.inner(1.0, 0.5 + 1j * si, npt)
+                g = float(sum((logdet(Bb[k]) - ld1[k]).real for k in range(S.Ny))); del Bb
+                put(key, [g, None])
+            nodes.append((si, wt, st[key][0]))
+    nodes.sort()
+    # N1'': g-level check (stable Woodbury vs direct-inverse G throughout the inner formula) at the nodes nearest s = 1..5
+    checks = []
+    for target in (1, 2, 3, 4, 5):
+        si, wt, g = min(nodes, key=lambda nd: abs(nd[0] - target)); ck = f"chk|{si:.15f}"
+        if ck not in st:
+            saved = [sl.G for sl in S.sl]
+            for sl in S.sl: sl.G = (lambda s_: (lambda a: _G_direct(s_, a)))(sl)
+            Bd = S.inner(1.0, 0.5 + 1j * si, npt)
+            for sl, f in zip(S.sl, saved): sl.G = f
+            gd = float(sum((logdet(Bd[k]) - ld1[k]).real for k in range(S.Ny))); del Bd
+            put(ck, gd)
+        checks.append((si, abs(st[ck] - g) / max(abs(g), 1e-300)))
+    smax_rel = 0.0
+    for si, rel in checks:
+        if rel <= tol: smax_rel = si
+        else: break
+    if smax_rel == checks[-1][0]: smax_rel = smax
+    nodes = [(si, wt, g, 0.0) for si, wt, g in nodes]
+    C0 = sum(wt * g for si, wt, g, rel in nodes if si <= smax_rel)
+    fitpts = [(si, g) for si, wt, g, rel in nodes if si <= smax_rel and si >= 1.0]
+    if len(fitpts) >= 3:
+        ss = np.array([p[0] for p in fitpts]); gg = np.array([p[1] for p in fitpts])
+        c = np.linalg.lstsq(np.vstack([np.ones_like(ss), ss ** 2, ss ** 3]).T, gg, rcond=None)[0]
+        C1 = C0 + sum(wt * (c[0] + c[1] * si ** 2 + c[2] * si ** 3) for si, wt, g, rel in nodes if si > smax_rel)
+    else:
+        C1 = float("nan")
+    base = st["t0"] + (st.get("tsad", 0.0) if with_saddle else 0.0)
+    return dict(S_T0=0.5 * (base + C0), S_T1=0.5 * (base + C1), s_max=smax_rel, checks=checks, t0=st["t0"], tsad=st.get("tsad"))

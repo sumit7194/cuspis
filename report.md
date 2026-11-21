@@ -9094,3 +9094,15 @@ re-measured on a dry run before launch; cap 2.2 GB. The referee runs at < 0.5 GB
   - All must agree to ≤ 10⁻⁸ (max relative) for the node to count as reliable. s_max is defined as before.
 - Interior quadrature points have smaller |Im α|, and g is a smooth function of these matrices.
 - The N2 extended-precision referee is unchanged; it remains the separate (higher-precision) test of whether N1′ can be trusted.
+
+**EXP-081b amendment N1″ (supersedes N1′; registered before any strip-pair R value).**
+- The N1′ dry run at P = 12 (W = 4) cost 263 s per node for the G-level check, against 61 s for the computation. It also
+  flagged s = 1 at 8.4·10⁻⁷. But **G-level disagreement is not g-level error:** for the strip, g(s) agreed across four
+  numerical variants to all printed digits up to s = 3.5.
+- **N1″:** reliability is judged at the **g level**. At the 𝒞 nodes nearest s = 1, 2, 3, 4, 5, compute g(s) twice: with
+  stable-Woodbury G and with direct-inverse G throughout the inner formula. The residues are the same in both. The relative
+  agreement must be ≤ 10⁻⁸.
+  - s_max is the largest checkpoint passing with all lower ones passing; s_max = 6 if all pass.
+  - Tails T0 and T1 apply beyond s_max as registered.
+- **Disclosure:** the N1′ dry run computed one single-strip σ ingredient (W = 2 in the P = 4 pair box): S = 0.98859907. That
+  is not an R value. It is discarded and recomputed under N1″.

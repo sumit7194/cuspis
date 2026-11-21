@@ -1,0 +1,1 @@
+P=12 W=4 Ny=48: one beta 61s, reliability 263s (rel 8.4e-07), maxrss 1.54 GB
