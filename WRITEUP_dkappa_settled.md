@@ -127,9 +127,24 @@ C₊^lin(a) = −(sin πa/(4π³))·(Γ(a + ½)/Γ(a + 1))²·Γ(3a + ½)Γ(3/2 
 - **Open, stated plainly:** [CHL09] Table 1 prints 0.0794 for the complex scalar; our three routes give 0.07930. Our
   secondary clause failed narrowly (miss 5.2·10⁻⁵). This is unresolved and does not affect δκ.
 
-## 7. The SC formula and the gauge obstruction
+## 7. The SC formula (WITHDRAWN as complete, EXP-075), the gauge obstruction, and T31/T35
 
-**The SC formula (argued).**
+> **Update (EXP-075, c49ae29): the SC formula below is withdrawn as a complete formula.**
+> - Its σ-sector object F₁(β) = ½ log det(2G₁∘G^{(β)}) has a q-dependent O(1) local part, 2S·a^{(β)}.
+> - The honest replica bubbles all share the local part 2S² + 4S·a_n, with a_n = O(n − 1).
+> - So SC carries a cubic UV log ∝ 𝒞[a³] that the honest theory lacks. On a single edge, 𝒞[c] = −1/32 (= EXP-062) but
+>   𝒞[c³] = −4.0·10⁻⁵ ≠ 0. (Argued, with numbers.)
+> - This is the origin of Neon T35's ln(Λw)/w. It does **not** indicate a UV log in δκ, and is consistent with Lemma U.
+> - What survives:
+>   - the exact sector decomposition;
+>   - the 𝒞 identity (verified);
+>   - T(α)'s gauge invariance;
+>   - T31's free TGTG ↔ CFH isospectrality, verified for λ₁ at ≤ 0.4% (EXP-074);
+>   - the BIE (EXP-069).
+> - The correct continuation, which keeps the inner φ-sector sum, is the subject of Neon brief T36 (unverified until
+>   checked).
+
+**The SC formula (argued; withdrawn, see above).**
 S⁽⁰⁾_univ = 𝒞[F₁(β)] + ½𝒞[T(α)], with
 - F₁(β) = ½[log det(2G₁∘G^{(β)}) − log det B₁];
 - T(α) = Tr(B₁⁻¹·2(G^{(α)}∘G^{(−α)} − G₁∘G₁)).
@@ -156,12 +171,14 @@ decomposition plus Abel–Plana (report, "δκ step 1"). The saddle term is argu
 
 ## 8. Open items, stated plainly
 
-1. **The number δκ.** It is not computed. Routes: (ii′) full SC (multiscale Fredholm code; days–weeks); (iii)
-   integer-n honest sums at n = 2, 3; or a gauge-invariant reorganisation if T31 finds one.
+1. **The number δκ.** It is not computed. SC is withdrawn (EXP-075). Routes:
+   - a corrected sector continuation (Neon T36, pending);
+   - (iii) integer-n honest sums at n = 2, 3;
+   - Route B (expansion around the n-cone, as in Lemma U).
 2. **Lemma U gaps (a), (b), (d) and the continuation family:** argued only. Gap (c): 8 cases.
 3. **Σ̃′:** no all-y bound (polynomial to y = 3).
-4. **The SC formula:** argued. Its registered gates (the n = 2, 3 honest-sum check, the planted sin² must-fire, the
-   measured saddle term) have not run.
+4. **The SC formula:** withdrawn (EXP-075). Its Abel–Plana drop fails for the UV-local part. The registered n = 2, 3
+   honest-sum gate would have caught it.
 5. **The Tier-1 cut dependence on the strip** (e.g. strip vs complement cut): unverified. It would need the strip
    machinery.
 6. **CHL09 0.0794 vs our 0.07930:** unresolved.
@@ -175,6 +192,9 @@ decomposition plus Abel–Plana (report, "δκ step 1"). The saddle term is argu
 - My T30 "nit": wrong.
 - The δκ Z-factor checkpoint (e4ffec0): a formal error, replaced by the gauge finding (77f10d0).
 - The plane-wave "cut reduction" for Tier 1: superseded (it is in the cut gauge).
+- The SC formula as a complete expression for S⁽⁰⁾: withdrawn (EXP-075). Its n = 1 σ-sector object mis-continues the
+  inner φ-sector sum.
+- My T35 "same-ray straddle" worry: resolved by T35's commutator identity (EXP-075). The remainder is cross-ray.
 
 References: [Pet95] hep-th/9506116; [MZJ03] hep-th/0306133; [CHL09] and the CH05/CH07b sources as listed in
 `references.md`.
