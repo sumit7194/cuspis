@@ -606,3 +606,9 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       neon_work/dkappa/BRIEF_T36_sector_continuation.md. Check it hard on return (P1–P4, F1–F2).
 - [ ] WRITEUP_dkappa_settled.md §7 still describes SC as the route. Update it to "withdrawn (EXP-075)" when the write-up
       is next touched.
+
+## δκ status 2026-11-21 (after dd370c9)
+- [x] T36 checked (EXP-076). Its cut-gauge formula is falsified (pure-gauge toy 0.904 + iπ against 0); Neon conceded.
+- [ ] Neon T40 (= our BRIEF_T37_admissible_continuation.md; renumbered by the Bridge because T37 exists elsewhere): an
+      admissible (strictly sub-Carlson) n → 1 continuation. Check on return: G1, G2, P1 (computed), P2, P3, P4′
+      (through the continuation), F1–F3. Standing must-pass: scripts/exp076_puregauge.py.
