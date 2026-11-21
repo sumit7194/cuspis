@@ -10143,3 +10143,38 @@ on the gap equation, n ≤ 16; fits in `exp082b_fit.py`):
     arm (b).
 - **Run hygiene:** importing `exp082_honest_eps` re-executed its module-level loop (no `__main__` guard). It is
   deterministic: `exp082_results.json` is unchanged per git.
+
+### EXP-083 R2 amendment A3 (the Bridge's OK, 2026-11-22; registered before any Arb number for it): an ε = 1 saddle-ON Arb referee on the EXP-082 family [model: Opus 5.5]
+**System:** the EXP-082 family at ε = 1 (T46d broken cocycle; at ε = 1 identical to T46f's). k = 1, dq 0.5, Q_max 4, the
+q-grid and gap set of EXP-082/082b.
+
+**Targets fixed now (condition 1):**
+- T46f's continuation at ε = 1: **saddle ON +0.02601**, and **saddle OFF −0.32086** as the control.
+- The saddle-OFF control must pass at Arb precision; if it fails, STOP.
+
+**Honest data:**
+- Sector decomposition with direct Arb inverses of the single-sheet twisted operator. Each cut link's full L0 weight is
+  twisted (z and 1/z), and duplicated links are handled as in EXP-082.
+- Arm (b): the replica saddle in Arb (quasi-Newton, float64 Jacobian, |F| ≤ 10⁻¹⁰⁰).
+- The decomposition is first checked against my float64 n-sheet data (EXP-082/082b) at n = 2…6, to ≤ 10⁻¹⁰.
+
+**Base set (condition 2):** my own complete pole solve for every q used (gap set and pair set): the zeros of
+z^W det H_q(α = is) of the full operator, scanned to s = 12 in Arb, then refined.
+
+**Feasibility gate first (condition 4), decided before any Arb Q(n):**
+- Count the bases with weight that can matter (r > 10⁻⁶⁰, visible at n ≥ 2 at 400 bits) and the columns M1–M4 need.
+- Compare with the data points identifiable at the precision: each base b is pinned only by n with bⁿ > 10⁻¹¹⁰.
+- **The derivation-level issue, stated before running (argued):** a near-¼ mode's integer-data coefficient C has
+  C·r ~ Br·(weight) = O(1), but its Q′ contribution C·r·ln r is O(ln r). If many tiny-r modes carry weight, no finite
+  integer data fix their split, at any precision. In that case the amendment declares itself **NON-DISCRIMINATING**
+  without running the Arb data.
+- **Discriminating rule:** the separation of the candidates (+0.026 vs +0.004, i.e. 0.022) must exceed 2 × tolerance,
+  with tolerance = 3 × spread over adequate models. Otherwise non-discriminating.
+
+**Adequacy and tolerance (condition 3):** as R2 + A2. Held-out residuals at the last n and at the interior block n = 6, 7,
+≤ 10⁻⁴⁰ relative; M1–M4 built on my own bases.
+
+**Must-fire (condition 5):** drop my-solve's base nearest 6.93·10⁻⁵ (T46f's second base). The fit must then **fail
+adequacy** (held-out > 10⁻⁴⁰), not merely shift Q′. If it stays adequate, the referee cannot see that base: void.
+
+**Order:** after R2's P = 2 arms. The feasibility count (cheap: a pole scan) may run alongside them.
