@@ -10029,3 +10029,20 @@ measures peak RSS on a dry run before declaring.
   after P = 2 passes. The night needs Sumit's word, per the standing rule.
 - **Arm (b) saddle:** float64 σ_n, refined by quasi-Newton with an Arb residual and the float64 Jacobian until
   |F| ≤ 10⁻¹⁰⁰ (≤ 12 steps, else STOP).
+
+### EXP-083 R2 amendment A2 (before any referee number; the A1 P = 2 chain was stopped at n = 25 of W2P2 arm a, data kept) [model: Opus 5.5]
+- **Found while writing the fit code:** A1's column estimate was wrong. M3/M4 add the 21 products of the 6 largest bases,
+  each with its confluent term: 42 columns. M4 at P = 2 is ≈ 64 columns, so n ≤ 48 cannot fit M3/M4.
+- **Second finding:** at 120-digit data the R1 adequacy threshold (held-out ≤ 10⁻⁹, set for float64) is meaningless. An
+  interior hold-out at n = 20, 21 cannot see a missing product term: its residual there is ~(6·10⁻³)²⁰ ≈ 10⁻⁴⁵.
+- **A2:**
+  - P = 2 data run to **n ≤ 72**; data ranges **n ≤ 56 vs n ≤ 72**.
+  - **Adequate = held-out residual ≤ 10⁻⁴⁰ relative.**
+  - Hold-outs: the last n, and the **interior block n = 6, 7**, where a missing product term leaves ~10⁻¹³.
+  - Model family M1–M4 and floors 10⁻⁴, 10⁻⁶ unchanged.
+  - Spread rules unchanged: ≤ 10⁻⁶ required, > 10⁻³ STOP.
+- **Cost (measured on the stopped run):** ~2 s per n at n = 25, scaling ≈ n². About 1.2 h for all four P = 2 jobs. Daytime,
+  < 0.2 GB.
+- **P = 4 under these rules:** 18–23 bases mean M4 ≫ 100 columns, so n ≳ 120 is needed. That is not feasible (cost ∝ n³).
+  **R2 is therefore P = 2 code validation**, unless a P = 4 model family with fewer columns is registered later with
+  stated reasons.

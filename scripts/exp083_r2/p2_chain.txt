@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 120, in <module>
+    main()
+    ~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 112, in main
+    time.sleep(a.interval)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 82, in on_term
+    try: os.killpg(child.pid, signal.SIGTERM)
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
