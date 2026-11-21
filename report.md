@@ -7233,3 +7233,57 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
     - The target precision is ≤ 0.5% in C₊.
   - Piece (I) at y = 3: Im ≈ 0.60. The 0.2, 0.4, 0.6 sequence is linear, so Σ̃′'s polynomial growth is confirmed to y = 3
     (partially verified).
+
+### EXP-064 design: a direct referee for the C₊ resummation (spec; before code) [model: Opus 5.5]
+**Where the two routes differ** (`scripts/exp064_precheck_perslice_output.txt`). Per slice, the resummation ratios
+Δĉ(u)/Δĉ_Born(u) at α = 0.3, CH05 route vs T20-v₀ (two implementations on my side):
+
+| u | CH05 route | T20-v₀ | difference |
+|---|---|---|---|
+| 3 | 1.00007 | 1.00007 | 0.00% |
+| 1 | 1.00988 | 1.00974 | +0.01% |
+| 0.3 | 1.09681 | 1.09214 | +0.43% |
+| 0.1 | 1.29760 | 1.26586 | +2.51% |
+| 0.03 | 1.68904 | 1.55293 | +8.76% |
+| 0.01 | 2.26551 | 1.89012 | +19.9% |
+
+At α = 0.2 the pattern is the same and smaller.
+
+So the integrated 1.9% comes from small u, where κ_max → 1. **A referee at a single slice u ∈ {0.1, 0.03} needs only
+~1% accuracy.**
+
+**Method (chosen): a boundary-integral equation on the cut, per slice (m = 1, segment S = [−w, 0], w = u).**
+- G = G₀ + ∫_S[φ ∂_{y_ξ}G₀ − ψ G₀]dξ, with G₀ = K₀(m|z − ξ|)/(2π). φ and ψ are the jumps of G and ∂_yG across S.
+- The twist condition G⁺ = μG⁻ (μ = e^{2πia}) is equivalent to averages Ḡ = −(i/2)cot(πa)φ and ∂̄G = −(i/2)cot(πa)ψ
+  on S.
+- On S, the double layer has zero average and the single layer is log-singular. The normal-derivative equation
+  carries the hypersingular operator ∂_y∂_{y_ξ}G₀.
+- Discretisation: piecewise polynomials on a mesh graded geometrically toward both endpoints. The densities behave
+  like r^{a}, r^{1−a} (and derivatives) at the tips, two exponents per tip, so a single Gauss–Jacobi weight does not
+  fit.
+- The same-tip coefficient comes from G(z, z′) with z and z′ on a small circle around tip 1 (off S), projected on
+  e^{iaθ}I_a(mr) × e^{−iaθ′}I_a(mr′). The single-tip coefficient c₁ = −(m/2)^{2a}/(4 sin(πa)Γ(1+a)²) comes from
+  CH05 (25) by the same projection code, applied to the closed form.
+- **Reported:** absolute Δc(u) = c_strip − c₁ (the Bridge's addition), and absolute Born values.
+  - Born-order absolute: from T20's Born form (my implementation reproduces the T17 closed form to 1.2·10⁻⁵).
+  - The CH05 route's absolute value: β fixed where the routes agree per slice (u = 3, ≤ 10⁻⁴).
+
+**Controls (each to be pre-run on the same code before registering).**
+1. *Single-tip limit:* as w → ∞ at fixed m (u ≥ 10), Δc → 0 and c_strip → c₁ within the error bar. The exact answer
+   is known.
+2. *Born regime:* at u = 3, where both routes agree to 10⁻⁴ per slice, the direct Δc must match their common value
+   within the error bar.
+3. *Discrimination (must-fail):* plant a 2% offset in the projection normalisation at u = 0.1. The ladder error bar
+   must resolve it.
+4. *Ladders:* mesh grading (≥ 3 rungs), panel order (≥ 3 rungs), projection radius (≥ 3 rungs). The error bar is the
+   spread of the extrapolations.
+
+**Decision rule (to be fixed numerically in the registration).**
+- At u = 0.03 (difference 8.8%) and u = 0.1 (2.5%):
+  - "agrees with X" means |direct/X − 1| ≤ max(3σ, 0.5%) while the other candidate is excluded at > 3σ;
+  - "neither" means both are excluded;
+  - otherwise the result is inconclusive.
+- If neither agrees, both derivations are suspect, and the direct value becomes the reference for (e) at that slice.
+- A second α (0.2) is descriptive.
+
+**Cost:** multi-hour (hypersingular quadrature, graded meshes, near-singular evaluation off S).
