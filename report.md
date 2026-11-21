@@ -10178,3 +10178,16 @@ z^W det H_q(α = is) of the full operator, scanned to s = 12 in Arb, then refine
 adequacy** (held-out > 10⁻⁴⁰), not merely shift Q′. If it stays adequate, the referee cannot see that base: void.
 
 **Order:** after R2's P = 2 arms. The feasibility count (cheap: a pole scan) may run alongside them.
+
+### EXP-083 R2 A3 feasibility gate: PASS. Identifiable. 9 bases, one per q (`scripts/exp083_a3_feas.*`, 897 s, 0.16 GB) [model: Opus 5.5]
+- My own pole solve of the ε = 1 family: Arb sign-change scan of z^W det H_q(is)/det H_q(0) on (0, 12], with refinement.
+  Every q-slice has **exactly one pole**. The other cut modes sit at r = 0 exactly, the gauge-degenerate part of the
+  broken cocycle.
+- r per q (q = 0.25 … 4.25): 4.9·10⁻³, 6.9·10⁻⁵, 3.0·10⁻⁶, 2.8·10⁻⁷, 4.4·10⁻⁸, 9.7·10⁻⁹, 2.7·10⁻⁹, 8.8·10⁻¹⁰,
+  3.3·10⁻¹⁰.
+  - The top three equal T46f's bases (4.888·10⁻³, 6.934·10⁻⁵, 2.996·10⁻⁶). This is my own solve, not T46f's list.
+  - The must-fire base is 6.8969·10⁻⁵.
+- **Identifiability at 400 bits: OK.** The smallest base (3.3·10⁻¹⁰) is visible to n ≈ 11. Singles + confluent need
+  20 columns, and with products of the top 6 about 62, so the data must reach n ≳ 64.
+- **The amendment is not declared non-discriminating.** It proceeds after R2's P = 2 arms (the Bridge's order). Estimated
+  ~20 min for arm (a) and ~2 h for arm (b) at n ≤ 64, < 0.3 GB.
