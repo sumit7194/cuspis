@@ -1,0 +1,11 @@
+C1 a=0.3 W=6 t=1.0 N=2640 |P|=48: logdet(I-K)=-5.759476231945e-03+5.477860332303e-16j  four-LU=-5.759476231560e-03-1.500896554876e-16j  diff 3.8e-13   gauge int-can 4.4e-16
+C1 a=0.3 W=5 t=2.0 N=520 |P|=20: logdet(I-K)=-2.984547870450e-04+2.817076177407e-16j  four-LU=-2.984547870710e-04+1.792826629459e-17j  diff 2.6e-14   gauge int-can 0.0e+00
+C1 a=(0.5+0.5j) W=6 t=1.0 N=2640 |P|=48: logdet(I-K)=-7.391688095349e-02-6.119424333566e-18j  four-LU=-7.391688095367e-02-2.842170943040e-14j  diff 1.9e-13   gauge int-can 1.1e-14
+C1 a=(0.5+0.5j) W=5 t=2.0 N=520 |P|=20: logdet(I-K)=-7.786597470426e-03-1.019508259250e-18j  four-LU=-7.786597470385e-03-6.283185307180e+00j  diff 4.1e-14   gauge int-can 1.1e-13
+C2 a=0: max|K|=0.0e+00  D2=0.0e+00
+C3 a=0.3 t=1.0: ladder rel 6.6e-14, 1.8e-14   C4 planted t*1.1 shifts top-3 by rel [0.237 0.315 0.37 ]
+C3 a=0.3 t=2.0: ladder rel 1.8e-14, 6.9e-14   C4 planted t*1.1 shifts top-3 by rel [0.38  0.456 0.51 ]
+C3 a=(0.5+0.5j) t=1.0: ladder rel 4.3e-14, 1.1e-13   C4 planted t*1.1 shifts top-3 by rel [0.215 0.312 0.369]
+C3 a=(0.5+0.5j) t=2.0: ladder rel 3.1e-13, 2.7e-13   C4 planted t*1.1 shifts top-3 by rel [0.366 0.453 0.508]
+timing W=32 t=1.0: N=279040 build 0.3s  LU 1.7s
+timing W=64 t=2.0: N=295424 build 0.3s  LU 2.0s

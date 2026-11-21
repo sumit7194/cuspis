@@ -8147,3 +8147,60 @@ script is not downloaded and has not been read, so nothing of Neon's has been ru
    Fredholm code. This is cheap and is the decisive test of the edge factorisation.
 3. Run a refinement test (lattice spacing → 0 at fixed w) of log det(I − K_σ) for the free analogue. It must converge
    if I − K_σ is a genuine Fredholm determinant.
+
+## EXP-073(b)  T31's K1 claim in the continuum limit: lattice TGTG spectrum vs the CFH Fredholm operator — pre-registration [model: Opus 5.5]
+**Claim under test (Neon T31, UNVERIFIED).** For the free twisted 2D Helmholtz operator on one transverse slice (mass
+m = |k|, twist e^{2πia} across a segment of length w), the two-edge connected log det,
+D₂ = log det H_can − log det H(1) − log det H(2) + log det H₁, equals log det(I − K_free), where K_free is
+**isospectral** to the CFH operator λ²RRᵀ:
+- θ = 2a − 1, λ² = sin²(πa)/π², t = m·w (the `exp044_det` conventions, which EXP-071 anchors to κ_free).
+
+**Algebra (exact for matrices; derived here).**
+- H_can = H₁ + T₁ + T₂ in the exterior gauge, because the two rays' links are disjoint. With A_j = G₁T_j:
+  H(1)⁻¹H_canH(2)⁻¹H₁ = (1 + A₁)⁻¹(1 + A₁ + A₂)(1 + A₂)⁻¹ = I − G(1)T₁·G(2)T₂.
+- So K_free = G(1)T₁G(2)T₂, the TGTG form.
+- Its nonzero spectrum equals that of the small matrix T₂G(1)T₁G(2), restricted to the ray supports (cyclicity).
+
+**Instrument (`scripts/exp073_k1.py`).**
+- Square lattice, spacing 1, H = 4 + (ma)² − hopping. The twist is a link phase (up f, down 1/f, the U·U⁻¹ map, valid for
+  complex a) on the vertical links between two rows.
+- Dirichlet box with padding 8/m. Ray supports are truncated at D = 8/m from each edge for K. W = w in lattice units.
+- The CFH side is a Nyström p-grid (h = 0.05).
+
+**Controls, run alone first (`scripts/exp073_k1_controls_output.txt`; no lattice-vs-CFH number was computed).**
+- C1: log det(I − K) (TGTG, untruncated) equals the four-LU D₂ to ≤ 4·10⁻¹³ (mod 2πi) at 4 cases, real and complex a.
+  The interior-cut gauge equals the exterior one to ≤ 10⁻¹³.
+- C2: a = 0 gives K ≡ 0 and D₂ = 0.
+- C3: the CFH quadrature ladder (h, P) converges to ≤ 3·10⁻¹³.
+- C4: a planted t → 1.1t shifts the CFH top-3 eigenvalues by 21–51%, so I register a subtler t × 1.03 plant (≈ 6–15%)
+  as the must-be-told-apart kernel.
+
+**Production points.** a ∈ {0.3, ½ + ½i} × t ∈ {1, 2} × W ∈ {8, 16, 32, 64}. Nuisance at W = 32: padding 6/m and
+D = 6/m.
+
+**Clauses (fixed now).**
+- **K1-spec (primary, T31's claim as stated):** for each (a, t), extrapolate each of the top-3 eigenvalues of K_free with
+  the exact 3-point fit f∞ + cW^{−p} on W = {16, 32, 64} (p free, real a; |·| fit for complex). It PASSES if:
+  - |f∞/λ_CFH − 1| ≤ 2% for all three, **and**
+  - |f(W)/λ_CFH − 1| decreases monotonically in W for the top eigenvalue.
+
+  Same sign required: a match to −λ_CFH is a FAIL of "isospectral" as stated, and is recorded as such.
+- **K1-det (secondary):** the same extrapolation of log det(I − K) against log det(1 − λ²RRᵀ), to ≤ 2%.
+- **Planted (must be told apart):** CFH at t × 1.03. Its top eigenvalue must lie outside the 2% band around f∞ at
+  every (a, t) where K1-spec passes. If not, the test cannot discriminate at its own tolerance, and a PASS is downgraded
+  to inconclusive.
+- **Nuisance (must hold for the run to be informative):** at W = 32, the top-3 change by ≤ 10⁻³ relative when padding
+  and D go from 8/m to 6/m. Otherwise the run is INCONCLUSIVE.
+- **Inconclusive** also if the 3-point fit has no real p > 0.
+
+**Control table.**
+
+| clause | the input that makes it fire | pre-check (file) | what firing means |
+|---|---|---|---|
+| C1 identity | any algebra or indexing error in the TGTG route | yes; ≤ 4·10⁻¹³ (`exp073_k1_controls_output.txt`) | K is the connected log det's operator |
+| C2 | a twist leaking at a = 0 | yes; exact 0 | the twist enters only through the phase |
+| planted t × 1.03 | a non-isospectral kernel close to the true one | yes for its size (C4) | the 2% tolerance can tell a wrong kernel apart |
+| nuisance | box or truncation effects | in the run | the lattice numbers are not artefacts of the box |
+
+1 core, nice 12, watchdog. The estimate is ≲ 1 h (the largest LU, ~1.1·10⁶ sites, takes ~10–20 s, plus ~2·10³ chunked
+solves).
