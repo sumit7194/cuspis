@@ -9887,3 +9887,42 @@ No comparison with the continuation was made.)
   - (ii) P = 4 with n up to 24. Measure the cost first; ≈ 1 h is estimated.
   - (iii) Discriminating-power test redefined as: drift among adequate models (held-out ≤ 10⁻⁹ relative) at P = 4, plus
     the base-free arm required at P = 2 only. Its tolerance must be < 0.191 or the experiment stops.
+
+### EXP-083 redesign R1 — REGISTERED (the Bridge's OK with edits A–D, 2026-11-22) [model: Opus 5.5]
+**Disclosure (edit D), stated exactly.**
+- After Tier-1 I partly formed a comparison in my head. From the honest arm-(a) (no saddle) Q′ values I computed
+  δQ′(P = 4) = +5.14, converted it to a no-saddle R(4) ≈ −36.4, and recalled EXP-081's saddle-off values (R = −48.5, −69.4;
+  the edge design, a different geometry).
+- I have **not** computed production's no-saddle (t0 + 𝒞) values for W2P4 / W4P4, and **no** with-saddle comparison has
+  been formed.
+- From here on, **every model choice is fixed by the rules below before any production number is looked at**. The
+  tolerance is mechanical (rule A: 3 × spread), and the 0.191 stop rule is unchanged.
+
+**(i) P = 2 completeness gate (edit C).**
+- W2P2 and W4P2, arms (a) and (b), n ≤ 60, plus a 40-digit spot-check of the honest Q(n) at n = 3 and 6 (W2P2, arm a).
+- The many-base pencil (free bases) is run on the n ≤ 60 data.
+- **Gate:** for each geometry and arm, |Q′(fixed + confluent) − Q′(pencil)| ≤ 10⁻³. If any exceeds it: **STOP**. The model
+  is incomplete and P = 4 is not run as a verdict.
+
+**(ii) P = 4.** W2P4 and W4P4, arms (a) and (b), n ≤ 24. The cost is measured first (one n = 24 evaluation) and declared
+if > 1 GB.
+
+**(iii) Adequate models and tolerance (edit A).** The models are linear least squares on the own-pole bases b = e^{−2πs}
+(own scan; floors 10⁻⁴, 10⁻⁶):
+- M1: singles + n·b (confluent);
+- M2: M1 + n²·bⁿ for every pole value shared by more than two sector slices;
+- M3: M1 + products b_i b_j for the 6 largest bases (and n·(b_i b_j)ⁿ);
+- M4: M2 + M3.
+- Each model is fitted (α) with the last n held out, and (β) with an interior block of 2 n-values held out (n = 9, 10 at
+  P = 4; n = 20, 21 at P = 2).
+- **Adequate** = every held-out residual ≤ 10⁻⁹·|Q(n)|.
+- The spread is taken over all adequate models × both data ranges (n ≤ 12 and n ≤ 24 at P = 4), and the tolerance is
+  3 × spread.
+- **Discriminating power:** the δQ′ tolerance (from the W2P4 and W4P4 spreads added in quadrature, × 3) must be < 0.19112,
+  else STOP.
+- With no adequate model at P = 4: STOP.
+
+**(iv) The pencil at P = 4 (edit B):** reported next to the spread; not required.
+
+**Comparisons, the consequence and the must-fires** are as registered in cd9e134 (dd = 1, saddle-off and pure gauge are
+must-fires; s_cut 1.5 is a diagnostic).
