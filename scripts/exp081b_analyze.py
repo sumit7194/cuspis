@@ -56,13 +56,11 @@ def referee(rule):
     ref = json.load(open(fn)); res = {float(k): v for k, v in ref["res"].items()}
     if rule == "orig":
         return f"N2 (orig): {'PASS' if ref['pass_'] else 'FAIL'} (applied at s <= production s_max {ref['s_max']:.2f}); {json.dumps(ref['res'])}"
-    import sigma3d as S3                                                    # N2': impact = rel x |logdet| x pi/cosh^2
-    W, P, Wbox, Ny = 4, 4, 4, 8; Lx, Lt = 2 * P + Wbox, 2 * P; x0 = P + (Wbox - W) // 2
-    S = S3.Strip3D(Lx, Lt, Ny, list(range(x0, x0 + W)), P - 1, s_cut=3.0); out, ok = [], True
-    for s, v in sorted(res.items()):
-        ld = abs(S3.logdet(S.inner(1.0, 0.5 + 1j * s, npt=24)[0]).real); I = v["logdet"] * ld * np.pi / np.cosh(np.pi * s) ** 2
-        ok &= I <= TOL; out.append(f"s={s}: rel {v['logdet']:.1e} |logdet| {ld:.3g} impact {I:.1e}")
-    return f"N2' (impact): {'PASS' if ok else 'FAIL -> VOID'}; " + "; ".join(out) + f"  [descriptive: {json.dumps(ref['res'])}]"
+    # N2' (primary; run 2 under the Bridge's terms, a2b838b/762a6f4): impact and own-pole census stored by the referee itself
+    out = [f"s={float(k)}: impact {v['impact']:.1e} (must-fire {v['mustfire_impact']:.1e})" for k, v in sorted(ref["res"].items(), key=lambda kv: float(kv[0]))]
+    ok = bool(ref["pass_impact"]) and bool(ref["pole_ok"])
+    return (f"N2' (impact + own-pole census): {'PASS' if ok else 'FAIL -> VOID'}; pole census {'PASS' if ref['pole_ok'] else 'FAIL'}; "
+            f"census must-fire {'FIRES' if ref['census_mustfire'] else 'DOES NOT FIRE'}; " + "; ".join(out))
 
 if __name__ == "__main__":
     for rule in ("orig", "impact"):

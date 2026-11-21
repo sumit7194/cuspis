@@ -615,4 +615,4 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 
 - [ ] EXP-081b (unregistered diagnostic): pole census for every production geometry: sign-change scan of F(s) = z^W det(I+MC) vs production poles for s <= s_cut (slice p=4 of W4P4 missed s=3.9476 > s_cut; check none is missed below s_cut).
 
-- [ ] Dry runs that set a watchdog cap must run UNDER the watchdog and set the cap from its MEM+CMPRS peak (+≥40%), not from maxrss. Two kills from this slip (EXP-081 r=6; EXP-081b W2P12, 2026-11-21). Apply to the P = 16 night-run re-measure.
+- [ ] Dry runs that set a watchdog cap must run UNDER the watchdog and set the cap from its MEM+CMPRS peak, not from maxrss: either run long enough to see compressed memory level off, or declare measured peak × 1.5 (Bridge, 2026-11-21). Two kills from this slip (EXP-081 r=6; EXP-081b W2P12, 2026-11-21). Apply to the P = 16 night-run re-measure.
