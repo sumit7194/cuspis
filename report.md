@@ -10225,3 +10225,29 @@ checked (1.6·10⁻¹¹⁷). Arm (b)'s Arb saddle has |F| ≤ 10⁻¹⁰⁵.
 - **Lesson (third instance):** precision is not the bottleneck. The integer-n fit referee needs the complete analytic
   base set of log det Σ(·), including all-order products and saddle-induced structure. That set grows combinatorially.
   A fixed-base fit cannot certify Q′(1) for multi-pole systems, even at 120 digits.
+
+### EXP-083 R3 build, Tier-1 (no verdict): route (ii) ported to Strip3D; the complex-n growth probe works [model: Opus 5.5]
+(`scripts/exp083_r3_qcont.py`, `exp083_r3_tier1.*`, `exp083_r3_growth_probe.py`, `exp083_r3_growth_output.txt`.)
+- **Wiring (item d):** route (ii) (shifted Abel–Plana at ε = 1/(2n)) is ported from `sigma_engine` to Strip3D, using
+  `inner(n, β)` and `inner_beta0(n)`. Log dets are unwrapped along each integration path.
+  - At W2P2 (real n): Q_cont(n) vs Arb honest is 4.8·10⁻⁸ (n = 2), 1.7·10⁻⁷ (3), 6.6·10⁻⁷ (4). Quadrature-limited
+    (24 β nodes); to be tightened.
+  - FD Q′(1) (h = 10⁻³) vs route_b's t0 + 𝒞: 1.2·10⁻⁵, stable under tail range and node count.
+  - Q_cont(1) = 3.6·10⁻⁹.
+- **Growth probe**, n = c + it, t ≤ 20:
+  - P4′ known-good (EXP-079 route ii): |Q| ≲ 8, log|Q|/t → 0.09 (t = 20), falling.
+  - Strip3D W2P2: |Q| ≈ 58–108 at t = 20, log|Q|/t → 0.20–0.23, falling.
+  - Both look polynomial in t (exponential type ≈ 0), and both curves are smooth on this grid.
+- **A structural observation that shapes R3 (argued):** the threshold-type failure (EXP-082) differs from the true
+  continuation by Σ weight·2Br·r^{n−1}/(1 − rⁿ). That term is **type 0 along imaginary n**, so the growth test (b)
+  cannot see it.
+  - It is invisible at integers n ≥ 2 (~r^{n−1}). **It shows only at n = 1, as Q_cont(1) ≠ 0.** So the n = 1 integer
+    (Q(1) = 0 exactly) is the load-bearing part of test (a).
+  - Test (b) catches the other class: non-admissible growth like sin(πn)·h, which is the planted must-fire (the Bridge's
+    note 2).
+- **Next (still Tier-1):**
+  - integers n = 2…72 vs Arb with tightened quadrature;
+  - the branch check (unwrapped vs principal slogdet where no crossing occurs, plus one deliberately crossing path);
+  - the planted sin(πn)·h on P4′;
+  - T46d's n-general Q_cont on the ε-family (known-bad: expected to fail at n = 1).
+  - Then register R3.

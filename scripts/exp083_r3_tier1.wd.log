@@ -1,0 +1,15 @@
+# cmd: ../.venv/bin/python -u -W ignore exp083_r3_tier1.py
+# caps: tree <= 1.5 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.5     1   0.055    0.000   0.055        13.73        720.9           61              1
+     6.1     1   0.056    0.000   0.056        13.73        720.9           61              1
+    11.7     1   0.056    0.000   0.056        13.73        720.9           62              1
+    17.2     1   0.056    0.000   0.056        13.74        720.9           62              1
+    22.7     1   0.056    0.000   0.056        13.74        720.9           61              1
+    28.3     1   0.056    0.000   0.056        13.74        720.9           63              1
+    33.8     1   0.056    0.000   0.056        13.74        720.9           64              1
+    39.3     1   0.056    0.000   0.056        13.74        720.9           64              1
+    44.9     1   0.056    0.000   0.056        13.74        720.9           64              1
+# exit 0; wall 50 s; PEAK tree MEM 0.056 GB + CMPRS 0.000 GB = 0.056 GB
