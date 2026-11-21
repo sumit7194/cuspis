@@ -1,0 +1,8 @@
+  c(1/2+0i) = (-0.02533029591 + 0.0j)
+  c(1/2+0.5i) = (-0.04338290841 + 0.0j)
+  c(1/2+1i) = (-0.07987524035 + 0.0j)
+  c(1/2+2i) = (-0.1591560532 + 0.0j)
+  c(1/2+4i) = (-0.3183098862 + 0.0j)
+  C[c]   = (-0.03125 + 0.0j)   (honest coincident a_n = (n-1) C[c]/r + O((n-1)^2): linear, as expected)
+  C[c^3] = (-4.010149318e-5 + 0.0j)   (SC's F1 cubic-log weight; the honest integer-n cubic is d/dn[n a_n^3]|_1 = 0)
+  ratio C[c^3]/C[c]^3 = (1.31405 + 0.0j)

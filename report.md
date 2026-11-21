@@ -8353,3 +8353,73 @@ numpy only, no file or network side effects.
   - The exponent ladder itself is argued. It is supported by the known-answer control and by the fit residuals.
 - **What it means for δκ:** the free factorisation that T31 builds on is sound at the level that matters for the
   determinant (λ₁ dominates log det(I − K)). **It does not touch the σ-side question (T35).**
+
+## EXP-075  Check of Neon T35 (σ-side well-posedness): the ln Λ/w is an artefact of SC's n → 1 continuation, not a UV log in δκ (argued, with cone numbers); SC as written is falsified — verification of external work + theory note [model: Opus 5.5]
+**Source.** `neon_work/dkappa/T35_summary.md` (UNVERIFIED), answering `BRIEF_T35_sigma_wellposed.md`.
+
+**1. My straddle worry: resolved (verified, algebra).**
+- T35's identity B(2)⁻¹δ₂ = (I + X)⁻¹X, X = B₁⁻¹δ₂, commutes with X. It checks to 2.7·10⁻¹⁵ (random complex matrices).
+- My commutator then reduces **exactly** to −[(I + Y)⁻¹YX, (I + X)⁻¹X], with Y = B₁⁻¹δ₁ (3.0·10⁻¹⁵). Every surviving
+  term pairs a ray-1 operator with ray-2 operators, so the same-ray O(1) pieces cancel. **T35 is right on this.**
+
+**2. T35's order counting: agreed (argued; reproduced independently).**
+- B^{(β)} = 2G₁∘G^{(β)} is linear in G^{(β)}, so B_conn = 2G₁∘G_conn exactly (3D).
+- With G_conn(x, x) = a₀(x) ≠ 0: per slice, B_conn,k ≈ (a₀/π)K₀(kρ) ~ −(a₀/π) ln ρ (order −2). With B₁⁻¹ of symbol
+  4√(p² + k²), K_σ ⊃ an order −1 part of symbol ∝ 8a₀/√(p² + k²). So s_n ~ n^{−1/2}: S₃, not S₂.
+- My local-symbol computation of the cubic gives (1/6)Tr X³ → (128/(3π²))∫a³ ln Λ per unit volume, with X = 8a/|P|.
+  That is T35's coefficient. Integrated per slice it is ∝ ln(Λw)/w for the two-edge part.
+
+**3. What the log means: an artefact of SC's continuation (argued, with numbers).**
+- **The honest integer-n structure.**
+  - On M_n, B_n = 2G_n∘G_n. Near coincidence G_n = S + a_n(x) + O(r), with S = 1/(4πr) and a_n the replica coincident
+    shift. So B_n = 2S² + 4S·a_n + ….
+  - In σ-sector form, B_n^{(q)} = (2/n)Σ_k G^{(k/n)}G^{((q−k)/n)} has local part 2S² + (4S/n)Σ_k a^{(k/n)} = 2S² + 4S·a_n,
+    **independent of q** (a full-period sum).
+  - The only dimension-3 local log term is then ∝ ∫_{M_n} a_n³. The linear ∇²-term vanishes because the regular part is
+    harmonic.
+  - The cubic-log coefficient of the O(N⁰) Rényi free energy is ∝ n∫a_n³ = O((n − 1)³), and **zero** once the saddle
+    enters (the gap equation fixes a_n). Its n → 1 derivative is **0**.
+  - This is the same fact as EXP-062's verified "∂ₙB has no 1/|x| term" (gap cancellation −1/32 + 1/32).
+- **SC's F₁(β) = ½ log det(2G₁∘G^{(β)}).** It has local part 2S² + 2S·a^{(β)}: q-dependent, and O(1) at finite twist.
+  So 𝒞[F₁] carries a cubic log ∝ 𝒞[a³].
+- **Numbers, single edge (pre-check `scripts/exp075_cone_c.py`, `exp075_precheck_output.txt`).**
+  - a^{(β)} = c(β)/r near a twist line in 3D, with c(β) = −T(β)/(4π²) (per-mode Mellin, ψ-sum).
+  - Cross-checked by direct mode-sum quadrature: −0.021906 vs −0.021936 at β = 0.3, 0.14%, truncation-limited.
+  - c(½) = −1/(4π²) exactly. c is real on the line and grows linearly: c(½ + 4i) = −1/π.
+  - **𝒞[c] = −0.03125 = −1/32**, reproducing EXP-062's ∂ₙ-coincident shift by a different route.
+  - **𝒞[c³] = −4.01·10⁻⁵ ≠ 0.**
+  - So SC predicts a nonzero cubic UV-log coefficient where the honest replica theory has exactly zero.
+- **Diagnosis.**
+  - SC's step F(n, β) = F(1, β) + (n − 1)∂ₙF(1, β) + …, with the ∂ₙF part dropped by Abel–Plana, fails for the local
+    part.
+  - At the lattice points β = q/n the sector bubble's local part is the replica average 4S·a_n = O(n − 1). F(1, β)'s is
+    2S·a^{(β)} = O(1). Their difference is not O(n − 1), so the ∂ₙF piece is not admissible.
+  - **This falsifies the SC formula as written.** That is the registered "Abel–Plana drop" prediction, here falsified
+    analytically for the UV-local part. The registered n = 2, 3 honest-sum gate would have caught it numerically.
+- **T35's ln(Λw)/w therefore does not indicate a UV log in δκ.**
+  - It is consistent with Lemma U, whose Route-B organisation expands around the n-cone with honest twisted Σ^{(k)},
+    and with the mutual-information finiteness argument (both argued or partially verified as graded).
+  - **T35's S₃ obstruction is also an artefact.** Its order −1 piece has symbol ∝ a₀^{(β)}. In the honest sector bubbles
+    the coincident term is the replica average a_n, which is O(n − 1) (zero with the saddle). (Argued.)
+
+**Grade.**
+- (1): verified.
+- (2): argued, and agrees with T35.
+- (3): argued, with the cone numbers verified by two routes and the −1/32 tie to EXP-062.
+- **The SC formula (argued, 7578ff) is withdrawn as a complete formula.** Its n = 1-object structure (F₁ with one flat
+  and one twisted propagator) mis-continues the σ-sector bubble.
+- What survives:
+  - the sector decomposition (exact at integer n);
+  - the 𝒞 identity (verified);
+  - T(α)'s gauge invariance;
+  - T31's free factorisation (EXP-074);
+  - the BIE instrument (EXP-069).
+
+**Next (proposal to the Bridge).**
+- A corrected continuation of the σ-sector bubble that keeps the inner k-sum, i.e. the replica-averaged local structure.
+  Proposed as a Neon brief, with must-pass controls:
+  - no cubic UV log at O(n − 1);
+  - EXP-062's "no 1/|x| in ∂ₙB";
+  - the free (K-free) reduction;
+  - the honest n = 2, 3 sums;
+  - must-fail: SC's F(1, β) form must be flagged by the cubic-log test.
