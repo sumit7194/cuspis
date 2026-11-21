@@ -7398,3 +7398,35 @@ y ≤ 4. This registration fixes the gate and the clauses before the **productio
   - Σ̃′: polynomial to y = 3 (EXP-062).
   - So the first-order tip term carries **no log(w/ε) on the measured range. An analytic all-y bound is open.**
   - Pending: the direct BIE referee (Neon T25), which is unverified until checked.
+
+## EXP-066  Check of Neon T25 (blind direct BIE) against the CH05 route — a verification of external work, not pre-registered [model: Opus 5.5]
+**What T25 is.**
+- Neon (Gemini, /u/0) built a direct boundary-integral solver blind, from my `neon_work/dkappa/BIE_SPEC.md`, which
+  contained no numbers and no candidate formulas.
+- Code: `neon_work/dkappa/T25_code/run_bie_benchmark.py`, sha256 88c296c1…, 487 lines. **Read in full before running.**
+  It imports only numpy, scipy, json and time; its only side effect is writing `bie_results.json` to the cwd.
+- Method: weakly singular Galerkin with Maue's identity; graded mesh; cut-avoiding Fourier–Bessel projection; ladders in
+  L, p and R.
+- Neon's reported controls: K1 exact; w = 10 gives ΔC ≈ 0; K3 trend; planted 2% caught at 96σ.
+
+**My checks** (`scripts/exp066_check_t25*`; the rerun was done from a scratch copy with `python -I`).
+1. **Reproduction:** the priority slice (a = 0.3, w = 0.1) reruns to ΔC = −0.2077499 ± 4.3·10⁻⁵ and E = 0.348417,
+   identical to Neon's table.
+2. **Shape against the CH05 route (all orders).** k(w) = ΔC_BIE(w)/∫_w^∞ b̂u must be constant, since CH05 fixes the
+   shape and leaves the scale free.
+   - Spread over w ∈ {0.3, 0.1, 0.03, 0.01}: 2·10⁻⁵ (a = 0.3), 2·10⁻⁵ (a = 0.2), 4·10⁻⁵ (a = 0.4).
+   - Including w = 1 and 3 at a = 0.3: 5.6·10⁻³. That is within the BIE's error bar where ΔC is tiny (±6% at w = 3).
+   - The symmetric-v₀ resummation varies by 7–57% over the same w (Bridge V28 addendum B), so this test discriminates.
+3. **Absolute, cross channel (no free scale on my side).** e(w) = (1/(16πa(1 − a)))∫_w^∞(h + u²)dt equals E_BIE(w) to
+   1.3–2.4·10⁻⁴ relative at all 12 slices with w ≤ 0.3 (three twists), and to 9.5·10⁻⁴ and 4.9·10⁻³ at w = 1 and 3.
+   - The offset is a systematic +1.7·10⁻⁴, within the BIE's quoted error (≈ 5·10⁻⁴ relative at w = 0.1).
+   - This is the first finite-mass absolute test of the σ machinery's normalisation and sign. Until now it was tested
+     only at the massless CFT end (EXP-064).
+
+**Grade.**
+- **The CH05 route's same-tip resummation and its σ machinery are verified by an independent direct numerical method**:
+  shape to ≤ 4·10⁻⁵, cross-channel absolute to ≤ 2.4·10⁻⁴ for w ≤ 0.3.
+- With the three-construction blind match (V28) and the T23 absolute first-order term (EXP-065 T, Bridge addendum B:
+  ΔC = −(λ/4π)B_T23 slice by slice), C₊ at real twist is settled by four routes.
+- On the CH07b line, the growth result (EXP-065) rests on the same verified machinery, continued analytically. It
+  remains partially verified (measured to y = 5; analytic all-y bound open, Neon T26 working on it).

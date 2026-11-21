@@ -1,0 +1,17 @@
+a=0.3 w=0.01: k = DeltaC_BIE/Int bhat u = -3.201915   |  e_CH05 5.045826  E_BIE 5.044900  rel +1.8e-04
+a=0.3 w=0.03: k = DeltaC_BIE/Int bhat u = -3.201988   |  e_CH05 1.485561  E_BIE 1.485340  rel +1.5e-04
+a=0.3 w=0.1: k = DeltaC_BIE/Int bhat u = -3.201955   |  e_CH05 0.348481  E_BIE 0.348420  rel +1.7e-04
+a=0.3 w=0.3: k = DeltaC_BIE/Int bhat u = -3.201986   |  e_CH05 0.071584  E_BIE 0.071568  rel +2.3e-04
+a=0.3 w=1.0: k = DeltaC_BIE/Int bhat u = -3.200917   |  e_CH05 0.005130  E_BIE 0.005125  rel +9.5e-04
+a=0.3 w=3.0: k = DeltaC_BIE/Int bhat u = -3.183944   |  e_CH05 0.000032  E_BIE 0.000032  rel +4.9e-03
+  a=0.3: k spread (max-min)/mean = 5.6e-03
+a=0.2 w=0.01: k = DeltaC_BIE/Int bhat u = -3.182693   |  e_CH05 4.538171  E_BIE 4.537400  rel +1.7e-04
+a=0.2 w=0.03: k = DeltaC_BIE/Int bhat u = -3.182739   |  e_CH05 1.310580  E_BIE 1.310410  rel +1.3e-04
+a=0.2 w=0.1: k = DeltaC_BIE/Int bhat u = -3.182713   |  e_CH05 0.298215  E_BIE 0.298170  rel +1.5e-04
+a=0.2 w=0.3: k = DeltaC_BIE/Int bhat u = -3.182759   |  e_CH05 0.058781  E_BIE 0.058770  rel +1.9e-04
+  a=0.2: k spread (max-min)/mean = 2.1e-05
+a=0.4 w=0.01: k = DeltaC_BIE/Int bhat u = -3.228922   |  e_CH05 5.282291  E_BIE 5.281300  rel +1.9e-04
+a=0.4 w=0.03: k = DeltaC_BIE/Int bhat u = -3.229038   |  e_CH05 1.569422  E_BIE 1.569160  rel +1.7e-04
+a=0.4 w=0.1: k = DeltaC_BIE/Int bhat u = -3.228966   |  e_CH05 0.373692  E_BIE 0.373620  rel +1.9e-04
+a=0.4 w=0.3: k = DeltaC_BIE/Int bhat u = -3.228946   |  e_CH05 0.078420  E_BIE 0.078401  rel +2.4e-04
+  a=0.4: k spread (max-min)/mean = 3.6e-05
