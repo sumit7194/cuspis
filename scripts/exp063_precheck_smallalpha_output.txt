@@ -1,0 +1,8 @@
+Born (v0, no resolvent) at a=0.3: -0.0064735   T17/T20 closed form -0.0064736   rel -1.2e-05
+resummed with v0: -0.0073856   ratio to Born 1.140891
+resummed with v_a: -0.0093212   ratio to Born 1.439901
+CH05 ratio route: ratio 1.162062 -> C+ = -0.0075226
+a=0.05: lam^2=0.00248  CH05 ratio 1.0231431 ((r-1)/lam^2 9.33376)   T20-v0 ratio 1.0232289 ((r-1)/lam^2 9.36836)
+a=0.1: lam^2=0.00968  CH05 ratio 1.0601761 ((r-1)/lam^2 6.21955)   T20-v0 ratio 1.0602255 ((r-1)/lam^2 6.22465)
+a=0.2: lam^2=0.03501  CH05 ratio 1.1244050 ((r-1)/lam^2 3.55386)   T20-v0 ratio 1.1178344 ((r-1)/lam^2 3.36616)
+a=0.3: lam^2=0.06632  CH05 ratio 1.1626804 ((r-1)/lam^2 2.45312)   T20-v0 ratio 1.1408906 ((r-1)/lam^2 2.12455)

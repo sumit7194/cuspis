@@ -7192,3 +7192,44 @@ pole at ν − 1 = −1, fixed by using the Q_{ν+1} recurrence.)
   - C₊'s growth rate on the line = Born's (π, T17/T20 closed form) + the growth rate of the t^{2a}-weighted ratio.
   - Log-free needs the ratio's rate < π. **Gate for the registration: ratio rate ≤ π − 1 on y ∈ [2, 4]**; within 1 of π
     is inconclusive.
+
+**CH05 route, pre-checks 3–6 (unregistered; `scripts/exp063_precheck_{ratio,t20_resummed,nuisance,constraint46,smallalpha,smallt_t20}*`).** [model: Opus 5.5]
+- *Resummation ratio* ρ = C₊/C₊^{lin} (normalisation-free):
+  - α = 0.3: 1.1621. It is stable in t₀; t₁ = 10⁻³ → 10⁻⁴ moves it to 1.1627 (small-t tail).
+  - On the line, |ρ| = 1.37, 1.85, 2.60, 2.24, 1.74 at y = 0.5, 1, 2, 3, 4: **O(1), no exponential growth.**
+  - If the route is right, C₊ grows at Born's rate π < 2π, and (e) is log-free.
+- *Internal consistency (verified):* along the integrated solution, CH05's algebraic constraint (46),
+  β₁β₂ = 1 + u², holds to ≤ 3·10⁻¹⁰ for t = 8…0.03. This tests my transcription of (47)–(50) and the b-integration.
+- *T20's formula in my own code (two-implementation check of Neon's arithmetic):*
+  - Born with v₀ reproduces −0.0064736 to 1.2·10⁻⁵.
+  - Resummed ratios at α = 0.3: v₀ 1.1409 (stable to 5·10⁻⁵ under h, q-range); v_α 1.4399. My v_α value differs from
+    T20's quoted −0.00805, presumably a different v_α definition.
+- **The two routes compared** ((ρ − 1)/λ²):
+
+  | α | CH05 route | T20-v₀ |
+  |---|---|---|
+  | 0.05 | 9.334 | 9.368 |
+  | 0.1 | 6.2196 | 6.2247 |
+  | 0.2 | 3.554 | 3.366 |
+  | 0.3 | 2.453 | 2.125 |
+
+  - **They agree at the first resummation order** (0.08% at α = 0.1) and diverge at higher orders. On the line, where
+    λ is large, higher orders dominate: CH05 gives O(1), T20-v₀ grows (local rate ≈ 4.5 at u = 1, EXP-063 pre-check 1).
+  - No candidate outer vector of T20 reproduces the CH05 route beyond first order.
+- **A proposed all-orders test, withdrawn (my error in reasoning, caught before registering).**
+  - I argued that Δĉ(u → 0) = −ĉ₁, i.e. F(u → 0) → −1/λ², from analyticity of the finite-cut coefficient in m².
+  - For the complex scalar, the zero mode gives slow IR log corrections (cf. CH05 (87), c → ⅓ + 1/(2 log t)), so that
+    premise is unreliable.
+  - (T20-v₀'s F grows like u^{−0.31} as u → 0; not used as evidence.)
+- **Status.**
+  - The CH05 route is the only one of the two built on an exact framework (monodromy deformation, verified here
+    against the Fredholm determinant on the line).
+  - Its one derived step, dc/dL = −m²bu/(8πa(1 − a)) via (22) and the reflection form of ∂_{L₂}G, is **argued**. It
+    agrees with T20-v₀ at first resummation order.
+  - **To decide the higher orders, a third method (unverified so far) is needed**: a direct 2D computation of the same-tip
+    coefficient at real α = 0.3, where the routes differ by 1.9% in ρ (2% in C₊). Candidates:
+    - a boundary-integral solution of the twisted Helmholtz problem;
+    - the EXP-051 lattice with careful extrapolation.
+    - The target precision is ≤ 0.5% in C₊.
+  - Piece (I) at y = 3: Im ≈ 0.60. The 0.2, 0.4, 0.6 sequence is linear, so Σ̃′'s polynomial growth is confirmed to y = 3
+    (partially verified).
