@@ -9315,3 +9315,85 @@ Read in full; the code was run from a scratch copy with `python -I`. Everything 
   - the checkpoint at the kill (`*_ckpt_at_kill.json`);
   - the driver stdout at the kill (`exp081b_output_run1.txt`).
   - `exp081b_output.txt` continues after a relaunch marker.
+
+### T46c (Neon, P2 continuum) graded: code delivered and partly reproduces; item 1(c) does not reproduce; the edge cross-check fails its own control; "c_log" is a fit to a non-plateau [model: Opus 5.5]
+
+**Source.** `neon_work/dkappa/T46c_full.md` and `T46c_code/brief_p2_t46c.py` (963 lines, sha256 c713657c…), delivered
+by the Bridge; UNVERIFIED on arrival.
+- I read the code in full. It makes no network calls and writes no files; `os` is used only to set thread variables.
+- I ran it from a scratch copy with `python -I`, under the watchdog (peak ≤ 0.24 GB).
+- My checks and all outputs are in `scripts/t46c_grade/`.
+
+**Ask 0, complete code: partially met.**
+- The z-scan (3a) reproduces: T1 + T_sad to 6 digits, T2 to ~5·10⁻⁵ (e.g. Q′(1, 6) = 0.534871 against 0.534818
+  reported).
+- The strip Woodbury and integer-n checks reproduce, to within platform rounding.
+- **The item 1(c) table does not come from this code.**
+  - Delivered code, k = 1 slice: g(½ + is) = −0.980, −6.165, −15.38, −15.52, −18.58 at s = 0…4. Reported: −0.98, −6.29,
+    −22.97, −44.76, −62.32.
+  - max|B_sc| at s = 4 is 2.2·10⁵, against the reported 7.7, so the D-scaling in this code does not keep the matrix O(1).
+- The log + exp fits of 3(b), whose c_log = −0.107 is the headline number, are not in the code. The flat + exp fits the
+  code prints do not match the reported ones either.
+
+**Item 1, consistency: "PASSED" is overstated.**
+- Strip Woodbury against a direct inverse (6.7·10⁻¹⁶ … 7·10⁻¹⁰): **partially verified** (reproduced).
+- Integer-n Parseval honesty: **partially verified** (reproduced; it runs the production `pair_delta_B_exact`).
+- **Pure gauge (1a): a check that cannot fail.** It conjugates the twisted H back to H₀ and inverts that matrix with
+  `linalg.inv`. The production G(α)/Parseval path is never used, so g ≡ 0 by construction.
+- Winding (1b): reproduced (0 clean, +1 planted).
+  - The planted zero is multiplied into the phase after the fact. It tests the counting and the contour sampling, not
+    the operator.
+  - It covers one small slice (N_θ = 12, |q − ½| ≤ 3.5, k = 1): **partially verified for that slice only.**
+- 50-digit referee (1c): feeds the float64 B_raw into mpmath, so it checks only the determinant step, not the
+  float64 construction of B (entries up to 3·10⁸) — the step that failed in my own run-1 referee. The reported values
+  do not reproduce (above): **unverified.**
+
+**Items 2–3, the log edge term.**
+- **Known-answer control I ran first, on T46c's own meshes** (`free_slope.py`): the free z·dS/dz should approach −1/3 per
+  strip (two edges).
+  - Elliptic strip, z = 3…6: −0.334 … −0.340 at N_θ = 16 and 20, converging with N_θ (−0.3332 at N_θ = 32, z = 6).
+    **The strip mesh resolves edge logs where the σ fits are made: verified for the free sector, 5 meshes.**
+  - Single-edge log-polar mesh (r_min = 0.049, as in 3c): the target is −1/6, and the mesh gives −0.159 (k = 0.5),
+    −0.146 (k = 1), −0.094 (k = 3). The Neumann hole is not a negligible regulator at k·r_min ~ 0.1. With r_min = 0.0067,
+    −0.167 … −0.161.
+- **σ local slopes dQ′/d ln z** (`sigma_slope.py`, `sigma_squad.py`; production `eval_K`; slopes, not fits):
+  - Q_max: converged by 16–24 (change ≤ 0.001). The production Q_max = 8 is off by ~0.01.
+  - s-quadrature: (8, 4) → (24, 20) nodes moves T2 by ≤ 10⁻⁴. Not a factor.
+  - **N_θ: not converged and not monotone.** At Q_max = 16, local slopes on [3,4], [4,5], [5,6], [6,8]:
+    - N_θ = 16: −0.084, −0.088, −0.137, −0.181;
+    - N_θ = 20: −0.131, −0.127, −0.118, −0.141;
+    - N_θ = 24: −0.091, −0.103, −0.165, −0.228.
+    - The slope steepens with z, so there is no log plateau. N_θ = 20 differs from 16 and 24; with
+      θ_l = −π + (l + ½)h there is a node on the strip midline only when N_θ ≡ 2 (mod 4). This is a hypothesis
+      (**unverified**): at z ≥ 5, k·h > 1 in the middle of the cut.
+  - **Split by term:**
+    - T1 + T_sad: steady slope −0.44 … −0.46 on z ∈ [3, 8] at N_θ = 16 and 24.
+    - T2: slope +0.34 → +0.23 over the same range, on both meshes.
+    - Neon's c_log ≈ −0.1 is the small difference of two O(0.4) slopes, one of which is still moving.
+  - **Grade: "c_log ln z" is not supported.** A constant log coefficient fitted on z ≤ 6 with a fixed e^{−z} term is
+    inference from a quantity that has not levelled off (the plateau rule). The z_max drift of Δκ_flat is real; its
+    attribution to a constant c_log is unverified.
+- **3(c) single-edge cross-check: invalid.**
+  - Its own Woodbury control prints rel_err = 2.43·10⁻³ (not machine precision; not mentioned in the report), so the
+    edge resolvent is wrong at that level.
+  - Its hole distorts even the free slope by up to 44% at the k used.
+  - The "SURE" on the edge log slope is withdrawn.
+- **Same-operator κ_free (2b), from the report's own table (not rerun):** the +1.3% residual does not shrink between
+  N_θ = 32 and 40 (1.34% → 1.31%, while h² falls 36%). The O(h²) attribution does not fit; **unexplained.**
+
+**Item 4 (r_max):** not rerun. The report's table shows < 10⁻⁶ change beyond r_max/w ≈ 23 at z = 1 and 4: **unverified,
+plausible.**
+
+**s > 1 weight:** [1, 2] carries 1.4–1.7% of 𝒞[g] (report). The lattice gives 2.7%. Same order, and both say s_max = 1
+is not negligible: **argued (consistent; not reproduced by me).**
+
+**Where this leaves P2.**
+- The continuum route now needs the single-edge function on a mesh that matches the strip's near-tip mesh, computed
+  rather than fitted. That is the Bridge's reading, and mine.
+- A hole-free choice: parabolic coordinates x + it = ζ²/2, which agree with the elliptic tip mesh (cosh ζ − 1 ≈ ζ²/2).
+- Before any subtraction it must pass:
+  - exact Woodbury;
+  - the free −1/6 slope to ≤ 1% at the k used;
+  - T0 and T2 reported separately, for strip and edge, as local slopes for z up to 10 and N_θ = 16, 20, 24, 32.
+- The lattice strip pair (EXP-081b) cancels this edge function exactly by construction. That is why it is the primary
+  route; P2 is a cross-check.

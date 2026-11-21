@@ -1,0 +1,33 @@
+================================================================================
+TABLE ITEM 1: Discretisation Consistency & Extended-Precision Referee
+================================================================================
+[Geometry: Conformal Elliptic Strip w=2, N_th=12, mu_max=3.0, N_pts=72, r_max=8.93, r_max/w=4.46]
+
+--- 1.0 Exact Woodbury vs Direct Sparse inv(H_q(alpha)) (q=0.7) ---
+  alpha=0.25      : rel_err = 6.68e-16
+  alpha=0.5       : rel_err = 8.64e-16
+  alpha=(0.5+1.5j): rel_err = 2.41e-12
+  alpha=(0.5+3j)  : rel_err = 7.06e-10
+
+--- 1.0b Integer-n Honesty (distinct q1=0.7, q2=1.3 & confluent q1=q2=1.0) ---
+  Distinct (0.7, 1.3) n=2, beta=1/2: max_err = 1.11e-16
+  Distinct (0.7, 1.3) n=3, beta=1/3: max_err = 6.95e-14
+  Confluent beta=0 dB/dn (q=1.0 vs 1+-1e-4): rel_err = 5.57e-08
+
+--- 1(a) Pure Gauge at s = 2, 3, 4 (closed radial loop between j=1 and j=2) ---
+  s=2.0: ||D H(a) D^-1 - H0||/||H0|| = 5.30e-33 | g_1(0.5+2i) = -3.220e-15+4.920e-31j
+  s=3.0: ||D H(a) D^-1 - H0||/||H0|| = 3.94e-33 | g_1(0.5+3i) = -3.220e-15+6.458e-31j
+  s=4.0: ||D H(a) D^-1 - H0||/||H0|| = 4.12e-17 | g_1(0.5+4i) = -9.659e-15+3.460e-31j
+
+--- 1(b) Zero/Winding Check of det B_1^{(beta)} on [0.15, 0.85] x [-4.0, 4.0] (k=1.0 slice) ---
+  Clean winding on [0.15, 0.85] x [-4.0, 4.0]   = +0.000000 (target 0.000000)
+  Planted zero at 0.5+0.7i winding              = +1.000000 (target +1.000000)
+
+--- 1(c) 50-Digit mpmath Referee on Full k=1.0 Slice (N_th=12, N_pts=72, r_max/w=4.46) ---
+  s=0.0: mp50=  -0.979515 -0.0000j | raw_err=3.66e-15 | D_err=4.56e-15 | max|B_raw|=3.9e-01 max|B_sc|=3.9e-01
+  s=1.0: mp50=  -6.165243 -0.0000j | raw_err=4.44e-15 | D_err=2.67e-15 | max|B_raw|=1.9e+01 max|B_sc|=2.5e-01
+  s=2.0: mp50= -15.381382 -0.0000j | raw_err=2.81e-12 | D_err=7.56e-17 | max|B_raw|=5.9e+03 max|B_sc|=6.7e+00
+  s=3.0: mp50= -15.522047 -0.0000j | raw_err=3.81e-11 | D_err=5.35e-15 | max|B_raw|=1.5e+06 max|B_sc|=1.2e+03
+  s=4.0: mp50= -18.580807 -0.0000j | raw_err=7.26e-09 | D_err=8.24e-13 | max|B_raw|=3.4e+08 max|B_sc|=2.2e+05
+
+[Completed --table item1 in 67.4s | Peak RAM: 9.2 MB]
