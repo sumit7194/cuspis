@@ -7744,3 +7744,46 @@ real y. The argument:
   table and EXP-060 are consistent with A = 2π, by inference.
 - **Lemma U (e) status update:** the all-y bound is now reduced to gap (II), a quantitative spectral-margin estimate.
   The measured result (EXP-065, to y = 5) stands as partially verified.
+
+## EXP-069  δκ step 3a: the complex-twist BIE on the CH07b line, validated against independent anchors — pre-registration [model: Opus 5.5]
+**Instrument.** `scripts/exp069_bie_complex.py` is Neon's T25 BIE (verified at real twist, EXP-066), copied with marked
+changes:
+- complex twist a is allowed;
+- complex-order Bessel functions come from mpmath;
+- the assembly is unchanged. On the line, κ = −(i/2)cot(πa) = −½tanh(πy) is real and bounded.
+
+**Pre-checks** (`scripts/exp069_precheck{,2,3}_output.txt`), run before this text, at (w = 0.3, y = 1, 2):
+- Mesh grading L does not matter; panel order p does. At y = 1, p = 6 already agrees with the Fredholm anchor to
+  3·10⁻⁴.
+- At y = 2 the near-tip projection is the limiting systematic. Complex-twist modes carry e^{∓yθ}, so the arc and the
+  number of modes matter:
+  - arc 0.55π gives +27–36%;
+  - K = 11 modes is ill-conditioned;
+  - K = 8 with arcs 0.70–0.80π gives −3·10⁻³ and −2.5·10⁻³.
+- Hence the ladder below.
+
+**Clauses.**
+- *Points:* (w, y) = (0.3, 0.5), (0.3, 1), (0.3, 2), (1, 1), (0.1, 1).
+- *Ladder:* p ∈ {7, 8} (L = 20), arc ∈ {0.70, 0.80}π, R ∈ {0.12, 0.16}·w, K = 8. Best = (p = 8, 0.75π, 0.14w).
+  Error = |p-rung difference| + max corner deviation.
+- **V1 (must-pass, independent anchor).** |E_BIE/E_pred − 1| ≤ max(3·err_E/|E|, 2·10⁻³) at all five points, with
+  E_pred = −w_S(w, a)/(8πa(1 − a)w).
+  - w_S comes from EXP-044's Fredholm determinant. It is independent of the BIE, and on the line it is verified against
+    the Painlevé ODE (EXP-063).
+  - The identity e = −mw/(8πa(1 − a)t) is verified against the BIE at real twist (EXP-066) and at the CFT end (EXP-064).
+- **V2 (must-pass, shape against CH05).** At y = 1, k(w) = ΔC_BIE(w)/∫_w^∞ b̂u is constant over w ∈ {0.1, 0.3, 1}:
+  max deviation ≤ 3 × the largest error of k.
+- **V3 (descriptive).** Ladder spreads and |Im E|/|E| as functions of y. E is real on the line, so Im E is an error
+  diagnostic.
+- **P (must-fire).** A planted 2% projection normalisation at (0.3, 1) moves E by more than 3σ.
+
+**Control table.**
+
+| clause | the input that makes it fire | pre-check (file) | what firing means |
+|---|---|---|---|
+| V1 | a poorly chosen projection (arc 0.55π, or K = 5 at y = 2) | yes; 3–36% deviations (`exp069_precheck2/3_output.txt`) | the anchor can reject a mis-extracted E |
+| V2 | — (it fired for symmetric v₀ at real twist, 7–57%; Bridge V28 addendum B) | at real twist (EXP-066) | the BIE resummation shape matches CH05 at complex twist |
+| P | proj_norm_scale = 1.02 | arithmetic: at y = 1 the pre-check spread is ~10⁻³, so a 2% planted shift is ≫ 3σ (`exp069_precheck_output.txt`) | the error bar can resolve a 2% shift |
+
+**What it decides.** Whether the complex-twist strip propagator from the BIE can be trusted on the CH07b line, up to
+y = 2, as an input to the SC trace. A failure of V1 or V2 means my own BIE build comes back on the table.
