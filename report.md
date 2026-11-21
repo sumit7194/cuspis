@@ -9718,3 +9718,33 @@ control.**
       that their exact combination → 0 as r → 0, which would make dropping them legitimate. Not done here; this is an
       open item for T46e grading.
 - **(c) Perturbed pure gauge:** not run yet.
+
+### Sealed-derivation check (c), perturbed pure gauge: my P1 + P2 implementation FAILS; the sealed P3 premise is unsupported; (b2)'s "T0 resolved" downgraded [model: Opus 5.5]
+- **Test** (`scripts/t46d_grade/seal_c.*`): T46d's broken cocycle (one θ = 0 link on the outer ring left untwisted), with that
+  link's hopping scaled by ε.
+  - As ε → 0 the configuration becomes an exact closed cocycle: a pure gauge, Q′(1) = 0.
+  - Q′(1) at k = 1, with N_θ 12, μ_max 3, dq 0.5, Q_max 4, s_max 2.5 (as in T46d item 1).
+- **Delivered threshold code:** Q′ = 0.349, 0.464, 0.596, 0.731, 0.866, 1.140 for ε = 1, 10⁻¹, 10⁻², 10⁻³, 10⁻⁴, 10⁻⁶.
+  - That is smooth and grows ≈ 0.06·ln(1/ε). It then **jumps to 0** (−9·10⁻¹⁰) at ε ≤ 10⁻⁸, when every r falls below
+    10⁻¹⁰.
+  - **The threshold formula is discontinuous at the gauge point, as sealed §5.3 predicted.**
+- **My P1 + P2 patch** (scratch, not production): Q′ = 17.0, 14.0, 11.5, 13.4, 15.9, 11.6, 15.8, **12.3 at ε = 0**.
+  - It is erratic in ε and **badly wrong at the exact gauge point** (the answer is 0). T0 ≈ 10–15, T2 ≈ 0.8–2.4.
+  - Diagnosis (argued): this spectrum is dominated by near-¼ modes. Keeping every tail makes the near-¼ pair tails (sealed
+    §3) cancel catastrophically in float64. This is the same instability that made T2 sensitive in (b2).
+  - **P1 + P2 as I implemented them is not a valid numerical method where near-¼ pairs abound.** The sealed P1–P2
+    prescription needs the §3 pair-tail combination done algebraically before it can be evaluated.
+- **Consequences, stated plainly:**
+  1. **(b2)'s "T0 resolved" is downgraded.** Insensitivity to scaling the near-floor spectrum is a necessary condition,
+     not proof of a correct value. Under the same patch, the gauge configuration is unstable. The strip T0 under P1 + P2
+     (1.314 / 0.992) is **unverified**.
+  2. **The sealed P3 premise ("by continuity the ln r terms cancel; Q′ → 0 as the gauge is approached") is unsupported**.
+     The threshold code's smooth growth ∝ ln(1/ε) over six decades suggests the opposite: the anchored-residue
+     continuation, at least as implemented, gives Q′(ε) → ∞ as ε → 0. Either:
+     - (i) the exact answer really is singular as the cut closes (physically doubtful: a bond of strength ε across the
+       cut should contribute O(ε² ln ε)); or
+     - (ii) the continuation mishandles near-¼ modes even with tails kept.
+     **An honest integer-n reference on this small system (T40/P4′ style) is the only way to decide.** It is the
+     decisive test for T46e, and the Bridge's "small-r variant of the T40 stand-in" requirement already points at it.
+  3. What survives from the seal: E1/E2 (verified), the non-commuting limits, and the threshold's discontinuity
+     (observed). What does not survive: P3. P1–P2 survive as a prescription only, with no working implementation.
