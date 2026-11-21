@@ -8594,3 +8594,55 @@ numpy only, no file or network side effects.
   ill-conditioned (nearly coincident rates, cancelling amplitudes ±1444, ±8·10⁶), so it is an artefact. **Prony is not a
   safe derivative estimator here.**
 - T40b (the follow-up to Neon, sent by the Bridge) is pending.
+
+### EXP-077 RETRACTION: my "T40's Q′(1) disagrees with the Carlson value" is withdrawn; P5 = −1.420722 is withdrawn [model: Opus 5.5]
+**What was wrong (mine).**
+- The bound "all derivative-series terms negative ⇒ limit < −1.4011" rested on a **completely-monotone** remainder. I
+  graded that premise "argued", but then treated the discrepancy as settled enough to propose P5 as a must-pass.
+- The premise is false. The remainder is dominated by a **confluent n·a₁ⁿ** term, a₁ = e^{−2πs₁} = 1/86.024, where
+  s₁ = 0.708976 is the first lattice pole, det H(is₁) = 0. It comes from the β = 0 double pole and the O(n) multiplicity
+  of the q ≠ 0 tails (Neon T40b; the Bridge, below).
+  - For n·aⁿ the Newton terms are −a(1−a)^{k−1}[(1−a) − ka]/k, which **flip sign at k ≈ (1−a)/a ≈ 85**. The partial
+    sums reach a false minimum and climb back.
+  - The drifting Δ²Q ratio I saw (0.0208 → 0.0122) is a₁(1 + 1/n) → a₁. I misread it as a power-corrected
+    completely-monotone term.
+- **Levin's "stable to 2·10⁻⁸" was false convergence.** It locks onto the false minimum.
+- **My planted control could not fire on this alternative.** It contained only completely-monotone remainders. It was
+  a check that cannot fail for the relevant case: the CLAUDE.md rule, broken again.
+
+**Extended planted control (now fires; `scripts/exp077_planted_confluent.py`, 160 dps).** Confluent remainders
+(c + dn)a₁ⁿ (± an a₂ base):
+
+| case | exact | Levin K = 40 / 59 | min over k | k at min | S₃₀₀ |
+|---|---|---|---|---|---|
+| (c + dn)a₁ⁿ | −1.10432 | −1.13922 | −1.13922 | 85 | −1.10969 |
+| + a₂ base | −1.27886 | −1.30637 | −1.30637 | 107 | −1.28842 |
+| pure n·a₁ⁿ | −1.33064 | −1.37565 | −1.37565 | 85 | −1.33754 |
+
+- **Levin equals min_k S_k: stable and wrong by 0.028–0.045.**
+- The first positive term is at k = 86 or 108.
+- The raw sums climb back only slowly; at k = 300 they are still 0.005–0.009 short.
+
+**The Bridge's evidence (its own code; recorded with attribution; its retraction of its own earlier confirmation is in
+its log).**
+- Its direct Newton run turned positive at k = 110 (+3.8·10⁻⁷) and k = 120 (+6.1·10⁻⁵). It had first dismissed this as
+  rounding.
+- The lattice poles were computed directly: s₁ = 0.708975576916635 and s₂ = 0.909241732139281 (a₂ = 1/302.758). They
+  match T40b and the near-coincident root pairs of its first Prony fit, which encode confluent terms and were **not** an
+  artefact. **My addendum's "Prony is an artefact" note is withdrawn too.**
+- A well-conditioned fixed-base fit of the 45-digit data, Q = An + B + Σ_b(c_b + d_bn)bⁿ with b ∈ {a₁, a₂}:
+  - residual 1.2·10⁻¹² (n ≤ 60), giving **Q′(1) = −1.38689** and Q(1.5) = −0.403063;
+  - adding the bases a₁² and a₁a₂: residual 5·10⁻²⁸, giving **Q′(1) = −1.38909** and Q(1.5) = −0.403059.
+  - Both are type-0 in n, so they are admissible Carlson interpolants, within ~2·10⁻³ of T40's −1.386872.
+- Neon's 175-digit table (T40b, unverified) shows the sign flip at k = 110, a peak near k = 160–180, and the climb back.
+
+**Status.**
+- **T40's Q′(1) is now favoured** (it agrees with the fixed-base fits to ~2·10⁻³), but it is **not yet verified**:
+  - the two fits differ from each other by 2.2·10⁻³;
+  - the running 120-digit / n ≤ 90 job (Newton to k ≈ 350, plus a fixed-base fit with more bases) is the referee.
+- **P5 is not a must-pass until the referee lands.**
+- **What survives unchanged:**
+  - T40's integer agreement (P4′);
+  - the conceptual point that P4′ cannot detect a wrong continuation;
+  - and that uniqueness must be checked as type < π **in n** for the total. Type 0 in α and β is not enough, because
+    off-lattice changes like sin(πnβ)h(β) keep every integer value. (Argued.)
