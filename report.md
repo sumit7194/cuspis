@@ -11362,3 +11362,27 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   their partial outputs kept as `c1_*_premature_nostored.*`; they are not graded.
   - The relaunched lanes run route, then C1. C1 now reads the stored T_sad from the 081d checkpoint (`verdict_stored`), so the k =
     2.5 grade can never be computed against a missing value.
+
+### EXP-081d Stage 1, interim (gates only; no R read): k = 1.5 non-void; k = 2.5 W10 Step 0 caps s_max at 3.948; analysis wiring fixed; one runner slip [model: Opus 5.5]
+- **k = 1.5 gates (both widths): all PASS, so non-void.**
+  - Census clean. Step 0: all 5 nodes pass.
+  - P-ε ratio 1.0000. B2b 0. N1‴c ≤ 2.4·10⁻¹¹. t0 ≤ 3.2·10⁻⁸. Residue impact ≤ 1.1·10⁻⁹. No unconverged G.
+  - C1 `verdict_stored` PASS at W3P6b6 and W6P6b6; all four C1 plants fire.
+  - Peaks: 0.19 and 0.34 GB.
+- **Step 0, k = 2.5 (`exp081d_results/step0_W{5,10}P10b10.json`):**
+  - W5P10b10 passes all 5 nodes.
+  - **W10P10b10 fails at s = 5.052** (Im α 7.91). The adaptive refinement hits its divergence guard (NOT CONVERGED), refined error is
+    3.7 and unrefined 8.4 against the 60-digit reference. The other four nodes pass with refined error 0 (the unrefined errors
+    there are 8.5·10⁻⁶, 3.7·10⁻³ and 0.11, at Im α up to 6.8).
+  - **A real failure, correctly detected. Registered consequence (row S0): W10P10b10's s_max is capped at 3.948; k = 2.5 is not void.**
+- **Analysis wiring (an implementation of the registered S0 consequence, added before any R is read):** `exp081d_analyze.py` did
+  not read the Step-0 results, so the cap would have been silently skipped (the same class as the old R1-cap bug).
+  - `step0_cap()` added: a fail at s ≤ 1.974 voids the geometry; otherwise s_max is capped at the last passing node.
+  - Two new planted tests. One caught a bug in my first version: the Step-0 keys are rounded to 3 decimals, so the cap landed at
+    3.948 < the true node 3.94825 and excluded it. Fixed by mapping each key to its true 𝒞-node.
+  - **18/18 tests pass** (`scripts/exp081d_analyze_tests_output.txt`).
+- **Runner slip (mine):** I edited `run_081d_stage1.sh` (adding the L1b/L2b lanes) while L3's zsh was still executing it. zsh reads
+  scripts incrementally, so after finishing ("L3 complete 21:56:53") it re-entered the edited file and started a second census.
+  - Caught by the watcher and killed in pgate before any Python child started. Earlier outputs are intact (census, Step 0 at
+    20:18–20:31). Nothing was rerun or overwritten.
+  - **Mechanism:** a running runner script is never edited; new lanes go in a new file.

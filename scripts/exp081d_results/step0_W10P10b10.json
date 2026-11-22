@@ -1,0 +1,58 @@
+{
+ "dd_unit": 1.8763551473793314e-18,
+ "0.937": {
+  "steps": 2,
+  "converged": true,
+  "im_alpha": 3.797594918576698,
+  "p": 2,
+  "col": 350,
+  "err_refined": 0.0,
+  "err_unrefined": 2.045317386910348e-08,
+  "ref": "mixed-precision, 3 steps, residual 4.0e-31",
+  "pass_": true
+ },
+ "1.974": {
+  "steps": 3,
+  "converged": true,
+  "im_alpha": 4.834337998583797,
+  "p": 0,
+  "col": 330,
+  "err_refined": 0.0,
+  "err_unrefined": 8.539626309866104e-06,
+  "ref": "mixed-precision, 4 steps, residual 4.2e-26",
+  "pass_": true
+ },
+ "2.986": {
+  "steps": 4,
+  "converged": true,
+  "im_alpha": 5.846382098517471,
+  "p": 0,
+  "col": 330,
+  "err_refined": 0.0,
+  "err_unrefined": 0.0037003841345981487,
+  "ref": "mpmath LU 60 digits (refinement did not converge), residual 1.0e-48",
+  "pass_": true
+ },
+ "3.948": {
+  "steps": 5,
+  "converged": true,
+  "im_alpha": 6.808464374335162,
+  "p": 3,
+  "col": 310,
+  "err_refined": 0.0,
+  "err_unrefined": 0.10511422983152398,
+  "ref": "mpmath LU 60 digits (refinement did not converge), residual 9.1e-46",
+  "pass_": true
+ },
+ "5.052": {
+  "steps": 3,
+  "converged": false,
+  "im_alpha": 7.911958871329702,
+  "p": 6,
+  "col": 310,
+  "err_refined": 3.708580189485584,
+  "err_unrefined": 8.365504116353076,
+  "ref": "mpmath LU 60 digits (refinement did not converge), residual 8.7e-43",
+  "pass_": false
+ }
+}

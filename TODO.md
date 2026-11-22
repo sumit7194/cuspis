@@ -642,3 +642,4 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       peak, then ASK the Bridge for the start time. Caps: soft at the measured peak, hard backstop well above it, pressure-stop on.
       If the measured total > ~13 GB, go back to the Bridge before launching.
       Split: exp081d_route.py --nodes 0:24 (with t0/T_sad) and 24:48, then a final pass for the checks.
+- [ ] GUARD: never edit a shell runner while any lane is executing it (zsh reads incrementally and re-entered run_081d_stage1.sh on 2026-11-22). New lanes go in a new file.

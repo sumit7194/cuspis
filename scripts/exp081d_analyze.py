@@ -54,7 +54,19 @@ def nodes48():
             si = 0.5 * (hi - lo) * (xi + 1) + lo; out.append((si, 0.5 * (hi - lo) * wi * np.pi / np.cosh(np.pi * si) ** 2))
     return sorted(out)
 
-def S_T(st):
+def step0_cap(step0):
+    """Registered Step-0 consequence (row S0): first failing checkpoint s_f. s_f <= 1.974 -> geometry void; else s_max capped at
+    the last passing checkpoint below s_f. Returns (cap or None, void-node or None). step0 = dict from exp081d_step0.py, or None."""
+    if not step0: return None, None
+    allnodes = [n for n, _ in nodes48()]   # Step-0 keys are rounded to 3 decimals: map each to its true C-node
+    nodes = sorted((min(allnodes, key=lambda n: abs(n - float(k))), v) for k, v in step0.items() if isinstance(v, dict) and "pass_" in v)
+    fails = [s for s, v in nodes if not v["pass_"]]
+    if not fails: return None, None
+    if fails[0] <= 1.9742: return None, fails[0]
+    passing = [s for s, v in nodes if v["pass_"] and s < fails[0]]
+    return (max(passing) if passing else 0.0), None
+
+def S_T(st, step0=None):
     """S_T0, S_T1, s_max, cum from an 081c/081d checkpoint dict (g floats; n1c arms; per-node stats) with the impact rule and the FIXED R1 cap."""
     import exp081b_analyze as A
     NODES = nodes48(); wt = {f"{s:.15f}": w for s, w in NODES}
@@ -74,6 +86,9 @@ def S_T(st):
     r1 = None
     if unconv:
         below = [s for s, _ in NODES if s < unconv[0]]; r1 = max(below); smax = min(smax, r1)
+    s0cap, void = step0_cap(step0)
+    if void: return dict(void=True, why=f"Step 0 failed at a node <= 1.974 ({void})")
+    if s0cap is not None: smax = min(smax, s0cap)
     C0 = sum(wt[k] * v for k, v in g.items() if float(k) <= smax + 1e-12)
     fp = [(float(k), v) for k, v in g.items() if 1.0 <= float(k) <= smax + 1e-12]
     if len(fp) >= 3:
@@ -82,7 +97,7 @@ def S_T(st):
         C1 = C0 + sum(wt[k] * (c[0] + c[1] * float(k) ** 2 + c[2] * float(k) ** 3) for k in g if float(k) > smax + 1e-12)
     else: C1 = float("nan")
     base = st["t0"] + st["tsad"]
-    return dict(S_T0=0.5 * (base + C0), S_T1=0.5 * (base + C1), s_max=smax, r1_cap=r1, cum=cum(smax), C0=C0, C1=C1, t0=st["t0"], tsad=st["tsad"])
+    return dict(S_T0=0.5 * (base + C0), S_T1=0.5 * (base + C1), s_max=smax, r1_cap=r1, step0_cap=s0cap, cum=cum(smax), C0=C0, C1=C1, t0=st["t0"], tsad=st["tsad"])
 
 def _tests():
     ok = True; cases = []
@@ -107,6 +122,10 @@ def _tests():
     r = S_T(st); cases.append((f"R1 cap on 081c W8P8: s_max {r['s_max']:.4f} < 5.8562 (r1 node {r['r1_cap']})", r["s_max"] < 5.8562 and r["r1_cap"] is not None))
     st2 = dict(st); s35 = [s for s, _ in nodes48() if s > 3.5][0]; st2[f"stats|{s35:.15f}"] = {"unconverged": 1}
     r2 = S_T(st2); cases.append((f"planted unconverged at {s35:.4f}: s_max {r2['s_max']:.4f} < {s35:.4f}", r2["s_max"] < s35))
+    r3 = S_T(st, {"0.937": {"pass_": True}, "1.974": {"pass_": True}, "2.986": {"pass_": True}, "3.948": {"pass_": True}, "5.052": {"pass_": False}})
+    cases.append((f"NEW: Step-0 fail at 5.052 caps s_max at 3.948 (got {r3.get('s_max')})", abs(r3.get("s_max", 9) - 3.94825275150273) < 1e-6))
+    r4 = S_T(st, {"0.937": {"pass_": True}, "1.974": {"pass_": False}})
+    cases.append(("NEW: Step-0 fail at 1.974 -> geometry void", r4.get("void") is True))
     for name, p in cases: print(f"  planted test: {name}: {'PASS' if p else 'FAIL'}"); ok &= bool(p)
     return ok
 
@@ -131,7 +150,10 @@ if __name__ == "__main__":
         W1, W2, P = int(2 * k), int(4 * k), int(4 * k); B = P; Ny = 4 * P
         a, fa = ckpt(W1, P, B); b, fb = ckpt(W2, P, B)
         if a is None or b is None or "n1c" not in a or "n1c" not in b: out[k] = dict(missing=True, files=[fa, fb]); continue
-        sa, sb = S_T(a), S_T(b); kap = Rn.pair(lambda W, P_, **kw: Rn.free(W, P_, **kw), P, W1=W1, W2=W2, Wbox=B)
+        s0 = lambda W_: (json.load(open(f)) if os.path.exists(f := os.path.join(D, f'step0_W{W_}P{P}b{B}.json')) else None)
+        sa, sb = S_T(a, s0(W1)), S_T(b, s0(W2))
+        if sa.get('void') or sb.get('void'): out[k] = dict(void=True, why=[sa.get('why'), sb.get('why')]); continue
+        kap = Rn.pair(lambda W, P_, **kw: Rn.free(W, P_, **kw), P, W1=W1, W2=W2, Wbox=B)
         f = 1.0 / Ny / (1 / W1 - 1 / W2) / kap
         RT = {t: -(sa[f"S_{t}"] - sb[f"S_{t}"]) * f for t in ("T0", "T1")}
         sig = abs(RT["T0"] - RT["T1"]) + abs(f) * (sa["cum"] + sb["cum"])

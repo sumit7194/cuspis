@@ -1,0 +1,63 @@
+[      0s] planted guard: eps 2.789e-09, predicted dg 2.8912e-05, predicted impact 1.00e-06 (10x 1e-7)
+[     29s] sigma_W6_P6_box6_c2_cp12_sc3.0_dd0: N 216 Ny 24; 081c numerics installed (13 unique slices, low-rank residues; ranks {'max': 1, 'hist': {'1': 76}}) 2432 G, unconverged 0 (29s)
+[    322s] t0 -113.917065334366  G calls 23336 unconverged 0 (293s)
+[    322s] tsad +121.098176144283  G calls 0 unconverged 0 (0s)
+[    364s] g(0.0046) done: 3900 G, steps hist {'2': 1976, '1': 1924}, unconverged 0 (42s)
+[    400s] g(0.0240) done: 3900 G, steps hist {'2': 1965, '1': 1935}, unconverged 0 (36s)
+[    436s] g(0.0575) done: 3900 G, steps hist {'2': 2004, '1': 1896}, unconverged 0 (36s)
+[    472s] g(0.1032) done: 3900 G, steps hist {'2': 1989, '1': 1911}, unconverged 0 (36s)
+[    508s] g(0.1580) done: 3900 G, steps hist {'2': 1979, '1': 1921}, unconverged 0 (36s)
+[    543s] g(0.2187) done: 3900 G, steps hist {'2': 1944, '1': 1956}, unconverged 0 (35s)
+[    588s] g(0.2813) done: 3900 G, steps hist {'2': 1860, '1': 2040}, unconverged 0 (45s)
+[    627s] g(0.3420) done: 3900 G, steps hist {'2': 1834, '1': 2066}, unconverged 0 (39s)
+[    662s] g(0.3968) done: 3900 G, steps hist {'2': 1915, '1': 1985}, unconverged 0 (35s)
+[    701s] g(0.4425) done: 3900 G, steps hist {'2': 1910, '1': 1990}, unconverged 0 (39s)
+[    736s] g(0.4760) done: 3900 G, steps hist {'2': 1993, '1': 1907}, unconverged 0 (36s)
+[    772s] g(0.4954) done: 3900 G, steps hist {'2': 1978, '1': 1922}, unconverged 0 (36s)
+[    810s] g(0.5092) done: 3900 G, steps hist {'2': 1993, '1': 1907}, unconverged 0 (38s)
+[    847s] g(0.5479) done: 3900 G, steps hist {'2': 2031, '1': 1869}, unconverged 0 (36s)
+[    889s] g(0.6150) done: 3900 G, steps hist {'2': 2087, '1': 1813}, unconverged 0 (42s)
+[    930s] g(0.7063) done: 3900 G, steps hist {'2': 2259, '1': 1641}, unconverged 0 (41s)
+[    971s] g(0.8161) done: 3900 G, steps hist {'2': 2362, '1': 1538}, unconverged 0 (41s)
+[   1015s] g(0.9374) done: 3900 G, steps hist {'2': 2390, '1': 1510}, unconverged 0 (45s)
+[   1060s] g(1.0626) done: 3900 G, steps hist {'2': 2488, '1': 1412}, unconverged 0 (45s)
+[   1098s] g(1.1839) done: 3900 G, steps hist {'2': 2551, '1': 1349}, unconverged 0 (38s)
+[   1136s] g(1.2937) done: 3900 G, steps hist {'2': 2599, '1': 1301}, unconverged 0 (38s)
+[   1178s] g(1.3850) done: 3900 G, steps hist {'2': 2697, '1': 1203}, unconverged 0 (42s)
+[   1220s] g(1.4521) done: 3900 G, steps hist {'2': 2757, '1': 1143}, unconverged 0 (42s)
+[   1261s] g(1.4908) done: 3900 G, steps hist {'2': 2785, '1': 1115}, unconverged 0 (40s)
+[   1300s] g(1.5138) done: 3900 G, steps hist {'2': 2741, '1': 1159}, unconverged 0 (40s)
+[   1344s] g(1.5719) done: 3900 G, steps hist {'2': 2823, '1': 1077}, unconverged 0 (44s)
+[   1384s] g(1.6726) done: 3900 G, steps hist {'2': 2926, '1': 974}, unconverged 0 (41s)
+[   1426s] g(1.8095) done: 3900 G, steps hist {'2': 3041, '1': 859}, unconverged 0 (42s)
+[   1469s] g(1.9741) done: 3900 G, steps hist {'2': 3159, '1': 741}, unconverged 0 (43s)
+[   1511s] g(2.1561) done: 3900 G, steps hist {'2': 3158, '1': 742}, unconverged 0 (42s)
+[   1554s] g(2.3439) done: 3900 G, steps hist {'2': 3183, '1': 713, '3': 4}, unconverged 0 (43s)
+[   1598s] g(2.5259) done: 3900 G, steps hist {'2': 3214, '1': 670, '3': 16}, unconverged 0 (44s)
+[   1642s] g(2.6905) done: 3900 G, steps hist {'2': 3221, '1': 649, '3': 30}, unconverged 0 (44s)
+[   1684s] g(2.8274) done: 3900 G, steps hist {'2': 3266, '1': 598, '3': 36}, unconverged 0 (42s)
+[   1729s] g(2.9281) done: 3900 G, steps hist {'2': 3246, '1': 600, '3': 54}, unconverged 0 (45s)
+[   1773s] g(2.9862) done: 3900 G, steps hist {'2': 3297, '1': 541, '3': 62}, unconverged 0 (44s)
+[   1817s] g(3.0277) done: 3900 G, steps hist {'2': 3275, '1': 561, '3': 64}, unconverged 0 (45s)
+[   1862s] g(3.1438) done: 3900 G, steps hist {'2': 3292, '1': 528, '3': 80}, unconverged 0 (45s)
+[   1906s] g(3.3451) done: 3900 G, steps hist {'2': 3341, '1': 469, '3': 90}, unconverged 0 (44s)
+[   1949s] g(3.6190) done: 3900 G, steps hist {'2': 3351, '1': 430, '3': 119}, unconverged 0 (43s)
+[   1993s] g(3.9483) done: 3900 G, steps hist {'2': 3366, '1': 376, '3': 158}, unconverged 0 (43s)
+[   2035s] g(4.3121) done: 3900 G, steps hist {'2': 3261, '1': 381, '3': 258}, unconverged 0 (42s)
+[   2072s] g(4.6879) done: 3900 G, steps hist {'2': 3118, '1': 380, '3': 402}, unconverged 0 (38s)
+[   2109s] g(5.0517) done: 3900 G, steps hist {'2': 3071, '1': 345, '3': 484}, unconverged 0 (36s)
+[   2156s] g(5.3810) done: 3900 G, steps hist {'2': 3020, '1': 346, '3': 534}, unconverged 0 (48s)
+[   2204s] g(5.6549) done: 3900 G, steps hist {'2': 2918, '1': 334, '3': 648}, unconverged 0 (48s)
+[   2251s] g(5.8562) done: 3900 G, steps hist {'2': 2885, '1': 322, '3': 693}, unconverged 0 (47s)
+[   2299s] g(5.9723) done: 3900 G, steps hist {'2': 2863, '1': 324, '3': 713}, unconverged 0 (48s)
+[   2299s] sigma_W6_P6_box6_c2_cp12_sc3.0_dd0: production complete; S (all nodes) +2.297620116813
+[   2375s] planted must-fire s=0.9374: dg 2.8912e-05 (pred 2.8912e-05, ratio 1.0000), impact 1.00e-06 -> FIRES, match OK
+[   2465s] B2b s=1.9741: converged+1 vs converged rel 0.0e+00 -> PASS
+[   2504s] N1'''c unrefined arm g(0.9374) done
+[   2510s] N1'''c unrefined arm g(1.9741) done
+[   2516s] N1'''c unrefined arm g(2.9862) done
+[   2522s] N1'''c unrefined arm g(3.9483) done
+[   2528s] N1'''c unrefined arm g(5.0517) done
+[   2542s] N1'''c (refined vs unrefined): s=0.937 |dg| 3.2e-11 impact 1.1e-12; s=1.974 |dg| 2.7e-11 impact 1.4e-15; s=2.986 |dg| 2.9e-11 impact 2.6e-18; s=3.948 |dg| 8.7e-10 impact 1.8e-19; s=5.052 |dg| 3.6e-08 impact 7.4e-21
+[   2542s] t0 refined vs unrefined |dt0| 1.4e-08 [PASS]; residue impact (1/2)|T_sad(unref res) - T_sad| 4.6e-10 [PASS]
+[   2542s] Woodbury must-fire (081b numerics g vs 081d): s=0.937 impact 1.0e-08; s=1.974 impact 2.8e-07; s=2.986 impact 2.6e-05; s=3.948 impact 2.9e-07; s=5.052 impact 6.7e-10 -> FIRES

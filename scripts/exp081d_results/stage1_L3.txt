@@ -1,0 +1,47 @@
+=== census start 20:17:49
+# pgate: attempt 1 at 20:18:19 (pressure normal >= 60 s)
+# exit 0; wall 11 s; PEAK tree MEM 0.185 GB + CMPRS 0.000 GB = 0.185 GB
+=== census end 20:18:30
+# exit 0; wall 11 s; PEAK tree MEM 0.185 GB + CMPRS 0.000 GB = 0.185 GB
+=== step0_3_6_6 start 20:18:30
+# pgate: attempt 1 at 20:19:00 (pressure normal >= 60 s)
+# exit 0; wall 5 s; PEAK tree MEM 0.062 GB + CMPRS 0.000 GB = 0.062 GB
+=== step0_3_6_6 end 20:19:06
+# exit 0; wall 5 s; PEAK tree MEM 0.062 GB + CMPRS 0.000 GB = 0.062 GB
+=== step0_6_6_6 start 20:19:06
+# pgate: attempt 1 at 20:19:36 (pressure normal >= 60 s)
+# exit 0; wall 22 s; PEAK tree MEM 0.084 GB + CMPRS 0.000 GB = 0.084 GB
+=== step0_6_6_6 end 20:19:58
+# exit 0; wall 22 s; PEAK tree MEM 0.084 GB + CMPRS 0.000 GB = 0.084 GB
+=== step0_5_10_10 start 20:19:58
+# pgate: attempt 1 at 20:20:28 (pressure normal >= 60 s)
+# exit 0; wall 28 s; PEAK tree MEM 0.338 GB + CMPRS 0.000 GB = 0.338 GB
+=== step0_5_10_10 end 20:20:56
+# exit 0; wall 28 s; PEAK tree MEM 0.338 GB + CMPRS 0.000 GB = 0.338 GB
+=== step0_10_10_10 start 20:20:56
+# pgate: attempt 1 at 20:21:26 (pressure normal >= 60 s)
+# exit 0; wall 628 s; PEAK tree MEM 0.348 GB + CMPRS 0.121 GB = 0.469 GB
+=== step0_10_10_10 end 20:31:54
+# exit 0; wall 628 s; PEAK tree MEM 0.348 GB + CMPRS 0.121 GB = 0.469 GB
+=== route_W3P6b6 start 20:31:54
+# pgate: attempt 1 at 20:32:24 (pressure normal >= 60 s)
+# exit 0; wall 2214 s; PEAK tree MEM 0.194 GB + CMPRS 0.000 GB = 0.194 GB
+=== route_W3P6b6 end 21:09:18
+# exit 0; wall 2214 s; PEAK tree MEM 0.194 GB + CMPRS 0.000 GB = 0.194 GB
+=== route_W6P6b6 start 21:09:18
+# pgate: attempt 1 at 21:09:48 (pressure normal >= 60 s)
+# exit 0; wall 2544 s; PEAK tree MEM 0.223 GB + CMPRS 0.112 GB = 0.335 GB
+=== route_W6P6b6 end 21:52:11
+# exit 0; wall 2544 s; PEAK tree MEM 0.223 GB + CMPRS 0.112 GB = 0.335 GB
+=== c1_W3P6b6 start 21:52:11
+# pgate: attempt 1 at 21:52:41 (pressure normal >= 60 s)
+# exit 0; wall 22 s; PEAK tree MEM 0.161 GB + CMPRS 0.000 GB = 0.161 GB
+=== c1_W3P6b6 end 21:53:03
+# exit 0; wall 22 s; PEAK tree MEM 0.161 GB + CMPRS 0.000 GB = 0.161 GB
+=== c1_W6P6b6 start 21:53:03
+# pgate: attempt 1 at 21:53:33 (pressure normal >= 60 s)
+# exit 0; wall 199 s; PEAK tree MEM 0.163 GB + CMPRS 0.000 GB = 0.163 GB
+=== c1_W6P6b6 end 21:56:53
+# exit 0; wall 199 s; PEAK tree MEM 0.163 GB + CMPRS 0.000 GB = 0.163 GB
+=== L3 complete Sun Nov 22 21:56:53 IST 2026
+=== census start 21:56:53

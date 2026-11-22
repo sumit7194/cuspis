@@ -15,4 +15,6 @@ EXP-081d analysis planted-value tests:
   planted test: NEW: convergence p = 0.5 (r = 0.82, in the gap) -> INCONCLUSIVE: PASS
   planted test: R1 cap on 081c W8P8: s_max 5.6549 < 5.8562 (r1 node 5.654854011291457): PASS
   planted test: planted unconverged at 3.6190: s_max 3.3451 < 3.6190: PASS
+  planted test: NEW: Step-0 fail at 5.052 caps s_max at 3.948 (got 3.94825275150273): PASS
+  planted test: NEW: Step-0 fail at 1.974 -> geometry void: PASS
 ALL PASS
