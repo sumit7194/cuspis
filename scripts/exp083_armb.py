@@ -5,7 +5,7 @@ Strip3D lattice, from production's own per-slice poles/residues.
   Gap (y-independent sigma on the N = Lx*Lt sites):  F(sigma; n) = (1/Ny) sum_p A_n[G_p^sigma](x,x) - target,
       target "direct" = (1/Ny) sum_p G_p^0(0)(x,x)  or  "self" = the same formula at sigma = 0, n = 1.
   Newton: Jacobian by central FD in sigma (rebuild all slices), then quasi-Newton (Broyden) steps.
-Strip with sigma: production Slice with H0 -> H0 + diag(sigma); mirror slices aliased (m2_p = m2_{Ny-p}).
+Strip with sigma: production Slice with H0 -> H0 + diag(sigma); every slice solved (alias=True: mirror slices reused; opt-in since slip 15).
 Independent pieces for the T_sad check live in exp083_honest (direct inverses, n-sheet saddle). [model: Opus 5.5]"""
 import numpy as np
 import sigma3d as S3
@@ -26,13 +26,19 @@ class SliceS(S3.Slice):
         self.W = len(self.links)
         self.s, self.Rp, self.Rm = ([], [], []) if self.W == 0 else self._poles()
 
-def strip_sigma(g, sigma, s_cut=3.0):
-    """Strip3D (production class) whose slices carry diag(sigma); sigma = None or zeros -> production slices exactly."""
+def strip_sigma(g, sigma, s_cut=3.0, alias=False):
+    """Strip3D (production class) whose slices carry diag(sigma).
+    alias=False (default since 2026-11-22, slip 15): every slice's QEP is solved, as production does, so sigma = None reproduces
+    production's poles exactly (verified: max |ds| = 0). alias=True reuses slice p for Ny - p (mirror); its poles then differ from
+    production's by QEP noise (up to 8.6e-8 at W4P4), which moved Q(2) by ~1.3e-10. All C1/C2 runs up to 061d06c used alias=True."""
     S = S3.Strip3D.__new__(S3.Strip3D)
     S.Lx, S.Lt, S.Ny, S.cutx, S.tcut, S.s_cut, S.drop_double, S.N = g.Lx, g.Lt, g.Ny, list(g.cutx), g.tcut, s_cut, False, g.N
     idx = lambda x, t: x * g.Lt + t; sig = np.zeros(g.N) if sigma is None else np.asarray(sigma, float)
-    half = {p: SliceS(g.Lx, g.Lt, 2 - 2 * np.cos(2 * np.pi * p / g.Ny), g.cutx, g.tcut, idx, sig) for p in range(g.Ny // 2 + 1)}
-    S.sl = [half[p if p <= g.Ny // 2 else g.Ny - p] for p in range(g.Ny)]
+    if alias:
+        half = {p: SliceS(g.Lx, g.Lt, 2 - 2 * np.cos(2 * np.pi * p / g.Ny), g.cutx, g.tcut, idx, sig) for p in range(g.Ny // 2 + 1)}
+        S.sl = [half[p if p <= g.Ny // 2 else g.Ny - p] for p in range(g.Ny)]
+    else:
+        S.sl = [SliceS(g.Lx, g.Lt, 2 - 2 * np.cos(2 * np.pi * p / g.Ny), g.cutx, g.tcut, idx, sig) for p in range(g.Ny)]
     return S
 
 def kn(n, a0, up):
@@ -57,19 +63,22 @@ def avg_diag(sl, n, M=64, s_cut=np.inf):
 def direct_avg_diag(sl, n):
     return sum(np.diag(S3._G_direct(sl, j / n)) for j in range(n)) / n
 
-def ydiag(S, n, M=64, s_cut=np.inf):
-    Ny = S.Ny; half = {p: avg_diag(S.sl[p], n, M, s_cut) for p in range(Ny // 2 + 1)}
+def ydiag(S, n, M=64, s_cut=np.inf, alias=False):
+    """(1/Ny) sum_p A_n[G_p](x,x). alias=False (default, slip 15): every slice evaluated; alias=True: p <= Ny/2 reused for mirrors."""
+    Ny = S.Ny
+    if not alias: return sum(avg_diag(S.sl[p], n, M, s_cut) for p in range(Ny)) / Ny
+    half = {p: avg_diag(S.sl[p], n, M, s_cut) for p in range(Ny // 2 + 1)}
     return sum(half[p if p <= Ny // 2 else Ny - p] for p in range(Ny)) / Ny
 
 class Gap:
-    def __init__(self, g, s_cut=np.inf, M=64, target="self"):
-        self.g, self.s_cut, self.M = g, s_cut, M
-        S0 = strip_sigma(g, None)
-        if target == "self": self.target = ydiag(S0, 1.0, M, s_cut).real
-        else: self.target = sum(np.diag(S0.sl[p if p <= g.Ny // 2 else g.Ny - p].G(0.0)).real for p in range(g.Ny)) / g.Ny
+    def __init__(self, g, s_cut=np.inf, M=64, target="self", alias=False):
+        self.g, self.s_cut, self.M, self.alias = g, s_cut, M, alias
+        S0 = strip_sigma(g, None, alias=alias)
+        if target == "self": self.target = ydiag(S0, 1.0, M, s_cut, alias).real
+        else: self.target = sum(np.diag(S0.sl[p].G(0.0)).real for p in range(g.Ny)) / g.Ny
         self.nfev = 0
     def F(self, sig, n):
-        self.nfev += 1; v = ydiag(strip_sigma(self.g, sig), n, self.M, self.s_cut)
+        self.nfev += 1; v = ydiag(strip_sigma(self.g, sig, alias=self.alias), n, self.M, self.s_cut, self.alias)
         return v.real - self.target, float(np.abs(v.imag).max())
     def jac(self, sig, n, h=1e-6):
         N = self.g.N; J = np.zeros((N, N))

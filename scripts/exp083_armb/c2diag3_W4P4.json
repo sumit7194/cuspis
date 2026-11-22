@@ -1,0 +1,7 @@
+{
+ "aliased_control": 4.324691715851259e-10,
+ "i_unaliased_strip": 4.425482202918829e-10,
+ "ii_sigma_vs_honest": 6.289413434501512e-14,
+ "ii_sigma_vs_stored": 3.028827189055505e-14,
+ "ii_unaliased_all": 5.422267079779886e-10
+}

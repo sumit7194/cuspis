@@ -11061,9 +11061,11 @@ registered (C2 W4P4 n = 2).** This stays the headline.
 ## R3′ close-out (quote in this order)
 - **Arm (a): UNVALIDATED as registered** (the W2P4 scut_low plant did not fire). Post-hoc supplement in the ruling entry above.
 - **Arm (b) C2: UNVALIDATED as registered** (W4P4 n = 2, 4.32·10⁻¹⁰ > 3.1·10⁻¹⁰).
-  - POST HOC, with the tolerance referenced to arm (b)'s own construction path: every n ≤ 24 at P = 2 and n ≤ 6 at P = 4 passes,
+  - ~~POST HOC, with the tolerance referenced to arm (b)'s own construction path: every n ≤ 24 at P = 2 and n ≤ 6 at P = 4 passes,
     every σ = 0 plant fires (≥ 10⁸ × tol), σ_n equals the independent honest saddle to ≤ 2.4·10⁻¹³, and the route-(ii) T_sad
-    equals C1 to ≤ 9.5·10⁻⁷.
+    equals C1 to ≤ 9.5·10⁻⁷.~~ **[CORRECTED 2026-11-22, see "C2 W4P4 n = 2: aliasing is NOT the whole cause" below.]** On the
+    unaliased (production) path, arm (b)'s n = 2 deviation stays at 4.4–5.4·10⁻¹⁰, against arm (a)'s 1.04·10⁻¹⁰. The post-hoc
+    pass held only against the aliased path's inflated baseline. The plant, saddle and route-T_sad statements above stand.
   - Never quoted without the headline.
 - **C1: PASS at all 16 geometries as registered.** Production's T_sad assembly equals an independent FD of the continued replica
   saddle (≤ 5.9·10⁻⁹, every plant ≥ 5·10⁴ τ). Verified for the assembly.
@@ -11074,3 +11076,44 @@ registered (C2 W4P4 n = 2).** This stays the headline.
     the tolerance uses the larger.
 - **The +2.4 is not validated by R3′.** The 081c post-hoc ρ = 1.86 (not resolution-stable; t0/T_sad cancellation degrading under
   refinement) governs it. 081d is drafted.
+
+### C2 W4P4 n = 2: aliasing is NOT the whole cause (POST-HOC check the Bridge asked for). Correction to the close-out's post-hoc reading. Mechanisms for slip 15 in place [model: Opus 5.5]
+(`scripts/exp083_armb_c2diag3.py` → `exp083_armb/c2diag3_output.txt`, `c2diag3_W4P4.json`.)
+- **The fact the Bridge asked to have stated:** `strip_sigma` appears only in the exp083_armb scripts (`exp083_armb.py` and its
+  tier1 / c1 / c2 / c2diag drivers). The aliasing therefore cannot have touched the 081b or 081c production values (verified by grep).
+  - C1's FD side, through `Gap`, did use the aliased path. C1 passes regardless, at ≤ 5.9·10⁻⁹.
+- **POST HOC, labelled; the headline (arm (b) UNVALIDATED as registered) is unchanged.** W4P4, n = 2:
+
+| run | dev_b(2) |
+|---|---|
+| control: aliased strip, stored σ₂ (must reproduce) | 4.32·10⁻¹⁰ ✓ |
+| (i) unaliased strip, stored σ₂ (one variable) | **4.43·10⁻¹⁰** |
+| (ii) unaliased gap + unaliased strip (σ₂ re-solved; \|σ₂ − honest saddle\| 6.3·10⁻¹⁴) | **5.42·10⁻¹⁰** |
+| arm (a) on the same unaliased (production) path | 1.04·10⁻¹⁰ |
+
+- **By the Bridge's pre-stated decision rule: dev_b stays near 4.3·10⁻¹⁰, so aliasing is not the whole story.**
+  - On a consistent construction path, arm (b) at n = 2 is 4.3–5.2× arm (a), above the registered 3× and the 3.1·10⁻¹⁰ tolerance.
+  - **The close-out's post-hoc "passes on its own path" is withdrawn** (struck through above). It held only against the aliased
+    path's arm-(a) baseline (2.32·10⁻¹⁰), which aliasing inflates.
+- **What aliasing did do:** it inflated arm (a)'s σ = 0 baseline on that path (1.04 → 2.32·10⁻¹⁰). That part of the slip-15
+  diagnosis stands: the tolerance referenced a path the comparison did not use. But it is not why arm (b) sits at 4·10⁻¹⁰.
+- **Cause of the arm-(b) n = 2 excess: not identified.**
+  - Falsified: s_cut truncation (3.5 changes nothing), inner npt (200 changes nothing), aliasing.
+  - Not tested: Mt/tmax/Mx, npt0 (inner_beta0), the n·(ld1(σ) − ld1(0)) term, and the Arb arm-(b) reference itself.
+  - It is σ-dependent. Re-solving σ₂ (Δσ 3·10⁻¹⁴) moved dev_b by 1·10⁻¹⁰, which suggests a non-stationary direction of Q in σ,
+    consistent with the 1e-6 probe's large response (2.9·10⁻⁵).
+  - Stated as reached. A cheap one-variable sweep (Mt, npt0, about 20 min) is offered to the Bridge, not run.
+
+**Mechanisms for slip 15 (built, tested, wired; before 081d):**
+1. **Root cause removed:** `exp083_armb.strip_sigma`, `ydiag` and `Gap` now default to `alias=False`: every slice is solved and
+   summed, as production does. Aliasing is opt-in (`alias=True`) and documented. All C1/C2 numbers up to 061d06c were computed
+   with alias=True.
+   - The Tier-1 regression at W2P2 under the new default still passes: continuation equals the direct sum to ≤ 4.4·10⁻¹³, and
+     σ_cont equals the honest saddle to ≤ 5.5·10⁻¹³.
+2. **`scripts/tools/tol_ref.py`:** `ref_tol(k, dev_ref, floor, S_ref, S_own, own_dev, bound)` measures the structural agreement
+   of the reference path and the comparison's own path at σ = 0, as max |Δs| over slices plus the residue relative difference.
+   - If they agree within the stated bound (10⁻¹²): tol = max(k·dev_ref, floor).
+   - Otherwise: it computes dev on the own path, **uses the larger, and logs it**.
+   - Known-answer test at W4P4 (`tools/test_tol_ref.py`): alias=True takes "paths differ" (|Δs| 8.6·10⁻⁸; mirror residues differ by
+     **2.5·10⁻³ relative**) and alias=False takes "paths agree" (0, 0).
+   - Wired into `exp083_armb_c2.py`.

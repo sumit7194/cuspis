@@ -1,0 +1,3 @@
+control: aliased strip, stored sigma_2: dev_b 4.32e-10 (must be 4.32e-10)
+(i)  unaliased strip, stored sigma_2: dev_b 4.43e-10
+(ii) unaliased gap + strip: |sigma_2 - honest saddle| 6.3e-14, vs stored 3.0e-14; dev_b 5.42e-10
