@@ -637,3 +637,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] Cross-path tolerance guard (tools/tol_ref.py) and plant guard (tools/plant_guard.py) must be used by every 081d harness.
 - [ ] GUARD (Bridge, 2026-11-22): memory estimates scale from a MEASURED full-run peak (nearest geometry, by Ny·N²), never from an
       array-count formula. Two misses today: the 081d draft's "< 0.3 GB at k = 3", and "k = 2.5 ≈ 1.5 GB", which was killed at 2.4–2.6 GB.
+- [ ] 081d Stage 2 (Sumit via the Bridge, 2026-11-22): k = 3 as 2 node-split processes in parallel (~6.2 GB each, measured-scaled), ~24 h.
+      Gate: Stage 1 ends with k = 1.5 and 2.5 both non-void. Before launch: a short k = 3 probe (no R) to measure the per-process
+      peak, then ASK the Bridge for the start time. Caps: soft at the measured peak, hard backstop well above it, pressure-stop on.
+      If the measured total > ~13 GB, go back to the Bridge before launching.
+      Split: exp081d_route.py --nodes 0:24 (with t0/T_sad) and 24:48, then a final pass for the checks.
