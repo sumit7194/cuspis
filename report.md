@@ -10987,3 +10987,38 @@ W2P4 scut_low plant did not fire. **That is the registered verdict for arm (a).*
   4.4·10⁻⁵.
 - Route-(ii) T_sad vs C1 T_FD: 5.3·10⁻⁷ rel, **PASS**.
 - W4P4 is running.
+
+### EXP-083 R3′ arm (a): the Bridge's ruling (2026-11-22) and the plant-guard mechanism [model: Opus 5.5]
+**Ruling, recorded in this order. Any later summary that cites arm (a) quotes (1) first; (2) is never quoted alone.**
+1. **Headline (registered, unedited): "arm (a) UNVALIDATED as registered (the W2P4 scut_low plant did not fire)."**
+2. **POST-HOC supplement (labelled):** with the plant corrected to the registration's own wording (s_cut below a kept pole; 1.3
+   at W2P4), every plant fires and both links pass. The integers agree for r ≳ 2·10⁻⁶ (partially verified). r ∈ (6.5·10⁻⁹,
+   2·10⁻⁶) is untested at P = 4.
+   - **1.3 was the first and only corrected value tried.** No other s_cut value was run at W2P4.
+   - The W4P4 res_scale plant is **weak** at n = 1 (×4.8, sitting on the 5.7·10⁻⁷ s_cut-truncation floor). It fires; at n = 2 it
+     is ×1.9·10³.
+   - The n = 2–6 growth to 1.2·10⁻⁹ has no identified cause and is stated as reached. It is not being chased.
+
+**Scope (the Bridge's reading of "EXP-083 ends with that record"):** the clause closes **arm (a)**, with no rescue or
+re-registration of arm (a) inside EXP-083. Arm (b) / C2 has its own registered pass/fail clauses, does not depend on this plant,
+runs to completion, and is graded as registered.
+
+**Shared slip; a repeat of slip 12's rule** ("pre-check on the real data that the variant triggers the mechanism"). The Bridge
+reviewed the registration and did not check 1.5 against W2P4's spectrum either. A repeat calls for a mechanism.
+
+**Mechanism (in place):** `scripts/tools/plant_guard.py`.
+- `check_plant(S, var, value)` raises `PlantInert` unless the plant changes its input **at this geometry**:
+  - scut_low drops ≥ 1 kept pole;
+  - merge_tiny splits ≥ 1 merged pair (it replicates inner_beta0's merge loop);
+  - dd1 has ≥ 1 confluent contour;
+  - drop_pole and res_scale have a kept pole on slices 1 and N_y − 1.
+- `derive_scut_plant(S)` takes the s_cut plant from each geometry's own spectrum (midway between the two largest kept distinct
+  poles), not one value per P.
+- **Known-answer tests** (`scripts/tools/test_plant_guard.py`, output alongside):
+  - It **fires on the case that slipped** (W2P4 s_cut 1.5: "drops no kept pole … max kept s = 1.3289").
+  - It passes every plant that did fire: W4P4 1.5 drops 12, W2P4 1.3 drops 3, the P = 2 1.2 plants drop 4 and 12, and
+    merge_tiny / dd1 / drop_pole / res_scale pass at all four geometries.
+  - Derived values: 1.3037 (W2P2), 2.8539 (W4P2), 1.3224 (W2P4), 2.6885 (W4P4), each dropping ≥ 1 pole.
+- **Wired into `exp083_r3p_run.py`:** every planted variant calls the guard before computing. Rerunning `exp083_r3p_run.py 2 4 1
+  scut_low` now aborts with PlantInert and writes nothing (its checkpoint is untouched).
+- 081d and later registrations use the guard for every plant at every geometry.

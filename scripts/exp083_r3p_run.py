@@ -20,6 +20,8 @@ else:
     import sigma3d as S3
 g = Geom(W, P); s_cut = (1.2 if P == 2 else 1.5) if VAR == "scut_low" else 3.0
 S = S3.Strip3D(g.Lx, g.Lt, g.Ny, g.cutx, g.tcut, s_cut=s_cut, drop_double=(VAR == "dd1"))
+if VAR in ("scut_low", "merge_tiny", "dd1", "drop_pole", "res_scale"):     # plant guard (Bridge ruling 2026-11-22): abort if inert
+    from tools.plant_guard import check_plant; log("plant guard:", check_plant(S, VAR, s_cut if VAR == "scut_low" else None, 3.0))
 if VAR in ("drop_pole", "res_scale"):
     for p in (1, g.Ny - 1):
         sl = S.sl[p]; j = int(np.argmin(sl.s))

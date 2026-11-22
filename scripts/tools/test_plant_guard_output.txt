@@ -1,0 +1,26 @@
+W2P4 scut_low 1.5: INERT (guard fires) -> as expected  scut_low 1.5 drops no kept pole at Lx12 Lt8 Ny16 W2 (kept 32 at s_cut 3.0, 32 at 1.5; max kept s = 1.3289)
+W4P4 scut_low 1.5: changes input -> as expected  {'var': 'scut_low', 'kept': 44, 'kept_plant': 32, 'dropped': 12}
+W2P4 scut_low 1.3: changes input -> as expected  {'var': 'scut_low', 'kept': 32, 'kept_plant': 29, 'dropped': 3}
+W2P2 scut_low 1.2: changes input -> as expected  {'var': 'scut_low', 'kept': 16, 'kept_plant': 12, 'dropped': 4}
+W4P2 scut_low 1.2: changes input -> as expected  {'var': 'scut_low', 'kept': 22, 'kept_plant': 10, 'dropped': 12}
+W2P2 merge_tiny: {'var': 'merge_tiny', 'confluent': 56, 'confluent_plant': 48}
+W2P2 dd1: {'var': 'dd1', 'confluent': 56}
+W2P2 drop_pole: {'var': 'drop_pole', 'ok': True}
+W2P2 res_scale: {'var': 'res_scale', 'ok': True}
+W2P2 derived s_cut plant 1.3037: {'var': 'scut_low', 'kept': 16, 'kept_plant': 15, 'dropped': 1}
+W4P2 merge_tiny: {'var': 'merge_tiny', 'confluent': 76, 'confluent_plant': 68}
+W4P2 dd1: {'var': 'dd1', 'confluent': 76}
+W4P2 drop_pole: {'var': 'drop_pole', 'ok': True}
+W4P2 res_scale: {'var': 'res_scale', 'ok': True}
+W4P2 derived s_cut plant 2.8539: {'var': 'scut_low', 'kept': 22, 'kept_plant': 20, 'dropped': 2}
+W2P4 merge_tiny: {'var': 'merge_tiny', 'confluent': 120, 'confluent_plant': 88}
+W2P4 dd1: {'var': 'dd1', 'confluent': 120}
+W2P4 drop_pole: {'var': 'drop_pole', 'ok': True}
+W2P4 res_scale: {'var': 'res_scale', 'ok': True}
+W2P4 derived s_cut plant 1.3224: {'var': 'scut_low', 'kept': 32, 'kept_plant': 31, 'dropped': 1}
+W4P4 merge_tiny: {'var': 'merge_tiny', 'confluent': 164, 'confluent_plant': 120}
+W4P4 dd1: {'var': 'dd1', 'confluent': 164}
+W4P4 drop_pole: {'var': 'drop_pole', 'ok': True}
+W4P4 res_scale: {'var': 'res_scale', 'ok': True}
+W4P4 derived s_cut plant 2.6885: {'var': 'scut_low', 'kept': 44, 'kept_plant': 42, 'dropped': 2}
+ALL AS EXPECTED
