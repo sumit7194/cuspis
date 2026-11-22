@@ -10810,3 +10810,42 @@ hoc, with the residue error graded by impact: σ_W = 3.80, ρ = 1.86, NOT resolu
 
 **Slip 13 (the Bridge's log):** the registered residue tolerance (10⁻⁸) sat inside its reference arm's own known error (Step 0:
 2·10⁻⁹…1.3·10⁻⁷). Rule: a check's tolerance must exceed its reference arm's known error, or be graded by downstream impact.
+
+### EXP-081c post hoc, continued (the Bridge's questions 1–2; descriptive; data in hand only) and the EXP-081d draft [model: Opus 5.5]
+(`scripts/exp081c_components.py` → `exp081c_components_output.txt`, `exp081c_components.json`;
+`exp081c_components_Pseries_output.txt`; draft `notes/EXP-081d_refinement_draft.md`.)
+
+**1. Which component carries the refinement shift? Neither alone: R is a near-cancellation.**
+R = R_t0 + R_Tsad + R_𝒞, from S = ½(t0 + T_sad + 𝒞), with the same pair formula and κ.
+
+| pair | R | t0 (β = 0) | T_sad | 𝒞 |
+|---|---|---|---|---|
+| (2,4)@P4b4 | +2.255 | −36.15 | +38.89 | −0.49 |
+| (2,4)@P8b4 | +2.644 | −63.49 | +66.80 | −0.66 |
+| (2,4)@P8b8 | +2.653 | −68.39 | +71.72 | −0.68 |
+| (4,8)@P8b8 | +6.442 | −123.04 | +129.44 | +0.05 |
+| (2,8)@P8b8 | +3.501 | −80.62 | +84.64 | −0.52 |
+
+- The refinement shift is +4.19 = t0 −86.90 + T_sad +90.54 + 𝒞 +0.54. It is the residual of the β = 0 sector against the saddle,
+  each about 20 times larger than the shift.
+- Along the IR direction ((2,4) box 4, P = 4…12), t0 and T_sad each grow roughly linearly in P while their sum converges (2.74 →
+  3.38) and R settles at 2.65. **The t0/T_sad cancellation is robust in P and degrades only in the width/resolution direction.**
+- Exact split of the +4.19: P 4 → 8 gives +0.39, box 4 → 8 gives +0.009, and the W pair at fixed lattice P8b8 gives **+3.79**.
+- Pointer (argued): the saddle / β = 0 pair is where to look, as the Bridge suspected, but as a cancellation, not as one term.
+
+**2. Log vs power: not decidable from data in hand** (verified by counting parameters).
+- There is one refinement doubling: a pure power gives p = 1.51, a log gives B = 6.04 per e-fold, and both fit exactly.
+- The fixed-lattice W-series at P8b8 (W = 2, 4, 8) has three points, which every 3-parameter form fits exactly.
+- Hint only: R_t0(4,8)/R_t0(2,4) at fixed lattice is 1.80, nearer the ×2 a ln W term gives than ×1 (1/W) or ×4 (∝ W).
+- The Bridge's physics point (a λ/W² artefact should shrink under refinement, but R grew while free κ moved +0.47 %) is
+  consistent with an uncancelled σ-sector UV piece. It is **unverified** until a series exists.
+
+**3. EXP-081d draft (not registered, nothing run): `notes/EXP-081d_refinement_draft.md`.**
+- Resolutions k ∈ {1, 1.5, 2, 2.5, 3} in the fixed (2,4)@P4b4 geometry; k = 1, 2 are already in hand.
+- Primary statistic: the doubling-increment ratio r = [R(3) − R(1.5)] / [R(2) − R(1)]. Log gives 1; convergence gives < 1;
+  power divergence gives > 1. The bands are proposed for the Bridge and Sumit to fix. Five-point model fits are secondary.
+- Controls: known-answer at k = 1, 2; a k = 3 40-digit column; residue graded by impact (slip-13 rule); planted must-fire;
+  low-rank residues; census.
+- Estimates, to be re-measured at k = 1.5 before committing: k = 2.5 ~17 core-h, k = 3 ~61 core-h (~15 h wall on 4 cores). k = 4
+  is ~450 core-h, not night-scale on this box, so it is excluded.
+- Limit: half-integer k puts the narrow strip half a site off-centre.

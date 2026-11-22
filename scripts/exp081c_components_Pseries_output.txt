@@ -1,0 +1,6 @@
+(2,4) box 4, P-series: components of R (kappa-normalised) and per-component growth
+P= 4: R +2.2552 = t0  -36.1481 + T_sad  +38.8913 + C -0.4880;  T_sad/|t0| 1.07589;  kappa 0.017660
+P= 6: R +2.5397 = t0  -50.5067 + T_sad  +53.6510 + C -0.6045;  T_sad/|t0| 1.06225;  kappa 0.025702
+P= 8: R +2.6441 = t0  -63.4947 + T_sad  +66.8036 + C -0.6648;  T_sad/|t0| 1.05211;  kappa 0.029716
+P=10: R +2.6651 = t0  -75.3792 + T_sad  +78.7477 + C -0.7034;  T_sad/|t0| 1.04469;  kappa 0.031990
+P=12: R +2.6460 = t0  -86.3755 + T_sad  +89.7520 + C -0.7306;  T_sad/|t0| 1.03909;  kappa 0.033406
