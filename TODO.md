@@ -625,3 +625,5 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] Port tail grid: tmax = 48/n removes the large-n deviation (verified at 6 n). Any future large-n use of exp083_r3_qcont should
       scale the tail with n; the graded chain stays as run.
 - [ ] Slope bound at W4P2 with the n = 1 floor (3.5e-8) gives 0.23 > 0.191. The n = 2 choice is argued, not verified.
+- [ ] EXP-081c (post hoc) ρ = 1.86: the (2,4) lattice R is not resolution-stable under one doubling (6.44 vs 2.26–2.65). A refinement series has to be registered separately (amendment D) before the lattice route says anything about the size of δκ.
+- [ ] exp081c_analyze R1 cap only forces failure at checkpoints >= the first unconverged node; if no checkpoint is that high it silently does nothing (effect here <= 1e-9 on R48). Fix before any reuse.

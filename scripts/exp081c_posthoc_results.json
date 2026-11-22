@@ -1,0 +1,36 @@
+{
+ "LABEL": "POST HOC (residue clause graded by impact; registered verdict = INCONCLUSIVE, residue clause)",
+ "residue_impacts": {
+  "tsad": 4.107192808078253e-09,
+  "g_max": 3.418627967470232e-11,
+  "t0": 1.075363798008766e-08
+ },
+ "residue_ok_by_impact": true,
+ "registered_verdict": "INCONCLUSIVE (residue check failed)",
+ "posthoc_verdict": "INCONCLUSIVE (2 sigma interval includes 0 under at least one tail, or tails disagree)",
+ "tails": {
+  "T0": {
+   "R48": 6.441980680178335,
+   "sigma_W": 3.797903300584453,
+   "sigma": 3.80910708298,
+   "stat": 2.8568393222338124,
+   "decided": false,
+   "sign": 1
+  },
+  "T1": {
+   "R48": 6.441980680178335,
+   "sigma_W": 3.797903300584453,
+   "sigma": 3.80910708298,
+   "stat": 2.8568393222338124,
+   "decided": false,
+   "sign": 1
+  }
+ },
+ "rho": 1.8564706179500732,
+ "rho_label": "NOT resolution-stable under one doubling (refinement series to be registered separately)",
+ "richardson_DESCRIPTIVE": 10.62873750484179,
+ "R24_b8": 2.6529464695292537,
+ "resolution_part": 3.7890342106490813,
+ "box_part": 0.008869089935371832,
+ "W8_s_max": 6.0
+}

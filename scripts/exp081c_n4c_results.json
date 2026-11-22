@@ -1,0 +1,10 @@
+{
+ "dR": 2.2203169084523534e-05,
+ "census_to_3p5": {
+  "2": true,
+  "4": true
+ },
+ "census_ok": true,
+ "sys_pass": true,
+ "prediction_ok": true
+}

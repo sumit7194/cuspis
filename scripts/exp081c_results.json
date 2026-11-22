@@ -1,0 +1,79 @@
+{
+ "reasons": [
+  "residue check failed"
+ ],
+ "tails": {
+  "T0": {
+   "R48": 6.441980680178335,
+   "sigma_W": 3.797903300584453,
+   "sigma": 3.80910708298,
+   "stat": 2.8568393222338124,
+   "decided": false,
+   "sign": 1
+  },
+  "T1": {
+   "R48": 6.441980680178335,
+   "sigma_W": 3.797903300584453,
+   "sigma": 3.80910708298,
+   "stat": 2.8568393222338124,
+   "decided": false,
+   "sign": 1
+  }
+ },
+ "verdict": "INCONCLUSIVE (residue check failed)",
+ "rho": 1.8564706179500732,
+ "rho_label": "NOT resolution-stable under one doubling (refinement series to be registered separately)",
+ "richardson_DESCRIPTIVE": 10.62873750484179,
+ "R24_b8": 2.6529464695292537,
+ "resolution_part": 3.7890342106490813,
+ "box_part": 0.008869089935371832,
+ "kap48": 0.017743046048925182,
+ "kap24b8": 0.030774836507985626,
+ "W8_s_max": 6.0,
+ "W8_cum": {
+  "s_max": 6.0,
+  "cum_at_node_smax": 2.555951052502469e-10,
+  "cum_final": 2.555951052502469e-10,
+  "lowered": false
+ },
+ "n4c": {
+  "dR": 2.2203169084523534e-05,
+  "census_to_3p5": {
+   "2": true,
+   "4": true
+  },
+  "census_ok": true,
+  "sys_pass": true,
+  "prediction_ok": true
+ },
+ "n4_prediction_ok": true,
+ "gates": {
+  "step0_ok": true,
+  "b2a_ok": true,
+  "b2a_mustfire": true,
+  "posctl_ok": true,
+  "planted_fires": true,
+  "planted_match": true,
+  "b2b_ok": true,
+  "t0_ok": true,
+  "residue_ok": false,
+  "census_ok": true,
+  "w8_measured": true,
+  "R48": {
+   "T0": 6.441980680178335,
+   "T1": 6.441980680178335
+  },
+  "R8": 2.644077379593882,
+  "si": 0.29193713196186566,
+  "Rq": 2.4065393222338125,
+  "R24_P4": 2.25522385551488,
+  "extra": []
+ },
+ "components": {
+  "W8P8": {
+   "t0": -209.30010992836128,
+   "tsad": 220.11809664764365
+  },
+  "W4P8b8": "081b ckpt"
+ }
+}

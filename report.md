@@ -10748,3 +10748,65 @@ overriding it. Census, N4c and the analysis are not yet run.
 - Whether this warrants an amendment (e.g. grading the residue check by downstream impact, as N1‴c is) is for the Bridge and
   Sumit. **Any such amendment is post hoc, made after the target was read, and must be labelled so.**
 - The registered verdict above is the record until then.
+
+### EXP-081c result: INCONCLUSIVE as registered (residue clause). POST HOC, with the residue error graded by impact: σ_W = 3.80, ρ = 1.86, "NOT resolution-stable under one doubling" [model: Opus 5.5]
+(`scripts/exp081c_census_output.txt`, `exp081c_n4c_output.txt`, `exp081c_analyze_output.txt` → `exp081c_results.json` (the
+registered analysis, unchanged); `exp081c_posthoc.py` → `exp081c_posthoc_results.json`.)
+
+**Headline (the Bridge's wording rule, never the bare numbers):** *081c is INCONCLUSIVE as registered (residue clause). Post
+hoc, with the residue error graded by impact: σ_W = 3.80, ρ = 1.86, NOT resolution-stable under one doubling. R∞ + 0.4503 =
+2.86 ± 3.81, so the 2σ interval includes 0 and the reading is INCONCLUSIVE even post hoc.*
+
+**Registered steps.**
+- **Census** (W8P8 b8, W2P8 b8, s ≤ 3): no mismatches, no touching. **PASS.**
+- **N4c** (s_cut 3.0 → 3.5, P = 6): |ΔR| = **2.2·10⁻⁵**.
+  - The prediction ≤ 10⁻⁴ holds, and the pre-stated 2·10⁻⁵ is met to within 10 %.
+  - It is ≤ 0.1 σ_route, so no extra systematic is added. Census complete to 3.5 at W = 2 and 4.
+- **Analysis:** the planted-value tests all pass, then `decide` runs. **Registered verdict: "INCONCLUSIVE (residue check
+  failed)".** Every other gate passes: Step 0, B2a and its must-fire, positive controls, planted must-fire fires and matches,
+  B2b, t0, census, W8 measured (cumulative impact 2.6·10⁻¹⁰).
+
+**Post-hoc reading (labelled; one input changed).** `residue_ok` is graded by downstream impact against the registered
+10⁻⁷ rule: T_sad 4.1·10⁻⁹, g ≤ 3.4·10⁻¹¹, t0 1.1·10⁻⁸ → it passes. Every other gate and number comes from the registered run.
+
+| quantity | value |
+|---|---|
+| R48 (the (4, 8) pair, P = 8, box 8), T0 = T1 | **6.442** |
+| R24 (the (2, 4) pair, P = 8, box 4), the 081b R8 | 2.644 |
+| R24 (the (2, 4) pair, P = 8, box 8) | 2.653 |
+| σ_W = \|R48(b8) − R24(b4)\| | **3.80** |
+| total σ (σ_route 0.292 ⊕ σ_W) | 3.81 |
+| R∞ + 0.4503 (route i) | 2.86, so 2σ = 7.62 includes 0 → **INCONCLUSIVE** |
+| ρ = \|R48(P8, b8) / R24(P4, b4) − 1\| | **1.86 → "NOT resolution-stable under one doubling"** |
+| Richardson 2·R48 − R24(P4) | 10.6 (**DESCRIPTIVE**) |
+| decomposition: box part R24(b8) − R24(b4) | +0.009 |
+| decomposition: resolution part R48(b8) − R24(b8) | **+3.79** |
+
+**Reading (argued).**
+- Changing the box at fixed resolution moves R by 0.009. Doubling the resolution at fixed box moves it by +3.79.
+- The lattice value "+2.4" is therefore not resolution-stable at the 10 % level: one doubling of the (2, 4) pair moves R from
+  ~2.3–2.7 to 6.4.
+- The sign of R + 0.4503 is positive in every reading so far, but its size is not controlled.
+- Per amendment D, a refinement series must be registered separately before the lattice route can say more.
+- This is a post-hoc reading and does not carry the registered verdict.
+
+**Attempts to break R48 (M3).**
+- **Two implementations:** a direct S sum written separately (`S = ½(t0 + T_sad + Σ wt·g)` from the checkpoints) reproduces
+  6.44198 exactly.
+- **Two numerics:** 081b's own Woodbury W8P8 values, integrated over the full s range, give R48 = 6.4427, which differs by
+  7·10⁻⁴. The 081c refinement therefore changes S_W8 by only 5·10⁻⁵ (3.54427 vs 3.54432).
+- **Why 081b recorded 32.7 instead:** its impact rule dropped W8P8's whole 𝒞 term (s_max = 0, cumulative impact 2·10⁻⁷).
+  With the term kept, both numerics give ~6.44.
+- So the large σ_W is a property of the (4, 8) pair, not of either numerics. **Partially verified:** the arithmetic and the
+  numerics are verified; the premise that (4, 8)@P8 b8 is the 2× refinement of (2, 4)@P4 b4 is as registered.
+
+**Implementation slip (found while checking): the R1 non-convergence cap was not applied.**
+- Two G values did not converge, at s = 5.856 and 5.972. R1 says to cap s_max below 5.856.
+- `exp081c_analyze.py` applies the cap by forcing a failure at the first *checkpoint* ≥ 5.856. The highest checkpoint is
+  5.05, so the forcing never happened and W8_s_max reads 6.0. A check that could not fire in this geometry.
+- **Effect, bounded by direct computation (verified):** all 𝒞 nodes at s ≥ 5.05 together contribute 6.8·10⁻¹¹ to S_W8,
+  so ≤ 1·10⁻⁹ to R48 (dR/dS = 14.1). Nodes ≥ 5.856 contribute 5·10⁻¹⁴.
+- No number above changes at the quoted precision. Recorded, not patched, so the registered analysis stays as committed.
+
+**Slip 13 (the Bridge's log):** the registered residue tolerance (10⁻⁸) sat inside its reference arm's own known error (Step 0:
+2·10⁻⁹…1.3·10⁻⁷). Rule: a check's tolerance must exceed its reference arm's known error, or be graded by downstream impact.
