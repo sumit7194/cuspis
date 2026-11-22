@@ -10896,3 +10896,36 @@ every registered geometry, including the 081c W8P8 target. Verified for the asse
 - **It does not validate the +2.4.** The 081c post-hoc reading (ρ = 1.86) says the lattice value is not resolution-stable, and the
   component split puts the issue in the t0/T_sad cancellation under refinement. C1 shows T_sad is computed as defined. Whether the
   definition cancels t0's UV piece correctly is a different question, which 081d is drafted to ask.
+
+### EXP-083 R3′ arm (b) C2 at P = 2: PASS at every n ≤ 24 (W2, W4); route-(ii) T_sad = C1 T_FD. Arb P = 4 arm (b) produced (n ≤ 6) [model: Opus 5.5]
+(`scripts/exp083_armb/c2_W{2,4}P2.json` and `.out`; `scripts/exp083_r3p/W{2,4}P4b.json` and `arb_W{2,4}P4b.out`; lane log
+`scripts/lanes_0622_B2.txt`.)
+
+**C2, P = 2** (registered 4ee07fe): Q_cont^sad(n), the route (ii) on the production strip carrying the continued-gap σ_n, against
+the Arb honest arm (b). Tolerance per n: max(3·dev_a(n), 10⁻¹⁰).
+
+| | W2P2 | W4P2 |
+|---|---|---|
+| n = 1…24 | **all PASS** | **all PASS** |
+| max dev/tol | 0.45 (n = 6) | **0.99 (n = 2: dev 9.9·10⁻¹¹ vs the 10⁻¹⁰ floor, marginal)** |
+| dev_b / dev_a, n ≥ 6 | 1.2–1.35 | 1.16–1.7 |
+| \|σ_n − honest n-sheet saddle\| (independent code) | ≤ 1.1·10⁻¹² | ≤ 1.4·10⁻¹² |
+| plant σ = 0, n ≥ 2 | fires at ≥ 2.4·10⁸ × tol | fires at ≥ 3.3·10⁸ × tol |
+| probe σ × (1 + 10⁻⁶), n = 2, 3 | 2·10⁴, 9·10⁴ × tol | 6·10⁴, 8·10⁴ × tol |
+| route-(ii) T_sad [FD of Q_cont^sad − arm-(a) link] vs C1 T_FD | 9.5·10⁻⁷ rel: **PASS** (≤ 10⁻⁴) | 7.1·10⁻⁹ rel: **PASS** |
+
+- At n ≥ 7 arm (b)'s deviation is the port's tail quadrature, as in arm (a): it tracks dev_a at ~1.2×, by design of the registered
+  tolerance. At n = 2, 3 the comparison is at the 10⁻¹⁰ floor.
+- W4P2 n = 2 passes by 1 %. I report it as marginal and draw nothing from the margin.
+- W2's route T_sad (9.5·10⁻⁷) is about the arm-(a) link level at W2 (1.0·10⁻⁶): the route FD inherits the link's precision.
+- **Grade: the continued (real-n) replica saddle, at integers n ≤ 24 at P = 2, reproduces the honest n-sheet replica data to the
+  port's quadrature, and its n = 1 slope reproduces production's T_sad. Partially verified:** integers only, P = 2 only. P = 4 is
+  running (n ≤ 6).
+- This is the first test of the shared sheet-average continuation against honest data with the saddle on. **It does not validate
+  the +2.4,** for the same reason as C1: 081c's ρ = 1.86.
+
+**Arb P = 4 arm (b), the declared ~3 GB run.**
+- Measured: 155 s and 161 s, **peak 0.43 GB** (W2, W4), at precision 400 bits; Arb radii ≤ 7·10⁻¹⁰⁶; saddle |F| ≤ 2·10⁻¹⁰⁴ in 6
+  iterations; n = 2…6.
+- The ~3 GB declaration was 7× too high. I scaled it from arm (a)'s n ≤ 12 peak (1.9 GB at W4P4), but arm (b) here runs to n ≤ 6,
+  so the declaration was conservative. Over-declaring costs nothing, but it is recorded as an estimate miss.

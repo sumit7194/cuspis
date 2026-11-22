@@ -1,0 +1,29 @@
+=== c2_W2P2 start 08:30:26
+# pgate: attempt 1 at 08:30:56 (pressure normal >= 60 s)
+# exit 0; wall 1291 s; PEAK tree MEM 0.143 GB + CMPRS 0.000 GB = 0.143 GB
+=== c2_W2P2 end 08:52:27
+# exit 0; wall 1291 s; PEAK tree MEM 0.143 GB + CMPRS 0.000 GB = 0.143 GB
+[   1104s] W2P2 n=22: Q_sad +3.439217425728 honest +3.439217348888 |dev| 7.7e-08 (tol 1.9e-07) PASS; plant sigma=0 dev 6.6e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1154s] W2P2 n=23: Q_sad +3.595545511786 honest +3.595545410201 |dev| 1.0e-07 (tol 2.5e-07) PASS; plant sigma=0 dev 6.9e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1202s] W2P2 n=24: Q_sad +3.751873596460 honest +3.751873471514 |dev| 1.2e-07 (tol 3.1e-07) PASS; plant sigma=0 dev 7.2e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1286s] route-(ii) T_sad +11.8451402544 vs C1 T_FD +11.8451290207: rel 9.5e-07 -> PASS (<= 1e-4)
+=== c2_W4P2 start 08:52:27
+# pgate: attempt 1 at 08:52:57 (pressure normal >= 60 s)
+# exit 0; wall 1238 s; PEAK tree MEM 0.114 GB + CMPRS 0.000 GB = 0.114 GB
+=== c2_W4P2 end 09:13:35
+# exit 0; wall 1238 s; PEAK tree MEM 0.114 GB + CMPRS 0.000 GB = 0.114 GB
+[   1074s] W4P2 n=22: Q_sad +3.094753125887 honest +3.094753078013 |dev| 4.8e-08 (tol 1.2e-07) PASS; plant sigma=0 dev 6.1e+01; |sigma - honest saddle| 4.1e-13, gap |F| 2.3e-14
+[   1115s] W4P2 n=23: Q_sad +3.235423735810 honest +3.235423672468 |dev| 6.3e-08 (tol 1.6e-07) PASS; plant sigma=0 dev 6.4e+01; |sigma - honest saddle| 4.1e-13, gap |F| 2.3e-14
+[   1156s] W4P2 n=24: Q_sad +3.376094344866 honest +3.376094266923 |dev| 7.8e-08 (tol 2.0e-07) PASS; plant sigma=0 dev 6.6e+01; |sigma - honest saddle| 4.1e-13, gap |F| 2.3e-14
+[   1237s] route-(ii) T_sad +11.7638784301 vs C1 T_FD +11.7638783463: rel 7.1e-09 -> PASS (<= 1e-4)
+=== arb_W2P4b start 09:13:35
+# pgate: attempt 1 at 09:14:05 (pressure normal >= 60 s)
+# exit 0; wall 155 s; PEAK tree MEM 0.433 GB + CMPRS 0.000 GB = 0.433 GB
+=== arb_W2P4b end 09:16:41
+# exit 0; wall 155 s; PEAK tree MEM 0.433 GB + CMPRS 0.000 GB = 0.433 GB
+=== arb_W4P4b start 09:16:41
+# pgate: attempt 1 at 09:17:11 (pressure normal >= 60 s)
+# exit 0; wall 161 s; PEAK tree MEM 0.429 GB + CMPRS 0.000 GB = 0.429 GB
+=== arb_W4P4b end 09:19:51
+# exit 0; wall 161 s; PEAK tree MEM 0.429 GB + CMPRS 0.000 GB = 0.429 GB
+=== lane B2 complete Sun Nov 22 09:19:51 IST 2026

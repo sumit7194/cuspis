@@ -1,0 +1,25 @@
+[     44s] W2P2 n=1: Q_sad +0.000000003618 honest +0.000000000000 |dev| 3.6e-09 (tol 1.1e-08) PASS; plant sigma=0 dev 3.6e-09
+[    130s] W2P2 n=2: Q_sad +0.302974382347 honest +0.302974382456 |dev| 1.1e-10 (tol 2.9e-10) PASS; plant sigma=0 dev 5.9e+00; probe x(1+1e-6) dev 6.0e-06; |sigma - honest saddle| 5.9e-14, gap |F| 7.3e-15
+[    215s] W2P2 n=3: Q_sad +0.468421886735 honest +0.468421886738 |dev| 3.1e-12 (tol 1.0e-10) PASS; plant sigma=0 dev 9.0e+00; probe x(1+1e-6) dev 9.2e-06; |sigma - honest saddle| 4.3e-14, gap |F| 2.9e-15
+[    258s] W2P2 n=4: Q_sad +0.625281625644 honest +0.625281625633 |dev| 1.1e-11 (tol 1.0e-10) PASS; plant sigma=0 dev 1.2e+01; |sigma - honest saddle| 8.0e-13, gap |F| 5.5e-14
+[    301s] W2P2 n=5: Q_sad +0.781638722119 honest +0.781638722188 |dev| 6.9e-11 (tol 1.9e-10) PASS; plant sigma=0 dev 1.5e+01; |sigma - honest saddle| 5.6e-13, gap |F| 3.6e-14
+[    343s] W2P2 n=6: Q_sad +0.937968288600 honest +0.937968288903 |dev| 3.0e-10 (tol 6.7e-10) PASS; plant sigma=0 dev 1.8e+01; |sigma - honest saddle| 1.1e-12, gap |F| 7.4e-14
+[    385s] W2P2 n=7: Q_sad +1.094296425796 honest +1.094296425361 |dev| 4.3e-10 (tol 1.1e-09) PASS; plant sigma=0 dev 2.1e+01; |sigma - honest saddle| 2.1e-14, gap |F| 1.4e-15
+[    426s] W2P2 n=8: Q_sad +1.250624492623 honest +1.250624490323 |dev| 2.3e-09 (tol 5.6e-09) PASS; plant sigma=0 dev 2.4e+01; |sigma - honest saddle| 1.9e-13, gap |F| 1.2e-14
+[    476s] W2P2 n=9: Q_sad +1.406952555387 honest +1.406952551809 |dev| 3.6e-09 (tol 8.7e-09) PASS; plant sigma=0 dev 2.7e+01; |sigma - honest saddle| 2.0e-15, gap |F| 1.7e-16
+[    532s] W2P2 n=10: Q_sad +1.563280614910 honest +1.563280613130 |dev| 1.8e-09 (tol 4.8e-09) PASS; plant sigma=0 dev 3.0e+01; |sigma - honest saddle| 3.2e-13, gap |F| 2.7e-14
+[    576s] W2P2 n=11: Q_sad +1.719608670692 honest +1.719608674444 |dev| 3.8e-09 (tol 8.7e-09) PASS; plant sigma=0 dev 3.3e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    619s] W2P2 n=12: Q_sad +1.875936723446 honest +1.875936735757 |dev| 1.2e-08 (tol 3.0e-08) PASS; plant sigma=0 dev 3.6e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    665s] W2P2 n=13: Q_sad +2.032264775327 honest +2.032264797070 |dev| 2.2e-08 (tol 5.3e-08) PASS; plant sigma=0 dev 3.9e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    721s] W2P2 n=14: Q_sad +2.188592828891 honest +2.188592858383 |dev| 2.9e-08 (tol 7.1e-08) PASS; plant sigma=0 dev 4.2e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    765s] W2P2 n=15: Q_sad +2.344920886335 honest +2.344920919696 |dev| 3.3e-08 (tol 8.1e-08) PASS; plant sigma=0 dev 4.5e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    815s] W2P2 n=16: Q_sad +2.501248949093 honest +2.501248981009 |dev| 3.2e-08 (tol 7.7e-08) PASS; plant sigma=0 dev 4.8e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    855s] W2P2 n=17: Q_sad +2.657577017727 honest +2.657577042323 |dev| 2.5e-08 (tol 5.9e-08) PASS; plant sigma=0 dev 5.1e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    909s] W2P2 n=18: Q_sad +2.813905092030 honest +2.813905103636 |dev| 1.2e-08 (tol 2.8e-08) PASS; plant sigma=0 dev 5.4e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[    957s] W2P2 n=19: Q_sad +2.970233171214 honest +2.970233164949 |dev| 6.3e-09 (tol 1.6e-08) PASS; plant sigma=0 dev 5.7e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1016s] W2P2 n=20: Q_sad +3.126561254120 honest +3.126561226262 |dev| 2.8e-08 (tol 6.9e-08) PASS; plant sigma=0 dev 6.0e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1060s] W2P2 n=21: Q_sad +3.282889339412 honest +3.282889287575 |dev| 5.2e-08 (tol 1.3e-07) PASS; plant sigma=0 dev 6.3e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1104s] W2P2 n=22: Q_sad +3.439217425728 honest +3.439217348888 |dev| 7.7e-08 (tol 1.9e-07) PASS; plant sigma=0 dev 6.6e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1154s] W2P2 n=23: Q_sad +3.595545511786 honest +3.595545410201 |dev| 1.0e-07 (tol 2.5e-07) PASS; plant sigma=0 dev 6.9e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1202s] W2P2 n=24: Q_sad +3.751873596460 honest +3.751873471514 |dev| 1.2e-07 (tol 3.1e-07) PASS; plant sigma=0 dev 7.2e+01; |sigma - honest saddle| 3.3e-13, gap |F| 2.8e-14
+[   1286s] route-(ii) T_sad +11.8451402544 vs C1 T_FD +11.8451290207: rel 9.5e-07 -> PASS (<= 1e-4)
