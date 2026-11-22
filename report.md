@@ -11117,3 +11117,16 @@ registered (C2 W4P4 n = 2).** This stays the headline.
    - Known-answer test at W4P4 (`tools/test_tol_ref.py`): alias=True takes "paths differ" (|Δs| 8.6·10⁻⁸; mirror residues differ by
      **2.5·10⁻³ relative**) and alias=False takes "paths agree" (0, 0).
    - Wired into `exp083_armb_c2.py`.
+
+### C2 W4P4 n = 2 excess: one-variable sweep, PRE-STATEMENT (written and committed before any number; Bridge-approved, post hoc) [model: Opus 5.5]
+1. **Knobs, one at a time**, at W4P4 n = 2 on the unaliased (production) path, with σ₂ fixed at the stored C2 value:
+   - Mt 160 → 320;
+   - npt0 512 → 1024;
+   - the n·Δld1 term recomputed at 30 digits (mpmath log det of each slice's B1(σ) and B1(0)), replacing its float64 value.
+   - Baseline (already measured): dev_b 4.43·10⁻¹⁰, dev_a 1.04·10⁻¹⁰.
+2. **"Cause found"** means a knob moves dev_b(2) to ≤ 3 × 1.04·10⁻¹⁰ = 3.1·10⁻¹⁰ on the same unaliased path, **with arm (a)'s
+   dev_a(2) unchanged under that knob** (arm (a) is recomputed for Mt and npt0; the Δld1 knob is identically zero at σ = 0).
+   - If no knob does it: "cause unidentified; candidates left: Mx/tmax, the Arb arm-(b) reference". Then stop, without widening.
+3. **The outcome is post hoc, labelled, and does not change the headline** (arm (b) UNVALIDATED as registered). One job, nice 12,
+   watchdog cap 1.5 GB, pressure-stop on.
+   - Estimated ~30 min, against the ~20 min first quoted: the arm-(a) recomputations double the Mt and npt0 runs.
