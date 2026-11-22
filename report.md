@@ -10685,3 +10685,22 @@ growing irregularly to 10⁻⁷. Read literally, this is a fail of (a).
 - **T_sad untested here; the +2.4 is not validated by this.**
 - For C2 (arm b vs honest, at P = 2, n ≤ 24): its tolerance is max(3·dev_a(n), 10⁻¹⁰). At n ≳ 7 it therefore inherits this tail
   quadrature, as registered, and is correspondingly weaker there.
+
+### R3′ P = 2 grade: the Bridge's reading of the slope-bound judgment call (2026-11-22, recorded next to mine) [model: Opus 5.5]
+**The Bridge concurs: the n = 2 δ is the correct input to the visibility bound.** Its reasoning, which splits the bound into
+two separate terms:
+- **Visibility term.** δ·|ln r|/r bounds how much slope a mode could hide while the integer data agree to δ. That δ is the
+  agreement at the integers actually compared (n ≥ 2), ≲ 2·10⁻¹⁰, which gives **1.4·10⁻⁴ (W4) and 6.3·10⁻⁴ (W2)**.
+- **Numerical-floor term.** The n = 1 floor (3.5·10⁻⁸ at W4) is production's own numerical error in Q_cont near n = 1. It is
+  a smooth error in the evaluated function, not a hidden mode. Its effect on the slope is about the floor divided by Δn ~ 1,
+  so **~10⁻⁸**, with no 1/r amplification.
+- Both terms are far below 0.191.
+
+**My grade on the split: argued, not verified.** The integers are consistent with it: the port's error falls from 3.5·10⁻⁸ at
+n = 1 to 2·10⁻¹¹ at n = 2, a change of ~3.5·10⁻⁸ over Δn = 1. But smoothness between the integers is assumed, not shown. The
+route link (10⁻⁶ relative) cannot resolve a 10⁻⁸ slope term.
+
+**The strict reading stands as recorded.** Its "fail at n ≥ 7" is now shown to be an artefact of the port's tail quadrature.
+
+**The W4P2 n ≥ 38 expm1 overflow is a limit of the port's n-range at W4,** harmless at production's n ≈ 1. Left unpatched, with
+the Bridge's agreement.
