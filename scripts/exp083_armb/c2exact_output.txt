@@ -1,0 +1,4 @@
+known answer: Arb rerun Q(2) vs registered: |diff| 0.0
+|sigma_exact - C2 sigma_2| max 3.52e-14 (mean 6.29e-15); |sigma_exact - float64 honest saddle| max 2.01e-15; |sigma_2 - honest| 3.49e-14
+control arm (a) dev_a 1.04e-10 (must be 1.04e-10)
+Q_sad(2) at the exact saddle (float64-rounded): dev_b 4.74e-10 (signed +4.74e-10); C2 sigma_2: 4.43e-10 -> not found

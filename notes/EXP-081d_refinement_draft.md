@@ -146,6 +146,11 @@ per-G = probe / 1.27.
 - Residue memory is unchanged (full matrices ~2 GB at k = 3), so low-rank storage is still needed for parallel processes.
 
 ### 5b. σ-precision requirement (error budget; added 2026-11-22 at the Bridge's request)
+**REVISED 2026-11-22 (exact-saddle test): the sensitivity depends on direction, and the larger measured value is 2.6·10⁴ per unit
+max |Δσ|, 8× the 3.3·10³ in the table below.** Use S₁ = 2.6·10⁴, so every "δσ required" entry below is 8× smaller: 3.8·10⁻¹⁵ (k = 1)
+… 1.4·10⁻¹⁶ (k = 3). The flags are unchanged and stronger: the float64 gap floor exceeds the requirement by 10–1000×. The original
+one-point text follows, kept for the record.
+
 **Measured at one point; scaling argued.**
 - At W4P4 n = 2 (the W2 geometry of the k = 1 pair: N = 96, N_y = 16), re-solving σ₂ moved max |Δσ| by 3.0·10⁻¹⁴ and moved
   Q_sad(2) by 1.0·10⁻¹⁰. So the sensitivity is S₁ ≈ 3.3·10³ per unit max |Δσ| (`report.md`, C2 sweep result).
@@ -220,8 +225,11 @@ nature, not by a choice of estimator.**
    - A third candidate, argued and not tested: σ₂'s distance to the exact (Arb) saddle. The 3.5·10⁻¹⁴ agreement is between two
      float64 solutions. With S₁ ≈ 3.3·10³, a σ₂ error of ~1.3·10⁻¹³ per site against the exact saddle would explain the whole
      −4.4·10⁻¹⁰, and §5b says that is the expected float64 regime.
-   - Test: evaluate Q_sad at the Arb saddle rounded to float64. That needs `exp083_arb.py` to store its saddle, which it does not
-     yet. Not run.
+   - ~~Test: evaluate Q_sad at the Arb saddle rounded to float64. That needs `exp083_arb.py` to store its saddle, which it does not
+     yet. Not run.~~
+     **RUN 2026-11-22 (post hoc): falsified as the explanation.** At the exact saddle dev_b = +4.74·10⁻¹⁰, still > 3.1·10⁻¹⁰. σ₂'s
+     error contributes −9.2·10⁻¹⁰ (the sign flips), but the remaining +4.7·10⁻¹⁰ is in evaluating Q on the σ ≠ 0 strip.
+     Candidates left: Mx/tmax, the Arb reference.
 2. The arm-(a) P = 4 deviation grows to 1.2·10⁻⁹ by n = 6, cause unidentified, stated as reached (R3′ grade).
 3. The R1 cap in `exp081c_analyze.py` only fires at a checkpoint ≥ the first unconverged node (TODO). Fix it before 081d reuses
    the analysis.

@@ -11169,3 +11169,29 @@ registered (C2 W4P4 n = 2).** This stays the headline.
 - **"Cause found":** Q_sad at the Arb saddle rounded to float64 moves dev_b(2) to ≤ 3.1·10⁻¹⁰, with arm (a) unchanged. Arm (a)
   does not involve σ, so it is unchanged by construction; its 1.04·10⁻¹⁰ is re-measured as a control.
 - **The result is post hoc and the headline is unchanged** (arm (b) UNVALIDATED as registered).
+
+### C2 W4P4 n = 2 at the EXACT (Arb) saddle, RESULT (POST HOC; headline unchanged): **cause not found**. σ error is a co-equal contributor but not the excess. The 081d σ budget is revised upward [model: Opus 5.5]
+(`scripts/exp083_armb/arb_W4P4b_n2_saddle.json` (Arb rerun with stored saddle, 16 s, 0.28 GB); `scripts/exp083_armb_c2exact.py` →
+`exp083_armb/c2exact_output.txt`, `c2exact_W4P4.json` (616 s, 0.07 GB). Pre-statement d025d51.)
+- **Controls:**
+  - The Arb rerun reproduces the registered Q(2) exactly (|diff| 0; saddle |F| 5·10⁻¹⁰⁵, 6 iterations).
+  - Arm (a) re-measures dev_a = 1.04·10⁻¹⁰.
+- **Saddle distances:**
+  - |σ_exact − C2 σ₂|: max 3.52·10⁻¹⁴, mean 6.3·10⁻¹⁵.
+  - |σ_exact − float64 honest saddle| (exp083_honest): max 2.0·10⁻¹⁵.
+  - So the C2 continued-gap σ₂ carries the error, not the float64 honest saddle.
+- **Q_sad(2) at the exact saddle, rounded to float64: dev_b = 4.74·10⁻¹⁰, signed +4.74·10⁻¹⁰**, against C2's σ₂ signed −4.43·10⁻¹⁰.
+  - **Pre-stated criterion (≤ 3.1·10⁻¹⁰): not met → cause not found.**
+- **What this does establish (verified by direct evaluation):**
+  1. **σ error is a co-equal contributor at C2.** Moving σ₂ to the exact saddle (max 3.5·10⁻¹⁴, mean 6.3·10⁻¹⁵) changed Q_sad(2)
+     by **+9.2·10⁻¹⁰**, and flipped the sign of the deviation. The registered −4.43·10⁻¹⁰ is ≈ +4.74·10⁻¹⁰ (evaluation excess)
+     − 9.17·10⁻¹⁰ (σ₂ error).
+  2. **The remaining +4.7·10⁻¹⁰ is not σ error.** At the exact saddle the float64 rounding of σ (~10⁻¹⁷) contributes ≲ 10⁻¹². So the
+     excess sits in evaluating Q on the σ-carrying strip (the port with σ ≠ 0), against arm (a)'s 1.04·10⁻¹⁰ at σ = 0.
+     - Candidates left: **Mx/tmax** (port β path and tail range, with σ ≠ 0) and **the Arb arm-(b) reference itself.** The rerun
+       reproduces it, but that shows determinism, not correctness.
+     - **The §9 σ-distance hypothesis is now falsified as the explanation.**
+- **Sensitivity is direction-dependent, and larger than first measured.**
+  - This step: 9.2·10⁻¹⁰ per max |Δσ| 3.5·10⁻¹⁴ ≈ **2.6·10⁴** (per mean |Δσ|: 1.5·10⁵).
+  - The earlier re-solve gave 3.3·10³ per max |Δσ|.
+  - The 081d §5b budget used the smaller one-point value. It is revised to the larger, measured value (`notes/EXP-081d_refinement_draft.md`).
