@@ -1,1 +1,2 @@
 [    289s] W4P4 scut_low n=1: Q_cont -0.002893404800 honest +0.000000000000 |dev| 2.9e-03
+[    581s] W4P4 scut_low n=2: Q_cont -26.857000380355 honest -26.857000314773 |dev| 6.6e-08
