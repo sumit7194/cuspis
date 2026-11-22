@@ -10588,3 +10588,33 @@ driver `exp083_armb_c1.py`, committed with this text. No C1/C2 number has been c
 - Grade: **verified at P = 2, 4** for the assembly class. Shared machinery: QEP poles and residues, and the Poisson kernel,
   which is integer-validated. Not a validation of the +2.4. The heavy geometries (P6–P12, 12 runs) are queued behind a
   07:30 gate (`run_armb_c1_heavy.sh`).
+
+## Incident 2026-11-22 06:29: pressure cascade, and the gate that prevents a repeat
+
+**What happened (verified from the watchdog logs).**
+- At 06:29 the system memory-pressure level went to 2 (yellow) for several minutes; system free memory was about 35 %.
+- Our own jobs were small: the 081c W8P8b8 target peaked at 1.10 GB tree, and the arm-(a) P4 port at 0.12 GB. The largest process
+  at the time was an outside 2.1 GB Python job; tabula's §213 run was also killed by its own guard at 06:30 (Bridge).
+- The watchdog (`--stop-on-pressure-warn`) stopped the 081c target after 5867 s. It had 20+ g-points done and checkpointed, so only
+  the g-point in progress is lost.
+- The arm-(a) chain runner continues on failure, so it launched every later P4 job straight into yellow pressure, and each one was
+  killed in 1–2 s: W2P4 base (only n = 1, 2 done), all W2P4 planted variants, the link, and all of W4P4.
+- The P2 half of the arm-(a) chain (W2P2 and W4P2: base n ≤ 72, five planted variants, link) finished cleanly before the episode.
+
+**The guard was right.** Pressure was real and came from outside; the failure was the chain design, which had no check before launch.
+
+**Mechanism.** `scripts/tools/pgate.sh`:
+- `pgate_wait` blocks until the pressure level has been 1 for 300 s.
+- `pgate_run` retries a job at most 3 times, and only if its watchdog log ends in a pressure kill.
+- Each attempt's log is kept as `.tryK`.
+
+The retry logic was tested with plants. A pressure-kill log retries 3 times and returns failure. A tree-cap-kill log is not
+retried. A success returns 0.
+
+**Relaunch.** `scripts/run_lanes_0622.sh`, two lanes (2 cores), nice 12, watchdog caps unchanged.
+- Lane A: the arm-(a) P4 ports in the registered scope (base n ≤ 6, planted n ≤ 2, link), then the heavy C1 chain, not before 07:30.
+- Lane B: the 081c target, resumed from its checkpoint.
+- The Arb P = 4 arm-(b) run (~3 GB) is held until the Bridge reports tabula done.
+- Killed outputs are kept as `*_killed0629.*`.
+
+[model: Opus 5.5]

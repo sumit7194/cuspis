@@ -1,0 +1,16 @@
+=== posctl_W2P8b4 start 01:05:14
+# exit 0; wall 4913 s; PEAK tree MEM 0.482 GB + CMPRS 0.198 GB = 0.681 GB
+=== posctl_W2P8b4 exit 0 02:27:07
+# exit 0; wall 4913 s; PEAK tree MEM 0.482 GB + CMPRS 0.198 GB = 0.681 GB
+=== posctl_W4P8b8 start 02:27:07
+# exit 0; wall 7904 s; PEAK tree MEM 0.684 GB + CMPRS 0.282 GB = 0.966 GB
+=== posctl_W4P8b8 exit 0 04:38:51
+# exit 0; wall 7904 s; PEAK tree MEM 0.684 GB + CMPRS 0.282 GB = 0.966 GB
+=== W2P8b8_081b start 04:38:51
+# exit 0; wall 745 s; PEAK tree MEM 0.458 GB + CMPRS 0.000 GB = 0.458 GB
+=== W2P8b8_081b exit 0 04:51:16
+# exit 0; wall 745 s; PEAK tree MEM 0.458 GB + CMPRS 0.000 GB = 0.458 GB
+=== target_W8P8b8 start 04:51:16
+# exit -15; wall 5867 s; PEAK tree MEM 0.703 GB + CMPRS 0.393 GB = 1.096 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== target_W8P8b8 exit 99 06:29:03
+# exit -15; wall 5867 s; PEAK tree MEM 0.703 GB + CMPRS 0.393 GB = 1.096 GB; KILLED: memory pressure level 2 (>= 2, yellow)

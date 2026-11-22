@@ -1,0 +1,106 @@
+=== arb_W2P4a start 03:50:48
+# exit 0; wall 511 s; PEAK tree MEM 1.350 GB + CMPRS 0.029 GB = 1.379 GB
+=== arb_W2P4a end 03:59:18
+=== arb_W4P4a start 03:59:18
+# exit -15; wall 284 s; PEAK tree MEM 1.488 GB + CMPRS 0.427 GB = 1.915 GB; KILLED: tree footprint 1.92 GB > cap 1.5 GB
+=== arb_W4P4a FAILED
+=== arb_W4P4a end 04:04:03
+=== port_W2P2_base start 04:04:03
+# exit 0; wall 3057 s; PEAK tree MEM 0.057 GB + CMPRS 0.047 GB = 0.104 GB
+=== port_W2P2_base end 04:55:00
+=== port_W2P2_scut_low start 04:55:00
+# exit 0; wall 122 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W2P2_scut_low end 04:57:02
+=== port_W2P2_merge_tiny start 04:57:02
+# exit 0; wall 122 s; PEAK tree MEM 0.060 GB + CMPRS 0.000 GB = 0.060 GB
+=== port_W2P2_merge_tiny end 04:59:03
+=== port_W2P2_drop_pole start 04:59:03
+# exit 0; wall 122 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W2P2_drop_pole end 05:01:05
+=== port_W2P2_res_scale start 05:01:05
+# exit 0; wall 121 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W2P2_res_scale end 05:03:07
+=== port_W2P2_dd1 start 05:03:07
+# exit 0; wall 122 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W2P2_dd1 end 05:05:08
+=== port_W2P2_link start 05:05:08
+# exit 0; wall 83 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W2P2_link end 05:06:31
+=== port_W4P2_base start 05:06:31
+# exit 0; wall 3390 s; PEAK tree MEM 0.057 GB + CMPRS 0.047 GB = 0.104 GB
+=== port_W4P2_base end 06:03:01
+=== port_W4P2_scut_low start 06:03:01
+# exit 0; wall 144 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W4P2_scut_low end 06:05:25
+=== port_W4P2_merge_tiny start 06:05:25
+# exit 0; wall 150 s; PEAK tree MEM 0.060 GB + CMPRS 0.000 GB = 0.060 GB
+=== port_W4P2_merge_tiny end 06:07:55
+=== port_W4P2_drop_pole start 06:07:55
+# exit 0; wall 144 s; PEAK tree MEM 0.057 GB + CMPRS 0.015 GB = 0.071 GB
+=== port_W4P2_drop_pole end 06:10:19
+=== port_W4P2_res_scale start 06:10:19
+# exit 0; wall 144 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W4P2_res_scale end 06:12:44
+=== port_W4P2_dd1 start 06:12:44
+# exit 0; wall 138 s; PEAK tree MEM 0.056 GB + CMPRS 0.000 GB = 0.056 GB
+=== port_W4P2_dd1 end 06:15:02
+=== port_W4P2_link start 06:15:02
+# exit 0; wall 100 s; PEAK tree MEM 0.057 GB + CMPRS 0.000 GB = 0.057 GB
+=== port_W4P2_link end 06:16:42
+=== port_W2P4_base start 06:16:42
+# exit -15; wall 745 s; PEAK tree MEM 0.070 GB + CMPRS 0.048 GB = 0.118 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W2P4_base FAILED
+=== port_W2P4_base end 06:29:07
+=== port_W2P4_scut_low start 06:29:07
+# exit -15; wall 1 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W2P4_scut_low FAILED
+=== port_W2P4_scut_low end 06:29:08
+=== port_W2P4_merge_tiny start 06:29:08
+# exit -15; wall 1 s; PEAK tree MEM 0.072 GB + CMPRS 0.000 GB = 0.072 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W2P4_merge_tiny FAILED
+=== port_W2P4_merge_tiny end 06:29:10
+=== port_W2P4_drop_pole start 06:29:10
+# exit -15; wall 1 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W2P4_drop_pole FAILED
+=== port_W2P4_drop_pole end 06:29:11
+=== port_W2P4_res_scale start 06:29:11
+# exit -15; wall 1 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W2P4_res_scale FAILED
+=== port_W2P4_res_scale end 06:29:13
+=== port_W2P4_dd1 start 06:29:13
+# exit -15; wall 1 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W2P4_dd1 FAILED
+=== port_W2P4_dd1 end 06:29:14
+=== port_W2P4_link start 06:29:14
+# exit -15; wall 1 s; PEAK tree MEM 0.068 GB + CMPRS 0.000 GB = 0.068 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W2P4_link FAILED
+=== port_W2P4_link end 06:29:16
+=== port_W4P4_base start 06:29:16
+# exit -15; wall 1 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W4P4_base FAILED
+=== port_W4P4_base end 06:29:17
+=== port_W4P4_scut_low start 06:29:17
+# exit -15; wall 1 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W4P4_scut_low FAILED
+=== port_W4P4_scut_low end 06:29:19
+=== port_W4P4_merge_tiny start 06:29:19
+# exit -15; wall 1 s; PEAK tree MEM 0.071 GB + CMPRS 0.000 GB = 0.071 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W4P4_merge_tiny FAILED
+=== port_W4P4_merge_tiny end 06:29:21
+=== port_W4P4_drop_pole start 06:29:21
+# exit -15; wall 1 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W4P4_drop_pole FAILED
+=== port_W4P4_drop_pole end 06:29:22
+=== port_W4P4_res_scale start 06:29:22
+# exit -15; wall 2 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W4P4_res_scale FAILED
+=== port_W4P4_res_scale end 06:29:24
+=== port_W4P4_dd1 start 06:29:24
+# exit -15; wall 51 s; PEAK tree MEM 0.070 GB + CMPRS 0.012 GB = 0.082 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W4P4_dd1 FAILED
+=== port_W4P4_dd1 end 06:30:15
+=== port_W4P4_link start 06:30:15
+# exit -15; wall 1 s; PEAK tree MEM 0.056 GB + CMPRS 0.000 GB = 0.056 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== port_W4P4_link FAILED
+=== port_W4P4_link end 06:30:16
+=== R3' chain complete Sun Nov 22 06:30:16 IST 2026
