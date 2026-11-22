@@ -1,0 +1,21 @@
+KA1 W2P4b4 vs 081b: max node impact 2.1e-10, |dt0| 6.9e-09, |dtsad| 3.1e-10, |dS| 3.3e-09 -> PASS
+LR  W2P4b4 low-rank vs full: |dS|/|S| 3.5e-15 -> PASS;  LRp rank-drop 1: |dS|/|S| 1.0e+01 -> FIRES; ranks {'max': 1, 'hist': {'1': 36}}
+    checks at W2P4b4: planted ratio 1.0000 impact 1.0e-06 fires True; B2b 0.0e+00; N1'''c max impact 2.3e-12; t0 4.2e-09; residue impact 3.3e-11; Woodbury fires False
+KA1 W4P4b4 vs 081b: max node impact 1.8e-09, |dt0| 5.1e-08, |dtsad| 3.9e-09, |dS| 2.7e-08 -> PASS
+LR  W4P4b4 low-rank vs full: |dS|/|S| 3.3e-15 -> PASS;  LRp rank-drop 1: |dS|/|S| 9.7e+00 -> FIRES; ranks {'max': 1, 'hist': {'1': 50}}
+    checks at W4P4b4: planted ratio 1.0000 impact 1.0e-06 fires True; B2b 0.0e+00; N1'''c max impact 2.7e-12; t0 1.8e-09; residue impact 2.3e-10; Woodbury fires False
+KA2 W8P8 low-rank vs stored 081c (full): t0 0.0e+00, tsad 0.0e+00, g0 0.0e+00 -> PASS; ranks {'max': 2, 'hist': {'1': 68, '2': 36}}
+RESp residues x(1+1e-6) at W4P4b4: (1/2)|dT_sad| 2.6e-05 -> FIRES (threshold 1e-7)
+tol_ref low-rank vs full path at W4P4b4: |ds| 0.0e+00, residue rel 1.7e-15
+T0p t0 with x(1+1e-7): |dt0| 9.5e-06 -> FIRES (threshold 2e-6)
+B2b can-fire evidence (081c W8P8, unrefined vs refined at s=1.974): rel 5.9e-12 -> FIRES at 1e-12
+scale-plant guard W2P4b4: eps 9.41e-09, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W4P4b4: eps 9.41e-09, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W3P6b6: eps 2.79e-09, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W6P6b6: eps 2.79e-09, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W4P8b8: eps 1.18e-09, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W8P8b8: eps 1.18e-09, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W5P10b10: eps 6.02e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W10P10b10: eps 6.02e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W6P12b12: eps 3.49e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W12P12b12: eps 3.49e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire

@@ -1,0 +1,5 @@
+[    108s] sigma_W8_P8_box8_c2_cp12_sc3.0_dd0_ka: N 384 Ny 32; 081c numerics installed (17 unique slices, low-rank residues; ranks {'max': 2, 'hist': {'1': 68, '2': 36}}) 3328 G, unconverged 0 (108s)
+[   1078s] t0 -209.300109928361  G calls 35604 unconverged 0 (970s)
+[   1078s] tsad +220.118096647644  G calls 0 unconverged 0 (0s)
+[   1241s] g(0.0046) done: 6018 G, steps hist {'2': 4390, '1': 1628}, unconverged 0 (162s)
+[   1241s] production part done

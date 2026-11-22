@@ -1,0 +1,1 @@
+max residue reconstruction rel error 4.5e-15; max |d_lr - d_full| 1.4e-17 (|d| max 2.8e-02); T_sad full 220.11809664764365 low-rank 220.11809664764365 diff 0.0e+00 (ulp at 220: 2.8e-14)

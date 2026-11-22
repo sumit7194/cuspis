@@ -11195,3 +11195,117 @@ registered (C2 W4P4 n = 2).** This stays the headline.
   - This step: 9.2·10⁻¹⁰ per max |Δσ| 3.5·10⁻¹⁴ ≈ **2.6·10⁴** (per mean |Δσ|: 1.5·10⁵).
   - The earlier re-solve gave 3.3·10³ per max |Δσ|.
   - The 081d §5b budget used the smaller one-point value. It is revised to the larger, measured value (`notes/EXP-081d_refinement_draft.md`).
+
+## EXP-081d — refinement series of the lattice σ-route, k ∈ {1, 1.5, 2, 2.5, 3}. REGISTRATION (Sumit's YES via the Bridge, 2026-11-22 evening). Nothing of a new k computed [model: Opus 5.5]
+**Text.** `notes/EXP-081d_refinement_draft.md` (01a61fc + later edits through b3500cf) is registered with the amendments below. Where they
+differ, this section governs. Code committed with this text: `scripts/exp081d_route.py`, `exp081d_analyze.py` (with planted tests),
+`exp081d_step0.py`, `exp081d_precheck.py`, `run_081d_precheck.sh`; `exp081c_numerics.py` gains opt-in low-rank residues (default off, so
+081c is unchanged); `exp083_armb_c1.py` searches `exp081d_results` first and grades against the stored T_sad; `tools/plant_guard.py`
+gains `check_scale_plant`. **No R, S or g of k = 1.5, 2.5 or 3 exists.** The pre-checks used existing geometries only (k = 1; a k = 2
+subset).
+
+### A. Question, geometry, estimator
+- **Question:** in the fixed physical geometry of (2,4)@P4 box 4, does R(k) converge, diverge logarithmically, or diverge as a power?
+- **Geometry at k:** (W1, W2) = (2k, 4k), P = box = 4k, c = 2, N_y = 4P, N = 96k².
+- **Production numerics:** 081c numerics (exact integer H, adaptive refinement with divergence guard, R1 non-convergence tiers),
+  with **low-rank residue storage** (amendment 1).
+- **σ budget and option (a), declared:** production T_sad takes σ̇ from one dense linear solve, σ̇ = 2·B1₀⁻¹·d (`saddle_term_c`; no
+  gap solve). The §5b budget (S₁ = 2.6·10⁴·k³ per unit max |Δσ|) applies to σ-gap validation arms only. 081d's only σ-gap arm is C1,
+  whose τ = max(10⁻⁶, 10·drift)·|T| sits above its own measured FD drift (≤ 5.6·10⁻⁹ rel at k = 2), on its own path.
+- **R(k), S_T0/S_T1, σ_R(k):** as in `exp081d_analyze.py`.
+  - The 081b impact rule (TOL 10⁻⁷, cumulative lowering) applies, with the **R1 cap fixed**: s_max ≤ the largest 𝒞-node strictly
+    below the first node s ≥ 2.986 with a non-converged G.
+  - Known answer for the fix: on 081c's W8P8 it now gives s_max = 5.6549 < 5.8562; 081c's analysis gave 6.0. A planted case also
+    passes. 081c's own record is not re-graded.
+- **k = 2** uses the existing 081c-numerics checkpoints: W8P8 target, and W4P8b8 from the posctl run, on which the 081d route runs
+  the reliability checks only.
+- **k = 1** uses the 081d pipeline (the known-answer run).
+
+### B. PRIMARY decision rule (fixed now; `decide_r` / `decide`, 12/12 planted tests pass, `scripts/exp081d_analyze_tests_output.txt`)
+- **Statistic:** r = [R(3) − R(1.5)] / [R(2) − R(1)], computed per tail (T0, T1). σ_r is propagated from σ_R(k).
+
+| r (the whole interval r ± 2σ_r must lie in the band) | reading |
+|---|---|
+| r ≤ 0.60 | **converging** (p ≳ 1.26) |
+| 0.80 ≤ r ≤ 1.25 | **log-like** |
+| r ≥ 1.60 | **power-divergent** |
+
+- **INCONCLUSIVE** if any of these hold:
+  - r ± 2σ_r is not inside one band (the neighbouring readings are named);
+  - |R(2) − R(1)| ≤ 2σ;
+  - the two increments have opposite sign (non-monotone);
+  - any of k = 1, 1.5, 2, 3 is missing or void;
+  - the T0 and T1 readings differ.
+- **Reference values:** pure log gives r = 1; R∞ − A·k^−p gives 1.5^−p; A·k^p gives 1.5^p.
+- **Pre-stated meaning:** draft §6, unchanged.
+  - Converging: R∞ from the fits, with model drift as the systematic.
+  - Log-like: the σ-route as built carries an unsubtracted UV log, and the lattice route makes no sign claim.
+  - Power-divergent: a construction error is near-certain.
+- **Secondary, DESCRIPTIVE only:**
+  - r_int = [R(3) − R(2)] / [R(2) − R(1)] (log 0.585);
+  - fits (a) R∞ + A·k^−p, (b) c + B ln k, (c) c + B ln k + D/k, with residuals and leave-k=3-out predictions;
+  - the per-component series R_t0, R_Tsad, R_𝒞 and κ(k).
+- **Limit:** half-integer k is not an exact scaling (W1 = 3, 5 sits half a site off-centre). It is not in σ_r. r_int is reported
+  for that reason.
+
+### C. Control table (each row: how it can fail; the real-data evidence that it CAN; its consequence)
+| # | control (where) | pass | how it can fail (mechanism) | evidence it can fire, on real data | consequence if it fails |
+|---|---|---|---|---|---|
+| KA1 | k = 1 pipeline (low-rank) vs 081b stored, both widths | node impact ≤ 10⁻⁷, \|Δt0\|, \|ΔT_sad\| ≤ 2·10⁻⁶, \|ΔS\| ≤ 10⁻⁶ (081c posctl; above 081b's own W ≤ 4 cumulative error ≤ 5.8·10⁻⁹) | any pipeline error in t0 / T_sad / g assembly | the rank-drop plant moves S (§D, LRp) | **STOP** before any new k |
+| LR | low-rank vs full residues at k = 1 (S), and at k = 2 (KA2: t0, T_sad, g node 0 vs stored 081c) | ≤ 10⁻¹² rel (above float noise ~10⁻¹⁴; truncation at 10⁻¹⁴·s_max) | wrong rank, wrong reconstruction | **LRp:** rank-drop 1 must move S by > 10⁻⁹ rel (§D) | STOP low-rank. Full residues instead, at the §E memory cost |
+| P-ε | planted G, residues × (1 + ε_k) at s = 0.937, every geometry, with ε_k set so the predicted impact is 10⁻⁶ | fires (impact > 10⁻⁷) and Δg = 2ε_k·N·N_y within 10 % | pipeline not linear in G (mis-scaling) | `plant_guard.check_scale_plant` asserts, before compute, that it can fire at **every** 081d geometry (§D). 081c: ratio 1.0000 | that geometry's N1‴c is **void**, so k is void |
+| N1‴c | refined vs unrefined g at the 5 checkpoints, every geometry | per-node and cumulative impact ≤ 10⁻⁷ (081b rule) | unrefined-arm error grows with k (Step 0: 2·10⁻⁹…1.3·10⁻⁷ G-level at k = 2) | 081c Woodbury G at k = 2: impact 8.6·10⁻⁵ ≫ 10⁻⁷ | s_max lowered (conservative). T0 and T1 both used. **Note (slip 13 class, stated):** it can fire from the reference arm's own error at large k. The consequence is conservative, never a verdict |
+| t0 | t0 refined vs unrefined | ≤ 2·10⁻⁶ (measured unrefined error 1.1·10⁻⁸ at k = 2) | G error in the β = 0 sector | **T0p:** t0 with × (1 + 10⁻⁷) at k = 1 must move t0 by > 2·10⁻⁶ (§D) | k void |
+| RES | residues graded by impact (slip-13 rule): ½\|T_sad(unrefined residues) − T_sad\| | ≤ 10⁻⁷ (measured 2·10⁻⁹ at k = 2) | residue error reaching T_sad | **RESp:** residues × (1 + 10⁻⁶) at k = 1 must exceed 10⁻⁷ (§D) | k void |
+| B2b | converged vs converged + 1 step at s = 1.974 | ≤ 10⁻¹² rel (measured 0.0 at k = 2) | refinement not converged | 081c W8P8 unrefined vs refined at s = 1.974: rel > 10⁻¹² (§D) | k void |
+| R1 | non-converged G | — | refinement divergence | 081c W8P8: 2 unconverged at s ≥ 5.86 | below 2.986: **STOP**; above: s_max capped (fixed cap) |
+| S0 | Step 0 at every new geometry (`exp081d_step0.py`): refined G vs a 40-digit reference at the 5 checkpoints | ≤ 10⁻¹² | refinement inaccurate at high Im α | 081c Step 0 run 1 **STOPPED** (one refinement step not enough at Im α ≥ 5), a real failure | fail at s ≈ 0.94 / 1.97: k void. At ≥ 2.99: cap that geometry's s_max at the last passing node |
+| CEN | pole census at s ≤ 3, every new geometry (081b census) | match, no touching | QEP missing or duplicating a pole | 081b N2′ census must-fire FIRES | geometry flagged, so k void |
+| C1 | T_sad (the checkpoint value that enters R) vs an independent FD of the continued replica saddle, every new geometry (`exp083_armb_c1.py`, alias = False) | \|T_FD − T_stored\| ≤ τ = max(10⁻⁶, 10·drift)·\|T\| | T_sad assembly or σ̇ error | 16/16 geometries: plants (sign flip, off, half, k-index) fire at ≥ 5·10⁴ τ; the k-index plant moves T by 12–17 % | **T_sad unverified, so k void** (and INCONCLUSIVE if k ∈ {1, 1.5, 2, 3}) |
+| WB | Woodbury (081b numerics) g vs 081d at the checkpoints | reported only | — | fires at k = 2 (8.6·10⁻⁵) | none (reported; as in 081c) |
+| GUARD | `tools/plant_guard` for every plant at every geometry; `tools/tol_ref` wherever a k·dev_ref tolerance appears | — | an inert plant, or a cross-path reference | plant_guard fired on the real W2P4 slip; tol_ref took both branches on real W4P4 data | inert plant: abort before compute |
+
+- **tol_ref:** 081d has no tolerance of the form k·dev_ref. Every tolerance above is absolute and sits above its reference arm's
+  measured error. tol_ref is applied to the low-rank vs full path (structural agreement at k = 1, §D).
+
+### D. Pre-check results (existing geometries only; `scripts/exp081d_results/pre_*.out`, `pre_check.out`, `precheck_results.json`, `ka2_explain_output.txt`)
+| check | result | verdict |
+|---|---|---|
+| KA1 W2P4b4 vs 081b | node impact 2.1e-10, \|Δt0\| 6.9e-9, \|ΔT_sad\| 3.1e-10, \|ΔS\| 3.3e-9 | PASS |
+| KA1 W4P4b4 vs 081b | node impact 1.8e-9, \|Δt0\| 5.1e-8, \|ΔT_sad\| 3.9e-9, \|ΔS\| 2.7e-8 | PASS |
+| LR k = 1 (W2, W4), low-rank vs full | \|ΔS\|/\|S\| 3.5e-15, 3.3e-15 (all residues rank 1) | PASS |
+| **LRp** rank-drop 1 (W2, W4) | \|ΔS\|/\|S\| 10, 9.7 | **FIRES** |
+| KA2 W8P8 low-rank vs stored 081c full (t0, T_sad, g₀) | 0, 0, 0 (bitwise); ranks 68×1, 36×2 | PASS |
+| — why exactly 0 (not trusted unexplained) | same process: residue reconstruction error 4.5e-15 rel, \|Δd\| 1.4e-17 (\|d\| 0.03), so ΔT_sad is below one ulp at 220 (2.8e-14) | explained; the comparison is live |
+| tol_ref, low-rank vs full path (W4P4b4) | \|Δs\| 0, residue rel 1.7e-15 | paths agree |
+| P-ε at k = 1 (W2, W4) | ratio 1.0000, impact 1.0e-6 | fires, match |
+| P-ε guard, all 10 081d geometries (`check_scale_plant`) | ε_k 9.4e-9 … 3.5e-10, predicted Δg 2.89e-5, impact 1.0e-6 | can fire at every geometry |
+| **RESp** residues × (1 + 10⁻⁶), W4P4b4 | ½\|ΔT_sad\| 2.6e-5 > 1e-7 | **FIRES** |
+| **T0p** t0 × (1 + 10⁻⁷), W4P4b4 | \|Δt0\| 9.5e-6 > 2e-6 | **FIRES** |
+| **B2b can-fire** (081c W8P8 unrefined vs refined, s = 1.974) | rel 5.9e-12 > 1e-12 | **FIRES** |
+| checks at k = 1 (both widths) | B2b 0.0; N1‴c ≤ 2.7e-12; t0 ≤ 4.2e-9; residue impact ≤ 2.3e-10; Woodbury does not fire (expected at small W; reported only) | all PASS |
+| analysis planted tests (`exp081d_analyze.py --test`) | 12/12, incl. the R1 cap on 081c W8P8 (s_max 5.6549) | PASS |
+
+Every control that can void a k has shown, on real data, that it fires. Woodbury (reported only) does not fire at k = 1, as expected.
+
+### E. Resources, and a correction to the draft
+- **Correction (the draft's error, stated): k = 3 is not one night on 4 cores at 4 GB.** The draft said "< 0.3 GB per process", and
+  that was never measured.
+  - `Strip3D.inner()` holds three (N_y, N, N) complex arrays, and the route keeps B1 alongside: 4 × 573 MB at k = 3.
+  - Measured at k = 2: peak 1.02 GB.
+  - Formula peak per process (low-rank residues): k = 1.5 ≈ 0.5 GB, **k = 2.5 ≈ 1.5 GB, k = 3 ≈ 3.1 GB** (+50 % margin: 0.75 / 2.3 / 4.7).
+  - **BLAS threading does not help** (measured: 199 → 171 ms per G with 1 → 4 threads at N = 864).
+  - So parallelism needs separate processes, each ~3.1 GB at k = 3.
+- **Stage 1 (proposed for tonight; fits 4 cores and ≤ 4 GB declared in total):**
+  - L1: k = 2.5 W10 (production + checks ≈ 8.8 h, ≈ 1.5 GB).
+  - L2: k = 2.5 W5 (≈ 5.5 h, ≈ 1.4 GB), then the k = 2 W4P8b8 checks (≈ 0.7 h).
+  - L3: k = 1.5 W3 and W6 (≈ 1.2 h), then Step 0, census and C1 for each new geometry as its production lands.
+  - Each lane: its own watchdog (cap 2.3 GB for L1/L2, 1.0 GB for L3), nice 12, pressure-stop, pgate.
+  - **Declared total: ≤ 4 GB formula peak (3.4 GB), ~9 h wall.**
+- **Stage 2 (k = 3), for scheduling:** ≈ 47 core-h (W12 ≈ 29, W6 ≈ 18 including checks) at ≈ 3.1 GB per process. Either:
+  - (i) 3 node-split processes, ≈ 9.3 GB formula (14 GB with margin), ~16 h; or
+  - (ii) 1 process, ~47 h; or
+  - (iii) first a memory-lean `inner()`, a production change that needs its own known-answer control.
+  - **The PRIMARY reading needs k = 3, so no verdict exists after Stage 1.** Stage-1 numbers are reported as R(k) with σ_R and
+    marked "Stage 1 of 2, no verdict". The decision rule above does not change between stages.
+- **No physics number from a new k is read or reported before the Bridge's GO.**

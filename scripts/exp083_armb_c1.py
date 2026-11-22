@@ -15,7 +15,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "exp
 def log(*a): print(f"[{time.time()-T0:6.0f}s]", *a, flush=True)
 res = dict(W=W, P=P, Wbox=WB, c=C, N=g.N, Ny=g.Ny)
 stored = None
-for d in ("exp081b_results", "exp081c_results", "exp083_r2"):
+for d in ("exp081d_results", "exp081b_results", "exp081c_results", "exp083_r2"):   # 081d first (EXP-081d C1 control)
     f = os.path.join(HERE, d, f"sigma_W{W}_P{P}_box{WB}_c{C}_cp12_sc3.0_dd0_ckpt.json")
     if os.path.exists(f): stored = json.load(open(f)).get("tsad"); res["stored_from"] = f; break
 if P == 2: stored = json.load(open(os.path.join(HERE, "exp083_r2", f"prod_W{W}P2_sc3.0_dd0_ckpt.json")))["tsad"]
@@ -59,6 +59,8 @@ res["sdot_scut_effect"] = float(np.abs(sdot_inf - sdot).max() / np.abs(sdot).max
 # ---- comparison and plants ----
 tau = max(1e-6, 10 * drift) * abs(T_prod); res["tau"] = tau; dlt = abs(T_lin - T_prod); res["delta"] = dlt
 res["verdict"] = "PASS" if dlt <= tau else "FAIL"
+if stored is not None:   # EXP-081d: the T_sad that enters R(k) is the checkpoint value (081c numerics); graded with the same tau
+    res["delta_stored"] = abs(T_lin - stored); res["verdict_stored"] = "PASS" if res["delta_stored"] <= tau else "FAIL"
 if drift > 1e-7: res["verdict"] += " (precision-limited: FD drift > 1e-7)"
 plants = dict(P1_signflip=-T_prod, P2_off=0.0, P3_half=T_prod / 2, P4_kindex=res["T_P4"])
 res["plants"] = {k: (None if v is None else dict(T=v, delta=abs(T_lin - v), ratio=abs(T_lin - v) / tau, fires=bool(abs(T_lin - v) > 10 * tau))) for k, v in plants.items()}

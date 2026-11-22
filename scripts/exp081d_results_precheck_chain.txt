@@ -1,0 +1,65 @@
+=== pre_W2P4 start 19:24:17
+# pgate: attempt 1 at 19:24:47 (pressure normal >= 60 s)
+# exit 0; wall 187 s; PEAK tree MEM 0.065 GB + CMPRS 0.000 GB = 0.065 GB
+# exit 0; wall 187 s; PEAK tree MEM 0.065 GB + CMPRS 0.000 GB = 0.065 GB
+[    184s] N1'''c unrefined arm g(5.0517) done
+[    186s] N1'''c (refined vs unrefined): s=0.937 |dg| 6.6e-11 impact 2.3e-12; s=1.974 |dg| 4.8e-11 impact 2.5e-15; s=2.986 |dg| 3.8e-11 impact 3.4e-18; s=3.948 |dg| 3.7e-11 impact 7.8e-21; s=5.052 |dg| 3.7e-11 impact 7.5e-24
+[    186s] t0 refined vs unrefined |dt0| 4.2e-09 [PASS]; residue impact (1/2)|T_sad(unref res) - T_sad| 3.3e-11 [PASS]
+[    186s] Woodbury must-fire (081b numerics g vs 081d): s=0.937 impact 2.0e-12; s=1.974 impact 2.4e-15; s=2.986 impact 4.7e-16; s=3.948 impact 6.1e-16; s=5.052 impact 8.2e-16 -> does not fire (reported only)
+=== pre_W2P4_full start 19:27:54
+# pgate: attempt 1 at 19:28:24 (pressure normal >= 60 s)
+# exit 0; wall 165 s; PEAK tree MEM 0.064 GB + CMPRS 0.000 GB = 0.064 GB
+# exit 0; wall 165 s; PEAK tree MEM 0.064 GB + CMPRS 0.000 GB = 0.064 GB
+[    158s] g(5.6549) done: 2016 G, steps hist {'1': 1142, '2': 874}, unconverged 0 (3s)
+[    162s] g(5.8562) done: 2016 G, steps hist {'1': 1164, '2': 852}, unconverged 0 (3s)
+[    165s] g(5.9723) done: 2016 G, steps hist {'1': 1107, '2': 909}, unconverged 0 (3s)
+[    165s] production part done
+=== pre_W2P4_rd1 start 19:31:10
+# pgate: attempt 1 at 19:31:40 (pressure normal >= 60 s)
+# exit 0; wall 165 s; PEAK tree MEM 0.063 GB + CMPRS 0.000 GB = 0.063 GB
+# exit 0; wall 165 s; PEAK tree MEM 0.063 GB + CMPRS 0.000 GB = 0.063 GB
+[    158s] g(5.6549) done: 2016 G, steps hist {'1': 1142, '2': 874}, unconverged 0 (3s)
+[    161s] g(5.8562) done: 2016 G, steps hist {'1': 1164, '2': 852}, unconverged 0 (3s)
+[    165s] g(5.9723) done: 2016 G, steps hist {'1': 1107, '2': 909}, unconverged 0 (3s)
+[    165s] production part done
+=== pre_W4P4 start 19:34:25
+# pgate: attempt 1 at 19:34:55 (pressure normal >= 60 s)
+# exit 0; wall 251 s; PEAK tree MEM 0.066 GB + CMPRS 0.000 GB = 0.066 GB
+# exit 0; wall 251 s; PEAK tree MEM 0.066 GB + CMPRS 0.000 GB = 0.066 GB
+[    247s] N1'''c unrefined arm g(5.0517) done
+[    249s] N1'''c (refined vs unrefined): s=0.937 |dg| 7.7e-11 impact 2.7e-12; s=1.974 |dg| 6.3e-11 impact 3.2e-15; s=2.986 |dg| 4.4e-11 impact 3.9e-18; s=3.948 |dg| 5.9e-11 impact 1.2e-20; s=5.052 |dg| 3.8e-09 impact 7.8e-22
+[    249s] t0 refined vs unrefined |dt0| 1.8e-09 [PASS]; residue impact (1/2)|T_sad(unref res) - T_sad| 2.3e-10 [PASS]
+[    249s] Woodbury must-fire (081b numerics g vs 081d): s=0.937 impact 8.9e-11; s=1.974 impact 1.3e-09; s=2.986 impact 4.3e-10; s=3.948 impact 3.3e-10; s=5.052 impact 6.0e-11 -> does not fire (reported only)
+=== pre_W4P4_full start 19:39:07
+# pgate: attempt 1 at 19:39:37 (pressure normal >= 60 s)
+# exit 0; wall 225 s; PEAK tree MEM 0.067 GB + CMPRS 0.000 GB = 0.067 GB
+# exit 0; wall 225 s; PEAK tree MEM 0.067 GB + CMPRS 0.000 GB = 0.067 GB
+[    212s] g(5.6549) done: 2232 G, steps hist {'1': 263, '2': 1969}, unconverged 0 (5s)
+[    217s] g(5.8562) done: 2232 G, steps hist {'1': 261, '2': 1971}, unconverged 0 (5s)
+[    221s] g(5.9723) done: 2232 G, steps hist {'1': 263, '2': 1969}, unconverged 0 (5s)
+[    221s] production part done
+=== pre_W4P4_rd1 start 19:43:21
+# pgate: attempt 1 at 19:43:51 (pressure normal >= 60 s)
+# exit 0; wall 224 s; PEAK tree MEM 0.068 GB + CMPRS 0.000 GB = 0.068 GB
+# exit 0; wall 224 s; PEAK tree MEM 0.068 GB + CMPRS 0.000 GB = 0.068 GB
+[    211s] g(5.6549) done: 2232 G, steps hist {'1': 263, '2': 1969}, unconverged 0 (5s)
+[    216s] g(5.8562) done: 2232 G, steps hist {'1': 261, '2': 1971}, unconverged 0 (5s)
+[    220s] g(5.9723) done: 2232 G, steps hist {'1': 263, '2': 1969}, unconverged 0 (4s)
+[    220s] production part done
+=== pre_W8P8_ka start 19:47:36
+# pgate: attempt 1 at 19:48:06 (pressure normal >= 60 s)
+# exit 0; wall 1243 s; PEAK tree MEM 0.730 GB + CMPRS 0.000 GB = 0.730 GB
+# exit 0; wall 1243 s; PEAK tree MEM 0.730 GB + CMPRS 0.000 GB = 0.730 GB
+[   1078s] t0 -209.300109928361  G calls 35604 unconverged 0 (970s)
+[   1078s] tsad +220.118096647644  G calls 0 unconverged 0 (0s)
+[   1241s] g(0.0046) done: 6018 G, steps hist {'2': 4390, '1': 1628}, unconverged 0 (162s)
+[   1241s] production part done
+=== pre_check start 20:08:49
+# pgate: attempt 1 at 20:09:19 (pressure normal >= 60 s)
+# exit 0; wall 70 s; PEAK tree MEM 0.104 GB + CMPRS 0.000 GB = 0.104 GB
+# exit 0; wall 70 s; PEAK tree MEM 0.104 GB + CMPRS 0.000 GB = 0.104 GB
+scale-plant guard W5P10b10: eps 6.02e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W10P10b10: eps 6.02e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W6P12b12: eps 3.49e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+scale-plant guard W12P12b12: eps 3.49e-10, predicted dg 2.89e-05, impact 1.0e-06 -> can fire
+=== precheck complete Sun Nov 22 20:10:29 IST 2026

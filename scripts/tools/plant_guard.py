@@ -65,3 +65,12 @@ def check_plant(S, var, value=None, s_cut=3.0):
             if not any(s <= s_cut for s in S.sl[p].s): raise PlantInert(f"{var}: slice {p} has no kept pole at {geo}")
         return dict(var=var, ok=True)
     return dict(var=var, unchecked=True)
+
+
+def check_scale_plant(eps, N, Ny, s1, thr=1e-7, factor=10.0, g_abs=None, g_rel_prec=1e-12):
+    """EXP-081d planted must-fire (G and residues x (1 + eps) at node s1): predicted dg = 2 eps N Ny must give an impact >= factor x thr
+    AND exceed 1e3 x the g precision (g_rel_prec |g|) when |g| is known. Raises PlantInert otherwise."""
+    pred = 2 * eps * N * Ny; imp = pred * np.pi / np.cosh(np.pi * s1) ** 2
+    if imp < factor * thr * (1 - 1e-9): raise PlantInert(f"scale plant: predicted impact {imp:.2e} < {factor} x {thr:.0e}")
+    if g_abs is not None and pred < 1e3 * g_rel_prec * g_abs: raise PlantInert(f"scale plant: predicted dg {pred:.2e} not >> g precision {g_rel_prec * g_abs:.1e}")
+    return dict(eps=eps, pred=pred, impact=imp)

@@ -30,7 +30,11 @@ class _DD:
         self.hi, t = _two_sum(self.hi, p); self.lo = self.lo + t + (0.0 if e is None else e)
 
 class ExactSlice:
-    def __init__(self, base, Lx, Lt, m2, s_cut, refine=1, M=32):
+    def __init__(self, base, Lx, Lt, m2, s_cut, refine=1, M=32, lowrank=False, rank_tol=1e-14, rank_drop=0):
+        # lowrank (EXP-081d, opt-in; default False keeps 081c bit-identical): store each residue as SVD factors (U s, Vh), keeping
+        # singular values > rank_tol * s_max (measured at W8P8: rank 1-2, the rest ~1e-15 float noise). rank_drop > 0 is the planted
+        # truncation control (drops that many of the kept directions; must change S).
+        self.lowrank, self.rank_tol, self.rank_drop, self.ranks = lowrank, rank_tol, rank_drop, []
         self.Lx, self.Lt, self.N, self.m2, self.d = Lx, Lt, Lx * Lt, m2, 4.0 + m2
         self.links, self.s, self.W, self.refine, self.M, self.scale = list(base.links), list(base.s), base.W, refine, M, 1.0
         self.G0 = base.G0                                      # B1 / saddle use G0 = inv(H0) (real, cond ~ 1e2)
@@ -49,7 +53,12 @@ class ExactSlice:
         for j, sj in enumerate(self.s):
             if sj > s_cut: self.Rp.append(None); self.Rm.append(None); continue
             r = min(1e-6, 0.3 * min([abs(sj - sk) for sk in self.s if sk != sj] + [1.0]))
-            self.Rp.append(self.residue(1j * sj, r)); self.Rm.append(self.residue(-1j * sj, r))
+            self.Rp.append(self._store(self.residue(1j * sj, r))); self.Rm.append(self._store(self.residue(-1j * sj, r)))
+
+    def _store(self, R):
+        if not self.lowrank: return R
+        U, sv, Vh = np.linalg.svd(R); r = int((sv > self.rank_tol * sv[0]).sum()); self.ranks.append(r); r = max(r - self.rank_drop, 0)
+        return (U[:, :r] * sv[:r], Vh[:r, :])
 
     def H(self, a):
         z = np.exp(2j * np.pi * a); H = self.H0.astype(complex)
@@ -117,13 +126,14 @@ class ExactSlice:
         return sum(self.G_raw(a0 + r * np.exp(1j * t)) * (r * np.exp(1j * t)) for t in th) / self.M
 
     def Rfull(self, R):
+        if isinstance(R, tuple): return self.scale * (R[0] @ R[1])
         return self.scale * R
 
-def install(S, refine=1):
-    """Replace S.sl by ExactSlice wrappers (mirror-aliased). Returns the list of unique wrappers (p <= Ny/2)."""
+def install(S, refine=1, **kw):
+    """Replace S.sl by ExactSlice wrappers (mirror-aliased). Returns the list of unique wrappers (p <= Ny/2). kw: lowrank, rank_tol, rank_drop."""
     Ny = S.Ny; uniq = {}
     for p in range(Ny // 2 + 1):
-        uniq[p] = ExactSlice(S.sl[p], S.Lx, S.Lt, 2 - 2 * np.cos(2 * np.pi * p / Ny), S.s_cut, refine=refine)
+        uniq[p] = ExactSlice(S.sl[p], S.Lx, S.Lt, 2 - 2 * np.cos(2 * np.pi * p / Ny), S.s_cut, refine=refine, **kw)
     S.sl = [uniq[p if p <= Ny // 2 else Ny - p] for p in range(Ny)]
     return uniq
 
