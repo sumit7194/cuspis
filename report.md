@@ -11146,8 +11146,9 @@ registered (C2 W4P4 n = 2).** This stays the headline.
   - n times that difference is 1.3·10⁻¹³, about 3000× below the excess.
 - **On the ~3000× amplification** (re-solving σ₂, max |Δσ| 3·10⁻¹⁴, moved dev_b by 1.0·10⁻¹⁰):
   - Measured: an effective sensitivity of about 3·10³ per unit of max |Δσ|. That is the number for 081d's error budget.
-  - Argued, not measured: it is the extensive gradient of Q_sad in σ, which sums over N = 96 sites, N_y = 64 slices and n sheets.
-    For a near-uniform δσ it is about Σ_i |∂Q/∂σ_i| ~ n·N_y·N·O(G_ii) ~ 10³–10⁴, and it does not come from ill-conditioning. Q_sad
+  - Argued, not measured: it is the extensive gradient of Q_sad in σ, which sums over N = 96 sites, N_y = 16 slices and n sheets.
+    For a near-uniform δσ it is about Σ_i |∂Q/∂σ_i| ~ n·N_y·N·O(G_ii) ~ 3·10³·O(G_ii)
+    **[corrected 2026-11-22: I first wrote N_y = 64; at P = 4, N_y = 16 (Geom(4, 4).Ny), so the estimate is 2·16·96 ≈ 3·10³ times O(G_ii).]**, and it does not come from ill-conditioning. Q_sad
     as computed (the log-det sum without the σ-action terms) is not stationary at the saddle. The 10⁻⁶ probe's 2.9·10⁻⁵ response
     shows the same thing.
   - **081d budget consequence (argued):** σ must be solved to ≲ 10⁻¹⁴ per site to keep Q at ≲ 10⁻¹⁰. The current gap noise

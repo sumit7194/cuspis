@@ -91,7 +91,8 @@ Report the residuals and the leave-k=3-out prediction of each.
 5. **Low-rank residue storage**, needed for memory (§5). Low-rank vs full-matrix residues at k = 1, 2 must match ≤ 10⁻¹² on S.
    Planted: rank truncated by one must fail.
 6. **Census at every new k** (poles ≤ s_cut, 081b census code).
-7. **𝒞 quadrature at the new k:** same 48 nodes. The reduced-node option in §5 has its own known-answer control at k = 1, 2.
+7. **C1-type check at every new k** (production T_sad vs independent FD of the continued saddle; §5b).
+8. **𝒞 quadrature at the new k:** same 48 nodes. The reduced-node option in §5 has its own known-answer control at k = 1, 2.
 
 ## 5. Resources (estimates; **measure k = 1.5 first** and rescale before committing to k = 2.5 or 3)
 **Measured at k = 2** (W8P8, 081c numerics):
@@ -144,6 +145,29 @@ per-G = probe / 1.27.
   where the per-G floor is ~9 ms, not 5.
 - Residue memory is unchanged (full matrices ~2 GB at k = 3), so low-rank storage is still needed for parallel processes.
 
+### 5b. σ-precision requirement (error budget; added 2026-11-22 at the Bridge's request)
+**Measured at one point; scaling argued.**
+- At W4P4 n = 2 (the W2 geometry of the k = 1 pair: N = 96, N_y = 16), re-solving σ₂ moved max |Δσ| by 3.0·10⁻¹⁴ and moved
+  Q_sad(2) by 1.0·10⁻¹⁰. So the sensitivity is S₁ ≈ 3.3·10³ per unit max |Δσ| (`report.md`, C2 sweep result).
+- Q_sad is the log-det sum, which is extensive. Argued: S ∝ N·N_y·n, so at fixed n, S(k) = S₁·k³ (N = 96k², N_y = 16k).
+- Per-site σ requirement for Q within 10⁻¹⁰, next to the measured σ precision:
+
+| k | S(k) (argued) | δσ required for ΔQ ≤ 10⁻¹⁰ | measured σ precision | floor exceeds requirement? |
+|---|---|---|---|---|
+| 1 | 3.3·10³ | 3.0·10⁻¹⁴ | \|σ₂ − float64 honest saddle\| 3.5–6.3·10⁻¹⁴ (P4); gap \|F\| 10⁻¹⁴–3·10⁻¹³ | **yes (marginal)** |
+| 1.5 | 1.1·10⁴ | 9·10⁻¹⁵ | not measured (gap \|F\| floor ~10⁻¹⁴ expected) | **yes (projected)** |
+| 2 | 2.6·10⁴ | 3.8·10⁻¹⁵ | gap \|F\| ≤ 1.1·10⁻¹³ (C1 W8P8) | **yes** |
+| 2.5 | 5.2·10⁴ | 1.9·10⁻¹⁵ | not measured | **yes (projected)** |
+| 3 | 8.9·10⁴ | 1.1·10⁻¹⁵ | not measured | **yes (projected)** |
+
+- **Every k is flagged.** In float64 the σ-side integer validation (a C2-type comparison at σ_n from a gap solve) cannot hold
+  ΔQ ≤ 10⁻¹⁰ at any k. Its tolerance must carry an S(k)·δσ_n term, or σ_n must be refined in extended precision (§8).
+- **This bites the validation arm, not the production estimator.** Production's T_sad takes σ̇ from one dense linear solve,
+  σ̇ = 2·B1₀⁻¹·d (`sigma3d.py:307`), not from finite differences of gap solves. So the gap noise floor does not enter Q′(1).
+  - Its numerical error is bounded empirically by C1: T_sad equals an independent FD to ≤ 5.9·10⁻⁹ relative at k = 2 (W8P8),
+    i.e. ≲ 1.3·10⁻⁶ absolute in T_sad, ≲ 10⁻⁵ in R (dR/dS ≈ 14).
+  - Every new k in 081d gets a C1-type check (production T_sad vs independent FD) as a control, added to §4.
+
 ## 6. What a result would mean (pre-stated)
 - **Converging:** R∞ from the fits, with fit-model drift as the systematic. The "+2.4" (k = 1, P-extrapolated) is then a k = 1
   number, and the continuum value is what 081d returns.
@@ -162,3 +186,43 @@ per-G = probe / 1.27.
   fit absorbs as a 1/k term but a two-point increment does not. Mitigation: report r also from the integer-k-only increment
   R(3) − R(2) against R(2) − R(1) (Δk = 1, model-dependent), and use fit (c) over all five points.
 - Any change to the σ construction itself.
+
+## 8. Design question for Sumit's scheduling discussion (not resolved in code)
+**Could the slope come from a functional that is stationary at the saddle, so that σ errors enter at second order?**
+
+**Answer (argued, not verified): no such O(N⁰) functional exists in this construction. Q′(1) is non-stationary in σ by its
+nature, not by a choice of estimator.**
+- σ is fixed by stationarity of the O(N) action S₀[σ], the gap equation.
+- δκ is the O(N⁰) term: the fluctuation log-determinant ½ Σ log det B_n evaluated at σ₀(n). Its n-dependence through σ₀(n) is
+  first order, and that first-order piece is exactly T_sad (the saddle-off R = −48.5 shows it carries the sign).
+- Adding "the σ-action terms" does not help. S₀ is already stationary, so its σ-derivative vanishes and contributes nothing at
+  O(N⁰). The O(N⁰) shift σ₁ of the saddle enters the free energy only through S₀′(σ₀)·σ₁ = 0.
+- So there is no O(N⁰) quantity whose stationarity would push σ errors to second order. The first-order sensitivity S(k) of §5b
+  is intrinsic.
+
+**What can be done instead, with costs:**
+- (a) **Keep production's linear-solve σ̇** (no gap noise in the estimator, already the case) and check it per k with a C1-type
+  FD control. Cost: minutes per geometry at k ≤ 2, ~1 h at k = 3 (scaled from C1 timings).
+- (b) **For the integer validation arm,** either carry S(k)·δσ_n in its tolerance (free, but it weakens the check by ~10–100× at
+  k = 3), or refine σ_n by 1–2 final Newton steps with the gap residual F evaluated in mpmath at ~30 digits.
+  - Argued cost of the mpmath refinement: each F is a sheet average over N_y slices of W×W kernels plus pole terms; roughly
+    minutes at k = 1, hours at k = 3. **Not measured.**
+- (c) Neither (a) nor (b) changes the physics question (log vs converging). They only set how small a deviation the validation
+  can resolve.
+- **Grade: argued.** It relies on the standard large-N structure (σ stationary at O(N); δκ is the O(N⁰) fluctuation term). I
+  have not derived it formally for this lattice construction.
+
+## 9. Open issues carried into 081d
+1. **Unexplained systematic of the σ-side continuation at P = 4:** C2 at W4P4 n = 2 shows a signed, consistent **−4.4·10⁻¹⁰**
+   excess of arm (b) over the Arb honest arm (b). Arm (a) on the same path is 1.04·10⁻¹⁰. It is insensitive to Mt, npt0, the
+   30-digit n·Δld1, aliasing, s_cut and npt.
+   - **Candidates left: Mx/tmax, the Arb arm-(b) reference.**
+   - A third candidate, argued and not tested: σ₂'s distance to the exact (Arb) saddle. The 3.5·10⁻¹⁴ agreement is between two
+     float64 solutions. With S₁ ≈ 3.3·10³, a σ₂ error of ~1.3·10⁻¹³ per site against the exact saddle would explain the whole
+     −4.4·10⁻¹⁰, and §5b says that is the expected float64 regime.
+   - Test: evaluate Q_sad at the Arb saddle rounded to float64. That needs `exp083_arb.py` to store its saddle, which it does not
+     yet. Not run.
+2. The arm-(a) P = 4 deviation grows to 1.2·10⁻⁹ by n = 6, cause unidentified, stated as reached (R3′ grade).
+3. The R1 cap in `exp081c_analyze.py` only fires at a checkpoint ≥ the first unconverged node (TODO). Fix it before 081d reuses
+   the analysis.
+
