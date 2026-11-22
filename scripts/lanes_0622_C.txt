@@ -1,0 +1,128 @@
+=== C1 gate open Sun Nov 22 07:46:38 IST 2026
+=== c1_W2P6box4c2 start 07:46:38
+# pgate: attempt 1 at 07:47:08 (pressure normal >= 60 s)
+# exit 0; wall 11 s; PEAK tree MEM 0.133 GB + CMPRS 0.000 GB = 0.133 GB
+=== c1_W2P6box4c2 end 07:47:19
+# exit 0; wall 11 s; PEAK tree MEM 0.133 GB + CMPRS 0.000 GB = 0.133 GB
+[     0s] production T_sad +95.485297809923 (stored 95.48529780992301); gapcheck 1.1e-15; planted k-index T +106.952325599156
+[     5s] C1 W2P6box4c2: |T_FD - T_prod| = 3.91e-08 (rel 4.1e-10) vs tau 9.55e-05 -> PASS; sigdot vector rel 5.3e-10; s_cut 3 vs inf on sigdot 0.0e+00
+[     5s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[     5s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[     5s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[     5s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.2e+05 -> FIRES
+=== c1_W4P6box4c2 start 07:47:19
+# pgate: attempt 1 at 07:47:49 (pressure normal >= 60 s)
+# exit 0; wall 43 s; PEAK tree MEM 0.141 GB + CMPRS 0.000 GB = 0.141 GB
+=== c1_W4P6box4c2 end 07:48:32
+# exit 0; wall 43 s; PEAK tree MEM 0.141 GB + CMPRS 0.000 GB = 0.141 GB
+[     0s] production T_sad +112.032525215772 (stored 112.03252521577201); gapcheck 1.2e-15; planted k-index T +124.908239586791
+[    37s] C1 W4P6box4c2: |T_FD - T_prod| = 1.60e-07 (rel 1.4e-09) vs tau 1.12e-04 -> PASS; sigdot vector rel 5.8e-10; s_cut 3 vs inf on sigdot 1.3e-07
+[    37s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[    37s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[    37s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[    37s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.1e+05 -> FIRES
+=== c1_W2P6box4c3 start 07:48:32
+# pgate: attempt 1 at 07:49:02 (pressure normal >= 60 s)
+# exit 0; wall 33 s; PEAK tree MEM 0.181 GB + CMPRS 0.000 GB = 0.181 GB
+=== c1_W2P6box4c3 end 07:49:35
+# exit 0; wall 33 s; PEAK tree MEM 0.181 GB + CMPRS 0.000 GB = 0.181 GB
+[     0s] production T_sad +142.735610146140 (stored 142.7356101461405); gapcheck 9.5e-16; planted k-index T +150.223725357477
+[    31s] C1 W2P6box4c3: |T_FD - T_prod| = 3.86e-07 (rel 2.7e-09) vs tau 1.43e-04 -> PASS; sigdot vector rel 2.4e-09; s_cut 3 vs inf on sigdot 0.0e+00
+[    31s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[    31s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[    31s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[    31s]    plant P4_kindex: |T_FD - T_plant| / tau = 5.2e+04 -> FIRES
+=== c1_W4P6box4c3 start 07:49:35
+# pgate: attempt 1 at 07:50:05 (pressure normal >= 60 s)
+# exit 0; wall 110 s; PEAK tree MEM 0.177 GB + CMPRS 0.000 GB = 0.177 GB
+=== c1_W4P6box4c3 end 07:51:55
+# exit 0; wall 110 s; PEAK tree MEM 0.177 GB + CMPRS 0.000 GB = 0.177 GB
+[     0s] production T_sad +167.519971538153 (stored 167.51997153815256); gapcheck 9.2e-16; planted k-index T +175.940563954144
+[   107s] C1 W4P6box4c3: |T_FD - T_prod| = 4.62e-07 (rel 2.8e-09) vs tau 1.68e-04 -> PASS; sigdot vector rel 1.8e-09; s_cut 3 vs inf on sigdot 1.6e-07
+[   107s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[   107s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[   107s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[   107s]    plant P4_kindex: |T_FD - T_plant| / tau = 5.0e+04 -> FIRES
+=== c1_W2P8box4c2 start 07:51:55
+# pgate: attempt 1 at 07:52:25 (pressure normal >= 60 s)
+# exit 0; wall 11 s; PEAK tree MEM 0.363 GB + CMPRS 0.000 GB = 0.363 GB
+=== c1_W2P8box4c2 end 07:52:36
+# exit 0; wall 11 s; PEAK tree MEM 0.363 GB + CMPRS 0.000 GB = 0.363 GB
+[     1s] production T_sad +159.300706789561 (stored 159.30070678956054); gapcheck 8.8e-16; planted k-index T +177.336018007471
+[    10s] C1 W2P8box4c2: |T_FD - T_prod| = 4.73e-08 (rel 3.0e-10) vs tau 1.59e-04 -> PASS; sigdot vector rel 1.2e-09; s_cut 3 vs inf on sigdot 0.0e+00
+[    10s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[    10s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[    10s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[    10s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.1e+05 -> FIRES
+=== c1_W4P8box4c2 start 07:52:36
+# pgate: attempt 1 at 07:53:06 (pressure normal >= 60 s)
+# exit 0; wall 184 s; PEAK tree MEM 0.354 GB + CMPRS 0.000 GB = 0.354 GB
+=== c1_W4P8box4c2 end 07:56:11
+# exit 0; wall 184 s; PEAK tree MEM 0.354 GB + CMPRS 0.000 GB = 0.354 GB
+[     1s] production T_sad +191.062549134953 (stored 191.06254913495258); gapcheck 1.5e-15; planted k-index T +212.022175335404
+[   179s] C1 W4P8box4c2: |T_FD - T_prod| = 3.23e-07 (rel 1.7e-09) vs tau 1.91e-04 -> PASS; sigdot vector rel 1.0e-09; s_cut 3 vs inf on sigdot 1.9e-07
+[   179s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[   179s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[   179s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[   179s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.1e+05 -> FIRES
+=== c1_W4P8box8c2 start 07:56:11
+# pgate: attempt 1 at 07:56:41 (pressure normal >= 60 s)
+# exit 0; wall 218 s; PEAK tree MEM 0.487 GB + CMPRS 0.000 GB = 0.487 GB
+=== c1_W4P8box8c2 end 08:00:19
+# exit 0; wall 218 s; PEAK tree MEM 0.487 GB + CMPRS 0.000 GB = 0.487 GB
+[     1s] production T_sad +201.745457497572 (stored 201.7454574975723); gapcheck 1.4e-15; planted k-index T +226.911655084077
+[   215s] C1 W4P8box8c2: |T_FD - T_prod| = 2.64e-07 (rel 1.3e-09) vs tau 2.02e-04 -> PASS; sigdot vector rel 9.0e-10; s_cut 3 vs inf on sigdot 1.9e-07
+[   215s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[   215s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[   215s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[   215s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.2e+05 -> FIRES
+=== c1_W8P8box8c2 start 08:00:19
+# pgate: attempt 1 at 08:00:49 (pressure normal >= 60 s)
+# exit 1; wall 1225 s; PEAK tree MEM 0.491 GB + CMPRS 0.000 GB = 0.491 GB
+=== c1_W8P8box8c2 FAILED
+=== c1_W8P8box8c2 end 08:21:13
+# exit 1; wall 1225 s; PEAK tree MEM 0.491 GB + CMPRS 0.000 GB = 0.491 GB
+[     1s] production T_sad +220.118096641278 (stored 220.11809664127793); gapcheck 3.4e-15; planted k-index T +245.672885673837
+=== c1_W2P10box4c2 start 08:21:13
+# pgate: attempt 1 at 08:21:43 (pressure normal >= 60 s)
+# exit 0; wall 207 s; PEAK tree MEM 0.873 GB + CMPRS 0.000 GB = 0.873 GB
+=== c1_W2P10box4c2 end 08:25:10
+# exit 0; wall 207 s; PEAK tree MEM 0.873 GB + CMPRS 0.000 GB = 0.873 GB
+[     2s] production T_sad +235.859896532018 (stored 235.85989653201779); gapcheck 1.5e-15; planted k-index T +261.545643145746
+[   201s] C1 W2P10box4c2: |T_FD - T_prod| = 7.07e-07 (rel 3.0e-09) vs tau 2.36e-04 -> PASS; sigdot vector rel 2.1e-09; s_cut 3 vs inf on sigdot 0.0e+00
+[   201s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[   201s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[   201s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[   201s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.1e+05 -> FIRES
+=== c1_W4P10box4c2 start 08:25:10
+# pgate: attempt 1 at 08:25:40 (pressure normal >= 60 s)
+# exit 0; wall 292 s; PEAK tree MEM 0.877 GB + CMPRS 0.000 GB = 0.877 GB
+=== c1_W4P10box4c2 end 08:30:32
+# exit 0; wall 292 s; PEAK tree MEM 0.877 GB + CMPRS 0.000 GB = 0.877 GB
+[     2s] production T_sad +286.242604995985 (stored 286.2426049959849); gapcheck 3.4e-15; planted k-index T +316.676650732511
+[   288s] C1 W4P10box4c2: |T_FD - T_prod| = 6.68e-07 (rel 2.3e-09) vs tau 2.86e-04 -> PASS; sigdot vector rel 1.4e-09; s_cut 3 vs inf on sigdot 1.3e-07
+[   288s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[   288s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[   288s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[   288s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.1e+05 -> FIRES
+=== c1_W2P12box4c2 start 08:30:32
+# pgate: attempt 1 at 08:31:02 (pressure normal >= 60 s)
+# exit 0; wall 814 s; PEAK tree MEM 0.254 GB + CMPRS 0.000 GB = 0.254 GB
+=== c1_W2P12box4c2 end 08:44:36
+# exit 0; wall 814 s; PEAK tree MEM 0.254 GB + CMPRS 0.000 GB = 0.254 GB
+[   810s] C1 W2P12box4c2: |T_FD - T_prod| = 3.40e-07 (rel 1.0e-09) vs tau 3.24e-04 -> PASS; sigdot vector rel nan; s_cut 3 vs inf on sigdot 0.0e+00
+[   810s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[   810s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[   810s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[   810s]    plant P4_kindex: skipped (P = 12)
+=== c1_W4P12box4c2 start 08:44:36
+# pgate: attempt 1 at 08:45:06 (pressure normal >= 60 s)
+# exit 0; wall 693 s; PEAK tree MEM 0.251 GB + CMPRS 0.000 GB = 0.251 GB
+=== c1_W4P12box4c2 end 08:56:39
+# exit 0; wall 693 s; PEAK tree MEM 0.251 GB + CMPRS 0.000 GB = 0.251 GB
+[   689s] C1 W4P12box4c2: |T_FD - T_prod| = 6.35e-07 (rel 1.6e-09) vs tau 3.96e-04 -> PASS; sigdot vector rel nan; s_cut 3 vs inf on sigdot 1.7e-07
+[   689s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[   689s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[   689s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[   689s]    plant P4_kindex: skipped (P = 12)
+=== lane A complete Sun Nov 22 08:56:39 IST 2026

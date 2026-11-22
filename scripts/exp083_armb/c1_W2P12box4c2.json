@@ -1,0 +1,43 @@
+{
+ "W": 2,
+ "P": 12,
+ "Wbox": 4,
+ "c": 2,
+ "N": 672,
+ "Ny": 48,
+ "stored_from": "/Users/sumit/Github/corner_function/scripts/exp081b_results/sigma_W2_P12_box4_c2_cp12_sc3.0_dd0_ckpt.json",
+ "T_stored": 324.41718940186183,
+ "T_prod": 324.41718940186183,
+ "T_P4": null,
+ "T_lin": 324.41718906193273,
+ "T_lin2": 324.41718906678335,
+ "T_dir": 324.4171890413175,
+ "T_dir1": 324.4171893881382,
+ "fd_drift": 1.0690576697694017e-09,
+ "sd_drift": 2.6728745717082287e-10,
+ "sdot_scut_effect": 0.0,
+ "tau": 0.00032441718940186184,
+ "delta": 3.3992910175584257e-07,
+ "verdict": "PASS",
+ "plants": {
+  "P1_signflip": {
+   "T": -324.41718940186183,
+   "delta": 648.8343784637946,
+   "ratio": 1999999.9989521853,
+   "fires": true
+  },
+  "P2_off": {
+   "T": 0.0,
+   "delta": 324.41718906193273,
+   "ratio": 999999.9989521853,
+   "fires": true
+  },
+  "P3_half": {
+   "T": 162.20859470093092,
+   "delta": 162.20859436100181,
+   "ratio": 499999.99895218527,
+   "fires": true
+  },
+  "P4_kindex": null
+ }
+}

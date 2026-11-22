@@ -35,10 +35,10 @@ else:
 # ---- independent FD side ----
 G1 = g.Gn(1); J0 = -sum(G1[p] * G1[p] for p in range(g.Ny)) / g.Ny
 L = lambda sig: g.logdetB(g.Gn(1, sig))
-def sigdot(gap, hs):
+def sigdot(gap, hs, nc=1e-12):
     sd = {}
     for h in hs:
-        sp, ip = gap.solve(1 + h, J=J0, tol=1e-14); sm, im_ = gap.solve(1 - h, J=J0, tol=1e-14)
+        sp, ip = gap.solve(1 + h, J=J0, tol=1e-14, noise_ceiling=nc); sm, im_ = gap.solve(1 - h, J=J0, tol=1e-14, noise_ceiling=nc)
         sd[h] = ((sp - sm) / (2 * h), sp, sm, max(ip["F"], im_["F"]), max(ip["it"], im_["it"]))
     return sd
 gap = AB.Gap(g, s_cut=3.0, target="self"); hs = (4e-3, 2e-3, 1e-3); sd = sigdot(gap, hs)
@@ -53,7 +53,8 @@ T_dir = (4 * dirv[1e-3] - dirv[2e-3]) / 3; T_dir1 = (4 * dirv[2e-3] - dirv[4e-3]
 drift = max(abs(T_lin - T_lin2), abs(T_dir - T_dir1), abs(T_lin - T_dir)) / abs(T_lin)
 res.update(T_lin=T_lin, T_lin2=T_lin2, T_dir=T_dir, T_dir1=T_dir1, fd_drift=drift, sd_drift=sd_drift)
 log(f"FD: T_lin {T_lin:+.12f} (t-halved {T_lin2:+.12f}); T_dir {T_dir:+.12f} (h-shifted {T_dir1:+.12f}); FD drift (rel) {drift:.1e}")
-gi = AB.Gap(g, s_cut=np.inf, target="self"); sdi = sigdot(gi, (2e-3, 1e-3)); sdot_inf = (4 * sdi[1e-3][0] - sdi[2e-3][0]) / 3
+gi = AB.Gap(g, s_cut=np.inf, target="self"); sdi = sigdot(gi, (2e-3, 1e-3), nc=1e-10); sdot_inf = (4 * sdi[1e-3][0] - sdi[2e-3][0]) / 3
+# deviation (W8P8 run 1): the all-pole (s_cut = inf) gap has a noise floor ~1e-11 at W8 > the 1e-12 ceiling; auxiliary arm only -> 1e-10
 res["sdot_scut_effect"] = float(np.abs(sdot_inf - sdot).max() / np.abs(sdot).max())
 # ---- comparison and plants ----
 tau = max(1e-6, 10 * drift) * abs(T_prod); res["tau"] = tau; dlt = abs(T_lin - T_prod); res["delta"] = dlt

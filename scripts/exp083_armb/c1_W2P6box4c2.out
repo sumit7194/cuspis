@@ -1,0 +1,8 @@
+[     0s] production T_sad +95.485297809923 (stored 95.48529780992301); gapcheck 1.1e-15; planted k-index T +106.952325599156
+[     3s] sigdot: |sigdot| 2.0994e-01; Richardson drift 3.5e-10; gap |F| <= 2.1e-14, it <= 15
+[     3s] FD: T_lin +95.485297770817 (t-halved +95.485297770968); T_dir +95.485297771726 (h-shifted +95.485297774985); FD drift (rel) 3.4e-11
+[     5s] C1 W2P6box4c2: |T_FD - T_prod| = 3.91e-08 (rel 4.1e-10) vs tau 9.55e-05 -> PASS; sigdot vector rel 5.3e-10; s_cut 3 vs inf on sigdot 0.0e+00
+[     5s]    plant P1_signflip: |T_FD - T_plant| / tau = 2.0e+06 -> FIRES
+[     5s]    plant P2_off: |T_FD - T_plant| / tau = 1.0e+06 -> FIRES
+[     5s]    plant P3_half: |T_FD - T_plant| / tau = 5.0e+05 -> FIRES
+[     5s]    plant P4_kindex: |T_FD - T_plant| / tau = 1.2e+05 -> FIRES

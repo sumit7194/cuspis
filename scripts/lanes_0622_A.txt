@@ -1,0 +1,37 @@
+=== port_W2P4_base start 07:46:37
+# pgate: attempt 1 at 07:47:07 (pressure normal >= 60 s)
+# exit 0; wall 5 s; PEAK tree MEM 0.062 GB + CMPRS 0.000 GB = 0.062 GB
+=== port_W2P4_base end 07:47:13
+# exit 0; wall 5 s; PEAK tree MEM 0.062 GB + CMPRS 0.000 GB = 0.062 GB
+=== port_W2P4_scut_low start 07:47:13
+# pgate: attempt 1 at 07:47:43 (pressure normal >= 60 s)
+# exit 0; wall 6 s; PEAK tree MEM 0.062 GB + CMPRS 0.000 GB = 0.062 GB
+=== port_W2P4_scut_low end 07:47:48
+# exit 0; wall 6 s; PEAK tree MEM 0.062 GB + CMPRS 0.000 GB = 0.062 GB
+=== port_W2P4_merge_tiny start 07:47:48
+# pgate: attempt 1 at 07:48:18 (pressure normal >= 60 s)
+# exit 0; wall 5 s; PEAK tree MEM 0.052 GB + CMPRS 0.000 GB = 0.052 GB
+=== port_W2P4_merge_tiny end 07:48:24
+# exit 0; wall 5 s; PEAK tree MEM 0.052 GB + CMPRS 0.000 GB = 0.052 GB
+=== port_W2P4_drop_pole start 07:48:24
+# pgate: attempt 1 at 07:48:54 (pressure normal >= 60 s)
+# exit 0; wall 702 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_drop_pole end 08:00:36
+# exit 0; wall 702 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_res_scale start 08:00:36
+# pgate: attempt 1 at 08:01:06 (pressure normal >= 60 s)
+# exit 0; wall 709 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_res_scale end 08:12:56
+# exit 0; wall 709 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_dd1 start 08:12:56
+# pgate: attempt 1 at 08:13:26 (pressure normal >= 60 s)
+# exit 0; wall 682 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_dd1 end 08:24:47
+# exit 0; wall 682 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_link start 08:24:47
+# pgate: attempt 1 at 08:25:17 (pressure normal >= 60 s)
+# exit 0; wall 742 s; PEAK tree MEM 0.075 GB + CMPRS 0.000 GB = 0.075 GB
+=== port_W2P4_link end 08:37:40
+# exit 0; wall 742 s; PEAK tree MEM 0.075 GB + CMPRS 0.000 GB = 0.075 GB
+=== port_W4P4_base start 08:37:40
+# pgate: attempt 1 at 08:38:10 (pressure normal >= 60 s)

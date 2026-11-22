@@ -10857,3 +10857,42 @@ is kept as `_run1_nameerror.txt`. Bridge OK. No physics value was printed or sto
 - **k = 1.5:** one 𝒞 node 36 s (3900 G), t0 233 s (23,336 G), install 26 s.
 - **Re-estimated, both widths:** k = 1.5 ~0.9 core-h, k = 2.5 ~11, k = 3 ~35 (~9 h wall on 4 cores), k = 4 ~250. ±30 % (loaded box).
   The draft's §5a has the table.
+
+### EXP-083 R3′ arm (b) C1, heavy geometries: PASS at all 12 (16 of 16 with the light ones). Production T_sad = the independent FD of the continued replica saddle [model: Opus 5.5]
+(`scripts/exp083_armb/c1_W*P*box*c*.json` and `.out`; lane log `scripts/lanes_0622_C.txt`. W8P8 run 1 is kept as
+`c1_W8P8box8c2_run1_scutinf_noceiling.out`.)
+
+| geometry | N | T_prod (= stored 081b/081c to ≤ 4e-13) | rel \|T_FD − T_prod\| | FD drift | plants (×τ) | s_cut 3 vs ∞ on σ̇ |
+|---|---|---|---|---|---|---|
+| W2P6b4c2 | 192 | +95.485298 | 4.1e-10 | 3.4e-11 | 2e6 / 1e6 / 5e5 / 1e5 | 0 |
+| W4P6b4c2 | 192 | +112.032525 | 1.4e-9 | 2.4e-9 | 2e6 / 1e6 / 5e5 / 1e5 | 1.3e-7 |
+| W2P6b4c3 | 192 | +142.735610 | 2.7e-9 | 2.6e-9 | 2e6 / 1e6 / 5e5 / 5e4 | 0 |
+| W4P6b4c3 | 192 | +167.519972 | 2.8e-9 | 3.1e-9 | 2e6 / 1e6 / 5e5 / 5e4 | 1.6e-7 |
+| W2P8b4c2 | 320 | +159.300707 | 3.0e-10 | 1.2e-9 | 2e6 / 1e6 / 5e5 / 1e5 | 0 |
+| W4P8b4c2 | 320 | +191.062549 | 1.7e-9 | 9.4e-10 | 2e6 / 1e6 / 5e5 / 1e5 | 1.9e-7 |
+| W4P8b8c2 | 384 | +201.745457 | 1.3e-9 | 4.2e-9 | 2e6 / 1e6 / 5e5 / 1e5 | 1.9e-7 |
+| **W8P8b8c2** (081c target) | 384 | +220.118097 | 5.9e-9 | 5.6e-9 | 2e6 / 1e6 / 5e5 / 1.2e5 | 8.3e-8 |
+| W2P10b4c2 | 480 | +235.859897 | 3.0e-9 | 3.4e-9 | 2e6 / 1e6 / 5e5 / 1e5 | 0 |
+| W4P10b4c2 | 480 | +286.242605 | 2.3e-9 | 3.9e-9 | 2e6 / 1e6 / 5e5 / 1e5 | 1.3e-7 |
+| W2P12b4c2 | 672 | +324.417189 (stored) | 1.0e-9 | 1.1e-9 | 2e6 / 1e6 / 5e5 / — | 0 |
+| W4P12b4c2 | 672 | +396.375550 (stored) | 1.6e-9 | 5.4e-9 | 2e6 / 1e6 / 5e5 / — | 1.7e-7 |
+
+- τ = 10⁻⁶·|T| everywhere, because the FD drift is ≤ 5.6·10⁻⁹. **Every geometry passes**, at 3·10⁻¹⁰ … 5.9·10⁻⁹ relative.
+- Every plant fires at ≥ 5·10⁴ τ. The P4 k-index plant was skipped at P = 12 as registered.
+- σ̇ matches production's sdot vector to ≤ 2.7·10⁻⁹. Max time 814 s, peak 0.88 GB (P = 10).
+- **W8P8 run 1 crashed, and the crash was a bug, not a finding.**
+  - The main comparison had already printed, with the same numbers as the rerun.
+  - The crash came afterwards, in the auxiliary s_cut = ∞ σ̇ arm. With every W8 pole kept, the gap residual's float64 floor is
+    ~4·10⁻¹² … 10⁻¹¹, above the 10⁻¹² ceiling of the solver amendment, so the solver raised instead of stopping on stagnation.
+  - **Deviation:** that auxiliary arm's ceiling is 10⁻¹⁰. The main comparison and τ are unchanged.
+  - My first patch commented out the `sdot_inf` assignment; I caught it before the rerun produced anything and fixed it.
+  - The rerun reproduces run 1's main numbers digit for digit (T_lin +220.118097947610), a determinism control.
+- Cosmetic slip: lane C's log ends with "lane A complete", a label copied from the lane-A function.
+
+**C1 grade (registered consequence): production's T_sad assembly equals an independent FD of the continued replica saddle at
+every registered geometry, including the 081c W8P8 target. Verified for the assembly.**
+- **Not tested:** the continuation itself (the sheet-average Poisson formula is shared by both arms). C2 tests it at integers.
+- This rules out an assembly error of the 081a kind in T_sad.
+- **It does not validate the +2.4.** The 081c post-hoc reading (ρ = 1.86) says the lattice value is not resolution-stable, and the
+  component split puts the issue in the t0/T_sad cancellation under refinement. C1 shows T_sad is computed as defined. Whether the
+  definition cancels t0's UV piece correctly is a different question, which 081d is drafted to ask.
