@@ -1,0 +1,28 @@
+=== port_W2P4_base start 06:34:42
+# pgate: attempt 1 at 06:40:12 (pressure normal >= 300 s)
+# exit 0; wall 1457 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_base end 07:04:29
+# exit 0; wall 1457 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W2P4_scut_low start 07:04:29
+# pgate: attempt 1 at 07:08:59 (pressure normal >= 300 s)
+# exit 0; wall 729 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W2P4_scut_low end 07:21:08
+# exit 0; wall 729 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W2P4_merge_tiny start 07:21:08
+# pgate: attempt 1 at 07:25:38 (pressure normal >= 300 s)
+# exit 0; wall 695 s; PEAK tree MEM 0.072 GB + CMPRS 0.000 GB = 0.072 GB
+=== port_W2P4_merge_tiny end 07:37:14
+# exit 0; wall 695 s; PEAK tree MEM 0.072 GB + CMPRS 0.000 GB = 0.072 GB
+=== port_W2P4_drop_pole start 07:37:14
+# pgate: attempt 1 at 07:41:44 (pressure normal >= 300 s)
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 120, in <module>
+    main()
+    ~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 112, in main
+    time.sleep(a.interval)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 82, in on_term
+    try: os.killpg(child.pid, signal.SIGTERM)
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted

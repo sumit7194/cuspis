@@ -10704,3 +10704,47 @@ route link (10⁻⁶ relative) cannot resolve a 10⁻⁸ slope term.
 
 **The W4P2 n ≥ 38 expm1 overflow is a limit of the port's n-range at W4,** harmless at production's n ≈ 1. Left unpatched, with
 the Bridge's agreement.
+
+## EXP-081c W8P8 target: production complete; the registered residue check FAILS → INCONCLUSIVE by the registered rule (diagnosis attached; no amendment) [model: Opus 5.5]
+(`scripts/exp081c_results/target_W8P8b8.out` (resumed run), `target_W8P8b8_killed0629.out` (first run, killed by outside
+pressure at 5867 s), checkpoint `sigma_W8_P8_box8_c2_cp12_sc3.0_dd0_ckpt.json`; diagnostic `scripts/exp081c_resdiag.py` →
+`exp081c_results/resdiag_output.txt`, `resdiag_W8P8.json`.)
+
+**Wall time against the estimate (asked for in R1).**
+- Dry-run estimate: ≈ 1.6 h, +20–50 % for refinement, so ~1.9–2.4 h.
+- Measured: 5867 s (killed) + 3370 s (resume) ≈ 2.6 h. Part of that is redone work: the g-point in progress at the kill, and the
+  N1‴c/B2b checks. Production g nodes took ~140–200 s each.
+- Peak tree memory 1.10 GB, matching the declared 1.1 GB.
+
+**Registered checks, from the target output:**
+
+| check | result | registered pass | status |
+|---|---|---|---|
+| planted must-fire (ε = 1.2·10⁻⁹ at s = 0.937) | Δg 2.9491·10⁻⁵ vs predicted 2.9491·10⁻⁵ (ratio 1.0000), impact 1.02·10⁻⁶ | fires, Δg within 10 % | **PASS** (not void) |
+| B2b (converged vs converged + 1, s = 1.974) | rel 0.0 | ≤ 10⁻¹² | **PASS** |
+| N1‴c (refined vs unrefined g, 5 nodes) | impacts 3.4·10⁻¹¹, 4.8·10⁻¹⁴, 7.7·10⁻¹⁷, 2.5·10⁻¹⁹, 2.2·10⁻¹⁹ | ≤ 10⁻⁷ | **PASS** |
+| Woodbury must-fire (081b stored g) | impacts up to 8.6·10⁻⁵ (s = 2.99) | must fire | **FIRES** |
+| t0 refined vs unrefined | 1.1·10⁻⁸ | ≤ 2·10⁻⁶ | **PASS** |
+| residues refined vs unrefined, every pole ≤ s_cut | max rel **8.7·10⁻⁷** | ≤ 10⁻⁸ | **FAIL** |
+| R1 non-convergence | 2 unconverged G at s = 5.856 and 5.972 (≥ 2.986) | — | s_max capped below 5.856 (per R1: T0 and T1 reported) |
+
+**Registered consequence (draft §7, the "t0 / residue checks" row): nuisance unmeasured → INCONCLUSIVE.** It stands; I am not
+overriding it. Census, N4c and the analysis are not yet run.
+
+**Why it fired (asked before acting on it).** The diagnostic recomputes every residue three ways (unrefined, refined, refined
++ 1 step) on all 52 poles × 2 sides:
+- 24 of 104 residues exceed 10⁻⁸. **All 24 are the high poles s ≈ 2.54–2.98**, where |R| is 3·10⁴…4·10⁵. Their unrefined
+  error is 10⁻⁸…8.7·10⁻⁷; the worst is p = 0, s = 2.67625. The poles at s ≲ 1.3 sit at 2·10⁻¹² … 1.2·10⁻¹⁰.
+- **The refined residues (production) are converged.** One extra step changes them by ≤ 5.9·10⁻²⁶.
+- So the check measures the error of the *unrefined comparison arm*. Step 0 had already recorded that error at 2·10⁻⁹ … 1.3·10⁻⁷
+  for unrefined exact-H0 G. The registered 10⁻⁸ sits inside that known error, so the check could fire with production correct.
+- **Downstream effect of the residue difference:**
+  - On g: the N1‴c arm uses unrefined residues, and its impact is ≤ 3.4·10⁻¹¹.
+  - On t0: 1.1·10⁻⁸.
+  - On T_sad, the one consumer not otherwise covered: unrefined-residue T_sad = 220.118096643536 vs production 220.118096647644,
+    |Δ| = 4.1·10⁻⁹ (2·10⁻¹¹ relative).
+  - All are far below the 10⁻⁷ impact rule.
+- **Grade of the diagnosis: verified** (direct recomputation, with the refined+1 control).
+- Whether this warrants an amendment (e.g. grading the residue check by downstream impact, as N1‴c is) is for the Bridge and
+  Sumit. **Any such amendment is post hoc, made after the target was read, and must be labelled so.**
+- The registered verdict above is the record until then.

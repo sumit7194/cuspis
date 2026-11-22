@@ -1,0 +1,26 @@
+[     91s] sigma_W8_P8_box8_c2_cp12_sc3.0_dd0: 081c numerics installed (adaptive refinement, 17 unique slices, residues by contour) 3328 G, unconverged 0 (91s)
+[    245s] g(2.9281) done: 6018 G, steps hist {'2': 5079, '1': 631, '3': 308}, unconverged 0 (154s)
+[    399s] g(2.9862) done: 6018 G, steps hist {'2': 5011, '1': 651, '3': 356}, unconverged 0 (153s)
+[    551s] g(3.0277) done: 6018 G, steps hist {'2': 5088, '1': 573, '3': 357}, unconverged 0 (152s)
+[    703s] g(3.1438) done: 6018 G, steps hist {'2': 5047, '1': 551, '3': 420}, unconverged 0 (151s)
+[    854s] g(3.3451) done: 6018 G, steps hist {'2': 4993, '1': 503, '3': 522}, unconverged 0 (152s)
+[   1011s] g(3.6190) done: 6018 G, steps hist {'2': 4940, '1': 411, '3': 663, '4': 4}, unconverged 0 (156s)
+[   1170s] g(3.9483) done: 6018 G, steps hist {'2': 4753, '1': 385, '3': 866, '4': 14}, unconverged 0 (160s)
+[   1332s] g(4.3121) done: 6018 G, steps hist {'2': 4442, '1': 341, '3': 1176, '4': 59}, unconverged 0 (161s)
+[   1507s] g(4.6879) done: 6018 G, steps hist {'2': 4091, '1': 341, '3': 1453, '4': 133}, unconverged 0 (175s)
+[   1711s] g(5.0517) done: 6018 G, steps hist {'2': 3886, '1': 318, '3': 1601, '4': 200, '5': 13}, unconverged 0 (204s)
+[   1888s] g(5.3810) done: 6018 G, steps hist {'2': 3623, '1': 329, '3': 1787, '4': 218, '5': 61}, unconverged 0 (177s)
+[   2068s] g(5.6549) done: 6018 G, steps hist {'2': 3362, '1': 291, '3': 2002, '4': 253, '5': 86, '6': 22, '7': 2}, unconverged 0 (180s)
+[   2251s] g(5.8562) done: 6018 G, steps hist {'2': 3125, '1': 297, '3': 2139, '4': 316, '5': 98, '6': 37, '8': 4, '7': 2}, unconverged 2 (184s)
+[   2435s] g(5.9723) done: 6018 G, steps hist {'2': 2975, '1': 327, '3': 2202, '4': 364, '5': 91, '7': 15, '6': 44}, unconverged 2 (183s)
+[   2435s] sigma_W8_P8_box8_c2_cp12_sc3.0_dd0: production complete; S (all nodes) computed
+[   2692s] planted must-fire at s=0.9374: dg 2.9491e-05 (pred 2.9491e-05, ratio 1.0000), impact 1.02e-06 -> FIRES, match OK
+[   2989s] B2b at s=1.9741: converged+1 vs converged rel 0.0e+00 -> PASS
+[   3238s] N1'''c unrefined arm g(0.9374) done
+[   3272s] N1'''c unrefined arm g(1.9741) done
+[   3304s] N1'''c unrefined arm g(2.9862) done
+[   3337s] N1'''c unrefined arm g(3.9483) done
+[   3370s] N1'''c unrefined arm g(5.0517) done
+[   3370s] N1'''c (refined vs unrefined): s=0.937 |dg| 9.9e-10 impact 3.4e-11; s=1.974 |dg| 9.3e-10 impact 4.8e-14; s=2.986 |dg| 8.7e-10 impact 7.7e-17; s=3.948 |dg| 1.2e-09 impact 2.5e-19; s=5.052 |dg| 1.1e-06 impact 2.2e-19
+[   3370s] t0 refined vs unrefined |dt0| 1.1e-08 [PASS]; residues rel 8.7e-07 [FAIL]
+[   3370s] Woodbury must-fire (081b stored g vs 081c): s=0.937 impact 2.7e-08; s=1.974 impact 1.4e-06; s=2.986 impact 8.6e-05; s=3.948 impact 8.3e-07; s=5.052 impact 1.7e-09 -> FIRES

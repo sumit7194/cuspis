@@ -1,0 +1,6 @@
+=== target_W8P8b8 start 06:34:42
+# pgate: attempt 1 at 06:40:12 (pressure normal >= 300 s)
+# exit 0; wall 3370 s; PEAK tree MEM 1.019 GB + CMPRS 0.000 GB = 1.019 GB
+=== target_W8P8b8 end 07:36:23
+# exit 0; wall 3370 s; PEAK tree MEM 1.019 GB + CMPRS 0.000 GB = 1.019 GB
+=== lane B complete Sun Nov 22 07:36:23 IST 2026
