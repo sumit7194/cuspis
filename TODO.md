@@ -627,3 +627,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] Slope bound at W4P2 with the n = 1 floor (3.5e-8) gives 0.23 > 0.191. The n = 2 choice is argued, not verified.
 - [ ] EXP-081c (post hoc) ρ = 1.86: the (2,4) lattice R is not resolution-stable under one doubling (6.44 vs 2.26–2.65). A refinement series has to be registered separately (amendment D) before the lattice route says anything about the size of δκ.
 - [ ] exp081c_analyze R1 cap only forces failure at checkpoints >= the first unconverged node; if no checkpoint is that high it silently does nothing (effect here <= 1e-9 on R48). Fix before any reuse.
+
+## Held for Sumit's scheduling (Bridge, 2026-11-22 13:00; no further runs today)
+- [ ] EXP-081d refinement series (draft notes/EXP-081d_refinement_draft.md): k = 1.5, 2.5, 3. k = 3 is ~35 core-h (~9 h on 4 cores).
+      Option (a) is the default: production's linear-solve σ̇, plus a C1 FD control at every k. σ-precision budget S₁ = 2.6e4·k³
+      (direction-dependent).
+- [ ] C2 W4P4 n = 2 residual +4.7e-10, in evaluating Q on the σ ≠ 0 strip. Candidates: Mx/tmax, and the CORRECTNESS of the Arb arm-(b)
+      reference (the rerun only shows determinism). Excluded: s_cut, npt, npt0, Mt, aliasing, n·Δld1 precision, σ error.
+- [ ] Cross-path tolerance guard (tools/tol_ref.py) and plant guard (tools/plant_guard.py) must be used by every 081d harness.
