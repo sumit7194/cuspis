@@ -1,0 +1,5 @@
+arm (b) n=2 b_chain   : dev 4.32e-10
+arm (b) n=2 b_scut3.5 : dev 4.32e-10
+arm (b) n=2 b_npt200  : dev 4.33e-10
+arm (a) n=2 a_chain   : dev 2.32e-10
+arm (a) n=2 a_scut3.5 : dev 2.32e-10

@@ -11022,3 +11022,55 @@ reviewed the registration and did not check 1.5 against W2P4's spectrum either. 
 - **Wired into `exp083_r3p_run.py`:** every planted variant calls the guard before computing. Rerunning `exp083_r3p_run.py 2 4 1
   scut_low` now aborts with PlantInert and writes nothing (its checkpoint is untouched).
 - 081d and later registrations use the guard for every plant at every geometry.
+
+## EXP-083 R3′ closes. C2 at P = 4: one FAIL (W4P4 n = 2) → **arm (b) UNVALIDATED as registered**. The cause is diagnosed: the tolerance referenced a different construction path [model: Opus 5.5]
+(`scripts/exp083_armb/c2_W{2,4}P4.{json,out}`; diagnostics `scripts/exp083_armb_c2diag.py` and `exp083_armb_c2diag2.py` →
+`exp083_armb/c2diag_output.txt`, `c2diag2_output.txt`; lane log `scripts/lanes_0622_B3.txt`.)
+
+**C2, P = 4 (n ≤ 6, registered scope).**
+
+| | W2P4 | W4P4 |
+|---|---|---|
+| n = 1…6 | all PASS (dev/tol ≤ 0.49) | **n = 2 FAIL: dev 4.32·10⁻¹⁰ vs tol 3.1·10⁻¹⁰ (= 3·dev_a, dev_a = 1.04·10⁻¹⁰)**; n = 1, 3–6 PASS |
+| \|σ_n − honest saddle\| | ≤ 1.9·10⁻¹³ | ≤ 2.4·10⁻¹³ |
+| plant σ = 0 (n ≥ 2) | ≥ 2.3·10¹⁰ × tol: fires | ≥ 3.0·10¹⁰ × tol: fires |
+| probe ×(1 + 10⁻⁶) | 3.7·10⁴, 4.4·10⁵ × tol | 9.5·10⁴, 4.6·10⁵ × tol |
+| route-(ii) T_sad vs C1 T_FD (≤ 10⁻⁴) | 5.3·10⁻⁷: PASS | 7.7·10⁻⁷: PASS |
+
+**Registered consequence:** "Any production fail or non-firing plant leaves arm (b) unvalidated." **→ arm (b) UNVALIDATED as
+registered (C2 W4P4 n = 2).** This stays the headline.
+
+**Why it fired (asked before acting on it; diagnosed and verified).**
+1. Known answer: the diagnostic recomputes dev_b(2) = 4.32·10⁻¹⁰ exactly.
+2. **Hypothesis falsified first:** s_cut 3.5 gives 4.32·10⁻¹⁰ and npt 200 gives 4.33·10⁻¹⁰. So neither the s_cut truncation (the W4P4
+   n = 1 floor) nor the inner quadrature is the cause.
+3. **Found:** arm (a) computed through **arm (b)'s own construction path**, `strip_sigma(g, None)`, deviates by **2.32·10⁻¹⁰** at
+   n = 2. Production's `Strip3D` deviates by 1.04·10⁻¹⁰.
+4. **Cause (one variable, verified): mirror aliasing.**
+   - `strip_sigma` reuses slice p's QEP poles for slice N_y − p. Production solves every slice's QEP separately, and its mirror
+     poles differ by up to **8.6·10⁻⁸** (QEP noise from the ~10⁻¹⁶ difference in m²).
+   - `strip_sigma` **without aliasing** reproduces production's poles exactly (max |Δs| = 0) and production's dev_a(2) = 1.04·10⁻¹⁰
+     exactly.
+5. So the registered tolerance 3·dev_a(n) took dev_a from **production's path**, while arm (b) runs on **the aliased path**, whose
+   own σ = 0 baseline is 2.2× larger at this n. **The same class as slip 13: a tolerance referenced to an arm that is not the
+   comparison's own baseline.**
+   - Against its own path's baseline (3 × 2.32·10⁻¹⁰ = 7.0·10⁻¹⁰) the W4P4 n = 2 value would pass.
+   - That is a **post-hoc** reading, labelled. The headline stands.
+   - (At P = 2 every n passed; the W4P2 n = 2 point at 0.99 of the floor is the same effect, at the 10⁻¹⁰ floor.)
+
+## R3′ close-out (quote in this order)
+- **Arm (a): UNVALIDATED as registered** (the W2P4 scut_low plant did not fire). Post-hoc supplement in the ruling entry above.
+- **Arm (b) C2: UNVALIDATED as registered** (W4P4 n = 2, 4.32·10⁻¹⁰ > 3.1·10⁻¹⁰).
+  - POST HOC, with the tolerance referenced to arm (b)'s own construction path: every n ≤ 24 at P = 2 and n ≤ 6 at P = 4 passes,
+    every σ = 0 plant fires (≥ 10⁸ × tol), σ_n equals the independent honest saddle to ≤ 2.4·10⁻¹³, and the route-(ii) T_sad
+    equals C1 to ≤ 9.5·10⁻⁷.
+  - Never quoted without the headline.
+- **C1: PASS at all 16 geometries as registered.** Production's T_sad assembly equals an independent FD of the continued replica
+  saddle (≤ 5.9·10⁻⁹, every plant ≥ 5·10⁴ τ). Verified for the assembly.
+- **Two registration slips found by their own controls in this experiment, both the class "a check that could not fire / a tolerance
+  against the wrong reference":** the W2P4 plant (mechanism: `tools/plant_guard.py`) and the C2 cross-path tolerance.
+  - **Mechanism proposed for the second:** any tolerance of the form k·dev_ref must compute dev_ref on the comparison's own
+    construction path (here: arm (a) through `strip_sigma(None)`), checked by an assertion that the two paths agree at σ = 0, or
+    the tolerance uses the larger.
+- **The +2.4 is not validated by R3′.** The 081c post-hoc ρ = 1.86 (not resolution-stable; t0/T_sad cancellation degrading under
+  refinement) governs it. 081d is drafted.

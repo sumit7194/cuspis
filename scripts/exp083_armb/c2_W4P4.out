@@ -1,0 +1,7 @@
+[    312s] W4P4 n=1: Q_sad -0.000000568107 honest +0.000000000000 |dev| 5.7e-07 (tol 1.7e-06) PASS; plant sigma=0 dev 5.7e-07
+[    938s] W4P4 n=2: Q_sad +1.416075932417 honest +1.416075932849 |dev| 4.3e-10 (tol 3.1e-10) FAIL; plant sigma=0 dev 2.8e+01; probe x(1+1e-6) dev 2.9e-05; |sigma - honest saddle| 3.5e-14, gap |F| 8.3e-15
+[   1561s] W4P4 n=3: Q_sad +2.235529263166 honest +2.235529263123 |dev| 4.3e-11 (tol 1.0e-10) PASS; plant sigma=0 dev 4.4e+01; probe x(1+1e-6) dev 4.6e-05; |sigma - honest saddle| 1.2e-14, gap |F| 1.3e-15
+[   1873s] W4P4 n=4: Q_sad +2.990022666137 honest +2.990022666081 |dev| 5.5e-11 (tol 1.3e-10) PASS; plant sigma=0 dev 5.9e+01; |sigma - honest saddle| 5.6e-15, gap |F| 4.4e-16
+[   2185s] W4P4 n=5: Q_sad +3.738329122866 honest +3.738329123251 |dev| 3.9e-10 (tol 8.4e-10) PASS; plant sigma=0 dev 7.4e+01; |sigma - honest saddle| 2.0e-14, gap |F| 1.4e-15
+[   2497s] W4P4 n=6: Q_sad +4.486063929422 honest +4.486063930713 |dev| 1.3e-09 (tol 3.0e-09) PASS; plant sigma=0 dev 8.8e+01; |sigma - honest saddle| 2.4e-13, gap |F| 1.6e-14
+[   3096s] route-(ii) T_sad +51.0663138330 vs C1 T_FD +51.0662745878: rel 7.7e-07 -> PASS (<= 1e-4)

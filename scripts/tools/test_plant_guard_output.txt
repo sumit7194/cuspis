@@ -23,4 +23,9 @@ W4P4 dd1: {'var': 'dd1', 'confluent': 164}
 W4P4 drop_pole: {'var': 'drop_pole', 'ok': True}
 W4P4 res_scale: {'var': 'res_scale', 'ok': True}
 W4P4 derived s_cut plant 2.6885: {'var': 'scut_low', 'kept': 44, 'kept_plant': 42, 'dropped': 2}
+WIRED path W2P4 scut_low 1.5 (Strip3D s_cut=1.5): INERT -> as expected
+WIRED path W4P4 scut_low 1.5 (Strip3D s_cut=1.5): changes input -> as expected
+WIRED path W2P4 scut_low 1.3 (Strip3D s_cut=1.3): changes input -> as expected
+WIRED path W2P2 scut_low 1.2 (Strip3D s_cut=1.2): changes input -> as expected
+WIRED path W4P2 scut_low 1.2 (Strip3D s_cut=1.2): changes input -> as expected
 ALL AS EXPECTED

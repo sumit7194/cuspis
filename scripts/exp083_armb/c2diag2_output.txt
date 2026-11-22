@@ -1,0 +1,4 @@
+production            : max |s - s_prod| over slices 0.0e+00
+strip_sigma aliased   : max |s - s_prod| over slices 8.6e-08
+strip_sigma NO alias  : max |s - s_prod| over slices 0.0e+00
+arm (a) n=2 via strip_sigma NO alias: dev 1.04e-10 (production 1.04e-10, aliased 2.32e-10)

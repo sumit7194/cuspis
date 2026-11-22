@@ -1,0 +1,26 @@
+=== c2_W2P4 start 09:20:33
+# pgate: attempt 1 at 09:21:03 (pressure normal >= 60 s)
+# exit 0; wall 2885 s; PEAK tree MEM 0.115 GB + CMPRS 0.000 GB = 0.115 GB
+=== c2_W2P4 end 10:09:08
+# exit 0; wall 2885 s; PEAK tree MEM 0.115 GB + CMPRS 0.000 GB = 0.115 GB
+[    287s] W2P4 n=1: Q_sad -0.000000004411 honest +0.000000000000 |dev| 4.4e-09 (tol 1.0e-08) PASS; plant sigma=0 dev 3.4e-09
+[    863s] W2P4 n=2: Q_sad +1.319639860132 honest +1.319639860385 |dev| 2.5e-10 (tol 7.5e-10) PASS; plant sigma=0 dev 2.7e+01; probe x(1+1e-6) dev 2.8e-05; |sigma - honest saddle| 3.6e-14, gap |F| 5.2e-15
+[   1444s] W2P4 n=3: Q_sad +2.118642576698 honest +2.118642576747 |dev| 4.9e-11 (tol 1.0e-10) PASS; plant sigma=0 dev 4.2e+01; probe x(1+1e-6) dev 4.4e-05; |sigma - honest saddle| 1.9e-14, gap |F| 1.8e-15
+[   1731s] W2P4 n=4: Q_sad +2.839818405309 honest +2.839818405214 |dev| 9.5e-11 (tol 2.3e-10) PASS; plant sigma=0 dev 5.6e+01; |sigma - honest saddle| 5.2e-14, gap |F| 3.5e-15
+[   2022s] W2P4 n=5: Q_sad +3.551372956021 honest +3.551372956486 |dev| 4.6e-10 (tol 9.9e-10) PASS; plant sigma=0 dev 7.0e+01; |sigma - honest saddle| 6.3e-14, gap |F| 4.0e-15
+[   2308s] W2P4 n=6: Q_sad +4.261817060831 honest +4.261817062651 |dev| 1.8e-09 (tol 3.7e-09) PASS; plant sigma=0 dev 8.4e+01; |sigma - honest saddle| 1.9e-13, gap |F| 1.5e-14
+[   2885s] route-(ii) T_sad +45.5717283030 vs C1 T_FD +45.5717043267: rel 5.3e-07 -> PASS (<= 1e-4)
+=== W4P4 link present 10:18:09
+=== c2_W4P4 start 10:18:09
+# pgate: attempt 1 at 10:18:39 (pressure normal >= 60 s)
+# exit 0; wall 3097 s; PEAK tree MEM 0.115 GB + CMPRS 0.000 GB = 0.115 GB
+=== c2_W4P4 end 11:10:16
+# exit 0; wall 3097 s; PEAK tree MEM 0.115 GB + CMPRS 0.000 GB = 0.115 GB
+[    312s] W4P4 n=1: Q_sad -0.000000568107 honest +0.000000000000 |dev| 5.7e-07 (tol 1.7e-06) PASS; plant sigma=0 dev 5.7e-07
+[    938s] W4P4 n=2: Q_sad +1.416075932417 honest +1.416075932849 |dev| 4.3e-10 (tol 3.1e-10) FAIL; plant sigma=0 dev 2.8e+01; probe x(1+1e-6) dev 2.9e-05; |sigma - honest saddle| 3.5e-14, gap |F| 8.3e-15
+[   1561s] W4P4 n=3: Q_sad +2.235529263166 honest +2.235529263123 |dev| 4.3e-11 (tol 1.0e-10) PASS; plant sigma=0 dev 4.4e+01; probe x(1+1e-6) dev 4.6e-05; |sigma - honest saddle| 1.2e-14, gap |F| 1.3e-15
+[   1873s] W4P4 n=4: Q_sad +2.990022666137 honest +2.990022666081 |dev| 5.5e-11 (tol 1.3e-10) PASS; plant sigma=0 dev 5.9e+01; |sigma - honest saddle| 5.6e-15, gap |F| 4.4e-16
+[   2185s] W4P4 n=5: Q_sad +3.738329122866 honest +3.738329123251 |dev| 3.9e-10 (tol 8.4e-10) PASS; plant sigma=0 dev 7.4e+01; |sigma - honest saddle| 2.0e-14, gap |F| 1.4e-15
+[   2497s] W4P4 n=6: Q_sad +4.486063929422 honest +4.486063930713 |dev| 1.3e-09 (tol 3.0e-09) PASS; plant sigma=0 dev 8.8e+01; |sigma - honest saddle| 2.4e-13, gap |F| 1.6e-14
+[   3096s] route-(ii) T_sad +51.0663138330 vs C1 T_FD +51.0662745878: rel 7.7e-07 -> PASS (<= 1e-4)
+=== lane B3 complete Sun Nov 22 11:10:16 IST 2026

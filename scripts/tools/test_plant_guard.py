@@ -20,4 +20,12 @@ for W, P in ((2, 2), (4, 2), (2, 4), (4, 4)):
         try: rv = check_plant(S, v); print(f"W{W}P{P} {v}: {rv}")
         except PlantInert as e: print(f"W{W}P{P} {v}: INERT {e}"); ok = False   # these all fired in the chain, so the guard must pass
     print(f"W{W}P{P} derived s_cut plant {d:.4f}: {r}")
+# hardening (Bridge, 2026-11-22): the WIRED construction path -- exp083_r3p_run.py builds Strip3D with the plant's s_cut. The
+# guard must give the same verdict there, so a future change to Strip3D's pole filtering cannot silently blind it.
+for (W, P), var, val, must_fire in cases:
+    g = Geom(W, P); Sw = S3.Strip3D(g.Lx, g.Lt, g.Ny, g.cutx, g.tcut, s_cut=val)
+    try: check_plant(Sw, var, val); fired = False
+    except PlantInert: fired = True
+    good = fired == must_fire; ok &= good
+    print(f"WIRED path W{W}P{P} {var} {val} (Strip3D s_cut={val}): {'INERT' if fired else 'changes input'} -> {'as expected' if good else 'UNEXPECTED'}")
 print("ALL AS EXPECTED" if ok else "SOME UNEXPECTED"); sys.exit(0 if ok else 1)
