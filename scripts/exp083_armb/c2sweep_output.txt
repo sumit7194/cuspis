@@ -1,0 +1,4 @@
+baseline  : dev_b 4.43e-10 (signed -4.43e-10)   dev_a 1.04e-10   -> no
+Mt320     : dev_b 4.42e-10 (signed -4.42e-10)   dev_a 1.03e-10   -> no
+npt0_1024 : dev_b 4.42e-10 (signed -4.42e-10)   dev_a 1.04e-10   -> no
+n*Dld1 30-digit: Dld1 float64 +1.6503620192569599e+01 vs 30-digit 16.503620192569663642; n*difference +1.29e-13; dev_b 4.42e-10 (dev_a unchanged by construction: Dld1 = 0 at sigma = 0) -> no

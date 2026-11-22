@@ -11130,3 +11130,28 @@ registered (C2 W4P4 n = 2).** This stays the headline.
 3. **The outcome is post hoc, labelled, and does not change the headline** (arm (b) UNVALIDATED as registered). One job, nice 12,
    watchdog cap 1.5 GB, pressure-stop on.
    - Estimated ~30 min, against the ~20 min first quoted: the arm-(a) recomputations double the Mt and npt0 runs.
+
+### C2 W4P4 n = 2 sweep, RESULT (POST HOC; headline unchanged): **cause unidentified; candidates left: Mx/tmax, the Arb arm-(b) reference** [model: Opus 5.5]
+(`scripts/exp083_armb_c2sweep.py` → `exp083_armb/c2sweep_output.txt`, `c2sweep_W4P4.json`. One job, 2415 s, peak 0.08 GB.)
+
+| knob (one at a time; unaliased path, stored σ₂) | dev_b(2) (signed) | dev_a(2) | cause found? |
+|---|---|---|---|
+| baseline (known-answer control: 4.43e-10 / 1.04e-10) | 4.43·10⁻¹⁰ (−) | 1.04·10⁻¹⁰ | — |
+| Mt 160 → 320 | 4.42·10⁻¹⁰ (−) | 1.03·10⁻¹⁰ | no |
+| npt0 512 → 1024 | 4.42·10⁻¹⁰ (−) | 1.04·10⁻¹⁰ | no |
+| n·Δld1 at 30 digits | 4.42·10⁻¹⁰ (−) | unchanged (Δld1 ≡ 0 at σ = 0) | no |
+
+- **n·Δld1 is NOT the conditioning culprit** (the Bridge's question).
+  - Δld1 = +16.503620192569 in float64 against 16.503620192569664 at 30 digits: the float64 error is 6·10⁻¹⁴.
+  - n times that difference is 1.3·10⁻¹³, about 3000× below the excess.
+- **On the ~3000× amplification** (re-solving σ₂, max |Δσ| 3·10⁻¹⁴, moved dev_b by 1.0·10⁻¹⁰):
+  - Measured: an effective sensitivity of about 3·10³ per unit of max |Δσ|. That is the number for 081d's error budget.
+  - Argued, not measured: it is the extensive gradient of Q_sad in σ, which sums over N = 96 sites, N_y = 64 slices and n sheets.
+    For a near-uniform δσ it is about Σ_i |∂Q/∂σ_i| ~ n·N_y·N·O(G_ii) ~ 10³–10⁴, and it does not come from ill-conditioning. Q_sad
+    as computed (the log-det sum without the σ-action terms) is not stationary at the saddle. The 10⁻⁶ probe's 2.9·10⁻⁵ response
+    shows the same thing.
+  - **081d budget consequence (argued):** σ must be solved to ≲ 10⁻¹⁴ per site to keep Q at ≲ 10⁻¹⁰. The current gap noise
+    floor (10⁻¹⁴…3·10⁻¹³) is at that edge at P = 4 and will be worse at larger N.
+- The excess is a consistent −4.4·10⁻¹⁰ (signed) and is insensitive to all three knobs.
+- **Stopped as instructed; the sweep was not widened.** Candidates left: **Mx/tmax** (port β-path and tail range) and **the Arb
+  arm-(b) reference** (its float64-seeded, Arb-refined sector saddle and Q assembly).
