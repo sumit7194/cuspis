@@ -1,0 +1,5 @@
+W2P2 n=1 chain  : Q_cont(1) +3.557659e-09 imag -2.8e-13
+W4P2 n=1 chain  : Q_cont(1) -3.546152e-08 imag +3.3e-09
+W4P2 n=1 npt200 : Q_cont(1) -3.506289e-08 imag +3.3e-09
+W4P2 n=1 Mt320  : Q_cont(1) -3.536066e-08 imag +3.3e-09
+W4P2 n=1 tmax12 : Q_cont(1) -3.571011e-08 imag +3.7e-09

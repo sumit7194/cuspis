@@ -10618,3 +10618,70 @@ retried. A success returns 0.
 - Killed outputs are kept as `*_killed0629.*`.
 
 [model: Opus 5.5]
+
+## EXP-083 R3′ arm (a), P = 2 half: graded at chain end against the registered criteria (Bridge: "the registered n-range and the δ-scaling rule decide; don't retune mid-chain") [model: Opus 5.5]
+(Chain `run_083_r3p.sh`, settings npt 120, npt0 512, Mx 48, Mt 160, tmax 8: `exp083_r3p/W{2,4}P2_{base,scut_low,merge_tiny,drop_pole,
+res_scale,dd1,link}.json`. Diagnostics, run after the chain, do not replace the graded numbers: `exp083_r3p_taildiag.py` →
+`exp083_r3p/taildiag_output.txt`; `exp083_r3p_n1W4.py` → `exp083_r3p/n1W4_output.txt`.)
+
+**The graded numbers (chain settings).**
+
+| | W2P2 | W4P2 |
+|---|---|---|
+| n = 1 (Q_cont(1), should be 0) | 3.56·10⁻⁹ | 3.55·10⁻⁸ (imag 3.3·10⁻⁹) |
+| max dev, n = 2…6 | 2.24·10⁻¹⁰ | 1.48·10⁻¹⁰ |
+| max dev, n = 7…end | 4.09·10⁻⁷ (n = 72) | 1.06·10⁻⁷ (n ≤ 37) |
+| n range produced | 1…72 | 1…37 (n ≥ 38 NaN, see below) |
+| route link, FD Q′(1) vs route_b (≤ 10⁻⁵ rel) | 1.04·10⁻⁶: **PASS** | 1.22·10⁻⁶: **PASS** |
+| weakest plant, plant dev / base dev at the same n (n ≤ 3) | res_scale, ≥ 1.0·10² | res_scale, 4.9 at n = 1, ≥ 89 at n = 2, 3 |
+
+All other plants (scut_low, merge_tiny, drop_pole, dd1) exceed the base deviation by 8.4·10³ to 10¹⁴ at every n ≤ 3. **Every
+planted control fires.**
+
+**Strict reading at the δ stated in step 1 (n ≥ 2: ≲ 2.2·10⁻¹⁰).** The chain's deviation exceeds it at n ≥ 7 at both widths,
+growing irregularly to 10⁻⁷. Read literally, this is a fail of (a).
+
+**Cause: the port's tail quadrature, not production (verified at 6 sampled n).**
+- The tail kernel 1/(e^{2πnt} + 1) decays on the scale 1/(2πn), which is 0.0022 at n = 72. The fixed grid (Gauss, 8 segments on
+  [0, 8], 20 nodes each) puts its first node near 0.003, so the kernel is under-resolved, increasingly so with n.
+- One variable changed, tmax = 48/n (equal to 8 at n = 6, the step-1 converged setting):
+  - W2 n = 12, 24, 30, 54, 72: 9.8·10⁻⁹, 1.0·10⁻⁷, 1.6·10⁻⁷, 2.6·10⁻⁷, 4.1·10⁻⁷ fall to 5.9·10⁻¹¹, 1.3·10⁻¹¹, 7.5·10⁻¹², 2.4·10⁻¹², 5.2·10⁻¹².
+  - W4 n = 24: 6.7·10⁻⁸ falls to 7.7·10⁻¹².
+- The prediction (dev ≲ 10⁻⁹ after the change) held at every sampled n.
+- This is the step-1 quadrature study's blind spot: it converged the grid at n ≤ 6 only.
+
+**Applying the δ-scaling rule (registered fallback: the reached δ is stated and the visibility claim scaled), per the Bridge.**
+- Reached δ, per n, at the chain settings:
+  - n = 2…6: ≲ 2.2·10⁻¹⁰ (W2), ≲ 1.5·10⁻¹⁰ (W4).
+  - n = 7…end: ≤ 4.1·10⁻⁷ (W2), ≤ 1.1·10⁻⁷ (W4).
+  - n = 1: production floors, 3.6·10⁻⁹ (W2) and 3.5·10⁻⁸ (W4).
+- The W4 n = 1 floor is quadrature-independent. npt 200, Mt 320 and tmax 12 each move it by ≤ 1 % (3.51…3.57·10⁻⁸); the W2 control
+  reproduces 3.557659·10⁻⁹ exactly. So, like W2's, it is set by production's pole/residue precision. It is 10× W2's floor, which
+  step 1 had only measured at W2.
+- **Visibility claim, as committed in step 1:** r ≳ 2·10⁻⁶, set by the n = 2 δ. It now holds at both widths. The n ≥ 7 integers
+  check mode content only to 10⁻⁹…4·10⁻⁷ and add no visibility beyond it.
+- **Slope bound** δ·|ln r_min|/r_min at r_min = 2·10⁻⁶:
+  - With the n = 2 δ: 6.3·10⁻⁴ (W2) and 1.4·10⁻⁴ (W4), both ≪ 0.191 (the half-gap).
+  - With the n = 1 floors instead: 0.023 (W2) and **0.23 (W4, above 0.191)**.
+  - Using n = 2 is my judgment: n = 1 is the normalization identity Q(1) = 0 and carries no mode amplitude. This is argued, not
+    verified. A reader who insists on the n = 1 δ gets no half-gap margin at W4P2.
+
+**Deviation 3 (new): W4P2 has no data at n ≥ 38.**
+- W4P2 keeps a pole at s = 2.98313 (≤ s_cut 3). At n = 38, 2π·n·s = 712 > 709.8, so production's complex kernel
+  `1/np.expm1(∓2πi n α)` (sigma3d.py:131, `inner_beta0`) returns inf + nan·i, and q0 turns NaN. The real-arithmetic expm1 at
+  line 113 overflows to inf harmlessly.
+- This is the same mechanism I hit in arm (b) Tier-1 run 1.
+- **Production's own numbers are unaffected.** It evaluates at n = 1 ± h, where the largest argument is 2π·1.001·3 ≈ 19. This is
+  verified by arithmetic, not by a run.
+- Not patched, because the port referees production as it is. The W4P2 range is n ≤ 37 of the registered 72.
+
+**Grade for the P = 2 half.**
+- With the tail cause verified and the δ-scaling rule applied as the Bridge ruled: arm (a) reproduces the honest integers at
+  W2P2 and W4P2 to the per-n δ above, for modes with r ≳ 2·10⁻⁶. All plants fire, and the link passes. **Partially verified.**
+- Read strictly at the step-1 δ with no rescaling: fail at n ≥ 7, from the port's quadrature.
+- I report both readings and do not choose between them silently.
+- The P = 4 half (registered scope n ≤ 6, planted n ≤ 2) is rerunning under the pressure gate. The overall arm-(a) verdict waits
+  for it.
+- **T_sad untested here; the +2.4 is not validated by this.**
+- For C2 (arm b vs honest, at P = 2, n ≤ 24): its tolerance is max(3·dev_a(n), 10⁻¹⁰). At n ≳ 7 it therefore inherits this tail
+  quadrature, as registered, and is correspondingly weaker there.

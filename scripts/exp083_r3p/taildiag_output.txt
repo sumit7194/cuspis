@@ -1,0 +1,15 @@
+[   33s] W2P2 n=12: tmax 48/n dev 5.93e-11 (chain, tmax 8: 9.84e-09); imag 1.3e-16
+[   66s] W2P2 n=24: tmax 48/n dev 1.32e-11 (chain, tmax 8: 1.02e-07); imag -3.6e-15
+[   98s] W2P2 n=30: tmax 48/n dev 7.46e-12 (chain, tmax 8: 1.61e-07); imag 1.4e-15
+[  131s] W2P2 n=54: tmax 48/n dev 2.36e-12 (chain, tmax 8: 2.56e-07); imag 1.2e-15
+[  165s] W2P2 n=72: tmax 48/n dev 5.17e-12 (chain, tmax 8: 4.09e-07); imag -8.9e-17
+[  206s] W4P2 n=24: tmax 48/n dev 7.69e-12 (chain, tmax 8: 6.73e-08); imag 3.3e-16
+[  250s] W4P2 n=38: tmax 48/n dev nan (chain, tmax 8: nan); imag nan
+[  303s] W4P2 n=72: tmax 48/n dev nan (chain, tmax 8: nan); imag nan
+   W4 n=38 gk(eps + i 0.5): finite True, |sum| 2.591e+00
+   W4 n=38 gk(eps + i 1.0): finite True, |sum| 1.701e+00
+   W4 n=38 gk(eps + i 2.0): finite True, |sum| 1.387e+01
+   W4 n=38 gk(eps + i 3.0): finite True, |sum| 1.353e+02
+   W4 n=38 gk(eps + i 4.0): finite True, |sum| 2.640e+02
+   W4 n=38 gk(eps + i 6.0): finite True, |sum| 1.316e+02
+   W4 n=38 gk(eps + i 8.0): finite True, |sum| 2.561e+02
