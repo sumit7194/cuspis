@@ -1,14 +1,18 @@
 EXP-081d analysis planted-value tests:
-  planted test: pure log -> log-like (r = 1): PASS
+  planted test: pure log -> log-like or slow power (r = 1): PASS
   planted test: R_inf - A k^-1.5 -> converging (r = 0.544): PASS
   planted test: A k^1.5 -> power-divergent (r = 1.84): PASS
-  planted test: r = 0.7 -> INCONCLUSIVE between bands: PASS
+  planted test: r = 0.80 (gap; was 0.7 before amendment 1, now inside converging) -> INCONCLUSIVE between bands: PASS
   planted test: opposite-sign increments -> INCONCLUSIVE non-monotone: PASS
   planted test: sigma 0.3 at r = 1 -> INCONCLUSIVE (2 sigma leaves the band): PASS
   planted test: R(2) = R(1) -> INCONCLUSIVE: PASS
   planted test: k = 3 missing -> INCONCLUSIVE: PASS
   planted test: T0 log / T1 converging -> INCONCLUSIVE (tails differ): PASS
-  planted test: both tails log -> log-like: PASS
+  planted test: both tails log -> log-like or slow power: PASS
+  planted test: NEW: O(a) convergence p = 1 (r = 0.667) -> converging: PASS
+  planted test: NEW: linear growth p = 1 (r = 1.5) -> power-divergent: PASS
+  planted test: NEW: slow power p = 0.3 (r = 1.13) -> log-like or slow power: PASS
+  planted test: NEW: convergence p = 0.5 (r = 0.82, in the gap) -> INCONCLUSIVE: PASS
   planted test: R1 cap on 081c W8P8: s_max 5.6549 < 5.8562 (r1 node 5.654854011291457): PASS
   planted test: planted unconverged at 3.6190: s_max 3.3451 < 3.6190: PASS
 ALL PASS

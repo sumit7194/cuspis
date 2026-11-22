@@ -11309,3 +11309,31 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   - **The PRIMARY reading needs k = 3, so no verdict exists after Stage 1.** Stage-1 numbers are reported as R(k) with σ_R and
     marked "Stage 1 of 2, no verdict". The decision rule above does not change between stages.
 - **No physics number from a new k is read or reported before the Bridge's GO.**
+
+### EXP-081d amendment 1 (the Bridge named §B; committed BEFORE launch; no new-k number exists) [model: Opus 5.5]
+**The defect (Bridge):** the registered bands 0.60 / 0.80–1.25 / 1.60 could not produce the most plausible readings.
+- O(a) convergence (p = 1, r = 1.5⁻¹ = 0.667) fell in the 0.60–0.80 gap, and linear growth (r = 1.5) in the 1.25–1.60 gap. Both were
+  INCONCLUSIVE whatever σ_r.
+- Slow power |p| ≤ 0.55 was read as "log-like", and its pre-stated meaning ("unsubtracted UV log") overclaimed.
+- **The same class as slips 12–16: a reading the design could not produce.**
+
+**Fix (option a):**
+
+| r (r ± 2σ_r inside the band) | reading | p range |
+|---|---|---|
+| r ≤ 0.75 | **converging** | p ≥ 0.71 (includes O(a), p = 1) |
+| 0.87 ≤ r ≤ 1.15 | **log-like or slow power (\|p\| ≤ 0.35)** | \|p\| ≤ 0.35 |
+| r ≥ 1.33 | **power-divergent** | p ≥ 0.70 (includes linear growth) |
+| otherwise | INCONCLUSIVE | **\|p\| ∈ (0.35, 0.71) in either direction is INCONCLUSIVE by design** |
+
+- **Why the gaps exist:** they separate p-classes that two increments cannot tell apart at these k (r spans 1.5^±p over only one
+  factor 1.5).
+- They are **not** sized for the half-integer O(a) systematic. That systematic is not estimated; it is handled by the descriptive
+  r_int and fit (c). It is stated as a limit, not hidden in a gap.
+- **The pre-stated meaning of the middle reading is now conditional:** "consistent with an unsubtracted UV log; not distinguishable
+  from slow power (|p| ≤ 0.35) at these k". Converging and power-divergent keep the draft §6 meanings.
+
+**Tests (`scripts/exp081d_analyze_tests_output.txt`): 16/16 PASS.**
+- The original 12. The "between bands" case moved from r = 0.70 to r = 0.80 because 0.70 now lies inside "converging".
+- **Plus four new:** p = 1 convergence (r = 0.667) → converging; p = 1 growth (r = 1.5) → power-divergent; p = 0.3 (r = 1.13) →
+  log-like or slow power; p = 0.5 convergence (r = 0.82, in the gap) → INCONCLUSIVE.

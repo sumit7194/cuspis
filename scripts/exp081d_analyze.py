@@ -8,7 +8,9 @@ R(k) for k in {1, 1.5, 2, 2.5, 3}: pair (W1, W2) = (2k, 4k), P = 4k, box = 4k, c
   sigma_R(k) = |R_T0 - R_T1| + |dR/dS| (cum_W1 + cum_W2)   (numerical; the half-integer O(a) geometry is a stated limit, not in sigma).
 PRIMARY (decide_r, pure function): r = [R(3) - R(1.5)] / [R(2) - R(1)], per tail.
   reading(band) only if the whole interval r +- 2 sigma_r lies in the band:
-     converging  r <= 0.60  |  log-like 0.80 <= r <= 1.25  |  power-divergent r >= 1.60
+     converging r <= 0.75 (p >= 0.71)  |  log-like or slow power 0.87 <= r <= 1.15 (|p| <= 0.35)  |  power-divergent r >= 1.33 (p >= 0.70)
+  (amendment 1: |p| in (0.35, 0.71) in either direction is INCONCLUSIVE by design; O(a) convergence (p = 1, r = 0.667) reads converging,
+   linear growth (p = 1, r = 1.5) reads power-divergent)
   otherwise INCONCLUSIVE (naming the neighbouring readings). Also INCONCLUSIVE if |R(2) - R(1)| <= 2 sigma, if the two increments have
   opposite signs (non-monotone), if a needed k is missing/void, or if the T0 and T1 readings differ.
 SECONDARY (descriptive only): r_int = [R(3) - R(2)] / [R(2) - R(1)] (log 0.585; k^-p: (2^-p - 3^-p)/(1 - 2^-p); k^p: (3^p - 2^p)/(2^p - 1));
@@ -16,12 +18,12 @@ SECONDARY (descriptive only): r_int = [R(3) - R(2)] / [R(2) - R(1)] (log 0.585; 
   series R_t0, R_Tsad, R_C and kappa(k)."""
 import os, sys, json, numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
-LO, LOGL, LOGH, HI = 0.60, 0.80, 1.25, 1.60
+LO, LOGL, LOGH, HI = 0.75, 0.87, 1.15, 1.33   # amendment 1 (Bridge-named clause, before launch): was 0.60/0.80/1.25/1.60
 TIER = 2.986170475685039
 
 def band(r):
     if r <= LO: return "converging"
-    if LOGL <= r <= LOGH: return "log-like"
+    if LOGL <= r <= LOGH: return "log-like or slow power (|p| <= 0.35)"
     if r >= HI: return "power-divergent"
     return None
 
@@ -85,16 +87,21 @@ def S_T(st):
 def _tests():
     ok = True; cases = []
     logR = {k: 2.0 + 6.0 * np.log(k) for k in (1, 1.5, 2, 2.5, 3)}; sig = {k: 1e-5 for k in logR}
-    cases.append(("pure log -> log-like (r = 1)", decide_r(logR, sig)[0] == "log-like"))
+    LL = "log-like or slow power (|p| <= 0.35)"
+    cases.append(("pure log -> log-like or slow power (r = 1)", decide_r(logR, sig)[0] == LL))
     cv = {k: 9.0 - 6.8 * k ** -1.5 for k in logR}; cases.append(("R_inf - A k^-1.5 -> converging (r = 0.544)", decide_r(cv, sig)[0] == "converging"))
     pw = {k: 2.255 * k ** 1.5 for k in logR}; cases.append(("A k^1.5 -> power-divergent (r = 1.84)", decide_r(pw, sig)[0] == "power-divergent"))
-    mid = {1: 0.0, 2: 1.0, 1.5: 0.0, 3: 0.7}; cases.append(("r = 0.7 -> INCONCLUSIVE between bands", decide_r(mid, {k: 1e-6 for k in mid})[0].startswith("INCONCLUSIVE")))
+    mid = {1: 0.0, 2: 1.0, 1.5: 0.0, 3: 0.80}; cases.append(("r = 0.80 (gap; was 0.7 before amendment 1, now inside converging) -> INCONCLUSIVE between bands", decide_r(mid, {k: 1e-6 for k in mid})[0].startswith("INCONCLUSIVE")))
     nm = {1: 0.0, 2: 1.0, 1.5: 0.0, 3: -0.5}; cases.append(("opposite-sign increments -> INCONCLUSIVE non-monotone", "non-monotone" in decide_r(nm, {k: 1e-6 for k in nm})[0]))
     big = {k: 0.3 for k in logR}; cases.append(("sigma 0.3 at r = 1 -> INCONCLUSIVE (2 sigma leaves the band)", decide_r(logR, big)[0].startswith("INCONCLUSIVE")))
     flat = {k: 1.0 for k in logR}; cases.append(("R(2) = R(1) -> INCONCLUSIVE", decide_r(flat, sig)[0].startswith("INCONCLUSIVE")))
     miss = dict(logR); miss.pop(3); cases.append(("k = 3 missing -> INCONCLUSIVE", decide_r(miss, sig)[0].startswith("INCONCLUSIVE")))
     cases.append(("T0 log / T1 converging -> INCONCLUSIVE (tails differ)", decide({"T0": (logR, sig), "T1": (cv, sig)})[0].startswith("INCONCLUSIVE")))
-    cases.append(("both tails log -> log-like", decide({"T0": (logR, sig), "T1": (logR, sig)})[0] == "log-like"))
+    cases.append(("both tails log -> log-like or slow power", decide({"T0": (logR, sig), "T1": (logR, sig)})[0] == LL))
+    c1 = {k: 9.0 - 6.8 / k for k in logR}; cases.append(("NEW: O(a) convergence p = 1 (r = 0.667) -> converging", decide_r(c1, sig)[0] == "converging"))
+    g1 = {k: 2.0 * k for k in logR}; cases.append(("NEW: linear growth p = 1 (r = 1.5) -> power-divergent", decide_r(g1, sig)[0] == "power-divergent"))
+    sp = {k: 3.0 * k ** 0.3 for k in logR}; cases.append(("NEW: slow power p = 0.3 (r = 1.13) -> log-like or slow power", decide_r(sp, sig)[0] == LL))
+    c5 = {k: 9.0 - 6.8 * k ** -0.5 for k in logR}; cases.append(("NEW: convergence p = 0.5 (r = 0.82, in the gap) -> INCONCLUSIVE", decide_r(c5, sig)[0].startswith("INCONCLUSIVE")))
     # R1 cap known answer: the 081c W8P8 checkpoint (unconverged at 5.8562) must cap s_max below 5.8562 (081c's analysis reported 6.0)
     st = json.load(open(os.path.join(HERE, "exp081c_results", "sigma_W8_P8_box8_c2_cp12_sc3.0_dd0_ckpt.json")))
     r = S_T(st); cases.append((f"R1 cap on 081c W8P8: s_max {r['s_max']:.4f} < 5.8562 (r1 node {r['r1_cap']})", r["s_max"] < 5.8562 and r["r1_cap"] is not None))
