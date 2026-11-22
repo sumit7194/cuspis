@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp081d_costprobe.py", line 17, in <module>
+    ex = C.ExactSlice(base, S.Lx, S.Lt, 2 - 2 * np.cos(2 * np.pi / S.Ny), -1.0, refine="auto")
+                      ^^^^
+NameError: name 'base' is not defined. Did you mean: 'False'?

@@ -118,6 +118,32 @@ cost (measured at P8).
 - **Memory:** k ≥ 2.5 needs low-rank residues for parallel processes (control 5). Each process is then ~N² working set: < 0.3 GB at
   k = 3. Declared before launch with formula and measured × 1.5, per the box rules.
 
+### 5a. Measured cost probe (2026-11-22 08:03; `scripts/exp081d_costprobe.py`, timing only, no physics value kept)
+Run on a loaded box (load ~8 of 10 cores), so treat timings as ±30 %. Peak memory 0.52 GB.
+
+**Single G, adaptive refinement, probe:** 1.8 / 11.4 / 33.4 / 66.7 / 167 ms at N = 96 / 216 / 384 / 600 / 864.
+- The growth is milder than N³ (BLAS efficiency at larger N): N = 384 → 864 is ×5.0, not ×11.4.
+- Production per-G is ×1.27 below the probe (k = 2: 25 vs 33 ms; k = 1.5: 9.2 vs 11.4 ms).
+
+**k = 1.5 W2 geometry, measured:**
+- Install: 26 s (2432 G, 38 poles ≤ 3 over 13 unique slices).
+- One 𝒞 node: 36 s (3900 G, i.e. 300 G per slice).
+- t0: 233 s (23,336 G).
+
+**Re-estimated cost, both widths (×1.63 the W2 geometry).** Calls per slice interpolated (300 at k = 1.5, 354 at k = 2); production
+per-G = probe / 1.27.
+
+| k | 𝒞 (48 nodes) + t0, W2 geometry | both widths | wall |
+|---|---|---|---|
+| 1.5 | 0.48 h + 0.07 h | **~0.9 core-h** | — |
+| 2.5 | ~5.9 h + 0.7 h | **~11 core-h** | — |
+| 3 | ~19 h + 2.4 h | **~35 core-h** | **~9 h on 4 cores: one night** |
+| 4 | per-G ~0.6 s, ~135 h + 16 h | **~250 core-h** | still not night-scale |
+
+- The §5 first estimates were 0.5 / 17 / 61 / 450 core-h. The N³ assumption overestimated the large k and underestimated k = 1.5,
+  where the per-G floor is ~9 ms, not 5.
+- Residue memory is unchanged (full matrices ~2 GB at k = 3), so low-rank storage is still needed for parallel processes.
+
 ## 6. What a result would mean (pre-stated)
 - **Converging:** R∞ from the fits, with fit-model drift as the systematic. The "+2.4" (k = 1, P-extrapolated) is then a k = 1
   number, and the continuum value is what 081d returns.

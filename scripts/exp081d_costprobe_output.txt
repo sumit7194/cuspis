@@ -1,0 +1,8 @@
+k=1: N=96: 1.8 ms per G (adaptive, steps 2); Strip3D build 0 s
+k=1.5: N=216: 11.4 ms per G (adaptive, steps 2); Strip3D build 0 s
+k=2: N=384: 33.4 ms per G (adaptive, steps 2); Strip3D build 0 s
+k=2.5: N=600: 66.7 ms per G (adaptive, steps 2); Strip3D build 0 s
+k=3: N=864: 167.0 ms per G (adaptive, steps 2); Strip3D build 1 s
+k=1.5 W6P6b6: install 26 s, 2432 G, 38 poles <= 3 over 13 unique slices
+k=1.5: one C-node 36 s, 3900 G
+k=1.5: t0 233 s, 23336 G

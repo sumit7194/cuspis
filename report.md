@@ -10849,3 +10849,11 @@ R = R_t0 + R_Tsad + R_𝒞, from S = ½(t0 + T_sad + 𝒞), with the same pair f
 - Estimates, to be re-measured at k = 1.5 before committing: k = 2.5 ~17 core-h, k = 3 ~61 core-h (~15 h wall on 4 cores). k = 4
   is ~450 core-h, not night-scale on this box, so it is excluded.
 - Limit: half-integer k puts the narrow strip half a site off-centre.
+
+### EXP-081d (draft) cost probe, measured, timing only [model: Opus 5.5]
+(`scripts/exp081d_costprobe.py` → `exp081d_costprobe_output.txt`, `.json`. Run 1 crashed on my own edit, a NameError; its output
+is kept as `_run1_nameerror.txt`. Bridge OK. No physics value was printed or stored, since 081d is unregistered.)
+- **Per-G cost** (probe): 1.8 / 11.4 / 33.4 / 66.7 / 167 ms at N = 96 / 216 / 384 / 600 / 864, milder than N³.
+- **k = 1.5:** one 𝒞 node 36 s (3900 G), t0 233 s (23,336 G), install 26 s.
+- **Re-estimated, both widths:** k = 1.5 ~0.9 core-h, k = 2.5 ~11, k = 3 ~35 (~9 h wall on 4 cores), k = 4 ~250. ±30 % (loaded box).
+  The draft's §5a has the table.
