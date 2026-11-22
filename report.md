@@ -11386,3 +11386,6 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   - Caught by the watcher and killed in pgate before any Python child started. Earlier outputs are intact (census, Step 0 at
     20:18–20:31). Nothing was rerun or overwritten.
   - **Mechanism:** a running runner script is never edited; new lanes go in a new file.
+- **The Bridge's ruling on the analysis wiring:** "implementation fix of registered row S0 (found before any R read)". It matches S0
+  (void at a first fail ≤ 1.9742; otherwise s_max = the last passing node mapped to the true 𝒞-node, applied as min() with the impact
+  and R1 caps before C0 and the T1 fit; conservative). It implements the registered consequence and does not change it.
