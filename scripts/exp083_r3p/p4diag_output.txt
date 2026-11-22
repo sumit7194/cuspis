@@ -1,0 +1,8 @@
+(a) W2P4 POST-HOC plant s_cut 1.3, n=1: dev 7.98e-04
+(a) W2P4 POST-HOC plant s_cut 1.3, n=2: dev 1.15e-07
+(b) control W2P4 n=1 chain setting: -3.400089e-09 (chain 3.4e-09)
+(b) W4P4 n=1 chain   : Q_cont(1) -5.705137e-07 imag -2.1e-10
+(b) W4P4 n=1 npt200  : Q_cont(1) -5.708318e-07 imag -2.1e-10
+(b) W4P4 n=1 Mt320   : Q_cont(1) -5.708070e-07 imag -3.4e-10
+(b) W4P4 n=1 tmax12  : Q_cont(1) -5.707918e-07 imag -1.9e-10
+(b) W4P4 n=1 scut3.5 : Q_cont(1) -1.590829e-09 imag +7.8e-10

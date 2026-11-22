@@ -10929,3 +10929,61 @@ the Arb honest arm (b). Tolerance per n: max(3·dev_a(n), 10⁻¹⁰).
   iterations; n = 2…6.
 - The ~3 GB declaration was 7× too high. I scaled it from arm (a)'s n ≤ 12 peak (1.9 GB at W4P4), but arm (b) here runs to n ≤ 6,
   so the declaration was conservative. Over-declaring costs nothing, but it is recorded as an estimate miss.
+
+## EXP-083 R3′ arm (a), P = 4 half: graded at chain end. STRICT: a registered plant did not fire → "arm (a) unvalidated" as registered. The plant could not fire at W2P4 (diagnosed); the post-hoc corrected plant fires [model: Opus 5.5]
+(Port chain `scripts/lanes_0622_A.txt` (gated relaunch); `exp083_r3p/W{2,4}P4_{base,scut_low,merge_tiny,drop_pole,res_scale,dd1,link}.json`;
+honest arm (a) Arb `W{2,4}P4a.json`. Diagnostics after the chain: `scripts/exp083_r3p_p4diag.py` → `exp083_r3p/p4diag_output.txt`,
+`p4diag.json`.)
+
+**Graded numbers (chain settings; registered scope n ≤ 6, planted n ≤ 2 per deviation 1).**
+
+| | W2P4 | W4P4 |
+|---|---|---|
+| n = 1 (Q_cont(1)) | 3.4·10⁻⁹ | **5.7·10⁻⁷** (imag 2.1·10⁻¹⁰) |
+| n = 2…6 dev | 2.5e-10, 1.9e-11, 7.8e-11, 3.3e-10, 1.2e-9 | 1.0e-10, 1.1e-11, 4.4e-11, 2.8e-10, 1.0e-9 |
+| link (≤ 10⁻⁵ rel) | 5.7·10⁻⁷: **PASS** | 6.4·10⁻⁷: **PASS** |
+| scut_low (s_cut 1.5) | **×1.0 at n = 1, 2: DOES NOT FIRE** | ×5.1e3, ×6.3e2: fires |
+| merge_tiny | ×4e10, ×4e11 | ×3e8, ×9e11 |
+| drop_pole | ×1.2e9, ×1.2e9 | ×7e6, ×2e9 |
+| res_scale (×(1 + 10⁻⁶)) | ×990, ×1.1e3 | ×4.8 (n = 1), ×1.9e3 (n = 2) |
+| dd1 | ×5e8, ×4e8 | ×3e6, ×7e8 |
+
+(×: plant dev / base dev at the same n.)
+
+**Strict registered reading.** "Any planted control NOT failing → **arm (a) unvalidated**, and EXP-083 ends with that record." The
+W2P4 scut_low plant did not fire. **That is the registered verdict for arm (a).**
+
+**Why it did not fire (diagnosed, verified).**
+- The registered plant was "s_cut lowered below a kept pole (P = 4: 1.5)". W2P4's poles all lie at s ≤ 1.329 (18 distinct values,
+  0.41…1.33), so at W2P4, 1.5 is below no kept pole. The s_cut branch is inert there, and the plant could not fire.
+- **A check that could not fail: my registration slip, the class of the Bridge's slip 13.** I picked one P = 4 value from W4P4's
+  spectrum, which has seven kept poles in (1.5, 3], without checking W2P4's.
+- **POST-HOC corrected plant (labelled):** s_cut = 1.3, below the kept poles at 1.316 and 1.329. It **fires**: dev 8.0·10⁻⁴ at
+  n = 1 (×2.3·10⁵) and 1.15·10⁻⁷ at n = 2 (×460). The W2P4 n = 1 chain value is reproduced exactly (−3.400089·10⁻⁹) as the control.
+
+**The W4P4 n = 1 floor, 5.7·10⁻⁷: production's s_cut truncation (verified).**
+- It is quadrature-independent: npt 200, Mt 320 and tmax 12 each move it by ≤ 0.06 %.
+- **s_cut 3.5 drops it to 1.6·10⁻⁹.** W4P4 has poles at s = 3.011 and 3.088, just above the cut.
+- So the floor is the sub-cut class that N4 bounds. 081c's N4c measured |ΔR| = 2.2·10⁻⁵ for s_cut 3.0 → 3.5 at P = 6: the slope
+  effect of this class is bounded there, not by this floor.
+- Its consequence here: the res_scale plant at W4P4 n = 1 stands only ×4.8 above base. At n = 2 it is ×1.9·10³.
+
+**δ-scaling reading (the Bridge's rule from the P = 2 grade).**
+- Reached δ at n = 2 is 2.5·10⁻¹⁰ (W2) and 1.0·10⁻¹⁰ (W4), and it grows to 1.2·10⁻⁹ by n = 6.
+- tmax = 48/n equals 8 at n = 6, so this growth is not the P = 2 tail mechanism. Cause not identified; stated as reached.
+- Visibility as scaled in step 1, r ≳ 2·10⁻⁶: slope bound 1.6·10⁻³ (W2) and 6.6·10⁻⁴ (W4), both ≪ 0.191.
+- **Limit:** the registration's P = 4 r_min_kept = 6.5·10⁻⁹ is not covered. At δ = 2.5·10⁻¹⁰ that bound would be 0.73, above
+  0.191. Modes with r in (6.5·10⁻⁹, 2·10⁻⁶) are untested at P = 4.
+
+**Reading for the Bridge (I don't choose):**
+- (i) Registered: arm (a) **unvalidated** (W2P4 scut_low did not fire).
+- (ii) Post hoc, with the plant corrected to what the registration describes ("below a kept pole"): every plant fires, both links
+  pass, and the integers agree to the δ-scaled visibility r ≳ 2·10⁻⁶. That would read as "arm (a) reproduces honest integers at
+  P = 2 and 4 for modes with r ≳ 2·10⁻⁶ (partially verified)", with the r ∈ (6.5·10⁻⁹, 2·10⁻⁶) gap at P = 4 stated.
+- Neither reading touches the +2.4. 081c's ρ = 1.86 governs that.
+
+**C2 at W2P4 (arm b, n ≤ 6):** all PASS.
+- dev/tol ≤ 0.49; σ_n matches the honest saddle to ≤ 1.9·10⁻¹³; σ = 0 plant ≥ 2.7·10¹ absolute at n ≥ 2; probe 2.8·10⁻⁵ and
+  4.4·10⁻⁵.
+- Route-(ii) T_sad vs C1 T_FD: 5.3·10⁻⁷ rel, **PASS**.
+- W4P4 is running.
