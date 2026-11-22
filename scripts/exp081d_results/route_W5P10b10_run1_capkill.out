@@ -1,0 +1,2 @@
+[      0s] planted guard: eps 6.023e-10, predicted dg 2.8912e-05, predicted impact 1.00e-06 (10x 1e-7)
+[    333s] sigma_W5_P10_box10_c2_cp12_sc3.0_dd0: N 600 Ny 40; 081c numerics installed (21 unique slices, low-rank residues; ranks {'max': 1, 'hist': {'1': 124}}) 3968 G, unconverged 0 (333s)

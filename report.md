@@ -11337,3 +11337,16 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 - The original 12. The "between bands" case moved from r = 0.70 to r = 0.80 because 0.70 now lies inside "converging".
 - **Plus four new:** p = 1 convergence (r = 0.667) → converging; p = 1 growth (r = 1.5) → power-divergent; p = 0.3 (r = 1.13) →
   log-like or slow power; p = 0.5 convergence (r = 0.82, in the gap) → INCONCLUSIVE.
+
+### EXP-081d Stage 1: both k = 2.5 routes killed by their own memory caps (run 1, kept). Formula error #2; the k = 3 memory projection is corrected from measurement [model: Opus 5.5]
+- **route_W10P10b10:** peak 2.37 GB (MEM 1.52 + compressed 0.86), above the 2.3 GB cap, killed at 4145 s. **route_W5P10b10:** 2.57 GB,
+  killed at 4112 s.
+  - Both were in the t0 phase, after install (ranks ≤ 2, 0 unconverged). No t0, T_sad or g was computed, so nothing was read.
+  - Outputs kept as `exp081d_results/route_*_run1_capkill.{out,wd.log}`.
+- **My error, the second memory formula miss of the day:** "k = 2.5 ≈ 1.5 GB" counted only the (N_y, N, N) arrays. Scaling the
+  **measured** k = 2 peak (1.02 GB) by N_y·N² gives ~3 GB, which matches.
+  - **Rule (applied from now): every memory declaration scales the nearest measured peak, never a component count.**
+- **k = 3 corrected from measurement:** ≈ 2.5 GB × (48·864²)/(40·600²) ≈ **6.2 GB per process**. Stage-2 option (i) (3 processes,
+  ~19 GB) is impossible on 16 GB. Back to the Bridge and Sumit.
+- Relaunch of k = 2.5 with measured caps (≈ 3.9 GB each) proposed to the Bridge; waiting for its OK. Sumit: "resources are free
+  enough to run, but talk to bridge too".
