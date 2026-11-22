@@ -71,6 +71,8 @@ def main():
     ap.add_argument("--stop-on-pressure-warn", action="store_true",
                     help="also stop if the system memory-pressure level reaches warn (yellow) or worse (bridge rule, 2026-11-17)")
     ap.add_argument("--interval", type=float, default=5.0); ap.add_argument("--stdout", default=None)
+    ap.add_argument("--soft-cap-gb", type=float, default=None,
+                    help="soft cap (Sumit 2026-11-22): crossing it only WARNS (printed + logged, again at each +0.5 GB); --cap-gb stays the hard kill")
     ap.add_argument("cmd", nargs=argparse.REMAINDER)
     a = ap.parse_args()
     cmd = a.cmd[1:] if a.cmd and a.cmd[0] == "--" else a.cmd
@@ -87,12 +89,15 @@ def main():
               f"# memory trigger: system free < {a.min_sysfree_pct}%, or free swap < {a.min_swap_mb} MB together with system free < 20%\n"
               f"# pressure trigger: {'stop at level >= 2 (yellow)' if a.stop_on_pressure_warn else 'off'}\n"
               f"# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level\n")
-    peak = (0.0, 0.0, 0.0); t0 = time.time(); reason = None
+    peak = (0.0, 0.0, 0.0); t0 = time.time(); reason = None; warned = -1.0
     while child.poll() is None:
         pids = descendants(child.pid); mem, cmp, seen = tree_footprint(pids)
         disk = shutil.disk_usage(os.getcwd()).free/1024**3; swp = swap_free_mb(); sfp = sys_free_pct(); lvl = pressure_level(); tot = (mem + cmp)/1024**3
         if tot > peak[2]: peak = (mem/1024**3, cmp/1024**3, tot)
         log.write(f"{time.time()-t0:8.1f} {seen:5d} {mem/1024**3:7.3f} {cmp/1024**3:8.3f} {tot:7.3f} {disk:12.2f} {swp:12.1f} {sfp:12.0f} {lvl:14d}\n")
+        if a.soft_cap_gb is not None and tot > a.soft_cap_gb and tot > warned + 0.5:
+            warned = tot; msg = f"# WATCHDOG WARN (soft cap): tree footprint {tot:.2f} GB > soft cap {a.soft_cap_gb} GB at t={time.time()-t0:.0f}s (hard cap {a.cap_gb} GB)"
+            log.write(msg + "\n"); log.flush(); print(msg, flush=True)
         if tot > a.cap_gb: reason = f"tree footprint {tot:.2f} GB > cap {a.cap_gb} GB"
         elif disk < a.min_disk_gb: reason = f"free disk {disk:.2f} GB < {a.min_disk_gb} GB"
         elif sfp == sfp and sfp < a.min_sysfree_pct: reason = f"system-wide free memory {sfp:.0f}% < {a.min_sysfree_pct}%"

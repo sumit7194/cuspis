@@ -635,3 +635,5 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] C2 W4P4 n = 2 residual +4.7e-10, in evaluating Q on the σ ≠ 0 strip. Candidates: Mx/tmax, and the CORRECTNESS of the Arb arm-(b)
       reference (the rerun only shows determinism). Excluded: s_cut, npt, npt0, Mt, aliasing, n·Δld1 precision, σ error.
 - [ ] Cross-path tolerance guard (tools/tol_ref.py) and plant guard (tools/plant_guard.py) must be used by every 081d harness.
+- [ ] GUARD (Bridge, 2026-11-22): memory estimates scale from a MEASURED full-run peak (nearest geometry, by Ny·N²), never from an
+      array-count formula. Two misses today: the 081d draft's "< 0.3 GB at k = 3", and "k = 2.5 ≈ 1.5 GB", which was killed at 2.4–2.6 GB.

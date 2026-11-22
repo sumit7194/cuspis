@@ -11350,3 +11350,15 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   ~19 GB) is impossible on 16 GB. Back to the Bridge and Sumit.
 - Relaunch of k = 2.5 with measured caps (≈ 3.9 GB each) proposed to the Bridge; waiting for its OK. Sumit: "resources are free
   enough to run, but talk to bridge too".
+- **Relaunch declaration (Bridge OK; Sumit: "make the caps a little soft, so it informs rather than kill"):**
+  - `tools/watchdog.py` gains `--soft-cap-gb`: crossing it only WARNS (printed and logged, again at each +0.5 GB). `--cap-gb`
+    stays the hard kill. Tested: it warns and does not kill.
+  - The k = 2.5 routes now run with **soft cap 3.5 GB** (also the Bridge's "report if > 3.5 GB before t0 ends") and **hard
+    backstop 5.0 GB**. Expected full-run peak ~3.1 GB, scaled from the measured k = 2 peak.
+  - Pressure-stop, pgate and nice 12 are unchanged. Pressure-stop is the real guard for the box; the hard backstop exists only for
+    a runaway process.
+  - Box at relaunch: ~11.8 GB free. Expected total ~6.7 GB (2 × 3.1 + L3 ~0.5).
+- **C1 order fixed (named by the Bridge):** the k = 2.5 C1 jobs had started before any route stored T_sad. They were stopped and
+  their partial outputs kept as `c1_*_premature_nostored.*`; they are not graded.
+  - The relaunched lanes run route, then C1. C1 now reads the stored T_sad from the 081d checkpoint (`verdict_stored`), so the k =
+    2.5 grade can never be computed against a missing value.
