@@ -11156,3 +11156,16 @@ registered (C2 W4P4 n = 2).** This stays the headline.
 - The excess is a consistent −4.4·10⁻¹⁰ (signed) and is insensitive to all three knobs.
 - **Stopped as instructed; the sweep was not widened.** Candidates left: **Mx/tmax** (port β-path and tail range) and **the Arb
   arm-(b) reference** (its float64-seeded, Arb-refined sector saddle and Q assembly).
+
+### C2 W4P4 n = 2: test at the EXACT (Arb) saddle. PRE-STATEMENT (committed before any number; Bridge-approved; post hoc) [model: Opus 5.5]
+- **Cost (measured beforehand):** the registered Arb P = 4 arm (b) run took 161 s for n = 2…6 at W4P4, peak 0.43 GB. So n = 2
+  alone is well under 1 h, under the 1.5 GB cap, at nice 12, as one job.
+- **Method.**
+  - `exp083_arb.py` now also stores its Arb-refined saddle (a new `sigma` field, 40 digits; nothing else changes). Rerun
+    `exp083_arb.py 4 4 2 b` into a separate file, so the registered `W4P4b.json` is untouched.
+  - Known answer: the rerun's Q(2) must reproduce the stored registered value.
+  - Then evaluate Q_sad(2) on the unaliased (production) path at that saddle rounded to float64, and report its distance from the
+    stored C2 σ₂ and from the float64 honest saddle.
+- **"Cause found":** Q_sad at the Arb saddle rounded to float64 moves dev_b(2) to ≤ 3.1·10⁻¹⁰, with arm (a) unchanged. Arm (a)
+  does not involve σ, so it is unchanged by construction; its 1.04·10⁻¹⁰ is re-measured as a control.
+- **The result is post hoc and the headline is unchanged** (arm (b) UNVALIDATED as registered).

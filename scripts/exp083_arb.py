@@ -72,6 +72,7 @@ if __name__ == "__main__":
         else: A = ag.Gs(n)
         ldn, rn = ag.logdet_sectors(A, n); Qn = ldn - n * ld1
         out["Q"][n] = Qn.mid().str(110, radius=False); out["rad"][n] = float(Qn.rad())
+        if arm == "b": out.setdefault("sigma", {})[n] = [x.mid().str(40, radius=False) for x in sig]   # stored saddle (2026-11-22, C2 W4P4 diagnosis)
         if out["rad"][n] > 1e-60: raise SystemExit(f"ball radius {out['rad'][n]:.1e} > 1e-60 at n={n} -> STOP")
         log(f"W{W}P{P} arm {arm} n={n}: Q = {Qn.mid().str(25, radius=False)}  (rad {out['rad'][n]:.1e})" + (f" saddle it {it} |F| {fm:.1e}" if arm == "b" else ""))
         json.dump(out, open(outf, "w"), indent=1)
