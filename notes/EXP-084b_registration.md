@@ -53,3 +53,14 @@ before the 081e routes, ALONE under the no-kill watchdog; n = 5 only in a slot c
    - **Plant P-cd:** a synthetic R(k) = c·k² + 0·k + e on the real k-set, with the real σ_R, must return d within 2σ_d of 0 and c within 2σ_c of the planted value.
 2. **n = 5:** before it starts, the runner pauses and the session messages the Bridge (Sumit's condition: a swap-heavy hour is announced). It runs alone under no-kill. n = 6 is dropped unless leaner code reproduces the stored n = 2, 3 bitwise.
 3. **Pre-stated:** with 3–4 n values, **INCONCLUSIVE is the likely outcome if the order drift is large.** That would be a limit of the n coverage, not a failure of the design.
+
+## Amendment 1 (pre-run, 2026-11-23; NOTHING of 084b has run). Plant expectations corrected on paper while writing the code.
+- **σ and drift defined precisely** so that the drift test CAN fail:
+  - σ_c(1) = max(leave-one-out spread at the order BELOW the highest, linear propagation of the per-n σ through the highest-order extrapolation, floor 1e-12);
+  - drift = |c(1)_highest − c(1)_highest−1|.
+  - If σ included the spread across orders, drift ≤ σ would hold automatically: a check that cannot fail.
+- **P-quad (α(n − 1)²) → expected INCONCLUSIVE, not "consistent with 0".**
+  - With n − 1 = 1, 2, 3: order 2 gives c(1) = 0 exactly, order 1 gives intercept −10/3·α. With 1..4: −5α. So the drift is ≫ σ.
+  - Three or four n values cannot certify that a quadratic c(n) vanishes; INCONCLUSIVE is the honest reading.
+- **P-noise:** a seeded label is only ~95%-deterministic, and re-seeding after a miss would be choosing a favourable seed. The check is therefore the deterministic propagation: with declared per-n σ = 1e-3, σ_c(1) ≥ 1e-3 (it is √19·1e-3 ≈ 4.4e-3 for n = 2, 3, 4). The label is reported, not asserted. Seed 20261123 is unchanged.
+- **P-lin → consistent with 0; P-const → non-zero; P-cd** (noise-free c·k² + e on the real k and σ_R) → d within 2σ_d of 0 and c recovered: a code check.
