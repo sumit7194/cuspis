@@ -12297,3 +12297,32 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
     - Walls ≈ 0.18–0.20; next to the cut ends ≈ interior.
   - Hypothesis only: the box counterterm is weaker than bulk by a P-dependent factor (P = 4k). That gives Y k-dependent curvature, which is what fails A's 1/a² row. The interior ratios (0.57–0.80) bracket the 0.77 the bulk counterterm would have needed.
 - **Grade:** registered reading "(P2) fails" (the 1/a² row). The PRIMARY prescription A does not give a pure-1/a counterterm at k = 1–2.5. Whether that is finite-P curvature or a true 1/a² term cannot be separated with 4 k (premise caveat above). The slope question stays unanswered.
+- **085c, Bridge grading:** the REGISTERED reading stands ("row fails, no slope reading"); the controls behaved as registered.
+- **085c POST-HOC (descriptive; the reading is NOT re-read). Curvature form: k² against 1/k, at full precision.**
+  - Motivation (Bridge): c_A ≈ c(1 − ~2/P) with P = 4k. A factor (1 − α/k) times a linear term gives linear + constant + 1/k, with no k². A quadratic fit reads the convex 1/k as c₂ > 0.
+  - Unweighted 3-parameter fits on 4 k, each with **1 dof**:
+
+| series | form | c₁ | curvature coeff | rms residual |
+|---|---|---|---|---|
+| Y = R[½Σc_Aσ̇] | c₀ + c₁k + c₂k² | +2.484 | c₂ +0.541 | 1.97e-2 |
+| Y | c₀ + c₁k + c₃/k | **+5.280** | c₃ +2.298 | **6.12e-3** |
+| R_corr^A | k² | +2.241 | −0.742 | 5.43e-2 |
+| R_corr^A | 1/k | −1.495 | −2.896 | 8.83e-2 |
+| raw R | k² | +4.725 | −0.2015 | 7.40e-2 |
+| raw R | 1/k | +3.785 | −0.598 | 8.22e-2 |
+
+  - **Y prefers the 1/k form by ×3.2 in rms.** Its c₁ = 5.28 gives A's asymptotic slope ≈ g_raw − 5.28 = 4.02 − 5.28 = **−1.26**. The direct 1/k fit of R_corr^A gives c₁ = −1.50. Either way this is an asymptotic **overshoot**, like bulk (−1.21 / −1.69), as expected since c_A → c when P → ∞.
+  - **Context, judged against R's own curvature (Bridge's request):** raw R is fitted by NEITHER form better than rms ~0.07–0.08. That finite-k scatter is ~10× Y's residuals, so R_corr^A's form preference (k² better) just inherits R's scatter.
+    - Y itself is smooth (residual 6e-3 under 1/k), and its 1/k preference is the informative one.
+    - With 1 dof, a ×3 rms ratio is suggestive, not decisive.
+  - The registered c₂(Y) = 0.714 came from the σ-weighted fit (stored σ_R spans 5.8e-10 to 1.2e-7, so k = 2.5 is down-weighted); unweighted it is 0.541.
+  - **Interpretation (post-hoc, hypothesis):**
+    - the box prescription A does NOT fix the ~30% overshoot in the continuum;
+    - its near-flattening over k = 1–2.5 is a finite-P effect that fades;
+    - "1/a² remainder" is likely a misnomer: the curvature is O(a), not O(1/a²).
+    - Not established (1 dof).
+  - **T54, descriptively:** every prescription tested (bulk, box A, full tadpole) overshoots asymptotically. The remaining branches are a SECOND contribution of opposite sign, or c's normalisation. Next step: Sumit's discussion; no new registration tonight; routes stay on HOLD.
+- **Design slip (085c row), shared:**
+  - Bridge slip 23, in two parts: (a) the premise "R has no k² content" was wrong (raw R c₂ = −0.20); (b) the row's model could not separate k² from 1/k curvature, which the c_A/c map already predicted.
+  - My share: I accepted both without asking what else lands in the row.
+  - Added to LESSONS as L4.

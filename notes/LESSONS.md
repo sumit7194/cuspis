@@ -22,3 +22,7 @@
 - **Failure:** 085w2b changed s_cut 3 → 6 in route (ii) at n = 2 and predicted that Level-1 dev would drop. The result was bitwise identical. At integer n the pole tails above s_cut enter with weight e^(−2πns) ≈ 4e-17 (n = 2, s = 3), so the change could not act. The registered "FAIL" was uninformative about the change.
 - **Same class as** "a check that cannot fail" and "show the ansatz contains the answer": a variable that cannot reach the result tests nothing.
 - **Rule:** before registering a one-variable test, write the variable's largest possible effect on the measured quantity (an order-of-magnitude bound from the code's weights). If the bound is below the precision or below the effect to be explained, the test is not run as a test of that mechanism.
+
+## L4 (2026-11-24): a model-shape row must be able to tell apart the shapes the mechanism itself predicts
+- **Failure:** 085c's "1/a² row" (a k² coefficient over 4 k) was registered after the c_A/c map was anticipated to vary like 1 − α/P. That predicts 1/k curvature, which a k² fit reads as c₂ > 0. The row "failed" for what is post-hoc likely an O(a) effect. The row's premise ("R has no k² content") was also unchecked; raw R has c₂ = −0.20.
+- **Rule:** before registering a shape test, (i) list the shapes the mechanism and the finite-size corrections predict (here k², 1/k, constant), and confirm the test separates them with the available points and dof; (ii) run the same test on the UNCORRECTED data to check its premise; (iii) ask "what else lands here?".
