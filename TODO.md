@@ -643,3 +643,4 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       If the measured total > ~13 GB, go back to the Bridge before launching.
       Split: exp081d_route.py --nodes 0:24 (with t0/T_sad) and 24:48, then a final pass for the checks.
 - [ ] GUARD: never edit a shell runner while any lane is executing it (zsh reads incrementally and re-entered run_081d_stage1.sh on 2026-11-22). New lanes go in a new file.
+- [x] (2026-11-23, slip) The overnight Stage-1 event waiter (bdr3qhptw) could not fire. In zsh, `F="a b c"; cat $F` is ONE filename (no word-splitting), so the baseline and the loop count were both 0 for 11 h. Nothing was missed: no lane failed, and L2b completion was found by its own task notification. **Rule: before arming a waiter, run its condition against a file where it must already be true (a finished lane) and see it fire.** The replacement waiter (b86fo8pz7) was tested that way.
