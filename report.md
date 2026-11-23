@@ -11912,3 +11912,11 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - (a) Test (i) as registered compared d with t0 only, but the σ = 0 n-derivative is t0 + 𝒞, so it would fire on correct code. Replaced by (i-G) Poisson-residue d against 𝒞-line-quadrature d, and (i-B) the B-route Ġ against d, with precision measured first.
   - (b) **The Σσ̇ units were wrong by a factor Ny = 16k.** (B) sums over 3D sites, so Σσ̇ must be the 3D sum Ny·Σ_x σ̇.
   - (c) Controls added: NORM-T0 (a dense periodic check of the FFT normalisation against production conventions), R-norm (recompute the stored R_T0), and reproduction of the stored tsad via 085's σ̇ path.
+
+### Incident #3 (2026-11-23 17:01): W6 HELD route attempt 3 pressure-killed with NO side job; the 081d runner ended by the guard
+- W6 attempt 3 was killed by yellow pressure at wall 1521 s (≈ 17:01:43), in t0, with the tree at 6.85 GB (3.52 MEM + 3.32 CMPRS). **No side job was running.** Resident desktop load was the Claude app (~2+ GB across its processes) and Chrome.
+- pgate stopped retrying, `c1_W6P12b12 FAILED`, and the 081d runner advanced to its W12 route. **The guard fired (17:02:29) and stopped runner 46956, as designed.** The HELD W6 checkpoint holds install stats only (no g), so W6 reuse under 081e is forfeited: F.3 W6 will fail, and the runner queues the W6 rerun after W12 (the designed branch).
+- **Finding:** with normal desktop load, a ~7 GB route trips the yellow pressure-stop by itself. W12 (measured 7.32 GB) is expected to do the same. Kills #1 and #2 were caused by my side jobs; #3 was not.
+- The pressure-stop level is Sumit's policy. Options are with the Bridge: (a) idle-Mac windows only, (b) raise the route pressure-stop to red, (c) run on the server.
+- Runner 75214 proceeds with EXP-084 (small, alone) first, unaffected.
+- **EXP-085 code** `exp085_run.py` is written (amendments 1–2 implemented), and NOT run.

@@ -16,3 +16,22 @@
 step0 W6: cap None void node None
 === route_W6P12b12 start 15:46:57
 # pgate: attempt 1 at 15:47:27 (pressure normal >= 60 s)
+# exit -15; wall 2079 s; PEAK tree MEM 3.604 GB + CMPRS 3.380 GB = 6.983 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+# pgate: attempt 1 killed by memory pressure; retrying
+# pgate: attempt 2 at 16:22:36 (pressure normal >= 60 s)
+# exit -15; wall 796 s; PEAK tree MEM 2.094 GB + CMPRS 1.862 GB = 3.956 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+# pgate: attempt 2 killed by memory pressure; retrying
+# pgate: attempt 3 at 16:36:22 (pressure normal >= 60 s)
+# exit -15; wall 1521 s; PEAK tree MEM 3.524 GB + CMPRS 3.324 GB = 6.849 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== route_W6P12b12 FAILED
+=== route_W6P12b12 end 17:01:43
+# exit -15; wall 1521 s; PEAK tree MEM 3.524 GB + CMPRS 3.324 GB = 6.849 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+=== c1_W6P12b12 start 17:01:43
+# pgate: attempt 1 at 17:02:13 (pressure normal >= 60 s)
+# exit 1; wall 6 s; PEAK tree MEM 0.047 GB + CMPRS 0.000 GB = 0.047 GB
+=== c1_W6P12b12 FAILED
+=== c1_W6P12b12 end 17:02:19
+# exit 1; wall 6 s; PEAK tree MEM 0.047 GB + CMPRS 0.000 GB = 0.047 GB
+step0 W12: cap None void node None
+=== route_W12P12b12 start 17:02:19
+=== route_W12P12b12 STOPPED by guard (k = 3 VOID, CEN)
