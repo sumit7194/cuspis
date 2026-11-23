@@ -11756,3 +11756,14 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 - This also bears on the Bridge's points (a)/(c):
   - (a) the known O(N⁰) shifts are negative and of relative size 0.2–0.5, consistent with R being contaminated rather than physical;
   - (c) the MFS conical counterterm is local on the cut, so it cancels in the width pair and cannot cause the growth (argued).
+
+### 081e: every outcome pre-stated (Bridge addition, 2026-11-23, before any R(3) read; the bands are unchanged)
+**Expected outcome, stated plainly:** the descriptive linear fit R ≈ 4.02k − 1.75 predicts R(3) ≈ 10.3, so r ≈ 1.45, **POWER-DIVERGENT (argued: an extrapolation of 4 points, descriptive)**. An 081e power-divergent verdict would mainly CONFIRM the trend. The information lies in the cut-placement test, not in that confirmation.
+
+| 081e PRIMARY reading | pre-stated meaning | next step |
+|---|---|---|
+| power-divergent | pipeline O(a) defect (argued: a t0/T_sad sector mismatch times their common 1/a² divergence), not a δκ statement | cut-placement test |
+| log-like or slow power, or converging | the linear remainder must have changed between k = 2.5 and 3, contradicting the 4-point trend; no physics reading of R yet | cut-placement test runs anyway, BEFORE any physics reading |
+| INCONCLUSIVE (gap, σ, non-monotone, T0/T1 differ) | as for power-divergent | cut-placement test |
+
+**Grade of the locality argument:** argued (premises stated), not shown.
