@@ -47,3 +47,11 @@ cost measured progressively (route (ii) at P ≤ 10 is unmeasured). [model: Opus
    - **ΔR_target = 0.002 (⅕ of the threshold): must PASS Level 2 conditionally,** i.e. it is a valid check only if the unplanted comparison agrees to ≤ 0.008. If the unplanted |ΔR| is already > 0.008, the outcome is reported, not graded: it would then reflect the real difference, not the machinery. Derived on paper before registration.
 2. **Normalisation:** ΔQ → ΔR_n goes through the SAME function and stored κ / geometry inputs as 084/084b, with no typed constants.
    - **Planted normalisation test:** ΔQ(W₁) = 1 at k = 2, n = 2 must give ΔR = −½·norm(2), where the test computes norm(2) independently as 1/(Ny·(1/W₁ − 1/W₂)·κ_stored(2)) at run time and compares to the function's output to 1e-12.
+
+## Amendment 1 (POST-FIRING, per the Bridge's ruling 2026-11-23): KA redefined after its cause was SHOWN
+- **Fired:** KA, production route (ii) W2P2 n = 2 = 0.3029743825630957 against the stored C2 value 0.3029743823472364 (2.2e-10 > 1e-12).
+- **Cause shown:** the stored value was computed on the ALIASED path (the pre-slip-15 default; b0792ed at 09:20 precedes the alias=False switch, 1b8cf34 at 12:01). `exp084c_run.py KA_ALIAS` on the aliased path reproduces it **BITWISE** (0.3029743823472364, difference 0).
+- **KA, redefined:**
+  - Line 1: the stored value on the SAME aliased path to 1e-12. **PASS (bitwise).**
+  - Line 2: production (alias=False) route (ii) against honest Arb Q(2) = 0.3029743824557108 under C2's rule max(3·dev_a, 1e-10), with dev_a = 9.59e-11 from `exp083_r3p/W2P2_base.json`, so tol = 2.88e-10. dev = 1.074e-10. **PASS.**
+- **084c runs on the PRODUCTION path (alias=False)**, the continuation the continued R uses.

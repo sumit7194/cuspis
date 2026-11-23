@@ -12084,3 +12084,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - **Not bitwise** → stop and diagnose before any 084c reading.
   - 084c runs on the PRODUCTION path (alias=False), the continuation the continued R uses.
 - **EXP-084c dry run (W2P4b4, n = 2; alone, no-kill):** Level 1 PASS (|dev| 1.73e-10 ≤ tol 7.4e-10; gap |F| 2.3e-15). **Cost 959 s** (≈ 8 min per route-(ii) evaluation, including the probe and arm a); **memory 0.076 GB**. The cost scaling with W, P and Ny is unmeasured. A W³·Ny-type scaling would make k = 2.5 cost tens of hours per (geometry, n), so a second measured point (W4P4 n = 2 for W; W3P6 n = 2 for P) comes before the rest is scheduled. Registered fallback (§E): the reading on k ∈ {1, 1.5, 2}, stated.
+- **EXP-084c KA resolved (post-firing amendment 1, per the Bridge's ruling):**
+  - The aliased-path rerun reproduces the stored C2 value **BITWISE**, so the cause is shown (the reference predated slip 15's alias=False switch).
+  - Redefined KA: line 1 (aliased path, ≤ 1e-12) PASS, bitwise; line 2 (production path against honest Arb under C2's rule: dev 1.074e-10 ≤ tol 2.88e-10) PASS.
+  - 084c proceeds on the production path. Remaining geometries are scheduled after a second cost point.
