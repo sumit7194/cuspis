@@ -79,13 +79,13 @@ def main():
     ap.add_argument("--pressure-stop-level", type=int, default=None, choices=(2, 4),
                     help="stop when the pressure level reaches this value (2 yellow, 4 red); overrides --stop-on-pressure-warn (Sumit, 2026-11-23: routes stop at red)")
     ap.add_argument("--pause-on-red", action="store_true", help="Sumit 2026-11-23: never kill for memory; inform at yellow/red, SIGSTOP only after --red-grace s of continuous red, SIGCONT after --green-resume s green")
-    ap.add_argument("--red-grace", type=float, default=300.0); ap.add_argument("--green-resume", type=float, default=60.0)
+    ap.add_argument("--pause-long", type=float, default=1800.0); ap.add_argument("--red-grace", type=float, default=300.0); ap.add_argument("--green-resume", type=float, default=60.0)
     ap.add_argument("--inform-pressure", action="store_true", help="print/log a WARN when pressure rises to yellow or worse (below the stop level)")
     ap.add_argument("--interval", type=float, default=5.0); ap.add_argument("--stdout", default=None)
     ap.add_argument("--soft-cap-gb", type=float, default=None,
                     help="soft cap (Sumit 2026-11-22): crossing it only WARNS (printed + logged, again at each +0.5 GB); --cap-gb stays the hard kill")
     ap.add_argument("cmd", nargs=argparse.REMAINDER)
-    a = ap.parse_args(); INFORM = a.inform_pressure; _last_lvl = [1]; _red, _green, _paused = [None], [None], [False]; PL = a.pressure_stop_level if a.pressure_stop_level else (2 if a.stop_on_pressure_warn else None)
+    a = ap.parse_args(); INFORM = a.inform_pressure; _last_lvl = [1]; _red, _green, _paused = [None], [None], [False]; _pt, _pl = [None], [False]; PL = a.pressure_stop_level if a.pressure_stop_level else (2 if a.stop_on_pressure_warn else None)
     cmd = a.cmd[1:] if a.cmd and a.cmd[0] == "--" else a.cmd
     outf = open(a.stdout, "w") if a.stdout else None
     child = subprocess.Popen(cmd, start_new_session=True, stdout=outf or None, stderr=subprocess.STDOUT if outf else None)
@@ -107,10 +107,10 @@ def main():
         if tot > peak[2]: peak = (mem/1024**3, cmp/1024**3, tot)
         log.write(f"{time.time()-t0:8.1f} {seen:5d} {mem/1024**3:7.3f} {cmp/1024**3:8.3f} {tot:7.3f} {disk:12.2f} {swp:12.1f} {sfp:12.0f} {lvl:14d}\n")
         if a.soft_cap_gb is not None and tot > a.soft_cap_gb and tot > warned + 0.5:
-            warned = tot; msg = f"# WATCHDOG WARN (soft cap): tree footprint {tot:.2f} GB > soft cap {a.soft_cap_gb} GB at t={time.time()-t0:.0f}s (hard cap {a.cap_gb} GB)"
+            warned = tot; msg = f"# WATCHDOG WARN [{time.strftime('%F %T')}] level {lvl} (soft cap): tree footprint {tot:.2f} GB > soft cap {a.soft_cap_gb} GB at t={time.time()-t0:.0f}s (hard cap {a.cap_gb} GB)"
             log.write(msg + "\n"); log.flush(); print(msg, flush=True)
         if INFORM and lvl >= 2 and lvl > _last_lvl[0] and not (PL and lvl >= PL):   # Sumit 2026-11-23: inform, do not kill, below the stop level
-            msg = f"# WATCHDOG WARN (pressure {({2: 'yellow', 4: 'red'}).get(lvl, lvl)}): level {lvl} at t={time.time() - t0:.0f}s, tree {tot:.2f} GB -- close other apps?"
+            msg = f"# WATCHDOG WARN [{time.strftime('%F %T')}] (pressure {({2: 'yellow', 4: 'red'}).get(lvl, lvl)}): level {lvl} at t={time.time() - t0:.0f}s, tree {tot:.2f} GB -- close other apps?"
             log.write(msg + "\n"); log.flush(); print(msg, flush=True)
         _last_lvl[0] = lvl
         if a.pause_on_red:                                         # pause/resume instead of any memory kill
@@ -121,13 +121,19 @@ def main():
             if not _paused[0] and _red[0] and now - _red[0] >= a.red_grace:
                 try: os.killpg(child.pid, signal.SIGSTOP); _paused[0] = True
                 except ProcessLookupError: pass
-                msg = f"# WATCHDOG PAUSE (red pressure {a.red_grace:.0f} s): job SIGSTOPped at t={now - t0:.0f}s, tree {tot:.2f} GB -- please close apps; resumes after {a.green_resume:.0f} s green"
+                msg = f"# WATCHDOG PAUSE [{time.strftime('%F %T')}] level {lvl} (red pressure {a.red_grace:.0f} s): job SIGSTOPped at t={now - t0:.0f}s, tree {tot:.2f} GB -- please close apps; resumes after {a.green_resume:.0f} s green"
                 log.write(msg + "\n"); log.flush(); print(msg, flush=True)
             if _paused[0] and _green[0] and now - _green[0] >= a.green_resume:
                 try: os.killpg(child.pid, signal.SIGCONT); _paused[0] = False
                 except ProcessLookupError: pass
-                msg = f"# WATCHDOG RESUME ({a.green_resume:.0f} s green): job SIGCONTinued at t={now - t0:.0f}s"
+                msg = f"# WATCHDOG RESUME [{time.strftime('%F %T')}] level {lvl} ({a.green_resume:.0f} s green): job SIGCONTinued at t={now - t0:.0f}s"
                 log.write(msg + "\n"); log.flush(); print(msg, flush=True)
+            if _paused[0]:
+                _pt[0] = _pt[0] or now
+                if now - _pt[0] >= a.pause_long and not _pl[0]:              # Bridge 2026-11-23: a pause > 30 min is reported (the session waiter relays it)
+                    _pl[0] = True; msg = f"# WATCHDOG PAUSE-LONG [{time.strftime('%F %T')}] level {lvl}: paused > {a.pause_long:.0f} s (since t={_pt[0] - t0:.0f}s)"
+                    log.write(msg + "\n"); log.flush(); print(msg, flush=True)
+            else: _pt[0] = None; _pl[0] = False
             if disk < a.min_disk_gb: reason = f"free disk {disk:.2f} GB < {a.min_disk_gb} GB"
         elif tot > a.cap_gb: reason = f"tree footprint {tot:.2f} GB > cap {a.cap_gb} GB"
         elif disk < a.min_disk_gb: reason = f"free disk {disk:.2f} GB < {a.min_disk_gb} GB"
