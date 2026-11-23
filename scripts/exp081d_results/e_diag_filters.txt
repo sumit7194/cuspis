@@ -1,0 +1,8 @@
+== W12P12b12 p=7: production s = [np.float64(0.8262102), np.float64(0.8262366)]
+  target s 2.4778963 (z 1.732e-07): nearest ev 1.7315e-07+0.0000e+00j  s 2.4778963  |Im|/|z| 0.0e+00 [pass @1e-8]  |ev z - 1|min 4.7e-06 [REJECT @1e-6]
+  target s 2.4794482 (z 1.715e-07): nearest ev 1.7147e-07+0.0000e+00j  s 2.4794482  |Im|/|z| 0.0e+00 [pass @1e-8]  |ev z - 1|min 3.4e-06 [REJECT @1e-6]
+== W12P12b12 p=10: production s = [np.float64(0.9708493), np.float64(0.9708506)]
+  target s 2.9124682 (z 1.129e-08): nearest ev 1.1287e-08+0.0000e+00j  s 2.9124682  |Im|/|z| 0.0e+00 [pass @1e-8]  |ev z - 1|min 4.5e-06 [REJECT @1e-6]
+  target s 2.9126315 (z 1.128e-08): nearest ev 1.1276e-08+0.0000e+00j  s 2.9126315  |Im|/|z| 0.0e+00 [pass @1e-8]  |ev z - 1|min 4.5e-06 [REJECT @1e-6]
+== W6P12b12 p=7: production s = [np.float64(0.8234721), np.float64(0.8290245), np.float64(2.4334658), np.float64(2.5472179)]
+== W6P12b12 p=10: production s = [np.float64(0.9700941), np.float64(0.9716094), np.float64(2.8849087), np.float64(2.9466608)]

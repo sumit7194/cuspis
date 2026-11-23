@@ -11550,3 +11550,14 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   - It is held for a possible follow-up, and its R is not read.
   - Nothing from it enters any 081d statement.
   - Its files are `exp081d_results/route_W6P12b12.*` and `sigma_W6_P12_box12_*_ckpt.json`, and are labelled in `exp081d_results/HELD_NOT_081d.txt`.
+
+### EXP-081e pre-work, item (a): root cause of the W12P12b12 missed poles. **Shown, not argued** (`exp081d_results/e_diag_filters.txt`; scratch replication of `Slice._poles`, no production change).
+- For each of the 4 missed poles, the nearest QEP eigenvalue reproduces the census s to 7 digits.
+  - **Imaginary filter** (|Im z| < 1e-8|z|): **passes** (Im = 0 exactly).
+  - **Reciprocal filter** (min |ev·z − 1| < 1e-6): **rejects all four**, at 4.7e-6 and 3.4e-6 (p = 7) and 4.5e-6 twice (p = 10).
+  - So the reciprocal-pairing tolerance 1e-6 is what drops them. Item (a) asks for the filters loosened one at a time; the loosened rerun is still to do.
+- **Why only at W12 P12 (argued, not shown):**
+  - At W12 these high-s poles come as near-degenerate pairs (split 1.6e-3 at p = 7 and 1.6e-4 at p = 10). The 1/z partners (~6e6 and ~9e7) of a near-degenerate pair are computed less accurately, so the reciprocal match degrades past 1e-6.
+  - At W6P12b12 the corresponding poles are well separated (p = 7: 2.433 / 2.547; p = 10: 2.885 / 2.947) and production keeps them.
+  - To show it: measure the reciprocal mismatch against pair splitting.
+- **Already-measured results: no pole dropped by this mechanism is seen there (partially verified; the census has its own near-double resolution limit, item (ii)).** The census, an independent scan, matched production at every Stage-1 geometry and at W6P12b12. 081e item (b) still requires identical pole lists after any fix.
