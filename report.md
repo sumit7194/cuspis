@@ -12120,3 +12120,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The log(n)/n prediction ½·log n/(log n − log 2) gives 0.58333 (n = 128) and 0.57593 (n = 192): agreement to 7.9e-4 and 6.1e-4.
   - This is strong support for the log(n)/n form over the measured range. **Grade unchanged: argued** (beyond n = 384 is unchecked).
   - The Bridge's quoted measured values 0.5845 / 0.5750 differ slightly from the stored-value ratios above; the conclusion is the same.
+- **EXP-084c cost point W4P4 n = 2:** 1093 s (W2P4: 959 s), so doubling W costs ×1.14 (not W³-dominated); peak 0.13 GB.
+  - Level 1 **FAIL**: |dev| 5.44e-10 > tol 3.1e-10. W4P4 with box 4 IS EXP-083's C2 geometry, where the same unidentified excess (4.4–5.4e-10) was recorded, so this **reproduces the known open residual**; it is not new.
+  - Registered: a Level-1 fail with Level-2 relevance is reported as "exactness residual (cf. W4P4)" and does not change the reading. 5e-10 in Q is ≈ 1e-9 of the Level-2 scale.
+  - W3P6 (P/Ny scaling) is running.
