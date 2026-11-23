@@ -11907,3 +11907,4 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Effect ~1e-5 relative, far below the band widths.
   - Phase 3 (the only place R or ratios appear) has NOT run. The Q files are unaffected (κ enters only in phase 3).
 - **Rule:** expected values and normalisations come from the exact stored inputs the code reads, never from typed or rounded copies.
+- **Correction on the above:** my "confirmed" message to the Bridge was sent before my check had run (the check command failed on a wrong venv path). Verified afterwards: 7.04501355941485 matches exactly, and the stored slope is g_raw = 4.019821717340081.
