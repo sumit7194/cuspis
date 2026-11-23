@@ -11646,3 +11646,19 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
   - So for s ≤ 3 the spurious class the filter exists to remove is separated by magnitude (> 3 decades), and the gap is checkable each run.
   - Design: deflate exactly the structural zeros (count verified against the rank), drop the reciprocal filter inside the cut, and make the census (a resolved-MISS check both ways, item c) the arbiter.
   - **Must-reject plant for it:** a spurious real eigenvalue placed inside the cut must show up as a census MISS ("production has extra"). Not yet built.
+
+### EXP-081e pre-work: argument-principle checker (WIND) built and tested (`scripts/tools/winding.py`, `exp081d_results/e_winding_tests.txt`)
+**Plants: all PASS.**
+- Synthetic: single → 1, exact double → 2, near-double split 1e-8 → 2, tiny contour around one of a pair → 1, near-but-not-enclosing → 0, no pole → 0, triple → 3.
+- Real: W10P10b10 p = 19 resolved pair (split 8.9e-8) → 2; p = 8 isolated pole → 1; offset contour → 0.
+- Raw windings are integers to 4 decimals. Cost: milliseconds per contour.
+
+**W12P12b12 TOUCH slices (p = 14–24), counted at production's own residue contours:**
+- p = 14–16: two entries, contours of radius 5e-9 to 1.7e-8 each enclose **1** zero.
+- p = 17–24: one merged entry, radius 1e-6, encloses **2** zeros.
+- So production's contours capture every zero: **verified**, given the assumption that the α-plane contour radius equals the s-plane radius (argued from α = i·s, not tested).
+- The census's TOUCH blind zone is covered by this checker.
+
+**The 4 missed poles:** confirmed as 2 zeros each at p = 7 and p = 10.
+
+**081e draft v2:** `notes/EXP-081e_registration_draft.md`. It covers structural-zero deflation with the ZC and GAP gates and their must-fire plants, CEN′ with a must-reject plant and its registered blind zone, WIND, invariance at 9 geometries, the threshold cases, the bitwise check, and the gate→runner mapping.

@@ -1,0 +1,39 @@
+-- synthetic plants (contour radius r around c) --
+  single                                               count 1 (raw +1.0000, min/max|F| 1.0e+00) expected 1 -> OK
+  exact double                                         count 2 (raw +2.0000, min/max|F| 1.0e+00) expected 2 -> OK
+  near-double split 1e-8                               count 2 (raw +2.0000, min/max|F| 9.8e-01) expected 2 -> OK
+  near-double split 1e-8, tiny r 1e-9 (encloses one)   count 1 (raw +1.0000, min/max|F| 2.8e-01) expected 1 -> OK
+  near but NOT enclosing (pole 2r from centre)         count 0 (raw +0.0000, min/max|F| 3.3e-01) expected 0 -> OK
+  no pole                                              count 0 (raw +0.0000, min/max|F| 1.0e+00) expected 0 -> OK
+  triple                                               count 3 (raw +3.0000, min/max|F| 9.8e-01) expected 3 -> OK
+-- real slices --
+  W10P10b10 p=19 c 1.276988412 r 1e-06: count 2 (raw +2.0000, min/max|F| 1.0e+00, 0.00s)  expected 2 [known resolved pair split 8.9e-8 (census+production agree)] -> OK
+  W10P10b10 p=8 c 2.858532000 r 1e-05: count 1 (raw +1.0000, min/max|F| 9.3e-01, 0.00s)  expected 1 [isolated pole 2.858532 (pair partner 1.7e-3 away)] -> OK
+  W10P10b10 p=8 c 2.858582000 r 1e-05: count 0 (raw -0.0000, min/max|F| 6.8e-01, 0.00s)  expected 0 [contour near 2.858532 but not enclosing] -> OK
+  -- W12P12b12 TOUCH slices: production pole(s) near the touch, and the winding count --
+    p=14: production [np.float64(1.121453926), np.float64(1.121453982)] (counted with multiplicity 2) ; winding count 2 (raw +2.0000, 0.00s)
+    p=15: production [np.float64(1.151399722), np.float64(1.151399752)] (counted with multiplicity 2) ; winding count 2 (raw +2.0000, 0.00s)
+    p=16: production [np.float64(1.178217517), np.float64(1.178217534)] (counted with multiplicity 2) ; winding count 2 (raw +2.0000, 0.00s)
+    p=17: production [np.float64(1.201893674)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=18: production [np.float64(1.222419255)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=19: production [np.float64(1.239789048)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=20: production [np.float64(1.25400057)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=21: production [np.float64(1.265053132)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=22: production [np.float64(1.272947047)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=23: production [np.float64(1.277682996)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=24: production [np.float64(1.27926157)] (counted with multiplicity 1) ; winding count 2 (raw +2.0000, 0.00s)
+    p=7 (the 4 missed poles) contour c 2.47867 : count 2 (raw +2.0000)  expected 2
+    p=10 (the 4 missed poles) contour c 2.91255 : count 2 (raw +2.0000)  expected 2
+
+-- production residue contours (s-plane radius rad = min(1e-6, 0.3*spacing)) at W12P12b12 touch slices: zeros enclosed --
+  p=14: s 1.121453926 rad 1.7e-08 -> 1 zeros; s 1.121453982 rad 1.7e-08 -> 1 zeros
+  p=15: s 1.151399722 rad 9.1e-09 -> 1 zeros; s 1.151399752 rad 9.1e-09 -> 1 zeros
+  p=16: s 1.178217517 rad 5.3e-09 -> 1 zeros; s 1.178217534 rad 5.3e-09 -> 1 zeros
+  p=17: s 1.201893674 rad 1.0e-06 -> 2 zeros
+  p=18: s 1.222419255 rad 1.0e-06 -> 2 zeros
+  p=19: s 1.239789048 rad 1.0e-06 -> 2 zeros
+  p=20: s 1.254000570 rad 1.0e-06 -> 2 zeros
+  p=21: s 1.265053132 rad 1.0e-06 -> 2 zeros
+  p=22: s 1.272947047 rad 1.0e-06 -> 2 zeros
+  p=23: s 1.277682996 rad 1.0e-06 -> 2 zeros
+  p=24: s 1.279261570 rad 1.0e-06 -> 2 zeros
