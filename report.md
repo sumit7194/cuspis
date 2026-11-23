@@ -12052,3 +12052,13 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - Planted normalisation through the 084 code path with stored κ.
 - C2 plants and the KA (stored C2 W2P2) are kept.
 - Order: a dry run (k = 1, n = 2) ALONE after the EXP-085 rerun, then progressive k. Routes stay on HOLD.
+
+### EXP-081e route-free pre-steps: ALL PASS (2026-11-23 17:38–18:12; run_queue2, no-kill, alone)
+| check | result |
+|---|---|
+| F.3 W10 | g(5.97234) patched −2834.9516675187974 = stored, **BITWISE IDENTICAL** (peak 2.99 GB, 1179 s) |
+| pre-check (plants P1–P7m, F.1/F.2) | rc 0 |
+| CEN′ W12 (patched lists) | resolved MISS slices: none. TOUCH slices 14–24, which WIND verified earlier at production contours |
+| F.3 W6 | the HELD reference has no g, so FAIL by design → W6 is rerun under 081e after W12 |
+
+- **The routes (W12, then the W6 rerun) are on HOLD** pending the Bridge's go after the EXP-085 rerun is read.

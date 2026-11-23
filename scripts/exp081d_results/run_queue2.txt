@@ -5,3 +5,21 @@
 # exit 0; wall 186 s; PEAK tree MEM 2.716 GB + CMPRS 0.000 GB = 2.716 GB
 === EXP-084b rc 0
 === e_bw_W10 start 17:38:35
+# pgate: attempt 1 at 17:43:06 (pressure normal >= 300 s)
+# exit 0; wall 1179 s; PEAK tree MEM 2.036 GB + CMPRS 0.957 GB = 2.993 GB
+=== e_bw_W10 end 18:02:45 rc 0
+# exit 0; wall 1179 s; PEAK tree MEM 2.036 GB + CMPRS 0.957 GB = 2.993 GB
+F.3 W10P10b10 g|5.972340951370079: patched -2834.9516675187974 vs stored -2834.9516675187974 -> BITWISE IDENTICAL
+=== e_precheck start 18:02:45
+# pgate: attempt 1 at 18:07:15 (pressure normal >= 300 s)
+# exit 0; wall 16 s; PEAK tree MEM 0.641 GB + CMPRS 0.000 GB = 0.641 GB
+=== e_precheck end 18:07:31 rc 0
+# exit 0; wall 16 s; PEAK tree MEM 0.641 GB + CMPRS 0.000 GB = 0.641 GB
+=== e_census_W12 start 18:07:31
+# pgate: attempt 1 at 18:12:01 (pressure normal >= 300 s)
+# exit 0; wall 11 s; PEAK tree MEM 0.353 GB + CMPRS 0.199 GB = 0.552 GB
+=== e_census_W12 end 18:12:13 rc 0
+# exit 0; wall 11 s; PEAK tree MEM 0.353 GB + CMPRS 0.199 GB = 0.552 GB
+CEN prime: resolved MISS slices [] ; TOUCH slices [14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+=== F.3 W6 FAIL (HELD reference has no g; not run) -> W6 rerun under 081e
+=== HOLD before routes (awaiting Bridge: EXP-085 amendment ruling + route go) 2026-11-23 18:12:13
