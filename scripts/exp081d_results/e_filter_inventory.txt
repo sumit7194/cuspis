@@ -1,0 +1,51 @@
+structure: 2W x 2W QEP; rank(A0) min/max 2/12 vs 2W 4..24; rank(A2) 2/12; infinite ev per slice 2..20; |ev|<1e-12 per slice 2..20
+real candidates in (0,1), all s: n 989; s range 0.314..6.650
+REJECTED by the 1e-6 filter (all s): n 395
+   W12P12 p=7 s 2.4779 z 1.7e-07 mismatch 4.7e-06
+   W12P12 p=7 s 2.4794 z 1.7e-07 mismatch 3.4e-06
+   W12P12 p=10 s 2.9125 z 1.1e-08 mismatch 4.5e-06
+   W12P12 p=10 s 2.9126 z 1.1e-08 mismatch 4.5e-06
+   W12P12 p=11 s 3.0392 z 5.1e-09 mismatch 8.1e-06
+   W12P12 p=11 s 3.0392 z 5.1e-09 mismatch 8.1e-06
+   W10P10 p=10 s 3.1565 z 2.4e-09 mismatch 5.5e-06
+   W12P12 p=12 s 3.1568 z 2.4e-09 mismatch 1.9e-06
+   W12P12 p=12 s 3.1568 z 2.4e-09 mismatch 2.0e-06
+   W10P10 p=10 s 3.1570 z 2.4e-09 mismatch 5.5e-06
+   W12P12 p=13 s 3.2652 z 1.2e-09 mismatch 3.3e-06
+   W12P12 p=13 s 3.2652 z 1.2e-09 mismatch 3.2e-06
+   W10P10 p=11 s 3.2856 z 1.1e-09 mismatch 1.4e-05
+   W10P10 p=11 s 3.2859 z 1.1e-09 mismatch 1.4e-05
+   W8P8 p=9 s 3.3142 z 9.0e-10 mismatch 5.0e-05
+   W8P8 p=9 s 3.3177 z 8.8e-10 mismatch 3.6e-05
+   W12P12 p=14 s 3.3644 z 6.6e-10 mismatch 1.5e-04
+   W12P12 p=14 s 3.3644 z 6.6e-10 mismatch 1.5e-04
+   W10P10 p=12 s 3.4013 z 5.2e-10 mismatch 4.9e-06
+   W10P10 p=12 s 3.4015 z 5.2e-10 mismatch 5.0e-06
+   W8P8 p=10 s 3.4530 z 3.8e-10 mismatch 3.5e-04
+   W12P12 p=15 s 3.4542 z 3.8e-10 mismatch 4.1e-04
+   W12P12 p=15 s 3.4542 z 3.8e-10 mismatch 4.1e-04
+   W8P8 p=10 s 3.4554 z 3.7e-10 mismatch 3.2e-03
+   W10P10 p=13 s 3.5035 z 2.8e-10 mismatch 1.3e-03
+   W10P10 p=13 s 3.5037 z 2.8e-10 mismatch 4.5e-04
+   W12P12 p=16 s 3.5346 z 2.3e-10 mismatch 3.3e-04
+   W12P12 p=16 s 3.5347 z 2.3e-10 mismatch 3.3e-04
+   W10P10 p=14 s 3.5922 z 1.6e-10 mismatch 1.6e-04
+   W10P10 p=14 s 3.5923 z 1.6e-10 mismatch 1.6e-04
+   W12P12 p=17 s 3.6057 z 1.4e-10 mismatch 1.4e-05
+   W12P12 p=17 s 3.6057 z 1.4e-10 mismatch 1.5e-05
+   W12P12 p=5 s 3.6162 z 1.4e-10 mismatch 1.1e-06
+   W10P10 p=4 s 3.6294 z 1.2e-10 mismatch 1.8e-06
+   W6P12 p=18 s 3.6577 z 1.0e-10 mismatch 1.1e-06
+   W6P12 p=5 s 3.6651 z 1.0e-10 mismatch 1.6e-06
+   W8P8 p=12 s 3.6666 z 9.9e-11 mismatch 7.3e-04
+   W10P10 p=15 s 3.6672 z 9.8e-11 mismatch 6.2e-05
+   W12P12 p=18 s 3.6673 z 9.8e-11 mismatch 1.0e-05
+   W12P12 p=18 s 3.6673 z 9.8e-11 mismatch 1.1e-05
+
+kept candidates: mismatch * z / u (tests the 1/z scaling) by s band:
+   s [0,1): n  150  mismatch max 1.5e-13  (mismatch*z/u) median 4.8e-01 max 6.4e+00
+   s [1,2): n  237  mismatch max 9.9e-11  (mismatch*z/u) median 3.3e-01 max 1.1e+01
+   s [2,3): n   94  mismatch max 5.8e-07  (mismatch*z/u) median 4.6e-01 max 7.0e+01
+   s [3,4): n  112  mismatch max 1.0e-06  (mismatch*z/u) median 1.5e-01 max 1.5e+01
+   s [4,5): n    1  mismatch max 7.4e-07  (mismatch*z/u) median 2.8e-02 max 2.8e-02
+   rejected: (mismatch*z/u) min 1.8e-03 max 1.2e+04

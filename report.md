@@ -11621,3 +11621,28 @@ So the 1e-6 threshold was already within an order of magnitude of binding at k =
 2. `_attempt2_refinegrid_bug.txt`: 7-decimal roots sat on the 1e-7 refinement grid, so one root of each pair was lost.
 
 The controls are what exposed both. The Bridge's point 5 also applies to plants: the test must not sit on a degenerate point of the method.
+
+### EXP-081e pre-work, Bridge items 1–2 (2026-11-23 evening). `exp081d_results/e_touch_inventory.txt`, `e_backward_error.txt`, `e_filter_inventory.txt`
+
+**Item 1, Stage-1 TOUCH inventory: zero TOUCH slices** at W3P6b6, W6P6b6, W2P8b8, W4P8b8, W8P8b8, W5P10b10 and W10P10b10 (and at W6P12b12). Only W12P12b12 has them (11). **The Stage-1 grade stands** (partially verified).
+- Every sub-threshold grid minimum without a sign change at those geometries (4 cases, |F|/max 1e-27 to 1e-44) was resolved by the refinement into a pair that matches production exactly. Splits: 1.0e-4, 3.6e-6, 8.9e-8 (W10P10b10 p = 19) and 2.0e-4.
+- **Open caveat (untested):** a near-double whose grid minimum stays ABOVE 1e-6·max|F| would be invisible to both the sign scan and the touch detector. No case is known, and the observed minima are 1e-27 or smaller, but this has not been shown.
+
+**Item 2, a principled tolerance.**
+- **(i) WITHDRAWN: normwise backward error η(1/z) = σ_min(Q(1/z)) / (|w|²‖A₂‖ + |w|‖A₁‖ + ‖A₀‖).** It reported machine level (≤ 1.1e-16) for all 485 candidates, AND for planted spurious roots (partner offset e = 1e-3 to 1e-9, placed at s = 2.86, 2.2 and 1.5).
+  - Cause: A₂ = M·C₁ is rank-deficient, so σ_min(Q(w)) grows like |w|, not |w|². η(w) → 0 for ANY large w, so it is a check that cannot fail.
+- **(ii) Correction to the premise that the filter is absolute:** |ev·z − 1| = |ev − 1/z|·|z| is already the partner's RELATIVE error.
+  - Measured: kept partners have mismatch ≈ C·u/z, with C = mismatch·z/u between 0.03 and 70 across all s bands (989 candidates). The ill-conditioning of large partners near the infinite eigenvalues is real.
+- **(iii) No tolerance separates the populations.**
+  - The 4 genuine missed W12 poles have C = 225–3600.
+  - The 395 candidates the filter rejects (all s) span C = 1.8e-3 to 1.2e4.
+  - A blanket or conditioning-scaled tolerance would be arbitrary, not principled.
+- **(iv) What the filter actually does:**
+  - Inside the cut (s ≤ 3), all 485 real candidates over 9 geometries are genuine (census match). The filter has removed **no spurious candidate there**; its only s ≤ 3 action was dropping the 4 genuine W12 poles.
+  - All 395 rejections are at s > 3, beyond the cut (unused by production). Many are visibly paired (e.g. W10 p = 10: 3.1565/3.1570), so they are likely genuine too (unverified).
+- **(v) Structural separator (candidate principled design, not yet tested):**
+  - Each slice has exactly 2W − rank(A₀) structural zero eigenvalues (measured: |ev| < 1e-12, so s > 4.4), and 2W − rank(A₂) infinite ones.
+  - Poles admissible to production have z ≥ e^(−6π) = 6.5e-9.
+  - So for s ≤ 3 the spurious class the filter exists to remove is separated by magnitude (> 3 decades), and the gap is checkable each run.
+  - Design: deflate exactly the structural zeros (count verified against the rank), drop the reciprocal filter inside the cut, and make the census (a resolved-MISS check both ways, item c) the arbiter.
+  - **Must-reject plant for it:** a spurious real eigenvalue placed inside the cut must show up as a census MISS ("production has extra"). Not yet built.

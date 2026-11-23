@@ -1,0 +1,31 @@
+real candidates s<=3, all 9 geometries: n = 485
+  eta(z)   : median 4.5e-18  max 3.5e-17
+  eta(1/z) : median 1.1e-17  max 1.1e-16
+  threshold-adjacent and rejected cases (absolute mismatch > 1e-7):
+    W10P10 p=8 s 2.858532: |ev z-1| 1.5e-07  eta(z) 9.9e-18  eta(1/z) 1.8e-17
+    W10P10 p=8 s 2.860212: |ev z-1| 1.5e-07  eta(z) 1.7e-17  eta(1/z) 6.9e-18
+    W12P12 p=7 s 2.477896: |ev z-1| 4.7e-06  eta(z) 2.0e-17  eta(1/z) 6.9e-18
+    W12P12 p=7 s 2.479448: |ev z-1| 3.4e-06  eta(z) 8.5e-18  eta(1/z) 1.8e-17
+    W12P12 p=9 s 2.776745: |ev z-1| 5.8e-07  eta(z) 1.7e-18  eta(1/z) 6.6e-18
+    W12P12 p=9 s 2.777076: |ev z-1| 5.8e-07  eta(z) 4.7e-18  eta(1/z) 3.8e-18
+    W12P12 p=10 s 2.912468: |ev z-1| 4.5e-06  eta(z) 1.2e-18  eta(1/z) 4.0e-19
+    W12P12 p=10 s 2.912631: |ev z-1| 4.5e-06  eta(z) 2.3e-19  eta(1/z) 1.5e-19
+
+MUST-REJECT plant (W10P10b10 p=8 slice + decoupled spurious block, root z_s at s = 2.86, partner offset e):
+  e 1e-03: |ev z-1| 1.0e-03 (old 1e-6 filter rejects, blanket 1e-4 rejects)   eta(1/z) 1.3e-18
+  e 1e-05: |ev z-1| 1.0e-05 (old 1e-6 filter rejects, blanket 1e-4 KEEPS)   eta(1/z) 1.8e-18
+  e 1e-06: |ev z-1| 1.0e-06 (old 1e-6 filter rejects, blanket 1e-4 KEEPS)   eta(1/z) 1.4e-18
+  e 1e-07: |ev z-1| 1.0e-07 (old 1e-6 filter keeps, blanket 1e-4 KEEPS)   eta(1/z) 1.8e-18
+  e 1e-09: |ev z-1| 1.0e-09 (old 1e-6 filter keeps, blanket 1e-4 KEEPS)   eta(1/z) 1.7e-18
+
+-- plant diagnosis (attempt 2) --
+W10P10 p=8 norms: |A2| 3.73e-01 |A1| 1.47e+00 |A0| 3.73e-01; real poles s [0.9531 0.9531 2.8585 2.8602 4.7476 4.7858 6.0209 6.1971]
+  s_plant 2.86 (nearest real pole 2.1e-04 away), e 1e-03: |ev z-1| 1.0e-03; at w=1/z: sigma_min(slice block) 1.1e-02, |q_spurious| 4.1e+12, global den 8.1e+15; eta_global 1.3e-18; eta_block(spurious) 5.0e-04
+  s_plant 2.86 (nearest real pole 2.1e-04 away), e 1e-06: |ev z-1| 1.0e-06; at w=1/z: sigma_min(slice block) 1.1e-02, |q_spurious| 4.1e+09, global den 8.1e+15; eta_global 1.4e-18; eta_block(spurious) 5.0e-07
+  s_plant 2.86 (nearest real pole 2.1e-04 away), e 1e-09: |ev z-1| 1.0e-09; at w=1/z: sigma_min(slice block) 1.2e-02, |q_spurious| 4.1e+06, global den 8.1e+15; eta_global 1.5e-18; eta_block(spurious) 5.0e-10
+  s_plant 2.2 (nearest real pole 6.6e-01 away), e 1e-03: |ev z-1| 1.0e-03; at w=1/z: sigma_min(slice block) 2.7e+00, |q_spurious| 1.0e+09, global den 2.0e+12; eta_global 1.4e-12; eta_block(spurious) 5.0e-04
+  s_plant 2.2 (nearest real pole 6.6e-01 away), e 1e-06: |ev z-1| 1.0e-06; at w=1/z: sigma_min(slice block) 2.7e+00, |q_spurious| 1.0e+06, global den 2.0e+12; eta_global 1.4e-12; eta_block(spurious) 5.0e-07
+  s_plant 2.2 (nearest real pole 6.6e-01 away), e 1e-09: |ev z-1| 1.0e-09; at w=1/z: sigma_min(slice block) 2.7e+00, |q_spurious| 1.0e+03, global den 2.0e+12; eta_global 1.4e-12; eta_block(spurious) 5.0e-10
+  s_plant 1.5 (nearest real pole 5.5e-01 away), e 1e-03: |ev z-1| 1.0e-03; at w=1/z: sigma_min(slice block) 2.8e+00, |q_spurious| 1.5e+05, global den 3.1e+08; eta_global 9.0e-09; eta_block(spurious) 5.0e-04
+  s_plant 1.5 (nearest real pole 5.5e-01 away), e 1e-06: |ev z-1| 1.0e-06; at w=1/z: sigma_min(slice block) 2.8e+00, |q_spurious| 1.5e+02, global den 3.1e+08; eta_global 9.0e-09; eta_block(spurious) 5.0e-07
+  s_plant 1.5 (nearest real pole 5.5e-01 away), e 1e-09: |ev z-1| 1.0e-09; at w=1/z: sigma_min(slice block) 2.8e+00, |q_spurious| 1.5e-01, global den 3.1e+08; eta_global 5.0e-10; eta_block(spurious) 5.0e-10
