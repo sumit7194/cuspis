@@ -11731,3 +11731,14 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
   - after the route, its mtime must be ≥ the route start epoch and it must contain tsad;
   - tested: stale → STOP, fresh → PASS, no tsad → STOP, missing → STOP.
 - It requires the W10 F.3 result to say BITWISE IDENTICAL before it starts.
+
+### Incident 2026-11-23 16:15–16:22: my W10 F.3 job caused yellow pressure, and the HELD W6 route was killed too. Plus a runner hole found before launch.
+**The incident:**
+- I started the W10 bitwise job (expected 3.3 GB) beside the W6 route (7.0 GB, 3.4 GB of it compressed), declaring "10.2 < 13 GB".
+- Pressure reached yellow. Both watchdogs SIGTERMed as designed: the W6 route at wall 2079 s, peak 6.98 GB, still in t0 (no checkpoint yet); the W10 job at 319 s.
+- **Lost: ~35 min of W6.** pgate restarted W6 alone at 16:22:36 (attempt 2). Logs are kept (`*.try1`, `*_attempt1_pressurekill.*`).
+- **Lesson:** the 13 GB line is a budget, not a pressure-safe limit, so nothing runs beside a ~7 GB route. The W10 F.3 job moves into `run_081e.sh`, where it runs alone after the 081d runner ends.
+
+**Runner hole, found before launch:** `exp081e_bitwise.py ... | tee ... || stop`. Without pipefail, zsh takes `tee`'s exit status, so the F.3 STOP (and the W6 fail branch) **could never fire**.
+- Fixed with `setopt PIPE_FAIL`.
+- Tested: the same line without pipefail continues; with pipefail, a failing checker STOPs.

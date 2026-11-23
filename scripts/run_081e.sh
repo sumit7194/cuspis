@@ -5,21 +5,24 @@
 # Gate -> runner mapping (one row per line):
 #   E plants P1-P7m + F.1/F.2      -> job precheck: exp081e_precheck.py exit 1 -> STOP
 #   CEN' (W12, patched lists)       -> job census: any flagged slice with NO touch (a resolved MISS) -> STOP; TOUCH slices -> covered by WIND
-#   F.3 bitwise W10                 -> done before launch (exp081e_bw_W10_result.txt must say BITWISE IDENTICAL) -> else STOP
+#   F.3 bitwise W10                 -> job e_bw_W10 (alone, after the 081d runner) -> not identical -> STOP
 #   F.3 bitwise W6                  -> job bw_W6 vs HELD checkpoint; FAIL -> W6 rerun under 081e queued after W12 (Bridge ruling), not a STOP
 #   PB, WIND (production)           -> raised inside sigma3d._poles -> the route exits non-zero -> STOP
 #   081d rows (planted eps, B2b, N1'''c, t0, residue, R1 cap) -> inside exp081d_route.py (as in 081d); C1 -> job c1_W12
 #   check-in bound                  -> 90 h per route (report.md entry gives the start time)
 # W12 route writes the UNSUFFIXED tag sigma_W12_P12_box12_c2_cp12_sc3.0_dd0 (exp083_armb_c1 looks it up by that name); no 081d file
 # has that name (081d W12 files were _probe / _081e_bw only). [model: Opus 5.5]
+setopt PIPE_FAIL   # without it, "check | tee ... || stop" takes tee's status and the F.3 STOP can never fire (found 2026-11-23 before launch)
 cd "$(dirname "$0")"; export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 CUSPIS_081E=1; source tools/pgate.sh
 PY=../.venv/bin/python; D=exp081d_results
 job() { local name=$1 cap=$2 soft=${SOFT:-}; shift 2; echo "=== $name start $(date '+%H:%M:%S')"
   pgate_run $D/$name.wd.log "nice -n 12 $PY tools/watchdog.py --min-disk-gb 5 --stop-on-pressure-warn --cap-gb $cap ${soft:+--soft-cap-gb $soft} --log $D/$name.wd.log --stdout $D/$name.out -- $PY -u -W ignore $*"; local rc=$?
   echo "=== $name end $(date '+%H:%M:%S') rc $rc"; tail -1 $D/$name.wd.log; return $rc; }
 stop() { echo "=== 081e STOP: $1 $(date '+%F %T')"; exit 1; }
-grep -q "BITWISE IDENTICAL" $D/exp081e_bw_W10_result.txt || stop "F.3 W10 not bitwise identical"
 while ps -p ${RUNNER_081D:-46956} >/dev/null; do sleep 120; done; echo "=== 081d runner ended $(date '+%F %T')"
+# F.3 W10 moved here (2026-11-23 16:22): run beside the 7 GB W6 route it caused yellow pressure and both were killed. Nothing runs beside a route.
+SOFT=3.5 job e_bw_W10 5.0 exp081d_route.py 10 10 10 --production-only --nodes 47:48 --tag-suffix _081e_bw || stop "bw W10 run failed"
+$PY exp081e_bitwise.py 10 10 10 $D/sigma_W10_P10_box10_c2_cp12_sc3.0_dd0_ckpt.json | tee $D/exp081e_bw_W10_result.txt || stop "F.3 W10 not bitwise identical"
 SOFT=2.0 job e_precheck 3.0 exp081e_precheck.py || stop "pre-check (plants/invariance)"
 SOFT=2.0 job e_census_W12 4.0 exp081d_census.py 12:12:12 || stop "census job failed"
 $PY -c "import json,sys; d=json.load(open('$D/census_12-12-12.json'))['W12P12b12']; miss=[x['p'] for x in d['flagged'] if not x['touch']]; print('CEN prime: resolved MISS slices', miss, '; TOUCH slices', [x['p'] for x in d['flagged'] if x['touch']]); sys.exit(1 if miss else 0)" || stop "CEN' resolved MISS at W12"
