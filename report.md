@@ -12045,3 +12045,10 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Order 1 vs order 2 differ by 0.35–2.2, and the leave-one-out spread is 0.42–2.62: comparable to the gaps.
   - R_n is strongly curved in n (k = 1: 0.683, 0.414, 0.354), and the continued value at n = 1 lies far above R₂, so the n → 1 approach is steep.
   - With 3 n, the per-k extrapolation cannot distinguish agreement from disagreement. **084b's "non-zero" plausibly rests on the c/d split plus a poorly constrained n-extrapolation (argued).** The integer-n C2 comparison is the decisive next test.
+
+### **EXP-084c REGISTERED** (`notes/EXP-084c_registration.md`): route (ii) Q_cont^sad(n) against honest Q_n at the 084 geometries, n = 2, 3, 4
+- **Level 1** = C2's exactness rule. **Level 2** = relevance, max|ΔR_n(k)| ≤ 0.01.
+- **Sized plants** (Bridge): ΔR = 0.05 must FAIL; ΔR = 0.002 must PASS, conditional on the unplanted agreement ≤ 0.008 (derived on paper).
+- Planted normalisation through the 084 code path with stored κ.
+- C2 plants and the KA (stored C2 W2P2) are kept.
+- Order: a dry run (k = 1, n = 2) ALONE after the EXP-085 rerun, then progressive k. Routes stay on HOLD.
