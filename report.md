@@ -12235,3 +12235,11 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **W4P4 status:** still BOUNDED. The truncation explains everything but a ~1.3e-11 residual.
 - **Production consequence (Bridge's item 4):** a registered production change of s_cut 3 → ≥ 6 is supported by the descriptive 99.8% / 99.6%.
 - 2b (route (ii) at s_cut 6) is running.
+- **084c part 8, W6P6 n = 2 (00:06):** 6716 s against a projection of 6122 s (ratio 1.10); peak 0.22 GB.
+  - Level 1 **FAIL**: |dev| 1.10e-9 > tol 2.2e-10 (gap |F| 5e-16). This is a per-file Level-1 line (amendment 2); no ΔR has been computed.
+  - **Pattern across the four n = 2 files so far (descriptive):**
+    - Level 1 PASSES where the cut is narrower than the box (W < Wbox): W2P4 1.73e-10 ≤ 7.4e-10; W3P6 1.40e-10 ≤ 3.5e-9.
+    - It FAILS where the cut fills the box (W = Wbox): W4P4 5.44e-10 > 3.1e-10; W6P6 1.10e-9 > 2.2e-10.
+    - This matches the 085w family split: poles just above s_cut exist only in the W = Wbox family (W2P4 has none in (3, 6]). It is consistent with H1′ for route (ii); 085w2b tests that at W4P4.
+  - As registered, a Level-1 fail is reported as an "exactness residual" and does not change the Level-2 reading.
+  - W4P8 started 00:06 (projection 5.1–5.8 h; the OVERRUN line fires at 7.8 h).
