@@ -34,7 +34,7 @@ The (i-G) mismatch is 99.8% the s ∈ (3, 6] truncation tail of d^B; (i-B) shows
 | full tadpole | **k² blow-up** (removes the OPE-cancelling piece) | known from stored data |
 - **Row, A's 1/a² test (threshold tied to the reading, Bridge):** fit R[½Σc_Aσ̇](k) = c₂k² + c₁k + c₀ with the 084b-style 3-parameter fit (full covariance). On these 4 k the fit has **1 dof**.
   - A k² term induces a 2-dof linear-fit slope of 3.5·c₂ on k ∈ {1, 1.5, 2, 2.5}: Σ(k − k̄)(k² − ⟨k²⟩)/Σ(k − k̄)² = 4.375/1.25 (checked).
-  - **"no 1/a² remainder"** iff |c₂^A| ≤ 0.057 (that is, 3.5·|c₂| ≤ 0.05·g_raw) AND 2σ(c₂) ≤ 0.057 (resolved).
+  - **"no 1/a² remainder"** iff |c₂^A| + 2σ(c₂) ≤ 0.057: the WHOLE interval satisfies 3.5·|c₂| ≤ 0.05·g_raw (whole-interval condition, Bridge).
   - If |c₂^A| > 0.057 with the whole ±2σ interval outside: **"A leaves a 1/a² remainder → (P2) fails"**, and no slope reading is made.
   - Otherwise (unresolved): **INCONCLUSIVE**.
 
