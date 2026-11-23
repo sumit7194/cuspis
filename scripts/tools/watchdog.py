@@ -54,6 +54,12 @@ def sys_free_pct():
     return float(m.group(1)) if m else float("nan")
 
 def pressure_level():
+    fk = os.environ.get("WD_FAKE_LEVEL_FILE")
+    if fk:
+        try: return int(open(fk).read().strip())
+        except Exception: pass
+    return _pressure_level_real()
+def _pressure_level_real():
     """kern.memorystatus_vm_pressure_level: 1 normal (green), 2 warn (yellow), 4 critical (red)."""
     s = subprocess.run(["sysctl", "-n", "kern.memorystatus_vm_pressure_level"], capture_output=True, text=True).stdout.strip()
     return int(s) if s.isdigit() else -1
@@ -70,11 +76,16 @@ def main():
     ap.add_argument("--min-sysfree-pct", type=float, default=10.0)
     ap.add_argument("--stop-on-pressure-warn", action="store_true",
                     help="also stop if the system memory-pressure level reaches warn (yellow) or worse (bridge rule, 2026-11-17)")
+    ap.add_argument("--pressure-stop-level", type=int, default=None, choices=(2, 4),
+                    help="stop when the pressure level reaches this value (2 yellow, 4 red); overrides --stop-on-pressure-warn (Sumit, 2026-11-23: routes stop at red)")
+    ap.add_argument("--pause-on-red", action="store_true", help="Sumit 2026-11-23: never kill for memory; inform at yellow/red, SIGSTOP only after --red-grace s of continuous red, SIGCONT after --green-resume s green")
+    ap.add_argument("--red-grace", type=float, default=300.0); ap.add_argument("--green-resume", type=float, default=60.0)
+    ap.add_argument("--inform-pressure", action="store_true", help="print/log a WARN when pressure rises to yellow or worse (below the stop level)")
     ap.add_argument("--interval", type=float, default=5.0); ap.add_argument("--stdout", default=None)
     ap.add_argument("--soft-cap-gb", type=float, default=None,
                     help="soft cap (Sumit 2026-11-22): crossing it only WARNS (printed + logged, again at each +0.5 GB); --cap-gb stays the hard kill")
     ap.add_argument("cmd", nargs=argparse.REMAINDER)
-    a = ap.parse_args()
+    a = ap.parse_args(); INFORM = a.inform_pressure; _last_lvl = [1]; _red, _green, _paused = [None], [None], [False]; PL = a.pressure_stop_level if a.pressure_stop_level else (2 if a.stop_on_pressure_warn else None)
     cmd = a.cmd[1:] if a.cmd and a.cmd[0] == "--" else a.cmd
     outf = open(a.stdout, "w") if a.stdout else None
     child = subprocess.Popen(cmd, start_new_session=True, stdout=outf or None, stderr=subprocess.STDOUT if outf else None)
@@ -87,7 +98,7 @@ def main():
     signal.signal(signal.SIGTERM, on_term)
     log.write(f"# cmd: {' '.join(cmd)}\n# caps: tree <= {a.cap_gb} GB, disk >= {a.min_disk_gb} GB, free swap >= {a.min_swap_mb} MB\n"
               f"# memory trigger: system free < {a.min_sysfree_pct}%, or free swap < {a.min_swap_mb} MB together with system free < 20%\n"
-              f"# pressure trigger: {'stop at level >= 2 (yellow)' if a.stop_on_pressure_warn else 'off'}\n"
+              f"# pressure trigger: {('stop at level >= %d (%s)' % (PL, {2: 'yellow', 4: 'red'}[PL])) if PL else 'off'}\n"
               f"# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level\n")
     peak = (0.0, 0.0, 0.0); t0 = time.time(); reason = None; warned = -1.0
     while child.poll() is None:
@@ -98,10 +109,30 @@ def main():
         if a.soft_cap_gb is not None and tot > a.soft_cap_gb and tot > warned + 0.5:
             warned = tot; msg = f"# WATCHDOG WARN (soft cap): tree footprint {tot:.2f} GB > soft cap {a.soft_cap_gb} GB at t={time.time()-t0:.0f}s (hard cap {a.cap_gb} GB)"
             log.write(msg + "\n"); log.flush(); print(msg, flush=True)
-        if tot > a.cap_gb: reason = f"tree footprint {tot:.2f} GB > cap {a.cap_gb} GB"
+        if INFORM and lvl >= 2 and lvl > _last_lvl[0] and not (PL and lvl >= PL):   # Sumit 2026-11-23: inform, do not kill, below the stop level
+            msg = f"# WATCHDOG WARN (pressure {({2: 'yellow', 4: 'red'}).get(lvl, lvl)}): level {lvl} at t={time.time() - t0:.0f}s, tree {tot:.2f} GB -- close other apps?"
+            log.write(msg + "\n"); log.flush(); print(msg, flush=True)
+        _last_lvl[0] = lvl
+        if a.pause_on_red:                                         # pause/resume instead of any memory kill
+            now = time.time()
+            if lvl >= 4: _red[0] = _red[0] or now; _green[0] = None
+            elif lvl <= 1: _green[0] = _green[0] or now; _red[0] = None
+            else: _red[0] = None; _green[0] = None
+            if not _paused[0] and _red[0] and now - _red[0] >= a.red_grace:
+                try: os.killpg(child.pid, signal.SIGSTOP); _paused[0] = True
+                except ProcessLookupError: pass
+                msg = f"# WATCHDOG PAUSE (red pressure {a.red_grace:.0f} s): job SIGSTOPped at t={now - t0:.0f}s, tree {tot:.2f} GB -- please close apps; resumes after {a.green_resume:.0f} s green"
+                log.write(msg + "\n"); log.flush(); print(msg, flush=True)
+            if _paused[0] and _green[0] and now - _green[0] >= a.green_resume:
+                try: os.killpg(child.pid, signal.SIGCONT); _paused[0] = False
+                except ProcessLookupError: pass
+                msg = f"# WATCHDOG RESUME ({a.green_resume:.0f} s green): job SIGCONTinued at t={now - t0:.0f}s"
+                log.write(msg + "\n"); log.flush(); print(msg, flush=True)
+            if disk < a.min_disk_gb: reason = f"free disk {disk:.2f} GB < {a.min_disk_gb} GB"
+        elif tot > a.cap_gb: reason = f"tree footprint {tot:.2f} GB > cap {a.cap_gb} GB"
         elif disk < a.min_disk_gb: reason = f"free disk {disk:.2f} GB < {a.min_disk_gb} GB"
         elif sfp == sfp and sfp < a.min_sysfree_pct: reason = f"system-wide free memory {sfp:.0f}% < {a.min_sysfree_pct}%"
-        elif a.stop_on_pressure_warn and lvl >= 2: reason = f"memory pressure level {lvl} (>= 2, yellow)"
+        elif PL and lvl >= PL: reason = f"memory pressure level {lvl} (>= {PL}, {({2: 'yellow', 4: 'red'})[PL]})"
         elif swp == swp and swp < a.min_swap_mb and sfp == sfp and sfp < 20: reason = f"free swap {swp:.0f} MB < {a.min_swap_mb} MB with system free {sfp:.0f}% < 20%"
         if reason:
             log.write(f"# WATCHDOG SIGTERM: {reason}\n")

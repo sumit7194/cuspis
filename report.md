@@ -11932,3 +11932,18 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - The 3 GB cap came from my SCALED estimate (~1–2 GB). Attempt 1 had only shown ≥ 1.10 GB and rising, a lower bound with no ceiling. Same family as the three earlier formula misses.
 - **Rule restated: a cap derives from a MEASURED full peak; a rising kill is a lower bound only.**
 - **Plan:** once runner 75214 reaches the hold (guard at e_bw_W6) the box is idle. Then rerun k = 2.5 ALONE with hard cap 6 GB, soft 4 GB, pressure-stop on (a kill costs minutes), and record the measured peak.
+
+### Memory policy changed by Sumit (in this chat, 2026-11-23 ~17:15): NO hard kills for memory; inform, give him time
+**His words:**
+- "caps should inform, not kill, unless the mac starts to suffer"
+- "mac can use swaps momentarily, having hard kills is the reason for these lost times"
+- "if it starts thrashing due to swaps, I will intervene and close things, but give me time for it"
+- "tell bridge ... so other sessions' processes that are running with hard kills won't get killed ... so dont run without asking"
+
+**Watchdog (`tools/watchdog.py`), new opt-in flags.** Defaults are unchanged, so running jobs and old commands behave as before:
+- `--inform-pressure`: a WARN line at yellow and at red;
+- `--pause-on-red`: no memory kill at all. SIGSTOP only after `--red-grace` (default 300 s) of continuous red, SIGCONT after `--green-resume` (default 60 s) green. The disk floor still kills;
+- `--pressure-stop-level {2,4}`: for anyone who keeps a stop.
+- **Tested** with a planted pressure sequence: WARN at yellow and red; PAUSE after the grace (the counter froze); RESUME after green (the counter moved); no kill despite the hard cap being exceeded throughout.
+
+**Queue:** runner 75214 had started `e_bw_W10` without clearance. It was stopped 6 s in (watchdog SIGTERM; nothing computed) together with its guards. **New runner `run_queue_nokill.sh` is written and NOT launched; it waits for the Bridge's clearance**, because a large job here can push other sessions' hard-kill jobs into yellow. Its order is 084 k = 2.5 + reading → 085 → 081e (F.3 W10, pre-check, CEN′, F.3 W6 reference check, route W12, C1 W12, W6 rerun + C1 W6).
