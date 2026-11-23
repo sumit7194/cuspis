@@ -12254,3 +12254,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Conclusion (argued: a bound plus a bitwise observation):** s_cut truncation is **excluded** as the cause of the C2 / 084c Level-1 residual (~5e-10 at W4P4, 1.1e-9 at W6P6, at n = 2). H1′ holds for test (i) (descriptive 99.8% / 99.6%) but NOT for route (ii) at integer n. The W = Wbox Level-1 residual stays **unexplained**.
 - **Slip (mine):** the prediction was registered without bounding how much the variable could move the result (Rule VIII; "show the ansatz contains the answer"). Its weight at n = 2 is ~4e-17, so 2b could not fail through the mechanism it was meant to test. Recorded as lesson L3.
 - **Production s_cut change:** still relevant, for the n = 1 derivatives that enter Q′(1) and d (weight ~1e-7). It is not relevant for integer-n quantities.
+
+### EXP-085c tier 1 (registered f3fa752) [model: Opus 5.5]
+- **KA-torus PASS** (6 s). Dense position-space c_A on a periodic n³ lattice, with G the zero-mode-excluded circulant and a dense B⁻¹, against the independent FFT `c_of_n(n)` (verbatim from exp085_a4):
+  - n = 8: uniform to 1.1e-14; −0.035531745981186 against −0.035531745981181.
+  - n = 12: uniform to 2.0e-14; −0.053225312445517 against −0.053225312445522.
+  - So **N·δ_A has the registered bulk limit c, exactly at finite n** (two implementations; partially verified). This checks Neon's "finite-box analogue" claim at torus level.
