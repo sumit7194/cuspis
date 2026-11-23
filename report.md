@@ -11484,3 +11484,39 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 - **Estimate:** k = 3 peak ≈ 3.20 × 2.9 ≈ 9.3 GB per process (**argued**, scaled; measured lower bound 7.32 GB). 2 × 7.32 already exceeds 13 GB. Back to the Bridge before Stage 2.
 - **Memory miss #3:** the earlier "k = 3 ≈ 6.2 GB measured-scaled" was low by about 1.5×.
 - **Next:** probe attempt 2 runs ALONE after the control (soft 9 / hard 11 GB, `run_081d_probe2.sh`), declared to the Bridge.
+
+### EXP-081d Stage-2 gate 2: k = 3 memory probe, attempt 2 (solo, 14:04–14:59) and the k = 2.5 control. Measured.
+
+**Probes:**
+
+| probe | install | hardest node (s = 5.972) | peak (MEM + CMPRS) |
+|---|---|---|---|
+| k = 3 W12P12b12, solo | 850 s | 2463 s (10350 G, 960 unconverged; above the R1 tier, so the cap rule applies, not a STOP) | **7.12 GB**, exit 0 |
+| k = 2.5 W10 control, same probe | 439 s | 1132 s (full run: 1175 s); 388 unconverged, identical to the full run | 3.26 GB (full-run peak 3.20 GB) |
+
+- **Control:** full/probe = 0.98, so one hard node captures the full-run peak, checks phase included. I do not scale a measured peak down, so the ratio is taken as 1.0.
+- **Per-process peak, k = 3:** **7.32 GB**, the larger of the two measured readings (attempt 1 reached 7.32 at a different phase).
+- **Launch test:** 2 × 7.32 = 14.6 GB > 13 GB, so the 2-process plan FAILS (measured).
+
+**Wall-time estimate, from measured ratios only:**
+- Ratios: install 850/439 = 1.94; node 2463/1132 = 2.18. Applying the node ratio to t0 and the checks phase as well is **argued**.
+- Scaled from the k = 2.5 full runs:
+  - W12: 617 × 1.94 + 48 499 × 2.18 ≈ 1.07e5 s ≈ **29.7 h**;
+  - W6: ≈ 1.04e5 s ≈ **28.8 h**;
+  - C1 at k = 3 (k = 2.5 values × 2.18): ≈ 2.8 h (W12) and 1.1 h (W6);
+  - Step 0 and census: minutes (k = 2.5: 628 s and 11 s).
+- Serial total ≈ **62 h ≈ 2.6 days**. Check-in bound at 3×: 90 h per route.
+
+**Disk:** the outputs are KB–MB (all of exp081d_results is 2.7 MB). The risk is swap, not files. 11 GiB is free against the 4 GB floor, and the watchdog's `--min-disk-gb 5` guards it.
+
+**Options for Sumit (13 GB is his line):**
+- **(a) Serial, identical code:** route W6, then route W12, each ~29 h, ≤ 7.32 GB at any time. Total ≈ 2.6 days. Same code for all five k.
+- **(b) Memory-reduction patch:** for example, free the per-slice G0 copies after B1, or stream inner(). Production-path change. The savings are unmeasured (I have not profiled the 4.66 GB MEM), so it would need its own validation arm.
+  - A cheap validation exists: bit-for-bit equality of g at the stored k = 2.5 probe node (known answer: 388 unconverged and a stored g value).
+  - k = 3 would run on different code, even if numerically identical.
+- **(c) Identical code, (a) with the small jobs pulled forward:**
+  - Run census and Step 0 at both k = 3 geometries FIRST (minutes; < 0.5 GB at k = 2.5; measure). A Step-0 fail at s ≤ 1.974 voids the geometry before 2.6 days are committed.
+  - Overlap each C1 with the following route only if its measured k = 3 peak is ≤ 13 − 7.32 = 5.7 GB. That saves ≤ ~4 h.
+  - No code-identical option runs both routes at once: the checks phase is NOT what pushes it over, and node-splitting doesn't lower the per-process peak.
+
+**Recommendation:** (c), which is (a) with Step 0 and census first. It keeps the code identical, and the first hour can void k = 3 cheaply.
