@@ -1,0 +1,8 @@
+=== old runner gone 2026-11-23 17:18:27
+=== exp084_k25 start 17:18:27
+# pgate: attempt 1 at 17:22:57 (pressure normal >= 300 s)
+# exit 0; wall 105 s; PEAK tree MEM 3.029 GB + CMPRS 0.000 GB = 3.029 GB
+=== exp084_k25 end 17:24:42 rc 0
+# exit 0; wall 105 s; PEAK tree MEM 3.029 GB + CMPRS 0.000 GB = 3.029 GB
+=== EXP-084 k2.5 + reading rc 0
+=== exp085 start 17:24:42

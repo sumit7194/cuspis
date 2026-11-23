@@ -11950,3 +11950,38 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Watchdog additions (Bridge):** every WARN, PAUSE and RESUME line now carries a wall-clock timestamp and the pressure level. A pause longer than `--pause-long` (default 1800 s) writes a `PAUSE-LONG` line, which the session's event waiter relays to the Bridge. Tested with planted pressure: all lines timestamped, PAUSE-LONG fired, resume worked, no kill.
 - **Go condition for `run_queue_nokill.sh`:** Quantum's Lean-build done-message (exit status + peak RSS) AND its line "Quantum long jobs: no pressure kills".
 - The Bridge notes that the "pressure-stop is the real guard" framing in its earlier rulings was its own addition, not Sumit's instruction.
+
+### **EXP-084 RESULT (registered headline): "mixed (both loci contribute)"** (2026-11-23 17:24; `exp081d_results/exp084/`, `exp084_k25.out`)
+**Run:** k = 2.5 alone under the no-kill watchdog: measured peak **3.03 GB**, 105 s, rc 0. Phase 0 PASS (6/6 plants; known answer 4e-13). The σ table was written before any ratio (σ ≤ 2e-7 in R units).
+
+**Registered criteria:**
+
+| quantity | n = 2 | n = 3 |
+|---|---|---|
+| r (±σ) | 1.3181 ± 1.2e-7 | 1.3871 ± 1.8e-7 |
+| band | power-divergent | power-divergent |
+| slope g | 2.43 | 1.38 |
+
+- |r₂ − r₃| = 0.069 < max(0.15, 3σ), so n-independent by the rule.
+- Against 0.5·g_cont = 2.01: n = 2 is above, **n = 3 below**, so the registered label is **mixed**.
+- Continued reference: r = 0.952 (power-divergent), g = 4.020.
+
+**R_n(k), arm b:**
+- n = 2: 0.6826, 1.5509, 2.7810, 4.3170.
+- n = 3: 0.4137, 0.8832, 1.5642, 2.4790.
+
+**Arm a (σ = 0, reported only):**
+- n = 2: −11.18, −24.67, −43.45, −69.76.
+- n = 3: −7.27, −15.39, −26.40, −42.51.
+
+**DESCRIPTIVE (4-point coefficient extraction is inference, not verification):**
+- Arm a: R/k² = −11.2, −11.0, −10.9, −11.2 (n = 2), a clean **k² ∝ 1/a²** growth.
+- Arm b: R₂/k² = 0.683, 0.689, 0.695, 0.691 and R₃/k² = 0.414, 0.393, 0.391, 0.397, **also k²**. The honest saddle cancels ≈ 94% (n = 2) of arm a's 1/a², leaving an **n-dependent 1/a² remainder**.
+- The CONTINUED R (Q′(1)) instead grows like **k** (1/a; R/k → 3.3).
+- The registered slope comparison over k ∈ [1, 2.5] compares functional forms that differ (p ≈ 2 against p ≈ 0.8), so "mixed" is a correct application of the rule, but the shapes say more than the label.
+
+**Reading against the pre-stated T54 test (argued):**
+- 084 did NOT read (i), so it does not count against T54 as pre-stated.
+- But T54's mechanism (a c/a counterterm times Σσ) predicts a **1/a** remainder. The exact-n remainder is **1/a²**, with an n-dependent coefficient, which T54 does not obviously produce. This is a tension, not a refutation: the integer-n saddle differs from n → 1 (the Bridge's caveat B.2).
+- **EXP-085** (now running) tests T54 directly on the continued R.
+- No δκ statement.
