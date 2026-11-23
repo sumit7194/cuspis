@@ -1,0 +1,6 @@
+# cmd: ../.venv/bin/python -u -W ignore exp081d_census.py 6:12:12 12:12:12
+# caps: tree <= 4.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: stop at level >= 2 (yellow)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.049    0.000   0.049        11.22       1717.4           76              1

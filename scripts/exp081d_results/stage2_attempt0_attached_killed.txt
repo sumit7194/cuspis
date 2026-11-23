@@ -1,0 +1,18 @@
+=== census_k3 start 15:01:56
+# pgate: attempt 1 at 15:02:26 (pressure normal >= 60 s)
+# exit 0; wall 16 s; PEAK tree MEM 0.350 GB + CMPRS 0.000 GB = 0.350 GB
+=== census_k3 end 15:02:42
+# exit 0; wall 16 s; PEAK tree MEM 0.350 GB + CMPRS 0.000 GB = 0.350 GB
+=== step0_W6P12b12 start 15:02:42
+# pgate: attempt 1 at 15:03:12 (pressure normal >= 60 s)
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 125, in <module>
+    main()
+    ~~~~^^
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 117, in main
+    time.sleep(a.interval)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 84, in on_term
+    try: os.killpg(child.pid, signal.SIGTERM)
+         ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted
