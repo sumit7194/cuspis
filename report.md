@@ -11712,3 +11712,22 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 - **PB and WIND did not fire on any real slice at any of the 9 geometries.**
 
 **F.3 (bitwise g):** W10 is running now. W6 must wait for the HELD route's checkpoint at the hardest node (the route is in t0 now).
+
+### EXP-081e amendment 1b (Bridge, post-firing) and the production runner
+**P7m (mirror slices):**
+- It fired at the Bridge's 1e-12. The diagnosis is shown in `e_mirror_diag.txt`:
+  - m²(p) − m²(Ny−p) = −1.6e-15 (cos roundoff), so G0 differs by ≤ 3.3e-16.
+  - Ill-conditioned high-s poles amplify that to |Δs| ≤ 2.9e-10. Controls p = 3/45 and 14/34 are bitwise identical. The effect predates 081e.
+- **Ruling:** identical counts AND max |Δs| ≤ 1e-9, with per-pole |Δs| logged next to z.
+- Rerun: **PRECHECK PASS.** Per pole, z ~ 1e-3 gives |Δs| ~ 1e-15; z = 1.7e-7 gives 3.5e-11; z = 1.1e-8 gives 2.9e-10.
+
+**P2b margin (logged):** the genuine pole is 1.8e-10 from the pencil root and the rider 3.3e-8, a margin of 185×.
+
+**Runner `run_081e.sh`:** the gate→runner mapping is in its header, one row per line.
+- It waits for the 081d runner (W6 HELD route, then C1 W6) to end.
+- Then: pre-check → census CEN′ (resolved MISS → STOP) → F.3 W6 bitwise against the HELD checkpoint (FAIL → W6 rerun queued after W12) → route W12 → C1 W12.
+- **Stale-file guard (Bridge):**
+  - the unsuffixed W12 checkpoint must NOT exist before the route;
+  - after the route, its mtime must be ≥ the route start epoch and it must contain tsad;
+  - tested: stale → STOP, fresh → PASS, no tsad → STOP, missing → STOP.
+- It requires the W10 F.3 result to say BITWISE IDENTICAL before it starts.

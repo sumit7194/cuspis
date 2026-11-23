@@ -63,7 +63,19 @@ for W, P, B in GEOS:
         # they compete for one pencil root; one-to-one admits the nearer (genuine) and not the rider; list == patched production list.
         sl7 = Go.sl[7]; ev7 = qep_ev(sl7); g7 = np.exp(-2 * np.pi * (2.4778963 + 1e-8))
         r7, _, e7 = sel(np.append(ev7, [g7, (1 + 1e-3) / g7]), sl7)
+        pr7 = [S3._s(z) for z in S3.pencil_roots(sl7.W, sl7.M)]; root = min(pr7, key=lambda x: abs(x - 2.4778963))
+        gen = min((S3._s(z.real) for z in ev7 if abs(z.imag) < 1e-8 * abs(z) and 0 < z.real < 1), key=lambda x: abs(x - 2.4778963))
+        print(f"   P2b margin (Bridge): pencil root {root:.12f}; |genuine - root| {abs(gen - root):.2e}; |rider - root| {abs(S3._s(g7) - root):.2e}; ratio {abs(S3._s(g7) - root) / abs(gen - root):.1f}x", flush=True)
         check("P2b rider 1e-8 from REJECTED genuine -> not admitted (amended)", e7 is None and r7 == list(Gn.sl[7].s), e7 or f"list {np.round(sin(r7),7).tolist()}")
+        # P7m (amendment 1b, Bridge ruling after it fired at 1e-12: the tolerance ignored conditioning): identical counts AND max |ds| <= 1e-9
+        mir_ok, mlog = True, []
+        for q in [q for q in mir if q != mir[q]]:
+            a, b = sorted(Gn.sl[q].s), sorted(Gn.sl[mir[q]].s)
+            if len(a) != len(b): mir_ok = False; mlog.append(f"{q}/{mir[q]} counts {len(a)} {len(b)}"); continue
+            for x, y in zip(a, b):
+                if x <= 3.0: mlog.append(f"{q}/{mir[q]} z {np.exp(-2*np.pi*x):.1e} |ds| {abs(x-y):.1e}"); mir_ok &= abs(x - y) <= 1e-9
+        print("   P7m per-pole: " + "; ".join(mlog), flush=True)
+        check("P7m mirror slices: same counts, max |ds| <= 1e-9 (amendment 1b)", mir_ok, "")
         check("P7 / F.1 W12P12b12: lists differ by exactly the 4 poles (P4 admission)", ok, f"added {{{', '.join(f'{p}: {np.round(v,7).tolist()}' for p, v in added.items())}}}")
         # P5 WIND must-fire: p = 14 entries (split 5.6e-8), production rad 1.7e-8 -> 1 each; wrong radius 1e-7 -> 2
         sl14 = Gn.sl[14]; s14 = sin(sl14.s); rads = [min(1e-6, 0.3 * min([abs(a - b) for b in sl14.s if b != a] + [1.0])) for a in sl14.s][:len(s14)]

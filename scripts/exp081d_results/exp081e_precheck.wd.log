@@ -3,8 +3,8 @@
 # memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
 # pressure trigger: stop at level >= 2 (yellow)
 # t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
-     0.5     1   0.066    0.000   0.066        11.09       1725.4           56              1
-     6.2     1   0.178    0.000   0.178        11.09       1725.4           56              1
-    11.7     1   0.489    0.139   0.628        11.09       1725.4           55              1
-    17.3     1   0.789    0.156   0.945        11.09       1725.4           54              1
-# exit 0; wall 22 s; PEAK tree MEM 0.789 GB + CMPRS 0.156 GB = 0.945 GB
+     0.7     1   0.065    0.000   0.065        11.08       1725.4           53              1
+     6.4     1   0.179    0.000   0.179        11.08       1725.4           53              1
+    12.0     1   0.447    0.141   0.588        11.08       1725.4           52              1
+    17.8     1   0.642    0.144   0.785        11.08       1725.4           50              1
+# exit 0; wall 23 s; PEAK tree MEM 0.642 GB + CMPRS 0.144 GB = 0.785 GB

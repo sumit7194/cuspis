@@ -63,6 +63,10 @@
   "ok": true,
   "detail": "list [0.8262102, 0.8262366, 2.4778963, 2.4794482]"
  },
+ "P7m mirror slices: same counts, max |ds| <= 1e-9 (amendment 1b)": {
+  "ok": true,
+  "detail": ""
+ },
  "P7 / F.1 W12P12b12: lists differ by exactly the 4 poles (P4 admission)": {
   "ok": true,
   "detail": "added {7: [2.4778963, 2.4794482], 10: [2.9124682, 2.9126315], 38: [2.9124682, 2.9126315], 41: [2.4778963, 2.4794482]}"

@@ -13,7 +13,10 @@ F.1 W5P10b10: lists bitwise identical, residues identical  PASS   differing slic
 F.1 W10P10b10: lists bitwise identical, residues identical PASS   differing slices []; residues identical True
 F.2 W10P10b10: threshold-adjacent pair present and unchanged PASS   
 F.1 W6P12b12: lists bitwise identical, residues identical  PASS   differing slices []; residues identical True
+   P2b margin (Bridge): pencil root 2.477896277287; |genuine - root| 1.77e-10; |rider - root| 3.27e-08; ratio 184.7x
 P2b rider 1e-8 from REJECTED genuine -> not admitted (amended) PASS   list [0.8262102, 0.8262366, 2.4778963, 2.4794482]
+   P7m per-pole: 41/7 z 5.6e-03 |ds| 3.3e-16; 41/7 z 5.6e-03 |ds| 6.7e-16; 41/7 z 1.7e-07 |ds| 3.5e-11; 41/7 z 1.7e-07 |ds| 6.3e-12; 38/10 z 2.2e-03 |ds| 9.3e-15; 38/10 z 2.2e-03 |ds| 7.9e-15; 38/10 z 1.1e-08 |ds| 2.4e-10; 38/10 z 1.1e-08 |ds| 2.9e-10
+P7m mirror slices: same counts, max |ds| <= 1e-9 (amendment 1b) PASS   
 P7 / F.1 W12P12b12: lists differ by exactly the 4 poles (P4 admission) PASS   added {7: [2.4778963, 2.4794482], 10: [2.9124682, 2.9126315], 38: [2.9124682, 2.9126315], 41: [2.4778963, 2.4794482]}
 P5 WIND radius must-fire (p=14, rad 1e-7 encloses both)    PASS   production radii pass: True; wrong radius: WIND: s 1.1214539263 rad 1.0e-07: count 2 (raw +2.0000) != multiplicity 1
 P5b alpha-plane contour == s-plane circle (counts)         PASS   mismatches []

@@ -1,0 +1,9 @@
+Ny 48
+p=7 vs 41: m2 diff -1.6e-15; |G0 diff| max 3.3e-16; n poles 4 4; max |ds| 3.487876654162392e-11
+    per-pole |ds|: ['3.3e-16', '6.7e-16', '3.5e-11', '6.3e-12']
+p=10 vs 38: m2 diff -8.9e-16; |G0 diff| max 1.9e-16; n poles 4 4; max |ds| 2.8728264211963506e-10
+    per-pole |ds|: ['9.3e-15', '7.9e-15', '2.4e-10', '2.9e-10']
+p=3 vs 45: m2 diff 2.2e-16; |G0 diff| max 0.0e+00; n poles 6 6; max |ds| 0.0
+    per-pole |ds|: ['0.0e+00', '0.0e+00', '0.0e+00', '0.0e+00', '0.0e+00']
+p=14 vs 34: m2 diff 0.0e+00; |G0 diff| max 0.0e+00; n poles 2 2; max |ds| 0.0
+    per-pole |ds|: ['0.0e+00', '0.0e+00']
