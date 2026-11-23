@@ -12088,3 +12088,5 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The aliased-path rerun reproduces the stored C2 value **BITWISE**, so the cause is shown (the reference predated slip 15's alias=False switch).
   - Redefined KA: line 1 (aliased path, ≤ 1e-12) PASS, bitwise; line 2 (production path against honest Arb under C2's rule: dev 1.074e-10 ≤ tol 2.88e-10) PASS.
   - 084c proceeds on the production path. Remaining geometries are scheduled after a second cost point.
+- **Rule revision (Bridge, this case only):** an 084c route-(ii) job **measured** under 0.5 GB may run beside a route under no-kill. The constraint is CPU time-sharing (box load ~9–10/10), handled by one 084c process at a time at nice 12. Consistent with Sumit's concern (other sessions' jobs being killed), which no-kill now covers.
+- **084c cost points** queued as part 6 (after part 5): W4P4 n = 2 (W-scaling) and W3P6 n = 2 (P/Ny-scaling). The k range is decided from them BEFORE the reading. Fallback k ∈ {1, 1.5, 2}, stated in advance; n = 2 alone answers the core question.
