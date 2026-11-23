@@ -12260,3 +12260,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - n = 8: uniform to 1.1e-14; −0.035531745981186 against −0.035531745981181.
   - n = 12: uniform to 2.0e-14; −0.053225312445517 against −0.053225312445522.
   - So **N·δ_A has the registered bulk limit c, exactly at finite n** (two implementations; partially verified). This checks Neon's "finite-box analogue" claim at torus level.
+- **KA-sector PASS** (W2P4, 8 s, 0.046 GB), against a dense 3D build (Dirichlet x, t; periodic y; N3 = 1536):
+  - G's y = 0 block against (1/Ny)Σ_p G_p: 7.5e-16.
+  - Λ via sectors: 2.5e-14 (max|Λ| = 2.48).
+  - term1 via sectors: 2.3e-15 (max 0.347).
+- **Identity KA PASS:** ½T_sad (production `saddle_term_c`) = ½Σ_3D c_Aσ̇ − 2NyΣΛd = 22.785852160661264, gap 0.0.
+  - The planted break σ̇[18] × (1 + 1e-6) fires (gap 1.4e-9). This is an implementation check only: the identity is algebraic.
