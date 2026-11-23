@@ -12272,3 +12272,28 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - imaginary parts ≤ 2.3e-17.
   - No ΔR / R_corr has been computed (READ needs all 8 geometries).
   - k = 2.5 (W5P10, W10P10): estimated ~1 GB + install (the arrays scale with N²·Ny, ≈ 3× W8P8), which is over the 0.5 GB beside-part-8 rule. Per the registration they run after part 8, unless the Bridge decides otherwise.
+
+### EXP-085c READING (registered f3fa752): **"A leaves a 1/a² remainder → (P2) fails"**; no slope reading made (as registered); controls PASS [model: Opus 5.5]
+- **Runs (Bridge one-off option (b)):** W5P10 295 s / 1.44 GB, W10P10 318 s / 1.00 GB, both beside part 8. All 8 GEOM PASS (bitwise against stored 085 C). READ took 5 s.
+- **Controls:**
+  - reproduction PASS;
+  - **two-route KA PASS** (route 1 = route 2 to 9.7e-13 relative);
+  - zero control bitwise = g_raw;
+  - the must-fail sign lands in a different band (ρ_s +2.09, "refuted").
+- **W4P4 bound (§G, printed before the reading):** |ΔR| ≤ 5.3e-4, so no caveat.
+- **1/a² row on Y = R[½Σc_Aσ̇]:** Y = [1.982, 3.864, 6.105, 8.528]. c₂ = **+0.7135 ± 0.0217** (3-parameter fit, 1 dof). The whole interval is above 0.057, so the reading is **"(P2) fails"**.
+- **A's R_corr:** [0.2735, 0.3693, 0.3371, −0.3093]; ρ_s −0.089 ± 0.061. **NOT a reading** (the row failed). On its own it would straddle the −0.1 edge (INCONCLUSIVE) anyway.
+- **PREMISE CHECK (kept premises named):** the row assumed "R has no k² content (g_raw is linear)" (Bridge, accepted into the registration). **Descriptively that premise does not hold:**
+  - the same 3-parameter fit on the RAW R gives c₂ = −0.2015 (1 dof);
+  - R itself would fail the 0.057 test.
+  - The registered reading stands: the row is on Y, and Y's c₂ = +0.71 is 3.5× larger and of the opposite sign.
+  - But the row's premise is weaker than stated: with 4 k and 1 dof, k² terms of order 0.2 are present in the raw data, so it cannot separate a genuine 1/a² term from finite-k curvature at the ~0.2 level. Flagged to the Bridge.
+- **Descriptive (not a reading):**
+  - bulk c: overshoot at both ends (ρ_s −0.30 ± 0.05 and −0.42 ± 0.05; signed bands).
+  - Full box tadpole: overshoot / k² blow-up (ρ_s −25), as pre-stated.
+  - Box-minus-bulk R[½Σ(c_A − c)σ̇]: hi end −2.49 → −3.76; lo end −2.90 → −4.88.
+  - **c_A/c map:**
+    - The interior ratio depends only on P: 0.567 (P=4), 0.684 (6), 0.751 (8), 0.795 (10). (1 − ratio)·P = 1.73, 1.90, 1.99, 2.05, so c_A approaches c like ~2/P in the interior, consistent with Neon's interior claim.
+    - Walls ≈ 0.18–0.20; next to the cut ends ≈ interior.
+  - Hypothesis only: the box counterterm is weaker than bulk by a P-dependent factor (P = 4k). That gives Y k-dependent curvature, which is what fails A's 1/a² row. The interior ratios (0.57–0.80) bracket the 0.77 the bulk counterterm would have needed.
+- **Grade:** registered reading "(P2) fails" (the 1/a² row). The PRIMARY prescription A does not give a pure-1/a counterterm at k = 1–2.5. Whether that is finite-P curvature or a true 1/a² term cannot be separated with 4 k (premise caveat above). The slope question stays unanswered.
