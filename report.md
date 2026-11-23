@@ -11841,3 +11841,32 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - Cost: W12 starts ~minutes later. EXP-084 k = 2.5 is estimated at ~5× k = 2 (≈ 30 s at k = 2), so a few minutes (argued, from scaling).
 - Gain: the EXP-084 reading arrives ~29 h sooner, at ~2026-11-24 22:00 (argued).
 - The 081e registration is unaffected.
+
+### Neon T54 (via the Bridge; UNVERIFIED except where the Bridge marked it): a missing O(N⁰) coupling counterterm. My judgement, 2026-11-23.
+**Hypothesis:**
+- The 1/a² parts of t0 (A) and T_sad (B) cancel through the linearised gap equation.
+- (B) also carries T0^sub·Σσ̇, where T0^sub = δ(1/g_c)_lat ~ c/a is the lattice O(1/N) shift of the critical coupling.
+- Production fixes g = g_c(∞), so the counterterm −½·δ(1/g_c)·Σσ̇ is missing.
+- In a box, Σσ̇ ~ W/L_IR, giving a ∝ 1/a term at fixed physical geometry.
+
+**Correction to my locality argument (faaf72f):**
+- I assumed every UV divergence multiplies a quantity local on the entangling edges.
+- A BULK coupling counterterm is local in its UV coefficient but multiplies the box-integrated Σσ̇, whose W-dependence is IR (finite box). My premise missed bulk counterterms.
+- The conclusion "the growth is not continuum δκ physics" survives (a missing counterterm is a method artefact), but the argument as written was incomplete.
+
+**Code check (argued):** in production, σ̇ = 2·B₁⁻¹d is solved from the linearised gap equation with target σ₁ = 0 (`saddle_term_c`). No O(1/N) coupling shift enters anywhere, consistent with T54's premise.
+
+**Test (i), per-site residual R(x) = Ġ_total(x,x) = d(x) + δG[σ̇](x,x):**
+- σ̇ is DEFINED by solving this equation, using the y-zero mode B₁[0]. So R(x) ≡ 0 tests only whether the d inside σ̇ (from `coincident_dn_c`) is the same object as the ∂ₙ inside t0 (from `inner_beta0(dn = True)`). Both come from the same residues with s ≤ s_cut, but through different code paths.
+- Prediction (argued): zero to residue/contour precision, not exactly machine-zero; a larger value localises a discretisation mismatch.
+- Cheap: it needs one geometry build plus d and σ̇. It cannot run beside a route.
+
+**Test (ii), formula-free form:**
+- Σσ̇ per geometry is NOT stored (checkpoints hold only the t0 and tsad scalars), so it needs one σ̇ solve per geometry: an install plus B₁. Measured k = 2.5 route peaks ~2–3 GB, so it is not zero-compute and must run ALONE.
+- Prediction if T54 is right: R_AB(k) = R_phys + T0·ΔΣσ̇_norm(k), with ΔΣσ̇_norm ∝ k and **T0 the same lattice-unit constant at every k**.
+- Regressing T0 on 4 points is INFERENCE. A verification needs T0^sub computed independently (the O(1/N) lattice g_c shift); T54's tail formula is unverified, so that derivation must come first.
+
+**Pre-stated reading of 081e and 084 if T54 (ii) confirms:**
+- Both measure the UNCORRECTED quantity.
+- 081e power-divergent = this missing counterterm (the defect located), still no δκ statement.
+- **084:** the honest replica saddle is also solved at g_c(∞) (target Σ G⁽¹⁾(x,x), no O(1/N) shift), so T54 PREDICTS the exact-n pair also grows: outcome (ii-a), (ii-b) or mixed, NOT (i). **An 084 outcome (i) would count against T54** (argued). 084 is therefore a T54 test too, and its outcomes stay as registered.
