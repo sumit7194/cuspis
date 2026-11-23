@@ -1,0 +1,9 @@
+thresholds R(3) = R(1.5) + r*(R(2)-R(1)): {0.75: 7.374, 0.87: 7.876, 1.15: 9.048, 1.33: 9.802}
+7.3 ('converging', 0.7324413621330303, np.float64(2.3913921395999466e-08))
+7.6 ('INCONCLUSIVE (between bands)', 0.8040958670398114, np.float64(2.391823196301251e-08))
+8.5 ('log-like or slow power (|p| <= 0.35)', 1.0190593817601548, np.float64(2.3933569579018603e-08))
+9.16 ('INCONCLUSIVE (between bands)', 1.1766992925550732, np.float64(2.3947107695600027e-08))
+9.2 ('INCONCLUSIVE (between bands)', 1.1862532265426438, np.float64(2.3947990397194757e-08))
+9.5 ('INCONCLUSIVE (between bands)', 1.257907731449425, np.float64(2.3954837075151906e-08))
+9.9 ('power-divergent', 1.3534470713251332, np.float64(2.3964587067523336e-08))
+9.93 ('power-divergent', 1.3606125218158112, np.float64(2.3965346910397796e-08))

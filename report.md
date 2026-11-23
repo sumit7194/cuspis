@@ -11444,3 +11444,35 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 1. Both k non-void: met.
 2. A k = 3 probe without R, to measure the per-process peak.
 3. Start time from the Bridge.
+
+**CORRECTION to the 081d Stage-1 descriptive section above** (found by the Bridge, 2026-11-23; checked by me with `decide_r` on planted R(3) values, output in `exp081d_results/stage1_correction_check.txt`). The original lines are kept above.
+
+**What was wrong:** I applied the PRIMARY band numbers (0.75 / 0.87 / 1.15 / 1.33) to r_int = [R(3) − R(2)] / [R(2) − R(1)]. They belong to the PRIMARY r = [R(3) − R(1.5)] / [R(2) − R(1)] (analyzer L9–11, `decide_r`). r_int is secondary and has its own map. The thresholds and the "straddles converging/gap" sentence were therefore wrong.
+
+**Correct thresholds** (from the registered PRIMARY r with the Stage-1 R values):
+
+| reading | R(3) |
+|---|---|
+| converging | ≤ 7.374 |
+| gap | 7.374–7.876 |
+| log-like or slow power | 7.876–9.048 |
+| gap | 9.048–9.802 |
+| power-divergent | ≥ 9.802 |
+
+**decide_r check on planted R(3):**
+
+| planted R(3) | r | reading |
+|---|---|---|
+| 7.3 | 0.732 | converging |
+| 7.6 | | INCONCLUSIVE |
+| 8.5 | 1.019 | log-like |
+| 9.16 | 1.177 | INCONCLUSIVE |
+| 9.2 | | INCONCLUSIVE |
+| 9.5 | | INCONCLUSIVE |
+| 9.9 | 1.353 | power-divergent |
+| 9.93 | 1.361 | power-divergent |
+
+**Corrected descriptive reading (argued, extrapolation; nothing registered changes):**
+- The leave-k=3-out predictions of 9.16 and 9.93 give r = 1.18 and 1.36. They straddle the upper gap and power-divergent.
+- Converging would need R(3) ≤ 7.37, which is below the measured R(2.5) = 8.22. A converging reading therefore needs R to turn down between k = 2.5 and k = 3.
+- Log-like needs R(3) ≤ 9.05, an increment ≤ 0.83 over k = 2.5, against the recent half-step increments of about 1.8–2.2.
