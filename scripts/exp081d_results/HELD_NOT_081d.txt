@@ -1,0 +1,4 @@
+HELD, NOT PART OF EXP-081d (Bridge ruling 2026-11-23). k = 3 is VOID under registered row CEN (census flagged W12P12b12).
+The following are held for a possible separately registered follow-up (EXP-081e). R is NOT read from them; nothing from them enters any 081d statement:
+  route_W6P12b12.out, route_W6P12b12.wd.log, sigma_W6_P12_box12_c2_cp12_sc3.0_dd0_ckpt.json, c1_W6P12b12.* (when produced)
+Note: the runner (run_081d_stage2.sh) will proceed to route W12 after C1 W6. That step must be stopped before it starts (flagged geometry).

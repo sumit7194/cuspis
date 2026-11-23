@@ -11539,3 +11539,14 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 - **Runner slip:** `run_081d_stage2.sh` gated only on Step 0, not on the census. CEN is registered as a gate, and I omitted it from the runner. The W12 route has not started (it starts after W6, ~29 h), so nothing has been spent on the flagged geometry.
 - **The W6 route (started 15:47) is still running.** Under CEN, k = 3 is void, so W6 alone cannot give R(3). Kept running pending the Bridge's ruling (box otherwise idle; stopping later loses nothing).
 - **Consequence as registered:** k = 3 void, so the PRIMARY stays INCONCLUSIVE (a needed k is void). Any rescue (a QEP filter fix, then re-census) is a post-registration change and needs a ruling.
+
+### **EXP-081d RESULT (registered headline): PRIMARY INCONCLUSIVE, because k = 3 is VOID (census row CEN: W12P12b12 flagged).** Bridge ruling, 2026-11-23.
+- **Registered output of 081d:** the Stage-1 series R(k) at k = 1, 1.5, 2, 2.5 = +2.255, +4.233, +6.442, +8.219, positive at every k, **partially verified** (entry 105e4fe; gates all PASS).
+  - No convergence reading is possible: the registered ratio needs k = 3, and k = 3 is void.
+  - The lattice "+2.4" remains NOT resolution-stable (081c post hoc ρ = 1.86). R keeps growing with k through k = 2.5.
+- **The void was caught by a check that could fail, and did.** Production's QEP pole list at W12P12b12 misses resolved pole pairs at s = 2.478/2.479 (p = 7) and 2.912/2.913 (p = 10). Cause unverified.
+- **No rescue by amendment.** Any fix goes through a separately registered follow-up (EXP-081e draft), registered before any production code changes.
+- **Route W6P12b12 (k = 3, started 15:47, detached): NOT PART OF 081d.**
+  - It is held for a possible follow-up, and its R is not read.
+  - Nothing from it enters any 081d statement.
+  - Its files are `exp081d_results/route_W6P12b12.*` and `sigma_W6_P12_box12_*_ckpt.json`, and are labelled in `exp081d_results/HELD_NOT_081d.txt`.
