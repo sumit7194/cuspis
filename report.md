@@ -11993,3 +11993,21 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - n = 2, 3 reused bitwise from 084; n = 4 measured; n = 5 only after a message to the Bridge.
 - **INCONCLUSIVE pre-stated as likely** with 3–4 n.
 - Queued after EXP-085 by a verified runner swap.
+
+### EXP-085: phase A controls FIRED (17:29). Stopped as registered before any geometry (`exp081d_results/exp085.out`)
+- PASS: same-lattice FFT G = pinv (7e-15 at n = 8, 1.4e-14 at n = 12); KA-IR (the unsubtracted T₀ grows: −2.5 → −9.1).
+- **FAIL NORM-T0:** dense −144.1899 against FFT −143.0504 (0.8%).
+  - **Why it fired:** my FFT code excludes the q = 0 mode (`Binv[q=0] = 0`), but the dense pseudo-inverse of B keeps B(0) = 2⟨G²⟩ ≠ 0 in the box. The two sides compute different objects; the q = 0 term is an O(1/n) IR piece.
+  - **The check was right; the code was inconsistent.**
+- **FAIL c convergence:** c(n) = −0.08474, −0.09377, −0.09879, −0.10428, −0.10727 (n = 32, 48, 64, 96, 128). |c(128) − c(96)| = 2.99e-3 = 2.8% > 1%.
+  - The approach is consistent with c∞ + A/n (the same O(1/n) IR piece). Richardson from (96, 128) gives c∞ ≈ −0.116 (inference).
+- **As registered:** c unconverged, so (ii) is INCONCLUSIVE, and no geometry phase ran.
+- **Proposed post-firing amendment (needs a Bridge ruling):** treat q = 0 identically on both sides (include it); extend the sweep to n = 192, 256 with the same 1% criterion on the two largest. That is ~1–2 GB of FFT arrays, alone.
+
+### EXP-084b amendment 1b (pre-run): plant expectations computed, not hand-derived
+- Amendment 1's P-quad "INCONCLUSIVE" was a second paper slip: it ignored the leave-one-out spread (4α at n = 2, 3, 4).
+- A synthetic evaluation of the registered σ and drift definitions gives:
+  - P-lin → consistent with 0;
+  - P-const → non-zero;
+  - P-quad → consistent with 0 with σ ≈ 2.8 (n = 2–4); at n = 2–5, drift = σ = 3.450, a floating-point edge.
+- **Registered P-quad expectation: "not non-zero"** (a vanishing curved c(n) must not be called non-zero). This is robust on both sides of the edge.

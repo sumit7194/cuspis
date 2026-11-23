@@ -64,3 +64,5 @@ before the 081e routes, ALONE under the no-kill watchdog; n = 5 only in a slot c
   - Three or four n values cannot certify that a quadratic c(n) vanishes; INCONCLUSIVE is the honest reading.
 - **P-noise:** a seeded label is only ~95%-deterministic, and re-seeding after a miss would be choosing a favourable seed. The check is therefore the deterministic propagation: with declared per-n σ = 1e-3, σ_c(1) ≥ 1e-3 (it is √19·1e-3 ≈ 4.4e-3 for n = 2, 3, 4). The label is reported, not asserted. Seed 20261123 is unchanged.
 - **P-lin → consistent with 0; P-const → non-zero; P-cd** (noise-free c·k² + e on the real k and σ_R) → d within 2σ_d of 0 and c recovered: a code check.
+
+## Amendment 1b (pre-run). Amendment 1's P-quad expectation was a paper slip (it ignored the leave-one-out spread). The plant expectations were evaluated synthetically from the registered definitions: P-lin consistent with 0; P-const non-zero; P-quad consistent with 0 with σ ≈ 2.8 (n = 2–4), and on a drift = σ edge at n = 2–5. **The registered P-quad expectation is "not non-zero".**
