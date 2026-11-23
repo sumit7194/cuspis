@@ -12243,3 +12243,14 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
     - This matches the 085w family split: poles just above s_cut exist only in the W = Wbox family (W2P4 has none in (3, 6]). It is consistent with H1′ for route (ii); 085w2b tests that at W4P4.
   - As registered, a Level-1 fail is reported as an "exactness residual" and does not change the Level-2 reading.
   - W4P8 started 00:06 (projection 5.1–5.8 h; the OVERRUN line fires at 7.8 h).
+
+### EXP-085w2b (registered a0a77fd): route (ii), W4P4 n = 2, s_cut 3 → 6. **The variable had NO effect; the registered "FAIL" is uninformative about the change. My registration slip** [model: Opus 5.5]
+- **KA (s_cut 3):** reproduces the stored 084c W4P4 qsad and dev_a BITWISE (884 s, 0.115 GB).
+- **s_cut 6:** qsad = 1.4160759323070238, **bitwise identical** to s_cut 3; dev 5.4359e-10 and dev_a 1.0252e-10 also identical (1463 s). The must-fire probe fires (2.9e-5). Both predictions FAIL (dev 5.44e-10 > 3.1e-10).
+- **Why the variable cannot act (argued; consistent with the bitwise identity):**
+  - route (ii) does read s_cut (`QCont` → `S.inner` / `S.inner_beta0` → `S.s_cut`; the gap through `avg_diag`).
+  - But at integer n every pole tail enters with weight 1/expm1(2πns) (or kn(n) − kn(M)). At n = 2 and s ≈ 3 that is e^(−12π) ≈ 4e-17, below one ulp of qsad ≈ 1.4.
+  - In test (i) the tail enters through the n-DERIVATIVE at n = 1, with weight 2πs·e^(−2πs) ≈ 1e-7. That is why s_cut mattered in 085w/085w2a and cannot matter here.
+- **Conclusion (argued: a bound plus a bitwise observation):** s_cut truncation is **excluded** as the cause of the C2 / 084c Level-1 residual (~5e-10 at W4P4, 1.1e-9 at W6P6, at n = 2). H1′ holds for test (i) (descriptive 99.8% / 99.6%) but NOT for route (ii) at integer n. The W = Wbox Level-1 residual stays **unexplained**.
+- **Slip (mine):** the prediction was registered without bounding how much the variable could move the result (Rule VIII; "show the ansatz contains the answer"). Its weight at n = 2 is ~4e-17, so 2b could not fail through the mechanism it was meant to test. Recorded as lesson L3.
+- **Production s_cut change:** still relevant, for the n = 1 derivatives that enter Q′(1) and d (weight ~1e-7). It is not relevant for integer-n quantities.

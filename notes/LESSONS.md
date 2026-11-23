@@ -17,3 +17,8 @@
 - Test a waiter's condition on a true case first.
 - Memory caps come from measured full peaks only, never from scaled guesses.
 - Expected values in controls come from the exact stored inputs the code reads, never from typed or rounded constants.
+
+## L3 (2026-11-24): bound how far the one variable can move the result BEFORE registering a prediction about it
+- **Failure:** 085w2b changed s_cut 3 → 6 in route (ii) at n = 2 and predicted that Level-1 dev would drop. The result was bitwise identical. At integer n the pole tails above s_cut enter with weight e^(−2πns) ≈ 4e-17 (n = 2, s = 3), so the change could not act. The registered "FAIL" was uninformative about the change.
+- **Same class as** "a check that cannot fail" and "show the ansatz contains the answer": a variable that cannot reach the result tests nothing.
+- **Rule:** before registering a one-variable test, write the variable's largest possible effect on the measured quantity (an order-of-magnitude bound from the code's weights). If the bound is below the precision or below the effect to be explained, the test is not run as a test of that mechanism.
