@@ -111,3 +111,4 @@ The derivation is in the draft §A, with grades per line. [model: Opus 5.5]*
 **If any of KA, held-out-Watson or held-out-c fails:** 085 stays INCONCLUSIVE, and c∞ is not pursued this way.
 
 **If all pass:** phase A's c := c∞, with σ_c := σ_∞. Phases B–E run as registered: R_corr, slope bands on the whole ±2σ interval, the must-fail and zero controls.
+- **Caveat (Bridge, recorded with amendment 4; no change):** the Watson KA sums k ≠ 0, while c(n) INCLUDES q = 0, so their finite-size corrections need not share a leading form. A KA pass shows the extrapolation machinery recovers a known 1/n-type limit. It does not show that c's own corrections have that form; **the held-out n = 384 on c itself is what covers that.**
