@@ -11870,3 +11870,21 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - Both measure the UNCORRECTED quantity.
 - 081e power-divergent = this missing counterterm (the defect located), still no δκ statement.
 - **084:** the honest replica saddle is also solved at g_c(∞) (target Σ G⁽¹⁾(x,x), no O(1/N) shift), so T54 PREDICTS the exact-n pair also grows: outcome (ii-a), (ii-b) or mixed, NOT (i). **An 084 outcome (i) would count against T54** (argued). 084 is therefore a T54 test too, and its outcomes stay as registered.
+
+### EXP-085 draft: T54 counterterm test (`notes/EXP-085_registration_draft.md`). Paper only; numerics in the gap, alone.
+**My derivation:**
+- **(exact)** T(z) = ∂ log det B/∂σ(z), so T_sad = Σ_z T(z)σ̇(z).
+- **(argued)** The O(N⁰) critical point needs 1/g_c shifted by (1/N)·∂_σ log det B, and production omits it.
+- **(argued)** T₀ˢᵘᵇ is the tadpole of the mass-subtracted self-energy: IR-finite, UV pure c/a with no log.
+- **(paper)** In dim-reg it is 0 via 1/Γ(D−3) = 1/Γ(0).
+- **(argued)** Box corrections c′/L shift R's intercept, not its 1/a slope.
+
+**Prediction:** c is computed INDEPENDENTLY as a Brillouin-zone FFT sum (n-sweep, ≤ 1% drift), then R_corr(k) = R(k) − ½·c·ΔΣσ̇_norm(k), and the slope is read against pre-stated bands:
+
+| \|g_corr\| | reading |
+|---|---|
+| ≤ 0.1·g_raw | supported |
+| 0.1–0.5·g_raw | partial |
+| ≥ 0.5·g_raw | refuted as sole cause |
+
+**Controls:** must-fail with −c; KA-IR (the unsubtracted T₀ must grow with n); test (i) with d's precision measured first.
