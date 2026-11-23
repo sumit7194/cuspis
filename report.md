@@ -12165,3 +12165,12 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Status:** EXP-085 closes INCONCLUSIVE under amendment 5. No further amendment is proposed by me; next steps on 085 are the Bridge's call.
   - The (i) mismatch at W4P4 is now a third W4P4 anomaly, after C2 and 084c Level 1.
 - **Part 8** started after the clean-completion gate (GATE OK 22:09:56): W6P6 is running.
+- **EXP-085 closed (Bridge, after its own check):** INCONCLUSIVE graded and accepted. No amendment 6. Routes stay on HOLD until the W4P4 anomaly is explained or bounded.
+  - **POST-HOC (Bridge's arithmetic, not a reading):** the corrected slope is exactly linear in c, dg/dc = 45.833 at both ends (agreeing to 1e-8), and ±c are symmetric about g_raw. Flattening would need c ≈ −0.0877 (≈ 77% of c(384)).
+  - That value is deliberately NOT pursued; choosing c to flatten the slope would be fitting.
+  - Hypothesis only: the T54 term has the right order and the registered sign, but at the measured c it is too large. That points to a normalisation factor, or a second, positive-sign contribution.
+  - **Bridge's slip (logged):** §6 banded |g|/g_raw, so an overshoot (sign-reversed remainder) would read "T54 partial", the same as an under-correction. Harmless here, since the reading is INCONCLUSIVE anyway.
+  - **Rule for future slope-band registrations:** band the SIGNED g/g_raw, with overshoot as its own row.
+- **EXP-085w registered (1272d17) and launched as a side job** (W4P4 first; nice 12; soft cap 0.5 GB, inform only).
+  - Geometry fact: W2P4 and W4P4 share the 12 × 8 × 16 lattice; W = P means the cut fills the box.
+  - H1: the s_cut = 3 truncation tail. d^C integrates the full line; d^B sums only poles with s ≤ 3.
