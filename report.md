@@ -11767,3 +11767,20 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 | INCONCLUSIVE (gap, σ, non-monotone, T0/T1 differ) | as for power-divergent | cut-placement test |
 
 **Grade of the locality argument:** argued (premises stated), not shown.
+
+### Next-experiment design: two of my own proposals WITHDRAWN on code reading (2026-11-23)
+**1. Cut-placement test (shift tcut by one link): withdrawn.**
+- t0 = Tr B₁⁻¹·∂ₙB^(β=0) and T_sad (σ̇ = 2B₁⁻¹·diag ∂ₙG, fed back through G∘Gσ̇G) are built from the SAME slice residues on the SAME twisted links.
+- So the "half-link offset between sectors" mechanism has no support in the code. A tcut shift moves both sectors together, and no sharp prediction (amount, sign) can be derived. It would be an unfalsifiable test.
+
+**2. Q(1) = 0 control: withdrawn.** The exact quantity ld(n) − n·ld(1) vanishes at n = 1 by construction, and the pipeline computes only Q′(1). A check that cannot fail.
+
+**Proposed instead (draft, to the Bridge):** a growth-locus discriminator. The same width-pair estimator on the EXACT integer-n Q(n) (existing `honest_slices` / honest replica saddle σₙ machinery from EXP-080/082b/083), at k = 1, 1.5, 2 (2.5 if memory allows).
+
+| outcome | pre-stated meaning |
+|---|---|
+| exact-n width pair k-stable while Q′(1) grows | the defect is in the n → 1 continuation (t0/T_sad) |
+| exact-n also grows ∝ k | the defect is upstream (the lattice σ-theory or the estimator); the continuation is exonerated |
+| otherwise | inconclusive |
+
+Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behind the W6 route unless its measured peak is tiny.
