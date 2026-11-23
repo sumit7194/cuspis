@@ -12115,3 +12115,8 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Phase E reads both bracket ends (computed from A4.json at run time; σ_c = 0 at each end) and reports the same-band-or-INCONCLUSIVE outcome, with the controls at each end.
   - **Synthetic end-to-end test** (scratch copy; fake Σσ̇ built so that +½c cancels the slope exactly at the c(384) end): high end → supported (zero control exact; must-fail ρ = 2.0); low end → straddles; combined → INCONCLUSIVE. The rule has teeth: the 9%-wide bracket can split a reading.
   - Phases B–E with EXP085_A5=1 are queued as part 7 (after the 084c cost points), alone, no-kill.
+- **Amendment 5 premise support (Bridge-noted; recomputed by me from stored c(n)):**
+  - Measured doubling ratios: 0.58412 (64 → 128 → 256) and 0.57532 (96 → 192 → 384).
+  - The log(n)/n prediction ½·log n/(log n − log 2) gives 0.58333 (n = 128) and 0.57593 (n = 192): agreement to 7.9e-4 and 6.1e-4.
+  - This is strong support for the log(n)/n form over the measured range. **Grade unchanged: argued** (beyond n = 384 is unchecked).
+  - The Bridge's quoted measured values 0.5845 / 0.5750 differ slightly from the stored-value ratios above; the conclusion is the same.
