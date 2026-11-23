@@ -151,7 +151,9 @@ if "D" in STAGES:
 
 # ======================= E: reading =======================
 if "E" in STAGES:
-    A = json.load(open(os.path.join(OUT, "A.json"))); c, sig_c = A["c"], A["sigma_c"]
+    fA4 = os.path.join(OUT, "A4.json")                      # AMENDMENT 4: extrapolated c_inf with its own KA + held-out, when present
+    A = json.load(open(fA4 if os.path.exists(fA4) else os.path.join(OUT, "A.json"))); c, sig_c = A["c"], A["sigma_c"]
+    print(f"E uses {'A4.json (amendment 4: c_inf)' if os.path.exists(fA4) else 'A.json'}: c {c:+.10f} +- {sig_c:.2e}, converged {A['converged']}", flush=True)
     Dv = json.load(open(os.path.join(OUT, "D_verdict.json")))["consistent"]
     Cg = {(W, int(4 * k)): json.load(open(os.path.join(OUT, f"C_W{W}P{int(4*k)}.json"))) for k in KS for W in (int(2 * k), int(4 * k))}
     R = {k: JD[str(k)]["R_T0"] for k in KS}; ks = np.array(KS, float)
