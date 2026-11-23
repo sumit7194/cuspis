@@ -12071,3 +12071,10 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **As pre-stated: (ii) INCONCLUSIVE; no Richardson c∞ is used.** No geometry phase ran.
 - A redesign (e.g. a registered extrapolation in 1/n with its own known-answer test, on a sum whose exact limit is known) would be a NEW amendment, decided before any slope is read.
 - **EXP-085 amendment 4 (registered before any c∞):** the extrapolation c∞ + A/n + B/n² on {64, …, 256} with a fixed σ construction; a Watson known-answer through the same machinery (G₀ = W_sc/6 = 0.252731009858663…, closed form verified by me against the integral representation to 3.8e-18; bibliography as relayed); a held-out n = 384 test for both. Any failure leaves 085 INCONCLUSIVE.
+
+### EXP-084c: KA FIRED (18:22): route (ii) W2P2 n = 2 reproduces the stored EXP-083 C2 value only to 2.2e-10 (tolerance 1e-12)
+- Mine 0.3029743825631, stored 0.3029743823472, honest (Arb) 0.302974382455711. **Both route-(ii) values lie ≈ 1.1e-10 from the honest value, on opposite sides.** That is the known route-(ii) precision level (C2's own dev was ~1e-10).
+- The planted normalisation PASSES exactly (−7.04501355941485).
+- **Why it fired (hypothesis, to test):** the stored C2 value predates slip 15's change of `strip_sigma` to alias=False. Aliasing effects of ~1e-10 were exactly slip 15's finding, so the KA reference came from a different code path and the 1e-12 tolerance was unrealistic. **Test, once the box is free:** the KA with alias=True must reproduce the stored value bitwise.
+- **Relevance:** 2e-10 in Q is ~1e-9 of Level 2's 0.01-in-R scale (≈ 0.1 in Q). Still, the KA is a registered control that fired, so the 084c reading waits for the diagnosis and a Bridge ruling.
+- The dry run (W2P4, n = 2) is running alone; it is a cost measurement and is unaffected.

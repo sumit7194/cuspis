@@ -1,0 +1,2 @@
+[     40s] KA route (ii) W2P2 n=2 vs stored EXP-083 C2              FAIL  np.float64(0.3029743825630957) vs 0.3029743823472364
+[     40s] planted normalisation dQ(W1)=1, k=2, n=2                 PASS  -7.04501355941485 vs -7.04501355941485

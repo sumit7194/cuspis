@@ -1,0 +1,8 @@
+=== queue part 3 ended 2026-11-23 18:17:04
+=== e84c_KA start 18:17:04
+# pgate: attempt 1 at 18:21:34 (pressure normal >= 300 s)
+# exit 1; wall 43 s; PEAK tree MEM 0.061 GB + CMPRS 0.000 GB = 0.061 GB
+=== e84c_KA end 18:22:17 rc 1
+# exit 1; wall 43 s; PEAK tree MEM 0.061 GB + CMPRS 0.000 GB = 0.061 GB
+=== EXP-084c KA rc 1
+=== e84c_dry start 18:22:17
