@@ -1,0 +1,6 @@
+=== probe_k3_W12P12b12 start 13:36:47
+# pgate: attempt 1 at 13:37:17 (pressure normal >= 60 s)
+# WATCHDOG WARN (soft cap): tree footprint 6.53 GB > soft cap 6.5 GB at t=1314s (hard cap 9.0 GB)
+# WATCHDOG WARN (soft cap): tree footprint 7.32 GB > soft cap 6.5 GB at t=1325s (hard cap 9.0 GB)
+# exit -15; wall 1326 s; PEAK tree MEM 4.663 GB + CMPRS 2.659 GB = 7.322 GB; KILLED: memory pressure level 2 (>= 2, yellow)
+# pgate: attempt 1 killed by memory pressure; retrying

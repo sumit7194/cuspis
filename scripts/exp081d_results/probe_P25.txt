@@ -1,0 +1,2 @@
+=== probe_k25_W10P10b10 start 13:36:47
+# pgate: attempt 1 at 13:37:17 (pressure normal >= 60 s)

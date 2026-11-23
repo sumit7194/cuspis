@@ -1,0 +1,1 @@
+[    439s] sigma_W10_P10_box10_c2_cp12_sc3.0_dd0_probe: N 600 Ny 40; 081c numerics installed (21 unique slices, low-rank residues; ranks {'max': 2, 'hist': {'1': 78, '2': 52}}) 4160 G, unconverged 0 (439s)
