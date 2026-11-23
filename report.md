@@ -11926,3 +11926,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - PID 94254 fires at "=== e_route_W12 start" (redundant).
   - Each kills the runner and the route pattern during pgate's 30 s pre-launch wait.
 - So EXP-084, then the route-free 081e pre-steps (F.3 W10 at 3.3 GB alone, pre-check, census CEN′), run automatically, and nothing of 7 GB starts.
+
+### EXP-084 k = 2.5 attempt 2 cap-killed (17:09): memory estimate slip #4
+- It ran alone (the 081d runner had ended) and was killed by its 3.0 GB hard cap at 3.15 GB after 24 s, still rising. rc 99; nothing read (phase 3 never ran).
+- The 3 GB cap came from my SCALED estimate (~1–2 GB). Attempt 1 had only shown ≥ 1.10 GB and rising, a lower bound with no ceiling. Same family as the three earlier formula misses.
+- **Rule restated: a cap derives from a MEASURED full peak; a rising kill is a lower bound only.**
+- **Plan:** once runner 75214 reaches the hold (guard at e_bw_W6) the box is idle. Then rerun k = 2.5 ALONE with hard cap 6 GB, soft 4 GB, pressure-stop on (a kill costs minutes), and record the measured peak.
