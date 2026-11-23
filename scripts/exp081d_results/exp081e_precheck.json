@@ -1,0 +1,82 @@
+{
+ "base W10 p=8: selection == production list (bitwise)": {
+  "ok": true,
+  "detail": "[0.9531141 0.9531321 2.8585316 2.8602116]"
+ },
+ "P1 MUST-REJECT pencil-unconfirmed (s=2.0, partner 1e-3)": {
+  "ok": true,
+  "detail": "rejected; list unchanged"
+ },
+ "P1b MUST-STOP spurious passing the filter": {
+  "ok": true,
+  "detail": "PB: QEP entries without pencil partner [np.float64(2.0)]; pencil roots without QEP entry []"
+ },
+ "P2a rider 1e-8 from KEPT genuine -> PB STOP (amended)": {
+  "ok": true,
+  "detail": "PB: QEP entries without pencil partner [np.float64(2.8585315727797083)]; pencil roots without QEP entry []"
+ },
+ "P3 MUST-STOP deleted genuine (2.858532)": {
+  "ok": true,
+  "detail": "PB: QEP entries without pencil partner []; pencil roots without QEP entry [np.float64(2.858531563612774)]"
+ },
+ "P6 CEN' must-fire (extra entry s=2.0)": {
+  "ok": true,
+  "detail": "match False touch []"
+ },
+ "F.1 W3P6b6: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "F.1 W6P6b6: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "F.1 W2P8b8: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "F.1 W4P8b8: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "F.1 W8P8b8: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "F.1 W5P10b10: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "F.1 W10P10b10: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "F.2 W10P10b10: threshold-adjacent pair present and unchanged": {
+  "ok": true,
+  "detail": ""
+ },
+ "F.1 W6P12b12: lists bitwise identical, residues identical": {
+  "ok": true,
+  "detail": "differing slices []; residues identical True"
+ },
+ "P2b rider 1e-8 from REJECTED genuine -> not admitted (amended)": {
+  "ok": true,
+  "detail": "list [0.8262102, 0.8262366, 2.4778963, 2.4794482]"
+ },
+ "P7 / F.1 W12P12b12: lists differ by exactly the 4 poles (P4 admission)": {
+  "ok": true,
+  "detail": "added {7: [2.4778963, 2.4794482], 10: [2.9124682, 2.9126315], 38: [2.9124682, 2.9126315], 41: [2.4778963, 2.4794482]}"
+ },
+ "P5 WIND radius must-fire (p=14, rad 1e-7 encloses both)": {
+  "ok": true,
+  "detail": "production radii pass: True; wrong radius: WIND: s 1.1214539263 rad 1.0e-07: count 2 (raw +2.0000) != multiplicity 1"
+ },
+ "P5b alpha-plane contour == s-plane circle (counts)": {
+  "ok": true,
+  "detail": "mismatches []"
+ },
+ "F.2 W12P12b12: threshold-adjacent pair present and unchanged": {
+  "ok": true,
+  "detail": ""
+ }
+}

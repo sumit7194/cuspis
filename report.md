@@ -11690,3 +11690,25 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 - **GAP demoted to logged-only** (I.4: its v2 plant could not fire, and the widened version fails on real data).
 - **Invariance:** bitwise lists at 8 geometries; W12 equal except the 4 poles; bitwise g at W10 and W6.
 - **Reading:** as in 081d.
+
+### EXP-081e pre-checks (registration 6686454, sections E and F.1–F.2). Run 1 FAIL (2 expectations wrong), amendment 1, run 2 **PASS**. (`exp081d_results/exp081e_precheck*.out/json`)
+**Implementation:**
+- `sigma3d.py` gains `select_081e` (one-to-one matching, admission, gate PB), `pencil_roots`, and `wind_check` (gate WIND).
+- They run behind `POLE_ADMIT_081E`, set only by env `CUSPIS_081E=1`. **Default OFF: the pre-081e path is untouched** (verified: F.1 compares the OFF build with the ON build).
+
+**Run 1 (kept: `exp081e_precheck_run1_FAIL.*`): two checks failed. In both, my registered expectation was wrong and the production behaviour was right:**
+1. **P7 / F.1 W12:** I expected changes at slices {7, 10} only. They also appear at 38 = 48 − 10 and 41 = 48 − 7, the mirror copies of those slices (Ny = 48), carrying the same 4 poles. Correct behaviour; my expected set was incomplete.
+2. **P2 (rider 1e-8 from a KEPT genuine pole):** I expected "filter rejects, so not admitted". Instead the rider **borrows the genuine pole's reciprocal partner** (relative mismatch ≈ 6.3e-8 + 1.5e-7 < 1e-6), is KEPT, and one-to-one leaves it without a pencil partner, so **PB STOPs**. The rider cannot enter, but through PB, not the admission path.
+   - Consequence: the registered P2 cannot exercise the admission path at all. Inside the window, a rider next to a kept pole always borrows that pole's partner.
+
+**Amendment 1 (made after run 1, so it is labelled; it needs the Bridge's ruling because the checks were modified after they fired):**
+- P7 expects {7, 10, Ny−7, Ny−10}.
+- P2 becomes **P2a** (kept-genuine rider → PB STOP) plus a new **P2b**: a rider 1e-8 from a REJECTED genuine pole (W12 p = 7, s 2.4778963). Paper check: the rider's mismatch is min(1e-3, 4.8e-6) ≥ 1e-6, so it is rejected. It competes with the genuine pole for one pencil root, and the nearer (genuine) wins. Expected: not admitted.
+
+**Run 2: PRECHECK PASS (all 20 checks).**
+- P1 rejected; P1b PB STOP; P2a PB STOP; P2b not admitted; P3 PB STOP; P5 WIND fires at rad 1e-7; P5b α-plane counts equal s-plane counts; P6 MISS; P7 exactly the 4 poles (plus mirrors).
+- **F.1:** lists AND residues bitwise identical at W3P6b6, W6P6b6, W2P8b8, W4P8b8, W8P8b8, W5P10b10, W10P10b10 and W6P12b12.
+- **F.2:** threshold-adjacent pairs present.
+- **PB and WIND did not fire on any real slice at any of the 9 geometries.**
+
+**F.3 (bitwise g):** W10 is running now. W6 must wait for the HELD route's checkpoint at the hardest node (the route is in t0 now).

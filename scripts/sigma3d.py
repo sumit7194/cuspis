@@ -10,6 +10,74 @@ Continued inner sum per (k, beta): (1/Ny) sum_p inner_pair(p, k-p) with sigma_en
 import numpy as np
 from numpy.polynomial.legendre import leggauss
 
+# ---------------- EXP-081e (registered 6686454, notes/EXP-081e_registration.md): pencil-confirmed in-cut pole admission ----------------
+# Default OFF: with POLE_ADMIT_081E = False every code path is the pre-081e one, unchanged. The 081e runner sets it True.
+import os as _os
+POLE_ADMIT_081E = _os.environ.get("CUSPIS_081E") == "1"     # set only by the 081e runner
+S_CUT_081E, W_MATCH_081E = 3.0, 1e-7
+
+class PoleGateError(RuntimeError):
+    pass
+
+def _s(z): return -np.log(z) / (2 * np.pi)
+
+def pencil_roots(W, M):
+    """real roots z in (0,1) of F(z) = det(L0 + z L1) (the census F as a linear pencil; no structural zeros)."""
+    import scipy.linalg as sla
+    n = 2 * W; D0 = np.zeros((n, n)); D1 = np.zeros((n, n)); C0 = np.zeros((n, n)); C1 = np.zeros((n, n))
+    for j in range(W):
+        D0[2 * j, 2 * j] = 1; D1[2 * j + 1, 2 * j + 1] = 1
+        C0[2 * j + 1, 2 * j] = 1; C1[2 * j + 1, 2 * j] = -1; C0[2 * j, 2 * j + 1] = -1; C1[2 * j, 2 * j + 1] = 1
+    ev = sla.eig(D0 + M @ C0, -(D1 + M @ C1), right=False); ev = ev[np.isfinite(ev)]
+    return np.array(sorted(z.real for z in ev if abs(z.imag) < 1e-8 * abs(z) and 0 < z.real < 1))
+
+def _match(a, b, w):
+    """one-to-one greedy matching of s-lists a, b by ascending distance, pairs within w. Returns dict ia -> ib."""
+    pairs = sorted((abs(x - y), i, j) for i, x in enumerate(a) for j, y in enumerate(b) if abs(x - y) <= w)
+    ua, ub, m = set(), set(), {}
+    for _, i, j in pairs:
+        if i not in ua and j not in ub: ua.add(i); ub.add(j); m[i] = j
+    return m
+
+def select_081e(ev, proots, s_cut=None, w=None, log=None):
+    """Registration C steps 1-3 + gate PB. ev: finite QEP eigenvalues; proots: pencil real roots (z). Returns (merged z, multiplicities).
+    Beyond the cut nothing changes; in-cut filter-rejected candidates are admitted only on an unmatched pencil root within w."""
+    s_cut = S_CUT_081E if s_cut is None else s_cut; w = W_MATCH_081E if w is None else w
+    real = [z.real for z in ev if abs(z.imag) < 1e-8 * abs(z) and 0 < z.real < 1]
+    kept = [z for z in real if np.min(np.abs(ev * z - 1)) < 1e-6]; rej = [z for z in real if np.min(np.abs(ev * z - 1)) >= 1e-6]
+    kin = [z for z in kept if _s(z) <= s_cut]; rin = [z for z in rej if _s(z) <= s_cut]
+    pr = [z for z in proots if _s(z) <= s_cut + w]
+    sk, sr, sp = [_s(z) for z in kin], [_s(z) for z in rin], [_s(z) for z in pr]
+    m1 = _match(sk, sp, w); used = set(m1.values())
+    free = [j for j in range(len(sp)) if j not in used]
+    m2 = _match(sr, [sp[j] for j in free], w); admitted = [rin[i] for i in m2]
+    used |= {free[j] for j in m2.values()}
+    # gate PB (bidirectional): every in-cut kept entry has a pencil partner; every in-cut pencil root (s <= s_cut - w) has a QEP entry
+    orphan_q = [sk[i] for i in range(len(sk)) if i not in m1]
+    orphan_p = [sp[j] for j in range(len(sp)) if j not in used and sp[j] <= s_cut - w]
+    if log is not None: log.append(dict(kept_in=len(kin), admitted=[_s(z) for z in admitted], orphan_q=orphan_q, orphan_p=orphan_p))
+    if orphan_q or orphan_p:
+        raise PoleGateError(f"PB: QEP entries without pencil partner {orphan_q}; pencil roots without QEP entry {orphan_p}")
+    cand = sorted(kept + admitted, reverse=True); merged, mult = [], []
+    for z in cand:
+        if not merged or abs(z - merged[-1]) > 1e-7 * z: merged.append(z); mult.append(1)
+        else: mult[-1] += 1
+    return merged, mult
+
+def wind_check(W, M, s, rads, mult, s_cut=None, rad_override=None):
+    """gate WIND: zeros of F inside each in-cut entry's contour == its multiplicity; raw winding within 0.05 of an integer."""
+    from tools.winding import winding
+    s_cut = S_CUT_081E if s_cut is None else s_cut
+    def F(sv):
+        z = np.exp(-2 * np.pi * sv); CD = np.zeros((2 * W, 2 * W), dtype=complex); D = np.ones(2 * W, dtype=complex)
+        for j in range(W): CD[2 * j + 1, 2 * j] = -(z - 1); CD[2 * j, 2 * j + 1] = -(1 - z); D[2 * j + 1] = z
+        return np.linalg.det(np.diag(D) + M @ CD)
+    for sj, r, m in zip(s, rads, mult):
+        if sj > s_cut: continue
+        r = rad_override if rad_override is not None else r
+        n, raw, _ = winding(F, sj, r)
+        if n != m or abs(raw - n) > 0.05: raise PoleGateError(f"WIND: s {sj:.10f} rad {r:.1e}: count {n} (raw {raw:+.4f}) != multiplicity {m}")
+
 class Slice:
     def __init__(self, Lx, Lt, m2, cutx, tcut, idx):
         self.N = Lx * Lt; N = self.N
@@ -57,6 +125,14 @@ class Slice:
         Z = np.zeros((n2, n2)); I = np.eye(n2)
         ev = sla.eig(np.block([[Z, I], [-A0, -A1]]), np.block([[I, Z], [Z, A2]]), right=False)
         ev = ev[np.isfinite(ev)]
+        if POLE_ADMIT_081E:                                            # EXP-081e path (registered 6686454); default OFF
+            merged, mult = select_081e(ev, pencil_roots(self.W, self.M))
+            if not merged: return [], [], []
+            s = [-np.log(z) / (2 * np.pi) for z in merged]
+            rads = [min(1e-6, 0.3 * min([abs(si - sj) for sj in s if sj != si] + [1.0])) for si in s]
+            wind_check(self.W, self.M, s, rads, mult)
+            Rp = [self.residue_K(1j * sj, rad=r) for sj, r in zip(s, rads)]; Rm = [self.residue_K(-1j * sj, rad=r) for sj, r in zip(s, rads)]
+            return s, Rp, Rm
         cand = [z.real for z in ev if abs(z.imag) < 1e-8 * abs(z) and 0 < z.real < 1 and np.min(np.abs(ev * z - 1)) < 1e-6]
         cand.sort(reverse=True); merged = []
         for z in cand:
