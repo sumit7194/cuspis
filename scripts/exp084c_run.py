@@ -39,6 +39,14 @@ if mode == "KA":
     k = 2; W1, W2, P = 4, 8, 8; exp = -0.5 * 1.0 / (4 * P * (1 / W1 - 1 / W2) * JD["2"]["kappa"])     # independent recomputation
     got = dR(2, k, 1.0, 0.0); check("planted normalisation dQ(W1)=1, k=2, n=2", abs(got - exp) <= 1e-12 * abs(exp), f"{got!r} vs {exp!r}")
     sys.exit(1 if FAIL else 0)
+if mode == "KA_ALIAS":     # diagnosis of the fired KA: does the ALIASED path (pre-slip-15 default) reproduce the stored C2 value bitwise?
+    import exp083_honest as H, exp083_armb as AB, exp083_r3_qcont as QC
+    ref = json.load(open(os.path.join(HERE, "exp083_armb", "c2_W2P2.json")))["2"]
+    g = H.Geom(2, 2); gap = AB.Gap(g, s_cut=3.0, target="direct", alias=True); G1 = g.Gn(1); J0 = -sum(G1[p] * G1[p] for p in range(g.Ny)) / g.Ny
+    ld0 = QC.QCont(AB.strip_sigma(g, None, alias=True), npt=120, npt0=512).ld1; s2, info = gap.solve(2.0, J=J0)
+    Qc = QC.QCont(AB.strip_sigma(g, s2, alias=True), npt=120, npt0=512); q = (Qc.Q(2.0, **KW) + 2.0 * (Qc.ld1 - ld0).sum()).real
+    log(f"KA_ALIAS route (ii) W2P2 n=2 aliased path: {q!r} vs stored {ref['qsad']!r}: diff {abs(q - ref['qsad']):.2e} -> {'BITWISE' if q == ref['qsad'] else ('<=1e-12' if abs(q - ref['qsad']) <= 1e-12 else 'DIFFERENT')}")
+    sys.exit(0)
 if mode == "READ":
     rows, missing = [], []
     for k in KS:

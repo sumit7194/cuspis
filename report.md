@@ -12078,3 +12078,8 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Why it fired (hypothesis, to test):** the stored C2 value predates slip 15's change of `strip_sigma` to alias=False. Aliasing effects of ~1e-10 were exactly slip 15's finding, so the KA reference came from a different code path and the 1e-12 tolerance was unrealistic. **Test, once the box is free:** the KA with alias=True must reproduce the stored value bitwise.
 - **Relevance:** 2e-10 in Q is ~1e-9 of Level 2's 0.01-in-R scale (≈ 0.1 in Q). Still, the KA is a registered control that fired, so the 084c reading waits for the diagnosis and a Bridge ruling.
 - The dry run (W2P4, n = 2) is running alone; it is a cost measurement and is unaffected.
+- **084c KA diagnosis queued (Bridge ruling):**
+  - `exp084c_run.py KA_ALIAS` reruns the KA on the ALIASED path (the pre-slip-15 default). It runs first in queue part 5 v2 (PID 35091; the idle 32942 was stopped by verified PID), alone, after the 084c dry run.
+  - **Bitwise** → cause shown. Then a post-firing amendment: KA line 1 = the stored value on the aliased path to 1e-12; KA line 2 = the production (alias=False) route-(ii) value against honest Arb under C2's rule (max(3·dev_a, 1e-10)); both must pass.
+  - **Not bitwise** → stop and diagnose before any 084c reading.
+  - 084c runs on the PRODUCTION path (alias=False), the continuation the continued R uses.
