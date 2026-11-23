@@ -6,3 +6,9 @@
 # exit 1; wall 43 s; PEAK tree MEM 0.061 GB + CMPRS 0.000 GB = 0.061 GB
 === EXP-084c KA rc 1
 === e84c_dry start 18:22:17
+# pgate: attempt 1 at 18:26:47 (pressure normal >= 300 s)
+# exit 0; wall 964 s; PEAK tree MEM 0.076 GB + CMPRS 0.000 GB = 0.076 GB
+=== e84c_dry end 18:42:52 rc 0
+# exit 0; wall 964 s; PEAK tree MEM 0.076 GB + CMPRS 0.000 GB = 0.076 GB
+=== EXP-084c dry run rc 0
+=== HOLD (084c remaining geometries sized from the dry run; routes on HOLD) 2026-11-23 18:42:52
