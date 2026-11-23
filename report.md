@@ -12203,3 +12203,13 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - **Descriptive (not a reading):** the (i-G) part is almost entirely the s_cut = 3 truncation, which production d^B shares. The (i-B) part points to the Ġ^A route.
 - **Step 2:** not run. Its conditional go needed H1 PASS, and H1 failed. The C2 / 084c Level-1 link to s_cut stays untested; it is now the Bridge's call.
 - **W2P4** (family prediction + plant (c) at site 18 = (2,2)) is running.
+- **Bridge grading of 085w W4P4:**
+  - Headline: "H1 FAIL: after removing the (3, 6] tail, (i-G) is 1.26e-11 against a tolerance of 7.09e-12 (×1.8). (i-B) still fails at 2.4e-9." The 99.8% is descriptive, and the tolerance stays.
+  - Planning status for W4P4: **BOUNDED, not explained**. Every discrepancy is ≤ ~6e-9 absolute, ≈ 2.5e-7 of |d|, six orders below 085's slope effects. W4P4 no longer blocks 085c.
+  - Routes stay on HOLD for the 084c READ, 085c, and a registered production s_cut change with its KA.
+- **(i-B) localisation (code read, no run):**
+  - No per-slice breakdown exists or is well defined for Ġ^A: the bubble B_k mixes slices.
+  - **Both B-continuation pieces truncate pole tails at s_cut:** `sigma3d.inner()` skips sj > s_cut (≈ l.191), and `inner_beta0()` admits only sj ≤ s_cut (l.214).
+  - Hypothesis H1′ (post-hoc): all W4P4 test-(i) discrepancies are the s_cut = 3 truncation, in d^B AND in inner/inner_beta0.
+  - Also noted: route (ii)'s `strip_sigma(g, s, s_cut=3.0)` defaults to 3, and 084c calls it without the argument.
+- **085c DRAFT** written (89cc740; Bridge review pending; nothing computed). PRIMARY = prescription A (argued from criticality); bulk and full tadpole are descriptive. The full tadpole equals R_t0 + R_C, already known from stored data (a k² blow-up), and is labelled not blind.
