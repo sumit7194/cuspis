@@ -6,8 +6,11 @@ import sys, json, os, time, numpy as np
 from scipy.optimize import brentq
 import exp083_honest as H
 OUT = "exp081d_results/exp084"; os.makedirs(OUT, exist_ok=True)
-KS = [1, 1.5, 2, 2.5]; KAP = {1: 0.017660, 1.5: 0.018206, 2: 0.017743, 2.5: 0.017468}
-RCONT = {1: 2.255224, 1.5: 4.233446, 2: 6.441981, 2.5: 8.218749}; GCONT = 4.02
+KS = [1, 1.5, 2, 2.5]
+# AMENDMENT 1 (pre-read, 2026-11-23; nothing of phase 3 has run): kappa and the continued R are READ from exp081d_results.json,
+# not typed rounded constants (the rounded copies differed by ~1e-5 relative; Bridge caught the same slip in EXP-085's planted value).
+_D = json.load(open('exp081d_results.json')); KAP = {k: _D[str(k)]['kappa'] for k in KS}; RCONT = {k: _D[str(k)]['R_T0'] for k in KS}
+GCONT = float(np.polyfit(np.array(KS), np.array([RCONT[k] for k in KS]), 1)[0])
 rsh = lambda p: np.log(2.5 / 1.5) / np.log(2) if abs(p) < 1e-12 else (2.5**p - 1.5**p) / (2**p - 1)
 EDGES = dict(conv=rsh(-0.71), logl=rsh(-0.35), logh=rsh(0.35), pow=rsh(0.70))
 def band(r):

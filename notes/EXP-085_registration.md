@@ -62,3 +62,8 @@ The derivation is in the draft §A, with grades per line. [model: Opus 5.5]*
 
 ## 8. Later, optional (Bridge point 6)
 Σσ̇ at W6P12b12 and W12P12b12 (W12 is ~7 GB alone) gives a corrected k = 3 point once 081e lands. It is queued AFTER 081e and is not part of this reading.
+
+## Amendment 1 (pre-run, 2026-11-23; NOTHING of 085 has run). Found by the Bridge.
+- §5's planted expected value 7.045031843543933 used κ(2) ROUNDED to 0.017743. The code reads κ_stored(2) = 0.017743046048925182 (`exp081d_results.json`), and through the same path ½/(32·0.125·κ_stored) = **7.04501355941485** (2.6e-6 relative difference). A correct implementation would have FAILED the 1e-12 tolerance.
+- **Rule (same family as the wrong-path tolerance slip):** expected values are computed from the exact inputs the code reads. The planted expected value is therefore defined as ½/(Ny·(1/W₁ − 1/W₂)·κ_stored(2)), evaluated from the JSON at run time. It is not a typed constant.
+- Likewise **g_raw = the least-squares slope of the stored R_T0(k)** (JSON), not the typed 4.020.

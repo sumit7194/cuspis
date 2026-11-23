@@ -11898,3 +11898,12 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 6. **k = 3 Σσ̇** is queued after 081e, optional.
 
 **No compute until Sumit's office use ends.** The queue becomes 084 → 085 → 081e by a verified runner swap (to do when compute is allowed).
+
+### Amendments (pre-read / pre-run): typed rounded constants replaced by stored values (found by the Bridge in EXP-085)
+- **EXP-085 amendment 1:** the planted expected value used κ(2) rounded (7.045031843543933). With the stored κ = 0.017743046048925182 it is 7.04501355941485, a 2.6e-6 difference that would have failed a correct implementation at 1e-12.
+  - The expected value and g_raw are now computed from `exp081d_results.json` at run time.
+  - Nothing of 085 has run.
+- **EXP-084 amendment 1 (same slip, found by me while checking):** `exp084_run.py` typed κ to 6 digits and the continued R to 7 significant figures. Both are now read from the JSON, and g_cont is computed from the stored R.
+  - Effect ~1e-5 relative, far below the band widths.
+  - Phase 3 (the only place R or ratios appear) has NOT run. The Q files are unaffected (κ enters only in phase 3).
+- **Rule:** expected values and normalisations come from the exact stored inputs the code reads, never from typed or rounded copies.
