@@ -12131,3 +12131,8 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Core reading set: k ∈ {1, 1.5, 2} × n = 2. Remaining geometries are W6P6, W4P8 and W8P8, ≈ 13 h, one at a time, no-kill, queued after EXP-085 B–E.
   - Limitation stated: no k = 2.5, and no n = 3, 4. Those are supplementary, on a separate go only.
   - `READ` now reads the core set; `READ FULL` keeps the original set.
+- **EXP-085 B–E (amendment 5), part 7, run 1: CRASHED in 5 s, before any reading.**
+  - TypeError at phase B's R-norm control: the stored `S_W1`/`S_W2` are dicts, and the value sits under `S_T0`. The synthetic end-to-end test drove phase E only, so this line was never exercised.
+  - Fixed (`["S_T0"]`). Phase B alone now gives R-norm max rel dev 0.0 and the planted normalisation PASS. The control is silent unperturbed and fires on a 1e-9 perturbation of S (dev 7.4e-9 > 1e-12).
+  - Output kept as `e85_BCDE_a5_run1_crashed.out`. No 085 number was produced or read.
+  - Part 8 started W6P6 at 20:55, because its runner waits only on part 7's PID. The B–E rerun's slot was put to the Bridge.

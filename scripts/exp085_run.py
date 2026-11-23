@@ -67,7 +67,7 @@ if "A" in STAGES:
 
 # ======================= B: normalisation controls (stored inputs only) =======================
 if "B" in STAGES:
-    dev = max(abs(-(JD[str(k)]["S_W1"] - JD[str(k)]["S_W2"]) * norm(k) - JD[str(k)]["R_T0"]) / abs(JD[str(k)]["R_T0"]) for k in KS)
+    dev = max(abs(-(JD[str(k)]["S_W1"]["S_T0"] - JD[str(k)]["S_W2"]["S_T0"]) * norm(k) - JD[str(k)]["R_T0"]) / abs(JD[str(k)]["R_T0"]) for k in KS)
     check("B R-norm: stored S -> stored R_T0", dev <= 1e-12, f"max rel dev {dev:.1e}")
     def corr(k, c, dSig): return 0.5 * c * dSig * norm(k)      # R_corr - R  (registered sign +1/2 c; Sigma = 3D sum)
     exp_pl = 0.5 / (16 * 2 * (1 / 4 - 1 / 8) * JD["2"]["kappa"])  # amendment 1: from the stored kappa
