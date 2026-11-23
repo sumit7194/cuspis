@@ -12136,3 +12136,5 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Fixed (`["S_T0"]`). Phase B alone now gives R-norm max rel dev 0.0 and the planted normalisation PASS. The control is silent unperturbed and fires on a 1e-9 perturbation of S (dev 7.4e-9 > 1e-12).
   - Output kept as `e85_BCDE_a5_run1_crashed.out`. No 085 number was produced or read.
   - Part 8 started W6P6 at 20:55, because its runner waits only on part 7's PID. The B–E rerun's slot was put to the Bridge.
+  - **Order restored** (20:56): W6P6 had not started computing (the runner was still in the pressure gate). The part-8 runner and its timing watch were stopped; the log is kept as `run_queue8_run1_stopped_in_gate.txt`.
+  - Re-chained: part 7b (B–E rerun, alone) → part 8 (waits on 7b's PID) → READ → HOLD. The timing watch was re-armed on the fresh log.
