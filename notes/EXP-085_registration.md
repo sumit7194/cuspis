@@ -67,3 +67,17 @@ The derivation is in the draft §A, with grades per line. [model: Opus 5.5]*
 - §5's planted expected value 7.045031843543933 used κ(2) ROUNDED to 0.017743. The code reads κ_stored(2) = 0.017743046048925182 (`exp081d_results.json`), and through the same path ½/(32·0.125·κ_stored) = **7.04501355941485** (2.6e-6 relative difference). A correct implementation would have FAILED the 1e-12 tolerance.
 - **Rule (same family as the wrong-path tolerance slip):** expected values are computed from the exact inputs the code reads. The planted expected value is therefore defined as ½/(Ny·(1/W₁ − 1/W₂)·κ_stored(2)), evaluated from the JSON at run time. It is not a typed constant.
 - Likewise **g_raw = the least-squares slope of the stored R_T0(k)** (JSON), not the typed 4.020.
+
+## Amendment 2 (pre-run, 2026-11-23; NOTHING of 085 has run). Found while writing the code.
+**(a) Test (i) as registered was incomplete.** It compared d against t0's `inner_beta0(dn = True)` only. But the σ = 0 n-derivative of B is t0 + 𝒞 (Q′(1) = t0 + T_sad + 𝒞; 𝒞 continues the twist sectors β = ½ + is), so the registered comparison would fire on CORRECT code. Replaced by:
+- **(i-G):** d^B (production `coincident_dn_c`, Poisson residues, s ≤ s_cut) against d^C = C_line[(1/Ny)Σ_p diag(G_p(β) − G0_p)], the same 48 nodes as production 𝒞. This rests on d/dn[(1/n)Σ_q f(q/n)]|₁ = C[f] for f(0) = 0, the rule production uses for Q′(1) = t0 + C[g] (argued).
+- **(i-B):** Ġ^A(x) = D′(1)(x)/(4·G0_3D(x,x)), with D′(1) = (1/Ny)Σ_k[diag ∂ₙB^(0)_k + C[diag(B^(β)_k − B1_k)]], against d^B. Basis: the exact sheet-0 identity B_n(X,X) = 2G_n(X,X)², with both sides continued in n (Carlson uniqueness argued).
+- **Precision measured first:** d^B by residue radius ×2 and ×½; d^C and D′ by quadrature npt per panel 16 → 24 and inner npt 40 → 60.
+- **Consistent** iff max|Δ| ≤ 10× (summed precisions), for each of (i-G) and (i-B). Run at k = 1 (W2P4b4, W4P4b4).
+
+**(b) Units of Σσ̇: a factor Ny.** S is a 3D total (R divides by Ny), and T_sad = Σ_k Tr(...) is a 3D trace, so (B) = Σ_z T(z)σ̇(z) over 3D sites z = (x, y). With σ̇ y-independent, **Σσ̇ ≡ Σ_z σ̇ = Ny·Σ_x σ̇(x)**. §5's definition "Σσ̇ = Σ_x σ̇(x)" was wrong by Ny = 16k. The §5 equation is unchanged with Σσ̇ the 3D sum; the planted test is unchanged (it plants ΔΣσ̇ in the same 3D units).
+
+**(c) Added controls (must pass before any reading):**
+- **NORM-T0:** on a periodic 3D lattice n = 6 (dense, V = 216, zero mode by pseudo-inverse in both), Tr(B⁻¹·δB[σ̇ ≡ 1]) computed production-style (B = 2G∘G, δB = 4G∘(−G·G)) must equal V·T₀,FFT(n = 6) to 1e-10 relative. This pins the FFT normalisation to production's conventions.
+- **R-norm:** R(k) recomputed from the stored S_W1, S_W2 (JSON) through `norm()` must equal the stored R_T0 to 1e-12.
+- **T_sad reproduction:** the σ̇ path of 085 must reproduce the stored checkpoint `tsad` of each Stage-1 geometry to 1e-9 relative, which proves the σ̇ entering Σσ̇ is production's.

@@ -11908,3 +11908,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Phase 3 (the only place R or ratios appear) has NOT run. The Q files are unaffected (κ enters only in phase 3).
 - **Rule:** expected values and normalisations come from the exact stored inputs the code reads, never from typed or rounded copies.
 - **Correction on the above:** my "confirmed" message to the Bridge was sent before my check had run (the check command failed on a wrong venv path). Verified afterwards: 7.04501355941485 matches exactly, and the stored slope is g_raw = 4.019821717340081.
+- **EXP-085 amendment 2 (pre-run; found while writing the code):**
+  - (a) Test (i) as registered compared d with t0 only, but the σ = 0 n-derivative is t0 + 𝒞, so it would fire on correct code. Replaced by (i-G) Poisson-residue d against 𝒞-line-quadrature d, and (i-B) the B-route Ġ against d, with precision measured first.
+  - (b) **The Σσ̇ units were wrong by a factor Ny = 16k.** (B) sums over 3D sites, so Σσ̇ must be the 3D sum Ny·Σ_x σ̇.
+  - (c) Controls added: NORM-T0 (a dense periodic check of the FFT normalisation against production conventions), R-norm (recompute the stored R_T0), and reproduction of the stored tsad via 085's σ̇ path.
