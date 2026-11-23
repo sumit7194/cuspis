@@ -29,8 +29,7 @@ def avgconv(A, B):                                 # <A(k) B(k+q)>_k for A even 
     return np.real(np.fft.fftn(np.fft.ifftn(A) * np.fft.ifftn(B)))
 def T0_parts(n):
     G = Gk(n); Bq = 2 * avgconv(G, G); S2 = avgconv(G * G, G); G2m = np.mean(G * G)
-    mask = np.ones_like(G, bool); mask[0, 0, 0] = False                         # q = 0 excluded (zero mode), consistent with G
-    Binv = np.zeros_like(Bq); Binv[mask] = 1.0 / Bq[mask]
+    Binv = 1.0 / Bq    # AMENDMENT 3 (post-firing, Bridge 2026-11-23): q = 0 INCLUDED, as in the dense pinv(B) (B(0) = 2<G^2> != 0 in the box)
     c = -4 * np.mean(Binv * (S2 - G * G2m)); T0full = -4 * np.mean(Binv * S2); return c, T0full
 if "A" in STAGES:
     # same-lattice check: FFT G = pseudo-inverse of the periodic stencil (diag 6, hops -1), 5 separations, n = 8, 12
@@ -56,13 +55,14 @@ if "A" in STAGES:
     Bp = np.linalg.pinv(B, rcond=1e-12); dense = np.trace(Bp @ dB); fft = V * T0_parts(n)[1]
     check("A NORM-T0 dense Tr(B^-1 dB) vs V*T0_FFT (n=6)", abs(dense - fft) <= 1e-10 * abs(dense), f"dense {dense:.12e} fft {fft:.12e}")
     sweep = {}
-    for n in (32, 48, 64, 96, 128):
+    NSW = (32, 48, 64, 96, 128, 192, 256)                                   # AMENDMENT 3: sweep extended; 1% rule on the two largest
+    for n in NSW:
         t = time.time(); c, T0f = T0_parts(n); sweep[n] = dict(c=c, T0full=T0f); print(f"   c(n={n}) = {c:+.12f}   T0full {T0f:+.6e}  ({time.time()-t:.1f}s)", flush=True)
-    sig_c = abs(sweep[128]["c"] - sweep[96]["c"]); conv = sig_c <= 0.01 * abs(sweep[128]["c"])
-    check("A c converged (|c128-c96| <= 1% |c|)", conv, f"c {sweep[128]['c']:+.10f} sigma_c {sig_c:.2e}")
-    grows = all(abs(sweep[b]["T0full"]) > abs(sweep[a]["T0full"]) for a, b in ((32, 48), (48, 64), (64, 96), (96, 128)))
+    sig_c = abs(sweep[256]["c"] - sweep[192]["c"]); conv = sig_c <= 0.01 * abs(sweep[256]["c"])
+    check("A c converged (|c256-c192| <= 1% |c|)", conv, f"c {sweep[256]['c']:+.10f} sigma_c {sig_c:.2e}")
+    grows = all(abs(sweep[b]["T0full"]) > abs(sweep[a]["T0full"]) for a, b in zip(NSW[:-1], NSW[1:]))
     check("A KA-IR: unsubtracted T0 grows with n", grows, str({n: f"{v['T0full']:.3e}" for n, v in sweep.items()}))
-    save("A.json", dict(sweep=sweep, c=sweep[128]["c"], sigma_c=sig_c, converged=conv))
+    save("A.json", dict(sweep=sweep, c=sweep[256]["c"], sigma_c=sig_c, converged=conv))
     if FAIL: print("PHASE A FAIL"); sys.exit(1)
 
 # ======================= B: normalisation controls (stored inputs only) =======================

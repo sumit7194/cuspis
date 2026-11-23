@@ -81,3 +81,9 @@ The derivation is in the draft §A, with grades per line. [model: Opus 5.5]*
 - **NORM-T0:** on a periodic 3D lattice n = 6 (dense, V = 216, zero mode by pseudo-inverse in both), Tr(B⁻¹·δB[σ̇ ≡ 1]) computed production-style (B = 2G∘G, δB = 4G∘(−G·G)) must equal V·T₀,FFT(n = 6) to 1e-10 relative. This pins the FFT normalisation to production's conventions.
 - **R-norm:** R(k) recomputed from the stored S_W1, S_W2 (JSON) through `norm()` must equal the stored R_T0 to 1e-12.
 - **T_sad reproduction:** the σ̇ path of 085 must reproduce the stored checkpoint `tsad` of each Stage-1 geometry to 1e-9 relative, which proves the σ̇ entering Σσ̇ is production's.
+
+## Amendment 3 (POST-FIRING, Bridge-accepted 2026-11-23, after phase A controls fired; nothing past phase A had run)
+- (a) **q = 0 is included** in the FFT B⁻¹ sum, the same object as the dense pinv(B). This is an implementation fix, not a criterion change. NORM-T0 must pass before c is used.
+- (b) **Sweep extended to n = 192 and 256**, with the same 1% rule applied to the two largest.
+- **Pre-stated:** if c(192) → c(256) still drifts by more than 1%, (ii) stays INCONCLUSIVE. No Richardson c∞ is used afterwards. Any redesign (e.g. a registered extrapolation with its own known-answer test) would be a new amendment, decided before any slope is read.
+- The fired run's outputs are kept (`*_attempt1_controlsfired*`).

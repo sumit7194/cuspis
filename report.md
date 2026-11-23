@@ -12011,3 +12011,4 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - P-const → non-zero;
   - P-quad → consistent with 0 with σ ≈ 2.8 (n = 2–4); at n = 2–5, drift = σ = 3.450, a floating-point edge.
 - **Registered P-quad expectation: "not non-zero"** (a vanishing curved c(n) must not be called non-zero). This is robust on both sides of the edge.
+- **EXP-085 amendment 3 (post-firing, Bridge-accepted):** q = 0 included on both sides; sweep to n = 256 (1% rule on 192/256). If it still drifts, 085 (ii) stays INCONCLUSIVE, with no after-the-fact extrapolation. Rerun queued as `run_queue3.sh` (waits for queue part 2; alone; no-kill). Routes stay on HOLD.
