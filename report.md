@@ -12070,3 +12070,4 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - Including q = 0 changed c by < 1%. The ~1/n approach is a genuine finite-size convergence of the BZ sum, not the q = 0 term.
 - **As pre-stated: (ii) INCONCLUSIVE; no Richardson c∞ is used.** No geometry phase ran.
 - A redesign (e.g. a registered extrapolation in 1/n with its own known-answer test, on a sum whose exact limit is known) would be a NEW amendment, decided before any slope is read.
+- **EXP-085 amendment 4 (registered before any c∞):** the extrapolation c∞ + A/n + B/n² on {64, …, 256} with a fixed σ construction; a Watson known-answer through the same machinery (G₀ = W_sc/6 = 0.252731009858663…, closed form verified by me against the integral representation to 3.8e-18; bibliography as relayed); a held-out n = 384 test for both. Any failure leaves 085 INCONCLUSIVE.

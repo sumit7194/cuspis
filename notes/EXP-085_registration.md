@@ -87,3 +87,27 @@ The derivation is in the draft §A, with grades per line. [model: Opus 5.5]*
 - (b) **Sweep extended to n = 192 and 256**, with the same 1% rule applied to the two largest.
 - **Pre-stated:** if c(192) → c(256) still drifts by more than 1%, (ii) stays INCONCLUSIVE. No Richardson c∞ is used afterwards. Any redesign (e.g. a registered extrapolation with its own known-answer test) would be a new amendment, decided before any slope is read.
 - The fired run's outputs are kept (`*_attempt1_controlsfired*`).
+
+## Amendment 4 (NEW, Bridge-requested 2026-11-23; registered BEFORE any c∞ is computed or any slope read)
+**Extrapolation (fixed now):**
+- c(n) = c∞ + A/n + B/n², least squares on the n-window **{64, 96, 128, 192, 256}** (5 points, 3 parameters, 2 dof). The c(n) values come from the amendment-3 code path (q = 0 included).
+- **σ_∞ = max of:**
+  - (i) the leave-one-out spread of c∞ over the 5 fits;
+  - (ii) |c∞ − c∞′|, where c∞′ is the 2-parameter form c∞ + A/n on {128, 192, 256};
+  - (iii) the covariance standard error of c∞.
+
+**Known answer (Watson), through the SAME machinery and the same n-grid:**
+- G₀(n) = ⟨G(k)⟩ over k ≠ 0 on the periodic n³ grid (the same `Gk`), extrapolated with the same form, window and σ construction.
+- The exact value is **W_sc/6**, with W_sc = √6/(32π³)·Γ(1/24)Γ(5/24)Γ(7/24)Γ(11/24) = 1.516386059151978018…, so G₀ = 0.252731009858663003…
+  - Computed at run time with mpmath, not typed.
+  - **Verified by me two ways** (2026-11-23): the closed form against the integral representation ∫₀^∞ e^(−t)·I₀(t/3)³ dt, which agree to 3.8e-18.
+  - The closed form is due to Watson (1939), with later forms by Joyce and Glasser–Zucker. **Bibliographic details are as relayed by the Bridge and NOT verified by me.**
+- **KA passes iff** |G₀∞ − W_sc/6| ≤ σ_W AND σ_W < 1% of W_sc/6.
+
+**Held-out (both c and Watson):**
+- After fitting on n ≤ 256, compute n = **384** (alone, no-kill; estimated ~5–6 GB of FFT arrays, argued).
+- Require |fit prediction(384) − computed(384)| ≤ σ_pred(384), with σ_pred built like σ_∞ (LOO spread of the predictions at 384, the 2- vs 3-parameter difference, and the covariance error), **BEFORE c∞ is used**.
+
+**If any of KA, held-out-Watson or held-out-c fails:** 085 stays INCONCLUSIVE, and c∞ is not pursued this way.
+
+**If all pass:** phase A's c := c∞, with σ_c := σ_∞. Phases B–E run as registered: R_corr, slope bands on the whole ±2σ interval, the must-fail and zero controls.
