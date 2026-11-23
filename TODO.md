@@ -660,3 +660,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
   1. Write `exp085_run.py`, implementing registration 75f1513. Phases: same-lattice FFT check → c n-sweep + KA-IR → planted normalisation (7.045031843543933) → Σσ̇ per Stage-1 geometry (contour-varied precision) → test (i) at k = 1 → R_corr, ρ ± 2σ, reading; plus the must-fail and zero controls.
   2. Verified runner swap (idle runner 75214, cmdline checked): new order 084 → 085 → 081e. 081e body byte-identical; CUSPIS_081E unset for 084/085. Nothing runs beside a route.
   3. Optional after 081e: Σσ̇ at W6P12b12 and W12P12b12 (corrected k = 3 point).
+
+## 084c READ headline: fixed wording (Bridge, 2026-11-24, after 085w2b)
+- State the limitation in the headline: no k = 2.5, no n = 3, 4 (amendment 2).
+- Level-1 line: "W = Wbox Level-1 residual unexplained but bounded at ≤ 1.1e-9 (in Q); the pole cutoff is EXCLUDED at integer n (tail weight 1/expm1(12π) = 4.2e-17)."
+- Production s_cut change: scoped to the n = 1 derivative quantities (d, Q′(1)). Registered separately with its own KA before any route goes.
