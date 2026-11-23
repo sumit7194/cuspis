@@ -12143,3 +12143,25 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
     - Planted predecessors tested: crash; controls-fail rc 1 with a fresh E.json; stale E.json; wrong amendment; an "rc 10" prefix trap. All STOP with no geometry started; the true case passes (DRYGATE).
     - The old PID-only part-8 runner was stopped while it was still sleeping; the gated runner and the timing watch were relaunched.
   - (2) Lesson recorded in `notes/LESSONS.md` (L1: end-to-end tests run every phase on the real stored files; L2: chain on success, not on the PID).
+
+### EXP-085 B–E under amendment 5 (part 7b, 22:09): reading **INCONCLUSIVE**, for two independent registered reasons [model: Opus 5.5]
+- **Run:** 4104 s; peak 3.15 GB (2.04 MEM + 1.10 CMPRS); rc 0; all controls PASS:
+  - B: R-norm and the planted normalisation.
+  - C: t_sad reproduction, rel dev 0.0 at all 8 geometries. Σσ̇ radius spreads ≤ 4.4e-8.
+  - E: the zero control reproduces g_raw bitwise (4.019821717340081). The MUST-FAIL −c gives ρ = 2.30 / 2.42 ≥ 1, as required, at both ends.
+- **Reason 1: test (i) mismatch at W4P4.** This is a registered outcome, not an abort.
+  - (i-G) max|d^C − d^B| = 5.78e-9 against 10×(7.1e-13 + 8.7e-16) ≈ 7.1e-12.
+  - (i-B) max|Ġ^A − d^B| = 3.37e-9 against ≈ 7.2e-12.
+  - max|d| = 2.27e-2, so the mismatch is ≈ 2.5e-7 relative.
+  - W2P4 is consistent: 1.5e-13 and 3.6e-12.
+  - Registered rule (§6): a test (i) mismatch puts the reading at INCONCLUSIVE. The tolerance stays as registered (Rule II).
+  - **Observation, unverified:** W4P4 (box 4) is again the geometry of the known open C2 / 084c exactness residual (4.4–5.4e-10). A common cause is a hypothesis only.
+- **Reason 2: the bracket ends give different bands** (amendment 5's same-band rule). This is independent of reason 1.
+  - Hi end, c = c(384) = −0.11411: registered +c gives ρ = 0.301 ± 0.046 (±2σ: [0.21, 0.39]). That is entirely inside "T54 partial" (0.1, 0.5).
+  - Lo end, c = c(384) − 3Δ = −0.12458: ρ = 0.420 ± 0.048 (±2σ: [0.32, 0.52]). That straddles the 0.5 band edge.
+- **Descriptive only (not a reading):** with the registered +c, the corrected slope g is −1.21 (hi end) and −1.69 (lo end), against g_raw = +4.02. The magnitude of the corrected growth is 30–42% of the raw growth, with the sign reversed.
+  - So the T54 counterterm at this c does not flatten R(k). The sign-reversed remainder is about a third of the original.
+  - Graded **unverified**: test (i) failed, so the Σσ̇ inputs at k = 1 are not shown consistent.
+- **Status:** EXP-085 closes INCONCLUSIVE under amendment 5. No further amendment is proposed by me; next steps on 085 are the Bridge's call.
+  - The (i) mismatch at W4P4 is now a third W4P4 anomaly, after C2 and 084c Level 1.
+- **Part 8** started after the clean-completion gate (GATE OK 22:09:56): W6P6 is running.
