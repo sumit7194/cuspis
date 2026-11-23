@@ -11520,3 +11520,22 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   - No code-identical option runs both routes at once: the checks phase is NOT what pushes it over, and node-splitting doesn't lower the per-process peak.
 
 **Recommendation:** (c), which is (a) with Step 0 and census first. It keeps the code identical, and the first hour can void k = 3 cheaply.
+
+### EXP-081d Stage 2: census FLAGS W12P12b12. Registered row CEN: "geometry flagged, so k void". **STOP-class event, k = 3.** (2026-11-23 15:04, read at 15:50)
+- **Step 0 at k = 3:** W6P12b12 and W12P12b12 PASS at all 5 checkpoints. No cap, no void. Peaks 0.72 / 1.09 GB.
+- **Census:** W6P12b12 PASS (0 of 25 slices flagged). **W12P12b12 FLAGGED, 13 of 25 slices.** Detail rerun: `exp081d_results/census_W12P12b12_detail.txt`.
+  - **(i) Slices p = 7, 10: production MISSES a pole pair below the cut.**
+
+    | slice | production poles | census also finds |
+    |---|---|---|
+    | p = 7 | 0.8262102, 0.8262366 | 2.4778963, 2.4794482 |
+    | p = 10 | 0.9708493, 0.9708506 | 2.9124682, 2.9126315 |
+
+    These are resolved sign changes, split by 1.6e-3 and 1.6e-4. This is the registered failure mode "QEP missing a pole", **taken as genuine** (unverified as to cause: candidates are the QEP Im 1e-8 / reciprocal 1e-6 filters).
+  - **(ii) Slices p = 14–24: near-double poles.**
+    - Production has a pair split by ≤ 1e-7 (p = 14–16) or one merged pole (p ≥ 17, the cluster merge at 1e-7·z), at s = 1.1215–1.2793.
+    - The census sees only an unresolved "touch" (|F| minimum with no sign change; refinement scan step 1e-7) at the same s.
+    - Consistent with a double root below the census's resolution, so **probably a census-resolution limit, not a production error (argued)**.
+- **Runner slip:** `run_081d_stage2.sh` gated only on Step 0, not on the census. CEN is registered as a gate, and I omitted it from the runner. The W12 route has not started (it starts after W6, ~29 h), so nothing has been spent on the flagged geometry.
+- **The W6 route (started 15:47) is still running.** Under CEN, k = 3 is void, so W6 alone cannot give R(3). Kept running pending the Bridge's ruling (box otherwise idle; stopping later loses nothing).
+- **Consequence as registered:** k = 3 void, so the PRIMARY stays INCONCLUSIVE (a needed k is void). Any rescue (a QEP filter fix, then re-census) is a post-registration change and needs a ruling.

@@ -1,0 +1,98 @@
+{
+ "W6P12b12": {
+  "flagged": [],
+  "ok": true
+ },
+ "W12P12b12": {
+  "flagged": [
+   {
+    "p": 7,
+    "match": false,
+    "touch": []
+   },
+   {
+    "p": 10,
+    "match": false,
+    "touch": []
+   },
+   {
+    "p": 14,
+    "match": false,
+    "touch": [
+     1.1215
+    ]
+   },
+   {
+    "p": 15,
+    "match": false,
+    "touch": [
+     1.1515
+    ]
+   },
+   {
+    "p": 16,
+    "match": false,
+    "touch": [
+     1.178
+    ]
+   },
+   {
+    "p": 17,
+    "match": false,
+    "touch": [
+     1.202
+    ]
+   },
+   {
+    "p": 18,
+    "match": false,
+    "touch": [
+     1.2225
+    ]
+   },
+   {
+    "p": 19,
+    "match": false,
+    "touch": [
+     1.24
+    ]
+   },
+   {
+    "p": 20,
+    "match": false,
+    "touch": [
+     1.254
+    ]
+   },
+   {
+    "p": 21,
+    "match": false,
+    "touch": [
+     1.265
+    ]
+   },
+   {
+    "p": 22,
+    "match": false,
+    "touch": [
+     1.273
+    ]
+   },
+   {
+    "p": 23,
+    "match": false,
+    "touch": [
+     1.2775
+    ]
+   },
+   {
+    "p": 24,
+    "match": false,
+    "touch": [
+     1.2795
+    ]
+   }
+  ],
+  "ok": false
+ }
+}

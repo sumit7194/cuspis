@@ -1,0 +1,18 @@
+=== census_k3 start 15:03:34
+# pgate: attempt 1 at 15:04:04 (pressure normal >= 60 s)
+# exit 0; wall 16 s; PEAK tree MEM 0.350 GB + CMPRS 0.000 GB = 0.350 GB
+=== census_k3 end 15:04:20
+# exit 0; wall 16 s; PEAK tree MEM 0.350 GB + CMPRS 0.000 GB = 0.350 GB
+=== step0_W6P12b12 start 15:04:21
+# pgate: attempt 1 at 15:04:51 (pressure normal >= 60 s)
+# exit 0; wall 994 s; PEAK tree MEM 0.723 GB + CMPRS 0.000 GB = 0.723 GB
+=== step0_W6P12b12 end 15:21:25
+# exit 0; wall 994 s; PEAK tree MEM 0.723 GB + CMPRS 0.000 GB = 0.723 GB
+=== step0_W12P12b12 start 15:21:25
+# pgate: attempt 1 at 15:21:55 (pressure normal >= 60 s)
+# exit 0; wall 1502 s; PEAK tree MEM 0.723 GB + CMPRS 0.363 GB = 1.086 GB
+=== step0_W12P12b12 end 15:46:57
+# exit 0; wall 1502 s; PEAK tree MEM 0.723 GB + CMPRS 0.363 GB = 1.086 GB
+step0 W6: cap None void node None
+=== route_W6P12b12 start 15:46:57
+# pgate: attempt 1 at 15:47:27 (pressure normal >= 60 s)

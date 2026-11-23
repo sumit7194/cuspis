@@ -1,0 +1,6 @@
+double-double residual vs mpmath residual (3 columns, slice 3, Im a = 1.2): max rel diff 2.2e-19
+node s=0.937: Im a 3.825, slice 1, col 444: refined (auto, 2 steps, converged) 0.0e+00 | unrefined 7.4e-08 | ref: mixed-precision, 3 steps, residual 5.8e-29 -> PASS  (9s)
+node s=1.974: Im a 4.862, slice 0, col 492: refined (auto, 3 steps, converged) 0.0e+00 | unrefined 1.5e-05 | ref: mixed-precision, 4 steps, residual 8.4e-26 -> PASS  (10s)
+node s=2.986: Im a 5.874, slice 1, col 492: refined (auto, 4 steps, converged) 0.0e+00 | unrefined 3.5e-03 | ref: mpmath LU 60 digits (refinement did not converge), residual 2.0e-48 -> PASS  (487s)
+node s=3.948: Im a 6.836, slice 0, col 468: refined (auto, 7 steps, converged) 0.0e+00 | unrefined 8.8e-01 | ref: mpmath LU 60 digits (refinement did not converge), residual 9.7e-46 -> PASS  (499s)
+node s=5.052: Im a 7.939, slice 21, col 468: refined (auto, 6 steps, converged) 0.0e+00 | unrefined 5.8e+00 | ref: mpmath LU 60 digits (refinement did not converge), residual 5.9e-41 -> PASS  (492s)
