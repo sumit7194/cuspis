@@ -1,0 +1,32 @@
+W3P6b6: slices differing from production 0; max |ds| on matching slices 8.6e-10; pencil |ev|<1e-12 total 0
+W6P6b6: slices differing from production 0; max |ds| on matching slices 9.5e-10; pencil |ev|<1e-12 total 18
+W2P8b8: slices differing from production 0; max |ds| on matching slices 1.5e-14; pencil |ev|<1e-12 total 0
+W4P8b8: slices differing from production 0; max |ds| on matching slices 8.1e-10; pencil |ev|<1e-12 total 0
+W8P8b8: slices differing from production 2; max |ds| on matching slices 7.3e-10; pencil |ev|<1e-12 total 57
+    p=1: production [0.4537746, 0.5067742, 1.4393547, 1.6628842, 2.7748342]
+          pencil     [0.4537746, 0.5067742, 1.4393547, 1.6628842, 2.7748342]
+    p=7: production [0.9922805, 0.9923883, 2.9727751, 2.9813524]
+          pencil     [0.9922805, 0.9923883, 2.9727751, 2.9813524]
+W5P10b10: slices differing from production 3; max |ds| on matching slices 8.0e-10; pencil |ev|<1e-12 total 14
+    p=0: production [0.326198, 0.5107244, 1.335312, 1.8104589, 2.9732909]
+          pencil     [0.326198, 0.5107244, 1.335312, 1.8104589, 2.9732909]
+    p=8: production [0.9503705, 0.9559249, 2.8060398, 2.9479449]
+          pencil     [0.9503705, 0.9559249, 2.8060398, 2.9479449]
+    p=9: production [1.0029416, 1.0068108, 2.9662034]
+          pencil     [1.0029416, 1.0068108, 2.9662034]
+W10P10b10: slices differing from production 1; max |ds| on matching slices 9.1e-10; pencil |ev|<1e-12 total 109
+    p=1: production [0.4268577, 0.4722891, 1.3374364, 1.5259403, 2.5129264, 2.8400767]
+          pencil     [0.4268577, 0.4722891, 1.3374364, 1.5259403, 2.5129264, 2.8400767]
+W6P12b12: slices differing from production 2; max |ds| on matching slices 3.8e-10; pencil |ev|<1e-12 total 34
+    p=2: production [0.4778515, 0.5535635, 1.5072023, 1.835523, 2.9393516]
+          pencil     [0.4778515, 0.5535635, 1.5072023, 1.835523, 2.9393516]
+    p=10: production [0.9700941, 0.9716094, 2.8849087, 2.9466608]
+          pencil     [0.9700941, 0.9716094, 2.8849087, 2.9466608]
+W12P12b12: slices differing from production 3; max |ds| on matching slices 5.5e-10; pencil |ev|<1e-12 total 175
+    p=3: production [0.5836888, 0.5871343, 1.7361136, 1.7811635, 2.8874997]
+          pencil     [0.5836888, 0.5871343, 1.7361136, 1.7811635, 2.8874997]
+    p=7: production [0.8262102, 0.8262366]
+          pencil     [0.8262102, 0.8262366, 2.4778963, 2.4794482]
+    p=10: production [0.9708493, 0.9708506]
+          pencil     [0.9708493, 0.9708506, 2.9124682, 2.9126315]
+total differing slices 11

@@ -11662,3 +11662,23 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 **The 4 missed poles:** confirmed as 2 zeros each at p = 7 and p = 10.
 
 **081e draft v2:** `notes/EXP-081e_registration_draft.md`. It covers structural-zero deflation with the ZC and GAP gates and their must-fire plants, CEN′ with a must-reject plant and its registered blind zone, WIND, invariance at 9 geometries, the threshold cases, the bitwise check, and the gate→runner mapping.
+
+### EXP-081e pre-registration representability check: ZC (structural-zero count) is UNREPRESENTABLE on real data. Design v2 §2 withdrawn. (`exp081d_results/e_zc_representability.txt`, `e_pencil_test.txt`)
+**ZC fails on real data.**
+- Rank tolerance 1e-12·σ_max(A₀). The rank gap σ_r/σ_r+1 is ≥ 1.3e15, so the rank is unambiguous.
+- At **105 slices** (6 of 9 geometries), #(|ev| < 1e-12) exceeds n₀ = 2W − rank(A₀), by 1 to 8.
+- Cause: genuine poles far beyond the cut have tiny z (s = 6.65 gives z ≈ 1e-18, roundoff size). Magnitude cannot separate structural zeros from deep genuine poles, so the deflation-by-count design cannot work.
+- **Only the in-cut GAP holds:** smallest kept z 7.3e-9 against the largest |ev| below 1e-12 (9.9e-13), a ratio of 7.4e3.
+- The Bridge's must-fire objection to the ZC plant (registration review) is moot: the gate itself fails on unplanted data. It was caught before registration by the representability rule.
+
+**Linear-pencil pole finder (the census's own F):**
+- F(z) = det(L₀ + zL₁) with L₀ = D₀ + M·C̃₀ and L₁ = D₁ + M·C̃₁ (every entry degree ≤ 1). Its generalized eigenvalues are exactly the zeros of F: no structural zeros, no reciprocal partners.
+- Result: identical pole COUNTS and 7-digit positions at all 9 geometries, plus exactly the 4 missing W12 poles, with no other change.
+- Positions agree with the QEP to ≤ 9.5e-10 in s, **not bitwise**. Replacing the QEP positions would therefore move every R at that level and break invariance 4.1 by construction.
+
+**Design v3 (for the Bridge):**
+- Keep the QEP positions and the reciprocal filter unchanged.
+- Inside the cut, ADMIT a filter-rejected QEP candidate iff the pencil has a real root within 1e-7 in s (and WIND agrees on the count).
+- Reject any rejected candidate the pencil does not confirm.
+- Invariance follows: inside the cut nothing was ever filter-rejected at the 8 earlier geometries, so their lists stay bitwise identical. Only the 4 W12 poles are added.
+- MUST-REJECT plant: a spurious real QEP candidate with no pencil root (a decoupled QEP block that does not enter F) must be rejected.
