@@ -12107,3 +12107,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - The T54 counterterm test on the continued R is NOT performed. T54 is neither confirmed nor refuted by 085.
 
 **Memory:** the n = 384 step peaked at **9.23 GB** (6.05 MEM + 3.19 CMPRS) for seconds. The soft-cap WARN fired at 18:52:49, informed only, no pause and no kill. My 5–6 GB estimate was low (a FFT-temporaries count, not measured; memory estimate slip #5).
+- **EXP-085 amendment 5 (registered before any slope or Σσ̇):** a two-ended bracket c ∈ [−0.1245520, −0.1141055], i.e. [c(384) − 3Δ, c(384)].
+  - Argued: monotone c, plus doubling-drop ratios 0.584 / 0.575, consistent with a log(n)/n leading term (bound ≈ 1.4Δ); 3Δ also covers log²(n)/n (≈ 2.4Δ).
+  - Premise stated: ratios ≤ 0.6 beyond n = 384.
+  - Phases B–E run at both ends; the reading counts only if both ends give the same band.

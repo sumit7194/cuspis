@@ -112,3 +112,16 @@ The derivation is in the draft §A, with grades per line. [model: Opus 5.5]*
 
 **If all pass:** phase A's c := c∞, with σ_c := σ_∞. Phases B–E run as registered: R_corr, slope bands on the whole ±2σ interval, the must-fail and zero controls.
 - **Caveat (Bridge, recorded with amendment 4; no change):** the Watson KA sums k ≠ 0, while c(n) INCLUDES q = 0, so their finite-size corrections need not share a leading form. A KA pass shows the extrapolation machinery recovers a known 1/n-type limit. It does not show that c's own corrections have that form; **the held-out n = 384 on c itself is what covers that.**
+
+## Amendment 5 (NEW, registered 2026-11-23 BEFORE any slope or Σσ̇ is computed; only the c(n) sequence has been seen): a two-ended bracket, not a c∞ extrapolation
+- **Bracket:** c ∈ [c(384) − 3Δ, c(384)] = **[−0.1245520, −0.1141055]**, with Δ = c(384) − c(192) = −0.0034909 (stored values in A4.json).
+- **Justification (ARGUED under a stated premise):**
+  - **Upper end:** c is monotone decreasing over all 7 measured n, so c∞ ≤ c(384).
+  - **Lower end:** if each further doubling drop is ≤ r × the previous one, then c(384) − c∞ ≤ Δ·r/(1 − r).
+  - The measured doubling ratios are 0.584 (64 → 128 → 256) and 0.575 (96 → 192 → 384). A leading log(n)/n term (from Σ^ren ~ k² log k) gives r(n) = ½·log n/(log n − log 2) ≈ 0.58, decreasing towards ½, so the bound is ≈ 1.4Δ. Pure 1/n gives Δ. Even log²(n)/n would give r ≈ 0.71, i.e. ≈ 2.4Δ. 3Δ covers all three.
+  - **Premise:** doubling ratios non-increasing and ≤ 0.6 beyond n = 384 (not verified beyond the data; n = 512 would need ~22 GB of FFT arrays).
+- **Rule:**
+  - Phases B–E run as registered with c = each END of the bracket (σ_c = 0 at each end; the bracket replaces σ_c).
+  - A reading counts only if **both ends give the SAME band** for ρ ± 2σ_ρ. Otherwise INCONCLUSIVE.
+  - The must-fail (−c) and zero (c = 0) controls run at each end.
+- Grade of the bracket: **argued** (premise stated).
