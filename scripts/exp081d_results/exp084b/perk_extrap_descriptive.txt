@@ -1,0 +1,5 @@
+DESCRIPTIVE (Bridge item 3): per-k extrapolation of R_n(k) to n = 1 (orders 1, 2 in n-1; LOO at order 1), vs continued R(k). Fit-free in k.
+k=1   : R_n = [0.68259, 0.41367, 0.35439]  -> n=1: order2 +1.1611  order1 +0.8117  LOO spread 0.4193  | continued R +2.2552
+k=1.5 : R_n = [1.55092, 0.88324, 0.72839]  -> n=1: order2 +2.7314  order1 +1.8767  LOO spread 1.0257  | continued R +4.2334
+k=2   : R_n = [2.78101, 1.56416, 1.25154]  -> n=1: order2 +4.9021  order1 +3.3950  LOO spread 1.8085  | continued R +6.4420
+k=2.5 : R_n = [4.31695, 2.47904, 1.95228]  -> n=1: order2 +7.4660  order1 +5.2808  LOO spread 2.6223  | continued R +8.2187

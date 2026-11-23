@@ -12034,3 +12034,14 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - No δκ statement.
 - **Bearing on EXP-085 (argued):** if the continuation is the issue, T54's counterterm may not be the (only) mechanism. 085's rerun is still informative for the 1/a part.
 - **Next candidates (not registered):** n = 5 (≈ 3–4 GB by the measured scaling, announced to the Bridge first) to test the extrapolation with 4 n values; a continuation-uniqueness check, e.g. whether the code's continued Q(n) at integer n reproduces the honest Q_n.
+- **EXP-084b premises, recorded before any further run (Bridge):** the pre-stated meaning ("the continuation itself is implicated") rests on TWO testable premises:
+  - (P1) R_n is smooth in n between n = 1 and n = 2 (MFS 0904.4477 reports a phase transition in n for O(N) Rényi entropies near d = 3);
+  - (P2) the production continuation DIFFERS from the honest family at integer n.
+- EXP-083 R3′ C2 found agreement to ~1e-10 at integer n = 1..24 for W2P2 and W4P2, which is evidence against P2 at those geometries.
+- So "c(1) non-zero" is graded **registered, but its meaning is unestablished**. Alternatives: (i) the c/d degeneracy (corr ≈ −1); (ii) non-smooth n-dependence; (iii) C2's agreement not extending to larger geometries.
+- **Next (Bridge):** the C2 comparison at the 084 geometries for n = 2, 3, 4, registered, BEFORE n = 5.
+- **EXP-084b fit-free per-k check (DESCRIPTIVE; stored values only, `exp084b/perk_extrap_descriptive.txt`):**
+  - Extrapolating R_n(k) in n to n = 1 gives order-2 values 1.16, 2.73, 4.90, 7.47 against the continued R 2.26, 4.23, 6.44, 8.22.
+  - Order 1 vs order 2 differ by 0.35–2.2, and the leave-one-out spread is 0.42–2.62: comparable to the gaps.
+  - R_n is strongly curved in n (k = 1: 0.683, 0.414, 0.354), and the continued value at n = 1 lies far above R₂, so the n → 1 approach is steep.
+  - With 3 n, the per-k extrapolation cannot distinguish agreement from disagreement. **084b's "non-zero" plausibly rests on the c/d split plus a poorly constrained n-extrapolation (argued).** The integer-n C2 comparison is the decisive next test.
