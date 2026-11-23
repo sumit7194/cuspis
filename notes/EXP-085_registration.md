@@ -114,7 +114,7 @@ The derivation is in the draft §A, with grades per line. [model: Opus 5.5]*
 - **Caveat (Bridge, recorded with amendment 4; no change):** the Watson KA sums k ≠ 0, while c(n) INCLUDES q = 0, so their finite-size corrections need not share a leading form. A KA pass shows the extrapolation machinery recovers a known 1/n-type limit. It does not show that c's own corrections have that form; **the held-out n = 384 on c itself is what covers that.**
 
 ## Amendment 5 (NEW, registered 2026-11-23 BEFORE any slope or Σσ̇ is computed; only the c(n) sequence has been seen): a two-ended bracket, not a c∞ extrapolation
-- **Bracket:** c ∈ [c(384) − 3Δ, c(384)] = **[−0.1245520, −0.1141055]**, with Δ = c(384) − c(192) = −0.0034909 (stored values in A4.json).
+- **Bracket:** c ∈ [c(384) − 3Δ, c(384)] = **[−0.1245782634, −0.1141055064]**, with Δ = c(384) − c(192) = −0.0034909190 (computed from A4.json at run time, NOT typed; a typed −0.1245520 in the first version of this amendment was an arithmetic slip, corrected pre-run).
 - **Justification (ARGUED under a stated premise):**
   - **Upper end:** c is monotone decreasing over all 7 measured n, so c∞ ≤ c(384).
   - **Lower end:** if each further doubling drop is ≤ r × the previous one, then c(384) − c∞ ≤ Δ·r/(1 − r).
