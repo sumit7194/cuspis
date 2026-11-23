@@ -1,4 +1,4 @@
-"""EXP-085w (registered 1272d17): W4P4 test-(i) diagnosis. H1 = s_cut truncation tail. Usage: exp085w_diag.py W P [plant_site]
+"""EXP-085w (registered 1272d17 + pre-run note: tail = poles in (3, 6], s > 6 remainder separate; family prediction at W < Wbox): W4P4 test-(i) diagnosis. H1 = s_cut truncation tail. Usage: exp085w_diag.py W P [plant_site]
 Phase-D code copied verbatim from exp085_run.py so the KA reproduces D.json bitwise. Writes exp081d_results/exp085w/W{W}P{P}.json. [model: Opus 5.5]"""
 import sys, os, json, time, numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -32,12 +32,12 @@ def d_radius(S, U, f):                                              # verbatim f
             dp, dm = cache[(p, j)]
             d += (2j * np.pi) * u.scale * dp * S3._kdn(1j * sj, True) + (2j * np.pi) * u.scale * dm * S3._kdn(-1j * sj, False)
     return d / Ny
-def per_slice_dB(S, above):                                         # coincident_dn_c's formula per slice; above=False: s<=s_cut, True: s>s_cut
+def per_slice_dB(S, lo_s, hi_s):                                    # coincident_dn_c's formula per slice, poles with lo_s < s <= hi_s
     out = []
     for sp in S.sl:
         d = np.zeros(S.N, dtype=complex)
         for j, sj in enumerate(sp.s):
-            if (sj > S.s_cut) != above: continue
+            if not (lo_s < sj <= hi_s): continue
             for R, a0, up in ((sp.Rp[j], 1j * sj, True), (sp.Rm[j], -1j * sj, False)):
                 d += (2j * np.pi) * np.diag(sp.Rfull(R)) * S3._kdn(a0, up)
         out.append(d / S.Ny)
@@ -59,9 +59,11 @@ print(f"phase D recomputed: iG {iG!r} (tol {tolG:.2e})  iB {iB!r} (tol {tolB:.2e
 ref = json.load(open(os.path.join(HERE, "exp081d_results", "exp085", "D.json"))).get(str(W)) if P == 4 else None
 if ref: check(f"KA W{W}P{P}: iG, iB reproduce D.json bitwise", iG == ref["iG"] and iB == ref["iB"], f"iG {iG!r} vs {ref['iG']!r}; iB {iB!r} vs {ref['iB']!r}")
 # ---- H1: tail ----
-lo, hi = per_slice_dB(S, False), per_slice_dB(S, True)
+lo, hi, rem = per_slice_dB(S, -np.inf, S.s_cut), per_slice_dB(S, S.s_cut, 6.0), per_slice_dB(S, 6.0, np.inf)   # pre-run note: tail = (3, 6]
 check("control: per-slice d^B (s<=s_cut) sums to coincident_dn_c", np.abs(lo.sum(0) - dB).max() <= 1e-15 * max(1, np.abs(dB).max()), f"{np.abs(lo.sum(0) - dB).max():.1e}")
-tail = hi.sum(0); tmax = float(np.abs(tail).max())
+tail = hi.sum(0); tmax = float(np.abs(tail).max()); rmax = float(np.abs(rem.sum(0)).max())
+print(f"s > 6 remainder (size only): max {rmax:.3e}", flush=True)
+if W < P: check(f"family prediction (W < Wbox): |tail(3,6]| <= tolG", tmax <= tolG, f"{tmax:.3e} vs {tolG:.2e}")
 h1G = float(np.abs((dC16 - dB) - tail).max()); h1B = float(np.abs((GA16 - dB) - tail).max())
 print(f"tail: max|d^B_tail| {tmax:.3e}  (20x tolG = {20*tolG:.2e})", flush=True)
 check(f"H1 (i-G): max|(d^C - d^B) - tail| <= tolG", h1G <= tolG, f"{h1G:.3e} vs {tolG:.2e}  (before: {iG:.3e})")
@@ -84,7 +86,7 @@ for p, sp in enumerate(S.sl):
     poles.append(dict(p=p, n=len(s), near_3to4=near, min_gap=gap, min_dist_scut=min([abs(x - 3.0) for x in s] + [np.inf])))
     if near or gap < 1e-4: print(f"   p{p}: poles in (3,4) {['%.6f' % x for x in near]}  min gap {gap:.2e}  min|s-3| {poles[-1]['min_dist_scut']:.2e}", flush=True)
 cond = float(np.linalg.cond(B1[0])); print(f"cond(B1[0]) = {cond:.3e}", flush=True)
-json.dump(dict(W=W, P=P, iG=iG, iB=iB, tolG=tolG, tolB=tolB, s_dB=s_dB, s_dC=s_dC, s_GA=s_GA, tail_max=tmax, h1G=h1G, h1B=h1B, teeth=teeth, flip=flip,
+json.dump(dict(W=W, P=P, iG=iG, iB=iB, tolG=tolG, tolB=tolB, s_dB=s_dB, s_dC=s_dC, s_GA=s_GA, tail_max=tmax, rem6_max=rmax, h1G=h1G, h1B=h1B, teeth=teeth, flip=flip,
                top5=[[int(i), int(i // Lt), int(i % Lt), float(abs(mis[i]))] for i in top], slice_share=share.tolist(), poles=poles, condB10=cond,
                failed=FAIL, sec=time.time() - T0), open(os.path.join(OUT, f"W{W}P{P}.json"), "w"), indent=1, default=float)
 print(f"\nEXP-085w W{W}P{P}: {'controls PASS' if not FAIL else 'FAIL: ' + ', '.join(FAIL)}  ({time.time()-T0:.0f}s)"); sys.exit(1 if FAIL else 0)
