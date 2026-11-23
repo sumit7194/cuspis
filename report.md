@@ -11830,3 +11830,14 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Cause attributed to me (argued, from the timing).** "Green beside W6" was judged from a free-% reading before each job, not from the pressure level during it. W6's setup phase carries heavy compressed memory, and a sub-1 GB neighbour was enough to tip the machine to yellow.
 - **Lost: ~14 min more** of W6. pgate attempt 3 started at 16:36:22.
 - **Rule, tightened:** NOTHING runs beside a route, of any size, including dry runs. The only pending EXP-084 work already waits for 081e to exit (detached PID 73627).
+
+### QUEUE CHANGE (Bridge, 2026-11-23 ~16:45; not an amendment): EXP-084 reads BEFORE the 081e W12 route
+- Stopped by verified PID (each idle, only a `sleep` child): `run_081e.sh` (66664) and `run_084_after_081e.sh` (73627).
+- New runner `run_084_then_081e.sh`, detached as PID 75214 with PPID 1. Order:
+  1. wait for the 081d runner (46956: W6 route, then C1 W6; the guard 56538 stops it before its W12 route);
+  2. **EXP-084 k = 2.5 + reading, alone**, cap 3 GB, with **CUSPIS_081E unset**, so the 081e patch is off for 084;
+  3. `export CUSPIS_081E=1`, then the **081e sequence, byte-identical to `run_081e.sh`** (verified by diff).
+- A 084 failure is logged and does not block 081e.
+- Cost: W12 starts ~minutes later. EXP-084 k = 2.5 is estimated at ~5× k = 2 (≈ 30 s at k = 2), so a few minutes (argued, from scaling).
+- Gain: the EXP-084 reading arrives ~29 h sooner, at ~2026-11-24 22:00 (argued).
+- The 081e registration is unaffected.
