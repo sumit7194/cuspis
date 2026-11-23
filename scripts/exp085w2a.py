@@ -53,6 +53,7 @@ dC16, dC24 = dC_of(S); s_dC = np.abs(dC24 - dC16).max()
 check("control 1: d^C bitwise identical at s_cut 3 and 6", np.array_equal(dC16, dC3), f"max diff {np.abs(dC16 - dC3).max():.1e}")
 dtail = float(np.abs((dB - dB3) - tail3).max())
 check("control 2: d^B(6) - d^B(3) == on-demand tail(3,6] within s_dB", dtail <= max(s_dB, 1e-15), f"{dtail:.2e} vs s_dB {s_dB:.1e} (|tail| {np.abs(tail3).max():.2e})")
+if os.environ.get("TIER1"): print(f"TIER1 exit before inner ({time.time()-T0:.0f}s)"); sys.exit(0)
 B1 = S.B1(); B1d = np.array([np.diag(B1[k]) for k in range(Ny)])
 dB0 = S.inner_beta0(1.0, dn=True); dB0d = np.mean([np.diag(dB0[k]) for k in range(Ny)], axis=0); del dB0
 def Bd(npt): return lambda b: np.mean([np.diag(m) for m in S.inner(1.0, b, npt)], axis=0) - B1d.mean(axis=0)
