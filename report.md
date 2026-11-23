@@ -12219,3 +12219,19 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - H1 passes trivially at W2P4, with no teeth (must-fail not graded, as registered).
   - cond(B₁[0]) = 3.826, identical to W4P4, as it must be: B₁ is the uncut n = 1 lattice, the same for both cut widths.
   - **085w overall: H1 FAILS** (at W4P4, as registered). The family prediction holds. W4P4 is BOUNDED; 085w2 tests H1′.
+
+### EXP-085w2a (registered a0a77fd): phase D at W4P4 with s_cut = 6. **Predictions FAIL; controls PASS** [model: Opus 5.5]
+- **Run:** 1248 s, 0.075 GB.
+- **Controls:**
+  1. d^C is bitwise identical at s_cut 3 and 6.
+  2. d^B(6) − d^B(3) equals the on-demand tail to 8.8e-18 (two implementations).
+  3. Plant (c) fires (5.0e-9 > 7.1e-12).
+- **Registered predictions:**
+  - (i-G) **1.259e-11 against tolG 7.09e-12: FAIL** (5.785e-9 at s_cut 3).
+  - (i-B) **1.258e-11 against tolB 7.15e-12: FAIL** (3.367e-9 at s_cut 3).
+- **Descriptive, not a reading:**
+  - Raising s_cut removes **99.8% of (i-G) and 99.6% of (i-B)**. So H1′'s code-read hypothesis (inner/inner_beta0 truncate too) accounts for the bulk of (i-B).
+  - The two residuals are now **equal**: 1.258e-11 against 1.259e-11, and (i-G)'s equals 085w's on-demand-tail residual. That suggests ONE common ~1.26e-11 floor, about 1.8× the registered tolerance (≈ 5e-10 relative to |d| 2.3e-2). Its cause is unidentified. The tolerance is NOT relaxed; the precision estimate 10·(s_dB + s_dC) evidently misses some error source at W4P4 (hypothesis only).
+- **W4P4 status:** still BOUNDED. The truncation explains everything but a ~1.3e-11 residual.
+- **Production consequence (Bridge's item 4):** a registered production change of s_cut 3 → ≥ 6 is supported by the descriptive 99.8% / 99.6%.
+- 2b (route (ii) at s_cut 6) is running.
