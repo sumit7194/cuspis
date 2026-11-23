@@ -12181,3 +12181,25 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Tier-1 test, no tail value printed: control 1.0e-17 at W2P4 and 1.4e-17 at W4P4.
     - W2P4 has 0 poles in (3, 6], so its test did NOT exercise the tail path (the L1 trap). The path was re-tested at W4P4: 17 poles in (3, 6], finite.
   - Outputs kept as `*_run1_crashed.*`. Rerun launched.
+
+### EXP-085w W4P4 (registered 1272d17 + pre-run note 4cc4f65): **H1 FAILS** as registered; step 2 NOT run (its condition is unmet) [model: Opus 5.5]
+- **Run:** 1106 s, peak 0.105 GB (beside part 8).
+- **Controls pass:**
+  - KA: iG/iB reproduce D.json bitwise.
+  - s ≤ s_cut control: 1.4e-17.
+  - Must-fail: the sign-flipped tail gives 1.16e-8 > tol, so it fires. H1 has teeth: |tail| = 5.77e-9 > 20× tol (1.4e-10).
+- **H1 (i-G):** max|(d^C − d^B) − tail| = **1.26e-11 against tol 7.09e-12: FAIL** (by ×1.8).
+  - Before the tail the mismatch was 5.785e-9, so **99.8% of the (i-G) mismatch is the s ∈ (3, 6] truncation tail**.
+  - The remainder 1.26e-11 is not explained. It is near the precision of the tail itself (17 on-demand residues); that is a hypothesis only, and the registered tolerance is NOT relaxed.
+- **H1 (i-B):** max|(Ġ^A − d^B) − tail| = **2.41e-9 against 7.15e-12: FAIL.** Before the tail it was 3.37e-9.
+  - Since d^C ≈ d^B + tail, this says **Ġ^A (the B-continuation route) itself differs from d^C by ≈ 2.4e-9**: a SECOND, separate discrepancy, not caused by the s_cut truncation.
+- **The s > 6 remainder:** 0.0.
+- **Localisation (Bridge (a), descriptive):**
+  - The top-5 |d^C − d^B| sites are (x, t) = (2,2), (9,2), (2,5), (9,5) at 5.78e-9, then (6,2) at 5.39e-9. These are mirror-symmetric, two sites outside the cut ends in x (cut x 4–7) and one step from the cut row (t_c = 3 | 4).
+  - Per slice: p3/p13 at 1.6e-9 and p4/p12 at 1.2e-9 carry it. These are exactly the slices with poles just above s_cut: s = 3.0107 (p3) and 3.0877 (p4). Other slices are ≤ 1.7e-10; p0–2 and p14–15 are ≤ 6e-14.
+- **Bridge (b):** cond(B₁[0]) = 3.8, so B₁[0] is well conditioned: **conditioning is ruled out** as the cause.
+  - Minimum pole gaps are ≥ 3.3e-3 (radius rule 0.3 × gap ≫ 1e-6, so the radius stays at 1e-6).
+- **Registered reading: "H1 fails"**: W4P4 stays not fully explained, bounded by size.
+  - **Descriptive (not a reading):** the (i-G) part is almost entirely the s_cut = 3 truncation, which production d^B shares. The (i-B) part points to the Ġ^A route.
+- **Step 2:** not run. Its conditional go needed H1 PASS, and H1 failed. The C2 / 084c Level-1 link to s_cut stays untested; it is now the Bridge's call.
+- **W2P4** (family prediction + plant (c) at site 18 = (2,2)) is running.
