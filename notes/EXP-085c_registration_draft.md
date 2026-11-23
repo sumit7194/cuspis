@@ -1,6 +1,6 @@
 # EXP-085c (DRAFT for the Bridge; NOT registered; nothing computed): the counterterm under ONE pre-chosen prescription [model: Opus 5.5]
 
-*Draft 2026-11-23, after EXP-085 closed INCONCLUSIVE (3e8e610) and the T55 verification (9f5b121). Header status: 085w W4P4 gives H1 FAILS.
+*Draft 2026-11-23, revised per the Bridge's 4 points. Written after EXP-085 closed INCONCLUSIVE (3e8e610) and the T55 verification (9f5b121). Header status: 085w W4P4 gives H1 FAILS, and W4P4 is BOUNDED (≤ 6e-9 absolute, ≈ 2.5e-7 of |d|).
 The (i-G) mismatch is 99.8% the s ∈ (3, 6] truncation tail of d^B; (i-B) shows a separate ≈ 2.4e-9 Ġ^A-route discrepancy (0ab4fdd). W2P4: [to be filled from 085w before registration].*
 
 ## A. The PRIMARY prescription and why (argued; written before anything is computed)
@@ -18,7 +18,9 @@ The (i-G) mismatch is 99.8% the s ∈ (3, 6] truncation tail of d^B; (i-B) shows
 - R-operator: R[X] := −(X(W₁) − X(W₂)) / (Ny·(1/W₁ − 1/W₂)·κ(k)), the 081d normalisation with stored κ.
 - **A (PRIMARY):** ΔS_A = −(N/2)·Σ_3D δ_A(1/g)σ̇. By the algebraic identity (T55 verification) this equals −½T_sad − 2Σ_3D Λ·d, with Λ(x) := Σ_y B₁⁻¹(x, y)G₁(x, y) (3D sum).
   - In sectors: Λ(x) = Σ_x′ (1/Ny)Σ_k [B_k⁻¹ ∘ G_k](x, x′). Hence Σ_3D Λd = Ny·Σ_xt Λ(x)d(x).
-  - **R_corr^A = R_t0 + R_C + R[−2·Ny·Σ_xt Λd].** This needs d (`coincident_dn_c`) and B₁ per geometry: no σ̇ solve and no c.
+  - **Route 1 (direct; the reading's route, Bridge):** R_corr^A = R − R[½Σ_3D c_A(x)σ̇(x)], with c_A(x) = N·δ_A(1/g(x)) built on the box. R has no k² content (g_raw is linear), so the 1/a² question is whether **R[½Σc_Aσ̇]** has k² content. It is read there, with no subtraction of large numbers.
+  - **Route 2 (identity; the second implementation):** R_corr^A = R_t0 + R_C + R[−2·Ny·Σ_xt Λd].
+  - **Two-route KA (can fail through code errors):** routes 1 and 2 agree to ≤ 1e-10 relative per geometry.
 - **Bulk (descriptive):** R_corr^bulk = R + ½c·ΔSigma3D·norm. This is the 085 number, re-read with signed bands at both bracket ends.
 - **Full box tadpole (descriptive):** δ(1/g(x)) = T₁^box(x)/N keeps σ̄₁ ≡ 0 at O(N⁰) and removes ALL of ½T_sad. **R_corr^full = R_t0 + R_C.**
   - **ALREADY KNOWN from stored components (NOT blind):** −36.64, −73.18, −122.99, −187.92 at k = 1…2.5, a k² blow-up.
@@ -30,9 +32,11 @@ The (i-G) mismatch is 99.8% the s ∈ (3, 6] truncation tail of d^B; (i-B) shows
 | A | **none**: R_Λ cancels R_t0's k² piece (T55 (P2): the Σ^loc·d term cancels the UV/OPE piece of ½Q′_explicit) | argued (OPE, not exact) |
 | bulk | none (registered §1.3: the −2B̃(0)I_UV piece stays and cancels (A)'s OPE term) | argued |
 | full tadpole | **k² blow-up** (removes the OPE-cancelling piece) | known from stored data |
-- **Row, A's 1/a² test:** the 084b-style 3-parameter k-fit R_corr^A = c₂k² + c₁k + c₀ (full covariance, stored σ_R).
-  - **"A's OPE cancellation holds"** iff |c₂^A| ≤ 0.05·|c₂(R_t0)| (≈ 5% of the t0 k² scale; c₂(R_t0) from the same fit).
-  - Otherwise **"A leaves a 1/a² remainder → (P2) fails"**, and the slope reading below is NOT made.
+- **Row, A's 1/a² test (threshold tied to the reading, Bridge):** fit R[½Σc_Aσ̇](k) = c₂k² + c₁k + c₀ with the 084b-style 3-parameter fit (full covariance). On these 4 k the fit has **1 dof**.
+  - A k² term induces a 2-dof linear-fit slope of 3.5·c₂ on k ∈ {1, 1.5, 2, 2.5}: Σ(k − k̄)(k² − ⟨k²⟩)/Σ(k − k̄)² = 4.375/1.25 (checked).
+  - **"no 1/a² remainder"** iff |c₂^A| ≤ 0.057 (that is, 3.5·|c₂| ≤ 0.05·g_raw) AND 2σ(c₂) ≤ 0.057 (resolved).
+  - If |c₂^A| > 0.057 with the whole ±2σ interval outside: **"A leaves a 1/a² remainder → (P2) fails"**, and no slope reading is made.
+  - Otherwise (unresolved): **INCONCLUSIVE**.
 
 ## D. Reading (PRIMARY A only; SIGNED bands, Bridge rule)
 - g_A = least-squares slope of R_corr^A over k ∈ {1, 1.5, 2, 2.5}, 2 dof, with σ_g as in 085 §6 (fit and propagation). ρ_s := g_A / g_raw (signed), with g_raw = 4.019821717340081 (stored).
@@ -46,6 +50,11 @@ The (i-G) mismatch is 99.8% the s ∈ (3, 6] truncation tail of d^B; (i-B) shows
 | INCONCLUSIVE | straddles an edge; or the 1/a² row fails; or a control fails |
 
 - The descriptive prescriptions get the same table, labelled "not a reading".
+- **Physical meaning of "supported" under A:** the 1/a growth of R is removed by the box-consistent O(N⁰) criticality counterterm. Graded **partially verified** (one mechanism, two implementations).
+- **Descriptive decomposition (Bridge; not a reading), for interpretation:**
+  - (i) R[½Σ(c_A − c)σ̇] per k: the box-minus-bulk part of the counterterm, at both 085 bracket ends;
+  - (ii) the map c_A(x)/c in the interior (|x − x_mid| ≤ 1, t mid-box), at the walls (x = 0, t = 0), and next to the cut ends.
+  - Neon's claim "c_A → c in the interior" is checked here, descriptively.
 
 ## E. Controls
 | row | check | expected |
@@ -55,6 +64,7 @@ The (i-G) mismatch is 99.8% the s ∈ (3, 6] truncation tail of d^B; (i-B) shows
 | identity KA + planted break | at W2P4: ½T_sad = ½Σc_Aσ̇ − 2Σ_3DΛd to 1e-12; planted σ̇ × (1 + 1e-6) at one site must FAIL | implementation only (algebraic; cannot test the physics) |
 | zero | R_corr with the counterterm × 0 reproduces g_raw | bitwise |
 | must-fail sign | −ΔS_A in place of +ΔS_A | must not land in the band A reads (pre-stated: it fires iff its band differs) |
+| two-route KA | route 1 (direct c_A) against route 2 (identity) per geometry | ≤ 1e-10 relative |
 | reproduction | stored R_t0, R_Tsad, R_C reproduce R_T0 per k | 1e-12 (already: sums match) |
 
 ## F. Cost (to be measured; nothing run)
@@ -62,5 +72,8 @@ The (i-G) mismatch is 99.8% the s ∈ (3, 6] truncation tail of d^B; (i-B) shows
 - **k ≤ 2 (6 geometries) beside part 8 only if the measured peak is < 0.5 GB.** k = 2.5 (W5P10, W10P10) is likely above that, so it runs after part 8, alone.
 - Tier 1: KA-torus and KA-sector first (seconds to minutes), then W2P4 alone with a measured peak, then the rest.
 
-## G. Open
-- The W4P4 header: if 085w's (i-B) / Ġ^A discrepancy implicates d, the A reading at k = 1 inherits it. Its size is ~5.8e-9 against |d| 2e-2, negligible at R scale: an argued bound, to be quantified in R units before reading.
+## G. The W4P4 bound in R units (stated BEFORE the reading)
+- The 085w/085w2 discrepancies at W4P4 are ≤ 6e-9 absolute in d (Bridge's bound).
+- Route 2 is linear in d: R[−2NyΣΛd] = −(X(W₁) − X(W₂))·norm with X = −2NyΣΛd. So |ΔR| ≤ 2·Ny·Σ_x|Λ(x)|·6e-9·norm(1).
+- This bound is evaluated numerically at W4P4 by the 085c script BEFORE the reading line is printed, with Λ from the same run. Expected (argued): ~1e-6 or less, against the 0.05·g_raw ≈ 0.2 band resolution.
+- **If the evaluated bound exceeds 0.01, the k = 1 point is reported with that caveat in the headline.**
