@@ -11682,3 +11682,11 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 - Reject any rejected candidate the pencil does not confirm.
 - Invariance follows: inside the cut nothing was ever filter-rejected at the 8 earlier geometries, so their lists stay bitwise identical. Only the 4 W12 poles are added.
 - MUST-REJECT plant: a spurious real QEP candidate with no pencil root (a decoupled QEP block that does not enter F) must be rejected.
+
+### **EXP-081e REGISTERED** (`notes/EXP-081e_registration.md`), 2026-11-23. v3 with the Bridge's additions (one-to-one matching; bidirectional pencil gate PB).
+- **Change:** in-cut admission of a filter-rejected QEP candidate iff an unmatched pencil root lies within 1e-7. Positions stay on the QEP.
+- **Gates:** PB, WIND (multiplicity per merged entry; W12 merged entries hold m = 2, `e_merge_multiplicity.txt`), CEN′ with its blind zone registered, and the 081d rows.
+- **Plants P1–P7:** each paper-checked in the registration before running.
+- **GAP demoted to logged-only** (I.4: its v2 plant could not fire, and the widened version fails on real data).
+- **Invariance:** bitwise lists at 8 geometries; W12 equal except the 4 poles; bitwise g at W10 and W6.
+- **Reading:** as in 081d.
