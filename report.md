@@ -11561,3 +11561,37 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   - At W6P12b12 the corresponding poles are well separated (p = 7: 2.433 / 2.547; p = 10: 2.885 / 2.947) and production keeps them.
   - To show it: measure the reciprocal mismatch against pair splitting.
 - **Already-measured results: no pole dropped by this mechanism is seen there (partially verified; the census has its own near-double resolution limit, item (ii)).** The census, an independent scan, matched production at every Stage-1 geometry and at W6P12b12. 081e item (b) still requires identical pole lists after any fix.
+
+### EXP-081e pre-work, item (a) completed: filters loosened one at a time (`exp081d_results/e_diag_filters2.txt`; scratch replica of `_poles`, all 9 geometries used so far).
+
+**Filters loosened one at a time:**
+
+| change | effect |
+|---|---|
+| Im filter 1e-8 → 1e-6 | **no pole list changes at any geometry** |
+| reciprocal filter 1e-6 → 1e-4 | recovers **exactly** the 4 missed poles at W12P12b12 p = 7, 10 (2.4778963 / 2.4794482; 2.9124682 / 2.9126315), and **changes no pole list** at W3P6b6, W6P6b6, W2P8b8, W4P8b8, W8P8b8, W5P10b10, W10P10b10 or W6P12b12 |
+
+- **Cause: the reciprocal-pairing tolerance. Shown.**
+- After the change, 11 W12 slices still differ from the census. These are p = 14–24, the near-double "touch" slices (item (ii), not misses; to be shown in item (c)).
+
+**"Why only W12": my earlier argument (near-degenerate pairs) is REFUTED as stated.**
+
+Reciprocal mismatch against nearest-neighbour split, all 485 real candidates with s ≤ 3:
+
+| split | n | median mismatch | max mismatch |
+|---|---|---|---|
+| < 1e-6 | 46 | 3e-13 | 8e-12 |
+| 1e-6–1e-4 | 38 | 3e-14 | 2e-13 |
+| 1e-4–1e-2 | 146 | | 4.7e-6 (the only 4 over 1e-6) |
+| 1e-2–1e-1 | 112 | | ≤ 2e-8 |
+| ≥ 1e-1 | 143 | | ≤ 2e-8 |
+
+- Close pairs as such are accurate. Every candidate within 10× of the threshold is a high-s pair (s 2.48–2.91, z ~ 1e-7–1e-8) with split 1.6e-4 to 1.7e-3.
+- Variable: small z together with a moderately close pair (**partially shown**: an empirical pattern from 8 cases, no mechanism).
+
+**Near-threshold inventory (the Bridge's point 5):** 8 candidates lie in 1e-7 to 1e-5:
+- the 4 rejected (W12, 3.4–4.7e-6);
+- W12 p = 9 pair at 5.8e-7, **kept by < 2×**;
+- **Stage-1 geometry W10P10b10 p = 8 pair at 1.5e-7, kept by 7×.**
+
+So the 1e-6 threshold was already within an order of magnitude of binding at k = 2.5. Any 081e filter test must include these cases. A fix must change nothing at W10P10b10 p = 8 or W12 p = 9.

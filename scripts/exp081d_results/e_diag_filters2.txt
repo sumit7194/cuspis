@@ -1,0 +1,28 @@
+W3P6b6: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W6P6b6: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W2P8b8: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W4P8b8: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W8P8b8: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W5P10b10: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W10P10b10: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W6P12b12: slices whose list changes vs prod: im_loose 0, rc_loose 0; slices != census own: prod 0, im_loose 0, rc_loose 0
+W12P12b12: slices whose list changes vs prod: im_loose 0, rc_loose 2; slices != census own: prod 13, im_loose 13, rc_loose 11
+   p=7: prod [0.8262102 0.8262366]  im_loose [0.8262102 0.8262366]  rc_loose [0.8262102 0.8262366 2.4778963 2.4794482]
+   p=10: prod [0.9708493 0.9708506]  im_loose [0.9708493 0.9708506]  rc_loose [0.9708493 0.9708506 2.9124682 2.9126315]
+
+reciprocal mismatch vs nearest-neighbour split (all real candidates s<=3, all geometries):
+  split [0e+00,1e-06): n   46  recip mismatch median 3.2e-13 max 7.6e-12; n over 1e-6: 0
+  split [1e-06,1e-04): n   38  recip mismatch median 3.1e-14 max 1.7e-13; n over 1e-6: 0
+  split [1e-04,1e-02): n  146  recip mismatch median 9.4e-14 max 4.7e-06; n over 1e-6: 4
+  split [1e-02,1e-01): n  112  recip mismatch median 2.8e-14 max 1.8e-08; n over 1e-6: 0
+  split [1e-01,1e+01): n  143  recip mismatch median 4.1e-12 max 1.6e-08; n over 1e-6: 0
+
+candidates within 10x of the 1e-6 threshold (1e-7..1e-5): 8
+  W12P12b12 p=7 s 2.477896 split 1.6e-03 recip 4.7e-06 REJECTED
+  W12P12b12 p=10 s 2.912631 split 1.6e-04 recip 4.5e-06 REJECTED
+  W12P12b12 p=10 s 2.912468 split 1.6e-04 recip 4.5e-06 REJECTED
+  W12P12b12 p=7 s 2.479448 split 1.6e-03 recip 3.4e-06 REJECTED
+  W12P12b12 p=9 s 2.777076 split 3.3e-04 recip 5.8e-07 kept
+  W12P12b12 p=9 s 2.776745 split 3.3e-04 recip 5.8e-07 kept
+  W10P10b10 p=8 s 2.858532 split 1.7e-03 recip 1.5e-07 kept
+  W10P10b10 p=8 s 2.860212 split 1.7e-03 recip 1.5e-07 kept
