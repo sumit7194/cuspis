@@ -55,3 +55,14 @@ cost measured progressively (route (ii) at P ≤ 10 is unmeasured). [model: Opus
   - Line 1: the stored value on the SAME aliased path to 1e-12. **PASS (bitwise).**
   - Line 2: production (alias=False) route (ii) against honest Arb Q(2) = 0.3029743824557108 under C2's rule max(3·dev_a, 1e-10), with dev_a = 9.59e-11 from `exp083_r3p/W2P2_base.json`, so tol = 2.88e-10. dev = 1.074e-10. **PASS.**
 - **084c runs on the PRODUCTION path (alias=False)**, the continuation the continued R uses.
+
+## Amendment 2 (2026-11-23, BEFORE any Level-2 number is computed): reading set fixed from the measured cost (the §E fallback)
+- **Measured (n = 2, route (ii), production path):** W2P4 959 s / 0.08 GB; W4P4 1088 s / 0.13 GB; W3P6 5392 s / 0.22 GB.
+  - W-scaling ≈ W^0.18 (×1.14 per doubling). P-scaling ≈ P^4.1–4.3 (two P points; with and without the W correction).
+- **Projected (argued, two-point extrapolation):** W6P6 1.7–1.8 h; W4P8 5.1–5.8 h; W8P8 5.8–6.6 h; **W5P10 13–16 h; W10P10 15–18 h**.
+  - k = 2.5 at n = 2 is ≈ 28–33 h for the pair, and ≈ 85–100 h for n = 2, 3, 4. That is "tens of hours per (geometry, n)" territory, so the §E fallback applies.
+- **Core reading set (fixed now):** k ∈ {1, 1.5, 2} × n = 2, i.e. geometries W2P4, W4P4, W3P6, W6P6, W4P8, W8P8 at n = 2. That is ≈ 13 h remaining (W6P6, W4P8, W8P8), one at a time, no-kill.
+  - The verdict rules of §C, controls of §D and plants of §F apply unchanged to this set.
+  - `exp084c_run.py READ` reads exactly this set. `READ FULL` keeps the original 4 × 3 set.
+- **Stated limitation:** the reading does not cover k = 2.5, nor n = 3, 4. n = 3, 4 at k ≤ 2 (≈ 2× the core cost) are supplementary. They run only on a separate go, and are reported as supplementary, never folded into the core verdict.
+- **Not yet looked at:** no ΔR has been computed from the three existing files. Only per-file Level-1 lines (already reported) have been read.

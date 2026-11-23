@@ -12124,3 +12124,10 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Level 1 **FAIL**: |dev| 5.44e-10 > tol 3.1e-10. W4P4 with box 4 IS EXP-083's C2 geometry, where the same unidentified excess (4.4–5.4e-10) was recorded, so this **reproduces the known open residual**; it is not new.
   - Registered: a Level-1 fail with Level-2 relevance is reported as "exactness residual (cf. W4P4)" and does not change the reading. 5e-10 in Q is ≈ 1e-9 of the Level-2 scale.
   - W3P6 (P/Ny scaling) is running.
+- **EXP-084c cost point W3P6 n = 2:** 5392 s (W2P4: 959 s), peak 0.22 GB. Level 1 **PASS** (|dev| 1.40e-10 ≤ tol 3.5e-9; gap |F| 5.7e-14).
+  - P-scaling ≈ P^4.1–4.3 (two points); W-scaling W^0.18.
+  - Projected (argued): W6P6 ≈ 1.7 h; W4P8 ≈ 5–6 h; W8P8 ≈ 6–7 h; W5P10 ≈ 13–16 h; W10P10 ≈ 15–18 h per n.
+- **EXP-084c amendment 2 (registered before any ΔR is computed):** the §E fallback is applied.
+  - Core reading set: k ∈ {1, 1.5, 2} × n = 2. Remaining geometries are W6P6, W4P8 and W8P8, ≈ 13 h, one at a time, no-kill, queued after EXP-085 B–E.
+  - Limitation stated: no k = 2.5, and no n = 3, 4. Those are supplementary, on a separate go only.
+  - `READ` now reads the core set; `READ FULL` keeps the original set.

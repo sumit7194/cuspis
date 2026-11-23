@@ -3,7 +3,7 @@ Level 1 (exactness): |dev| <= max(3 dev_a, 1e-10), dev_a on route (ii)'s OWN pat
 Level 2 (relevance): max |Delta R_n(k)| <= 0.01, through the 084 normalisation with stored kappa.
 Usage: exp084c_run.py KA                 -> known answer (stored C2 W2P2 n=2) + planted normalisation only
        exp084c_run.py W P N [N ...]      -> one geometry (Wbox = P), the listed n (checkpointed per (W, P, n))
-       exp084c_run.py READ               -> Level 1 / Level 2 reading + sized plants (needs all 8 geometries x n = 2, 3, 4)
+       exp084c_run.py READ [FULL]        -> Level 1 / Level 2 reading + sized plants; amendment 2 core set k in {1,1.5,2} x n=2 (FULL: 4 k x n = 2,3,4)
 [model: Opus 5.5]"""
 import sys, os, json, time, numpy as np, mpmath as mp
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -47,7 +47,9 @@ if mode == "KA_ALIAS":     # diagnosis of the fired KA: does the ALIASED path (p
     Qc = QC.QCont(AB.strip_sigma(g, s2, alias=True), npt=120, npt0=512); q = (Qc.Q(2.0, **KW) + 2.0 * (Qc.ld1 - ld0).sum()).real
     log(f"KA_ALIAS route (ii) W2P2 n=2 aliased path: {q!r} vs stored {ref['qsad']!r}: diff {abs(q - ref['qsad']):.2e} -> {'BITWISE' if q == ref['qsad'] else ('<=1e-12' if abs(q - ref['qsad']) <= 1e-12 else 'DIFFERENT')}")
     sys.exit(0)
-if mode == "READ":
+if mode == "READ":     # amendment 2: core reading set k in {1, 1.5, 2} x n = 2; "READ FULL" = original 4 x 3 set
+    FULL = len(sys.argv) > 2 and sys.argv[2] == "FULL"; KS, NS = (KS, NS) if FULL else ([1, 1.5, 2], [2])
+    log(f"reading set: k {KS} x n {NS} ({'FULL, original registration' if FULL else 'amendment 2 core set'})")
     rows, missing = [], []
     for k in KS:
         W1, W2, P = int(2 * k), int(4 * k), int(4 * k)
