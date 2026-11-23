@@ -11742,3 +11742,17 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 **Runner hole, found before launch:** `exp081e_bitwise.py ... | tee ... || stop`. Without pipefail, zsh takes `tee`'s exit status, so the F.3 STOP (and the W6 fail branch) **could never fire**.
 - Fixed with `setopt PIPE_FAIL`.
 - Tested: the same line without pipefail continues; with pipefail, a failing checker STOPs.
+
+### Pre-R(3) interpretation note (2026-11-23, before any 081e R is read; the bands are unchanged). Prompted by the Bridge's Neon T53 relay (outside input, unverified; I did not open the Neon file).
+**Component scaling of the registered Stage-1 numbers** (`exp081d_results/e_component_scaling.txt`; DESCRIPTIVE, 4-point coefficients are inference):
+- t0/k² goes −36.1 → −30.1 and T_sad/k² goes +38.9 → +31.4. Each width-differenced component grows like k², and their k² parts cancel.
+- The remainder (t0 + T_sad)/k levels off at ≈ 3.2, so the growth of R is a **linear-in-k (∝ 1/a) left-over of a near-cancelled 1/a² pair**. 𝒞 is small (≤ 0.5) and changes sign.
+- R ≈ 4.02k − 1.75, with residuals ≤ 0.15. If linear, R(3) ≈ 10.3 and PRIMARY r ≈ 1.45, the power-divergent band.
+
+**Argued (premises: the UV divergences of the renormalized 3d O(N) model at O(N⁰) are local on the entangling surface; the strip edges are straight, so there are no corners; the two widths have the same local edge environment):**
+- Any genuine UV divergence of S is W-independent (edge/area terms) and cancels in the width pair.
+- So **a ∝ 1/a growth of R cannot be physics; it indicates a method artefact.** An 081e "power-divergent" reading would therefore be read as **"the lattice σ-route has an O(a) mismatch between its t0 and T_sad sectors"**, NOT as a statement about δκ.
+- Candidate mechanism (unverified): an O(a) offset between how the two sectors place the cut, e.g. a half-link difference, multiplying their common 1/a² divergence.
+- This also bears on the Bridge's points (a)/(c):
+  - (a) the known O(N⁰) shifts are negative and of relative size 0.2–0.5, consistent with R being contaminated rather than physical;
+  - (c) the MFS conical counterterm is local on the cut, so it cancels in the width pair and cannot cause the growth (argued).
