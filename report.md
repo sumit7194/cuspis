@@ -12266,3 +12266,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - term1 via sectors: 2.3e-15 (max 0.347).
 - **Identity KA PASS:** ½T_sad (production `saddle_term_c`) = ½Σ_3D c_Aσ̇ − 2NyΣΛd = 22.785852160661264, gap 0.0.
   - The planted break σ̇[18] × (1 + 1e-6) fires (gap 1.4e-9). This is an implementation check only: the identity is algebraic.
+- **085c GEOM, k ≤ 2: all 6 geometries PASS** (00:44–01:15; ≤ 95 s each; peaks 0.33 GB at W4P8 and 0.34 GB at W8P8):
+  - T_sad via −4·term1 agrees with `saddle_term_c` to ≤ 5e-16 relative;
+  - `saddle_term_c` and Sigma3D are bitwise identical to the stored 085 C files;
+  - imaginary parts ≤ 2.3e-17.
+  - No ΔR / R_corr has been computed (READ needs all 8 geometries).
+  - k = 2.5 (W5P10, W10P10): estimated ~1 GB + install (the arrays scale with N²·Ny, ≈ 3× W8P8), which is over the 0.5 GB beside-part-8 rule. Per the registration they run after part 8, unless the Bridge decides otherwise.
