@@ -11920,3 +11920,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - The pressure-stop level is Sumit's policy. Options are with the Bridge: (a) idle-Mac windows only, (b) raise the route pressure-stop to red, (c) run on the server.
 - Runner 75214 proceeds with EXP-084 (small, alone) first, unaffected.
 - **EXP-085 code** `exp085_run.py` is written (amendments 1–2 implemented), and NOT run.
+- **Kill #3 classified (Bridge): an ENVIRONMENTAL limit, not a discipline slip.** A ~7 GB route plus normal desktop load reaches yellow on its own.
+- **Hold on 7 GB jobs until Sumit decides (a)/(b)/(c).** Runner 75214's 081e sequence reaches a 7 GB job (`e_bw_W6`: route 6 12 12, node 47) BEFORE W12. Two detached stop-guards (`tools/guard_stop_at.sh`, tested on planted positive and negative logs) are armed on 75214:
+  - PID 94252 fires at "=== e_bw_W6 start";
+  - PID 94254 fires at "=== e_route_W12 start" (redundant).
+  - Each kills the runner and the route pattern during pgate's 30 s pre-launch wait.
+- So EXP-084, then the route-free 081e pre-steps (F.3 W10 at 3.3 GB alone, pre-check, census CEN′), run automatically, and nothing of 7 GB starts.
