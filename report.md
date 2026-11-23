@@ -11985,3 +11985,11 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - But T54's mechanism (a c/a counterterm times Σσ) predicts a **1/a** remainder. The exact-n remainder is **1/a²**, with an n-dependent coefficient, which T54 does not obviously produce. This is a tension, not a refutation: the integer-n saddle differs from n → 1 (the Bridge's caveat B.2).
 - **EXP-085** (now running) tests T54 directly on the continued R.
 - No δκ statement.
+
+### **EXP-084b REGISTERED** (`notes/EXP-084b_registration.md`): does the exact-n 1/a² coefficient c(n) vanish as n → 1?
+- Fixed 3-parameter k-fit R_n = c·k² + d·k + e, with full-covariance σ and the c–d correlation reported.
+- n → 1 extrapolation by orders in (n − 1), with leave-one-out and an order-drift test.
+- Plants: lin, quad, const, noise (seed 20261123), and c–d recovery.
+- n = 2, 3 reused bitwise from 084; n = 4 measured; n = 5 only after a message to the Bridge.
+- **INCONCLUSIVE pre-stated as likely** with 3–4 n.
+- Queued after EXP-085 by a verified runner swap.
