@@ -11796,3 +11796,23 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - No width pair was formed, so no experimental data was read.
 
 **The draft includes:** the Bridge's caveat (σₙ ≠ σ₁ and the MFS conical behaviour, so n = 2 AND n = 3 are measured, and n-dependence separates the outcomes); the exoneration of the estimator via the k-stable free κ; the argued UV-finiteness of the exact-n pair; the pre-stated (i) / (ii-a) / (ii-b) readings; and a must-fire plant.
+
+### **EXP-084 REGISTERED** (`notes/EXP-084_registration.md`), 2026-11-23, after the Bridge's review of draft eaa88f0
+**Bridge additions:**
+- the continued reference column, put through the same ratio;
+- the r₂–r₃ rule fixed now as |r₂ − r₃| < max(0.15, 3σ_r23), with precision measured on the parts BEFORE any ratio;
+- (ii-a) tied to the continued slope (g_n ≥ 0.5·g_cont), plus a named "mixed" outcome.
+
+**Caught on paper before registration:**
+- The shifted ratio [R(2.5) − R(1.5)] / [R(2) − R(1)] maps p differently from 081d's ratio: linear growth gives 1.000, which the 081d numbers would call "log-like".
+- So the bands are registered in p (the 081d p-bands), mapped through r(p) = (2.5^p − 1.5^p)/(2^p − 1): converging ≤ 0.587, log-like 0.659–0.822, power-divergent ≥ 0.914.
+- The continued reference (registered numbers): r = 0.952, p_eff = 0.83, power-divergent.
+
+**Script `exp084_run.py`:** phase order is plants + known answer → Q values (paths A and B) → σ table on disk → R → ratios → reading.
+
+**Slip (EXP-084 sequencing):**
+- The registration commit was BLOCKED by the overclaim hook (it wanted a grade on "the continuation is exonerated" in the (ii-a) row). Because the command chain continued, the k = 1 data phase ran BEFORE the registration was committed.
+- File times: registration 16:34:17, script 16:34:43, Q_W2P4b4 / Q_W4P4b4 at 16:34:57–58.
+- **No data was displayed or read.** Phase 1 writes Q values without printing them, and phase 3 (the only place R or ratios appear) stayed deferred because k ≥ 1.5 was missing. Phase 0 had passed (6/6 plants, known answer 4.0e-13 / 3.7e-13).
+- **Fix:** the (ii-a) wording is graded ("would be exonerated (argued, conditional on this outcome)"); no criterion changed. Committed now.
+- **Rule:** a registration commit and a data run are never in the same command chain. Run data only after `git log` shows the registration commit.

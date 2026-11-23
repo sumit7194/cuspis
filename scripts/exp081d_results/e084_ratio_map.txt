@@ -1,0 +1,14 @@
+p -> r081d, r_shifted
+  p -1.50: r081d 0.544  r_shift 0.451
+  p -1.00: r081d 0.667  r_shift 0.533
+  p -0.71: r081d 0.750  r_shift 0.587
+  p -0.35: r081d 0.868  r_shift 0.659
+  p +0.00: r081d 1.000  r_shift 0.737
+  p +0.35: r081d 1.152  r_shift 0.822
+  p +0.70: r081d 1.328  r_shift 0.914
+  p +1.00: r081d 1.500  r_shift 1.000
+  p +1.50: r081d 1.837  r_shift 1.157
+  p +2.00: r081d 2.250  r_shift 1.333
+081d band edges in p: converging p <= -0.71 (r 0.75), log-like |p| <= 0.35 (r 0.87..1.15), power p >= 0.70 (r 1.33)
+shifted band edges: converging r <= 0.587; log-like 0.659..0.822; power-divergent r >= 0.914
+continued reference column: r_shift = 0.9519 -> effective p = 0.834
