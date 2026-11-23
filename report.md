@@ -11595,3 +11595,29 @@ Reciprocal mismatch against nearest-neighbour split, all 485 real candidates wit
 - **Stage-1 geometry W10P10b10 p = 8 pair at 1.5e-7, kept by 7×.**
 
 So the 1e-6 threshold was already within an order of magnitude of binding at k = 2.5. Any 081e filter test must include these cases. A fix must change nothing at W10P10b10 p = 8 or W12 p = 9.
+
+### EXP-081e pre-work, item (c): can the census tell a near-double from a miss? **Shown, with limits.** (`exp081d_results/e_census_plant.txt`)
+**Method:** synthetic slice functions F(s) = (3 + cos 1.3s) · Π(s − roots), with known poles planted into `exp081b_census.census` (only `F_slice` replaced; scratch run). Planted poles sit off both census grids (the 1/2000 scan and the 1e-7 local refinement); this is asserted in the script.
+
+**Results:**
+
+| case | census reports |
+|---|---|
+| CONTROL: simple pole, production has it | MATCH |
+| CONTROL: resolved pair 1.6e-4, production has it | MATCH |
+| Resolved pairs missing from production (the real p = 7 and p = 10 values) | MISS |
+| Near-double, split ≥ 1e-7 (1e-7, 3e-7, 1e-6, 1e-5), production has it | MATCH |
+| Near-double, split ≥ 1e-7, production lacks it | MISS |
+| Near-double, split < 1e-7 (1e-8, 3e-8) | TOUCH, **whether production has it or not** |
+
+**Reading:**
+- The census never reports a near-double as a miss, and it never passes a resolved miss.
+- **Below its 1e-7 refinement step it is blind.** A TOUCH means "unverified", not "probably fine".
+- So the W12 p = 14–24 touches (production split ≤ 1e-7, or merged by the 1e-7·z cluster rule) are **unverified** by the census. My item-(ii) "probably a census-resolution limit" is now precise: it IS a resolution limit, and it hides presence and absence alike.
+- An 081e gate must treat TOUCH as unverified and check those slices with a finer independent method (finer local scan or mpmath).
+
+**Two failed plant attempts, kept:**
+1. `_attempt1_ongrid_bug.txt`: every case read MISS, including the controls, because the planted roots sat exactly on the 1/2000 grid points, where F = 0 gives no sign change.
+2. `_attempt2_refinegrid_bug.txt`: 7-decimal roots sat on the 1e-7 refinement grid, so one root of each pair was lost.
+
+The controls are what exposed both. The Bridge's point 5 also applies to plants: the test must not sit on a degenerate point of the method.
