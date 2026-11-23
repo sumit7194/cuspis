@@ -1,0 +1,19 @@
+=== route_W5P10b10 start 20:17:48
+# pgate: attempt 1 at 20:18:18 (pressure normal >= 60 s)
+# exit -15; wall 4112 s; PEAK tree MEM 1.478 GB + CMPRS 1.097 GB = 2.574 GB; KILLED: tree footprint 2.57 GB > cap 2.3 GB
+=== route_W5P10b10 FAILED
+=== route_W5P10b10 end 21:26:50
+# exit -15; wall 4112 s; PEAK tree MEM 1.478 GB + CMPRS 1.097 GB = 2.574 GB; KILLED: tree footprint 2.57 GB > cap 2.3 GB
+=== c1_W5P10b10 start 21:26:50
+# pgate: attempt 1 at 21:27:20 (pressure normal >= 60 s)
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 120, in <module>
+    + (f"; KILLED: {reason}" if reason else ""))
+    
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 112, in main
+    time.sleep(1)
+    ~~~~~~~~~~^^^
+  File "/Users/sumit/Github/corner_function/scripts/tools/watchdog.py", line 82, in on_term
+    def on_term(signum, frame):   # external stop: take the child's process group down too (it runs in its own session)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 1] Operation not permitted

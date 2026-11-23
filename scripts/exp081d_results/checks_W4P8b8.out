@@ -1,0 +1,12 @@
+[      0s] planted guard: eps 1.176e-09, predicted dg 2.8912e-05, predicted impact 1.00e-06 (10x 1e-7)
+[      0s] sigma_W4_P8_box8_c2_cp12_sc3.0_dd0: production complete; S (all nodes) +3.087066474890
+[    213s] planted must-fire s=0.9374: dg 2.8912e-05 (pred 2.8912e-05, ratio 1.0000), impact 1.00e-06 -> FIRES, match OK
+[    529s] B2b s=1.9741: converged+1 vs converged rel 5.9e-15 -> PASS
+[    746s] N1'''c unrefined arm g(0.9374) done
+[    778s] N1'''c unrefined arm g(1.9741) done
+[    810s] N1'''c unrefined arm g(2.9862) done
+[    842s] N1'''c unrefined arm g(3.9483) done
+[    873s] N1'''c unrefined arm g(5.0517) done
+[    924s] N1'''c (refined vs unrefined): s=0.937 |dg| 5.8e-10 impact 2.0e-11; s=1.974 |dg| 5.2e-10 impact 2.7e-14; s=2.986 |dg| 4.8e-10 impact 4.3e-17; s=3.948 |dg| 3.9e-10 impact 8.3e-20; s=5.052 |dg| 6.7e-10 impact 1.4e-22
+[    924s] t0 refined vs unrefined |dt0| 7.9e-08 [PASS]; residue impact (1/2)|T_sad(unref res) - T_sad| 1.1e-09 [PASS]
+[    924s] Woodbury must-fire (081b numerics g vs 081d): s=0.937 impact 1.1e-11; s=1.974 impact 6.7e-10; s=2.986 impact 3.3e-09; s=3.948 impact 2.1e-09; s=5.052 impact 1.1e-10 -> does not fire (reported only)

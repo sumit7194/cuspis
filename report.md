@@ -11389,3 +11389,58 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 - **The Bridge's ruling on the analysis wiring:** "implementation fix of registered row S0 (found before any R read)". It matches S0
   (void at a first fail ≤ 1.9742; otherwise s_max = the last passing node mapped to the true 𝒞-node, applied as min() with the impact
   and R1 caps before C0 and the T1 fit; conservative). It implements the registered consequence and does not change it.
+
+### EXP-081d — Stage 1 end (2026-11-23 12:42). **Stage 1 of 2, no verdict.**
+
+**Registered headline:** PRIMARY = INCONCLUSIVE (k = 3 is missing). That is expected at Stage 1; the PRIMARY ratio needs k = 3 (Stage 2).
+
+**Gates for the new k = 2.5 geometries (W5P10b10, W10P10b10):** all PASS. Checks that cannot fail were not counted; every must-fire below was seen to fire.
+
+| gate | W5P10b10 | W10P10b10 |
+|---|---|---|
+| census | clean | clean |
+| Step 0 | PASS | fail at s = 5.052 (refinement diverges, Im α 7.91) → registered S0 cap: s_max 3.948, not void |
+| planted scale (ε_k, must fire) | FIRES, ratio 1.0000 | FIRES, ratio 1.0000 |
+| B2b (s = 1.974, converged + 1) | rel 5.9e-15-class, PASS | rel 0.0, PASS |
+| N1‴c (refined vs unrefined g) | max impact 5.1e-11 | max impact 1.1e-10 |
+| t0 refined vs unrefined | 4.6e-8 PASS | 6.8e-8 PASS |
+| residue impact ½\|ΔT_sad\| | 1.8e-9 PASS | 6.4e-9 PASS |
+| R1 non-convergence | 0 unconverged at any node | unconverged from s = 4.688 (14 → 388 G); R1 cap 4.312, but the S0 cap 3.948 is tighter and is used |
+| C1 verdict_stored (independent FD vs stored T_sad) | 6.2e-8 vs τ 3.2e-4 PASS; P1–P4 plants FIRE | 2.8e-6 vs τ 3.5e-4 PASS; P1–P4 plants FIRE |
+| Woodbury (reported only) | fires | fires |
+| peak memory (MEM + CMPRS) | 3.18 GB (soft cap 3.5 not reached) | 3.20 GB |
+
+**k = 2 checks rerun on W4P8b8:** planted FIRES (ratio 1.0000), B2b PASS, t0 PASS (7.9e-8), residue PASS (1.1e-9). The Woodbury check does not fire here (reported only).
+
+**Analysis:** `exp081d_analyze.py` (venv). Planted tests 18/18 PASS. Output is in `exp081d_results/stage1_analysis.txt` and `exp081d_results.json`.
+
+| k | R (T0 = T1) | σ | κ | s_max (W1/W2) | t0 | T_sad | 𝒞 |
+|---|---|---|---|---|---|---|---|
+| 1 | +2.2552 | 6e-10 | 0.01766 | 6.0/6.0 | −36.15 | +38.89 | −0.49 |
+| 1.5 | +4.2334 | 3e-9 | 0.01821 | 6.0/6.0 | −73.01 | +77.41 | −0.17 |
+| 2 | +6.4420 | 6e-9 | 0.01774 | 6.0/5.655 | −123.04 | +129.44 | +0.05 |
+| 2.5 | +8.2187 | 1.2e-7 | 0.01747 | 6.0/3.948 | −188.11 | +196.14 | +0.19 |
+
+**Grade: partially verified** (gates pass and each must-fire fired; numerics only, with no second implementation at k = 1.5 or 2.5).
+- The sign is positive at every k.
+- R rises by +1.98, +2.21, +1.78 per half-step, with no sign of levelling out.
+- t0 and T_sad each grow like ~k², and their cancellation leaves roughly 4% as R.
+
+**DESCRIPTIVE only (registration §16; not a verdict, and the bands are untouched):**
+- The fits leaving out k = 3 predict R(3) = 9.16 for the power and pure-log fits, and 9.93 for the log + 1/k fit. The pure-log fit's residuals reach 0.41, so it fits poorly.
+- Registered thresholds on r_int = [R(3) − R(2)] / [R(2) − R(1)] translate to:
+  - converging: R(3) ≤ 9.58;
+  - gap (inconclusive): 9.58 < R(3) < 10.08;
+  - log-like or slow power: 10.08–11.26;
+  - power-divergent: R(3) ≥ 12.01.
+- Grade: **argued** (extrapolation). The predictions straddle the converging/gap boundary, so Stage 2 is informative, and INCONCLUSIVE (gap) is a live outcome. Nothing changes because of this.
+
+**Slips, kept:**
+1. The overnight event waiter could not fire (zsh does not word-split; see TODO, f5a75bc). Nothing was missed.
+2. My interim chat message attributed the R1 non-convergence to W5; it is W10. This entry is correct.
+3. The first analysis call used the system python, which has no scipy, and crashed before any output; it was rerun with ../.venv. No number came from the crashed run.
+
+**Next:** Stage 2 (k = 3), gated:
+1. Both k non-void: met.
+2. A k = 3 probe without R, to measure the per-process peak.
+3. Start time from the Bridge.

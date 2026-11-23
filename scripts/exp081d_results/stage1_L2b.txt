@@ -1,0 +1,16 @@
+=== route_W5P10b10 start 21:44:27
+# pgate: attempt 1 at 21:44:57 (pressure normal >= 60 s)
+# exit 0; wall 47612 s; PEAK tree MEM 2.019 GB + CMPRS 1.163 GB = 3.182 GB
+=== route_W5P10b10 end 10:58:29
+# exit 0; wall 47612 s; PEAK tree MEM 2.019 GB + CMPRS 1.163 GB = 3.182 GB
+=== c1_W5P10b10 start 10:58:29
+# pgate: attempt 1 at 10:58:59 (pressure normal >= 60 s)
+# exit 0; wall 1779 s; PEAK tree MEM 1.285 GB + CMPRS 0.000 GB = 1.285 GB
+=== c1_W5P10b10 end 11:28:38
+# exit 0; wall 1779 s; PEAK tree MEM 1.285 GB + CMPRS 0.000 GB = 1.285 GB
+=== checks_W4P8b8 start 11:28:38
+# pgate: attempt 1 at 11:29:08 (pressure normal >= 60 s)
+# exit 0; wall 926 s; PEAK tree MEM 0.729 GB + CMPRS 0.182 GB = 0.910 GB
+=== checks_W4P8b8 end 11:44:34
+# exit 0; wall 926 s; PEAK tree MEM 0.729 GB + CMPRS 0.182 GB = 0.910 GB
+=== L2b complete Mon Nov 23 11:44:34 IST 2026

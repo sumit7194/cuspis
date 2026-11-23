@@ -1,0 +1,11 @@
+=== route_W10P10b10 start 21:44:26
+# pgate: attempt 1 at 21:44:56 (pressure normal >= 60 s)
+# exit 0; wall 49118 s; PEAK tree MEM 2.070 GB + CMPRS 1.128 GB = 3.198 GB
+=== route_W10P10b10 end 11:23:34
+# exit 0; wall 49118 s; PEAK tree MEM 2.070 GB + CMPRS 1.128 GB = 3.198 GB
+=== c1_W10P10b10 start 11:23:34
+# pgate: attempt 1 at 11:24:04 (pressure normal >= 60 s)
+# exit 0; wall 4692 s; PEAK tree MEM 1.229 GB + CMPRS 0.000 GB = 1.229 GB
+=== c1_W10P10b10 end 12:42:16
+# exit 0; wall 4692 s; PEAK tree MEM 1.229 GB + CMPRS 0.000 GB = 1.229 GB
+=== L1b complete Mon Nov 23 12:42:16 IST 2026

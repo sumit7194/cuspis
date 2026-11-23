@@ -35,3 +35,37 @@
 # exit 0; wall 742 s; PEAK tree MEM 0.075 GB + CMPRS 0.000 GB = 0.075 GB
 === port_W4P4_base start 08:37:40
 # pgate: attempt 1 at 08:38:10 (pressure normal >= 60 s)
+# exit 0; wall 2116 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W4P4_base end 09:13:25
+# exit 0; wall 2116 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W4P4_scut_low start 09:13:25
+# pgate: attempt 1 at 09:13:56 (pressure normal >= 60 s)
+# exit 0; wall 584 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W4P4_scut_low end 09:23:40
+# exit 0; wall 584 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W4P4_merge_tiny start 09:23:40
+# pgate: attempt 1 at 09:24:10 (pressure normal >= 60 s)
+# exit 0; wall 618 s; PEAK tree MEM 0.072 GB + CMPRS 0.000 GB = 0.072 GB
+=== port_W4P4_merge_tiny end 09:34:27
+# exit 0; wall 618 s; PEAK tree MEM 0.072 GB + CMPRS 0.000 GB = 0.072 GB
+=== port_W4P4_drop_pole start 09:34:27
+# pgate: attempt 1 at 09:34:57 (pressure normal >= 60 s)
+# exit 0; wall 627 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W4P4_drop_pole end 09:45:25
+# exit 0; wall 627 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W4P4_res_scale start 09:45:25
+# pgate: attempt 1 at 09:45:55 (pressure normal >= 60 s)
+# exit 0; wall 627 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W4P4_res_scale end 09:56:22
+# exit 0; wall 627 s; PEAK tree MEM 0.070 GB + CMPRS 0.000 GB = 0.070 GB
+=== port_W4P4_dd1 start 09:56:22
+# pgate: attempt 1 at 09:56:52 (pressure normal >= 60 s)
+# exit 0; wall 622 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W4P4_dd1 end 10:07:15
+# exit 0; wall 622 s; PEAK tree MEM 0.069 GB + CMPRS 0.000 GB = 0.069 GB
+=== port_W4P4_link start 10:07:15
+# pgate: attempt 1 at 10:07:45 (pressure normal >= 60 s)
+# exit 0; wall 577 s; PEAK tree MEM 0.073 GB + CMPRS 0.000 GB = 0.073 GB
+=== port_W4P4_link end 10:17:22
+# exit 0; wall 577 s; PEAK tree MEM 0.073 GB + CMPRS 0.000 GB = 0.073 GB
+=== lane A ports done Sun Nov 22 10:17:22 IST 2026

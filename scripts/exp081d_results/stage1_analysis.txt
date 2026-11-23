@@ -1,0 +1,23 @@
+  planted test: pure log -> log-like or slow power (r = 1): PASS
+  planted test: R_inf - A k^-1.5 -> converging (r = 0.544): PASS
+  planted test: A k^1.5 -> power-divergent (r = 1.84): PASS
+  planted test: r = 0.80 (gap; was 0.7 before amendment 1, now inside converging) -> INCONCLUSIVE between bands: PASS
+  planted test: opposite-sign increments -> INCONCLUSIVE non-monotone: PASS
+  planted test: sigma 0.3 at r = 1 -> INCONCLUSIVE (2 sigma leaves the band): PASS
+  planted test: R(2) = R(1) -> INCONCLUSIVE: PASS
+  planted test: k = 3 missing -> INCONCLUSIVE: PASS
+  planted test: T0 log / T1 converging -> INCONCLUSIVE (tails differ): PASS
+  planted test: both tails log -> log-like or slow power: PASS
+  planted test: NEW: O(a) convergence p = 1 (r = 0.667) -> converging: PASS
+  planted test: NEW: linear growth p = 1 (r = 1.5) -> power-divergent: PASS
+  planted test: NEW: slow power p = 0.3 (r = 1.13) -> log-like or slow power: PASS
+  planted test: NEW: convergence p = 0.5 (r = 0.82, in the gap) -> INCONCLUSIVE: PASS
+  planted test: R1 cap on 081c W8P8: s_max 5.6549 < 5.8562 (r1 node 5.654854011291457): PASS
+  planted test: planted unconverged at 3.6190: s_max 3.3451 < 3.6190: PASS
+  planted test: NEW: Step-0 fail at 5.052 caps s_max at 3.948 (got 3.94825275150273): PASS
+  planted test: NEW: Step-0 fail at 1.974 -> geometry void: PASS
+k=1: R_T0 +2.255224  R_T1 +2.255224  sigma 5.8e-10  kappa 0.017660  s_max 6.000/6.000  components {'t0': -36.14806426738105, 'tsad': 38.89130389527338, 'C': np.float64(-0.4880153434767397)}
+k=1.5: R_T0 +4.233446  R_T1 +4.233446  sigma 2.6e-09  kappa 0.018206  s_max 6.000/6.000  components {'t0': -73.01122694406973, 'tsad': 77.4134863223399, 'C': np.float64(-0.1688135318950689)}
+k=2: R_T0 +6.441981  R_T1 +6.441981  sigma 5.7e-09  kappa 0.017743  s_max 6.000/5.655  components {'t0': -123.04409501733103, 'tsad': 129.4354919230595, 'C': np.float64(0.05058436730895681)}
+k=2.5: R_T0 +8.218749  R_T1 +8.218749  sigma 1.2e-07  kappa 0.017468  s_max 6.000/3.948  components {'t0': -188.10971175858438, 'tsad': 196.1372020599695, 'C': np.float64(0.19125836970985627)}
+PRIMARY: INCONCLUSIVE (a needed k is missing or void) {'T0': ('INCONCLUSIVE (a needed k is missing or void)', nan, nan), 'T1': ('INCONCLUSIVE (a needed k is missing or void)', nan, nan)}
