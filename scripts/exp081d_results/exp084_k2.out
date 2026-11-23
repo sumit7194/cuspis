@@ -1,0 +1,13 @@
+plant const + 4k       -> (ii-a) sigma-sector, n-independent       expected (ii-a) sigma-sector, n-independent       PASS
+plant const + 0.5 ln k -> (i) continuation                         expected (i) continuation                         PASS
+plant const + 1/k      -> (i) continuation                         expected (i) continuation                         PASS
+plant 4k vs 4k^1.5     -> (ii-b) n-dependent                       expected (ii-b) n-dependent                       PASS
+plant 0.5k             -> mixed (both loci contribute)             expected mixed (both loci contribute)             PASS
+plant k^0.5 (gap)      -> INCONCLUSIVE                             expected INCONCLUSIVE                             PASS
+KA W2P2 arm b n=2: |float64 - Arb| 4.0e-13 PASS
+KA W2P2 arm b n=3: |float64 - Arb| 3.7e-13 PASS
+Q W3P6b6: done (3.4s)
+Q W6P6b6: done (3.3s)
+Q W4P8b8: done (17.2s)
+Q W8P8b8: done (11.9s)
+geometries present: {1: True, 1.5: True, 2: True, 2.5: False}; reading deferred until all four k exist

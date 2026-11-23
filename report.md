@@ -11816,3 +11816,10 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **No data was displayed or read.** Phase 1 writes Q values without printing them, and phase 3 (the only place R or ratios appear) stayed deferred because k ≥ 1.5 was missing. Phase 0 had passed (6/6 plants, known answer 4.0e-13 / 3.7e-13).
 - **Fix:** the (ii-a) wording is graded ("would be exonerated (argued, conditional on this outcome)"); no criterion changed. Committed now.
 - **Rule:** a registration commit and a data run are never in the same command chain. Run data only after `git log` shows the registration commit.
+
+### EXP-084 progress (2026-11-23 evening)
+- **Phase 0:** 6/6 plants give their registered labels; known answer 4.0e-13 / 3.7e-13. PASS.
+- **Q values done at k = 1, 1.5, 2** (W2P4b4, W4P4b4, W3P6b6, W6P6b6, W4P8b8, W8P8b8). Peak 0.669 GB at k = 2, beside the W6 route, pressure green. **No values read**: phase 3 is deferred until all four k exist.
+- **k = 2.5: cap-killed by the registered 0.8 GB MEM rule** at 1.10 GB, still rising after 8 s. Kept as `exp084_k25_attempt1_capkill.*`. Per MEM it queues after 081e; beside the W6 route it would not be pressure-safe (the earlier yellow came at W6 + ~1.1 GB).
+- **Mechanism:** `run_084_after_081e.sh`, detached (PID 73627, PPID 1). It waits for the 081e runner (66664) to exit, then runs k = 2.5 alone (cap 3.0, soft 2.0, pressure-stop) and the registered reading.
+- The EXP-084 reading therefore lands after 081e, ~2026-11-26 (argued).
