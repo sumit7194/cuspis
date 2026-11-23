@@ -11476,3 +11476,11 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 - The leave-k=3-out predictions of 9.16 and 9.93 give r = 1.18 and 1.36. They straddle the upper gap and power-divergent.
 - Converging would need R(3) ≤ 7.37, which is below the measured R(2.5) = 8.22. A converging reading therefore needs R to turn down between k = 2.5 and k = 3.
 - Log-like needs R(3) ≤ 9.05, an increment ≤ 0.83 over k = 2.5, against the recent half-step increments of about 1.8–2.2.
+
+### EXP-081d Stage-2 gate 2: k = 3 memory probe, attempt 1 (2026-11-23 13:37–13:59). STOP: the 2-process plan fails the memory test.
+- **Setup:** k = 3 W12P12b12, `--production-only --nodes 47:48 _probe` (no R). The k = 2.5 W10 control ran the same probe alongside.
+- **What happened:** install finished at 1292 s and 2.78 GB. S.B1() and its logdets then took the tree to **7.32 GB (MEM 4.66 + CMPRS 2.66) in 33 s, still rising**. Pressure-stop (yellow) killed it at 1325 s, before the node ran. Logs are kept as `probe_k3_W12P12b12_attempt1_pressurekill.*`.
+- **Control at k = 2.5:** install ends at 1.00 GB, then the post-install jump takes it to 2.55 GB. The k = 3 / k = 2.5 ratio is 2.8 (install) and ≥ 2.9 (jump).
+- **Estimate:** k = 3 peak ≈ 3.20 × 2.9 ≈ 9.3 GB per process (**argued**, scaled; measured lower bound 7.32 GB). 2 × 7.32 already exceeds 13 GB. Back to the Bridge before Stage 2.
+- **Memory miss #3:** the earlier "k = 3 ≈ 6.2 GB measured-scaled" was low by about 1.5×.
+- **Next:** probe attempt 2 runs ALONE after the control (soft 9 / hard 11 GB, `run_081d_probe2.sh`), declared to the Bridge.
