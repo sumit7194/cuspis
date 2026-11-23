@@ -1,0 +1,22 @@
+plant P-lin on n=[2, 3, 4]                                 PASS  c(1) consistent with 0 (c1 -7.498e-16, sigma 4.4e-06, drift 1.5e-15)
+plant P-quad on n=[2, 3, 4]                                PASS  c(1) consistent with 0 (c1 +3.758e-16, sigma 2.8e+00, drift 2.3e+00)
+plant P-const on n=[2, 3, 4]                               PASS  c(1) non-zero (c1 +6.900e-01, sigma 4.4e-06, drift 5.6e-16)
+plant P-noise: sigma propagates declared 1e-3              PASS  sigma 1.21e-02; label reported: c(1) consistent with 0
+plant P-cd: c k^2 + e recovers d ~ 0, c                    PASS  c 0.690000 d +1.28e-14 (sd 7.1e-06) corr(c,d) -0.992
+KA: n = 2, 3 R_n from 084 Q files == 084 result.json       PASS  max dev 0.0e+00
+Q4 W2P4b4: done (0.2s)
+Q4 W4P4b4: done (0.2s)
+Q4 W3P6b6: done (2.6s)
+Q4 W6P6b6: done (2.9s)
+Q4 W4P8b8: done (19.3s)
+Q4 W8P8b8: done (19.1s)
+Q4 W5P10b10: done (67.8s)
+Q4 W10P10b10: done (68.8s)
+sigma table written: {2: np.float64(1.9740027625858818e-07), 3: np.float64(1.5321953994039574e-07), 4: np.float64(1.324413540764565e-07)}
+n=2: c +0.611686 +- 6.3e-05   d +0.319278 +- 2.2e-04   corr(c,d) -0.9980
+n=3: c +0.467914 +- 3.0e-05   d -0.275849 +- 1.2e-04   corr(c,d) -1.0000
+n=4: c +0.355064 +- 1.1e-04   d -0.196367 +- 4.3e-04   corr(c,d) -1.0000
+continued reference: c -0.201454  d +4.724911  corr -0.9919
+
+EXP-084b READING (n = [2, 3, 4]): c(1) non-zero   c(1) = +0.78638 +- 6.2e-02 (drift 5.2e-02, order 2)
+descriptive: d(1) = +1.58901 +- 1.3e+00 (drift 1.1e+00)  vs continued d +4.72491

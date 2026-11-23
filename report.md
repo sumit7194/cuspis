@@ -12012,3 +12012,25 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - P-quad → consistent with 0 with σ ≈ 2.8 (n = 2–4); at n = 2–5, drift = σ = 3.450, a floating-point edge.
 - **Registered P-quad expectation: "not non-zero"** (a vanishing curved c(n) must not be called non-zero). This is robust on both sides of the edge.
 - **EXP-085 amendment 3 (post-firing, Bridge-accepted):** q = 0 included on both sides; sweep to n = 256 (1% rule on 192/256). If it still drifts, 085 (ii) stays INCONCLUSIVE, with no after-the-fact extrapolation. Rerun queued as `run_queue3.sh` (waits for queue part 2; alone; no-kill). Routes stay on HOLD.
+
+### **EXP-084b RESULT (registered headline): "c(1) non-zero"**: c(1) = +0.786 ± 0.062 (order 2; drift 0.052 ≤ σ) (2026-11-23 17:38; `exp081d_results/exp084b/`, `exp084b_n4.out`)
+**Controls:** plants P-lin → 0, P-quad → not non-zero (consistent with 0, σ = 2.8), P-const → non-zero, P-noise σ 1.2e-2 ≥ 1e-3, P-cd recovered d = 1e-14; KA 0.0. All PASS. n = 4 measured peak **2.72 GB** (my estimate of 5.4 GB was an overestimate), 186 s, alone, no-kill.
+
+**Per-n 3-parameter k-fits (full covariance):**
+
+| n | c ± σ | d ± σ | corr(c, d) |
+|---|---|---|---|
+| 2 | +0.611686 ± 6.3e-5 | +0.3193 ± 2.2e-4 | −0.998 |
+| 3 | +0.467914 ± 3.0e-5 | −0.2758 ± 1.2e-4 | −1.000 |
+| 4 | +0.355064 ± 1.1e-4 | −0.1964 ± 4.3e-4 | −1.000 |
+| continued R (same fit) | −0.2015 | +4.7249 | −0.992 |
+
+**Pre-stated meaning:** the continued Q′(1) lacks a 1/a² piece that the honest integer-n family carries. This points at the n → 1 continuation (non-uniqueness of the extension), not at a counterterm.
+
+**Caveats (graded):**
+- Only 3 n values; the extrapolation is registered INFERENCE.
+- c and d are nearly degenerate over k ∈ [1, 2.5] (corr ≈ −1). The covariance σ accounts for that, but the c/d split is the fragile part.
+- d(1) = +1.59 ± 1.3 against the continued +4.72 is descriptive.
+- No δκ statement.
+- **Bearing on EXP-085 (argued):** if the continuation is the issue, T54's counterterm may not be the (only) mechanism. 085's rerun is still informative for the 1/a part.
+- **Next candidates (not registered):** n = 5 (≈ 3–4 GB by the measured scaling, announced to the Bridge first) to test the extrapolation with 4 n values; a continuation-uniqueness check, e.g. whether the code's continued Q(n) at integer n reproduces the honest Q_n.

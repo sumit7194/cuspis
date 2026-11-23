@@ -1,0 +1,7 @@
+=== exp084b_n4 start 17:30:59
+# pgate: attempt 1 at 17:35:29 (pressure normal >= 300 s)
+# exit 0; wall 186 s; PEAK tree MEM 2.716 GB + CMPRS 0.000 GB = 2.716 GB
+=== exp084b_n4 end 17:38:35 rc 0
+# exit 0; wall 186 s; PEAK tree MEM 2.716 GB + CMPRS 0.000 GB = 2.716 GB
+=== EXP-084b rc 0
+=== e_bw_W10 start 17:38:35
