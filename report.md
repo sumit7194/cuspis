@@ -11888,3 +11888,13 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 | ≥ 0.5·g_raw | refuted as sole cause |
 
 **Controls:** must-fail with −c; KA-IR (the unsubtracted T₀ must grow with n); test (i) with d's precision measured first.
+
+### **EXP-085 REGISTERED** (`notes/EXP-085_registration.md`), with the Bridge's six points
+1. **Sign registered from the derivation:** S ⊃ +½T₀ˢᵘᵇΣσ̇, so S_corr = S − ½cΣσ̇ and R_corr = R + ½c·ΔΣσ̇/(Ny(1/W₁ − 1/W₂)κ). If −½c flattens the slope instead, the derivation is REFUTED.
+2. **Slope only:** the −0.45 comparison is dropped (the box intercept term c′/L is not computed).
+3. **Same lattice:** the FFT G must equal the direct inverse of the same stencil on a periodic box to 1e-12 before c is used.
+4. **Bands on the whole ±2σ interval** of ρ = |g_corr|/g_raw, with 2 dof.
+5. **Normalisation as one equation, with a planted test:** ΔΣσ̇ = 1, c = 1 at k = 2 must give 7.045031843543933. An arithmetic slip (a draft value of 0.88062, then a mis-copied 7.04502) was caught before commit.
+6. **k = 3 Σσ̇** is queued after 081e, optional.
+
+**No compute until Sumit's office use ends.** The queue becomes 084 → 085 → 081e by a verified runner swap (to do when compute is allowed).
