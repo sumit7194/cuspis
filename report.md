@@ -12138,3 +12138,8 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Part 8 started W6P6 at 20:55, because its runner waits only on part 7's PID. The B–E rerun's slot was put to the Bridge.
   - **Order restored** (20:56): W6P6 had not started computing (the runner was still in the pressure gate). The part-8 runner and its timing watch were stopped; the log is kept as `run_queue8_run1_stopped_in_gate.txt`.
   - Re-chained: part 7b (B–E rerun, alone) → part 8 (waits on 7b's PID) → READ → HOLD. The timing watch was re-armed on the fresh log.
+- **Bridge mechanism points after the B–E crash (both done before part 8 can start):**
+  - (1) Part 8 now starts only on 7b's clean completion: the "BCDE (amendment 5) rc 0" line AND a fresh `exp085/E.json` with amendment 5. Otherwise it writes STOP → HOLD.
+    - Planted predecessors tested: crash; controls-fail rc 1 with a fresh E.json; stale E.json; wrong amendment; an "rc 10" prefix trap. All STOP with no geometry started; the true case passes (DRYGATE).
+    - The old PID-only part-8 runner was stopped while it was still sleeping; the gated runner and the timing watch were relaunched.
+  - (2) Lesson recorded in `notes/LESSONS.md` (L1: end-to-end tests run every phase on the real stored files; L2: chain on success, not on the PID).
