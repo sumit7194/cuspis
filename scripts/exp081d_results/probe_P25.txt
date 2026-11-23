@@ -1,2 +1,6 @@
 === probe_k25_W10P10b10 start 13:36:47
 # pgate: attempt 1 at 13:37:17 (pressure normal >= 60 s)
+# exit 0; wall 1574 s; PEAK tree MEM 2.037 GB + CMPRS 1.225 GB = 3.262 GB
+=== probe_k25_W10P10b10 end 14:03:31
+# exit 0; wall 1574 s; PEAK tree MEM 2.037 GB + CMPRS 1.225 GB = 3.262 GB
+=== P25 complete Mon Nov 23 14:03:31 IST 2026
