@@ -11823,3 +11823,10 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **k = 2.5: cap-killed by the registered 0.8 GB MEM rule** at 1.10 GB, still rising after 8 s. Kept as `exp084_k25_attempt1_capkill.*`. Per MEM it queues after 081e; beside the W6 route it would not be pressure-safe (the earlier yellow came at W6 + ~1.1 GB).
 - **Mechanism:** `run_084_after_081e.sh`, detached (PID 73627, PPID 1). It waits for the 081e runner (66664) to exit, then runs k = 2.5 alone (cap 3.0, soft 2.0, pressure-stop) and the registered reading.
 - The EXP-084 reading therefore lands after 081e, ~2026-11-26 (argued).
+
+### Incident #2 (2026-11-23 16:35): W6 route attempt 2 killed by yellow pressure, coincident with my EXP-084 k = 2 / 2.5 runs
+- W6 attempt 2 (started 16:22:36) was killed at wall 796 s (≈ 16:35:50), with the tree at 3.96 GB (2.09 MEM + 1.86 CMPRS).
+- My EXP-084 jobs ran at that time: k = 2 (40 s, peak 0.67 GB), then the k = 2.5 attempt (8 s, 1.10 GB, cap-killed).
+- **Cause attributed to me (argued, from the timing).** "Green beside W6" was judged from a free-% reading before each job, not from the pressure level during it. W6's setup phase carries heavy compressed memory, and a sub-1 GB neighbour was enough to tip the machine to yellow.
+- **Lost: ~14 min more** of W6. pgate attempt 3 started at 16:36:22.
+- **Rule, tightened:** NOTHING runs beside a route, of any size, including dry runs. The only pending EXP-084 work already waits for 081e to exit (detached PID 73627).
