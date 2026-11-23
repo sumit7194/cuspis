@@ -12062,3 +12062,11 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 | F.3 W6 | the HELD reference has no g, so FAIL by design → W6 is rerun under 081e after W12 |
 
 - **The routes (W12, then the W6 rerun) are on HOLD** pending the Bridge's go after the EXP-085 rerun is read.
+
+### **EXP-085 RESULT (registered + amendment 3): INCONCLUSIVE, c unconverged** (2026-11-23 18:16; `exp081d_results/exp085.out`)
+- NORM-T0 **PASS**: dense = FFT = −144.1898914680. The q = 0 fix was right.
+- c(n) for n = 32, 48, 64, 96, 128, 192, 256: −0.085529, −0.094297, −0.099186, −0.104547, −0.107467, −0.110615, −0.112305.
+- **|c(256) − c(192)| = 1.69e-3 = 1.5% > 1%: FAIL** (the Bridge's estimate from the old numbers was ≈ 1.3%).
+- Including q = 0 changed c by < 1%. The ~1/n approach is a genuine finite-size convergence of the BZ sum, not the q = 0 term.
+- **As pre-stated: (ii) INCONCLUSIVE; no Richardson c∞ is used.** No geometry phase ran.
+- A redesign (e.g. a registered extrapolation in 1/n with its own known-answer test, on a sum whose exact limit is known) would be a NEW amendment, decided before any slope is read.

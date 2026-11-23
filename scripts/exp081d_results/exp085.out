@@ -1,11 +1,13 @@
 A same-lattice FFT G vs pinv, n=8                    PASS  max rel dev 7.2e-15
 A same-lattice FFT G vs pinv, n=12                   PASS  max rel dev 1.4e-14
-A NORM-T0 dense Tr(B^-1 dB) vs V*T0_FFT (n=6)        FAIL  dense -1.441898914680e+02 fft -1.430504264171e+02
-   c(n=32) = -0.084740489896   T0full -2.507142e+00  (0.0s)
-   c(n=48) = -0.093769480874   T0full -3.616156e+00  (0.0s)
-   c(n=64) = -0.098789341314   T0full -4.722224e+00  (0.0s)
-   c(n=96) = -0.104281378782   T0full -6.931108e+00  (0.1s)
-   c(n=128) = -0.107267813390   T0full -9.138236e+00  (0.2s)
-A c converged (|c128-c96| <= 1% |c|)                 FAIL  c -0.1072678134 sigma_c 2.99e-03
-A KA-IR: unsubtracted T0 grows with n                PASS  {32: '-2.507e+00', 48: '-3.616e+00', 64: '-4.722e+00', 96: '-6.931e+00', 128: '-9.138e+00'}
+A NORM-T0 dense Tr(B^-1 dB) vs V*T0_FFT (n=6)        PASS  dense -1.441898914680e+02 fft -1.441898914680e+02
+   c(n=32) = -0.085529095656   T0full -2.507931e+00  (0.0s)
+   c(n=48) = -0.094296891963   T0full -3.616683e+00  (0.0s)
+   c(n=64) = -0.099186048068   T0full -4.722621e+00  (0.0s)
+   c(n=96) = -0.104546850718   T0full -6.931374e+00  (0.1s)
+   c(n=128) = -0.107467359454   T0full -9.138435e+00  (0.2s)
+   c(n=192) = -0.110614587389   T0full -1.355073e+01  (0.8s)
+   c(n=256) = -0.112304636605   T0full -1.796204e+01  (2.2s)
+A c converged (|c256-c192| <= 1% |c|)                FAIL  c -0.1123046366 sigma_c 1.69e-03
+A KA-IR: unsubtracted T0 grows with n                PASS  {32: '-2.508e+00', 48: '-3.617e+00', 64: '-4.723e+00', 96: '-6.931e+00', 128: '-9.138e+00', 192: '-1.355e+01', 256: '-1.796e+01'}
 PHASE A FAIL

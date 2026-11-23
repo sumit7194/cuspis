@@ -1,0 +1,6 @@
+=== queue part 2 ended 2026-11-23 18:12:16
+=== exp085 start 18:12:16
+# pgate: attempt 1 at 18:16:47 (pressure normal >= 300 s)
+# exit 1; wall 6 s; PEAK tree MEM 0.085 GB + CMPRS 0.000 GB = 0.085 GB
+=== EXP-085 rc 1 2026-11-23 18:16:52
+=== HOLD before routes (Bridge go after 085 is read)
