@@ -1,0 +1,13 @@
+Watson exact (mpmath): W_sc = 1.5163860591519780182,  G0 = W_sc/6 = 0.252731009858663
+   n=64: c -0.099186048068   G0 0.249203283894   (0.0s)
+   n=96: c -0.104546850718   G0 0.250379131736   (0.1s)
+   n=128: c -0.107467359454   G0 0.250967085331   (0.2s)
+   n=192: c -0.110614587389   G0 0.251555052591   (0.7s)
+   n=256: c -0.112304636605   G0 0.251849039918   (1.7s)
+   n=384: c -0.114105506369   G0 0.252143028951   (9.7s)
+Watson KA: |G0_inf - W/6| <= sigma_W                       PASS  G0_inf 0.2527310366 true 0.2527310099 diff 2.68e-08 sigma 4.37e-08
+Watson KA: sigma_W < 1% of W/6                             PASS  sigma/true 1.73e-07
+Watson held-out n=384                                      PASS  pred 0.2521430355 computed 0.2521430290 diff 6.53e-09 sigma_pred 1.19e-08
+c held-out n=384                                           FAIL  pred -0.1139834502 computed -0.1141055064 diff 1.22e-04 sigma_pred 1.20e-04
+
+AMENDMENT 4: FAIL -> 085 stays INCONCLUSIVE; c_inf not pursued

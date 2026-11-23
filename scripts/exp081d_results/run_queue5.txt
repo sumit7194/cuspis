@@ -1,0 +1,15 @@
+=== queue part 4 ended 2026-11-23 18:43:00
+=== e84c_ka_alias start 18:43:00
+# pgate: attempt 1 at 18:47:30 (pressure normal >= 300 s)
+# exit 0; wall 43 s; PEAK tree MEM 0.061 GB + CMPRS 0.000 GB = 0.061 GB
+=== e84c_ka_alias end 18:48:13 rc 0
+# exit 0; wall 43 s; PEAK tree MEM 0.061 GB + CMPRS 0.000 GB = 0.061 GB
+=== EXP-084c KA_ALIAS diagnosis rc 0
+=== e85_a4 start 18:48:13
+# pgate: attempt 1 at 18:52:43 (pressure normal >= 300 s)
+# WATCHDOG WARN [2026-11-23 18:52:49] level 1 (soft cap): tree footprint 9.23 GB > soft cap 6.0 GB at t=6s (hard cap 15.0 GB)
+# exit 1; wall 16 s; PEAK tree MEM 6.049 GB + CMPRS 3.186 GB = 9.234 GB
+=== e85_a4 end 18:52:59 rc 1
+# exit 1; wall 16 s; PEAK tree MEM 6.049 GB + CMPRS 3.186 GB = 9.234 GB
+=== EXP-085 amendment 4 FAIL -> 085 stays INCONCLUSIVE
+=== HOLD (routes await the Bridge's go) 2026-11-23 18:52:59

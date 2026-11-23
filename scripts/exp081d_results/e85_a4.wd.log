@@ -1,0 +1,10 @@
+# cmd: ../.venv/bin/python -u -W ignore exp085_a4.py
+# caps: tree <= 15.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# pressure trigger: off
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.3     1   0.294    0.000   0.294        11.61       1733.4           76              1
+     5.7     1   6.049    3.186   9.234        11.61       1733.4           51              1
+# WATCHDOG WARN [2026-11-23 18:52:49] level 1 (soft cap): tree footprint 9.23 GB > soft cap 6.0 GB at t=6s (hard cap 15.0 GB)
+    11.2     1   5.916    2.062   7.978        11.64       1733.4           55              1
+# exit 1; wall 16 s; PEAK tree MEM 6.049 GB + CMPRS 3.186 GB = 9.234 GB

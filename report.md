@@ -12090,3 +12090,20 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - 084c proceeds on the production path. Remaining geometries are scheduled after a second cost point.
 - **Rule revision (Bridge, this case only):** an 084c route-(ii) job **measured** under 0.5 GB may run beside a route under no-kill. The constraint is CPU time-sharing (box load ~9–10/10), handled by one 084c process at a time at nice 12. Consistent with Sumit's concern (other sessions' jobs being killed), which no-kill now covers.
 - **084c cost points** queued as part 6 (after part 5): W4P4 n = 2 (W-scaling) and W3P6 n = 2 (P/Ny-scaling). The k range is decided from them BEFORE the reading. Fallback k ∈ {1, 1.5, 2}, stated in advance; n = 2 alone answers the core question.
+
+### **EXP-085 FINAL (registered + amendments 3, 4): INCONCLUSIVE.** Amendment 4's held-out test on c FAILED, so c∞ is not pursued this way. (2026-11-23 18:52; `exp081d_results/e85_a4.out`, `exp085/A4.json`)
+
+| check | result |
+|---|---|
+| **Watson KA** | **PASS**: G₀∞ = 0.2527310366 vs exact W_sc/6 = 0.2527310099 (mpmath), diff 2.7e-8 ≤ σ 4.4e-8; σ/true = 1.7e-7 < 1% |
+| **Watson held-out n = 384** | **PASS**: predicted 0.2521430355, computed 0.2521430290, diff 6.5e-9 ≤ σ_pred 1.2e-8 |
+| **c held-out n = 384** | **FAIL**: predicted −0.1139834502, computed −0.1141055064, diff 1.22e-4 > σ_pred 1.20e-4 (marginal, 1.02σ, but registered) |
+
+**Reading (the Bridge's caveat, now borne out):** the extrapolation machinery recovers a known 1/n-type limit (Watson). But c's own finite-size corrections are not captured by c∞ + A/n + B/n².
+- Plausible (ARGUED): Σ^ren ~ k² log k puts log(n)/n terms into the BZ sum's convergence.
+
+**What 085 leaves (graded):**
+- c is O(0.1) and negative: −0.1141 at n = 384, still drifting. Measured; unconverged.
+- The T54 counterterm test on the continued R is NOT performed. T54 is neither confirmed nor refuted by 085.
+
+**Memory:** the n = 384 step peaked at **9.23 GB** (6.05 MEM + 3.19 CMPRS) for seconds. The soft-cap WARN fired at 18:52:49, informed only, no pause and no kill. My 5–6 GB estimate was low (a FFT-temporaries count, not measured; memory estimate slip #5).
