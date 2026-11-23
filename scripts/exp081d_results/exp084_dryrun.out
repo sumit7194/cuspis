@@ -1,0 +1,4 @@
+known answer W2P2 arm b n=2: float64 0.3029743824561137  Arb 0.3029743824557108  |diff| 4.0e-13  (0.0s)
+known answer W2P2 arm b n=3: float64 0.4684218867384971  Arb 0.4684218867381244  |diff| 3.7e-13  (0.0s)
+cost W3P6b6 arm b n=2: N 216 Ny 24 nN 432; saddle it 4; Q computed (value withheld); wall 0.8s
+cost W3P6b6 arm b n=3: N 216 Ny 24 nN 648; saddle it 4; Q computed (value withheld); wall 2.2s

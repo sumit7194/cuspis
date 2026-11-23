@@ -11784,3 +11784,15 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 | otherwise | inconclusive |
 
 Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behind the W6 route unless its measured peak is tiny.
+
+### EXP-084 draft (exact integer-n width pair: growth-locus discriminator) and its dry run (`notes/EXP-084_registration_draft.md`)
+**Zero-cost pre-look (Bridge point 3): NOT available.**
+- EXP-082b is a different family (T46d ε model).
+- EXP-083 R2 exact-n data exist only at P = 2 (W2P2, W4P2, Wbox 4), a single refinement level, so no free read of (i) against (ii).
+
+**Dry run (`exp084_dryrun.py`, `exp081d_results/exp084_dryrun.out`), run beside the W6 route, pressure green:**
+- **Known answer:** float64 `exp083_honest.Geom` reproduces the stored 400-digit Arb arm-b W2P2 values, Q(2) to |Δ| = 4.0e-13 and Q(3) to 3.7e-13.
+- **Cost:** W3P6b6 arm b takes 0.8 s at n = 2 and 2.2 s at n = 3. Peak 0.062 GB.
+- No width pair was formed, so no experimental data was read.
+
+**The draft includes:** the Bridge's caveat (σₙ ≠ σ₁ and the MFS conical behaviour, so n = 2 AND n = 3 are measured, and n-dependence separates the outcomes); the exoneration of the estimator via the k-stable free κ; the argued UV-finiteness of the exact-n pair; the pre-stated (i) / (ii-a) / (ii-b) readings; and a must-fire plant.
