@@ -644,3 +644,9 @@ Everything is committed and pushed. Nothing is running. Where things stand:
       Split: exp081d_route.py --nodes 0:24 (with t0/T_sad) and 24:48, then a final pass for the checks.
 - [ ] GUARD: never edit a shell runner while any lane is executing it (zsh reads incrementally and re-entered run_081d_stage1.sh on 2026-11-22). New lanes go in a new file.
 - [x] (2026-11-23, slip) The overnight Stage-1 event waiter (bdr3qhptw) could not fire. In zsh, `F="a b c"; cat $F` is ONE filename (no word-splitting), so the baseline and the loop count were both 0 for 11 h. Nothing was missed: no lane failed, and L2b completion was found by its own task notification. **Rule: before arming a waiter, run its condition against a file where it must already be true (a finished lane) and see it fire.** The replacement waiter (b86fo8pz7) was tested that way.
+- [ ] **UNDELIVERED to the Bridge (not live at 12:55 on 2026-11-23); deliver on return:** "081d Stage 1 end (105e4fe). Stage 1 of 2, no verdict.
+  - The k = 2.5 W5P10b10 and W10P10b10 gates all PASS, including C1 verdict_stored, with every plant firing. W10 is capped at s_max 3.948 by Step 0; that is the registered S0 cap, not a void. Peaks are 3.2 GB per process.
+  - R(k) for k = 1, 1.5, 2, 2.5 is +2.26, +4.23, +6.44, +8.22, positive throughout, and partially verified.
+  - PRIMARY is INCONCLUSIVE, as registered, because k = 3 is missing.
+  - Descriptive (argued): the fits leaving out k = 3 predict R(3) of 9.2–9.9. The registered converging/gap boundary sits at R(3) = 9.58, so Stage 2 decides, and the gap is a live outcome. Bands untouched.
+  - Asking you now: may I run the k = 3 memory probe (no R, short)? Then please give a start time for Stage 2 (2 node-split processes per width, ~24 h)."
