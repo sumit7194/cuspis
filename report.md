@@ -12213,3 +12213,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Hypothesis H1′ (post-hoc): all W4P4 test-(i) discrepancies are the s_cut = 3 truncation, in d^B AND in inner/inner_beta0.
   - Also noted: route (ii)'s `strip_sigma(g, s, s_cut=3.0)` defaults to 3, and 084c calls it without the argument.
 - **085c DRAFT** written (89cc740; Bridge review pending; nothing computed). PRIMARY = prescription A (argued from criticality); bulk and full tadpole are descriptive. The full tadpole equals R_t0 + R_C, already known from stored data (a k² blow-up), and is labelled not blind.
+- **EXP-085w W2P4 (23:21; 849 s; 0.063 GB):** controls PASS.
+  - KA: iG/iB bitwise against D.json. The s ≤ s_cut control: 1.0e-17. Plant (c), 5e-9 at site 18: fires (5.0e-9 > 7.3e-12).
+  - **Family prediction PASS:** W2P4 has NO poles in (3, 6] (tail = 0), consistent with its passing test (i).
+  - H1 passes trivially at W2P4, with no teeth (must-fail not graded, as registered).
+  - cond(B₁[0]) = 3.826, identical to W4P4, as it must be: B₁ is the uncut n = 1 lattice, the same for both cut widths.
+  - **085w overall: H1 FAILS** (at W4P4, as registered). The family prediction holds. W4P4 is BOUNDED; 085w2 tests H1′.
