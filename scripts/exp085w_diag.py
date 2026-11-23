@@ -32,14 +32,17 @@ def d_radius(S, U, f):                                              # verbatim f
             dp, dm = cache[(p, j)]
             d += (2j * np.pi) * u.scale * dp * S3._kdn(1j * sj, True) + (2j * np.pi) * u.scale * dm * S3._kdn(-1j * sj, False)
     return d / Ny
-def per_slice_dB(S, lo_s, hi_s):                                    # coincident_dn_c's formula per slice, poles with lo_s < s <= hi_s
+def per_slice_dB(S, lo_s, hi_s):
+    """d^B formula per slice for poles with lo_s < s <= hi_s, residues ON DEMAND (install stores residues only for s <= s_cut;
+    above it Rp/Rm are None), production radius rule r = min(1e-6, 0.3 * min pole gap), scaled like d_radius."""
     out = []
     for sp in S.sl:
         d = np.zeros(S.N, dtype=complex)
         for j, sj in enumerate(sp.s):
             if not (lo_s < sj <= hi_s): continue
-            for R, a0, up in ((sp.Rp[j], 1j * sj, True), (sp.Rm[j], -1j * sj, False)):
-                d += (2j * np.pi) * np.diag(sp.Rfull(R)) * S3._kdn(a0, up)
+            r = min(1e-6, 0.3 * min([abs(sj - sk) for sk in sp.s if sk != sj] + [1.0]))
+            for a0, up in ((1j * sj, True), (-1j * sj, False)):
+                d += (2j * np.pi) * sp.scale * np.diag(sp.residue(a0, r)) * S3._kdn(a0, up)
         out.append(d / S.Ny)
     return np.array(out)
 S, U, ck, lr = build(W, P); Ny, N, Lt = S.Ny, S.N, S.Lt
@@ -60,7 +63,8 @@ ref = json.load(open(os.path.join(HERE, "exp081d_results", "exp085", "D.json")))
 if ref: check(f"KA W{W}P{P}: iG, iB reproduce D.json bitwise", iG == ref["iG"] and iB == ref["iB"], f"iG {iG!r} vs {ref['iG']!r}; iB {iB!r} vs {ref['iB']!r}")
 # ---- H1: tail ----
 lo, hi, rem = per_slice_dB(S, -np.inf, S.s_cut), per_slice_dB(S, S.s_cut, 6.0), per_slice_dB(S, 6.0, np.inf)   # pre-run note: tail = (3, 6]
-check("control: per-slice d^B (s<=s_cut) sums to coincident_dn_c", np.abs(lo.sum(0) - dB).max() <= 1e-15 * max(1, np.abs(dB).max()), f"{np.abs(lo.sum(0) - dB).max():.1e}")
+dlo = float(np.abs(lo.sum(0) - dB).max())
+check("control: on-demand per-slice d^B (s<=s_cut) == coincident_dn_c within s_dB", dlo <= max(s_dB, 1e-15), f"{dlo:.1e} vs s_dB {s_dB:.1e}")
 tail = hi.sum(0); tmax = float(np.abs(tail).max()); rmax = float(np.abs(rem.sum(0)).max())
 print(f"s > 6 remainder (size only): max {rmax:.3e}", flush=True)
 if W < P: check(f"family prediction (W < Wbox): |tail(3,6]| <= tolG", tmax <= tolG, f"{tmax:.3e} vs {tolG:.2e}")

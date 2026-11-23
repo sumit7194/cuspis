@@ -12174,3 +12174,10 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **EXP-085w registered (1272d17) and launched as a side job** (W4P4 first; nice 12; soft cap 0.5 GB, inform only).
   - Geometry fact: W2P4 and W4P4 share the 12 × 8 × 16 lattice; W = P means the cut fills the box.
   - H1: the s_cut = 3 truncation tail. d^C integrates the full line; d^B sums only poles with s ≤ 3.
+- **EXP-085w W4P4 run 1: CRASHED after phase D** (1037 s, peak 0.065 GB).
+  - The **KA PASSED bitwise** first: iG = 5.7846216892053215e-09 and iB = 3.366803471866603e-09, both exactly the D.json values.
+  - Cause: `install` stores residues only for s ≤ s_cut; above it Rp/Rm are `None`. The tail can't use the stored residues.
+  - Fix: residues computed on demand via `residue(±is, r)` with the production radius rule, scaled as in `d_radius`. The s ≤ s_cut control now compares this path with `coincident_dn_c`, within s_dB.
+  - Tier-1 test, no tail value printed: control 1.0e-17 at W2P4 and 1.4e-17 at W4P4.
+    - W2P4 has 0 poles in (3, 6], so its test did NOT exercise the tail path (the L1 trap). The path was re-tested at W4P4: 17 poles in (3, 6], finite.
+  - Outputs kept as `*_run1_crashed.*`. Rerun launched.
