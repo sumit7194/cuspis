@@ -1,6 +1,6 @@
 # EXP-081e: k = 3 refinement point with the QEP reciprocal-pairing fix (DRAFT for the Bridge; not registered)
 
-*Status: draft, 2026-11-23. Nothing here is registered until the Bridge's GO, and no production code is changed before that.
+*Status: draft, 2026-11-23. **§2 (blanket τ = 1e-4) SUPERSEDED by report c9c9660: no tolerance separates genuine from rejected candidates; a structural-zero separator is proposed instead. Awaiting the Bridge.** Nothing here is registered until the Bridge's GO, and no production code is changed before that.
 Pre-work: report.md entries bb09540 (item a), ddb277a (item c), d2702e5/8b4e9e7 (the 081d void). [model: Opus 5.5]*
 
 ## 0. Why this exists
