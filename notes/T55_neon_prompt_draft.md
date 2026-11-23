@@ -35,7 +35,7 @@ Large-N O(N) vector model on a 3D cubic lattice (spacing a = 1), Hubbard–Strat
 1. The O(1/N) shift δ(1/g_c) of the critical coupling for exactly this lattice action and bubble normalisation.
    - (a) In the bulk: as an explicit Brillouin-zone expression in G(k) and B(q) = 2⟨G(k)G(k+q)⟩_k, with any IR-divergent (B(0)-dependent) piece separated from the UV piece.
    - (b) For the site-dependent prescription 1/g(x) = G₁^box(x, x) above: the O(1/N) correction δ(1/g(x)) it requires, including near the walls.
-2. The replica computation above keeps g at its N = ∞ value. Derive the O(N⁰) term in Q′(1) (equivalently in S) that using the correct critical coupling adds. Write it as (numerical coefficient) × (BZ constant) × Σσ̇, with the coefficient, its sign, and the BZ constant all explicit in these conventions.
+2. The replica computation above keeps 1/g(x) at its N = ∞ (site-dependent) value. Derive the O(N⁰) term in Q′(1) (equivalently in S) that using the correct critical coupling adds. Write it as (numerical coefficient) × (BZ constant) × Σσ̇, with the coefficient, its sign, and the BZ constant all explicit in these conventions.
 3. Any OTHER O(N⁰) terms of the same order (growing like 1/a in R) that a bulk δ(1/g_c) treatment alone would miss. Consider explicitly the wall/boundary terms arising from the site-dependent coupling prescription; also the normalisation of the σ propagator, the n-derivative of the saddle, and contact terms. Give their sign and, if possible, size.
 
 State which steps are standard results (with references) and which are your own derivation.
