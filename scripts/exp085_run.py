@@ -176,18 +176,38 @@ if "E" in STAGES:
         if lo > 0.1 and hi < 0.5: return "T54 partial"
         if lo >= 0.5: return "T54 refuted as sole cause"
         return "INCONCLUSIVE (interval straddles a band edge)"
-    rows = {}
-    for nm, cc in (("registered +c", c), ("MUST-FAIL -c", -c), ("zero c=0", 0.0)):
-        out, sg = series(cc); g, sgg = slope_and_sigma(out, sg); rho, srho = abs(g) / graw, sgg / graw
-        rows[nm] = dict(Rcorr=out, g=g, sigma_g=sgg, rho=rho, sigma_rho=srho, band=band(rho, srho))
-        print(f"E {nm:14s}: R_corr {[round(out[k], 6) for k in KS]}  g {g:+.4f} +- {sgg:.4f}  rho {rho:.4f} +- {srho:.4f}  -> {rows[nm]['band']}", flush=True)
-    check("E zero control reproduces g_raw", abs(rows["zero c=0"]["g"] - graw) <= 1e-12 * abs(graw), f"{rows['zero c=0']['g']!r} vs {graw!r}")
-    mf = rows["MUST-FAIL -c"]["rho"] >= 1.0
-    check("E MUST-FAIL: -c does not flatten (rho >= 1)", mf, f"rho {rows['MUST-FAIL -c']['rho']:.4f}")
-    if not A["converged"]: reading = "INCONCLUSIVE (c unconverged)"
-    elif not Dv: reading = "INCONCLUSIVE (test (i) mismatch)"
-    elif rows["MUST-FAIL -c"]["band"] == "T54 supported" and rows["registered +c"]["band"] != "T54 supported": reading = "DERIVATION REFUTED (-c flattens, +c does not; sec 1.5)"
-    else: reading = rows["registered +c"]["band"]
-    print(f"\nEXP-085 READING: {reading}   (g_raw {graw:.6f}; c {c:+.10f} +- {sig_c:.1e}; 2 dof)")
-    save("E.json", dict(reading=reading, rows=rows, graw=graw, c=c, sigma_c=sig_c, controls_failed=FAIL))
+    def do_reading(c, sig_c, converged, tag):
+        global series
+        def series(cc, _sig=sig_c):
+            out, sg = {}, {}
+            for k in KS:
+                W1, W2, P = int(2 * k), int(4 * k), int(4 * k); a, b = Cg[(W1, P)], Cg[(W2, P)]
+                dS = a["Sigma3D"] - b["Sigma3D"]; s_dS = np.hypot(a["sigma"], b["sigma"])
+                out[k] = R[k] + 0.5 * cc * dS * norm(k); sg[k] = 0.5 * norm(k) * np.hypot(cc * s_dS, _sig * dS)
+            return out, sg
+        rows = {}
+        for nm, cc in (("registered +c", c), ("MUST-FAIL -c", -c), ("zero c=0", 0.0)):
+            out, sg = series(cc); g, sgg = slope_and_sigma(out, sg); rho, srho = abs(g) / graw, sgg / graw
+            rows[nm] = dict(Rcorr=out, g=g, sigma_g=sgg, rho=rho, sigma_rho=srho, band=band(rho, srho))
+            print(f"E[{tag}] {nm:14s}: R_corr {[round(out[k], 6) for k in KS]}  g {g:+.4f} +- {sgg:.4f}  rho {rho:.4f} +- {srho:.4f}  -> {rows[nm]['band']}", flush=True)
+        check(f"E[{tag}] zero control reproduces g_raw", abs(rows["zero c=0"]["g"] - graw) <= 1e-12 * abs(graw), f"{rows['zero c=0']['g']!r} vs {graw!r}")
+        check(f"E[{tag}] MUST-FAIL: -c does not flatten (rho >= 1)", rows["MUST-FAIL -c"]["rho"] >= 1.0, f"rho {rows['MUST-FAIL -c']['rho']:.4f}")
+        if not converged: reading = "INCONCLUSIVE (c unconverged)"
+        elif not Dv: reading = "INCONCLUSIVE (test (i) mismatch)"
+        elif rows["MUST-FAIL -c"]["band"] == "T54 supported" and rows["registered +c"]["band"] != "T54 supported": reading = "DERIVATION REFUTED (-c flattens, +c does not; sec 1.5)"
+        else: reading = rows["registered +c"]["band"]
+        print(f"E[{tag}] reading: {reading}   (g_raw {graw:.6f}; c {c:+.10f} +- {sig_c:.1e}; 2 dof)", flush=True)
+        return reading, rows
+    if os.environ.get("EXP085_A5") == "1":                  # AMENDMENT 5: two-ended bracket, ends computed from A4.json at run time
+        cv = A["cvals"]; c384, c192 = cv["384"], cv["192"]; D_ = c384 - c192; ends = {"hi c(384)": c384, "lo c(384)+3Delta": c384 + 3 * D_}
+        print(f"AMENDMENT 5 bracket: [{ends['lo c(384)+3Delta']!r}, {ends['hi c(384)']!r}] (Delta {D_!r})", flush=True)
+        res = {tag: do_reading(cc, 0.0, True, tag) for tag, cc in ends.items()}
+        bands = [res[t][0] for t in ends]
+        reading = bands[0] if bands[0] == bands[1] and not bands[0].startswith("INCONCLUSIVE") else f"INCONCLUSIVE (bracket ends differ or inconclusive: {bands})"
+        print(f"\nEXP-085 READING (amendment 5): {reading}")
+        save("E.json", dict(reading=reading, amendment=5, ends=ends, per_end={t: dict(reading=res[t][0], rows=res[t][1]) for t in ends}, graw=graw, controls_failed=FAIL))
+    else:
+        reading, rows = do_reading(c, sig_c, A["converged"], "single")
+        print(f"\nEXP-085 READING: {reading}")
+        save("E.json", dict(reading=reading, rows=rows, graw=graw, c=c, sigma_c=sig_c, controls_failed=FAIL))
 print(f"\nEXP-085 stages {STAGES}: {'controls PASS' if not FAIL else 'FAIL: ' + ', '.join(FAIL)}"); sys.exit(1 if FAIL else 0)

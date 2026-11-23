@@ -12111,3 +12111,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Argued: monotone c, plus doubling-drop ratios 0.584 / 0.575, consistent with a log(n)/n leading term (bound ≈ 1.4Δ); 3Δ also covers log²(n)/n (≈ 2.4Δ).
   - Premise stated: ratios ≤ 0.6 beyond n = 384.
   - Phases B–E run at both ends; the reading counts only if both ends give the same band.
+- **EXP-085 amendment 5, implemented and tested:**
+  - Phase E reads both bracket ends (computed from A4.json at run time; σ_c = 0 at each end) and reports the same-band-or-INCONCLUSIVE outcome, with the controls at each end.
+  - **Synthetic end-to-end test** (scratch copy; fake Σσ̇ built so that +½c cancels the slope exactly at the c(384) end): high end → supported (zero control exact; must-fail ρ = 2.0); low end → straddles; combined → INCONCLUSIVE. The rule has teeth: the 9%-wide bracket can split a reading.
+  - Phases B–E with EXP085_A5=1 are queued as part 7 (after the 084c cost points), alone, no-kill.
