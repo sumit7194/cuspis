@@ -51,3 +51,8 @@
 
 ## Running
 - Zero compute (reads stored JSON). It runs once `c84_W8P8_n2.json` exists, after part 8's W8P8. Nothing is run before this registration is committed.
+
+## Pre-read note (Bridge, 2026-11-24; nothing read)
+- The 3 k points mix parity: k = 1.5 has W₁ = 3 off-centre by ½ site, and parity zig-zags R's local slope by ~10%.
+- So beside η the run also reports, **DESCRIPTIVELY**, the parity-matched k = 1 → 2 slopes of honest R₂ and of the counterterm ΔR₂, at both c ends.
+- INCONCLUSIVE is the expected likely outcome (the d(2)/c(2) degeneracy); that is acceptable.

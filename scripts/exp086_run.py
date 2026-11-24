@@ -50,6 +50,9 @@ for tag, c in ends.items():
     print(f"[{tag}] dR2 {[round(ct[k], 5) for k in KS]}  g_ct {g:+.4f} +- {sg:.4f}  d_corr {dc:+.4f}  eta {eta:+.4f} +- {se:.4f} -> {b}", flush=True)
     _, _, _, dz, _, _, _ = reading(c, scale=0.0); check(f"[{tag}] zero control: d_corr == d(2) bitwise", dz == d2, f"{dz!r} vs {d2!r}")
     _, _, _, _, em, sm, bm = reading(c, sgn=-1.0); check(f"[{tag}] must-fail sign: band differs from registered", bm != b, f"{bm} (eta {em:+.3f}) vs {b}")
+print("--- DESCRIPTIVE (pre-read note): parity-matched k = 1 -> 2 slopes ---", flush=True)
+print(f"   honest R2: {R2[2] - R2[1]:+.5f}", flush=True)
+for tag, r in res.items(): print(f"   counterterm dR2 [{tag}]: {r['ct'][2] - r['ct'][1]:+.5f}   (R2 + dR2: {(R2[2] + r['ct'][2]) - (R2[1] + r['ct'][1]):+.5f})", flush=True)
 bands = {r["band"] for r in res.values()}
 lab = (list(bands)[0] if len(bands) == 1 else "INCONCLUSIVE (bracket ends differ)") if not FAIL else "INCONCLUSIVE (control failed)"
 print(f"\nEXP-086 READING: {lab}   (honest R2 linear coeff d(2) {d2:+.4f}; k^2 coeff c(2) {c2:+.4f} set aside, as registered; 3 k, 1 dof; controls {'PASS' if not FAIL else FAIL})")
