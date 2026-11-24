@@ -12424,3 +12424,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - t0 = −486.137451254695 (9341 s);
   - **T_sad = +504.570481250655, matching GEOM W12P12's full-rank `saddle_term_c` (504.5704812506546) to ~1e-15**: low-rank and full-rank installs agree (partially verified).
   - Peak so far 6.47 GB; the C-line nodes are running.
+- **W12 route per-node peaks (`tools/node_peaks.py`):** 6.47, 7.94, 8.45, 7.12, 7.02 GB for nodes 1–5. MEM stays at 4.66 GB; only the compressed share varies.
+  - The node 2–3 spikes coincided with system-wide yellow pressure (other apps), so they **do not grow with node index**. The steady peak is ~7.0 GB, close to the probe's 7.12.
+  - Two WATCHDOG WARNs (yellow; 01:43 and 02:03); inform only, and no guard fired.
+  - Node times 2013–2347 s; ETA ~2026-11-26 05:00–07:00.
