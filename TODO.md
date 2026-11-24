@@ -665,3 +665,17 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - State the limitation in the headline: no k = 2.5, no n = 3, 4 (amendment 2).
 - Level-1 line: "W = Wbox Level-1 residual unexplained but bounded at ≤ 1.1e-9 (in Q); the pole cutoff is EXCLUDED at integer n (tail weight 1/expm1(12π) = 4.2e-17)."
 - Production s_cut change: scoped to the n = 1 derivative quantities (d, Q′(1)). Registered separately with its own KA before any route goes.
+
+## 081e W12 (+ 085c GEOM at W6P12/W12P12): awaiting Sumit's word (2026-11-24)
+- "Nothing new" is temporary, for Sumit's office hours. The W12 decision is his, later.
+- **Revised cost:** route W12 ≈ 39 h (measured route scaling P^5.8, P6 → P10), P⁷ upper bracket ≈ 49 h; ~7.3 GB.
+- **Gates agreed with the Bridge:**
+  - W8P8 done, and the 084c READ sent to the Bridge;
+  - memory green with ≥ 50% free at launch;
+  - nothing else of mine running;
+  - GEOM points first (≤ 1 h each, CUSPIS_081E=1, missing-ref handling in exp085c GEOM), W12 second;
+  - one job at a time, nice 12, inform-only watchdog (NOT run_081e.sh's --stop-on-pressure-warn);
+  - timing watch at the 49 h bracket;
+  - PAUSE if free memory < 30% (tell the Bridge).
+- **The free-memory pause guard must be REBUILT and tested first.** The first draft had a zsh subshell bug (a counter inside `$(...)`) and was removed untested.
+- The W6 rerun stays on HOLD.
