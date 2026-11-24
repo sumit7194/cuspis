@@ -90,15 +90,17 @@ if mode == "SECTOR":
 if mode == "GEOM":
     W, P = int(sys.argv[2]), int(sys.argv[3]); S, U, lr = build(W, P); Ny, N, Lt = S.Ny, S.N, S.Lt; pc = pieces(S)
     Tsad_prod = C.saddle_term_c(S, pc["B1"]); Tsad_mine = Ny * float(np.real(np.sum(pc["Tz"] * pc["sig"])))
-    ref = json.load(open(os.path.join(HERE, "exp081d_results", "exp085", f"C_W{W}P{P}.json")))
+    fref = os.path.join(HERE, "exp081d_results", "exp085", f"C_W{W}P{P}.json"); ref = json.load(open(fref)) if os.path.exists(fref) else None
     check(f"GEOM W{W}P{P}: T_sad (term1 path) == saddle_term_c to 1e-10 rel", abs(Tsad_mine - Tsad_prod) <= 1e-10 * abs(Tsad_prod), f"{Tsad_mine!r} vs {Tsad_prod!r}")
-    check(f"GEOM W{W}P{P}: saddle_term_c == stored 085 C tsad (bitwise)", Tsad_prod == ref["tsad"], f"{Tsad_prod!r} vs {ref['tsad']!r}")
     Sig3D = float(np.real(Ny * np.sum(pc["sig"])))
-    check(f"GEOM W{W}P{P}: Sigma3D == stored 085 C value (bitwise)", Sig3D == ref["Sigma3D"], f"{Sig3D!r} vs {ref['Sigma3D']!r}")
+    if ref is not None:
+        check(f"GEOM W{W}P{P}: saddle_term_c == stored 085 C tsad (bitwise)", Tsad_prod == ref["tsad"], f"{Tsad_prod!r} vs {ref['tsad']!r}")
+        check(f"GEOM W{W}P{P}: Sigma3D == stored 085 C value (bitwise)", Sig3D == ref["Sigma3D"], f"{Sig3D!r} vs {ref['Sigma3D']!r}")
+    else: print(f"GEOM W{W}P{P}: no stored 085 C reference at this geometry (k = 3): bitwise rows SKIPPED; CUSPIS_081E={os.environ.get('CUSPIS_081E')}", flush=True)
     rec = dict(W=W, P=P, Ny=Ny, Lx=S.Lx, Lt=Lt, cutx=list(S.cutx), tcut=S.tcut,
                X_cA=0.5 * Ny * float(np.real(np.sum(pc["cA"] * pc["sig"]))),            # 1/2 Sum_3D c_A sigdot  (S units)
                X_Lam=-2 * Ny * float(np.real(np.sum(pc["Lam"] * pc["d"]))),              # -2 Sum_3D Lambda d      (S units)
-               Tsad=Tsad_prod, Sigma3D=Sig3D, sumabsLam=float(np.sum(np.abs(pc["Lam"]))), cA=[float(v) for v in pc["cA"].real],
+               Tsad=Tsad_prod, Sigma3D=Sig3D, cuspis_081e=os.environ.get("CUSPIS_081E"), sumabsLam=float(np.sum(np.abs(pc["Lam"]))), cA=[float(v) for v in pc["cA"].real],
                imag_max=float(max(np.abs(pc["cA"].imag).max(), np.abs(pc["Lam"].imag).max())), failed=FAIL, sec=time.time() - T0)
     json.dump(rec, open(os.path.join(OUT, f"G_W{W}P{P}.json"), "w"), indent=1)
     print(f"GEOM W{W}P{P} written ({time.time()-T0:.0f}s); max imag {rec['imag_max']:.1e}", flush=True); sys.exit(1 if FAIL else 0)
