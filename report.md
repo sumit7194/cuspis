@@ -12334,3 +12334,8 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Bridge on W4P8 overrun:** option (a), W8P8 runs as queued. Sumit's rule is "no NEW long-running processes while the cores are busy"; part 8 was approved before it.
   - A second informational TIMING line is armed (`tools/e84c_w8p8_watch.sh`; planted-log test: fires / silent) if W8P8 passes 15 h (1.5× the revised ~10 h).
   - Projection miss recorded as lesson L5 (single-step projections carry an explicit P⁷ upper bracket).
+- **084c part 8, W4P8 n = 2 done (10:31):** 37,232 s (ratio 2.03 against the old projection); peak 0.54 GB.
+  - Level 1 **PASS**: |dev| 1.37e-9 ≤ tol 3.9e-9 (gap |F| 2.1e-14). This is a per-file line; no ΔR has been computed.
+  - The pattern holds: L1 passes for every W < Wbox file (W2P4, W3P6, W4P8) and fails for every W = Wbox file (W4P4, W6P6).
+  - Measured P scaling from P6 to P8, W-corrected: ≈ P^6.5, close to the P⁷ bracket (L5).
+  - W8P8 estimate: 37.2 ks × 2^0.18 ≈ 42 ks ≈ 11.7 h, ending ~22:15. The 15-h informational line stays armed.
