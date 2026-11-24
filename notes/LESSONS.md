@@ -26,3 +26,7 @@
 ## L4 (2026-11-24): a model-shape row must be able to tell apart the shapes the mechanism itself predicts
 - **Failure:** 085c's "1/a² row" (a k² coefficient over 4 k) was registered after the c_A/c map was anticipated to vary like 1 − α/P. That predicts 1/k curvature, which a k² fit reads as c₂ > 0. The row "failed" for what is post-hoc likely an O(a) effect. The row's premise ("R has no k² content") was also unchecked; raw R has c₂ = −0.20.
 - **Rule:** before registering a shape test, (i) list the shapes the mechanism and the finite-size corrections predict (here k², 1/k, constant), and confirm the test separates them with the available points and dof; (ii) run the same test on the UNCORRECTED data to check its premise; (iii) ask "what else lands here?".
+
+## L5 (2026-11-24): a cost projection from one scaling step must carry an explicit upper bracket
+- **Failure:** 084c amendment 2 projected W4P8 at 5.1–5.8 h from P^4.1–4.3, an exponent fitted to ONE P step (P 4 → 6). W4P8 overran 7.8 h (≥ P^4.7). The dense-algebra asymptote N³·Ny ∝ P⁷ was argued only after the fact.
+- **Rule:** any projection that rests on a single step states the asymptotic bound of the algorithm as its upper bracket (here P⁷, from N = Lx·Lt ∝ P², dense N³, ×Ny ∝ P). Schedules are planned against the bracket, not the point estimate.

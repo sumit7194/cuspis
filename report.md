@@ -12331,3 +12331,6 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - **The projection was too low:** the P exponent 4.08 came from ONE P step (4 → 6). W4P8 already implies ≥ P^4.7, consistent with a crossover towards the dense N³·Ny ∝ P⁷ scaling (argued).
   - Revised estimate (argued): W4P8 ~8.5–9.5 h; W8P8 ~10 h or more.
   - Reported to the Bridge before W8P8 starts (it is an early look, not a stop rule). The decision on W8P8 is the Bridge's.
+- **Bridge on W4P8 overrun:** option (a), W8P8 runs as queued. Sumit's rule is "no NEW long-running processes while the cores are busy"; part 8 was approved before it.
+  - A second informational TIMING line is armed (`tools/e84c_w8p8_watch.sh`; planted-log test: fires / silent) if W8P8 passes 15 h (1.5× the revised ~10 h).
+  - Projection miss recorded as lesson L5 (single-step projections carry an explicit P⁷ upper bracket).
