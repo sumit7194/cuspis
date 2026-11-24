@@ -24,7 +24,7 @@ job() { local T=$1; shift; gate $T; echo "=== $T start $(date '+%F %T')" >> $L
   pgate_run $D/$T.wd.log "nice -n 12 $PY tools/watchdog.py --min-disk-gb 5 --pause-on-red --inform-pressure --cap-gb 15 --log $D/$T.wd.log --stdout $D/$T.out -- $PY -u -W ignore $*"
   local rc=$?; echo "=== $T rc $rc wall $(wall $D/$T.wd.log) s peak $(peak $D/$T.wd.log) GB $(date '+%F %T')" >> $L; return $rc; }
 stop() { echo "=== STOP: $1 $(date '+%F %T')" >> $L; touch $D/run_k3.done; exit 1; }
-rm -f $D/run_k3.done; DONE_FILE=$D/run_k3.done nohup zsh tools/freepct_guard.sh "$PAT" $L > /dev/null 2>&1 &
+rm -f $D/run_k3.done; DONE_FILE=$D/run_k3.done nohup zsh tools/freepct_guard.sh $$ $L 'exp08[0-9]|exp09[0-9]|watchdog\.py' > /dev/null 2>&1 &   # guard v3: PID-scoped (descendants of this runner)
 # START_AT (resume after a runner swap): W6P12 (default) | W12P12 | ROUTE. RESERVE: cores kept free (2 = Bridge reserve; 0 = reserve lifted).
 [ "${START_AT:-W6P12}" = W6P12 ] && { job e85c_G_W6P12 exp085c_run.py GEOM 6 12 || stop "GEOM W6P12"; }
 [ "${START_AT:-W6P12}" != ROUTE ] && { job e85c_G_W12P12 exp085c_run.py GEOM 12 12 || stop "GEOM W12P12"; }

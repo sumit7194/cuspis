@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-24 (Bridge fleet rule): this guard KILLS BY PATTERN (pkill -f), which can hit other sessions' processes and, for
+# guard_081d_w12.sh, the 081e W12 route itself. Never re-arm. Use PID-scoped signalling (see freepct_guard.sh v3). Body kept for the record.
+echo "DEPRECATED: $0 kills by pattern; refusing to run (see header)" >&2; exit 2
 # Generic stop-guard: when LOG shows MARK, kill RUNNER and any process matching PKILLPAT (repeated, to catch pgate's delayed launch).
 # Usage: guard_stop_at.sh <log> <runner pid> <mark> <pkill pattern>   [model: Opus 5.5]
 LOG=$1; RP=$2; MARK=$3; PAT=$4
