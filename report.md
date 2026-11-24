@@ -12355,3 +12355,30 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Part-8 costs:** W6P6 6716 s, W4P8 37,232 s, W8P8 32,667 s (ratio 1.57 against the old projection; under the revised 11.7 h).
 - **Registered meaning (§C):** the production continuation equals the honest family at integer n = 2, to the precision relevant to 084b. So **P2 is false**: 084b's "c(1) non-zero" reflects the c/d degeneracy or non-smooth n-dependence, not a wrong continuation at integers. Grade: partially verified (two implementations agree at n = 2; three k).
 - **For T59 branch (ii):** excludes a gross continuation error at n = 2. It does not certify the n → 1 derivative Q′(1), since integer agreement doesn't fix the derivative without growth conditions.
+
+### EXP-086 READING (registered 300db6a + pre-read note de93ea0): **"overshoot at n = 2"** at both bracket ends; controls PASS [model: Opus 5.5]
+- **Inputs:**
+  - honest R₂ (084) at k = 1, 1.5, 2;
+  - d(2) = +0.31928 and c(2) = +0.61169 (084b; corr −0.998);
+  - the d(2) systematic: the 2-parameter fit gives d = −0.00423, so **σ_d,sys = 0.3235** (large, as expected);
+  - σ₂ from 084c (whose READ tonight says "agree", which supports premise P-σ).
+- **Counterterm ΔR₂:**
+  - hi end: [−1.5729, −2.8218, −4.4499], g_ct = −2.877 ± 0.219;
+  - lo end: [−1.7173, −3.0808, −4.8584], g_ct = −3.141 ± 0.239.
+- **η = (d(2) + g_ct)/|g_ct|:** −0.889 ± 0.136 (hi), −0.898 ± 0.128 (lo). Both whole intervals are below −0.1, so both ends read **"overshoot at n = 2"**.
+- **Controls:**
+  - planted normalisation exact (450.8808678025504);
+  - n → 1 reduction against 085 corr to ~1e-6 relative (k = 1, 1.5, 2);
+  - zero control d_corr = d(2) bitwise;
+  - must-fail sign lands in "under" (η +1.11 / +1.10);
+  - input KA.
+- **Descriptive (pre-read note), parity-matched k = 1 → 2:**
+  - honest R₂ grows +2.098, the counterterm changes −2.877 (hi) / −3.141 (lo), so R₂ + ΔR₂ = −0.779 / −1.043.
+  - **The counterterm exceeds even R₂'s TOTAL growth, k² included:** ratio 1.37 / 1.50. The same ratio at n → 1 (085 integer pair) was 5.08/4.19 = 1.21 (hi) and 5.55/4.19 = 1.32 (lo).
+- **Registered meaning:** the overshoot **persists at integer n, where no analytic continuation enters. It is NOT a continuation leak** (T59 branch ii, and Neon's Q′(1)-combination variant, since n = 2 uses no Q′(1)).
+- **Grade:** registered reading at both ends (partially verified: one mechanism; the d(2) systematic is included). Premises kept: P-σ (supported by tonight's 084c "agree"), P-cd (handled by σ_d,sys), and the bulk c (independently confirmed by Hasenbusch MC, T59c).
+- **Where T54 stands (descriptive):**
+  - c's value is excluded as the cause (T59c, verified source).
+  - A continuation leak is excluded by this test (registered).
+  - The box prescription doesn't help asymptotically (085c post-hoc).
+  - What remains: the counterterm, at the confirmed c and with the derived coefficient (T55), is **larger than the 1/a growth it should cancel, at n → 1 AND at n = 2**. That points to a SECOND O(N⁰) contribution of opposite sign, missing from the R computation (or from T54's accounting). Not a reading; the next step is for Sumit.
