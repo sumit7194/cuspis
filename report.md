@@ -12392,3 +12392,25 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - (b) slope(C) < 0, clearly, on both pairs: it lives in the β-line / twist-sector term 𝒞.
   - (c) both ≈ 0 (|slope| ≤ 0.1·g_raw on both pairs): the overshoot sits in the counterterm / T_sad accounting itself.
   - (d) the parity pairs disagree in sign for an ingredient: that ingredient's 1/a content is unresolved at these k.
+- **Result (descriptive; identity check (R_Tsad − L) − Y_A = 9.6e-13):**
+
+| series | slope | local slopes | pair 1 → 2 | pair 1.5 → 2.5 |
+|---|---|---|---|---|
+| R (raw) | +4.020 | 3.96, 4.42, 3.55 | +4.187 | +3.985 |
+| R_t0 | −101.18 | −73.7, −100.1, −130.1 | −86.90 | −115.10 |
+| R_Tsad | +104.75 | 77.0, 104.0, 133.4 | +90.54 | +118.72 |
+| R_C | **+0.451** | 0.64, 0.44, 0.28 | +0.539 | +0.360 |
+| t0 + Tsad | +3.568 | 3.32, 3.98, 3.27 | +3.648 | +3.625 |
+| L = R[−2NyΣΛd] | +100.38 | 73.3, 99.6, 128.6 | +86.42 | +114.06 |
+| **t0 + L** | **−0.808** | **−0.45, −0.50, −1.57** | **−0.475** | **−1.039** |
+| Y_A (= Tsad − L) | +4.376 | 3.77, 4.48, 4.85 | +4.123 | +4.664 |
+| Y_bulk (hi / lo) | +5.230 / +5.710 | 4.73, 5.43, 5.46 / 5.17, 5.93, 5.96 | +5.082 / +5.548 | +5.444 / +5.944 |
+
+- **Reading against the pre-fixed map: outcome (a).**
+  - slope(t0 + L) is negative on BOTH parity pairs, beyond 0.1·g_raw = 0.40.
+  - C is positive (same sign as R), so it is not the source.
+  - Bookkeeping: R = (t0 + L) + C + Y_A gives 4.02 ≈ −0.81 + 0.45 + 4.38.
+  - **The opposite-sign piece sits in the explicit term t0, after its local-mass (Σ^loc·d) UV subtraction.**
+- **Caveat (named, important):** t0 + L is a ~1% remainder of two k²-sized series (slopes ±100). Its local slopes ACCELERATE (−0.45, −0.50, −1.57), which looks like an imperfect k² cancellation (T55's (P2) OPE claim not exact at these k), i.e. a 1/a²-like or finite-k remainder, not a clean 1/a term. The half-integer pair (off-centre geometry) is twice as negative as the integer pair.
+  - Hypothesis, not a reading: the "second contribution" is the non-OPE remainder of the explicit n-derivative t0 relative to its local-mass subtraction.
+  - Testing this would need t0's UV structure resolved at larger k (or analytically), not more slope fits.
