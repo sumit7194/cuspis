@@ -12382,3 +12382,13 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - A continuation leak is excluded by this test (registered).
   - The box prescription doesn't help asymptotically (085c post-hoc).
   - What remains: the counterterm, at the confirmed c and with the derived coefficient (T55), is **larger than the 1/a growth it should cancel, at n → 1 AND at n = 2**. That points to a SECOND O(N⁰) contribution of opposite sign, missing from the R computation (or from T54's accounting). Not a reading; the next step is for Sumit.
+
+### Ingredient check (POST-HOC, descriptive; outcome map stated BEFORE computing) [model: Opus 5.5]
+- **Question:** which stored ingredient of R = R_t0 + R_Tsad + R_C carries the opposite-sign 1/a piece that makes the counterterm overshoot?
+- **Split used:** the A-route identity. R_corr^A = (R_t0 + L) + R_C, with L := R[−2NyΣΛd] (the Σ^loc·d term; T55 claims it cancels t0's UV/OPE k² piece) and R_Tsad = Y_A − L.
+- **Measured per series:** the 2-dof linear slope over k ∈ {1, 1.5, 2, 2.5}, local slopes, and the parity-matched pairs (1 → 2, 1.5 → 2.5).
+- **Outcome map (fixed now):**
+  - (a) slope(t0 + L) < 0, clearly, on both parity pairs: the explicit term Q′_explicit keeps an opposite-sign 1/a piece after its local-mass UV subtraction. The "second contribution" lives in t0 (the explicit n-derivative), not in the saddle or counterterm.
+  - (b) slope(C) < 0, clearly, on both pairs: it lives in the β-line / twist-sector term 𝒞.
+  - (c) both ≈ 0 (|slope| ≤ 0.1·g_raw on both pairs): the overshoot sits in the counterterm / T_sad accounting itself.
+  - (d) the parity pairs disagree in sign for an ingredient: that ingredient's 1/a content is unresolved at these k.
