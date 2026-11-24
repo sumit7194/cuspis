@@ -14,7 +14,7 @@ gate() { local name=$1 f o
     f=$(memory_pressure | awk -F': ' '/free percentage/{gsub("%","",$2); print int($2)}')
     o=$(pgrep -fl 'exp08[0-9][a-z0-9_]*\.py|exp09[0-9]|run_queue|run_e85' | grep -v "$$" | grep -vE "run_k3" | head -3 | tr '\n' ';')
     nc=$(sysctl -n hw.ncpu); q=$(pgrep -f 'hs_cover|mn_so_erep' | wc -l | tr -d ' ')
-    m=$(pgrep -fl 'exp08[0-9][a-z0-9_]*\.py|exp09[0-9]' | grep -v watchdog.py | wc -l | tr -d ' '); fl=$((q + m))
+    m=$(pgrep -fl 'exp08[0-9][a-z0-9_]*\.py|exp09[0-9]' | grep -vE 'watchdog.py|freepct_guard' | wc -l | tr -d ' '); fl=$((q + m))
     if (( f >= 50 )) && [ -z "$o" ] && (( fl + 1 <= nc - 2 )); then echo "=== GATE $name $(date '+%F %T'): free ${f}% (>= 50), other jobs of mine: none, fleet ${fl} (quantum ${q} + mine ${m}) + 1 <= ${nc}-2 -> LAUNCH (pgate next)" >> $L; return 0; fi
     echo "=== GATE $name $(date '+%F %T'): WAIT free ${f}% others '${o}' fleet ${fl}+1 vs ${nc}-2" >> $L; sleep 300
   done; }
