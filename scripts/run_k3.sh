@@ -15,8 +15,8 @@ gate() { local name=$1 f o
     o=$(pgrep -fl 'exp08[0-9][a-z0-9_]*\.py|exp09[0-9]|run_queue|run_e85' | grep -v "$$" | grep -vE "run_k3" | head -3 | tr '\n' ';')
     nc=$(sysctl -n hw.ncpu); q=$(pgrep -f 'hs_cover|mn_so_erep' | wc -l | tr -d ' ')
     m=$(pgrep -fl 'exp08[0-9][a-z0-9_]*\.py|exp09[0-9]' | grep -vE 'watchdog.py|freepct_guard' | wc -l | tr -d ' '); fl=$((q + m))
-    if (( f >= 50 )) && [ -z "$o" ] && (( fl + 1 <= nc - 2 )); then echo "=== GATE $name $(date '+%F %T'): free ${f}% (>= 50), other jobs of mine: none, fleet ${fl} (quantum ${q} + mine ${m}) + 1 <= ${nc}-2 -> LAUNCH (pgate next)" >> $L; return 0; fi
-    echo "=== GATE $name $(date '+%F %T'): WAIT free ${f}% others '${o}' fleet ${fl}+1 vs ${nc}-2" >> $L; sleep 300
+    if (( f >= 50 )) && [ -z "$o" ] && (( fl + 1 <= nc - ${RESERVE:-2} )); then echo "=== GATE $name $(date '+%F %T'): free ${f}% (>= 50), other jobs of mine: none, fleet ${fl} (quantum ${q} + mine ${m}) + 1 <= ${nc}-${RESERVE:-2} -> LAUNCH (pgate next)" >> $L; return 0; fi
+    echo "=== GATE $name $(date '+%F %T'): WAIT free ${f}% others '${o}' fleet ${fl}+1 vs ${nc}-${RESERVE:-2}" >> $L; sleep 300
   done; }
 peak() { grep -h "# exit" $1 | tail -1 | sed -E 's/.*= ([0-9.]+) GB.*/\1/'; }
 wall() { grep -h "# exit" $1 | tail -1 | sed -E 's/.*wall ([0-9]+) s.*/\1/'; }
@@ -25,8 +25,9 @@ job() { local T=$1; shift; gate $T; echo "=== $T start $(date '+%F %T')" >> $L
   local rc=$?; echo "=== $T rc $rc wall $(wall $D/$T.wd.log) s peak $(peak $D/$T.wd.log) GB $(date '+%F %T')" >> $L; return $rc; }
 stop() { echo "=== STOP: $1 $(date '+%F %T')" >> $L; touch $D/run_k3.done; exit 1; }
 rm -f $D/run_k3.done; DONE_FILE=$D/run_k3.done nohup zsh tools/freepct_guard.sh "$PAT" $L > /dev/null 2>&1 &
-job e85c_G_W6P12 exp085c_run.py GEOM 6 12 || stop "GEOM W6P12"
-job e85c_G_W12P12 exp085c_run.py GEOM 12 12 || stop "GEOM W12P12"
+# START_AT (resume after a runner swap): W6P12 (default) | W12P12 | ROUTE. RESERVE: cores kept free (2 = Bridge reserve; 0 = reserve lifted).
+[ "${START_AT:-W6P12}" = W6P12 ] && { job e85c_G_W6P12 exp085c_run.py GEOM 6 12 || stop "GEOM W6P12"; }
+[ "${START_AT:-W6P12}" != ROUTE ] && { job e85c_G_W12P12 exp085c_run.py GEOM 12 12 || stop "GEOM W12P12"; }
 CK=$D/sigma_W12_P12_box12_c2_cp12_sc3.0_dd0_ckpt.json; [ -e $CK ] && stop "unsuffixed W12 checkpoint exists before the route ($CK)"
 T_ROUTE=$(date +%s); echo "=== 081e route W12: start epoch $T_ROUTE; estimate ~39 h, P^7 bracket 49 h (176400 s)" >> $L
 ( while [ ! -e $D/run_k3.done ]; do sleep 600; grep -q "=== e_route_W12 rc" $L && exit 0
