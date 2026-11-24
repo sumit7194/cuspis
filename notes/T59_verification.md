@@ -42,3 +42,21 @@
 3. **For (i) finite-ℓ:** ℓ = 3 needs the PRODUCTION R(3). That is exactly 081e's held W12 route (k = 3; ~29 h, 7.3 GB, registered), not route (ii)'s 160–200 h. The matching counterterm at k = 3 is a 085c GEOM at W6P12/W12P12 (~2–3 GB, minutes–1 h; measure first). That gives a parity-matched ℓ = 1, 2, 3 for both R and Y.
    - This is the decisive test of (i), and it is already registered: 081e. It costs the route time once the Bridge lifts the HOLD.
 4. Branch B (c's value): do NOT treat it as disfavoured on T59's basis (the citation fails). If wanted, verify β_c(N) from a real source first (e.g. Butera–Comi); reading only.
+
+## Addendum (Bridge-approved reading): a VERIFIED simple-cubic β_c(N), from Butera & Comi
+- **Source (body level, ar5iv HTML):** P. Butera, M. Comi, "Critical specific heats of the N-vector spin models on the sc and the bcc lattices" (hep-lat/9903010, Jan 1999), **Table III**, row "β^sc_c(N) HT Refs. [4], [43]". These are earlier HT determinations quoted there.
+  - N = 0, 1, 2, 3, 4: **0.213493(3), 0.2216544(3), 0.45419(3), 0.69305(4), 0.93600(4)**. Table III has no sc entry for N ≥ 5.
+- **Normalisation (verbatim, eq. 1):** H = −½Σ_⟨x,x′⟩ v(x)·v(x′) with unit-length spins.
+  - Their companion paper (hep-lat/9805025, 1998, eqs. 18–19) gives β̃^sc_c(∞) = β_c/N = **0.2527310098..**, exactly W/6 (mpmath: 0.252731009858663).
+  - This **verifies the mapping J = β/N ↔ 1/g at N = ∞** (my argued mapping holds).
+- N = 6 (β_c = 1.42895) appears only in an agent's summary of hep-lat/9805025's table, not verbatim. **UNVERIFIED**; it is used below only as a labelled extra point.
+- **c_eff(N) = β_c − N·W/6:** N = 1: −0.03108; N = 2: −0.05127; N = 3: −0.06514; N = 4: −0.07492 (N = 6, unverified: −0.08744).
+  - Monotone, with shrinking steps (−0.020, −0.014, −0.010).
+- **N → ∞ extrapolation (INFERENCE, not verification):**
+  - c∞ = −0.097 (c + a/N, on N = 2–4); −0.107 (c + a/N + b/N², on N = 1–4); −0.116 (same, on N = 2–4); −0.118 / −0.121 (adding the unverified N = 6).
+  - **Nuisance drift 0.024** across model choices.
+- **Reading (argued):**
+  - Every extrapolation lands at −0.10 to −0.12, overlapping our bracket [−0.1246, −0.1141].
+  - c ≈ −0.0877 (the flattening value) would need the whole tail beyond N = 4 to add only −0.013, while the 1/N rate seen (a ≈ 0.1–0.2) gives ≈ −0.03.
+  - So the verified small-N data **argue against branch B** (c's value being ~25% too large in magnitude), without deciding it: extrapolation from N ≤ 4, and 0.024 model drift.
+- Contrast with T59: Neon's O(50) number would have been decisive had it existed; its citation is wrong. The verified route gives a weaker, argued version of the same conclusion.
