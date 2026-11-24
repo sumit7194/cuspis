@@ -12326,3 +12326,8 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Bridge slip 23, in two parts: (a) the premise "R has no k² content" was wrong (raw R c₂ = −0.20); (b) the row's model could not separate k² from 1/k curvature, which the c_A/c map already predicted.
   - My share: I accepted both without asking what else lands in the row.
   - Added to LESSONS as L4.
+- **084c part 8, W4P8 TIMING OVERRUN (07:55):** still running after 468 min, past 1.5× its projection (lower end 5.2 h, threshold 7.8 h).
+  - **Not contention:** 461 CPU-min in 465 wall-min; peak 0.47 GB.
+  - **The projection was too low:** the P exponent 4.08 came from ONE P step (4 → 6). W4P8 already implies ≥ P^4.7, consistent with a crossover towards the dense N³·Ny ∝ P⁷ scaling (argued).
+  - Revised estimate (argued): W4P8 ~8.5–9.5 h; W8P8 ~10 h or more.
+  - Reported to the Bridge before W8P8 starts (it is an early look, not a stop rule). The decision on W8P8 is the Bridge's.
