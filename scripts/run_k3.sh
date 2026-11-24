@@ -1,7 +1,8 @@
 #!/bin/zsh
 # k = 3 window (Sumit's GO via the Bridge 2026-11-24): 085c GEOM W6P12, W12P12 (measure peaks), then 081e route W12 (registered 6686454 + am. 1/1b)
 # and C1 W12. One job at a time; nice 12; inform-only watchdog (no kill; NOT run_081e.sh's --stop-on-pressure-warn); CUSPIS_081E=1 throughout.
-# Gate before EVERY launch: free >= 50% AND nothing else of mine running AND 1-min load + 1 <= ncpu - 2 (2 cores stay free); pgate adds pressure-normal >= 300 s.
+# Gate before EVERY launch: free >= 50% AND nothing else of mine running AND fleet compute (quantum hs_cover/mn_so_erep + mine) + 1 <= ncpu - 2
+# (Bridge rule: fleet jobs <= 8; the 2 free cores are Sumit's; a load gate would double-count him); pgate adds pressure-normal >= 300 s.
 # Free-memory guard v2 (tested) pauses the job if free < 30% (60 s), resumes at >= 40% (120 s). Route timing line at the P^7 bracket 49 h (informational).
 # 2 cores stay free (one job = one core). [model: Opus 5.5]
 setopt PIPE_FAIL
@@ -12,9 +13,10 @@ gate() { local name=$1 f o
   while true; do
     f=$(memory_pressure | awk -F': ' '/free percentage/{gsub("%","",$2); print int($2)}')
     o=$(pgrep -fl 'exp08[0-9][a-z0-9_]*\.py|exp09[0-9]|run_queue|run_e85' | grep -v "$$" | grep -vE "run_k3" | head -3 | tr '\n' ';')
-    ld=$(sysctl -n vm.loadavg | awk '{print int($2 + 0.5)}'); nc=$(sysctl -n hw.ncpu)
-    if (( f >= 50 )) && [ -z "$o" ] && (( ld + 1 <= nc - 2 )); then echo "=== GATE $name $(date '+%F %T'): free ${f}% (>= 50), other jobs of mine: none, load ${ld}+1 <= ${nc}-2 (2 cores stay free) -> LAUNCH (pgate next)" >> $L; return 0; fi
-    echo "=== GATE $name $(date '+%F %T'): WAIT free ${f}% others '${o}' load ${ld}+1 vs ${nc}-2" >> $L; sleep 300
+    nc=$(sysctl -n hw.ncpu); q=$(pgrep -f 'hs_cover|mn_so_erep' | wc -l | tr -d ' ')
+    m=$(pgrep -fl 'exp08[0-9][a-z0-9_]*\.py|exp09[0-9]' | grep -v watchdog.py | wc -l | tr -d ' '); fl=$((q + m))
+    if (( f >= 50 )) && [ -z "$o" ] && (( fl + 1 <= nc - 2 )); then echo "=== GATE $name $(date '+%F %T'): free ${f}% (>= 50), other jobs of mine: none, fleet ${fl} (quantum ${q} + mine ${m}) + 1 <= ${nc}-2 -> LAUNCH (pgate next)" >> $L; return 0; fi
+    echo "=== GATE $name $(date '+%F %T'): WAIT free ${f}% others '${o}' fleet ${fl}+1 vs ${nc}-2" >> $L; sleep 300
   done; }
 peak() { grep -h "# exit" $1 | tail -1 | sed -E 's/.*= ([0-9.]+) GB.*/\1/'; }
 wall() { grep -h "# exit" $1 | tail -1 | sed -E 's/.*wall ([0-9]+) s.*/\1/'; }
