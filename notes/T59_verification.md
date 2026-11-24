@@ -53,10 +53,9 @@
 - **c_eff(N) = β_c − N·W/6:** N = 1: −0.03108; N = 2: −0.05127; N = 3: −0.06514; N = 4: −0.07492 (N = 6, unverified: −0.08744).
   - Monotone, with shrinking steps (−0.020, −0.014, −0.010).
 - **N → ∞ extrapolation (INFERENCE, not verification):**
-  - c∞ = −0.097 (c + a/N, on N = 2–4); −0.107 (c + a/N + b/N², on N = 1–4); −0.116 (same, on N = 2–4); −0.118 / −0.121 (adding the unverified N = 6).
-  - **Nuisance drift 0.024** across model choices.
-- **Reading (argued):**
-  - Every extrapolation lands at −0.10 to −0.12, overlapping our bracket [−0.1246, −0.1141].
-  - c ≈ −0.0877 (the flattening value) would need the whole tail beyond N = 4 to add only −0.013, while the 1/N rate seen (a ≈ 0.1–0.2) gives ≈ −0.03.
-  - So the verified small-N data **argue against branch B** (c's value being ~25% too large in magnitude), without deciding it: extrapolation from N ≤ 4, and 0.024 model drift.
-- Contrast with T59: Neon's O(50) number would have been decisive had it existed; its citation is wrong. The verified route gives a weaker, argued version of the same conclusion.
+  - c∞ = **−0.084** (pure c + a/N on N = 1–4; the crudest model, since N = 1 is far from large N; Bridge, reproduced);
+  - −0.097 (c + a/N on N = 2–4); −0.107 (c + a/N + b/N² on N = 1–4); −0.116 (same, on N = 2–4); −0.118 / −0.121 (adding the unverified N = 6).
+  - **Spread −0.084 to −0.121** across model choices.
+- **Reading (corrected wording, Bridge):** the small-N data are **compatible with our bracket [−0.1246, −0.1141] and do not exclude the flattening value −0.088. Branch B is not decided by this.**
+  - My first version said the data "argue against branch B". That leaned on the steeper fits and was too strong; withdrawn.
+- Contrast with T59: Neon's O(50) number would have been decisive had it existed; its citation is wrong. The verified small-N route does NOT reach its conclusion.
