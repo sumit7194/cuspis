@@ -12339,3 +12339,19 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The pattern holds: L1 passes for every W < Wbox file (W2P4, W3P6, W4P8) and fails for every W = Wbox file (W4P4, W6P6).
   - Measured P scaling from P6 to P8, W-corrected: ≈ P^6.5, close to the P⁷ bracket (L5).
   - W8P8 estimate: 37.2 ks × 2^0.18 ≈ 42 ks ≈ 11.7 h, ending ~22:15. The 15-h informational line stays armed.
+
+### EXP-084c READING (registered 2295d7d + amendments 1, 2): **"agree (P2 false at the relevant precision)"**; controls PASS [model: Opus 5.5]
+- **Headline caveats (as agreed):**
+  - Core set k ∈ {1, 1.5, 2} × n = 2 only; NO k = 2.5, NO n = 3, 4 (amendment 2).
+  - The W = Wbox Level-1 residual (W4P4 5.4e-10, W6P6 1.1e-9) is unexplained but bounded at ≤ 1.1e-9 in Q; the pole cutoff is excluded at integer n.
+  - W8P8's own σ = 0 precision degraded (dev_a ≈ 2e-6, so tol 5.9e-6); its L1 PASS rests on that tolerance.
+- **Level 2:** ΔR = −5.07e-9 (k = 1), −6.60e-9 (k = 1.5), +1.46e-5 (k = 2). **max|ΔR| = 1.46e-5 ≪ 0.01.**
+- **Level 1:** 2 FAIL (the k = 1 and k = 1.5 pairs, via W4P4 and W6P6). Reported as an exactness residual; does not change the reading (registered).
+- **Controls:**
+  - σ = 0 plant fails Level 2 (min |ΔR| 11.9);
+  - probe σ_n(1 + 1e-6) fires Level 1 (6/6);
+  - sized plant 0.05 fails Level 2 (min 4.999e-2);
+  - sized plant 0.002 passes (valid: unplanted ≤ 0.008; max 2.000e-3).
+- **Part-8 costs:** W6P6 6716 s, W4P8 37,232 s, W8P8 32,667 s (ratio 1.57 against the old projection; under the revised 11.7 h).
+- **Registered meaning (§C):** the production continuation equals the honest family at integer n = 2, to the precision relevant to 084b. So **P2 is false**: 084b's "c(1) non-zero" reflects the c/d degeneracy or non-smooth n-dependence, not a wrong continuation at integers. Grade: partially verified (two implementations agree at n = 2; three k).
+- **For T59 branch (ii):** excludes a gross continuation error at n = 2. It does not certify the n → 1 derivative Q′(1), since integer agreement doesn't fix the derivative without growth conditions.
