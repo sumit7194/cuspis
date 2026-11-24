@@ -59,3 +59,31 @@
 - **Reading (corrected wording, Bridge):** the small-N data are **compatible with our bracket [−0.1246, −0.1141] and do not exclude the flattening value −0.088. Branch B is not decided by this.**
   - My first version said the data "argue against branch B". That leaned on the steeper fits and was too strong; withdrawn.
 - Contrast with T59: Neon's O(50) number would have been decisive had it existed; its citation is wrong. The verified small-N route does NOT reach its conclusion.
+
+## Addendum 2 (T59c, 2026-11-24): Hasenbusch MC, **verified verbatim**. Branch B (c ≈ −0.088) EXCLUDED
+- **Source (verified):** M. Hasenbusch, "Three-dimensional O(N)-invariant φ⁴ models at criticality for N ≥ 4", arXiv:2112.03783 (v1 7 Dec 2021, v2 6 Apr 2022), DOI 10.1103/PhysRevB.105.054428.
+  - Single author. The HTML full text (v2) was read verbatim.
+- **Model, verbatim eq. (1):** H = −βΣ_⟨x,y⟩ φ_x·φ_y + Σ_x[φ_x² + λ(φ_x² − 1)²], on the simple cubic lattice. "In the limit λ→∞ the field is forced to unit length".
+  - So λ = ∞ is the unit-spin N-vector model, with the same normalisation as Butera–Comi: their N = 4 values agree to 1.5e-4, not a factor of 2. Hence J = β/N ↔ 1/g holds (verified at N = ∞ via Butera–Comi's β̃_c(∞) = W/6).
+- **β_c at λ = ∞, verbatim:**
+  - Table 1: N = 4: 0.93585450(25).
+  - Table 4, caption "Estimates of the inverse critical temperature βc for N=5, 6, 8, 10, and 12 for λ=∞, 10 and 5": 1.1813639(5), 1.4286859(9), 1.926761(3), 2.427525(4), 2.929802(11).
+  - The paper notes its N = 4 value is consistent with Deng's 0.935856(2) (PRE 73, 056116, 2006). Butera–Comi's HT 0.93600(4) differs by 1.46e-4 (3.6× the HT quoted error); Hasenbusch says the HT estimates "essentially agree" but with "clearly larger" errors. That is plausible for HT extrapolation systematics.
+- **c_eff(N) = β_c − N·W/6:** −0.075070, −0.082291, −0.087700, −0.095087, −0.099785, −0.102970 for N = 4, 5, 6, 8, 10, 12. **Monotone decreasing** (every step negative).
+- **Extrapolation (inference):**
+
+| model | N range | c∞ | ± (residual) |
+|---|---|---|---|
+| c + a/N | ≥ 4 | −0.11645 | 0.00074 |
+| c + a/N | ≥ 6 | −0.11812 | 0.00029 |
+| c + a/N | ≥ 8 | −0.11872 | 0.00009 |
+| c + a/N + b/N² | ≥ 4 | −0.12096 | 0.00020 |
+| c + a/N + b/N² | ≥ 5 | −0.12057 | 0.00024 |
+| c + a/N + b/N² | ≥ 6 | −0.12018 | 0.00022 |
+
+  - Model spread: **−0.1210 to −0.1165 (drift 0.0045)**, inside our bracket [−0.12458, −0.11411].
+- **Exclusion of −0.0877 without extrapolation (argued):** c_eff(12) = −0.1030 is already beyond −0.0877, and c_eff(N) is monotone decreasing over N = 4–12. With the single premise that it stays monotone, c∞ ≤ −0.103. (N = 6 sitting at −0.0877 is a coincidence of the sequence, not its limit.)
+- **Grade:**
+  - **Branch B (c's value being the cause of the ~30% overshoot) is EXCLUDED.** The source is verified verbatim; the exclusion is argued (monotonicity), consistent with every extrapolation.
+  - **Our c is independently confirmed** within the model drift: verified data, extrapolation by inference, agreement partially verified.
+- **Supersedes addendum 1's "branch B not decided"**, which was based on N ≤ 4 only.
