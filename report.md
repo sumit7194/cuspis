@@ -12414,3 +12414,13 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Caveat (named, important):** t0 + L is a ~1% remainder of two k²-sized series (slopes ±100). Its local slopes ACCELERATE (−0.45, −0.50, −1.57), which looks like an imperfect k² cancellation (T55's (P2) OPE claim not exact at these k), i.e. a 1/a²-like or finite-k remainder, not a clean 1/a term. The half-integer pair (off-centre geometry) is twice as negative as the integer pair.
   - Hypothesis, not a reading: the "second contribution" is the non-OPE remainder of the explicit n-derivative t0 relative to its local-mass subtraction.
   - Testing this would need t0's UV structure resolved at larger k (or analytically), not more slope fits.
+
+### k = 3 window (Sumit's GO via the Bridge, 2026-11-24): 085c GEOM at P = 12 and the 081e W12 route, in progress [model: Opus 5.5]
+- **Gates per launch** (free ≥ 50%, no other job of mine, fleet compute + 1 ≤ 8) passed each time. Guard v3 (PID-scoped, pause below 30% free) and the peak hold (PID-scoped, SIGSTOP at 10 GB) are both armed.
+- **GEOM W6P12:** 911 s, peak **6.03 GB**. T_sad two-route agreement 1.3e-15; bitwise rows skipped (no k = 3 reference); CUSPIS_081E=1.
+- **GEOM W12P12:** 899 s, peak **9.34 GB** (full-rank install; no checkpoint). T_sad two-route agreement 1e-15.
+- **081e route W12** (started 21:27):
+  - install at 840 s (low-rank, ranks ≤ 2, 0 unconverged);
+  - t0 = −486.137451254695 (9341 s);
+  - **T_sad = +504.570481250655, matching GEOM W12P12's full-rank `saddle_term_c` (504.5704812506546) to ~1e-15**: low-rank and full-rank installs agree (partially verified).
+  - Peak so far 6.47 GB; the C-line nodes are running.
