@@ -12466,3 +12466,12 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - **A [−0.564, −1.416, −2.625]** (A is independent of the bracket end).
 - **Parity-matched k = 1 → 2:** honest R₂ grows +2.098. The counterterm/growth ratio is **bulk 1.371 (hi) / 1.497 (lo); A 0.982**.
 - **Matches the pre-stated expectation** (~1.4 → ~1). As registered, **c_A at n = 2 is the very assumption Fable question (2) asks about**, so this sharpens and does not settle. EXP-086's registered reading ("overshoot at n = 2", bulk c) stands as recorded.
+
+### EXP-088 (registered c9aa1ea): checks of Fable's n = 2 answer (a3a385f; seal bcdb69f) — (b), (f) done; E → C → D → A queued after W10P10 [model: Opus 5.5]
+- **(b) sig2_profile.py rerun:** output identical to Fable's (reproduction, not independent). D(ℓ) = 0.06086, 0.07504, 0.08649 independently matches EXP-086b.
+  - **The 1/r² claim is ARGUED, not shown** (Bridge): r²σ₂ = −0.033, −0.0375, −0.034, −0.028 over r ≈ 0.7–3, under a decade of r with ±15% scatter.
+- **(f) Q2 (non-author read):** follows, and is not circular. A counterterm is an n-independent coupling shift, fixed by an n = 1 criterion.
+  - **OPEN ITEM:** the A-vs-bulk choice now sits at n = 1 (Fable §2c, argued "the n = 1 box stays massless"). Logged in TODO.md.
+- **(e) analytic:** strict concavity of log det(H_n + diag σ) on the positive-definite domain gives a unique, replica-symmetric stationary point.
+  - Check E (λ_min > 0 at all 6 geometries) runs first. If it fails, the runner STOPs before C/D/A, since that would undercut Q1's premise (Bridge).
+- No overrun (Sumit at the Mac, 10 cores); the next Fable window goes to ansatz.
