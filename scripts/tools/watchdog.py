@@ -79,8 +79,7 @@ def main():
     ap.add_argument("--pressure-stop-level", type=int, default=None, choices=(2, 4),
                     help="stop when the pressure level reaches this value (2 yellow, 4 red); overrides --stop-on-pressure-warn (Sumit, 2026-11-23: routes stop at red)")
     ap.add_argument("--pause-on-red", action="store_true", help="Sumit 2026-11-23: never kill for memory; inform at yellow/red, SIGSTOP only after --red-grace s of continuous red, SIGCONT after --green-resume s green")
-    ap.add_argument("--disk-pause", action="store_true", help="(now ALWAYS on unless --legacy-kill) disk < 10 GB inform, < 5 GB SIGSTOP the job group, > 6 GB SIGCONT, < 2 GB CRITICAL alert; NEVER kill")
-    ap.add_argument("--legacy-kill", action="store_true", help="restores the old job-ending caps; Sumit's standing rule 2026-11-25 (NO hard caps) forbids it: do not pass")
+    ap.add_argument("--disk-pause", action="store_true", help="(accepted for compatibility; ALWAYS on) disk < 10 GB inform, < 5 GB SIGSTOP the job group, > 6 GB SIGCONT, < 2 GB CRITICAL alert; NEVER kill")
     ap.add_argument("--pause-long", type=float, default=1800.0); ap.add_argument("--red-grace", type=float, default=300.0); ap.add_argument("--green-resume", type=float, default=60.0)
     ap.add_argument("--inform-pressure", action="store_true", help="print/log a WARN when pressure rises to yellow or worse (below the stop level)")
     ap.add_argument("--interval", type=float, default=5.0); ap.add_argument("--stdout", default=None)
@@ -88,7 +87,7 @@ def main():
                     help="soft cap (Sumit 2026-11-22): crossing it only WARNS (printed + logged, again at each +0.5 GB); --cap-gb stays the hard kill")
     ap.add_argument("cmd", nargs=argparse.REMAINDER)
     a = ap.parse_args(); INFORM = a.inform_pressure; _last_lvl = [1]; _dp, _dw, _dc = [False], [99.0], [False]; _red, _green, _paused = [None], [None], [False]; _pt, _pl = [None], [False]; PL = a.pressure_stop_level if a.pressure_stop_level else (2 if a.stop_on_pressure_warn else None)
-    if not a.legacy_kill: a.disk_pause = True; a.pause_on_red = True; INFORM = True   # Sumit 2026-11-25: NO job-ending caps anywhere
+    a.disk_pause = True; a.pause_on_red = True; INFORM = True   # Sumit 2026-11-25: NO job-ending caps anywhere (no opt-out exists)
     cmd = a.cmd[1:] if a.cmd and a.cmd[0] == "--" else a.cmd
     outf = open(a.stdout, "w") if a.stdout else None
     child = subprocess.Popen(cmd, start_new_session=True, stdout=outf or None, stderr=subprocess.STDOUT if outf else None)
@@ -101,7 +100,7 @@ def main():
     signal.signal(signal.SIGTERM, on_term)
     log.write(f"# cmd: {' '.join(cmd)}\n# caps: tree <= {a.cap_gb} GB, disk >= {a.min_disk_gb} GB, free swap >= {a.min_swap_mb} MB\n"
               f"# memory trigger: system free < {a.min_sysfree_pct}%, or free swap < {a.min_swap_mb} MB together with system free < 20%\n"
-              f"# disk mode: {'NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red' if not a.legacy_kill else 'LEGACY-KILL (forbidden by standing rule)'}; caller pid {os.getppid()}\n"
+              f"# disk mode: {'NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored'}; caller pid {os.getppid()}\n"
               f"# pressure trigger: {('stop at level >= %d (%s)' % (PL, {2: 'yellow', 4: 'red'}[PL])) if PL else 'off'}\n"
               f"# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level\n")
     peak = (0.0, 0.0, 0.0); t0 = time.time(); reason = None; warned = -1.0
@@ -162,23 +161,6 @@ def main():
                     _pl[0] = True; msg = f"# WATCHDOG PAUSE-LONG [{time.strftime('%F %T')}] level {lvl}: paused > {a.pause_long:.0f} s (since t={_pt[0] - t0:.0f}s)"
                     log.write(msg + "\n"); log.flush(); print(msg, flush=True)
             else: _pt[0] = None; _pl[0] = False
-            if a.legacy_kill and disk < a.min_disk_gb: reason = f"free disk {disk:.2f} GB < {a.min_disk_gb} GB (legacy-kill)"
-        elif tot > a.cap_gb: reason = f"tree footprint {tot:.2f} GB > cap {a.cap_gb} GB"
-        elif disk < (1.0 if a.disk_pause else a.min_disk_gb): reason = f"free disk {disk:.2f} GB < {1.0 if a.disk_pause else a.min_disk_gb} GB"
-        elif sfp == sfp and sfp < a.min_sysfree_pct: reason = f"system-wide free memory {sfp:.0f}% < {a.min_sysfree_pct}%"
-        elif PL and lvl >= PL: reason = f"memory pressure level {lvl} (>= {PL}, {({2: 'yellow', 4: 'red'})[PL]})"
-        elif swp == swp and swp < a.min_swap_mb and sfp == sfp and sfp < 20: reason = f"free swap {swp:.0f} MB < {a.min_swap_mb} MB with system free {sfp:.0f}% < 20%"
-        if reason:
-            log.write(f"# WATCHDOG SIGTERM: {reason}\n")
-            try: os.killpg(child.pid, signal.SIGTERM)
-            except ProcessLookupError: pass
-            for _ in range(30):
-                if child.poll() is not None: break
-                time.sleep(1)
-            if child.poll() is None:
-                try: os.killpg(child.pid, signal.SIGKILL)
-                except ProcessLookupError: pass
-            break
         time.sleep(a.interval)
     rc = child.wait()
     summary = (f"# exit {rc}; wall {time.time()-t0:.0f} s; PEAK tree MEM {peak[0]:.3f} GB + CMPRS {peak[1]:.3f} GB = {peak[2]:.3f} GB"
