@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # EXP-083 R3' arm (b) C1 heavy geometries (registered 4ee07fe). Gate: not before 07:30 (Bridge: CPU saturated until tabula ends).
 # One job at a time, nice 12, watchdog cap 1.5 GB (declared: P10 ~0.75 GB formula), disk floor 5 GB, pressure stop.
 cd "$(dirname "$0")"; export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1; PY=../.venv/bin/python

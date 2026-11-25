@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # EXP-081e production runner (registration 6686454 + amendment 1; Bridge GO 2026-11-23). SERIAL, detached (PPID 1), nice 12, pgate,
 # pressure-stop; soft caps WARN only. Every job runs with CUSPIS_081E=1 (patched pole selection).
 # Waits for the 081d Stage-2 runner (W6 HELD route, then C1 W6) to end; the 081d guard stops it before its W12 route.

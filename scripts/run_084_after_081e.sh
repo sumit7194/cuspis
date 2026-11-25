@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # EXP-084 k = 2.5 (registered 6e3ecfa): attempt 1 was killed by the registered 0.8 GB cap at 1.10 GB (still rising) beside the W6 route,
 # so per MEM it queues after 081e. Waits for the 081e runner to exit, then runs ALONE (cap 3.0 GB, soft 2.0, pressure-stop). [model: Opus 5.5]
 cd "$(dirname "$0")"; export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1; source tools/pgate.sh; D=exp081d_results

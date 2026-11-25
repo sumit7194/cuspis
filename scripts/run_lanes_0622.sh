@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # Relaunch after the 06:29 pressure cascade (2026-11-22). Two lanes (2 cores), nice 12, watchdog unchanged, every job behind tools/pgate.sh
 # (pressure normal >= 300 s before launch; retry <= 3 on a pressure kill; killed outputs kept as *_killed0629.*).
 #  lane A: R3' arm-(a) P4 ports (registered scope: base n <= 6, planted n <= 2, link), then the heavy C1 chain (not before 07:30).

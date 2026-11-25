@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # EXP-081d Stage-2 gate 2, attempt 2: k = 3 probe ALONE (attempt 1 pressure-killed at 7.32 GB while still rising, with the control alongside); soft 9.0 / hard 11.0 GB; k = 3 memory probe (Bridge-approved 2026-11-23; no R read: --production-only, separate _probe checkpoint).
 # P3 : k = 3 W12P12b12, hardest node only (index 47, s = 5.972) -> per-process peak of the node phase.
 # P25: known-answer control, the same probe at k = 2.5 W10P10b10 (full-run node-phase peak measured 2.90 GB; checks phase 3.20 GB).

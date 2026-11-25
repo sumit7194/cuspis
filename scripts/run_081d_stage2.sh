@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # EXP-081d Stage 2 (k = 3), SERIAL: one process at a time (Sumit 2026-11-23: "let it grow, lets see where it reaches solo").
 # Measured per-process peak 7.32 GB (gate-2 probes, report 57471e3); 2 processes would be 14.6 GB > 13, so serial.
 # Order: census + Step 0 at both k = 3 geometries FIRST (minutes); a Step-0 fail at s <= 1.974 voids the geometry (row S0, via

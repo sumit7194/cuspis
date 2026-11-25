@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # EXP-081c registered order (8fcfb84 + R1 440b49f): posctl W2P8b4 -> posctl W4P8b8 -> W2P8b8 (081b numerics) -> W8P8 target.
 # One job at a time, nice 12, watchdog cap 1.5 GB, disk floor 5 GB, pressure stop. Stops at the first failure.
 cd "$(dirname "$0")"; export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1

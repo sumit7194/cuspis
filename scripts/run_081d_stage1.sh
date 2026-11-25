@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # EXP-081d Stage 1 (registration 963c8f5; runs only after the Bridge's GO). Three lanes, nice 12, watchdog per lane, pgate, pressure-stop.
 # Declared: L1/L2 cap 2.3 GB (formula k = 2.5 ~1.5 GB), L3 cap 1.0 GB (k = 1.5 ~0.5 GB); total formula <= 3.4 GB. [model: Opus 5.5]
 cd "$(dirname "$0")"; export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1; source tools/pgate.sh

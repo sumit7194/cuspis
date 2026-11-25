@@ -1,4 +1,7 @@
 #!/bin/zsh
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # Lane B (cont.): C2 at P = 4 (registered scope n <= 6): W2P4 now; W4P4 once lane A has written exp083_r3p/W4P4_link.json. [model: Opus 5.5]
 cd "$(dirname "$0")"; export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1; source tools/pgate.sh
 PY=../.venv/bin/python; WD="$PY tools/watchdog.py --min-disk-gb 5 --stop-on-pressure-warn"

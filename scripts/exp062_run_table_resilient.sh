@@ -1,4 +1,7 @@
 #!/bin/bash
+# DEPRECATED 2026-11-25 (Sumit's standing rule: NO job-ending caps): this runner passes kill-mode watchdog flags
+# (--stop-on-pressure-warn / --pressure-stop-level). Convert to the no-kill watchdog before any reuse. Body kept for the record.
+echo "DEPRECATED: $0 uses kill-mode flags; refusing to run (see header)" >&2; exit 2
 # Resume-on-pressure wrapper (policy unchanged: the watchdog still stops at memory-pressure level >= 2; this only
 # waits for the level to return to 1 and resumes from the per-q checkpoint). [model: Opus 5.5]
 cd "$(dirname "$0")"
