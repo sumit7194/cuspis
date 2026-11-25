@@ -14,6 +14,26 @@ from numpy.polynomial.legendre import leggauss
 # Default OFF: with POLE_ADMIT_081E = False every code path is the pre-081e one, unchanged. The 081e runner sets it True.
 import os as _os
 POLE_ADMIT_081E = _os.environ.get("CUSPIS_081E") == "1"     # set only by the 081e runner
+INNER_BETA0_087 = _os.environ.get("CUSPIS_087") == "1"      # EXP-087 (registered 50555f4): intra-slice pole-cluster fix in inner_beta0; default OFF
+
+def clusters_087(svals, rad, s_cut):
+    """EXP-087: single-linkage clusters (gap < rad) of the in-cut poles of one slice; returns only multi-member clusters (sorted lists)."""
+    s = sorted(v for v in svals if v <= s_cut); out, cur = [], s[:1]
+    for v in s[1:]:
+        if v - cur[-1] < rad: cur.append(v)
+        else:
+            if len(cur) > 1: out.append(cur)
+            cur = [v]
+    if len(cur) > 1: out.append(cur)
+    return out
+
+def refuse_087(centre, rc, members, all_positions, factor=1.5):
+    """EXP-087 no-non-member KA: the cluster contour (centre, rc) must have every NON-member pole position farther than factor*rc; else REFUSE."""
+    others = [a for a in all_positions if min(abs(a - m) for m in members) > 1e-12]
+    dmin = min([abs(a - centre) for a in others] + [np.inf])
+    if dmin <= factor * rc:
+        raise PoleGateError(f"EXP-087 refusal: non-member pole at distance {dmin:.3e} <= {factor}*rc ({factor * rc:.3e}) of cluster centre {centre}")
+    return dmin
 S_CUT_081E, W_MATCH_081E = 3.0, 1e-7
 
 class PoleGateError(RuntimeError):
@@ -194,6 +214,50 @@ class Strip3D:
                     acc[k] += 4 * f * (Rp_ * Gm[q] - Rm_ * Gp[q])
                 del Rp_, Rm_
         acc /= Ny; return acc
+    def _ib0_pair_087(self, sa, sb, clA, clB, rad, M, ker):
+        """EXP-087 pair term for inner_beta0 when slice sa or sb has a multi-member pole cluster (gap < rad):
+        clusters -> ONE entry at the cluster centre; two-tag: ONE contour of radius 0.5*span + rad (no-non-member KA, else refuse);
+        single-tag: the SUM of every member's residue (each evaluated at its own pole). Singletons as in the original branch."""
+        def entries(sl, cls, tag, sign):          # sign +1: a-tags at (+i s, -i s); sign -1: b-tags at (-i s, +i s)
+            mem = {v: c for c in cls for v in c}; out, seen = [], set()
+            for sj in sl.s:
+                if sj > self.s_cut: continue
+                grp = mem.get(sj, [sj]); key = (grp[0], grp[-1])
+                if key in seen: continue
+                seen.add(key); c = 0.5 * (grp[0] + grp[-1])
+                for sg in (sign, -sign): out.append((sg * 1j * c, tag, [sg * 1j * v for v in grp]))
+            return out
+        locs = entries(sa, clA, "a", 1) + entries(sb, clB, "b", -1)
+        merged = []
+        for a0, tag, mems in locs:
+            hit = [m for m in merged if abs(m[0] - a0) < 1e-2 * rad]
+            if hit: hit[0][1].add(tag); hit[0][2][tag] = mems
+            else: merged.append([a0, {tag}, {tag: mems}])
+        allpos = [sg * 1j * v for sl in (sa, sb) for v in sl.s for sg in (1, -1)]
+        out = np.zeros((self.N, self.N), dtype=complex)
+        for a0, tags, mems in merged:
+            up = a0.imag > 0
+            if len(tags) == 2:
+                if self.drop_double: continue
+                pts = mems["a"] + mems["b"]; span = max(abs(x - y) for x in pts for y in pts); rc = 0.5 * span + rad
+                refuse_087(a0, rc, pts, allpos)
+                off = max(abs(x - a0) for x in pts); ratio = off / rc
+                Mc = M if ratio < 1e-3 else max(M, int(np.ceil(np.log(1e-17) / np.log(ratio))))
+                tot = 0
+                for t in 2 * np.pi * np.arange(Mc) / Mc:
+                    dz = rc * np.exp(1j * t); al = a0 + dz
+                    tot = tot + 2 * sa.G(al) * sb.G(-al) * ker(al, up) * dz
+                out += (2j * np.pi) * tot / Mc
+            elif "a" in tags:
+                for am in mems["a"]:
+                    j = int(np.argmin([abs(abs(am.imag) - sj) for sj in sa.s]))
+                    out += (2j * np.pi) * 2 * sa.Rfull(sa.Rp[j] if am.imag > 0 else sa.Rm[j]) * sb.G(-am) * ker(am, am.imag > 0)
+            else:
+                for am in mems["b"]:
+                    j = int(np.argmin([abs(abs(am.imag) - sj) for sj in sb.s]))
+                    R = sb.Rfull(sb.Rp[j] if (-am).imag > 0 else sb.Rm[j])
+                    out += (2j * np.pi) * 2 * sa.G(am) * (-R) * ker(am, am.imag > 0)
+        return out
     def inner_beta0(self, n, npt=64, rad=1e-5, M=32, dn=False):
         """continued B_{n,k}^(0) (or its n-derivative if dn), all k, as an (Ny, N, N) array."""
         Ny, N = self.Ny, self.N
@@ -208,9 +272,12 @@ class Strip3D:
             e = np.exp(-2j * np.pi * n * al) if up else np.exp(2j * np.pi * n * al)
             return 2j * np.pi * al * e / (e - 1) ** 2
         th = 2 * np.pi * np.arange(M) / M
+        cl087 = [clusters_087(sl.s, rad, self.s_cut) for sl in self.sl] if INNER_BETA0_087 else None
         for k in range(Ny):
             for p in range(Ny):
                 q = (k - p) % Ny; sa, sb = self.sl[p], self.sl[q]
+                if cl087 is not None and (cl087[p] or cl087[q]):
+                    acc[k] += self._ib0_pair_087(sa, sb, cl087[p], cl087[q], rad, M, ker); continue
                 locs = [(a0, "a") for sj in sa.s if sj <= self.s_cut for a0 in (1j * sj, -1j * sj)] + \
                        [(a0, "b") for sj in sb.s if sj <= self.s_cut for a0 in (-1j * sj, 1j * sj)]
                 merged = []
