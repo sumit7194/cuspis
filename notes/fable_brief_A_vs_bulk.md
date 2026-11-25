@@ -72,9 +72,11 @@ The target is δκ of the infinite-volume, bulk-critical WF theory. The box with
 3. **Consistency with n = 2:** your answer to (1) must also explain EXP-086b. There, c_A removes 98% of R₂'s ℓ = 1 → 2 growth, and bulk overshoots it by 37–50%.
 
 ## 4. Seals requested (commit BEFORE any computation; state your exposure)
+- **Order (Bridge):** commit S-a and S-c BEFORE you read any addendum to this brief (for example the EXP-089 wall-test result). The addendum may carry numbers you could fit to. Your seal commit must be an ancestor of any commit that cites the addendum.
+- **S-c is IN (Bridge, 2026-11-26).** S-1 to S-3 (your R(3) seals) stay as filed.
 - **(S-a)** The functional form of Δ_bb(k) for k → ∞ with its leading coefficient (sign and size), and your verdict on Q1. Grade both.
 - **(S-b)** A zero-compute check on the k ≤ 2.5 values in §2. These are in this brief, so it is NOT blind: label it a consistency check, not a test.
-- **(S-c, optional; the Bridge decides whether it is allowed, since it uses k = 3 geometry data):** predict Δ_bb(3) and the interior c_A/c at P = 12.
+- **(S-c; the Bridge has allowed it, since these are unread GEOM quantities, not R(3)):** predict Δ_bb(3) and the interior c_A/c at P = 12.
   - Both come from stored GEOM files (`exp081d_results/exp085c/G_W6P12.json`, `G_W12P12.json`), which NO session has read for these quantities.
   - The office grades it with zero compute. This is not an R(3) prediction; your R(3) seals S-1 to S-3 are already on file and stay as they are.
 - If you want a minutes-scale calculation (for example the c_A interior ratio on tiny boxes beyond P = 10, or a lower-dimensional analogue of the wall layer), state what would make it fail before running it, and keep it under 1 GB.
