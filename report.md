@@ -12444,3 +12444,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - **EXP-086 (honest n = 2) is immune** and its overshoot stands: a tension to carry into every re-read.
 - **Fix draft:** `notes/EXP-087_registration_draft.md`. Cluster contours (radius 0.5·span + rad) and cluster residue sums; singletons bit for bit; behind a flag; KAs that can fail. Registered before any recompute, on the Bridge's word.
 - The W12 route continues untouched; its t0 will be recomputed separately.
+- **EXP-087 check (b) at production size** (`notes/EXP-087_tinybox/leak_check.*`):
+  - Cluster nearest non-member ≈ 10⁵ × rc at W8P8, W10P10, W12P12, so the refusal won't fire and an outside-contour leak is impossible.
+  - Singletons with a neighbour in [rad, 3·rad) on the original path: W8P8 slice 10 at 1.44·rad (32-point leakage ~9e-6 of that term, ~1e-7 absolute); the others are ≥ 1.8·rad (≤ 7e-9). All negligible against Δt0.
+  - W4P8, W5P10, W6P12, W6P6 have no clusters, so the fix leaves them bitwise unchanged by construction.

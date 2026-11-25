@@ -679,3 +679,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
   - PAUSE if free memory < 30% (tell the Bridge).
 - **The free-memory pause guard must be REBUILT and tested first.** The first draft had a zsh subshell bug (a counter inside `$(...)`) and was removed untested.
 - The W6 rerun stays on HOLD.
+
+## Predictions to GRADE when EXP-087 recomputes / k = 3 land (Fable side session; filed before the runs; UNVERIFIED inputs, used only as predictions)
+- Δt0 (code − true) at rad 1e-5: W8P8 −0.0201, W10P10 −0.1218 (smoothness hint: up to −0.135), W12P12 −0.0575. Zero at W6P6, W4P8, W5P10, W6P12 (bitwise by construction: no clusters).
+- Inferred corrected R: 2.2552, 4.2334, 6.5838, 9.0901; R − Y_A slope +0.195 (stored −0.356), ρ_s +0.049. Any A re-read needs a NEW registration. EXP-086 is immune: its n = 2 overshoot is still unexplained.
+- k = 3: ORIGINAL sealed R(t0+L)(3) = −1.55 [−2.0, −1.1] (6156a51, expected to fail); REVISED (ca63760): current code −0.07 [−0.60, +0.40]; corrected +0.33 [0.25, 0.42]; E(W12P12) 1.890 ± 0.02; X_Λ 244.958 ± 0.02. Grade BOTH.

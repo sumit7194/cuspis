@@ -1,0 +1,7 @@
+W4P8: clusters 0; min (nearest non-member / rc) = inf (refusal if <= 1.5); singletons with a neighbour in [rad, 3 rad): none
+W8P8: clusters 6; min (nearest non-member / rc) = 164805.7 (refusal if <= 1.5); singletons with a neighbour in [rad, 3 rad): [(9, np.float64(1.1053), '2.57 rad'), (9, np.float64(1.1053), '2.57 rad'), (10, np.float64(1.1514), '1.44 rad'), (10, np.float64(1.1514), '1.44 rad')]
+W5P10: clusters 0; min (nearest non-member / rc) = inf (refusal if <= 1.5); singletons with a neighbour in [rad, 3 rad): none
+W10P10: clusters 12; min (nearest non-member / rc) = 146098.5 (refusal if <= 1.5); singletons with a neighbour in [rad, 3 rad): [(8, np.float64(0.9531), '1.80 rad'), (8, np.float64(0.9531), '1.80 rad')]
+W6P12: clusters 0; min (nearest non-member / rc) = inf (refusal if <= 1.5); singletons with a neighbour in [rad, 3 rad): none
+W12P12: clusters 9; min (nearest non-member / rc) = 121310.1 (refusal if <= 1.5); singletons with a neighbour in [rad, 3 rad): [(7, np.float64(0.8262), '2.63 rad'), (7, np.float64(0.8262), '2.63 rad')]
+W6P6: clusters 0; min (nearest non-member / rc) = inf (refusal if <= 1.5); singletons with a neighbour in [rad, 3 rad): none
