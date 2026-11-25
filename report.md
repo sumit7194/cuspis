@@ -12663,3 +12663,11 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Fable's downstream claim** (bulk c leaves a −1.0 ln k drift in R_corr, so only A is a scaling family) follows IF H-log holds. It is untested in R itself. Grade: ARGUED, structurally supported (EXP-092 reading plus the free-log preference); coefficient unconfirmed.
 
 **(d) P-1 / P-2:** sent to the Bridge as candidate registrations. Nothing has been run.
+
+### EXP-093 / EXP-094 REGISTERED (f874dac): Fable's P-1 (second wall step, P = 6 → 8) and P-2 (n = 2 wall test, P = 4 → 6) [model: Opus 5.5]
+- Both are not blind to P = 4/6; P-1 is blind to P = 8 and P-2 to n = 2 at P = 6. PASS iff inside ±1σ as sealed; ±2σ is reported.
+- The INCONCLUSIVE rule for f is scaled from EXP-089 (drop < 0.2·G_b(start); mine).
+- **Order (Bridge):** the W12 chain first, then P-1's W2P8 route (~5–7 h), then P-2's two 084c n = 2 runs (~3 h), one for one on my core.
+- **EXP-093 G_b(8) item (run now; GEOM-only):** GEOM W2P8 took 87 s, 0.29 GB, with T_sad two-route agreement 8e-16 relative. Grader `exp093_gb8.py`: KA bitwise for G_b(4) and G_b(6) against exp089_wall.json.
+  - **G_b(8) = 1.0215** (Y_A 2.6993, Y_bulk 3.7207, κ₈ 0.030775). **PASS** (sealed 0.97 ± 0.06; inside ±1σ, near the upper edge).
+  - The G_b drop 6 → 8 is 0.404 ≥ 0.285, so f(6 → 8) will not be INCONCLUSIVE. ρ_A(8) and f wait for the W2P8 route.

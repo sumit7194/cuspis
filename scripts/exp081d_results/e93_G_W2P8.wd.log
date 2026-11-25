@@ -1,0 +1,21 @@
+# cmd: ../.venv/bin/python -u -W ignore exp085c_run.py GEOM 2 8
+# caps: tree <= 5.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# disk mode: NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored; caller pid 57993
+# pressure trigger: off
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.7     1   0.105    0.000   0.105        12.04       1710.2           76              1
+     6.4     1   0.136    0.000   0.136        12.04       1710.2           76              1
+    12.6     1   0.146    0.000   0.146        12.04       1710.2           77              1
+    19.2     1   0.159    0.000   0.159        12.02       1710.2           77              1
+    25.1     1   0.168    0.000   0.168        11.94       1710.2           77              1
+    30.8     1   0.182    0.000   0.182        11.93       1710.2           78              1
+    37.4     1   0.196    0.000   0.196        11.93       1710.2           78              1
+    43.9     1   0.210    0.000   0.210        11.93       1710.2           77              1
+    50.2     1   0.227    0.000   0.227        11.93       1710.2           78              1
+    56.5     1   0.240    0.000   0.240        11.93       1710.2           78              1
+    63.0     1   0.253    0.000   0.253        11.93       1710.2           77              1
+    69.7     1   0.262    0.000   0.262        11.93       1710.2           78              1
+    76.2     1   0.276    0.000   0.276        11.94       1710.2           78              1
+    82.4     1   0.285    0.000   0.285        11.94       1718.2           78              1
+# exit 0; wall 87 s; PEAK tree MEM 0.285 GB + CMPRS 0.000 GB = 0.285 GB

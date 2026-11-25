@@ -1,0 +1,3 @@
+GEOM W2P8: T_sad (term1 path) == saddle_term_c to 1e-10 rel        PASS  166.42900318045673 vs 166.42900318045687
+GEOM W2P8: no stored 085 C reference at this geometry (k = 3): bitwise rows SKIPPED; CUSPIS_081E=None
+GEOM W2P8 written (87s); max imag 1.3e-17

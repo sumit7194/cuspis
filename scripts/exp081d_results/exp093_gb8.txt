@@ -1,0 +1,7 @@
+KA: G_b(4) reproduces exp089_wall.json bitwise                 PASS  2.4919932643756377
+KA: G_b(6) reproduces exp089_wall.json bitwise                 PASS  1.4255827801730083
+G_W2P8 / G_W4P8: no failed entries                             PASS  [[], []]
+
+P = 8: kappa 0.030775 norm 4.061760  Y_A 2.6993  Y_bulk 3.7207  G_b(8) = 1.0215
+EXP-093 item G_b(8): sealed 0.97 +- 0.06 -> PASS (+-1 sigma [0.91, 1.03]); +-2 sigma [0.85, 1.09]: inside
+   G_b drop 6 -> 8 = +0.4041 (f INCONCLUSIVE if < 0.285)
