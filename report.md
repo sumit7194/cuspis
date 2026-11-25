@@ -12595,3 +12595,26 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - On Fable's typed inputs the expected value is 1.0389359, and their rounding tolerance is 4.69e-5. The file's 1.0388953 is inside it (|Δ| 4.07e-5, a thin PASS).
   - **Fable's 1.03891 was NOT a slip. That claim is withdrawn.**
   - Amendment 1 (C3′) is committed before the rerun. Slip logged: a tolerance below the precision of typed inputs, plus a diagnosis that did not take the inputs as typed.
+
+### EXP-091 RESULT (registered 33ae101 + amendment 1 ae5b046; `exp081d_results/exp091_grade.txt/.json`): **all graded Fable S-c items PASS; S-a's two fail clauses do not fire** [model: Opus 5.5]
+- **Controls:** C1a, C1b, C2, C3′ (thin: |Δ| 4.06e-5 ≤ 4.69e-5), C4 and C5 all PASS.
+- **norm(3):** κ(3) = 0.0171477, so norm(3) = **14.5792**. That is OUTSIDE Fable's guessed [14.02, 14.42], so per the registration the raw g_b(3) is graded in place of Δ_bb(3).
+
+| item | sealed | measured | grade |
+|---|---|---|---|
+| G1 interior c_A/c (hi), P = 12 | 0.826 ± 0.003 (fail outside [0.820, 0.832]) | **0.82628** (W12P12 = W6P12) | PASS, inside ±1σ |
+| G2′ raw g_b(3) hi | 0.2735 ± 0.0030 | **0.27652** | PASS (2σ inferred) |
+| G3 y_A(3) | 0.7654 ± 0.0030 | 0.76238 | PASS (2σ inferred) |
+| G4 σ̇-weighted c_A/c, W6P12 / W12P12 | 0.8206 / 0.8109 ± 0.0010 | 0.82112 / 0.81108 | PASS / PASS (2σ inferred) |
+| Δ_bb(3) hi (reported, not graded: norm outside window) | −3.89 ± 0.08 | −4.0314 | would be inside Fable's [−4.05, −3.73] |
+| G5 Δ_bb(3) lo; raw lo (no fail rule) | −5.24 ± 0.11; 0.3689 | −5.4216; 0.37187 | inside ±2σ |
+| S-a clause 1: \|Δ_bb(3) − Δ_bb(2.5)\| ≥ 0.306 | | 0.2748 | not fired |
+| S-a clause 2: (1 − r)P increment ≥ previous | | +0.0334 vs +0.0585 | not fired (operationalisation mine) |
+
+- **Descriptive:**
+  - Δ_bb(hi), k = 1 … 3: −2.492, −2.977, −3.451, −3.757, −4.031. Increments: −0.485, −0.474, −0.306, −0.275 (decelerating, slowly).
+  - (1 − r)P = 1.73, 1.90, 1.99, 2.05, 2.085.
+  - **S-a's asymptotic claim** (Δ_bb(hi) → −4.7 ± 0.6; no log; linear term only from an inexact bulk c) is NOT verified by passing its fail clauses. It stays ARGUED.
+  - The increments shrink by only ~10% on the last step. A constant limit near −4.7 needs faster deceleration than that, so it is not yet indicated either way.
+- **Grade:** Fable's S-c predictions are confirmed on blind quantities (the box half of Δ_bb(3), the P = 12 map, the σ̇-weighted ratios). Partially verified: one implementation, and the bands for G2′/G3/G4 are inferred ±2σ.
+- **Exposure note for EXP-090's k = 3 part:** Y_A(3) = y_A(3)·norm(3) = 11.115 is now known (it is the A counterterm at k = 3). R(3) is still unread. The EXP-090 k = 3 A reading is therefore blind only in R(3).
