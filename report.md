@@ -12491,3 +12491,11 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
     - **PRIMARY (seal 68% band [0.162, 0.202]): FAIL**, by 1.28e-4 (1.006 σ below centre). **SECONDARY (outer [0.14, 0.23]): inside.** Fable's risk values 0.27 / 0.35: not hit.
     - **Second prediction (bulk ratio ℓ 2 → 2.5): FAIL**, 1.2125 (hi; predicted 1.27 ± 0.03) and 1.3237 (lo; predicted 1.39 ± 0.03). Still falling, as predicted in direction, but faster.
     - S₂ series: 0.1186, 0.1349, 0.1560, 0.1619. The last increment (0.006) is much smaller than the previous ones; ℓ = 2.5 is the half-integer (off-centre) geometry.
+
+### EXP-089 (registered 7ef8dfa): grading of Fable's sealed reply (7c846a1) [model: Opus 5.5]
+- **Fable retracted its §3c mechanism** (σ̇ has a tail too) and downgraded its σ₂ ~ 1/r² reading. Grades: its own.
+- **(i) D1(3) seal: PASS.** D1(3) = [Sigma3D(W6P12) − Sigma3D(W12P12)]/48 = (−140.23314 + 158.44252)/48 = **0.379362**, inside (0.3770, 0.3808); central 0.3790, off by +0.00036.
+  - Series 0.3462, 0.3638, 0.3715, 0.3761, 0.3794, still slowing. Premise: the GEOM P = 12 values used CUSPIS_081E=1.
+- **(ii) Wall test (A vs bulk at n = 1).** The 081c W2P8 checkpoint lacks `n1c` (not the same quantity as 081d's S_T0), so Fable's pre-declared P′ = 6 fallback is used.
+  - **KA P = 4 PASS:** R 2.2552, Y_A 1.9817, Y_bulk 4.4737, ρ_A 0.2735, G_b 2.4920.
+  - Fresh routes W2P6b6 and W4P6b6 plus GEOMs are queued behind W10P10 (`run_089.sh`).
