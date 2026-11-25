@@ -101,5 +101,5 @@ Scale covariance gives c_A - c_inf = (g1 + gL ln P)/P with gL = y1 h0, h0 = lim 
   effect of §4 (wall test), which only W/P -> 0 removes. The uniform bulk-critical coupling at BOTH orders remains a different, legitimate regulator.
 - n = 2: the same c(x), the same log. The falling bulk "overshoot" ratios (1.44, 1.32, 1.21) are a log against a quadratic-looking R_2, not convergence to 1 by a constant.
 **7f. For the office.** (i) Grade S-a as probably failed in the three places above. (ii) Check H-log with one more box: centre c_A at P = 16-20 (my script needs 1.25 GB at
-P = 16, over my limit); prediction from the fixed-gL fit on P = 8..14: c_A(16) = -0.09915, c_A(20) = -0.10220. (iii) If c_inf = -0.1183 holds, bulk-c readings should use it
+P = 16, over my limit); prediction from the fixed-gL fit on P = 8..14: c_A(16) = -0.09915, c_A(20) = -0.10224. (iii) If c_inf = -0.1183 holds, bulk-c readings should use it
 (hi and lo ends are 3.6% and 5.3% off on either side). (iv) y1 = 32/(3 pi^2) is quoted from memory; please check it at a source before relying on 7c.
