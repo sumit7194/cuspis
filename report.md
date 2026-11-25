@@ -12560,3 +12560,24 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - k ≤ 2.5 is confirmation, not news.
 - **What it changes, argued:** with the defect removed, the box-consistent counterterm A flattens R(k) over k = 1–2.5. Bulk c still overshoots, by about half as much as before. The n = 1 question is now sharply "is A the right counterterm?" (open item). EXP-086's honest n = 2 overshoot with bulk c is consistent with the same split. Under A, EXP-086b's ratio was 0.982.
 - **Next:** the k = 3 part (second A row, 081e PRIMARY, seals S-1 to S-3) runs after the W12 route, C1 W12, and the W12P12 t0 KA.
+
+### EXP-089 (ii) wall test RESULT (registered 7ef8dfa; run_089, 22:49–01:17; `exp081d_results/exp089_wall.json`, `e89_wall.out`): **"A not wrong"**, f = +0.212, Fable's seal PASSES [model: Opus 5.5]
+- **Runs:** route W2P6 3240 s (0.29 GB) and W4P6 4188 s (0.33 GB), both rc 0. Internal gates PASS (W4P6: t0 refined vs unrefined 1.9e-8; residue 2.7e-9; B2b PASS). GEOM W2P6 33 s and W4P6 66 s. KA at P = 4 to 1e-4: PASS.
+- **P = 4 → P′ = 6, strips fixed at (2, 4):**
+
+| quantity | P = 4 | P′ = 6 |
+|---|---|---|
+| R | 2.2552 | 2.5561 |
+| Y_A | 1.9817 | 2.5089 |
+| Y_bulk | 4.4737 | 3.9345 |
+| ρ_A | 0.2735 | 0.0472 |
+| G_b | 2.4920 | 1.4256 |
+
+  - G_b(4) − G_b(6) = 1.066 ≥ 0.5, so the test is not INCONCLUSIVE.
+  - **f = +0.212**, inside PRIMARY [−0.3, 0.3] and OUTER [−0.5, 0.5]. Registered reading: "A not wrong".
+- **Descriptive:** ρ_bulk = R − Y_bulk goes −2.218 → −1.378 (moves +0.840), while ρ_A moves −0.226.
+- **Grade: partially verified.**
+  - The reading rests on Fable's ARGUED premise: the prescription that moves less is closer to P → ∞.
+  - One P step only; A itself drifts by about 21% of the gap; fixed strips are not the scaling sequence.
+- With EXP-090 (A "supported" over k = 1–2.5), this is the second registered reading favouring A at n = 1. Neither settles the A-vs-bulk question (brief a457622 asks for the derivation).
+- Addendum for Fable's round, to be read after its seals: `notes/fable_brief_A_vs_bulk_ADDENDUM_wall.md`.

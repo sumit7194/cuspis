@@ -1,0 +1,6 @@
+P=4: R 2.2552 Y_A 1.9817 Y_bulk 4.4737 rho_A 0.2735 G_b 2.4920 (kappa 0.017660)
+KA P=4 reproduces Fable's stored-number values to 1e-4       PASS  
+P=6: R 2.5561 Y_A 2.5089 Y_bulk 3.9345 rho_A 0.0472 G_b 1.4256 (kappa 0.026928)
+
+G_b(4) - G_b(6) = +1.0664  (INCONCLUSIVE if < 0.5);  f = +0.2122
+EXP-089 (ii) READING: A not wrong;  PRIMARY band [-0.3, 0.3]: inside;  OUTER [-0.5, 0.5]: inside;  controls PASS
