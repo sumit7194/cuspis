@@ -12581,3 +12581,13 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - One P step only; A itself drifts by about 21% of the gap; fixed strips are not the scaling sequence.
 - With EXP-090 (A "supported" over k = 1–2.5), this is the second registered reading favouring A at n = 1. Neither settles the A-vs-bulk question (brief a457622 asks for the derivation).
 - Addendum for Fable's round, to be read after its seals: `notes/fable_brief_A_vs_bulk_ADDENDUM_wall.md`.
+
+### EXP-091 run 1 (registered 33ae101; script 8e312b3): **control C3 FAILED, so no grading (as registered)** [model: Opus 5.5]
+- **Controls:** C1a, C1b, C2, C4 and C5 PASS. **C3 FAIL:** y_bulk(3) from the files is 1.038895; Fable's quoted non-blind value is 1.03891, a difference of 1.5e-5 against a tolerance of 1e-5. Output is kept in `exp081d_results/exp091_grade_run1_C3FAIL.txt`.
+- **Why it fired (investigated before acting):**
+  - Fable's own formula on its own quoted inputs, ½·48·|c_hi|·D1(3) with D1 = 0.379362, gives **1.0388950**. The rounding band of the quoted D1 is [1.0388937, 1.0388964].
+  - From the quoted Sigma3D pair it gives 1.0388953. The file value 1.0388953 is inside that band.
+  - So the files hold exactly the quantity Fable used. Fable's printed "1.03891" is a last-digit arithmetic/rounding slip (it should read 1.03890).
+  - The check was right to fire on the string. The tolerance sat below the precision of a typed, rounded number: the same class as the EXP-085 amendment ("typed rounded constants replaced by stored values"), and lesson L1/L6-adjacent.
+- **Nothing was graded.** The P = 12 X_cA/cA-derived values were computed for C5 but not printed or read: the script stops before printing any of them.
+- **Proposed amendment (needs the Bridge's word):** C3′. The expected value is Fable's formula on its quoted inputs, with the tolerance set by their rounding (±1.4e-6). The file value 1.0388953 would PASS. Nothing else changes.

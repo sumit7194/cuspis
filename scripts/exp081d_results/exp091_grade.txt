@@ -1,0 +1,8 @@
+C1a interior map P = 4..10 reproduces 085c READ (1e-4)                   PASS  {4: np.float64(0.56715), 6: np.float64(0.68409), 8: np.float64(0.75091), 10: np.float64(0.79488)}
+C1b box-minus-bulk (hi) k <= 2.5 reproduces stored values (1e-5)         PASS  [-2.49199, -2.97652, -3.45065, -3.75667]
+C2 pair() at P = 10 (5, 10) reproduces stored kappa(2.5) (1e-12 rel)     PASS  0.017467868808001552
+C3 y_bulk(3) (hi) == Fable's non-blind 1.03891 (1e-5)                    FAIL  1.038895
+C4 P = 12 G files: no failed entries                                     PASS  [] / []
+C5 interior ratio W12P12 == W6P12 (1e-4)                                 PASS  
+
+STOP: controls failed ["C3 y_bulk(3) (hi) == Fable's non-blind 1.03891 (1e-5)"] -> no grading
