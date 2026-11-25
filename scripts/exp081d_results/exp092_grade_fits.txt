@@ -1,0 +1,27 @@
+P= 4 centre c_A -0.066591097362  [office G file]
+P= 6 centre c_A -0.078774160641  [office G file]
+P= 8 centre c_A -0.086033892674  [office G file]
+P=10 centre c_A -0.090898685843  [office G file]
+P=12 centre c_A -0.094406919962  [office G file]
+P=14 centre c_A -0.097067504499  [exp092 (mine)]
+P=16 centre c_A -0.099160756958  [exp092 (mine)]
+P=20 centre c_A -0.102255510851  [exp092 (mine)]
+P=14 Fable -0.0970675045 vs mine -0.0970675045: diff -7.8e-16
+P=16: meas -0.0991607570  H-log -0.0991560664 (d_L 4.69e-06)  no-log -0.0991277307 (d_N 3.30e-05)  gap 2.83e-05
+P=20: meas -0.1022555109  H-log -0.1022377808 (d_L 1.77e-05)  no-log -0.1021242172 (d_N 1.31e-04)  gap 1.14e-04
+READING (registered): H-log SUPPORTED;  Fable quoted -0.09915 / -0.10224 (meas -0.09916 / -0.10226)
+
+Fits (rms over points; dof):
+  P=8-14 (i  ) rms 6.42e-16 dof 0  c_inf -0.11655   [0 dof: not a test]
+  P=8-14 (ii ) rms 3.18e-17 dof 0  c_inf -0.11875 gL +0.0719   [0 dof: not a test]
+  P=8-14 (iii) rms 6.50e-07 dof 1  c_inf -0.11824
+  P=6-14 (i  ) rms 1.03e-06 dof 1  c_inf -0.11624
+  P=6-14 (ii ) rms 9.37e-08 dof 1  c_inf -0.11883 gL +0.0736
+  P=6-14 (iii) rms 3.12e-06 dof 2  c_inf -0.11815
+  P=8-20 (i  ) rms 1.39e-06 dof 2  c_inf -0.11685
+  P=8-20 (ii ) rms 1.06e-07 dof 2  c_inf -0.11868 gL +0.0705
+  P=8-20 (iii) rms 2.43e-06 dof 3  c_inf -0.11831
+  CRITERION (P=8-20): rms(ii)/rms(i) = 0.076 (<= 1/3?) and free gL +0.0705 in [0.04,0.12]? -> log preference SURVIVES
+  P=6-20 (i  ) rms 4.98e-06 dof 3  c_inf -0.11660
+  P=6-20 (ii ) rms 4.23e-07 dof 3  c_inf -0.11874 gL +0.0721
+  P=6-20 (iii) rms 7.04e-06 dof 4  c_inf -0.11823

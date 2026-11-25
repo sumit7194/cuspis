@@ -1,0 +1,8 @@
+KA-all P = 4 (96 sites) vs stored office c_A (1e-10 rel)       PASS  max rel 3.0e-14 (0.0 s)
+KA-all P = 6 (216 sites) vs stored office c_A (1e-10 rel)      PASS  max rel 3.7e-14 (0.1 s)
+KA-centre P = 8 vs stored office c_A (1e-10 rel)               PASS  max rel 3.1e-14; centre -0.0860338927 (0.3 s, peak 0.07 GB)
+KA-centre P = 10 vs stored office c_A (1e-10 rel)              PASS  max rel 2.9e-14; centre -0.0908986858 (1.3 s, peak 0.14 GB)
+KA-centre P = 12 vs stored office c_A (1e-10 rel)              PASS  max rel 2.4e-14; centre -0.0944069200 (3.6 s, peak 0.33 GB)
+must-fail plant (factor 2 -> 1 on B0 Lambda) at P = 4 FAILS the KA PASS  max rel 9.9e+00
+
+KA PASS

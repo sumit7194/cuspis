@@ -12618,3 +12618,48 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The increments shrink by only ~10% on the last step. A constant limit near −4.7 needs faster deceleration than that, so it is not yet indicated either way.
 - **Grade:** Fable's S-c predictions are confirmed on blind quantities (the box half of Δ_bb(3), the P = 12 map, the σ̇-weighted ratios). Partially verified: one implementation, and the bands for G2′/G3/G4 are inferred ±2σ.
 - **Exposure note for EXP-090's k = 3 part:** Y_A(3) = y_A(3)·norm(3) = 11.115 is now known (it is the A counterterm at k = 3). R(3) is still unread. The EXP-090 k = 3 A reading is therefore blind only in R(3).
+
+### Fable's A-vs-bulk round (branch fable/2026-11-26-A-vs-bulk: seals c615773, answer 8a9e4b8, prereg 4edf674/2499e4e, revision d79a113, head 6ed6a44): office checks (a)–(e) [model: Opus 5.5]
+**(a) Grades.**
+- **S-a: "author-retracted after the seal; the registered fail clauses did not fire"** (EXP-091). Fable's own post-seal scoring calls it probably wrong in three places: c_A∞, the hi-c linear piece, and "no log".
+- S-c: as graded in EXP-091 (all PASS).
+- **Fable is now un-blinded on the P = 12 centre ratio** (its own run, after the seal): centre 0.82737, against my registered 3×3-interior 0.82628 (different site sets).
+
+**(b) EXP-092 (registered a48bde4; script exp092_cA_centre.py, a third implementation: dense inverses, streamed q).**
+- **Controls:** KA-all at P = 4, 6 and KA-centre at P = 8, 10, 12 against the stored office c_A, all ≤ 3.7e-14. The must-fail plant (factor 2 → 1) fails (9.9). The 4 centre sites agree to ≤ 1.6e-14.
+- **My P = 14 equals Fable's to 8e-16.**
+- **Measured:** P = 16 centre c_A = **−0.099160757** (30 s, 0.77 GB); P = 20 = **−0.102255511** (86 s, **2.06 GB peak**, declared beforehand as ~2.3 GB).
+
+| P | measured | H-log (gL = 0.0611 fixed) | d_L | no-log | d_N | gap |
+|---|---|---|---|---|---|---|
+| 16 | −0.0991608 | −0.0991561 | 4.7e-6 | −0.0991277 | 3.3e-5 | 2.8e-5 |
+| 20 | −0.1022555 | −0.1022378 | 1.8e-5 | −0.1021242 | 1.31e-4 | 1.14e-4 |
+
+  - **Registered reading: "H-log SUPPORTED"** (d_L < d_N at both P; d_L(20) = 1.8e-5 ≤ ½·gap = 5.7e-5).
+  - Fable's quoted −0.09915 / −0.10224 sit against measured −0.09916 / −0.10226.
+- **Caveat (from the fits, (e)):** the measured values lie BEYOND the fixed-gL prediction, in the direction of a larger log coefficient.
+
+**(c) y1 = 32/(3π²) VERIFIED at source:** Moshe & Zinn-Justin, arXiv:hep-th/0306133v1, §3.2, Eqs. (3.28) and (3.33) evaluated at d = 3. The cross-check is η = 8/(3π²N) (Eq. 3.32 and η1 in §3.3). Details are in `notes/T60_y1_verification.md`.
+
+**(e) Fit test (registered §5; `exp081d_results/exp092_grade_fits.txt`).**
+- On P = 8–14 the 4-parameter fits have 0 dof: not a test, as said.
+- **Main set, P = 8–20 (2 dof):**
+  - no-log (i), c∞ + g1/P + g2/P² + g3/P³: rms 1.39e-6, c∞ −0.11685;
+  - **free log (ii): rms 1.06e-7, free gL = +0.0705, c∞ −0.11868;**
+  - fixed gL (iii, 3 dof): rms 2.43e-6, c∞ −0.11831.
+  - **Criterion: rms(ii)/rms(i) = 0.076 ≤ ⅓, and the free gL is in [0.04, 0.12], so the log preference SURVIVES.**
+- On P = 6–20: (i) 4.98e-6, (ii) 4.23e-7 (gL 0.0721), (iii) 7.04e-6.
+- **The theory-fixed coefficient is NOT confirmed.** The free gL is stable at 0.070–0.074 across point sets, 15–20% above y1·h0 = 0.0611. With the coefficient fixed at 0.0611, the fit is WORSE than the 4-parameter power fit. Fable's "6×" compared (iii) against a 3-parameter no-log; with one more power term, that preference reverses.
+- **c∞ nuisance sweep:** −0.1166 (no-log) … −0.1188 (free log); fixed-gL −0.1182/−0.1183.
+  - **Form drift ±0.0011, larger than Fable's quoted ±0.001.** A value that moves with the fit form is not a measurement at that precision.
+  - The whole range is inside the 4C_BZ bracket and the Hasenbusch window (−0.1165 to −0.121). It is NOT the hi end in any form.
+
+**(e′) Non-author read of the "log in c_A" derivation (§7c/§7e).**
+- **What is standard:** for a scaling field of eigenvalue y, holding a box at a fixed scaled point needs a profile ∝ L^(−y) (finite-size scaling). With y = 1 + y1/N, expanding L^(−y1/N) gives a (ln P)/P term at O(1/N) with coefficient y1 times the leading amplitude. y1 is now verified.
+- **What is Fable's and ARGUED:**
+  - (1) That site-by-site O(N⁰) masslessness (c_A) is exactly "the same scaled point": this is the claim "A is the scaling family", not a derivation of it.
+  - (2) That the whole leading profile G1_box − G∞ ≈ −h0/P at the centre scales with the single eigenvalue y, so that gL = y1·h0 exactly. There could be admixtures: boundary operators, the 1/N renormalisation of the λ normalisation, or ln P/P² terms.
+  - (3) The free gL sits 15–20% above y1·h0. That is consistent with (2) being incomplete, or with subleading logs the fit absorbs. It does not falsify the structure.
+- **Fable's downstream claim** (bulk c leaves a −1.0 ln k drift in R_corr, so only A is a scaling family) follows IF H-log holds. It is untested in R itself. Grade: ARGUED, structurally supported (EXP-092 reading plus the free-log preference); coefficient unconfirmed.
+
+**(d) P-1 / P-2:** sent to the Bridge as candidate registrations. Nothing has been run.

@@ -1,0 +1,22 @@
+# cmd: ../.venv/bin/python -I -u exp092_cA_centre.py P 20
+# caps: tree <= 5.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# disk mode: NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored; caller pid 55067
+# pressure trigger: off
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     1.2     1   0.201    0.000   0.201        12.05       1710.2           79              1
+     7.7     1   0.717    0.000   0.717        12.05       1710.2           79              1
+    14.0     1   1.533    0.000   1.533        12.05       1710.2           77              1
+    19.6     1   2.049    0.012   2.061        12.05       1710.2           75              1
+    25.2     1   2.049    0.012   2.061        12.05       1710.2           74              1
+    30.6     1   2.049    0.013   2.062        12.05       1710.2           73              1
+    36.2     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    41.8     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    47.4     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    53.0     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    58.6     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    64.2     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    69.8     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    75.4     1   2.049    0.013   2.062        12.05       1710.2           74              1
+    81.0     1   2.049    0.013   2.062        12.05       1710.2           74              1
+# exit 0; wall 86 s; PEAK tree MEM 2.049 GB + CMPRS 0.013 GB = 2.062 GB
