@@ -1,0 +1,13 @@
+control: periodic 64^3 mean 1/E = 0.249203284  (G_inf 0.252731010; difference 0.2258/n)
+control: periodic 128^3 mean 1/E = 0.250967085  (G_inf 0.252731010; difference 0.2258/n)
+P : [4, 6, 8, 10, 12, 14, 20, 28, 40, 56]
+h0(P) = P (G_inf - G_box(centre)): [0.05169 0.05294 0.05369 0.05419 0.05454 0.0548  0.05529 0.05564 0.05591
+ 0.0561 ]
+h0(inf) = 0.05657 (from P = 20..56, with 1/P, 1/P^2);  y1 = 1.0808;  H-log prediction gL = y1*h0 = 0.06114   [free fits gave 0.0736-0.0769]
+   gL FIXED = 0.0611: c_A = c_inf + (g1 + gL ln P)/P + g2/P^2, P = 8..14: c_inf -0.11824  g1 +0.1412  g2 -0.0854  rms 6.5e-07
+   no log           : c_A = c_inf + g1/P + g2/P^2,              P = 8..14: c_inf -0.11537  rms 4.3e-06
+   gL FIXED = 0.0611: c_A = c_inf + (g1 + gL ln P)/P + g2/P^2, P = 6..14: c_inf -0.11815  g1 +0.1392  g2 -0.0749  rms 3.1e-06
+   no log           : c_A = c_inf + g1/P + g2/P^2,              P = 6..14: c_inf -0.11482  rms 1.8e-05
+   gL FIXED = 0.0611: c_A = c_inf + (g1 + gL ln P)/P + g2/P^2, P = 10..14 (exact): c_inf -0.11830  g1 +0.1425  g2 -0.0931  rms 4.3e-17
+   no log           : c_A = c_inf + g1/P + g2/P^2,              P = 10..14 (exact): c_inf -0.11574  rms 8.0e-18
+wall 0.1 s, peak 68 MB

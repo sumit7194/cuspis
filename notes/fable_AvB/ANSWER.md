@@ -71,3 +71,35 @@ kappa no longer removes the wall effects exactly. A has an aspect-ratio error of
 1. Grade S-c from the stored P = 12 GEOM files (raw g_b(3), interior ratio, the two weighted ratios).
 2. P-1 is the cheapest run that moves the main uncertainty. A scaling family at a second aspect ratio (P = 8k) would be the full answer; P-1 is its k = 1 point.
 3. The near-wall profile u*d ~ 0.80 + 0.45 ln d: is the log real (a (ln d)/d finite-size law for c) or a crossover? c_A on a tiny box with P = 14-16 at n = 1 would show whether centre u*P keeps to 2.30 - 2.64/P.
+
+## 7. REVISION after my own c_A run (commits 4edf674, 2499e4e; seal c615773 left as written) — this changes S-a
+Runs (1 core, nice 12): `ca_centre.py` P = 4..14: 0.0, 0.0, 0.1, 0.6, 2.4, 5.7 s wall; peak 30, 42, 82, 169, 367, 751 MB. `h0.py` 0.1 s, 68 MB. `h0_positions.py` seconds.
+**7a. Second implementation of c_A.** — grade: VERIFIED BY EVALUATION against the stored office values (two implementations): all sites at P = 4, 6 and the centre at P = 8, 10
+agree to 1e-14; the planted break fails as required. New: centre c_A = -0.09440692 (P = 12, ratio 0.82737) and -0.09706750 (P = 14, ratio 0.85068).
+**7b. My pre-registered reading was satisfied and I reject it.** Centre u*P = 2.0716, 2.0905 at P = 12, 14, below the 2.117 line that was to "support saturation". But that line
+assumed c_inf = c_hi. Fitting c_A itself, the limit moves with every point added (-0.1142, -0.1151, -0.1157, cubic -0.1166) and a (ln P)/P form fits 10x better. u*P flattens
+because c_A is heading PAST c_hi, not because it has converged to it. A check that named the failure and could not see it.
+**7c. H-log, pre-registered before computing h0 (2499e4e).** The massless-box tuning is a profile of the relevant coupling, dimension y = 1 + y1/N, y1 = 32/(3 pi^2).
+Scale covariance gives c_A - c_inf = (g1 + gL ln P)/P with gL = y1 h0, h0 = lim P (G_inf(0) - G1_box(x,x)), a leading-order lattice sum.
+- h0(centre) = 0.0566, so gL = 0.0611. Free fits had given 0.074-0.077. Inside my pre-stated "supported" window [0.06, 0.09], near its edge.
+- With gL FIXED at 0.0611 (no extra parameter) the fit c_inf + (g1 + gL ln P)/P + g2/P^2 has rms 6.5e-7 on P = 8..14, against 4.3e-6 without the log; 3.1e-6 against 1.8e-5 on P = 6..14.
+- **c_Ainf = -0.1183 +- 0.001** (the three point sets give -0.11824, -0.11815, -0.11830; free-log fits -0.1188 to -0.1190). — grade: ARGUED (a fit with one theory-fixed coefficient).
+  This is inside the bracket and inside the Hasenbusch window quoted in the brief (-0.1165 to -0.121). It is not the hi end.
+**7d. What this does to S-a (my own scoring; the office should grade it).**
+- Sealed "c_Ainf = -0.1145 +- 0.0025": **probably wrong** (now -0.1183).
+- Sealed "hi c: L = 0.0 +- 0.11, Delta_bb(hi) -> const": **probably wrong.** c_hi is 3.6% short of c_Ainf, so G_b(hi) = G_b(c_inf) - 0.036 Y_bulk(hi): a k-linear piece of about -0.19 k in G_b.
+- Sealed "no log k": **probably wrong against the exact bulk number.** Asymptotically raw g_b(c_inf) = a0 + aL ln k with aL = 2 y1 [hbar D1 + (h_wide - h_narrow)|Sx|] = 0.069
+  (0.98 in R units: 0.70 from the uniform shift, 0.28 because the wide strip's ends sit at larger h0: 0.0591 against 0.0566). With c_inf = -0.1183 the stored k <= 2.5 values give
+  G_b = 2.656, 3.228, 3.802, 4.208 and raw increments per ln k of 0.117, 0.121, 0.109: above the asymptotic 0.069 and starting to fall. Grade: ARGUED; coefficient not yet tested.
+- This also explains the S-b fits: the log form beat 1/k because a log is there, partly masked at hi c by the -0.19 k piece.
+**7e. Revised verdict on Q1.** — grade: ARGUED, partially supported by 7c.
+- A and the exact bulk prescription do NOT differ by a constant. They differ by about -1.0 ln k (R units), from the anomalous dimension of the coupling that the box tuning uses.
+- **Only A is a scaling family.** The leading-order profile G1_box(x,x) - G_inf = -h0/P is the right tuning when the coupling has dimension 1. At O(1/N) its dimension is
+  1 + y1/N; the profile that keeps the box at the same scaled point is -h0/P^y, and the 1/N part of that is exactly the (ln P)/P piece that c_A contains and bulk c omits.
+  With bulk c the scaled coupling drifts like ln P, so R_corr(bulk) has no k -> infinity limit at fixed aspect ratio: it keeps falling by ~1.0 per ln k.
+- So bulk c is wrong for this box family even with the exact bulk number. It is not a second route to the same delta-kappa. A's remaining error is the constant aspect-ratio
+  effect of §4 (wall test), which only W/P -> 0 removes. The uniform bulk-critical coupling at BOTH orders remains a different, legitimate regulator.
+- n = 2: the same c(x), the same log. The falling bulk "overshoot" ratios (1.44, 1.32, 1.21) are a log against a quadratic-looking R_2, not convergence to 1 by a constant.
+**7f. For the office.** (i) Grade S-a as probably failed in the three places above. (ii) Check H-log with one more box: centre c_A at P = 16-20 (my script needs 1.25 GB at
+P = 16, over my limit); prediction from the fixed-gL fit on P = 8..14: c_A(16) = -0.09915, c_A(20) = -0.10220. (iii) If c_inf = -0.1183 holds, bulk-c readings should use it
+(hi and lo ends are 3.6% and 5.3% off on either side). (iv) y1 = 32/(3 pi^2) is quoted from memory; please check it at a source before relying on 7c.
