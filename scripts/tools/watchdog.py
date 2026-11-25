@@ -5,14 +5,12 @@ Samples every --interval seconds:
 - free disk on the output volume;
 - free swap (sysctl vm.swapusage).
 
-It SIGTERMs the child's process group (then SIGKILLs after a grace period) if the tree exceeds --cap-gb, if free disk
-falls below --min-disk-gb, or if system memory is genuinely short. Every sample goes to --log, and the peak is printed
-at exit.
-
-Memory trigger (bridge fix, 2026-10-03, copied from quantum 955b4c0). macOS grows swap on demand, so low free swap
-alone is a false positive. The rules are:
-- kill if `memory_pressure` reports system-wide free memory < --min-sysfree-pct (default 10%);
-- kill on free swap < --min-swap-mb ONLY when system-wide free memory is also < 20%.
+NEVER KILLS (Sumit's standing rule 2026-11-25: no job-ending caps anywhere; the old kill paths are DELETED, not disabled).
+- Disk: inform < 10 GB free, SIGSTOP the child's process group < 5 GB, SIGCONT > 6 GB, CRITICAL alert < 2 GB.
+- Memory: inform at yellow/red; SIGSTOP after --red-grace s of continuous red, SIGCONT after --green-resume s green; PAUSE-LONG note.
+- The old flags (--cap-gb, --min-disk-gb, --min-sysfree-pct, --min-swap-mb, --stop-on-pressure-warn, --pressure-stop-level) are
+  accepted for compatibility and IGNORED. --soft-cap-gb only informs. Every sample goes to --log; the peak is printed at exit.
+- The only SIGTERM left is on_term: it forwards a TERM sent to the watchdog itself to the child group.
 
 Usage: python3 watchdog.py --log run.wd.log [--cap-gb 5] [--min-disk-gb 5] [--min-swap-mb 512] [--interval 5] -- cmd args...
 """
