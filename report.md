@@ -12454,6 +12454,15 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - (iii) **Fixed**: ON @ rad 1e-5 = −209.279427072581 (= the route to 1.7e-13).
   - truth − fixed = **9.2e-7**. True correction **+0.020684** (artifact model +0.020126).
   - **ΔR(2) = +0.1457, measured** (norm 14.0900). Grade: verified at W8P8 (two independent routes: rad 1e-6 sweep and cluster fix).
+- **EXP-087 recompute at W10P10 (22:48; OFF 5385 s, ON 4770 s; `exp081d_results/e87_t0_W10P10.out`):**
+  - KA (D4 plant): OFF @ rad 1e-5 = −333.457500688235 = the stored value, diff 3.4e-13. **PASS**.
+  - Fixed: ON @ rad 1e-5 = −333.335720678627. **fixed − unfixed = +0.12178001.**
+  - D3 (code logic): the artifact model predicts +0.121770 (A 0.085737 + B 0.036033, `notes/EXP-087_tinybox/b_art_prod.txt`). The relative difference is 8.2e-5, inside the registered 1e-4. **PASS, narrowly.**
+    - At W8P8 the same model under-counted by 2.7%. So the close agreement here does not show the model is exact. It is agreement between two codes that share the cluster pole data.
+  - **No independent truth at W10P10.** The B doublets have gaps of 8.5e-8 to 9.8e-8, below the ~5e-8 contour-floor regime, so a rad sweep cannot referee. The truth referee exists only at W8P8 (9.2e-7).
+  - **ΔR(2.5) = ½ · 0.121780 · norm(2.5) = +0.8715** (norm 14.311992, from `exp081b_run.pair`; the same call reproduces norm(2) = 14.0900 at W8P8). The registered inference was +0.871.
+  - **Grade: partially verified.** Supporting: the KA is bitwise; the fix itself is verified against truth at W8P8; code-logic agreement here is 8e-5. Missing: an independent truth route at this geometry.
+  - W12P12 (predicted −0.0575, with A −0.194 and B +0.136 nearly cancelling) runs after the W12 route ends. It is one-for-one, so it goes to the Bridge first.
 
 ### EXP-086b (registered be5a3c8; DESCRIPTIVE, zero compute): EXP-086 with the box c_A(x) in place of bulk c [model: Opus 5.5]
 - **σ₂-weighted effective c_A/c** (hi / lo end):
