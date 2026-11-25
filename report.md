@@ -12508,3 +12508,17 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **(ii) Wall test (A vs bulk at n = 1).** The 081c W2P8 checkpoint lacks `n1c` (not the same quantity as 081d's S_T0), so Fable's pre-declared P′ = 6 fallback is used.
   - **KA P = 4 PASS:** R 2.2552, Y_A 1.9817, Y_bulk 4.4737, ρ_A 0.2735, G_b 2.4920.
   - Fresh routes W2P6b6 and W4P6b6 plus GEOMs are queued behind W10P10 (`run_089.sh`).
+
+### EXP-090 REGISTERED (99484ff; nothing computed): re-reads with the corrected t0 (EXP-087) [model: Opus 5.5]
+- Registration: `notes/EXP-090_registration.md`. Every reading is NEW; 081d, 081e, 085 and 085c keep their recorded readings.
+- **Readings:**
+  - (R1) corrected R(k), descriptive;
+  - (R2) A, signed bands, ρ_s := g_A / g_raw^c, with the fixed caveat that 085c's Y 1/a² row still fails, so it is a finite-k slope;
+  - (R3) bulk, a reading only if both bracket ends give the same band;
+  - (R4) 081e PRIMARY at k = 3, as registered (labelled defective) and corrected (the physics reading);
+  - (R5) the ingredient outcome map, verbatim;
+  - (R6) Fable seals S-1 to S-4, graded.
+- **Controls K1–K6:** zero-correction reproduction (bitwise against 085c result.json and g_raw); per-geometry source KA; placement plant; two-route identity; must-fail sign; E/X_Λ definition check.
+- **Exposure:** k ≤ 2.5 is NOT blind (arithmetic on landed numbers; Fable's inferred series is in TODO.md). k = 3 is unread.
+- **Order:** the k ≤ 2.5 part (zero compute) runs on the Bridge's word. The k = 3 part runs after the W12 route, C1 W12, and the W12P12 t0 KA.
+- **W12P12 t0 runner** `run_087w12.sh` (fd1e81a) is armed (PID 67498). It waits for run_k3 to complete (C1 W12 first, the Bridge's order) and a free ≥ 50% gate. It refuses to start if run_k3 STOPs (both branches tested in scratch).
