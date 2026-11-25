@@ -1,0 +1,6 @@
+P=4: centre c_A -0.06659110  ratio c_A/c_hi 0.58359  u*P 1.6656   [0.0 s wall, peak 30 MB]
+   KA vs stored office c_A (96 sites): max rel dev 1.0e-14  PASS
+P=4: centre c_A -0.72781467  ratio c_A/c_hi 6.37844  u*P -21.5137   [0.0 s wall, peak 30 MB]  (BREAK variant)
+   KA vs stored office c_A (96 sites): max rel dev 9.9e+00  FAIL
+P=6: centre c_A -0.07877416  ratio c_A/c_hi 0.69036  u*P 1.8578   [0.0 s wall, peak 42 MB]
+   KA vs stored office c_A (216 sites): max rel dev 1.7e-14  PASS

@@ -1,0 +1,8 @@
+P=8: centre c_A -0.08603389  ratio c_A/c_hi 0.75399  u*P 1.9681   [0.1 s wall, peak 82 MB]
+   KA vs stored office c_A (4 sites): max rel dev 1.5e-14  PASS
+P=10: centre c_A -0.09089869  ratio c_A/c_hi 0.79662  u*P 2.0338   [0.6 s wall, peak 169 MB]
+   KA vs stored office c_A (4 sites): max rel dev 2.9e-14  PASS
+P=12: centre c_A -0.09440692  ratio c_A/c_hi 0.82737  u*P 2.0716   [2.4 s wall, peak 367 MB]
+System-wide memory free percentage: 80%
+P=14: centre c_A -0.09706750  ratio c_A/c_hi 0.85068  u*P 2.0905   [5.7 s wall, peak 751 MB]
+System-wide memory free percentage: 79%

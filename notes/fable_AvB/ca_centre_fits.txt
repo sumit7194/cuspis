@@ -1,0 +1,13 @@
+centre c_A: [-0.0665911  -0.07877416 -0.08603389 -0.09089869 -0.09440692 -0.0970675 ]
+u*P (vs c_hi): [1.6656 1.8578 1.9681 2.0338 2.0716 2.0905]  increments [0.1922 0.1103 0.0657 0.0378 0.0188]
+   c + g1/P + g2/P^2 (exact, 3 pts)             points P=[6, 8, 10]: c_Ainf -0.11418  (other coeffs [ 0.2633 -0.3054])  rms 1.1e-17  -> (c_Ainf - c_hi) -0.00007
+   c + g1/P + g2/P^2 (exact, 3 pts)             points P=[8, 10, 12]: c_Ainf -0.11513  (other coeffs [ 0.2805 -0.3817])  rms 8.3e-17  -> (c_Ainf - c_hi) -0.00102
+   c + g1/P + g2/P^2 (exact, 3 pts)             points P=[10, 12, 14]: c_Ainf -0.11574  (other coeffs [ 0.2939 -0.4548])  rms 8.0e-18  -> (c_Ainf - c_hi) -0.00163
+   c + g1/P + g2/P^2 + g3/P^3 (exact, 4 pts)    points P=[8, 10, 12, 14]: c_Ainf -0.11655  (other coeffs [ 0.3231 -0.8028  1.3659])  rms 6.4e-16  -> (c_Ainf - c_hi) -0.00245
+   same, least squares 5 pts                    points P=[6, 8, 10, 12, 14]: c_Ainf -0.11624  (other coeffs [ 0.3132 -0.698   1.0058])  rms 1.0e-06  -> (c_Ainf - c_hi) -0.00214
+   c + (g1 + gL ln P)/P (exact, 3 pts)          points P=[10, 12, 14]: c_Ainf -0.11896  (other coeffs [0.1036 0.0769])  rms 7.4e-16  -> (c_Ainf - c_hi) -0.00485
+   c + (g1 + gL ln P)/P + g2/P^2 (LSQ 5 pts)    points P=[6, 8, 10, 12, 14]: c_Ainf -0.11883  (other coeffs [ 0.1118  0.0736 -0.0204])  rms 9.4e-08  -> (c_Ainf - c_hi) -0.00472
+bracket: hi -0.11411  lo -0.12458;  spread of c_Ainf over forms: [-0.11896, -0.11418]
+slope of the k-linear term in Delta_bb for a bulk value c:  -8 D1_inf norm_inf (c_Ainf - c) = -44.9 (c_Ainf - c):
+   hi: from +0.003 to +0.218 per unit k
+   lo: from -0.467 to -0.252 per unit k
