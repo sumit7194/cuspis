@@ -34,3 +34,7 @@
 ## L6 (2026-11-25): a finite-difference tolerance must be set from the truncation error, not picked
 - **Failure:** EXP-088 C registered "FD derivative == prediction to 1e-6 at ε = 1e-3, 1e-4". The central difference has error ~ε²·f‴/6, and f‴ is large here (curvature ~3e3), so the registered check failed for every h. Post-hoc, the error fell ×100 per decade of ε and Richardson agreed to ≤ 5e-9: the physics passed, and the tolerance was wrong.
 - **Rule:** for any FD check, register (i) at least three ε values with the expected O(ε²) scaling as a criterion, and (ii) a Richardson-extrapolated comparison at a tolerance derived from the measured scaling. Same class as L3: bound the method's own error before registering a threshold.
+
+## L7 (2026-11-26): an untested waiter is a check that cannot fire [model: Opus 5.5]
+- **What happened:** the ~00:35 log waiter put three filenames in one zsh variable (`f="a b c"; cat $f`). zsh does not word-split, so `cat` looked for a single file with spaces in its name. The line count never changed, the waiter never fired, and the EXP-089 result (01:17) was graded ~45 min late. Another waiter caught it.
+- **Rule:** before arming any waiter, run its trigger once on a planted file and see it fire, and check that its baseline is a sane number. List the files explicitly (no word-split variables in zsh).
