@@ -73,6 +73,8 @@ art = {(int(m[0]), int(m[1])): -float(m[2]) for m in re.findall(r"W(\d+) P(\d+) 
        open(os.path.join(HERE, "..", "notes", "EXP-087_tinybox", "b_art_prod.txt")).read())}
 check("K2 W8P8 referee OFF == stored S_W2.t0 (k = 2) 1e-10 rel", abs(ref8["off_1e-5"] - JD["2"]["S_W2"]["t0"]) <= 1e-10 * abs(JD["2"]["S_W2"]["t0"]), "")
 check("K2 W10P10 OFF == stored S_W2.t0 (k = 2.5) 1e-10 rel", abs(f10["off"] - JD["2.5"]["S_W2"]["t0"]) <= 1e-10 * abs(JD["2.5"]["S_W2"]["t0"]), "")
+if FAIL: print(f"\nSTOP: control(s) failed before any reading: {FAIL} -> no corrected value, reading or seal is computed (Bridge condition)"); sys.exit(1)
+print("\nK1, K2, K3, K4 (Delta = 0), K6 all PASS -> readings follow (confirmation, not blind)")
 d8, d10 = ref8["on_1e-5"] - ref8["off_1e-5"], f10["on"] - f10["off"]
 s8, s10 = abs(ref8["off_1e-6"] - ref8["on_1e-5"]), abs(d10 - art[(10, 10)])
 dW2 = {**zero, 2: d8, 2.5: d10}; sdW2 = {**zero, 2: s8, 2.5: s10}
@@ -101,7 +103,7 @@ o += [f"(d) {nm} unresolved" for nm in ("t0+L", "C") if split(nm)]
 print(f"(R5) outcome map (threshold 0.1 g_raw^c = {thr:.3f}): {o if o else 'none of (a)-(d)'}")
 s4 = abs(tL[2] - 0.428) <= 0.03 and abs(tL[2.5] - 0.371) <= 0.03
 print(f"(R6) S-4: corrected R(t0+L)(2) {tL[2]:+.4f} vs 0.428, (2.5) {tL[2.5]:+.4f} vs 0.371 (within 0.03) -> {'PASS' if s4 else 'FAIL'}")
-head = (f"EXP-090 k <= 2.5 READING: A (finite-k; 085c Y 1/a^2 row still fails; conditional on A-vs-bulk at n = 1): {ra};  bulk: {rb};  "
+head = (f"EXP-090 k <= 2.5 READING (confirmation, not blind): A (finite-k; 085c Y 1/a^2 row still fails; conditional on A-vs-bulk at n = 1): {ra};  bulk: {rb};  "
         f"ingredient: {o};  S-4 {'PASS' if s4 else 'FAIL'};  EXP-086 n = 2 overshoot stands (immune);  controls {'PASS' if not FAIL else FAIL}")
 print("\n" + head)
 json.dump(dict(mode=mode, Delta=dict(W8P8=d8, W10P10=d10), sigma=dict(W8P8=s8, W10P10=s10), Rc=Rc, graw_c=grawc, out=out, readA=ra, readBulk=rb,
