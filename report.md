@@ -12428,3 +12428,19 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The node 2–3 spikes coincided with system-wide yellow pressure (other apps), so they **do not grow with node index**. The steady peak is ~7.0 GB, close to the probe's 7.12.
   - Two WATCHDOG WARNs (yellow; 01:43 and 02:03); inform only, and no guard fired.
   - Node times 2013–2347 s; ETA ~2026-11-26 05:00–07:00.
+
+### t0 defect in `inner_beta0` for W ≥ 7 (Fable lead, branch fable/2026-11-25-t0L-largek 6156a51): **VERIFIED on tiny boxes**; production not yet measured [model: Opus 5.5]
+- **Code reading (mine):**
+  - Mechanism A: a same-slice doublet in the two-tag branch is counted twice when its gap g < rad = 1e-5.
+  - Mechanism B: when g < 1e-2·rad, the single-tag branch drops the second member's residue.
+- **Measurements** (production path, tiny boxes; files in `notes/EXP-087_tinybox/`):
+  - W8P3 radius sweep reproduced exactly (shift −0.017677 in k = 0, ±2, ±4).
+  - Control W6P3 (no doublets): 2.4e-7.
+  - artifact.py prediction at W8P3: −0.017677.
+  - W10P3 (one B doublet): measured −0.101434 against predicted −0.101513 (A alone misses by 0.0155), so B is confirmed at the ~2e-4 level.
+  - The small-radius drift grows as rad shrinks (1.8e-4, then 1.8e-3 between 5e-8 / 3e-8 / 1e-8): tiny contours are unsafe.
+- **Predicted production errors** (code logic; code − true): W8P8 −0.0201, W10P10 −0.1218, W12P12 −0.0575.
+  - These would give R(2) +0.142, R(2.5) +0.871, R(3) ~+0.41 (inference) and could absorb much of the 085/085c overshoot.
+  - **EXP-086 (honest n = 2) is immune** and its overshoot stands: a tension to carry into every re-read.
+- **Fix draft:** `notes/EXP-087_registration_draft.md`. Cluster contours (radius 0.5·span + rad) and cluster residue sums; singletons bit for bit; behind a flag; KAs that can fail. Registered before any recompute, on the Bridge's word.
+- The W12 route continues untouched; its t0 will be recomputed separately.

@@ -1,0 +1,14 @@
+== artifact 10 3 10 16
+    A  slice u= 4  gap 3.2e-06  s 1.0525  delta_t0 -0.049667
+    A  slice u= 5  gap 6.4e-07  s 1.1515  delta_t0 -0.019994
+    A  slice u= 6  gap 2.1e-07  s 1.2225  delta_t0 -0.009988
+    A  slice u= 7  gap 1.1e-07  s 1.2651  delta_t0 -0.006343
+    B  slice u= 8  gap 8.4e-08  s 1.2793  delta_t0 -0.015521
+W10 P3 Wb10 Ny16 rad 1e-05: predicted delta_t0 (code - true) = -0.101513   [A -0.085992, B -0.015521]  (0s)
+== artifact 10 4 10 16
+    A  slice u= 4  gap 3.4e-06  s 1.0523  delta_t0 -0.047925
+    A  slice u= 5  gap 6.6e-07  s 1.1514  delta_t0 -0.019240
+    A  slice u= 6  gap 2.1e-07  s 1.2224  delta_t0 -0.009576
+    A  slice u= 7  gap 1.1e-07  s 1.2651  delta_t0 -0.006046
+    B  slice u= 8  gap 8.5e-08  s 1.2793  delta_t0 -0.014429
+W10 P4 Wb10 Ny16 rad 1e-05: predicted delta_t0 (code - true) = -0.097215   [A -0.082786, B -0.014429]  (0s)
