@@ -20,7 +20,7 @@ production geometry**.*
 | control W6P3 Ny16 (no doublets < 1e-4) | rad 1e-5 → 1e-6 moves t0 by 2.4e-7 only (against 1.8e-2 at W8) |
 | artifact.py (code-logic prediction) at W8P3 | −0.017677 (mechanism A only), matching the measured shift |
 | (d) W10P3 Ny16 (one B doublet, gap 8.4e-8), rad 1e-5 → 3e-8 | measured shift −0.101434; predicted −0.101513 (A −0.085992 + B −0.015521): agreement 8e-5; A alone would miss by 0.0155, so **B is confirmed** |
-| radius floor | rad 1e-8 differs from 3e-8 by a further 1.8e-3 (convergence check of 5e-8 / 2e-8 pending): very small contours are NOT numerically safe |
+| radius floor | t0 = −35.824326 (5e-8), −35.824148 (3e-8), −35.825041 (2e-8), −35.822320 (1e-8): **non-monotone scatter ~±1e-3 below ~5e-8**, a small-contour numerical floor. The prediction (−35.824070) lies inside it. Tiny contours are NOT a usable fix; hence the cluster contours |
 | (b) predictions at production geometries (code logic) | Δt0 = code − true: W8P8 −0.0201 (A); W10P10 −0.1218 (A −0.0857, B −0.0360); W12P12 −0.0575 (A −0.194, B +0.136) |
 
 ## C. Fix (registered design; one variable: the contour bookkeeping for intra-slice clusters)
@@ -33,7 +33,7 @@ production geometry**.*
 
 ## D. KAs and plants (each can fail)
 1. **Bitwise invariance where there are no clusters:** W2P4, W3P6, W4P4, W4P8, W5P10, W6P6 (and tiny W6P3): t0 with the fix == stored/production bitwise.
-2. **Known answers on tiny boxes:** W8P3: fixed t0 == −35.769860 (rad-sweep converged) to 1e-5. W10P3: fixed t0 == the converged rad-sweep value (3e-8 → −35.824148 if the pending convergence check confirms it) to 1e-4.
+2. **Known answers on tiny boxes:** W8P3: fixed t0 == −35.769860 (rad-sweep converged) to 1e-5. W10P3: fixed t0 == −35.82407 (artifact-predicted true value) to 1e-4. The rad sweep is only good to ~1e-3 here (floor), so the sweep is NOT the reference.
 3. **Code-logic agreement:** the fixed − unfixed difference equals artifact.py's predicted −Δt0 to 1e-4 relative at W8P3, W10P3 (tiny), then at W8P8.
 4. **Must-fail plant:** with the fix disabled by a flag, W8P8 reproduces the stored −209.300109928361 bitwise (the Bridge's KA), and W8P3 reproduces −35.787540656.
 5. Behind an env flag, default OFF until the KAs pass; production values are recomputed only after that.
