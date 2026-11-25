@@ -1,0 +1,16 @@
+C W2P2Wb2 h=c_A: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel) FAIL  pred -1.2375618798e-01 FD -1.2375602330e-01/-1.2375618638e-01 rel 1.3e-06
+C W2P2Wb2 h=c_A: second difference ~ eps-independent (no O(eps) term) PASS  curv +1.80686e+00 / +1.80685e+00
+C W2P2Wb2 h=uniform: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel) FAIL  pred +3.4215172495e+00 FD +3.4137926048e+00/+3.4214400043e+00 rel 2.3e-03
+C W2P2Wb2 h=uniform: second difference ~ eps-independent (no O(eps) term) PASS  curv +2.88976e+03 / +2.88971e+03
+C W2P2Wb2 h=random: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel) FAIL  pred -4.4135679360e-02 FD -4.1124850583e-02/-4.4105572670e-02 rel 6.8e-02
+C W2P2Wb2 h=random: second difference ~ eps-independent (no O(eps) term) PASS  curv +2.49126e+03 / +2.49119e+03
+C W2P2Wb2: n = 1 FD derivative == 0 (sigma_1 = 0)                  FAIL  -3.91e-05
+C W2P3Wb4 h=c_A: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel) FAIL  pred -3.9634022062e-01 FD -3.9633845699e-01/-3.9634020141e-01 rel 4.4e-06
+C W2P3Wb4 h=c_A: second difference ~ eps-independent (no O(eps) term) PASS  curv +1.00305e+01 / +1.00306e+01
+C W2P3Wb4 h=uniform: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel) FAIL  pred +7.3526184901e+00 FD +7.3242849354e+00/+7.3523351580e+00 rel 3.9e-03
+C W2P3Wb4 h=uniform: second difference ~ eps-independent (no O(eps) term) PASS  curv +8.61313e+03 / +8.61299e+03
+C W2P3Wb4 h=random: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel) FAIL  pred +2.2299849285e+00 FD +2.2293930765e+00/+2.2299790066e+00 rel 2.7e-04
+C W2P3Wb4 h=random: second difference ~ eps-independent (no O(eps) term) PASS  curv +1.57996e+04 / +1.57989e+04
+C W2P3Wb4: n = 1 FD derivative == 0 (sigma_1 = 0)                  FAIL  -1.41e-04
+
+EXP-088 mode C: FAIL: C W2P2Wb2 h=c_A: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel), C W2P2Wb2 h=uniform: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel), C W2P2Wb2 h=random: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel), C W2P2Wb2: n = 1 FD derivative == 0 (sigma_1 = 0), C W2P3Wb4 h=c_A: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel), C W2P3Wb4 h=uniform: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel), C W2P3Wb4 h=random: FD derivative == -1/2 n Ny Sum h sigma_2 (1e-6 rel), C W2P3Wb4: n = 1 FD derivative == 0 (sigma_1 = 0)  (2s)

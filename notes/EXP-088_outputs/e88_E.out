@@ -1,0 +1,8 @@
+E W2P4: lambda_min(H_2 + sigma_2) > 0 in every sector              PASS  min 1.5856e-01 (sigma = 0: 1.7873e-01); min sigma_2 -0.0663  (0s)
+E W4P4: lambda_min(H_2 + sigma_2) > 0 in every sector              PASS  min 1.6065e-01 (sigma = 0: 1.7873e-01); min sigma_2 -0.0599  (0s)
+E W3P6: lambda_min(H_2 + sigma_2) > 0 in every sector              PASS  min 7.2652e-02 (sigma = 0: 8.5394e-02); min sigma_2 -0.0660  (0s)
+E W6P6: lambda_min(H_2 + sigma_2) > 0 in every sector              PASS  min 7.4168e-02 (sigma = 0: 8.5394e-02); min sigma_2 -0.0654  (0s)
+E W4P8: lambda_min(H_2 + sigma_2) > 0 in every sector              PASS  min 4.1044e-02 (sigma = 0: 4.9824e-02); min sigma_2 -0.0667  (1s)
+E W8P8: lambda_min(H_2 + sigma_2) > 0 in every sector              PASS  min 4.2202e-02 (sigma = 0: 4.9824e-02); min sigma_2 -0.0676  (2s)
+
+EXP-088 mode E: controls PASS  (2s)

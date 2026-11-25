@@ -12475,3 +12475,19 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **(e) analytic:** strict concavity of log det(H_n + diag σ) on the positive-definite domain gives a unique, replica-symmetric stationary point.
   - Check E (λ_min > 0 at all 6 geometries) runs first. If it fails, the runner STOPs before C/D/A, since that would undercut Q1's premise (Bridge).
 - No overrun (Sumit at the Mac, 10 cores); the next Fable window goes to ansatz.
+- **EXP-088 results (20:09–20:37, the Bridge-approved +1 overrun; E → C → D → A as registered):**
+  - **E: PASS** at all 6 geometries. λ_min(H₂ + σ₂) = 0.159 / 0.161 / 0.073 / 0.074 / 0.041 / 0.042 (10–18% below σ = 0).
+    - With strict concavity of log det(H_n + diag σ) on the positive-definite domain, **the stored n = 2 saddle is the unique, replica-symmetric stationary point in the convergent domain** (argued + check passed). Q1's premise (b) holds.
+  - **C: registered FAIL (my registration slip: a 1e-6 tolerance at ε = 1e-3/1e-4 set without bounding the central-difference truncation, the L3 class).**
+    - **POST-HOC, cause shown** (`exp088_C_posthoc.py`): every error falls exactly ×100 per decade of ε (O(ε²), large f‴). Richardson extrapolation agrees with −½·n·Ny·Σhσ₂ to 2e-10 – 5e-9 relative (h = c_A, uniform, random; two tiny boxes). The n = 1 control → 0 as ε² (−3.9e-3, −3.9e-5, −3.9e-7).
+    - **So Q1's first-order form is VERIFIED numerically on tiny boxes (post-hoc).**
+  - **D: Fable's "σ̇ is a contact term with no 1/r² tail" FAILS on the registered criterion.**
+    - r²σ̇ by shell (W4P8): −0.105, −0.087, −0.068, −0.055, −0.036, −0.019; r²σ₂: −0.033, −0.038, −0.034, −0.028, −0.020, −0.012. The ratio σ̇/σ₂ per shell is 3.2 → 1.5 (W8P8: 3.2 → 1.9).
+    - σ̇ carries a tail as extended as σ₂'s, scaled ~2×. Fable's §3c mechanism ("contact at n → 1, tail at n = 2") is not supported.
+    - The stored-number flatness (0.307, 0.308, 0.316, 0.326) is reproduced exactly.
+  - **A: SEAL GRADED.**
+    - KA: the honest saddle reproduces the stored 084c σ₂ at W4P8 to 1.2e-13 per site. σ₂ sums: W5P10 −1.106985, W10P10 −1.203615.
+    - **S₂(2.5) = R₂ + ΔR₂^A = 4.316952 − 4.155079 = 0.161872.**
+    - **PRIMARY (seal 68% band [0.162, 0.202]): FAIL**, by 1.28e-4 (1.006 σ below centre). **SECONDARY (outer [0.14, 0.23]): inside.** Fable's risk values 0.27 / 0.35: not hit.
+    - **Second prediction (bulk ratio ℓ 2 → 2.5): FAIL**, 1.2125 (hi; predicted 1.27 ± 0.03) and 1.3237 (lo; predicted 1.39 ± 0.03). Still falling, as predicted in direction, but faster.
+    - S₂ series: 0.1186, 0.1349, 0.1560, 0.1619. The last increment (0.006) is much smaller than the previous ones; ℓ = 2.5 is the half-integer (off-centre) geometry.

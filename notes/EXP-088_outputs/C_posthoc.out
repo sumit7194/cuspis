@@ -1,0 +1,10 @@
+W2P2Wb2 n=2 h=uniform: rel err eps 1e-3 2.3e-03, 1e-4 2.3e-05, 1e-5 2.3e-07 (ratio per decade 100, 100); Richardson rel err 1.1e-07 / 2.1e-10
+W2P2Wb2 n=2 h=random: rel err eps 1e-3 6.8e-02, 1e-4 6.8e-04, 1e-5 6.9e-06 (ratio per decade 100, 99); Richardson rel err 1.5e-05 / 3.2e-09
+   n=1 control h=uniform eps 1e-03: FD derivative -3.906e-03 (exact 0)
+   n=1 control h=uniform eps 1e-04: FD derivative -3.906e-05 (exact 0)
+   n=1 control h=uniform eps 1e-05: FD derivative -3.922e-07 (exact 0)
+W2P3Wb4 n=2 h=uniform: rel err eps 1e-3 3.9e-03, 1e-4 3.9e-05, 1e-5 3.8e-07 (ratio per decade 100, 101); Richardson rel err 1.4e-07 / 4.5e-10
+W2P3Wb4 n=2 h=random: rel err eps 1e-3 2.7e-04, 1e-4 2.7e-06, 1e-5 2.9e-08 (ratio per decade 100, 91); Richardson rel err 1.0e-06 / 4.9e-10
+   n=1 control h=uniform eps 1e-03: FD derivative -1.414e-02 (exact 0)
+   n=1 control h=uniform eps 1e-04: FD derivative -1.414e-04 (exact 0)
+   n=1 control h=uniform eps 1e-05: FD derivative -1.415e-06 (exact 0)
