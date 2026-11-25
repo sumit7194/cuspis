@@ -6,5 +6,7 @@ PY=../.venv/bin/python; D=exp081d_results; L=$D/run_088.txt
 while ps -p ${WAIT_PID:-0} > /dev/null 2>&1; do sleep 60; done; echo "=== core free $(date '+%F %T')" >> $L
 for m in E C D A; do echo "=== e88_$m start $(date '+%F %T')" >> $L
   pgate_run $D/e88_$m.wd.log "nice -n 12 $PY tools/watchdog.py --interval 5 --log $D/e88_$m.wd.log --stdout $D/e88_$m.out -- $PY -u -W ignore exp088_checks.py $m"
-  echo "=== e88_$m rc $? $(date '+%F %T')" >> $L; done
+  rc=$?; echo "=== e88_$m rc $rc $(date '+%F %T')" >> $L
+  [ $m = E ] && [ $rc -ne 0 ] && { echo "=== STOP: E found H_2 + sigma_2 non-PD (or E failed) -> C/D/A NOT run; tell the Bridge (Q1's premise) $(date '+%F %T')" >> $L; exit 1; }
+done
 echo "=== EXP-088 checks done $(date '+%F %T')" >> $L

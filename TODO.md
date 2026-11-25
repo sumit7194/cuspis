@@ -684,3 +684,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - Δt0 (code − true) at rad 1e-5: W8P8 −0.0201, W10P10 −0.1218 (smoothness hint: up to −0.135), W12P12 −0.0575. Zero at W6P6, W4P8, W5P10, W6P12 (bitwise by construction: no clusters).
 - Inferred corrected R: 2.2552, 4.2334, 6.5838, 9.0901; R − Y_A slope +0.195 (stored −0.356), ρ_s +0.049. Any A re-read needs a NEW registration. EXP-086 is immune: its n = 2 overshoot is still unexplained.
 - k = 3: ORIGINAL sealed R(t0+L)(3) = −1.55 [−2.0, −1.1] (6156a51, expected to fail); REVISED (ca63760): current code −0.07 [−0.60, +0.40]; corrected +0.33 [0.25, 0.42]; E(W12P12) 1.890 ± 0.02; X_Λ 244.958 ± 0.02. Grade BOTH.
+
+## OPEN ITEM (Bridge, 2026-11-25): the A-vs-bulk choice now sits at n = 1
+- Fable's Q2 ("c(x) is the same at every n") follows (non-author read, EXP-088 (f)). It MOVES the question of which counterterm is right, box c_A versus bulk c, to the n = 1 criterion.
+- Fable §2c argues A because "the n = 1 box stays massless" (zero-row-sum self-energy). That is ARGUED, not shown, and it carries the whole A-vs-bulk choice for n → 1 AND n = 2 (EXP-086b's 0.982 rests on it).
+- Needs its own argument or test. Do not let it disappear under "Q2 follows".

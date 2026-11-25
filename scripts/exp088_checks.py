@@ -97,3 +97,4 @@ if mode == "A":
         b25 = Ny * c * (sig[5].sum() - sig[10].sum()) * norm(2.5); ratio = -(b25 - prev[t]) / (R2["2.5"] - R2["2"]); tgt = 1.27 if t.startswith("hi") else 1.39
         print(f"   bulk [{t}]: dR2(2.5) {b25:+.4f}; local ratio l 2 -> 2.5 = {ratio:.4f}  (predicted {tgt} +- 0.03): {'PASS' if abs(ratio - tgt) <= 0.03 else 'FAIL'}", flush=True)
 print(f"\nEXP-088 mode {mode}: {'controls PASS' if not FAIL else 'FAIL: ' + ', '.join(FAIL)}  ({time.time()-T0:.0f}s)")
+sys.exit(1 if FAIL else 0)
