@@ -48,3 +48,11 @@
 4. Report to the Bridge only.
 
 Cost: GEOM files exist, so the only compute is κ(3) (seconds to minutes, one core).
+
+## Amendment 1 (2026-11-26 ~04:20; after run 1's C3 FAIL, before any grading; on the Bridge's word)
+- **C3′ replaces C3.** Expected = ½·48·|c|·D1 on the inputs AS TYPED in Fable's seal: c = −0.11411 (seal line 19) and D1 = 0.379362 (line 7). That gives **1.0389359**.
+  - Tolerance from their rounding: |c| ± 5e-6 and D1 ± 5e-7, so δy = 24·(0.379362·5e-6 + 0.11411·5e-7) = **4.69e-5**.
+  - PASS iff |y_bulk(3)_file − 1.0389359| ≤ 4.69e-5. The file value 1.0388953 differs by 4.07e-5, so it PASSES, thinly. Fable's printed 1.03891 (diff 2.6e-5) is consistent too.
+- **Correction to run 1's write-up (report 320e5fe):** I computed the "expected" value with the code's full-precision c_hi (−0.1141055), not Fable's typed −0.11411. So my claim that Fable's 1.03891 was a last-digit slip is WRONG and is withdrawn (Bridge's catch). Fable's number is right to its quoted precision.
+- **Slip (logged):** a control clause with a tolerance (1e-5) below the precision of typed inputs. It is the same class as the EXP-085 typed-constant amendment and L6. A second slip in my first diagnosis: inputs not taken as typed.
+- Nothing else changes: no band, and no other control.

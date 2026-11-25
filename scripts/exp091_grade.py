@@ -1,4 +1,4 @@
-"""EXP-091 (registered 33ae101, notes/EXP-091_registration.md): grade Fable's S-c seals (+ S-a fail clauses), seal c615773. [model: Opus 5.5]
+"""EXP-091 (registered 33ae101 + amendment 1, notes/EXP-091_registration.md): grade Fable's S-c seals (+ S-a fail clauses), seal c615773. [model: Opus 5.5]
 Controls C1-C5 first (exit 1 -> no grading). Map code verbatim from exp085c_run.py READ. Only compute: kappa(3) via exp081b_run.pair."""
 import sys, os, json, numpy as np
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); D = os.path.join(HERE, "exp081d_results")
@@ -29,7 +29,8 @@ k25 = kappa(10, 5, 10)
 check("C2 pair() at P = 10 (5, 10) reproduces stored kappa(2.5) (1e-12 rel)", abs(k25 - JD["2.5"]["kappa"]) <= 1e-12 * JD["2.5"]["kappa"], f"{k25!r}")
 g6, g12 = Gf(6, 12), Gf(12, 12)
 _, yb3 = raw(g6, g12, c_hi)
-check("C3 y_bulk(3) (hi) == Fable's non-blind 1.03891 (1e-5)", abs(yb3 - 1.03891) <= 1e-5, f"{yb3:.6f}")
+exp3 = 0.5 * 48 * 0.11411 * 0.379362; tol3 = 24 * (0.379362 * 5e-6 + 0.11411 * 5e-7)    # amendment 1: Fable's typed inputs, rounding tolerance
+check("C3' y_bulk(3) (hi) == 1/2*48*0.11411*0.379362 within typed-input rounding", abs(yb3 - exp3) <= tol3, f"{yb3:.7f} vs {exp3:.7f}, |d| {abs(yb3-exp3):.2e} <= {tol3:.2e}")
 check("C4 P = 12 G files: no failed entries", not g6.get("failed") and not g12.get("failed"), f"{g6.get('failed')} / {g12.get('failed')}")
 r12a, r12b = interior(g12), interior(g6)
 check("C5 interior ratio W12P12 == W6P12 (1e-4)", abs(r12a - r12b) <= 1e-4, "")

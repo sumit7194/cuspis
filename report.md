@@ -12591,3 +12591,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The check was right to fire on the string. The tolerance sat below the precision of a typed, rounded number: the same class as the EXP-085 amendment ("typed rounded constants replaced by stored values"), and lesson L1/L6-adjacent.
 - **Nothing was graded.** The P = 12 X_cA/cA-derived values were computed for C5 but not printed or read: the script stops before printing any of them.
 - **Proposed amendment (needs the Bridge's word):** C3′. The expected value is Fable's formula on its quoted inputs, with the tolerance set by their rounding (±1.4e-6). The file value 1.0388953 would PASS. Nothing else changes.
+- **CORRECTION (Bridge, ~04:15):** my run-1 diagnosis above used the code's full-precision c_hi (−0.1141055), not Fable's typed c = −0.11411.
+  - On Fable's typed inputs the expected value is 1.0389359, and their rounding tolerance is 4.69e-5. The file's 1.0388953 is inside it (|Δ| 4.07e-5, a thin PASS).
+  - **Fable's 1.03891 was NOT a slip. That claim is withdrawn.**
+  - Amendment 1 (C3′) is committed before the rerun. Slip logged: a tolerance below the precision of typed inputs, plus a diagnosis that did not take the inputs as typed.
