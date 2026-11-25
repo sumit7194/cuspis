@@ -12448,3 +12448,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Cluster nearest non-member ≈ 10⁵ × rc at W8P8, W10P10, W12P12, so the refusal won't fire and an outside-contour leak is impossible.
   - Singletons with a neighbour in [rad, 3·rad) on the original path: W8P8 slice 10 at 1.44·rad (32-point leakage ~9e-6 of that term, ~1e-7 absolute); the others are ≥ 1.8·rad (≤ 7e-9). All negligible against Δt0.
   - W4P8, W5P10, W6P12, W6P6 have no clusters, so the fix leaves them bitwise unchanged by construction.
+- **EXP-087 production referee at W8P8 (19:44; 4360 s, 1.05 GB): the FIX is right; the bug model under-counts by ~2.7%.**
+  - (i) KA: OFF @ rad 1e-5 = −209.300109928361 (stored, to 2.8e-13).
+  - (ii) **Truth**: OFF @ rad 1e-6 (double-count-free; above the floor) = −209.279426153046.
+  - (iii) **Fixed**: ON @ rad 1e-5 = −209.279427072581 (= the route to 1.7e-13).
+  - truth − fixed = **9.2e-7**. True correction **+0.020684** (artifact model +0.020126).
+  - **ΔR(2) = +0.1457, measured** (norm 14.0900). Grade: verified at W8P8 (two independent routes: rad 1e-6 sweep and cluster fix).
