@@ -1,0 +1,8 @@
+wall test: f(hi) = 0.2122; f(lo c) = 0.2028
+scaling family, n -> 1: (R - Y_A) - f*G_b  hi: [-0.2553 -0.2623 -0.2495 -0.235 ]  lo: [-0.3151 -0.3617 -0.3949 -0.4283]
+  slope-matching mix d(R-Y_A)/dG_b over k = 1..2.5: hi 0.228, lo 0.146
+n = 2: G_b(hi) = [1.0089 1.4058 1.8249 2.1572] ; S_2 - f*G_b: [-0.0955 -0.1634 -0.2313 -0.2959] ; slope-matching mix 0.038
+fixed strips: G_b = 5.725/P + 16.97/P^2 -> G_b(8) = 0.981; power law -> 0.959
+   A error ~ 1/P     : infinite-plane value for strips (2,4) = -0.405; rho_A(8) = -0.066; f(6->8) = 0.254
+   A error ~ 1/P^2   : infinite-plane value for strips (2,4) = -0.134; rho_A(8) = -0.032; f(6->8) = 0.178
+   A error = f*G_b   : infinite-plane value for strips (2,4) = -0.255; rho_A(8) = -0.047; f(6->8) = 0.212

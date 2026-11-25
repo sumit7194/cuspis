@@ -1,0 +1,16 @@
+(1) forms fitted to raw g_b(k), k = 1..2.5 (4 points):
+    g_inf - beta/k               coeffs [0.3167 0.1428]  rms 3.0e-03  -> value at k = 3: 0.2691
+    a + b k                      coeffs [0.1244 0.0575]  rms 5.8e-03  -> value at k = 3: 0.2969
+    a + b ln k                   coeffs [0.1771 0.0952]  rms 1.5e-03  -> value at k = 3: 0.2817
+    g_inf - beta/k + gamma/k^2   coeffs [0.3527 0.2568 0.0801]  rms 3.7e-04  -> value at k = 3: 0.2760
+(2) u(x) = 1 - c_A/c_hi versus distance d to the nearest wall (W-wide strip of each P; c_A does not know the cut):
+    P=4: centre u 0.4164 (u*P 1.666) | d=1: 0.813 (u*d 0.81)  d=2: 0.592 (u*d 1.18)  d=3: 0.481 (u*d 1.44)  d=4: 0.428 (u*d 1.71)
+       (3) proxy weight sigma_2: share of Sum u*sigma_2 from d <= 1: 0.0257; d <= 2: 0.1106; sigma_2 mean at d = 1: -3.14e-04 (overall min -0.060)
+    P=6: centre u 0.3096 (u*P 1.858) | d=1: 0.805 (u*d 0.80)  d=2: 0.574 (u*d 1.15)  d=3: 0.452 (u*d 1.36)  d=4: 0.382 (u*d 1.53)  d=5: 0.340 (u*d 1.70)  d=6: 0.317 (u*d 1.90)
+       (3) proxy weight sigma_2: share of Sum u*sigma_2 from d <= 1: 0.0085; d <= 2: 0.0323; sigma_2 mean at d = 1: -6.35e-05 (overall min -0.065)
+    P=8: centre u 0.2460 (u*P 1.968) | d=1: 0.800 (u*d 0.80)  d=2: 0.566 (u*d 1.13)  d=3: 0.440 (u*d 1.32)  d=4: 0.366 (u*d 1.46)  d=5: 0.317 (u*d 1.59)  d=6: 0.285 (u*d 1.71)  d=7: 0.264 (u*d 1.85)  d=8: 0.252 (u*d 2.01)
+       (3) proxy weight sigma_2: share of Sum u*sigma_2 from d <= 1: 0.0039; d <= 2: 0.0143; sigma_2 mean at d = 1: -1.98e-05 (overall min -0.068)
+    P=10: centre u 0.2034 (u*P 2.034) | d=1: 0.798 (u*d 0.80)  d=2: 0.561 (u*d 1.12)  d=3: 0.434 (u*d 1.30)  d=4: 0.357 (u*d 1.43)  d=5: 0.306 (u*d 1.53)  d=6: 0.271 (u*d 1.63)  d=7: 0.246 (u*d 1.72)  d=8: 0.228 (u*d 1.82)  d=9: 0.216 (u*d 1.94)  d=10: 0.208 (u*d 2.08)
+    centre c_A extrapolated in 1/P (quadratic through P = 6, 8, 10) vs the bracket [-0.11411, -0.12458]:
+    centre c_A: [-0.066591 -0.078774 -0.086034 -0.090899]; quadratic (6,8,10) -> c_Ainf -0.11418, value at P = 12 -0.09435 (ratio 0.8269); linear (8,10) -> -0.11036; cubic (4..10) -> -0.11530
+wall time 0.00 s, peak RSS 29 MB
