@@ -687,6 +687,7 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - k = 3: ORIGINAL sealed R(t0+L)(3) = −1.55 [−2.0, −1.1] (6156a51, expected to fail); REVISED (ca63760): current code −0.07 [−0.60, +0.40]; corrected +0.33 [0.25, 0.42]; E(W12P12) 1.890 ± 0.02; X_Λ 244.958 ± 0.02. Grade BOTH.
 
 ## OPEN ITEM (Bridge, 2026-11-25): the A-vs-bulk choice now sits at n = 1
+- 2026-11-26: EXP-090 k ≤ 2.5 gives A "supported" (finite-k) and bulk "overshoot". EXP-089 (ii) gives f = +0.212, "A not wrong" (Fable seal PASS). Both are partially verified and neither is a derivation. The Fable brief a457622/a0b6042 asks for the k → ∞ form of Δ_bb; grade its S-a, S-b and S-c seals when they arrive (S-c is gradeable with zero compute from G_W6P12/G_W12P12 plus norm(3)).
 - Fable's Q2 ("c(x) is the same at every n") follows (non-author read, EXP-088 (f)). It MOVES the question of which counterterm is right, box c_A versus bulk c, to the n = 1 criterion.
 - Fable §2c argues A because "the n = 1 box stays massless" (zero-row-sum self-energy). That is ARGUED, not shown, and it carries the whole A-vs-bulk choice for n → 1 AND n = 2 (EXP-086b's 0.982 rests on it).
 - Needs its own argument or test. Do not let it disappear under "Q2 follows".
