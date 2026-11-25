@@ -1,0 +1,9 @@
+K1 g_raw (Delta = 0) == 4.019821717340081 bitwise                      PASS  4.019821717340081
+K1 rho_A, sigma_rhoA == 085c result.json bitwise                       PASS  -0.08858471165162997 / -0.08858471165162997
+K1 R_corr^A == 085c RA1 bitwise                                        PASS  
+K1 ingredient slope(t0+L) -0.808, pairs -0.475/-1.039 (5e-4)           PASS  -0.8075 -0.4750 -1.0386
+K4 two-route identity (Delta = 0) 1e-10                                PASS  9.7e-13
+K6 E/X_Lam definition reproduces Fable's stored R(t0+L) row (1e-4)     PASS  [0.76152, 0.53813, 0.28651, -0.50051]
+K3 plant: +1 on narrow W1 = 4 moves R(2) by -norm(2)/2; on wide W2 = 8 by +norm(2)/2 (1e-12) PASS  
+
+CONTROLS only (no corrected value computed): PASS
