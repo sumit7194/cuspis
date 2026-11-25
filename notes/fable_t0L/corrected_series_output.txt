@@ -1,0 +1,16 @@
+predicted t0 error (code - true): {(8, 8): -0.020125974371884747, (10, 10): -0.12176970926745304, (12, 12): -0.057467977828668554}
+k            : [1.0, 1.5, 2.0, 2.5]
+R(t0+L) code : [ 0.7615  0.5381  0.2865 -0.5005]
+R(t0+L) corr : [0.7615 0.5381 0.4283 0.3709]  increments [-0.2234 -0.1098 -0.0574]
+R code       : [2.2552 4.2334 6.442  8.2187]  local slopes [3.956 4.417 3.554]
+R corrected  : [2.2552 4.2334 6.5838 9.0901]  local slopes [3.956 4.701 5.013]
+Y_A          : [1.9817 3.8641 6.1049 8.528 ]  local slopes [3.765 4.482 4.846]
+R_corr^A code: [ 0.2735  0.3693  0.3371 -0.3092]
+R_corr^A corr: [0.2735 0.3693 0.4789 0.5621]  increments [0.0958 0.1096 0.0833]
+2-dof slopes: R code 4.020; R corrected 4.571; Y_A 4.376; R_corr^A code -0.356 (rho_s -0.089); R_corr^A corrected +0.195 (rho_s +0.049)
+wide E (code): log form from P=4,5,6 predicts P=8,10: residuals [-0.01209 -0.06672];  all-6 log-form fit rms 7.4e-03, coeffs [ 0.0924 -0.2509  0.3905], E_w(12) -> 1.8282
+wide E (corrected): log form from P=4,5,6 predicts P=8,10: residuals [-0.00203 -0.00584];  all-6 log-form fit rms 7.5e-04, coeffs [ 0.1246 -0.1822  0.2442], E_w(12) -> 1.9204
+kappa(3)=0.01745: dE_true(12) = -0.02363 -> R_true(t0+L)(3) = +0.339;  dE_code(12) = +0.00511 -> R_code(t0+L)(3) = -0.073
+kappa(3)=0.01775: dE_true(12) = -0.02363 -> R_true(t0+L)(3) = +0.333;  dE_code(12) = +0.00511 -> R_code(t0+L)(3) = -0.072
+kappa(3)=0.01805: dE_true(12) = -0.02363 -> R_true(t0+L)(3) = +0.327;  dE_code(12) = +0.00511 -> R_code(t0+L)(3) = -0.071
+E_n(12) (log form, 4 pts) = 1.8948;  E_w(12) true = 1.9184;  E_w(12) code = 1.8897;  with t0(W12) = -486.137451: X_Lam(W12P12) = 244.9584

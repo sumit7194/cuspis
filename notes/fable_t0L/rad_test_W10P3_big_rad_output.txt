@@ -1,0 +1,17 @@
+W10 P3 Wb10 Ny16 (Lx 16, Lt 6, N 96); intra-slice gaps < 1e-4: [('8.4e-08', 1.279, 8), ('1.1e-07', 1.265, 7), ('2.1e-07', 1.222, 6), ('6.4e-07', 1.151, 5), ('3.2e-06', 1.053, 4), ('2.5e-05', 0.927, 3)]
+  rad 1e-04: t0 = -35.980809926   per-k (k=0, then even k): [-2.994677 -2.59649  -2.141648 -1.909713 -1.806867]   (43s)
+  rad 3e-05: t0 = -36.041290698   per-k (k=0, then even k): [-3.003434 -2.599825 -2.146447 -1.916552 -1.805734]   (42s)
+    A  slice u= 3  gap 2.5e-05  s 0.9267  delta_t0 -0.152286
+    A  slice u= 4  gap 3.2e-06  s 1.0525  delta_t0 -0.049667
+    B  slice u= 5  gap 6.4e-07  s 1.1515  delta_t0 +0.039379
+    B  slice u= 6  gap 2.1e-07  s 1.2225  delta_t0 +0.016869
+    B  slice u= 7  gap 1.1e-07  s 1.2651  delta_t0 +0.004486
+    B  slice u= 8  gap 8.4e-08  s 1.2793  delta_t0 -0.015521
+W10 P3 Wb10 Ny16 rad 1e-04: predicted delta_t0 (code - true) = -0.156740   [A -0.201953, B +0.045213]  (0s)
+    A  slice u= 3  gap 2.5e-05  s 0.9267  delta_t0 -0.152286
+    A  slice u= 4  gap 3.2e-06  s 1.0525  delta_t0 -0.049667
+    A  slice u= 5  gap 6.4e-07  s 1.1515  delta_t0 -0.019994
+    B  slice u= 6  gap 2.1e-07  s 1.2225  delta_t0 +0.016869
+    B  slice u= 7  gap 1.1e-07  s 1.2651  delta_t0 +0.004486
+    B  slice u= 8  gap 8.4e-08  s 1.2793  delta_t0 -0.015521
+W10 P3 Wb10 Ny16 rad 3e-05: predicted delta_t0 (code - true) = -0.216114   [A -0.221947, B +0.005834]  (0s)
