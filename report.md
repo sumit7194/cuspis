@@ -12454,3 +12454,15 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - (iii) **Fixed**: ON @ rad 1e-5 = −209.279427072581 (= the route to 1.7e-13).
   - truth − fixed = **9.2e-7**. True correction **+0.020684** (artifact model +0.020126).
   - **ΔR(2) = +0.1457, measured** (norm 14.0900). Grade: verified at W8P8 (two independent routes: rad 1e-6 sweep and cluster fix).
+
+### EXP-086b (registered be5a3c8; DESCRIPTIVE, zero compute): EXP-086 with the box c_A(x) in place of bulk c [model: Opus 5.5]
+- **σ₂-weighted effective c_A/c** (hi / lo end):
+  - W2P4 0.558 / 0.511; W4P4 0.542 / 0.497;
+  - W3P6 0.671 / 0.615; W6P6 0.658 / 0.603;
+  - W4P8 0.740 / 0.678; W8P8 0.728 / 0.667.
+  - It rises with P, like the n → 1 interior map (≈ 1 − 2/P).
+- **ΔR₂** (k = 1, 1.5, 2):
+  - bulk hi [−1.573, −2.822, −4.450]; bulk lo [−1.717, −3.081, −4.858];
+  - **A [−0.564, −1.416, −2.625]** (A is independent of the bracket end).
+- **Parity-matched k = 1 → 2:** honest R₂ grows +2.098. The counterterm/growth ratio is **bulk 1.371 (hi) / 1.497 (lo); A 0.982**.
+- **Matches the pre-stated expectation** (~1.4 → ~1). As registered, **c_A at n = 2 is the very assumption Fable question (2) asks about**, so this sharpens and does not settle. EXP-086's registered reading ("overshoot at n = 2", bulk c) stands as recorded.
