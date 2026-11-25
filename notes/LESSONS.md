@@ -30,3 +30,7 @@
 ## L5 (2026-11-24): a cost projection from one scaling step must carry an explicit upper bracket
 - **Failure:** 084c amendment 2 projected W4P8 at 5.1–5.8 h from P^4.1–4.3, an exponent fitted to ONE P step (P 4 → 6). W4P8 overran 7.8 h (≥ P^4.7). The dense-algebra asymptote N³·Ny ∝ P⁷ was argued only after the fact.
 - **Rule:** any projection that rests on a single step states the asymptotic bound of the algorithm as its upper bracket (here P⁷, from N = Lx·Lt ∝ P², dense N³, ×Ny ∝ P). Schedules are planned against the bracket, not the point estimate.
+
+## L6 (2026-11-25): a finite-difference tolerance must be set from the truncation error, not picked
+- **Failure:** EXP-088 C registered "FD derivative == prediction to 1e-6 at ε = 1e-3, 1e-4". The central difference has error ~ε²·f‴/6, and f‴ is large here (curvature ~3e3), so the registered check failed for every h. Post-hoc, the error fell ×100 per decade of ε and Richardson agreed to ≤ 5e-9: the physics passed, and the tolerance was wrong.
+- **Rule:** for any FD check, register (i) at least three ε values with the expected O(ε²) scaling as a criterion, and (ii) a Richardson-extrapolated comparison at a tolerance derived from the measured scaling. Same class as L3: bound the method's own error before registering a threshold.
