@@ -1,0 +1,27 @@
+K1 g_raw (Delta = 0) == 4.019821717340081 bitwise                      PASS  4.019821717340081
+K1 rho_A, sigma_rhoA == 085c result.json bitwise                       PASS  -0.08858471165162997 / -0.08858471165162997
+K1 R_corr^A == 085c RA1 bitwise                                        PASS  
+K1 ingredient slope(t0+L) -0.808, pairs -0.475/-1.039 (5e-4)           PASS  -0.8075 -0.4750 -1.0386
+K4 two-route identity (Delta = 0) 1e-10                                PASS  9.7e-13
+K6 E/X_Lam definition reproduces Fable's stored R(t0+L) row (1e-4)     PASS  [0.76152, 0.53813, 0.28651, -0.50051]
+K3 plant: +1 on narrow W1 = 4 moves R(2) by -norm(2)/2; on wide W2 = 8 by +norm(2)/2 (1e-12) PASS  
+K2 W8P8 referee OFF == stored S_W2.t0 (k = 2) 1e-10 rel                PASS  
+K2 W10P10 OFF == stored S_W2.t0 (k = 2.5) 1e-10 rel                    PASS  
+
+K1, K2, K3, K4 (Delta = 0), K6 all PASS -> readings follow (confirmation, not blind)
+
+Delta: W8P8 +0.020683 (sigma 9.2e-07, truth referee); W10P10 +0.121780 (sigma 1.0e-05, code-vs-model proxy; model +0.121770)
+K4 two-route identity (corrected) 1e-10                                PASS  9.8e-13
+K5 must-fail sign lands in a band different from A's                   PASS  refuted as sole cause vs supported
+
+(R1) R^c(k) = [2.25522, 4.23345, 6.58769, 9.09021]  (stored [2.25522, 4.23345, 6.44198, 8.21875]);  g_raw^c = +4.57184 (stored +4.01982);  local slopes [3.956, 4.708, 5.005]
+(R2) A: R_corr^A [0.2735, 0.36931, 0.4828, 0.56221]  g_A +0.1959 +- 0.0090  rho_s +0.0429 +- 0.0020 -> supported   [descriptive: / stored g_raw -> +0.0487]   [robustness: supported]
+(R3) bulk [hi c(384)]: g -0.6577 +- 0.0534  rho_s -0.1439 +- 0.0117 -> overshoot   [robustness: overshoot]
+(R3) bulk [lo c(384)+3Delta]: g -1.1377 +- 0.0451  rho_s -0.2488 +- 0.0099 -> overshoot   [robustness: overshoot]
+(R5) t0+L : slope -0.2555  pairs 1->2 -0.3293, 1.5->2.5 -0.1672  local [-0.447, -0.212, -0.123]  values [0.7615, 0.5381, 0.4322, 0.371]
+(R5) C    : slope +0.4514  pairs 1->2 +0.5386, 1.5->2.5 +0.3601  local [0.638, 0.439, 0.281]  values [-0.488, -0.1688, 0.0506, 0.1913]
+(R5) Y_A  : slope +4.3759  pairs 1->2 +4.1232, 1.5->2.5 +4.6639  local [3.765, 4.482, 4.846]  values [1.9817, 3.8641, 6.1049, 8.528]
+(R5) outcome map (threshold 0.1 g_raw^c = 0.457): none of (a)-(d)
+(R6) S-4: corrected R(t0+L)(2) +0.4322 vs 0.428, (2.5) +0.3710 vs 0.371 (within 0.03) -> PASS
+
+EXP-090 k <= 2.5 READING (confirmation, not blind): A (finite-k; 085c Y 1/a^2 row still fails; conditional on A-vs-bulk at n = 1): supported;  bulk: overshoot;  ingredient: [];  S-4 PASS;  EXP-086 n = 2 overshoot stands (immune);  controls PASS

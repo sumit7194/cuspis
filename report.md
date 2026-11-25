@@ -12522,3 +12522,41 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Exposure:** k ≤ 2.5 is NOT blind (arithmetic on landed numbers; Fable's inferred series is in TODO.md). k = 3 is unread.
 - **Order:** the k ≤ 2.5 part (zero compute) runs on the Bridge's word. The k = 3 part runs after the W12 route, C1 W12, and the W12P12 t0 KA.
 - **W12P12 t0 runner** `run_087w12.sh` (fd1e81a) is armed (PID 67498). It waits for run_k3 to complete (C1 W12 first, the Bridge's order) and a free ≥ 50% gate. It refuses to start if run_k3 STOPs (both branches tested in scratch).
+
+### EXP-090 k ≤ 2.5 RESULT (registered 99484ff; script ae2e3c6; `exp081d_results/exp090_k25.txt/.json`): **confirmation, not blind** [model: Opus 5.5]
+**Headline:** A **supported** (finite-k, k = 1–2.5; 085c's Y 1/a² row still fails; conditional on the open A-vs-bulk question at n = 1). Bulk **overshoot** at both ends. Ingredient map: **none of (a)–(d)**. Fable S-4 **PASS**. EXP-086's n = 2 overshoot stands (immune, unexplained).
+
+- **Controls:** all PASS, run before any reading (hard stop otherwise).
+  - K1: g_raw, ρ_A and RA1 bitwise against 085c; ingredient slopes to 5e-4.
+  - K2: W8P8 and W10P10 OFF equal the stored t0.
+  - K3: placement plant.
+  - K4: 9.7e-13 / 9.8e-13.
+  - K5: must-fail lands in "refuted" against A's "supported".
+  - K6: Fable's row to 1e-4.
+- **Inputs:** Δ(W8P8) = +0.020683 (fix − unfixed; the truth − unfixed of +0.020684 quoted earlier differs by 9.2e-7, which is its σ). Δ(W10P10) = +0.121780 (σ proxy 1.0e-5).
+
+| quantity | stored t0 | corrected t0 |
+|---|---|---|
+| R(k), k = 1, 1.5, 2, 2.5 | 2.2552, 4.2334, 6.4420, 8.2187 | 2.2552, 4.2334, **6.5877, 9.0902** |
+| g_raw (2-dof slope) | 4.0198 | **4.5718** |
+| local slopes of R | 3.96, 4.42, 3.55 | 3.96, 4.71, 5.01 |
+| A: R − Y_A | 0.2735, 0.3693, 0.3371, −0.3093 | 0.2735, 0.3693, 0.4828, 0.5622 |
+| A: ρ_s (= g_A / g_raw^c) | −0.089 ± 0.061 | **+0.0429 ± 0.0020 → supported** (robustness: supported; over stored g_raw: +0.049) |
+| bulk hi, ρ_s | −0.30 ± 0.05 | **−0.144 ± 0.012 → overshoot** (robust) |
+| bulk lo, ρ_s | −0.42 ± 0.05 | **−0.249 ± 0.010 → overshoot** (robust) |
+| t0 + L | 0.7615, 0.5381, 0.2865, −0.5005 | 0.7615, 0.5381, 0.4322, 0.3710 |
+| t0 + L pairs (1 → 2, 1.5 → 2.5) | −0.475, −1.039 | **−0.329, −0.167** (|·| < 0.1·g_raw^c = 0.457) |
+| C pairs | +0.539, +0.360 | unchanged |
+
+- **Ingredient re-read: no registered outcome applies.**
+  - t0 + L is negative on both pairs but below the 0.457 threshold. Its local slopes are decelerating (−0.45, −0.21, −0.12), with no acceleration left.
+  - C exceeds the threshold on 1 → 2 only, so (c) "both ≈ 0" fails narrowly through C.
+  - **The ingredient check's earlier outcome (a) ("the opposite-sign piece sits in t0") does not survive the correction. That piece was largely the inner_beta0 defect.**
+- **Fable S-4:** corrected R(t0+L)(2) = 0.4322 (sealed 0.428) and (2.5) = 0.3710 (sealed 0.371), both within 0.03. PASS. Fable's inferred R − Y_A slope +0.195 is reproduced (+0.1959).
+- **Grades:**
+  - corrected values at W10P10: partially verified (no truth referee);
+  - A "supported": partially verified, finite-k only, conditional on A-vs-bulk at n = 1;
+  - bulk "overshoot": partially verified;
+  - k ≤ 2.5 is confirmation, not news.
+- **What it changes, argued:** with the defect removed, the box-consistent counterterm A flattens R(k) over k = 1–2.5. Bulk c still overshoots, by about half as much as before. The n = 1 question is now sharply "is A the right counterterm?" (open item). EXP-086's honest n = 2 overshoot with bulk c is consistent with the same split. Under A, EXP-086b's ratio was 0.982.
+- **Next:** the k = 3 part (second A row, 081e PRIMARY, seals S-1 to S-3) runs after the W12 route, C1 W12, and the W12P12 t0 KA.
