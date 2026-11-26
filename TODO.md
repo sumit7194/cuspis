@@ -691,3 +691,9 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - Fable's Q2 ("c(x) is the same at every n") follows (non-author read, EXP-088 (f)). It MOVES the question of which counterterm is right, box c_A versus bulk c, to the n = 1 criterion.
 - Fable §2c argues A because "the n = 1 box stays massless" (zero-row-sum self-energy). That is ARGUED, not shown, and it carries the whole A-vs-bulk choice for n → 1 AND n = 2 (EXP-086b's 0.982 rests on it).
 - Needs its own argument or test. Do not let it disappear under "Q2 follows".
+
+## EXP-095 (registered 83566e3, SEALED-READ) — running since 2026-11-26 17:26
+- [ ] W2P10 route on the Air (~23 h), then W4P10 (~30 h), serial. Report the measured peak to the Bridge after the first hour.
+- [ ] GEOM W2P10 / W4P10 on the Mac mini (run_095_geom.sh).
+- [ ] At landing: commit ONLY the sha256 of the 4 outputs to exp081d_results/exp095_sealed_sha256.txt. Do NOT open them, do NOT run exp095_p1.py (it is not written yet; write and commit it without running).
+- [ ] Next week: path S (Fable seal, if Sumit OKs) or path D (descriptive). Any accidental view of a P = 10 value is declared at once.
