@@ -38,3 +38,7 @@
 ## L7 (2026-11-26): an untested waiter is a check that cannot fire [model: Opus 5.5]
 - **What happened:** the ~00:35 log waiter put three filenames in one zsh variable (`f="a b c"; cat $f`). zsh does not word-split, so `cat` looked for a single file with spaces in its name. The line count never changed, the waiter never fired, and the EXP-089 result (01:17) was graded ~45 min late. Another waiter caught it.
 - **Rule:** before arming any waiter, run its trigger once on a planted file and see it fire, and check that its baseline is a sane number. List the files explicitly (no word-split variables in zsh).
+
+## L8 (2026-11-26): a registration must check that every input file it reads exists at the new geometry [model: Opus 5.5]
+- **What happened:** EXP-094 registered `exp084c_run.py 2 6 2` as P-2's source. That script reads EXP-084's stored honest-Q files, which exist only for the 081d geometries. Found while planning the transfer (before any run); amended.
+- **Rule (Bridge, now on the fleet list):** before a registration is approved, list every file each named script reads, and check each exists for the registered geometry. A seconds-long dry run of the import and input path suffices.

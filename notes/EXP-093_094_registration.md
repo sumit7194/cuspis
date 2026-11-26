@@ -49,3 +49,23 @@
 - P-1: route ~0.4 GB (W2P6 took 0.29 GB), 4.8 h at P^5.8, P⁷ bracket 6.7 h; GEOM W2P8 minutes, < 1 GB expected.
 - P-2: 0.22 GB, ~1.5 h each.
 - All one core, nice 12, no-kill watchdog, pgate, free ≥ 50% at launch.
+
+## Amendment 1 (2026-11-26 ~09:30; before ANY P-1/P-2 run; Bridge confirmed)
+**A. EXP-094 (P-2) input path.**
+- As registered, `exp084c_run.py 2 6 2` / `4 6 2` cannot run: its `honest(n=2)` reads EXP-084's `exp084/Q_W{W}P{P}b{P}.json`, which do not exist at W2P6/W4P6. This is a registration slip (report 907bf3f).
+- Q₂ is now the QA value of **EXP-084's phase-1 code, verbatim** (`exp084_run.py` lines 64–75; wrapper `exp094_honest.py` for (W, P) ∈ {(2, 6), (4, 6)}, writing `exp084/Q_W{W}P6b6.json` in the same format). This is exactly the number 084c's `honest` field would have read.
+- σ₂ = `exp083_honest.Geom(W, 6, Wbox=6, c=2).saddle(2)` (EXP-088 (a)'s path).
+- **Controls replacing "084c Level 1":**
+  - (i) the wrapper, run on (2, 4) and (4, 4), reproduces the stored Q_W2P4b4 / Q_W4P4b4 QA bitwise;
+  - (ii) EXP-084's two-path agreement |QA − QB| ≤ 1e-9 relative at W2P6/W4P6 (path B = reversed-order logdet with a looser saddle);
+  - (iii) the registered P = 4 KAs (R₂ 0.6826; ΔR₂^A, ΔR₂^bulk bitwise against exp086b_result.json), unchanged;
+  - (iv) σ₂ from `saddle(2)` reproduces the stored 084c W2P4 σ₂ sum to 1e-6 (the honest-saddle KA).
+- The 084c route-(ii) runs at P = 6 become an optional continuation cross-check. They are not part of the reading. Bands and f₂ are unchanged.
+
+**B2. EXP-093 (P-1) platform.**
+- The W2P8 route runs on Sumit's MacBook Air (`ssh air`, Apple M1, macOS 27.2.1, Python 3.14.10; numpy 2.4.3 / scipy 1.17.1 / mpmath 1.3.0, the same versions as here; this Mac is an M4 on Python 3.14.5).
+- Only the import closure of `exp081d_route.py` goes over: exp081d_route.py, exp081c_numerics.py, sigma3d.py, tools/{plant_guard, winding, watchdog}.py, tools/{freepct_guard, pgate}.sh. The sha256 manifest is compared on both sides. **No checkpoints go over.**
+- **IDENTITY (before W2P8):** a fresh W2P6 route on the Air, pulled back and compared HERE with the stored W2P6 checkpoint (EXP-089).
+  - **PASS iff** t0, tsad, all 48 g nodes and the n1c arms agree to ≤ 1e-10 relative, AND `row(6)` from the Air checkpoint reproduces exp089_wall.json's P = 6 row to 1e-4 (the registered KA).
+  - Between 1e-10 and 1e-4: report, and the Bridge decides.
+- **Operations:** nice 10; caffeinate -i; no-kill watchdog; freepct_guard v3 with LOW = 25 / HIGH = 35 (PID-scoped, pause-only); no caps. Pull-back goes to `exp081d_results/air_pull/`, validated before use.
