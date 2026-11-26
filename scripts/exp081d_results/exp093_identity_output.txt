@@ -1,0 +1,3 @@
+nodes/arms missing on the Air: none;  max rel dev 5.66e-11 at g|0.023970685907381;  t0 4.4e-11 tsad 2.7e-12
+row(6) R from Air W2P6 + stored W4P6: 2.5560696134 vs exp089 2.5560696021 (diff +1.1e-08)
+IDENTITY: PASS
