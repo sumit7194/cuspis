@@ -707,6 +707,10 @@ Everything is committed and pushed. Nothing is running. Where things stand:
     - a true-unit memory prediction, and the hold at prediction + 25 % on COL=3;
     - the gates: ≥ 50 % free at launch; one job; an inform-only watchdog with the fixed TREE; PAUSE below 30 % free;
     - a checkpoint plan that survives a power cut.
+  - [x] LAUNCHED (Bridge OK on c7a1b64): runner 92550 at 23:19:30. Route started 23:24:00 (pgate): watchdog 94275, route 94281 (nice 17).
+    Guards: freepct 92557, hold 92591 (COL=3, 6.9 GB true), backup 92593. ETA ~28 Nov 11:30 (10:30-15:30).
+  - [ ] Report only events to the Bridge: a hold or pause, a node milestone every ~12 h, and landing. At landing: stale-file guard + sha.
+    Grade the sealed prediction (true peak 5.3 central, ≤ 5.5 GB, on phys_footprint_peak, read before exit, or the MEM max). k = 3 stays sealed.
 - Note: the printed ON time "(…s)" and the watchdog's wall time will include the pause. Report the time minus the pause.
 
 ## EXP-095 (registered 83566e3, SEALED-READ) — running since 2026-11-26 17:26
