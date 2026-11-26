@@ -708,8 +708,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
   - The hold was a TREE double count (b7c87c0, notes/EXP-095_run_notes.md). The true peak is 2.13 GB.
   - Resume W4P10 alone after W2P10, with a hold at 3.06 GB TRUE (MEM column; needs a COL option in peak_hold.sh).
 - [x] 22:05 Bridge RESUME NOW: W4P10 resumed; MEM-column holds 61231 (W2P10) and 61271 (W4P10) at 3.06 GB true; watchdog TREE fixed (a5ff03a).
-- [ ] Mac W12P12 t0 hold: proposed 4.72 GB TRUE (predicted 3.78 × 1.25). Switch it ONLY after the Bridge OKs the number; ask about hold_resume 84914.
-- [ ] (old) Awaiting the Bridge on these proposals:
+- [x] Mac W12P12 t0 hold switched 22:10 (Bridge OK): 84913 (TREE 9 GB) and hold_resume 84914 ended by verified PID; new peak_hold 66959, COL=3, 4.72 GB true, argv 'exp087_t0\.py 12 12' (spares freepct_guard 31492, which the old 'exp087_t0' pattern would also have paused). No auto-resume: a firing means the 3.78 GB model is wrong, and goes to the Bridge.
+- [x] (closed 22:10) The proposals below are all done; the Bridge checked the other guards (only watchdog.py and peak_hold's TREE column double-counted):
   - replace W2P10's TREE hold 27442 with a MEM-column hold at 3.06 GB (it will likely fire falsely otherwise);
   - fix TREE in watchdog.py for new launches;
   - the Mac W12P12 hold 84913 is also in TREE units.

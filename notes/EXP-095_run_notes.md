@@ -74,3 +74,14 @@ route_W5P10b10 / route_W10P10b10 (EXP-081d, not blind). Max MEM per phase:
      compressed, and the old formula read +76 %.
    - The negative control (old formula) fails.
 - The sealed peak prediction stands as written: central 2.25, ≤ 2.45 GB, graded on the kernel's phys_footprint_peak.
+
+## 2026-11-26 22:10: Mac mini W12P12 t0 hold on true memory (Bridge OK)
+- Prediction: peak 3.78 GB true. That is the kernel phys_footprint_peak so far, covering all of OFF and about 1 h of ON; on W10P10 the
+  ON step stayed below OFF. Hold = 3.78 × 1.25 = 4.72 GB.
+- 84913 (TREE 9 GB) and hold_resume 84914 were ended by verified PID; neither fired. The new hold is 66959 (COL=3, 4.72 GB, DT 10 s).
+- Its argv pattern is 'exp087_t0\.py 12 12'. The old 'exp087_t0' also matched freepct_guard 31492, so a hold would have paused that
+  guard as well.
+- Decoy-tested with the installed file:
+  - MEM 3.70 / TREE 6.80 does not fire; MEM 4.80 fires;
+  - only the job-like child is paused; the guard-like child and a same-argv decoy outside the root are untouched.
+- No auto-resume. A firing would falsify the 3.78 GB model, and the resume goes through the Bridge.
