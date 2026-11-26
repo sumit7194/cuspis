@@ -1,0 +1,18 @@
+=== GATE e85c_G_W6P12 2026-11-24 20:47:47: free 78% (>= 50), other jobs of mine: none, fleet 7 (quantum 7 + mine 0) + 1 <= 10-2 -> LAUNCH (pgate next)
+=== e85c_G_W6P12 start 2026-11-24 20:47:47
+=== GUARD hot-swapped to v3 (PID-scoped, root = runner 96292) 2026-11-24 20:50:47
+=== e85c_G_W6P12 rc 0 wall 911 s peak 6.032 GB 2026-11-24 21:07:28
+=== GATE e85c_G_W12P12 2026-11-24 21:07:28: free 74% (>= 50), other jobs of mine: none, fleet 7 (quantum 7 + mine 0) + 1 <= 10-2 -> LAUNCH (pgate next)
+=== e85c_G_W12P12 start 2026-11-24 21:07:28
+=== PEAK HOLD armed (PID-scoped, root 96292): route W12 is SIGSTOPped if its tree footprint reaches 10 GB; resume only on the Bridge's word 2026-11-24 21:09:20
+=== e85c_G_W12P12 rc 0 wall 899 s peak 9.344 GB 2026-11-24 21:26:57
+=== 081e route W12: start epoch 1795535817; estimate ~39 h, P^7 bracket 49 h (176400 s)
+=== GATE e_route_W12 2026-11-24 21:26:57: free 77% (>= 50), other jobs of mine: none, fleet 7 (quantum 7 + mine 0) + 1 <= 10-2 -> LAUNCH (pgate next)
+=== e_route_W12 start 2026-11-24 21:26:57
+=== DISK GUARD hot-swapped (PID-scoped; pauses old watchdogs [5393 59770
+61246] + jobs at < 5.5 GB, resumes > 6, CRITICAL < 2, never kills) 2026-11-25 19:25:04
+=== DISK GUARD restarted with exact watchdog PIDs [5393 61246] (the referee's zsh wrapper 59770 excluded) 2026-11-25 19:25:24
+=== RESUME after the 06:52 power cut 2026-11-26 08:50:04: runner PID 3043
+=== checkpoint sha256 verified (8359d46798d0062055abc7ac1d3fe574427b9b8b80ab08bc960bbbc1fd5e3af4)
+=== GATE e_route_W12_r2 2026-11-26 08:50:04: free 85% -> LAUNCH (pgate next)
+=== e_route_W12_r2 start 2026-11-26 08:50:04

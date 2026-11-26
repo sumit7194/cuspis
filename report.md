@@ -12671,3 +12671,20 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **EXP-093 G_b(8) item (run now; GEOM-only):** GEOM W2P8 took 87 s, 0.29 GB, with T_sad two-route agreement 8e-16 relative. Grader `exp093_gb8.py`: KA bitwise for G_b(4) and G_b(6) against exp089_wall.json.
   - **G_b(8) = 1.0215** (Y_A 2.6993, Y_bulk 3.7207, κ₈ 0.030775). **PASS** (sealed 0.97 ± 0.06; inside ±1σ, near the upper edge).
   - The G_b drop 6 → 8 is 0.404 ≥ 0.285, so f(6 → 8) will not be INCONCLUSIVE. ρ_A(8) and f wait for the W2P8 route.
+
+### Power cut 2026-11-26 ~06:52 (Mac lost power; restarted 08:45): inventory, integrity, resume [model: Opus 5.5]
+- **Running at 06:52 (mine):** only the 081e **W12 route** (run_k3, since 11-24 21:27; 33 h in), plus guards and two WAITING runners (run_087w12, run_093_094; no compute). Everything else of mine had finished (EXP-089/090/091/092/093-G_b(8)).
+- **Integrity of the W12 checkpoint** (`sigma_W12_P12_box12_c2_cp12_sc3.0_dd0_ckpt.json`, last write 06:34:09):
+  - The route writes atomically (tmp + `os.replace`), and no `.tmp` is left.
+  - The JSON parses completely: **47/48 g nodes + t0 + tsad + ranks + 50 stats**, all finite floats. It matches the log's 47 "done" lines.
+  - Missing: the last node s = 5.9723 (in progress since 06:34) and the post-route checks (n1c arms, etc.).
+  - sha256 8359d467…3af4 is pinned.
+- **Lost:** node 48's first ~18 min plus the reinstall on resume (~14 min). About **0.5–0.6 core-h**. No result is lost.
+- **Repo:** HEAD = origin/main = 80da087; `git fsck` clean. The only working-tree changes are the two pre-existing modified files (exp081_run.py, run_queue_nokill.txt; not touched by this work).
+- **Resume (Bridge rule: verified checkpoint, so relaunch in the old slot):** `run_k3_resume.sh`.
+  - It verifies the checksum first (wrong-sha plant STOPs; tested in scratch). The command and env are the same (CUSPIS_081E=1).
+  - New log names `e_route_W12_r2.*`, so the 33-h logs are kept.
+  - Afterwards: the stale-file guard (+ 48 nodes, n1c), then C1 W12, as registered.
+  - Launched 08:50 (runner 3043). Guards relaunched: freepct_guard 3051 (spawned by the runner), peak_hold 3107 (10 GB stop-and-ask, root 3043), hold_resume 3108. The old disk_guard is not needed (the new watchdog has built-in disk pause).
+  - Waiting runners re-armed: run_087w12 3109 and run_093_094 3110. They start nothing until the chain completes.
+- **Remaining (argued, not projected with a bracket):** node 48 (~50 min) + install (~14 min) + the route's checks (5 unrefined arms at ~0.6–0.8 h each, plus t0 unrefined at ~2.6 h). So the route ends roughly 15:00–18:00, then C1 W12.
