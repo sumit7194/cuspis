@@ -12794,4 +12794,3 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - They are neither run nor VOID. They wait for the W6P12 route.
   - Nothing at k = 3 beyond the W12 t0 numbers was opened: X_Λ(W12P12) and Y_A(3) beyond the known 11.115 were not read.
 - **Gradeable now and graded:** only the Δt0 sub-seal (above).
-\n
