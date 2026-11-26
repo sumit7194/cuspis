@@ -6,3 +6,9 @@
 # exit 0; wall 105 s; PEAK tree MEM 3.029 GB + CMPRS 0.000 GB = 3.029 GB
 === EXP-084 k2.5 + reading rc 0
 === exp085 start 17:24:42
+# pgate: attempt 1 at 17:29:12 (pressure normal >= 300 s)
+# exit 1; wall 5 s; PEAK tree MEM 0.084 GB + CMPRS 0.000 GB = 0.084 GB
+=== exp085 end 17:29:18 rc 1
+# exit 1; wall 5 s; PEAK tree MEM 0.084 GB + CMPRS 0.000 GB = 0.084 GB
+=== EXP-085 rc 1
+=== e_bw_W10 start 17:29:18

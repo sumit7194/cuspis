@@ -16,3 +16,9 @@
 === checkpoint sha256 verified (8359d46798d0062055abc7ac1d3fe574427b9b8b80ab08bc960bbbc1fd5e3af4)
 === GATE e_route_W12_r2 2026-11-26 08:50:04: free 85% -> LAUNCH (pgate next)
 === e_route_W12_r2 start 2026-11-26 08:50:04
+=== e_route_W12_r2 rc 0 peak 9.226 GB 2026-11-26 13:33:22
+=== stale-file guard PASS (resume): exp081d_results/sigma_W12_P12_box12_c2_cp12_sc3.0_dd0_ckpt.json
+=== GATE e_c1_W12 2026-11-26 13:33:23: free 86% -> LAUNCH (pgate next)
+=== e_c1_W12 start 2026-11-26 13:33:23
+=== e_c1_W12 rc 0 peak 0.800 GB 2026-11-26 16:07:14
+=== k = 3 window complete 2026-11-26 16:07:14 (W6 rerun stays on HOLD)

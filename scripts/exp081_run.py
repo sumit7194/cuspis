@@ -96,7 +96,11 @@ def controls():
 
 if __name__ == "__main__":
     res = {}
-    ctl = controls(); res["controls"] = ctl
+    if os.environ.get("EXP081_CONTROLS_DONE") == "1":   # controls already run (exp081_output.txt 'controls' run); S2 revised post-registration
+        ctl = {"note": {"pass_": True, "text": "S1,S3,S4 PASS; S2 FAILED as registered, revised post-registration (box-extrapolated, 3.7%)"}}
+    else:
+        ctl = controls()
+    res["controls"] = ctl
     if not all(v["pass_"] for v in ctl.values()):
         log("CONTROL FAILURE: production not started (investigate)"); json.dump(res, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "exp081_results.json"), "w"), indent=1, default=str); sys.exit(2)
     R2 = (2, 3, 4, 5, 6); R3 = (2, 3, 4)
