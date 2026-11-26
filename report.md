@@ -12776,3 +12776,22 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - fix TREE in watchdog.py for new launches;
   - check the live W2P10 and Mac-mini W12P12 holds, which read TREE.
 
+### EXP-087 W12P12 t0 RESULT + EXP-090 k = 3 gate check (2026-11-26 23:10) [model: Opus 5.5]
+- **Run:** `exp087_t0.py 12 12` rc 0 (23:10:12), `exp081d_results/exp087_t0_W12P12.json`.
+  - It was paused 20:09:43-20:54:25 for Sumit's office work (2682 s, 0 re-pauses).
+  - The printed ON time of 13556 s is therefore 10874 s of compute (OFF: 10622 s).
+- **KA OFF (K2):** −486.13745125469546 against the stored −486.137451254695. Rel 9.4e-16, PASS.
+- **Δt0(W12P12) = t0(ON) − t0(OFF) = +0.063941.**
+  - Fable's S-3 sub-seal +0.0575 ± 0.03, band [0.0275, 0.0875]: **PASS**.
+  - The TODO prediction (code − true −0.0575): off by +11.2 %. Compare W8P8 2.7 % and W10P10 2e-5.
+  - Grade: partially verified (KA bitwise; there is no truth referee at W12P12).
+- **EXP-090 k = 3 gates (§5):**
+  1. The W12 route ended rc 0 with the stale-file guard PASS: PASS.
+  2. C1 W12 rc 0, 1 PASS, 0 FAIL: PASS.
+  3. `exp087_t0_W12P12.json` exists with KA OFF PASS: PASS.
+  4. 081e F.3 W6 reuse "as recorded": the reuse was FORFEITED (report.md, the 2026-11-23 incident). The W6P12 route checkpoint holds 2 keys and no t0, tsad or g nodes (key list only, no values read). The W6P12 rerun is on HOLD (Sumit's decision).
+- **So the k = 3 readings that need W₁ = 6 are NOT computable:** R(3) and R^c(3), (R2) row 2, (R4) 081e PRIMARY, the (R5) pair 2 → 3, S-1, S-2 and S-3 main values, and the E(W6P12) sub-seals.
+  - They are neither run nor VOID. They wait for the W6P12 route.
+  - Nothing at k = 3 beyond the W12 t0 numbers was opened: X_Λ(W12P12) and Y_A(3) beyond the known 11.115 were not read.
+- **Gradeable now and graded:** only the Δt0 sub-seal (above).
+\n

@@ -700,7 +700,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
   2. wait until keeper 11269 is gone (≤ 10 s; it logs "release file seen");
   3. verify 31961 (kill -0, argv exp087_t0.py 12 12 -486.137451254695), then kill -CONT 31961;
   4. log a RESUME-OFFICE line in run_087w12.txt and tell the Bridge.
-- [ ] When ON prints: report the ON time minus 2682 s.
+- [x] ON printed 23:10: −486.073510728264 (13556 s printed = 10874 s compute). Δt0 = +0.063941; S-3 sub-seal PASS; the TODO prediction is off by +11.2 % (report.md).
+- [ ] EXP-090 k = 3 is BLOCKED by gate 4. The W6P12 route checkpoint has no t0, tsad or g; W6 reuse was forfeited; the W6P12 rerun is on HOLD (Sumit). R(3), (R2) row 2, (R4), the (R5) 2 → 3 pair, S-1/S-2/S-3 and the E sub-seals wait for that route. Do not open X_Λ(W12P12) before then.
 - Note: the printed ON time "(…s)" and the watchdog's wall time will include the pause. Report the time minus the pause.
 
 ## EXP-095 (registered 83566e3, SEALED-READ) — running since 2026-11-26 17:26
