@@ -1,7 +1,11 @@
 """Run a command under a whole-process-tree watchdog (macOS).
 
 Samples every --interval seconds:
-- tree footprint = sum of top's MEM + CMPRS over the child and all its descendants;
+- tree footprint = sum of top's MEM over the child and all its descendants. MEM is the kernel phys_footprint, which ALREADY INCLUDES
+  compressed memory; CMPRS is logged for information only (it is a part of MEM). FIX 2026-11-26 (Bridge, EXP-095): before this date
+  TREE_GB was MEM + CMPRS, which counts compressed pages twice. HISTORICAL TREE_GB values (logs, holds, declared peaks) are therefore
+  overstated by the compressed part (~40-60 % on the 8 GB Air); the MEM_GB column of old logs is the true footprint. Evidence:
+  exp081d_results/exp095_memtest_footprint.txt; test: tools/test_watchdog_tree.py;
 - free disk on the output volume;
 - free swap (sysctl vm.swapusage).
 
@@ -45,6 +49,10 @@ def tree_footprint(pids):
         if len(p) >= 3 and p[0].isdigit() and int(p[0]) in pids:
             mem += parse_size(p[1]); cmp += parse_size(p[2]); seen += 1
     return mem, cmp, seen
+
+def tree_total(mem, cmp):
+    """True tree footprint in bytes: top's MEM (= phys_footprint, compressed pages included). CMPRS is NOT added (fix 2026-11-26)."""
+    return mem
 
 def sys_free_pct():
     s = subprocess.run(["memory_pressure"], capture_output=True, text=True).stdout
@@ -100,7 +108,7 @@ def main():
               f"# memory trigger: system free < {a.min_sysfree_pct}%, or free swap < {a.min_swap_mb} MB together with system free < 20%\n"
               f"# disk mode: {'NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored'}; caller pid {os.getppid()}\n"
               f"# pressure trigger: {('stop at level >= %d (%s)' % (PL, {2: 'yellow', 4: 'red'}[PL])) if PL else 'off'}\n"
-              f"# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level\n")
+              f"# TREE_GB = MEM_GB (phys_footprint; CMPRS_GB is part of it; fixed 2026-11-26, older logs: TREE = MEM + CMPRS, a double count)\n# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level\n")
     peak = (0.0, 0.0, 0.0); t0 = time.time(); reason = None; warned = -1.0
     while child.poll() is None:
         pids = descendants(child.pid); mem, cmp, seen = tree_footprint(pids)
@@ -109,7 +117,7 @@ def main():
         if fkd and os.path.exists(fkd):
             try: disk = float(open(fkd).read().split()[-1])
             except Exception: pass
-        swp = swap_free_mb(); sfp = sys_free_pct(); lvl = pressure_level(); tot = (mem + cmp)/1024**3
+        swp = swap_free_mb(); sfp = sys_free_pct(); lvl = pressure_level(); tot = tree_total(mem, cmp)/1024**3
         if tot > peak[2]: peak = (mem/1024**3, cmp/1024**3, tot)
         log.write(f"{time.time()-t0:8.1f} {seen:5d} {mem/1024**3:7.3f} {cmp/1024**3:8.3f} {tot:7.3f} {disk:12.2f} {swp:12.1f} {sfp:12.0f} {lvl:14d}\n")
         if a.soft_cap_gb is not None and tot > a.soft_cap_gb and tot > warned + 0.5:
@@ -161,7 +169,7 @@ def main():
             else: _pt[0] = None; _pl[0] = False
         time.sleep(a.interval)
     rc = child.wait()
-    summary = (f"# exit {rc}; wall {time.time()-t0:.0f} s; PEAK tree MEM {peak[0]:.3f} GB + CMPRS {peak[1]:.3f} GB = {peak[2]:.3f} GB"
+    summary = (f"# exit {rc}; wall {time.time()-t0:.0f} s; PEAK tree footprint {peak[2]:.3f} GB (MEM = phys_footprint; CMPRS {peak[1]:.3f} GB of it compressed)"
                + (f"; KILLED: {reason}" if reason else ""))
     log.write(summary + "\n"); print(summary)
     sys.exit(rc if not reason else 99)

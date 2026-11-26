@@ -1,0 +1,10 @@
+[PASS] arm1 parse: MEM 405 MB, CMPRS 295 MB, seen 1
+[PASS] arm1 new TREE == phys_footprint: tree_total 405 MB vs phys_footprint 405 MB
+[PASS] arm1 must-fire: old MEM+CMPRS is rejected: old formula 700 MB (+73 %)
+[PASS] arm2 live running: tree_total == phys_footprint: tree_total 806 MB, phys_footprint 806 MB, CMPRS 0 MB
+[PASS] arm2 live compressed: tree_total == phys_footprint: tree_total 806 MB, phys_footprint 806 MB, CMPRS 612 MB
+[PASS] arm2 live compressed must-fire: old formula off > 10 %: old 1418 MB (+76 %)
+RESULT: all exercised arms PASS
+
+# Negative control (2026-11-26): with tree_total reverted IN MEMORY to MEM + CMPRS, arm 1 FAILS (700 MB vs 405 MB) and the run exits 1:
+# the test can fail.
