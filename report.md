@@ -12754,3 +12754,25 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Fable's reading lines (f ≈ 0 / f ≥ 0.4) are not met; both are reported, not graded.
   - Grade: **verified** that the three registered numbers PASS their bands (controls bitwise). **Unverified:** any wall-free extrapolation from two f values.
 - **Next steps:** report to the Bridge. The k = 3 blind read waits for the W12P12 t0 (running since 16:12, Mac mini).
+
+### EXP-095 run note: the W4P10 hold, a memory-accounting bug in watchdog.py, the memory model (2026-11-26 ~22:10) [model: Opus 5.5]
+- **Goal:** explain the W4P10 3 GB hold (21:48) and predict both P = 10 peaks before W4P10 resumes (Bridge).
+- **Hypothesis:** W4P10's memory is well above W2P10 and the same-lattice references.
+- **Method:**
+  - compare the watchdog columns with the kernel's own phys_footprint (macOS `footprint`);
+  - a controlled 400 MB compression test on the Air;
+  - phase maxima from the old Mac W5P10b10 / W10P10b10 route logs.
+- **Results:**
+  - The hypothesis is wrong. The watchdog's TREE = MEM + CMPRS counts compressed memory twice: top's MEM already includes it.
+    This is verified, `scripts/exp081d_results/exp095_memtest_footprint.txt`.
+  - W4P10's true footprint at the hold was 1.896 GB; its kernel peak is 2.126 GB.
+  - The declared 1.52 GB was still missed by +40 % (true units). It came from W2P10's first hour instead of the same-lattice full runs.
+  - Prediction for both runs: true peak ≤ 2.45 GB (central 2.25).
+  - Details, the phase table and the W2P10 hold risk: `notes/EXP-095_run_notes.md`.
+- **Analysis:** every TREE number since the watchdog began is overstated by the compressed part (~40-60 % on the Air). Pause-only holds
+  fire early (safe), but recorded peaks and declarations in TREE units are inflated. No physics number is affected.
+- **Next steps (Bridge's call):**
+  - set holds on the MEM column;
+  - fix TREE in watchdog.py for new launches;
+  - check the live W2P10 and Mac-mini W12P12 holds, which read TREE.
+

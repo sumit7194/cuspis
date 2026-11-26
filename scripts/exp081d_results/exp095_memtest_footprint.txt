@@ -1,0 +1,18 @@
+# EXP-095 memory accounting check (2026-11-26 ~21:57-22:05, the Air, by Cuspis-personal) [model: Opus 5.5]
+# Question: does top's MEM column already include compressed memory? watchdog.py logs TREE = MEM + CMPRS.
+# (1) Two live route processes: top MEM vs the kernel phys_footprint (macOS `footprint -p`):
+33463 (W4P10 095b, SIGSTOPped by the hold): top MEM 1391M CMPRS 1389M | footprint: phys_footprint 1391 MB, phys_footprint_peak 2126 MB
+27787 (W2P10 main, running):                top MEM 1746M CMPRS  773M | footprint: phys_footprint 1746 MB, phys_footprint_peak 1953 MB
+# (2) Controlled test: a 400 MB dirty, compressible bytearray in a fresh python (fleet-air venv), SIGSTOPped, then sampled every 15 s:
+running: 60450  405M 4080K   phys_footprint: 405 MB
+stopped +15s: 60450  405M 4048K | phys_footprint: 405 MB
+stopped +30s: 60450  405M 4048K | phys_footprint: 405 MB
+stopped +45s: 60450  405M 4048K | phys_footprint: 405 MB
+stopped +60s: 60450  405M 81M   | phys_footprint: 405 MB
+stopped +75s: 60450  405M 106M  | phys_footprint: 405 MB
+stopped +90s: 60450  405M 128M  | phys_footprint: 405 MB
+stopped +105s: 60450  405M 289M  | phys_footprint: 405 MB
+stopped +120s: 60450  405M 295M  | phys_footprint: 405 MB
+(test process ended by its own PID afterwards)
+# Verdict (verified): as pages are compressed (CMPRS 4 MB -> 295 MB), MEM stays at 405 MB = phys_footprint. MEM INCLUDES compressed memory,
+# so TREE = MEM + CMPRS counts compressed pages twice (here it would read 0.70 GB for a 0.405 GB process). The true footprint is the MEM column.
