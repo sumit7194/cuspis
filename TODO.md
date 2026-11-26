@@ -692,6 +692,16 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - Fable §2c argues A because "the n = 1 box stays massless" (zero-row-sum self-energy). That is ARGUED, not shown, and it carries the whole A-vs-bulk choice for n → 1 AND n = 2 (EXP-086b's 0.982 rests on it).
 - Needs its own argument or test. Do not let it disappear under "Q2 follows".
 
+## W12P12 t0 (EXP-087/090 k = 3 input): PAUSED for Sumit's office work (Bridge, 2026-11-26 20:09:43)
+- [ ] KA OFF done before the pause: −486.137451254695 against the stored −486.137451254695, diff −4.5e-13, PASS (10622 s). The ON step was ~50 min in when paused.
+- [ ] PID 31961 SIGSTOPped by tools/pause_keeper.sh (keeper PID 11269, f21baa9). The keeper re-pauses 31961 if any guard resumes it (freepct_guard 31492, or the watchdog 31955 after its own red or disk pause). Every re-pause logs a RE-PAUSE line in exp081d_results/run_087w12.txt.
+- [ ] RESUME ONLY when the Bridge relays Sumit's word that office work is done:
+  1. touch scripts/exp081d_results/run_087w12.office_release;
+  2. wait until keeper 11269 is gone (≤ 10 s; it logs "release file seen");
+  3. verify 31961 (kill -0, argv exp087_t0.py 12 12 -486.137451254695), then kill -CONT 31961;
+  4. log a RESUME-OFFICE line in run_087w12.txt and tell the Bridge.
+- Note: the printed ON time "(…s)" and the watchdog's wall time will include the pause. Report the time minus the pause.
+
 ## EXP-095 (registered 83566e3, SEALED-READ) — running since 2026-11-26 17:26
 - [ ] W2P10 route on the Air (~23 h), then W4P10 (~30 h), serial. Report the measured peak to the Bridge after the first hour.
 - [ ] GEOM W2P10 / W4P10 on the Mac mini (run_095_geom.sh).
