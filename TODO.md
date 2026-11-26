@@ -702,6 +702,11 @@ Everything is committed and pushed. Nothing is running. Where things stand:
   4. log a RESUME-OFFICE line in run_087w12.txt and tell the Bridge.
 - [x] ON printed 23:10: −486.073510728264 (13556 s printed = 10874 s compute). Δt0 = +0.063941; S-3 sub-seal PASS; the TODO prediction is off by +11.2 % (report.md).
 - [ ] EXP-090 k = 3 is BLOCKED by gate 4. The W6P12 route checkpoint has no t0, tsad or g; W6 reuse was forfeited; the W6P12 rerun is on HOLD (Sumit). R(3), (R2) row 2, (R4), the (R5) 2 → 3 pair, S-1/S-2/S-3 and the E sub-seals wait for that route. Do not open X_Λ(W12P12) before then.
+  - Bridge 23:2x: the W6P12 route is Sumit's decision (put to him as ~38 h on the Mac mini and ~5.3 GB true, both estimates). LAUNCH NOTHING until the Bridge relays his answer.
+  - If yes, send a launch note FIRST with:
+    - a true-unit memory prediction, and the hold at prediction + 25 % on COL=3;
+    - the gates: ≥ 50 % free at launch; one job; an inform-only watchdog with the fixed TREE; PAUSE below 30 % free;
+    - a checkpoint plan that survives a power cut.
 - Note: the printed ON time "(…s)" and the watchdog's wall time will include the pause. Report the time minus the pause.
 
 ## EXP-095 (registered 83566e3, SEALED-READ) — running since 2026-11-26 17:26
