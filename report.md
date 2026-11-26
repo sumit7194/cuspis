@@ -12688,3 +12688,11 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Launched 08:50 (runner 3043). Guards relaunched: freepct_guard 3051 (spawned by the runner), peak_hold 3107 (10 GB stop-and-ask, root 3043), hold_resume 3108. The old disk_guard is not needed (the new watchdog has built-in disk pause).
   - Waiting runners re-armed: run_087w12 3109 and run_093_094 3110. They start nothing until the chain completes.
 - **Remaining (argued, not projected with a bracket):** node 48 (~50 min) + install (~14 min) + the route's checks (5 unrefined arms at ~0.6–0.8 h each, plus t0 unrefined at ~2.6 h). So the route ends roughly 15:00–18:00, then C1 W12.
+
+### EXP-094 registration slip found before any run (2026-11-26 ~09:15) [model: Opus 5.5]
+- As registered (f874dac), P-2's `exp084c_run.py 2 6 2` / `4 6 2` would have CRASHED. Its `honest(n=2)` reads EXP-084's stored `exp084/Q_W{W}P{P}b{P}.json`, which exists only for the 081d geometries (no W2P6/W4P6).
+  - run_093_094 would have stopped at rc != 0, so no wrong number could have come out. The registration still named a path that could not run.
+- The honest Q₂ itself is cheap: EXP-084's phase-1 code took 3.4 s at W3P6. The ~1.5 h of each 084c run is the route-(ii) cross-check, which is not part of P-2's number.
+- Amendment proposed to the Bridge, not yet committed: honest Q₂ from EXP-084's phase-1 code verbatim, σ₂ from H.Geom.saddle(2), with EXP-084's two-path control. The 084c Level 1 becomes optional.
+- With it, the Air proposal for P-1 (the W2P8 route) went out: identity first (W2P6 route against the stored checkpoint, ≤ 1e-10), no checkpoints transferred, staging pull-back. Waiting for the Bridge's confirm.
+- **Lesson (L8 candidate):** a registration that names a script must be dry-run for its input files at the new geometry (a seconds-long check) before it is committed.
