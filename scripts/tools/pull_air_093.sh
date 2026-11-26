@@ -5,10 +5,11 @@
 # (exp081d_results/air_pull/<NAME>). On any failure: log 'PULL FAIL ...' and keep the last good copy. READ-ONLY on the Air:
 # it never writes, moves or deletes anything there. Report-only: never signals any process. No caps.
 # Ends after one final pull once the Air log shows the W2P8 route done or a STOP (or air_run_093.done exists).
-# Test hooks: NAME (checkpoint file name), INTERVAL, ONCE=1 (one round then exit), LOG, PDIR (local pull directory).
+# RUN (Air runner log base name, default air_run_093), ENDRX (end regex). Test hooks: NAME (checkpoint file name), INTERVAL, ONCE=1 (one round then exit), LOG, PDIR (local pull directory).
 setopt PIPE_FAIL
 cd "$(dirname "$0")/.."; D=exp081d_results; P=${PDIR:-$D/air_pull}; mkdir -p $P/staging
 NAME=${NAME:-sigma_W2_P8_box8_c2_cp12_sc3.0_dd0_ckpt.json}; INTERVAL=${INTERVAL:-1800}; L=${LOG:-$D/air_pull_093.txt}
+RUN=${RUN:-air_run_093}; ENDRX=${ENDRX:-W2P8 route done|=== STOP}
 R=GitHub/fleet-air/corner_function/scripts/exp081d_results; SSH=(ssh -o BatchMode=yes -o ConnectTimeout=15 air)
 PY=../.venv/bin/python
 nodes() { $PY -I -c "import json,sys; j=json.load(open(sys.argv[1])); print(sum(1 for k in j if k.startswith('g|')))" "$1" 2>/dev/null; }
@@ -27,7 +28,7 @@ round() {
 echo "=== pull_air_093 start $(date '+%F %T') PID $$ NAME $NAME INTERVAL $INTERVAL" >> $L
 while true; do round
   [ "$ONCE" = 1 ] && exit 0
-  fin=$($SSH "grep -c -E 'W2P8 route done|=== STOP' $R/air_run_093.txt 2>/dev/null; ls $R/air_run_093.done 2>/dev/null | wc -l" | tr '\n' ' ')
+  fin=$($SSH "grep -c -E '$ENDRX' $R/$RUN.txt 2>/dev/null; ls $R/$RUN.done 2>/dev/null | wc -l" | tr '\n' ' ')
   nd=$(echo "$fin" | awk '{print $1 + $2}')
   if [ "${nd:-0}" -gt 0 ]; then round; echo "=== pull_air_093 end $(date '+%F %T'): Air run finished or stopped; final pull done" >> $L; exit 0; fi
   sleep $INTERVAL; done
