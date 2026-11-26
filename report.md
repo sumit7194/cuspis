@@ -12696,3 +12696,29 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - Amendment proposed to the Bridge, not yet committed: honest Q₂ from EXP-084's phase-1 code verbatim, σ₂ from H.Geom.saddle(2), with EXP-084's two-path control. The 084c Level 1 becomes optional.
 - With it, the Air proposal for P-1 (the W2P8 route) went out: identity first (W2P6 route against the stored checkpoint, ≤ 1e-10), no checkpoints transferred, staging pull-back. Waiting for the Bridge's confirm.
 - **Lesson (L8 candidate):** a registration that names a script must be dry-run for its input files at the new geometry (a seconds-long check) before it is committed.
+
+### EXP-094 (P-2) RESULT (registered f874dac + amendment 1 e8a1c06; script 2e09f16; `exp081d_results/e94_run.out`, `exp094_result.json`): **INCONCLUSIVE by the registered drop rule, missed by 1.1%** [model: Opus 5.5]
+- **Run:** 12 s, 0.33 GB.
+- **Controls, all PASS before any P = 6 number:**
+  - (i) the phase-1 wrapper reproduces stored Q_W2P4b4 and Q_W4P4b4 QA bitwise;
+  - (iv) saddle(2) sum at W2P4 equals the stored 084c σ₂ sum (−0.706048449);
+  - (iii) R₂(4) = 0.682587 (= 084 R₂(1)), and ΔR₂^A(4), ΔR₂^bulk(4) are bitwise equal to exp086b;
+  - (ii) two-path |QA − QB|/|QA| is 0 (W2P6) and 1.2e-12 (W4P6).
+  - New files: exp084/Q_W2P6b6.json and Q_W4P6b6.json (EXP-084 format), exp094_sigma2_W{2,4}P6.json.
+
+| | P = 4 | P = 6 |
+|---|---|---|
+| R₂ (honest) | 0.68259 | 1.35581 |
+| ΔR₂^A | −0.56444 | −1.33477 |
+| ΔR₂^bulk (hi c) | −1.57290 | −2.14375 |
+| ρ₂A = R₂ + ΔR₂^A | 0.11815 | 0.02103 |
+| G₂b = ΔR₂^A − ΔR₂^bulk | 1.00846 | 0.80898 |
+
+- **G₂b drop 0.19948 < 0.2·G₂b(4) = 0.20169, so the registered reading is INCONCLUSIVE.** The threshold was my scaling rule (amendment-free, from f874dac), and the result sits 1.1% below it.
+  - A threshold that lands on the result is fragile. Both statements are reported, and **neither is a grade.**
+- **Descriptive (NOT graded):** f₂ = −(ρ₂A(6) − ρ₂A(4))/drop = **+0.487**.
+  - That is outside Fable's sealed 0.05 ± 0.15 (and its ±2σ [−0.25, 0.35]), and above its "≈ 0.21 = a box property" alternative.
+  - The denominator is small (0.199), so f₂ is poorly conditioned: an error of 0.01 in ρ₂A moves f₂ by 0.05.
+  - ρ₂bulk goes −0.890 → −0.788.
+  - **Reading in words (descriptive):** at n = 2 the A-corrected value falls 0.12 → 0.02 as the walls recede, while the A-bulk gap shrinks only ~20%. A moves by about half the gap change, so it is not clearly closer to the wall-free value than at n = 1 (f = 0.21).
+- **Side note:** numpy/Accelerate emits divide/overflow/invalid RuntimeWarnings on EVERY slogdet call, including at P = 4, where the outputs reproduce the stored values bitwise and every logdet is finite. It is pre-existing floating-point-flag noise, not a defect (checked; this is the first run whose stderr was seen).

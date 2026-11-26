@@ -1,0 +1,18 @@
+/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py:2349: RuntimeWarning: divide by zero encountered in slogdet
+  sign, logdet = _umath_linalg.slogdet(a, signature=signature)
+/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py:2349: RuntimeWarning: overflow encountered in slogdet
+  sign, logdet = _umath_linalg.slogdet(a, signature=signature)
+/opt/homebrew/lib/python3.14/site-packages/numpy/linalg/_linalg.py:2349: RuntimeWarning: invalid value encountered in slogdet
+  sign, logdet = _umath_linalg.slogdet(a, signature=signature)
+(i) phase-1 wrapper reproduces stored Q_W2P4b4 QA (n = 2, 3) bitwise   PASS  np.float64(1.3196398603859052)
+(iv) saddle(2) sum at W2P4 == stored 084c sigma_2 sum (1e-6)           PASS  -0.706048449 vs -0.706048449
+(i) phase-1 wrapper reproduces stored Q_W4P4b4 QA (n = 2, 3) bitwise   PASS  np.float64(1.4160759328506174)
+(iii) R2(P = 4) = 0.6826 (4 dp) and == 084 R2(1) within 1.5e-5         PASS  0.682587 vs 084 0.682587
+(iii) dR2^A(4), dR2^bulk(4) == exp086b_result.json bitwise             PASS  np.float64(-0.5644392004106492) / np.float64(-1.5729028584150315)
+(ii) two-path |QA - QB| / |QA| <= 1e-9 at W2P6 (n = 2)                 PASS  0.0e+00  (4.0 s)
+(ii) two-path |QA - QB| / |QA| <= 1e-9 at W4P6 (n = 2)                 PASS  1.2e-12  (3.2 s)
+
+P = 4: R2 +0.68259  dR2^A -0.56444  dR2^bulk -1.57290  rho2A +0.11815  G2b +1.00846
+P = 6: R2 +1.35581  dR2^A -1.33477  dR2^bulk -2.14375  rho2A +0.02103  G2b +0.80898   (norm6 6.189280)
+G2b drop +0.19948 (INCONCLUSIVE if < 0.2*G2b(4) = 0.20169);  f2 = +0.4868
+EXP-094 (P-2) READING: INCONCLUSIVE (G2b drop < 0.2 G2b(4));  descriptive rho2bulk(4) -0.89032 -> (6) -0.78795

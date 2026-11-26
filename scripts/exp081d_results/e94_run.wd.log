@@ -1,0 +1,9 @@
+# cmd: ../.venv/bin/python -I -u exp094_run.py
+# caps: tree <= 5.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# disk mode: NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored; caller pid 38766
+# pressure trigger: off
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.040    0.000   0.040        10.41          0.0           61              1
+     6.6     1   0.325    0.000   0.325        10.41          0.0           61              1
+# exit 0; wall 12 s; PEAK tree MEM 0.325 GB + CMPRS 0.000 GB = 0.325 GB
