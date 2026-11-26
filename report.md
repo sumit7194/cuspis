@@ -12722,3 +12722,35 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - ρ₂bulk goes −0.890 → −0.788.
   - **Reading in words (descriptive):** at n = 2 the A-corrected value falls 0.12 → 0.02 as the walls recede, while the A-bulk gap shrinks only ~20%. A moves by about half the gap change, so it is not clearly closer to the wall-free value than at n = 1 (f = 0.21).
 - **Side note:** numpy/Accelerate emits divide/overflow/invalid RuntimeWarnings on EVERY slogdet call, including at P = 4, where the outputs reproduce the stored values bitwise and every logdet is finite. It is pre-existing floating-point-flag noise, not a defect (checked; this is the first run whose stderr was seen).
+
+## EXP-093 (P-1) RESULT — second wall step P = 6 → 8, strips (2, 4) (2026-11-26 ~17:25) [model: Opus 5.5]
+- **Goal:** grade Fable's sealed P-1 predictions (8a9e4b8 §5; registered f874dac, amendment 1 e8a1c06).
+- **Hypothesis (Fable, sealed, not blind to P = 4/6):** G_b(8) = 0.97 ± 0.06; ρ_A(8) = −0.05 ± 0.04; f(6 → 8) = 0.21 ± 0.08.
+- **Method:** fresh 081d route W2P8 on the MacBook Air (identity W2P6 passed, 7f3731e), 12:26:05 → rc 0 at 17:00:10. Final checkpoint pulled at 17:16:38 (sha 0c699f3de53b both ends, 48/48 nodes). Graded by `scripts/exp093_p1.py` (c15c75e): `row(P)` is exp089_wall.row verbatim.
+- **Controls (all PASS, hard stop before grading):**
+  - row(4) and row(6) reproduce exp089_wall.json bitwise;
+  - G_b(8) reproduces exp093_gb8.json bitwise;
+  - the W2P8 checkpoint has n1c and 48 nodes;
+  - the Air route's B2b, t0 refined-vs-unrefined (|dt0| 1.3e-8) and residue (1.1e-9) gates PASS, with no FAIL/STOP lines;
+  - all 51 unconverged counts are 0;
+  - the runner returned rc 0;
+  - stale-file guard: the checkpoint's mtime on the Air (17:00:05) is later than the route start (12:26:05).
+  - **Must-fire test of the guard:** a planted mtime of 10:00:00 → FAIL → STOP, and no json was written.
+- **Results (output: scripts/exp081d_results/exp093_p1_output.txt, exp093_p1.json):**
+
+| item | measured | sealed | ±1σ | ±2σ |
+|---|---|---|---|---|
+| G_b(8) | 1.0215 | 0.97 ± 0.06 | PASS | inside |
+| ρ_A(8) | −0.0463 | −0.05 ± 0.04 | PASS | inside |
+| f(6 → 8) | +0.2314 | 0.21 ± 0.08 | PASS | inside |
+
+  - P = 8: R 2.652946, Y_A 2.699252, Y_bulk 3.720730; κ₈ 0.030774837.
+  - G_b(6) − G_b(8) = 0.4041 ≥ 0.285, so f is not INCONCLUSIVE.
+- **Analysis:**
+  - All three sealed items PASS. The predictions were not blind to P = 4/6, only to P = 8.
+  - ρ_A goes +0.2735 (P = 4) → +0.0472 (P = 6) → −0.0463 (P = 8): A's residual changes sign between P = 6 and 8.
+  - f(4 → 6) = +0.212 (EXP-089) and f(6 → 8) = +0.231 agree: about a fifth of the A-bulk gap change shows up in ρ_A at both steps.
+  - This is the pattern Fable's "f ≈ 0.21 is a property of the box" line describes, at n = 1. It is not seen at n = 2 (EXP-094: f₂ = +0.487, descriptive, ill-conditioned).
+  - Fable's reading lines (f ≈ 0 / f ≥ 0.4) are not met; both are reported, not graded.
+  - Grade: **verified** that the three registered numbers PASS their bands (controls bitwise). **Unverified:** any wall-free extrapolation from two f values.
+- **Next steps:** report to the Bridge. The k = 3 blind read waits for the W12P12 t0 (running since 16:12, Mac mini).

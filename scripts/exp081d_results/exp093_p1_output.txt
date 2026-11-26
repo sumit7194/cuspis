@@ -1,0 +1,15 @@
+KA: row(4) reproduces exp089_wall.json bitwise                 PASS  
+KA: row(6) reproduces exp089_wall.json bitwise                 PASS  
+W2P8 (Air pull): n1c present, 48 g nodes                       PASS  nodes 48
+Air route: B2b, t0 refined, residue all PASS                   PASS  
+Air route: no FAIL / STOP / NON-CONVERGED lines                PASS  
+Air route: census, every unconverged count is 0                PASS  51 counts
+Air runner: air_route_W2P8 rc 0                                PASS  
+stale-file guard: Air checkpoint mtime later than route start  PASS  mtime 2026-11-26 17:00:05 start 2026-11-26 12:26:05
+G_b(8) from row(8) equals exp093_gb8.json bitwise              PASS  
+
+P=8: R 2.652946 Y_A 2.699252 Y_bulk 3.720730 rho_A -0.046306 G_b 1.021478 (kappa 0.030774837)
+P=6: rho_A +0.047188 G_b 1.425583;  G_b(6) - G_b(8) = +0.404105 (f INCONCLUSIVE if < 0.285)
+ITEM rho_A(8): sealed -0.05 +- 0.04 -> PASS ([-0.09, -0.01]); +-2 sigma [-0.13, +0.03]: inside
+ITEM f(6->8) = +0.2314: sealed 0.21 +- 0.08 -> PASS ([0.13, 0.29]); +-2 sigma [0.05, 0.37]: inside
+ITEM G_b(8) (graded earlier): 1.0215 -> PASS
