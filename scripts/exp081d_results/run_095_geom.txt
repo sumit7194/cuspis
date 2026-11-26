@@ -1,0 +1,6 @@
+=== run_095_geom start 2026-11-26 17:23:37 PID 46876
+=== e95_G_W2P10 start 2026-11-26 17:23:37
+=== e95_G_W2P10 rc 0; verdict words: PASS 1 FAIL 0; PEAK tree MEM 2.218 GB + CMPRS 0.000 GB = 2.218 GB 2026-11-26 17:33:28
+=== e95_G_W4P10 start 2026-11-26 17:33:28
+=== e95_G_W4P10 rc 0; verdict words: PASS 1 FAIL 0; PEAK tree MEM 0.932 GB + CMPRS 0.460 GB = 1.392 GB 2026-11-26 17:44:54
+=== run_095_geom done 2026-11-26 17:44:54
