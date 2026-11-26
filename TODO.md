@@ -704,7 +704,14 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - Note: the printed ON time "(…s)" and the watchdog's wall time will include the pause. Report the time minus the pause.
 
 ## EXP-095 (registered 83566e3, SEALED-READ) — running since 2026-11-26 17:26
-- [ ] HOLD 2026-11-26 21:48:23: the REAL W4P10 (corner_function_095b) hit its 3 GB peak hold at 3.066 GB (declared 1.52 GB: that estimate is wrong). PIDs 33459/33463 are SIGSTOPped; nothing auto-resumes them. I asked the Bridge: (a) resume now with a new 4 GB hold (my pick), or (b) keep it paused until W2P10 ends. Act only on its word.
+- [ ] HOLD 2026-11-26 21:48:23: the REAL W4P10 (corner_function_095b) hit its 3 GB peak hold at 3.066 GB (declared 1.52 GB: that estimate is wrong). PIDs 33459/33463 are SIGSTOPped; nothing auto-resumes them. Bridge ruled (b): keep it paused until W2P10 ends.
+  - The hold was a TREE double count (b7c87c0, notes/EXP-095_run_notes.md). The true peak is 2.13 GB.
+  - Resume W4P10 alone after W2P10, with a hold at 3.06 GB TRUE (MEM column; needs a COL option in peak_hold.sh).
+- [ ] Awaiting the Bridge on these proposals:
+  - replace W2P10's TREE hold 27442 with a MEM-column hold at 3.06 GB (it will likely fire falsely otherwise);
+  - fix TREE in watchdog.py for new launches;
+  - the Mac W12P12 hold 84913 is also in TREE units.
+- [ ] Grade the prediction at the end of each run: true peak <= 2.45 GB (kernel phys_footprint_peak via `footprint -p`, read before the process exits, or the MEM column max).
 - [ ] W2P10 route on the Air (~23 h), then W4P10 (~30 h), serial. Report the measured peak to the Bridge after the first hour.
 - [ ] GEOM W2P10 / W4P10 on the Mac mini (run_095_geom.sh).
 - [ ] At landing: commit ONLY the sha256 of the 4 outputs to exp081d_results/exp095_sealed_sha256.txt. Do NOT open them, do NOT run exp095_p1.py (it is not written yet; write and commit it without running).
