@@ -697,3 +697,4 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] GEOM W2P10 / W4P10 on the Mac mini (run_095_geom.sh).
 - [ ] At landing: commit ONLY the sha256 of the 4 outputs to exp081d_results/exp095_sealed_sha256.txt. Do NOT open them, do NOT run exp095_p1.py (it is not written yet; write and commit it without running).
 - [ ] Next week: path S (Fable seal, if Sumit OKs) or path D (descriptive). Any accidental view of a P = 10 value is declared at once.
+- [ ] EXP-095: W4P10 runs ALONGSIDE in ~/GitHub/fleet-air/corner_function_095b (since 18:27, Bridge OK). When W2P10 ends, the serial runner's duplicate W4P10 is SIGSTOPped by the pause guard. Then ask the Bridge: leave it paused, or end it by PID. Sealed sha so far: G_W2P10, G_W4P10 (bf15796).
