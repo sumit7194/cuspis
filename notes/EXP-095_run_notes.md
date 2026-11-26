@@ -57,3 +57,20 @@ route_W5P10b10 / route_W10P10b10 (EXP-081d, not blind). Max MEM per phase:
   falsely before W2P10 ends, while its true footprint is ~2.0-2.2 GB.
 - **W2P10 ETA from node counts:** nodes 1/2/3/4 at the pulls of 19:53/20:53/21:23/21:53, so ~30-40 min per node. 44 nodes are left, plus
   the checks, so it ends ~28 Nov 00:00-04:00, not 16:30 on 27 Nov. It may be faster now that W4P10 is paused.
+
+## 2026-11-26 22:05: Bridge ruling changed to RESUME NOW (after it verified the double count on the Air at 22:02)
+
+1. peak_hold.sh got a COL option (83f77ee): 3/MEM = true phys_footprint; 5/TREE kept only for the copies already running.
+   - Decoy-tested.
+   - Installed by atomic rename, here and in both Air folders (sha 212f8c47…). Running holds keep the old inode.
+2. The W2P10 TREE hold 27442 was ENDED by verified PID at 22:05:17; it never fired.
+   - New hold: PID 61231, COL=3, 3.06 GB true, DT 10 s, root 27427 (22:05:19).
+3. W4P10 got a new hold (PID 61271, COL=3, 3.06 GB true, root 32916) at 22:05:33. Then 33463 and 33459 got SIGCONT the same second,
+   PIDs, argv and parents verified; they had been paused since 21:48:23 (~17 min).
+   - Live check that COL=3 is in effect: the hold's first read saw the latest line with TREE 3.066 ≥ 3.06, and it did NOT fire.
+   - The runner's freepct_guard (pause below 25 % free) stays as the Air-wide net.
+4. watchdog.py: TREE = MEM only, for NEW launches (a5ff03a; also on both Air folders, sha cefbd084…).
+   - The test is tools/test_watchdog_tree.py, the 400 MB compression case. Compression was exercised live on the Mac mini: 612 MB
+     compressed, and the old formula read +76 %.
+   - The negative control (old formula) fails.
+- The sealed peak prediction stands as written: central 2.25, ≤ 2.45 GB, graded on the kernel's phys_footprint_peak.

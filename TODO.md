@@ -707,7 +707,9 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] HOLD 2026-11-26 21:48:23: the REAL W4P10 (corner_function_095b) hit its 3 GB peak hold at 3.066 GB (declared 1.52 GB: that estimate is wrong). PIDs 33459/33463 are SIGSTOPped; nothing auto-resumes them. Bridge ruled (b): keep it paused until W2P10 ends.
   - The hold was a TREE double count (b7c87c0, notes/EXP-095_run_notes.md). The true peak is 2.13 GB.
   - Resume W4P10 alone after W2P10, with a hold at 3.06 GB TRUE (MEM column; needs a COL option in peak_hold.sh).
-- [ ] Awaiting the Bridge on these proposals:
+- [x] 22:05 Bridge RESUME NOW: W4P10 resumed; MEM-column holds 61231 (W2P10) and 61271 (W4P10) at 3.06 GB true; watchdog TREE fixed (a5ff03a).
+- [ ] Mac W12P12 t0 hold: proposed 4.72 GB TRUE (predicted 3.78 × 1.25). Switch it ONLY after the Bridge OKs the number; ask about hold_resume 84914.
+- [ ] (old) Awaiting the Bridge on these proposals:
   - replace W2P10's TREE hold 27442 with a MEM-column hold at 3.06 GB (it will likely fire falsely otherwise);
   - fix TREE in watchdog.py for new launches;
   - the Mac W12P12 hold 84913 is also in TREE units.
