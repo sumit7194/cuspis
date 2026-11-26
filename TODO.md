@@ -698,3 +698,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] At landing: commit ONLY the sha256 of the 4 outputs to exp081d_results/exp095_sealed_sha256.txt. Do NOT open them, do NOT run exp095_p1.py (it is not written yet; write and commit it without running).
 - [ ] Next week: path S (Fable seal, if Sumit OKs) or path D (descriptive). Any accidental view of a P = 10 value is declared at once.
 - [ ] EXP-095: W4P10 runs ALONGSIDE in ~/GitHub/fleet-air/corner_function_095b (since 18:27, Bridge OK). When W2P10 ends, the serial runner's duplicate W4P10 is SIGSTOPped by the pause guard. Then ask the Bridge: leave it paused, or end it by PID. Sealed sha so far: G_W2P10, G_W4P10 (bf15796).
+- [ ] EXP-095 duplicate end (Bridge-approved procedure). When the 0 GB pause guard fires on runner 27427:
+  - verify the watchdog (parent 27427, argv 'exp081d_route.py 4 10 10', kill -0); SIGTERM it, then SIGCONT it;
+  - verify the route python (parent = that watchdog); SIGCONT it;
+  - check for the STOP rc 98 line in air_run_095.txt; then move the duplicate's W4P10 files to exp081d_results/quarantine_dup_W4P10/ and list them with sha;
+  - no pkill; 27427 untouched. The seal covers the Mac-mini G files plus the main-folder W2P10 and 095b W4P10 checkpoints only.
