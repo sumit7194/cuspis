@@ -1,3 +1,4 @@
 # EXP-095 (83566e3) SEALED outputs: sha256 only; files not opened (sealed-read protocol). [model: Opus 5.5]
 6ac5e7c5750b4c78da923aeef13ef5a76d7b3f0e833ff7521f0307c87d30c18f  exp081d_results/exp085c/G_W2P10.json  (landed 2026-11-26 17:33:19, run_095_geom rc 0)
 cb10e82d7bb274f56580c5f620076c85adb2e06d76f23a829352944ba0cfcf93  exp081d_results/exp085c/G_W4P10.json  (landed 2026-11-26 17:44:51, run_095_geom rc 0)
+42998fa06c8d14cdab32b2d7940c801236b2e271ac10ac5700cae9c5c9322b2e  exp081d_results/air_pull/sigma_W2_P10_box10_c2_cp12_sc3.0_dd0_ckpt.json  (landed 2026-11-27: Air ckpt mtime 15:02:47, air_route_W2P10 rc 0 15:02:56; final validated pull 15:24:22, sha equal both ends; NOT opened)

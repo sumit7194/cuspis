@@ -12877,3 +12877,20 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Next (the Bridge rules):**
   - whether W12P12 runs now (the route is cleared at the cluster level);
   - and, separately, whether to localise the non-class 7.8e-7. Options: a pole-list scan (install only, ~5 min on the Air, no t0); a whole-sum referee rad sweep (OFF at 5e-7 and 2e-6; ~1.5 h on the Air).
+
+### EXP-096 step 2 RESULT: whole-sum referee sweep e96s_W8P8 (registered amendment 4 at 1ca4cb9; Air, 18:38 → 21:25, 9760 s, peak 0.615 GB; `exp081d_results/exp096/W8P8Wb8Ny32_refsweep.json` sha e20443200573bf88, `air_pull_096/e96s_W8P8.out` sha aa3cd88e18cf49fb, both equal to the Air copies): **reading R-noise by the registered rule; KA-2 FAILED (Air vs Mac at the same rad, same code: 1.05e-6)** [model: Opus 5.5]
+- **Goal:** decide whether the referee's extra 7.8e-7 outside the 9 class discs (e96d, reading H2) is a real rad dependence of t0 or noise.
+- **Hypothesis (as registered):** R-real if |d2| ≤ 1e-7; R-noise if |d2| ≥ 3e-7; otherwise UNCLASSIFIED. d1 = out(2e-6) − out(1e-6), d2 = out(5e-7) − out(1e-6), out = whole − Σ class OFF_d.
+- **Results:**
+  - whole OFF t0: rad 2e-6 −209.279426734098; 1e-6 −209.279427203097; 5e-7 −209.279429827639.
+  - out: 2e-6 −208.711167327; 1e-6 −208.711167801; 5e-7 −208.711170425; (1e-5, from the stored whole) −208.711167529.
+  - **d1 = +4.74e-7, d2 = −2.62e-6 → R-noise** (|d2| is 8.7× the 3e-7 line).
+  - KA-1 (class OFF_d(1e-6) against the diagrad JSON): **PASS, bitwise**. Class values at 2e-6 move ≤ 3e-9 from 1e-6: the clusters are stable; the motion is outside them.
+  - **KA-2 (whole(1e-6) = Mac referee −209.27942615304573 to ≤ 2.1e-8): FAILED, |diff| 1.05e-6.**
+- **Why KA-2 fired (checked, not assumed):** sigma3d.py sha b677cb08ae28 and exp096_refsweep.py sha 9a2db51071ba are identical on both machines; CUSPIS_081E unset on both. The machines differ: Air = Apple M1, Mac mini = Apple M4. Same code, same rad, different chip → 1.05e-6. This is a fourth noise measurement at the same scale as d1 and d2, not a separate failure. **Grade of this cause: partially verified** (code identity verified; the chip as the cause is inferred, not tested: a Mac-mini rerun is excluded, the Mac mini stays untouched).
+- **Analysis:**
+  - The whole sum at rad ≤ 2e-6 moves by up to 3e-6 with rad on one machine and by 1e-6 between machines at fixed rad. The single-rad referee (−209.279426153046, EXP-087) is **noise-limited at ~1e-6**; its "truth − fix = 9.2e-7" and the 7.8e-7 outside part are **not measured truths**. This retires the W8P8 KA failure as a referee defect (with e96d: the route matches OFF on the clusters to ~1e-9).
+  - Not shown: this does NOT measure the outside entries at the production rad 1e-5 (where the floor is ~10× smaller). It shows the only referee we had cannot resolve them below ~1e-6 in t0 (~7e-6 in R(2) at norm 14.09).
+  - Not cherry-picked: the Air whole(1e-6) lies 1.3e-7 from the fixed route value −209.279427072581; at 2e-6 it is +3.4e-7, at 5e-7 −2.8e-6. The spread is the reading; no single rad is taken as truth.
+  - Honest note: my e96d sentence "noise not the obvious answer" (already corrected in amendment 4 from Tier 1) is now contradicted at W8P8 as well.
+- **Next steps:** W12P12 launched 21:28:37 (PID 22185, CUSPIS_081E=1, --budget-h 47, pause-not-exit gate of amendment 5); the outside-entry term at W12P12 stays **unquantified below ~1e-6 in t0**, stated in STATUS.md; this reading is folded into W12P12's 25 % check-in.

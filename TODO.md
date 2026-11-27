@@ -736,3 +736,19 @@ Everything is committed and pushed. Nothing is running. Where things stand:
   - verify the route python (parent = that watchdog); SIGCONT it;
   - check for the STOP rc 98 line in air_run_095.txt; then move the duplicate's W4P10 files to exp081d_results/quarantine_dup_W4P10/ and list them with sha;
   - no pkill; 27427 untouched. The seal covers the Mac-mini G files plus the main-folder W2P10 and 095b W4P10 checkpoints only.
+- [x] 2026-11-27 15:02:56 W2P10 LANDED (rc 0). Final validated pull 15:24:22; sha 42998fa06c8d… is equal on both ends and appended to exp095_sealed_sha256.txt (NOT opened).
+  - **exp095_p1 argv[1] = "2026-11-27 15:02:47"** (the Air checkpoint mtime).
+  - Logs pulled to air_pull/, sha-validated, not opened: air_route_W2P10.out, air_run_095.txt.
+  - Declared to the Bridge: my gate grep showed B2b rel 0.0e+0 and |dt0| 4.4e-08. These are gate diagnostics, not P = 10 values.
+- [x] 2026-11-27 15:12:32 duplicate W4P10 ended by verified PID: watchdog 54709 TERM + CONT; route 54710 went with it; runner 27427 was not signalled (it exited by its own STOP rc 98).
+  - Its files were quarantined to quarantine_dup_W4P10/ on the Air: .out f1b1492d…, .wd.log 498a0dbb…; no checkpoint.
+- [ ] At the 095b landing:
+  - check rc 0 in air_run_095b.txt;
+  - final pull 67624 validated;
+  - sha appended to the sealed file;
+  - pull air_route_W4P10.out (095b) and air_run_095b.txt to air_pull/ with sha (not opened);
+  - record argv[2] = the Air checkpoint mtime.
+- [x] 2026-11-27 17:16 EXP-096 W8P8 known answer FAILED: route − referee −7.8e-7 against 1e-7. Everything else PASS. EXP-097 rc 1 at 16:07: control (iii) ρ₂A 5.4e-10 (cancellation ×127.9 of R₂ 8.3e-12). Amendment 2 (5d203db): diagnosed, nothing rerun, no tolerance changed.
+- [ ] e96d_W8P8 diagnostic (Air, runner 79926, since 17:27, ~1.2 h): when it lands, read the KA line plus g(1e-6), g(5e-7), g(3e-7); classify H1 / H2 / H3 / UNCLASSIFIED exactly by the amendment-2 rules. Report to the Bridge.
+- [ ] Bridge rulings needed: (1) the W8P8 KA after the diagnostic, and whether W12P12 runs; (2) EXP-097, the propagated tolerance for ρ₂A / G₂b, then a rerun. **Neither W12P12 nor the EXP-097 rerun before a GO.**
+- [ ] Unverified: "the fix is verified at W8P8" rested on the OFF@1e-6 referee (9.2e-7). If H1/H2, that referee is good to ~1e-6, not better. The fix agrees with the route to 1.4e-7 (and to ≤ 2.8e-11 on the clusters). Re-grade once the diagnostic lands.

@@ -1,0 +1,7 @@
+W8P8Wb8Ny32_refsweep: installed + B1 (272s), N 384
+classes: [(8, 2, '5.0e-05', '1.0523', '1.0e-03', True), (9, 2, '2.6e-05', '1.1053', '1.0e-03', True), (10, 2, '1.4e-05', '1.1514', '1.0e-03', True), (11, 2, '8.9e-06', '1.1904', '1.0e-03', True), (12, 2, '6.0e-06', '1.2224', '1.0e-03', True), (13, 2, '4.4e-06', '1.2473', '1.0e-03', True), (14, 2, '3.6e-06', '1.2651', '1.0e-03', True), (15, 2, '3.1e-06', '1.2757', '1.0e-03', True), (16, 2, '3.0e-06', '1.2793', '1.0e-03', True)]
+KA-1 class OFF_d(1e-6) bitwise vs diagrad JSON: PASS max 0.0e+00
+KA-2 whole OFF(1e-6) vs Mac referee -209.279426153046: FAIL |diff| 1.1e-06
+out(rad) = whole - classes: 1e-06 -2.0871116780e+02  2e-06 -2.0871116733e+02  5e-07 -2.0871117042e+02  1e-05 -2.0871116753e+02
+out(1e-6) - out(1e-5) = -2.716e-07 (the referee gap, +7.8e-7 expected to ~2e-8);  d1 = +4.741e-07  d2 = -2.624e-06  ->  R-noise
+done: unconverged 0, wall 9760s
