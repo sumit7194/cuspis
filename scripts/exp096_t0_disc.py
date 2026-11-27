@@ -20,7 +20,7 @@ ap = argparse.ArgumentParser(); ap.add_argument("W", type=int); ap.add_argument(
 ap.add_argument("--Ny", type=int, default=None); ap.add_argument("--Wb", type=int, default=None)
 ap.add_argument("--classes", default=None); ap.add_argument("--probe", action="store_true"); ap.add_argument("--plant", action="store_true")
 ap.add_argument("--tag", default=""); ap.add_argument("--M", type=int, default=32); ap.add_argument("--gdet", type=float, default=1e-4)
-ap.add_argument("--budget-h", type=float, default=12.0)            # amendment 1: checkpoint stop at a class boundary if the projection exceeds it
+ap.add_argument("--budget-h", type=float, default=12.0)            # amendment 1/5: checkpoint PAUSE (resumable) at a class boundary if the projection exceeds it
 a = ap.parse_args()
 W, P = a.W, a.P; Wb = a.Wb if a.Wb else P; Ny = a.Ny if a.Ny else 4 * P; Lx, Lt = 2 * P + Wb, 2 * P; x0 = P + (Wb - W) // 2
 RAD, MRES, M, SCUT = 1e-5, 32, a.M, 3.0
@@ -203,6 +203,7 @@ if a.probe:
               open(os.path.join(OUT, f"{name}.json"), "w"), indent=1, default=str)
     sys.exit(0)
 
+PAUSED = [0.0]                                                           # amendment 5: gate-pause seconds, kept out of the projection
 sel = CL if a.classes is None else [X for X in CL if X["p"] in [int(c) for c in a.classes.split(",")]]
 allres = []
 for X in sel:
@@ -210,11 +211,18 @@ for X in sel:
     log(f"class p={X['p']:2d} ({len(X['members'])} members, span {2*X['half']:.1e}, r1 {X['r1']:.1e}): "
         + " ".join(f"{kk} {v.real:+.12e}" for kk, v in rc.items() if kk.startswith(("mine", "off", "on")))
         + f"  ({rc['sec']:.0f}s, {rc['npairs']} pairs)")
-    el = time.time() - T0; per = (el - T_INST) / len(allres); proj = (T_INST + per * len(sel)) / 3600
+    el = time.time() - T0; per = (el - T_INST - PAUSED[0]) / len(allres); proj = (T_INST + per * len(sel)) / 3600
     log(f"projection: {len(allres)}/{len(sel)} classes, {per:.0f} s per class -> total {proj:.1f} h (budget {a.budget_h} h)")
     json.dump(dict(name=name, classes=allres, NG=NG[0], projection_h=proj, stats=dict(C.ExactSlice.STATS, bad=[str(b) for b in C.ExactSlice.STATS.get("bad", [])][:5])),
               open(os.path.join(OUT, f"{name}{'_c' + a.classes.replace(',', '-') if a.classes else ''}.json"), "w"), indent=1,
               default=lambda z: [z.real, z.imag] if isinstance(z, complex) else str(z))
-    if proj > a.budget_h and len(allres) < len(sel):
-        log(f"GATE STOP at a class boundary: projected {proj:.1f} h > {a.budget_h} h; partial results kept (re-gate with the Bridge)"); sys.exit(4)
+    if proj > a.budget_h and len(allres) < len(sel):                     # amendment 5: PAUSE + alert at the class boundary, never exit
+        rf = os.path.join(OUT, f"{name}.resume"); tp = time.time(); nh = 0
+        log(f"GATE PAUSE at a class boundary: projected {proj:.1f} h > {a.budget_h} h; partial results kept; waiting for {rf} "
+            f"(its content = the new budget in h; empty = no further gate). Re-gate with the Bridge.")
+        while not os.path.exists(rf):
+            time.sleep(60)
+            if (time.time() - tp) // 3600 > nh: nh += 1; log(f"GATE PAUSE still waiting ({nh} h)")
+        txt = open(rf).read().strip(); os.remove(rf); a.budget_h = float(txt) if txt else float("inf"); PAUSED[0] += time.time() - tp
+        log(f"GATE RESUME after {time.time() - tp:.0f} s: new budget {a.budget_h} h")
 log(f"done: {len(allres)} classes, {NG[0]} G evaluations, unconverged {C.ExactSlice.STATS.get('unconverged')}, wall {time.time()-T0:.0f}s")

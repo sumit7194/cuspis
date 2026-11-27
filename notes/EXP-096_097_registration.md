@@ -229,7 +229,7 @@
   - the stale guard holds (the Air's exp097/ is empty; the first run wrote nothing);
   - code: `scripts/exp097_run.py`, with the (iii) block, (vii) and (d) marked "amendment 3".
 
-## Amendment 4 (2026-11-27 ~19:00; Bridge ruling on e96d: scan, then W12P12 with a gate paragraph, and a whole-sum referee sweep)
+## Amendment 4 (2026-11-27 18:30, registered 1ca4cb9 before the production scan; Bridge ruling on e96d: scan, then W12P12 with a gate paragraph, and a whole-sum referee sweep)
 **Order and memory:**
 - The Air has **8 GB**. The worst-case sum of pilot peaks is W12P12 3.24 + sweep ~1.05 (the Mac referee figure) + the 095b route up to its 3.06 hold = 7.35 GB. That is over the 6.4 GB the < 20 % pause allows, so the sweep does NOT run alongside W12P12.
 - Order (the Bridge's fallback): (1) the scan; (2) the sweep; (3) W12P12 after the sweep lands. If the scan FIRES, report to the Bridge before (3).
@@ -280,3 +280,18 @@
   - the 25 % check-in at ~12 h, with the sweep reading folded in;
   - **kill date: not graded by 2026-11-30 12:00**: report what exists and stop.
 - Launch: `air_run_096.sh e96_W12P12 1 exp096_t0_disc.py 12 12 --budget-h 47`, one process. The launch note confirms the first-class projection.
+
+## Amendment 5 (2026-11-27 ~18:55; the Bridge's no-hard-caps check, before the W12P12 launch)
+- **Found:** the amendment-1 budget gate ended the run (`sys.exit(4)`), and the code had no resume path. A restart would redo the install (~1 h at W12P12) and every class. That is a job-ending cap, against the no-hard-caps rule.
+- **Changed to pause + alert:**
+  - At a class boundary where the projection exceeds the budget, the run writes its partial per-class JSON, logs `GATE PAUSE …`, and waits, alive, with its install held, for `exp081d_results/exp096/{name}.resume`. A "still waiting (N h)" line is logged each hour.
+  - The file's content is the new budget in hours; an empty file means no further gate.
+  - Then `GATE RESUME`, and the run continues from the next class.
+  - Paused seconds are kept out of later projections.
+- No computation changed. These are the only edits to `scripts/exp096_t0_disc.py`.
+- **Tier 1 (W8P3 on the Air, `--budget-h 1e-6`, tag `_tier1pz`):**
+  - it paused after class 1, alive at +70 s;
+  - an empty resume file gave RESUME after 120 s, budget inf;
+  - rc 0, and all 5 classes are **bitwise equal** to the unpaused `_tier1air`;
+  - the post-resume projections show 17–19 s per class (the pause is excluded).
+- **The alert path for W12P12:** my watcher greps `GATE PAUSE` in e96_W12P12.out and reports to the Bridge. The Bridge (or Sumit) gives the new budget, and I write it into the resume file.
