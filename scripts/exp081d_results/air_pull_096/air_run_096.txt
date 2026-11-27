@@ -12,3 +12,4 @@
 === e97_P8r2 start 2026-11-27 17:31:46 PID 80753 host Akashs-MacBook-Air CUSPIS_081E=unset args: exp097_run.py
 === e97_P8r2 freepct_guard PID 80760 (LOW 20 / HIGH 30, pause-only)
 === e97_P8r2 rc 0 2026-11-27 17:38:02
+=== e96d_W8P8 rc 0 2026-11-27 18:25:25

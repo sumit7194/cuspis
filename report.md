@@ -12839,3 +12839,41 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Next steps:**
   - Only a third conclusive step (P = 10 at n = 2, or a wider pair) would tell a drifting f₂ from a constant one. Not proposed now; it is for the Bridge or Sumit.
   - Carry "n = 2 f ≈ 0.41 at 4 → 8, against n = 1 ≈ 0.22" into the A-vs-bulk item as descriptive.
+
+### EXP-096 W8P8: known answer FAILED, then the diagnostic e96d (registered amendment 2 at 5d203db; decision meanings in amendment 3 at 43915a9; Air, landed 18:25; `exp096/W8P8Wb8Ny32.json`, `exp096/W8P8Wb8Ny32_diagrad.json`): **reading H2. The route is right on the clusters; the referee's extra 7.8e-7 lies OUTSIDE them** [model: Opus 5.5]
+- **Goal:** the W8P8 known answer, before the expensive W12P12 run.
+- **Hypothesis:** the route reproduces the referee OFF@1e-6 − OFF@1e-5 = +0.020683775 to ≤ 1e-7, the referee's 9.2e-7 being the p = 10 leak. **Wrong** (see the honest misses in amendment 3).
+- **Route run (e96_W8P8, rc 0, 4186 s, 0.56 GB):**
+  - Δ_truth = +0.0206829953; the fix gives +0.020682856; truth − fix = +1.395e-7, all at near-pair p = 10. The six EXP-087 clusters give mine − ON ≤ 2.8e-11.
+  - unconverged 0; KA-complete 1.1e-14; r-sweep 3.2e-13; M/2 ≤ 3.8e-12.
+  - **KA against the referee: FAIL** (−7.8e-7 vs 1e-7). The grader's verdict line, as computed, reads "PASS (fix adequate)" with that control marked FAILED. So no grade stands.
+- **Diagnostic e96d_W8P8 (rc 0, 3213 s, 0.61 GB):** the OFF entries inside each of the 9 class discs, recomputed at rad 1e-5 / 1e-6 / 5e-7 / 3e-7 and compared with the route's mine.
+  - **KA:** per class, off(1e-5) == stored, max **0.0e+00**. PASS. (At Tier 1 the same check fails cross-platform at 4.6e-10, so it can fail.)
+
+  | rad | g = Σ_classes (OFF − mine) | max per class | rms per class |
+  |---|---|---|---|
+  | 1e-5 | −2.068e-2 (the A double count + the p = 10 leak) | 6.8e-3 | 3.2e-3 |
+  | 1e-6 | **+1.6e-9** | 2.4e-9 | 1.2e-9 |
+  | 5e-7 | +8.3e-10 | 1.1e-8 | 5.1e-9 |
+  | 3e-7 | −2.1e-8 | 2.2e-8 | 1.3e-8 |
+
+  - **Classification (registered rules):** |g(1e-6)| = 1.6e-9 ≤ 1e-7, so **H2**. H1 and H3 both need |g(1e-6) − 7.8e-7| ≤ 2e-7, and neither holds.
+- **Analysis:**
+  - On the clusters, three methods agree:
+    - the old code at a small rad (OFF@1e-6), to 1.6e-9 in sum;
+    - the EXP-087 fix (ON), to 2.8e-11 per 087 class;
+    - the wide-disc route.
+  - So **the route is verified at the cluster level at W8P8**, against a referee that is independent of it (the production code with no cluster logic, at a radius free of double counting).
+  - The small-contour floor sets in only below 1e-6 (rms 1e-9 → 1.3e-8 from 1e-6 to 3e-7).
+  - **The referee's remaining 7.8e-7 comes from OFF entries outside the 9 class discs.** Neither the fix nor this route touches those entries. Two readings:
+    - (a) referee noise outside the classes;
+    - (b) a real rad dependence of production t0 there. Candidates, not yet checked: a cross-slice merge at the 1e-2·rad threshold; a pole close enough to α = 0 that the 1e-5 contour encloses the kernel's own pole.
+  - *Inference, counts not measured:* the per-class floor at 1e-6 (~1e-9) would need hundreds of times more two-tag entries outside the classes than inside, even adding coherently, to reach 7.8e-7. So (b) is not ruled out.
+  - **Size, if (b) is real:** ½ × 7.8e-7 × norm 14.09 = 5.5e-6 in R(2). That is against δ_mat 1.14e-3 at W8P8, so negligible there. Its size at W12P12 is unknown.
+- **Grades:**
+  - the route at the cluster level: **verified** at W8P8;
+  - "the fix is verified at W8P8": still verified at the cluster level (to ~1e-9 against OFF@1e-6). The earlier 9.2e-7 "truth − fix" is NOT a fix error: 1.4e-7 is the p = 10 leak, and 7.8e-7 lies outside the clusters;
+  - the referee as a whole-t0 truth to 1e-7: **not verified** (its non-class part is unexplained).
+- **Next (the Bridge rules):**
+  - whether W12P12 runs now (the route is cleared at the cluster level);
+  - and, separately, whether to localise the non-class 7.8e-7. Options: a pole-list scan (install only, ~5 min on the Air, no t0); a whole-sum referee rad sweep (OFF at 5e-7 and 2e-6; ~1.5 h on the Air).

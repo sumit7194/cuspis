@@ -1,0 +1,14 @@
+W8P8Wb8Ny32_diagrad: installed + B1 (270s), N 384
+classes: [(8, 2, '5.0e-05', '1.0523', '1.0e-03', True), (9, 2, '2.6e-05', '1.1053', '1.0e-03', True), (10, 2, '1.4e-05', '1.1514', '1.0e-03', True), (11, 2, '8.9e-06', '1.1904', '1.0e-03', True), (12, 2, '6.0e-06', '1.2224', '1.0e-03', True), (13, 2, '4.4e-06', '1.2473', '1.0e-03', True), (14, 2, '3.6e-06', '1.2651', '1.0e-03', True), (15, 2, '3.1e-06', '1.2757', '1.0e-03', True), (16, 2, '3.0e-06', '1.2793', '1.0e-03', True)]
+class p= 8: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -1.980e-11  1e-06 -8.767e-10  5e-07 +4.060e-09  3e-07 -1.672e-08
+class p= 9: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 +1.948e-11  1e-06 +2.429e-09  5e-07 +5.740e-09  3e-07 -2.206e-08
+class p=10: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -1.395e-07  1e-06 +2.234e-10  5e-07 -3.238e-09  3e-07 +1.136e-08
+class p=11: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -6.798e-03  1e-06 -1.547e-09  5e-07 -1.129e-08  3e-07 +1.710e-08
+class p=12: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -4.515e-03  1e-06 +2.921e-10  5e-07 -3.365e-09  3e-07 +6.340e-09
+class p=13: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -3.462e-03  1e-06 -1.125e-09  5e-07 +3.034e-09  3e-07 -1.904e-09
+class p=14: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -2.829e-03  1e-06 +1.756e-09  5e-07 +5.056e-09  3e-07 -3.978e-09
+class p=15: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -2.485e-03  1e-06 +2.091e-10  5e-07 +1.106e-09  3e-07 -1.708e-08
+class p=16: KA off(1e-5) - stored +0.00e+00;  OFF(rad) - mine: 1e-05 -5.934e-04  1e-06 +2.468e-10  5e-07 -2.804e-10  3e-07 +5.894e-09
+KA (per class off(1e-5) == stored off_r1, <= 1e-12): PASS max 0.0e+00
+g(rad) = sum_classes [OFF(rad) - mine]: 1e-05 -2.0683e-02  1e-06 +1.6077e-09  5e-07 +8.2519e-10  3e-07 -2.1051e-08   (G = referee - Delta_truth = +7.80e-07)
+done: unconverged 0, wall 3207s
