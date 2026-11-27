@@ -12794,3 +12794,48 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - They are neither run nor VOID. They wait for the W6P12 route.
   - Nothing at k = 3 beyond the W12 t0 numbers was opened: X_Λ(W12P12) and Y_A(3) beyond the known 11.115 were not read.
 - **Gradeable now and graded:** only the Δt0 sub-seal (above).
+
+### EXP-097 RESULT: the n = 2 wall test at P = 8 (registered 4624f77; amendments 2 at 5d203db and 3 at 43915a9; Air, 2026-11-27 17:38; `exp081d_results/exp097_result.json`, `air_pull_096/e97_P8r2.out`): **DESCRIPTIVE. Step 6 → 8 INCONCLUSIVE; span 4 → 8 conclusive, f₂ = 0.414** [model: Opus 5.5]
+- **Goal:**
+  - EXP-094's n = 2 wall test (4 → 6) was INCONCLUSIVE by a hair.
+  - Push it one wall further, to P = 8, and read both the step 6 → 8 and the span 4 → 8, to see whether the A fraction f is the same at n = 2 as at n = 1 (f ≈ 0.21–0.23).
+- **Hypothesis (registered expectation):** G₂b drops ~20 % per step, so 6 → 8 is likely INCONCLUSIVE and 4 → 8 likely conclusive. **Met.**
+- **Method:** EXP-094's phase 1 and dRs, verbatim, at P = 8. W2P8 Q₂ and σ₂ were fresh; W4P8 was recomputed against the stored EXP-084 values. The quantities are EXP-094's.
+- **Run 1 (16:07, rc 1) STOPPED on control (iii), as written:** P = 6 ρ₂A, rel 5.4e-10 > 1e-10. W2P8 was not computed. The run is kept (`air_pull_096/e97_P8.out`, sha 70712b52…).
+  - Diagnosis: ρ₂A = R₂ + ΔR^A is a cancellation. The observed value is R₂'s own 8.3e-12 times |R₂|/|ρ₂A| = 64.46 (= 5.35e-10). The worst-case bound factor is 127.92.
+  - The control could not pass across platforms for a cancelled row. That was a design fault in the control, not a computation fault.
+- **Amendment 3 (the Bridge's GO, with conditions):**
+  - input rows stay at 1e-10 and remain the controlling check;
+  - the ONLY derived rows (ρ₂A, G₂b at P = 4 / 6) get the first-order propagated tolerance TOL × (|x| + |y|)/|x ± y|;
+  - the as-written verdict is still printed;
+  - plant (vii): flipping ΔR^A's sign in a copy must FAIL;
+  - (d): every amplification factor at P = 8 is reported, with a flag above 1e4.
+- **Run 2 (e97_P8r2, rc 0, 106 s, 0.74 GB peak). Controls, all PASS:**
+  - (i) QA ≤ 1.6e-12; saddle ≤ 3.2e-15;
+  - (ii) W4P8 QA 1.5e-12 / 1.8e-12;
+  - (iii) inputs ≤ 8.3e-12; derived: P = 6 ρ₂A 5.4e-10 against 1.28e-8 (as written, still FAIL, by design); G₂b 6.6e-14;
+  - (iv) two-path 0 / 1.5e-12;
+  - (v) stale guard; (vi) σ₂ plant, rel 5.6e-2;
+  - (vii) all four planted sign flips FAIL as they must (rel 1.1 to 1.3e2, against ≤ 1.3e-8).
+- **Amplification factors at P = 8:** R₂ 10.7; ρ₂A 171.0; G₂b 6.1; drop 6→8 11.0; drop 4→8 5.0; numerators 1.0. All under 1e4, so no flag.
+- **Results:**
+
+  | P | R₂ | ΔR₂^A | ΔR₂^bulk | ρ₂A | G₂b |
+  |---|---|---|---|---|---|
+  | 4 | +0.682587 | −0.564439 | −1.572903 | +0.118148 | +1.008464 |
+  | 6 | +1.355808 | −1.334775 | −2.143755 | +0.021033 | +0.808980 |
+  | 8 | +1.689923 | −1.709808 | −2.384449 | **−0.019885** | +0.674641 |
+
+  - **f₂(6 → 8) = +0.3046**, G₂b drop 0.134339 < 0.161796: **INCONCLUSIVE** (as expected).
+  - **f₂(4 → 8) = +0.4135**, drop 0.333823 > 0.201693: **conclusive** (descriptive).
+  - Beside them: n = 1 f(4→6) 0.2122, f(6→8) 0.2314, f(4→8) 0.2175; n = 2 f₂(4→6) 0.4868 (INCONCLUSIVE).
+- **Consistency check (can fail):** the span equals the drop-weighted mean of the two steps (EXP-094's 4 → 6 and this 6 → 8) to 3.4e-11, the cross-platform level. So **f₂(4→8) is not a third independent number.** It is the weighted mean of 0.487 and 0.305.
+- **Analysis (descriptive; no sealed band):**
+  - At the only conclusive reading, the n = 2 A fraction (0.41) is about **twice the n = 1 value (0.22)**.
+  - The two inconclusive steps fall from 0.49 to 0.30. So f₂ may still be drifting with P, while n = 1 was flat (0.21 → 0.23).
+  - ρ₂A changes sign between P = 6 and P = 8.
+  - This does not show "the A fraction is n-independent". Taken at face value, it leans against it. But there is one geometry pair (W2/W4), no σ on f₂, and the step trend is unresolved.
+  - **Grade: partially verified** (all controls pass; the reading itself is descriptive).
+- **Next steps:**
+  - Only a third conclusive step (P = 10 at n = 2, or a wider pair) would tell a drifting f₂ from a constant one. Not proposed now; it is for the Bridge or Sumit.
+  - Carry "n = 2 f ≈ 0.41 at 4 → 8, against n = 1 ≈ 0.22" into the A-vs-bulk item as descriptive.

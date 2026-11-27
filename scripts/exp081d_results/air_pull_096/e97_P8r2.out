@@ -1,0 +1,50 @@
+G_W2P8: failed empty                                                       PASS  
+G_W4P8: failed empty                                                       PASS  
+(v) exp097/Q_W2P8b8.json absent before the run                             PASS  
+(v) exp097/Q_W4P8b8.json absent before the run                             PASS  
+(i) phase1 W2P4 QA n=2 vs stored                                           PASS  rel 6.9e-13 bitwise False
+(i) phase1 W2P4 QA n=3 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) phase1 W4P4 QA n=2 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) phase1 W4P4 QA n=3 vs stored                                           PASS  rel 8.1e-13 bitwise False
+(i) phase1 W2P6 QA n=2 vs stored                                           PASS  rel 1.4e-12 bitwise False
+(i) phase1 W2P6 QA n=3 vs stored                                           PASS  rel 1.6e-12 bitwise False
+(i) saddle(2) W2P6 vs exp094_sigma2 (max rel)                              PASS  3.2e-15
+(i) phase1 W4P6 QA n=2 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) phase1 W4P6 QA n=3 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) saddle(2) W4P6 vs exp094_sigma2 (max rel)                              PASS  1.7e-15
+(iii) P=4 R2 vs exp094_result.json                                         PASS  rel 0.0e+00
+(iii) P=4 dRA vs exp094_result.json                                        PASS  rel 0.0e+00
+(iii) P=4 dRB vs exp094_result.json                                        PASS  rel 0.0e+00
+    INFO (iii) as written (rel <= 1e-10): P=4 rho2A PASS  rel 0.0e+00
+(iii) P=4 rho2A vs exp094_result.json (derived, TOL x amp 10.6)            PASS  rel 0.0e+00 vs 1.06e-09
+    INFO (iii) as written (rel <= 1e-10): P=4 G2b PASS  rel 0.0e+00
+(iii) P=4 G2b vs exp094_result.json (derived, TOL x amp 2.1)               PASS  rel 0.0e+00 vs 2.12e-10
+(vii) plant: dRA sign flipped -> P=4 rho2A row must FAIL its tolerance     PASS  rel 9.6e+00 vs 1.06e-09
+(vii) plant: dRA sign flipped -> P=4 G2b row must FAIL its tolerance       PASS  rel 1.1e+00 vs 2.12e-10
+(iii) P=6 R2 vs exp094_result.json                                         PASS  rel 8.3e-12
+(iii) P=6 dRA vs exp094_result.json                                        PASS  rel 5.2e-14
+(iii) P=6 dRB vs exp094_result.json                                        PASS  rel 5.8e-14
+    INFO (iii) as written (rel <= 1e-10): P=6 rho2A FAIL  rel 5.4e-10
+(iii) P=6 rho2A vs exp094_result.json (derived, TOL x amp 127.9)           PASS  rel 5.4e-10 vs 1.28e-08
+    INFO (iii) as written (rel <= 1e-10): P=6 G2b PASS  rel 6.6e-14
+(iii) P=6 G2b vs exp094_result.json (derived, TOL x amp 4.3)               PASS  rel 6.6e-14 vs 4.30e-10
+(vii) plant: dRA sign flipped -> P=6 rho2A row must FAIL its tolerance     PASS  rel 1.3e+02 vs 1.28e-08
+(vii) plant: dRA sign flipped -> P=6 G2b row must FAIL its tolerance       PASS  rel 3.3e+00 vs 4.30e-10
+(ii) phase1 W4P8 QA n=2 vs stored Q_W4P8b8 (EXP-084)                       PASS  rel 1.5e-12 bitwise False
+(ii) phase1 W4P8 QA n=3 vs stored Q_W4P8b8 (EXP-084)                       PASS  rel 1.8e-12 bitwise False
+(iv) two-path |QA - QB| / |QA| <= 1e-9 at W2P8 (n = 2)                     PASS  0.0e+00 (45.8 s)
+(iv) two-path |QA - QB| / |QA| <= 1e-9 at W4P8 (n = 2)                     PASS  1.5e-12 (44.0 s)
+(vi) plant: dRA(8) moves > 1e-3 rel when sigma2(W2P8) x 1.01               PASS  rel 5.6e-02
+    (d) amplification at P = 8: R2 = -(Q2 - Q4)/2 nm                     10.7
+    (d) amplification at P = 8: rho2A = R2 + dRA                        171.0
+    (d) amplification at P = 8: G2b = dRA - dRB                           6.1
+    (d) amplification at P = 8: drop G2b(6) - G2b(8)                     11.0
+    (d) amplification at P = 8: num rho2A(8) - rho2A(6)                   1.0
+    (d) amplification at P = 8: drop G2b(4) - G2b(8)                      5.0
+    (d) amplification at P = 8: num rho2A(8) - rho2A(4)                   1.0
+P = 4: R2 +0.682587  dR2^A -0.564439  dR2^bulk -1.572903  rho2A +0.118148  G2b +1.008464
+P = 6: R2 +1.355808  dR2^A -1.334775  dR2^bulk -2.143755  rho2A +0.021033  G2b +0.808980
+P = 8: R2 +1.689923  dR2^A -1.709808  dR2^bulk -2.384449  rho2A -0.019885  G2b +0.674641
+f2(6 -> 8) = +0.3046; G2b drop +0.134339 vs 0.2 G2b(start) 0.161796 -> INCONCLUSIVE
+f2(4 -> 8) = +0.4135; G2b drop +0.333823 vs 0.2 G2b(start) 0.201693 -> conclusive
+DESCRIPTIVE, n = 1 beside it: f(4->6) +0.2122, f(6->8) +0.2314, f(4->8) +0.2175;  n = 2 f2(4->6) +0.4868 (INCONCLUSIVE)

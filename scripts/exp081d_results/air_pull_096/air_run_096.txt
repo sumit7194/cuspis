@@ -7,3 +7,8 @@
 === e97_P8 freepct_guard PID 65007 (LOW 20 / HIGH 30, pause-only)
 === e97_P8 rc 1 2026-11-27 16:07:44
 === e96_W8P8 rc 0 2026-11-27 17:16:17
+=== e96d_W8P8 start 2026-11-27 17:27:22 PID 79926 host Akashs-MacBook-Air CUSPIS_081E=unset args: exp096_diag_rad.py 8 8
+=== e96d_W8P8 freepct_guard PID 79933 (LOW 20 / HIGH 30, pause-only)
+=== e97_P8r2 start 2026-11-27 17:31:46 PID 80753 host Akashs-MacBook-Air CUSPIS_081E=unset args: exp097_run.py
+=== e97_P8r2 freepct_guard PID 80760 (LOW 20 / HIGH 30, pause-only)
+=== e97_P8r2 rc 0 2026-11-27 17:38:02
