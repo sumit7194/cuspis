@@ -1,5 +1,5 @@
 # cuspis — STATUS (δκ: the O(N⁰) strip coefficient of the large-N O(N) model, D = 3)
-*One page, updated only on change (fleet practice 2026-11-27). The full record is report.md / notes/ / TODO.md. Last change: 2026-11-27 21:35.*
+*One page, updated only on change (fleet practice 2026-11-27). The full record is report.md / notes/ / TODO.md. Last change: 2026-11-27 22:00.*
 
 ## What we know (grades)
 - **R(k), corrected with the EXP-087 t0 fix:** k = 1, 1.5, 2, 2.5 → 2.2552, 4.2334, 6.5877, 9.0902. *Partially verified.*
@@ -19,7 +19,7 @@
   - Guards: hold at 6.9 GB true; pause below 30 % free.
 - **Air:**
   - EXP-095 routes W2P10 and W4P10 (sealed-read; sha-seal at landing).
-  - EXP-095: W2P10 landed 15:02 (sealed, not opened); W4P10 (095b) running.
+  - EXP-095: W2P10 landed 15:02; W4P10 (095b) landed rc 0 21:32, final pull validated 21:58 (sha 08deebc511a8, equal both ends). Both sealed, not opened. Path S/D: Sumit.
   - EXP-096: W8P8 known answer FAILED against the single-rad referee. Diagnostic (ea201a0) reads **H2**: the route matches OFF@1e-6 on the clusters to ~1e-9 (route verified at the cluster level); the referee's extra 7.8e-7 lies outside the clusters (unexplained; ≤ 5.5e-6 in R(2) if real). Bridge ruling (amendment 4, 1ca4cb9): pole scan W8P8 + W12P12 **CLEAR** (18:35); whole-sum referee sweep e96s_W8P8 landed 21:25: **R-noise** (d2 −2.6e-6; KA-2 FAILED, Air M1 vs Mac M4 same code 1.05e-6): the referee is noise-limited at ~1e-6, so its 7.8e-7 is not a measured truth. **W12P12 running since 21:28** (PID 22185; ~23.5 h, ×2 → 47 h; budget-h 47 pauses, never exits). **W12P12's R(2) carries an outside-entry term not resolvable below ~1e-6 in t0 (~7e-6 in R(2)).**
 
 ## Next decisions (who)

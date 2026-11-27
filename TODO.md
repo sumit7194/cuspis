@@ -742,7 +742,7 @@ Everything is committed and pushed. Nothing is running. Where things stand:
   - Declared to the Bridge: my gate grep showed B2b rel 0.0e+0 and |dt0| 4.4e-08. These are gate diagnostics, not P = 10 values.
 - [x] 2026-11-27 15:12:32 duplicate W4P10 ended by verified PID: watchdog 54709 TERM + CONT; route 54710 went with it; runner 27427 was not signalled (it exited by its own STOP rc 98).
   - Its files were quarantined to quarantine_dup_W4P10/ on the Air: .out f1b1492d…, .wd.log 498a0dbb…; no checkpoint.
-- [ ] At the 095b landing:
+- [x] 2026-11-27 22:00 095b landing DONE: rc 0 21:32:01; final pull 21:58:14 validated (08deebc511a8 both ends); sha + route .out sha appended to the sealed file; air_route_W4P10.out + air_run_095b.txt in air_pull/095b/ (not opened); Air ckpt mtime 21:31:55. Was:
   - check rc 0 in air_run_095b.txt;
   - final pull 67624 validated;
   - sha appended to the sealed file;
@@ -752,3 +752,6 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] e96d_W8P8 diagnostic (Air, runner 79926, since 17:27, ~1.2 h): when it lands, read the KA line plus g(1e-6), g(5e-7), g(3e-7); classify H1 / H2 / H3 / UNCLASSIFIED exactly by the amendment-2 rules. Report to the Bridge.
 - [ ] Bridge rulings needed: (1) the W8P8 KA after the diagnostic, and whether W12P12 runs; (2) EXP-097, the propagated tolerance for ρ₂A / G₂b, then a rerun. **Neither W12P12 nor the EXP-097 rerun before a GO.**
 - [ ] Unverified: "the fix is verified at W8P8" rested on the OFF@1e-6 referee (9.2e-7). If H1/H2, that referee is good to ~1e-6, not better. The fix agrees with the route to 1.4e-7 (and to ≤ 2.8e-11 on the clusters). Re-grade once the diagnostic lands.
+- [x] 2026-11-27 21:25 e96s_W8P8 landed: R-noise (d2 -2.62e-6); KA-2 FAILED 1.05e-6 Air M1 vs Mac M4, same code sha (cause partially verified). Reported to the Bridge (d425720).
+- [ ] W12P12 (PID 22185, since 21:28:37, budget-h 47): send the Bridge the first measured per-class projection (~00:30); 25 % check-in at ~12 h with the e96s reading folded in; on a GATE PAUSE alert the Bridge (resume file exp096/W12P12Wb12Ny48.resume); grade with exp096_grade.py 12 12 at landing. Kill date 2026-11-30 12:00.
+- [ ] Unverified: the M1-vs-M4 chip as the cause of KA-2's 1.05e-6 (inferred; Mac-mini rerun excluded).

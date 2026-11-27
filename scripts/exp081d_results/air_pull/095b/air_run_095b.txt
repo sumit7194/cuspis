@@ -1,0 +1,8 @@
+=== air_run_095b start 2026-11-26 18:27:01 PID 32916 host Akashs-MacBook-Air
+=== air_route_W4P10 start 2026-11-26 18:27:01
+=== air_route_W4P10 peak hold armed (PID 32928, 3 GB, pause-only)
+=== HOLD-PEAK 2026-11-26 21:48:23: tree footprint 3.066 GB >= 3 GB -> SIGSTOP PIDs [33459 33463] (tell the Bridge; resume only on its word: kill -CONT those PIDs)
+=== PEAK HOLD re-armed 2026-11-26 22:05:33 (Cuspis-personal, Bridge OK): peak_hold PID 61271, COL=3 = MEM = TRUE phys_footprint, 3.06 GB (= predicted peak 2.45 x 1.25), DT 10 s, root 32916, argv exp081d_route; pause-only. The 21:48 HOLD-PEAK (TREE 3.066 GB) was a double count: true MEM 1.896 GB, kernel peak 2.126 GB.
+=== RESUME 2026-11-26 22:05:33 (Cuspis-personal, Bridge ruling RESUME NOW): SIGCONT 33463 (route) and 33459 (watchdog), PIDs + argv + parents verified; paused since 21:48:23.
+=== air_route_W4P10 rc 0 2026-11-27 21:32:01
+=== EXP-095 W4P10 route done on the Air 2026-11-27 21:32:01

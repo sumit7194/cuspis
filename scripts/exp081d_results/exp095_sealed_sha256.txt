@@ -2,3 +2,5 @@
 6ac5e7c5750b4c78da923aeef13ef5a76d7b3f0e833ff7521f0307c87d30c18f  exp081d_results/exp085c/G_W2P10.json  (landed 2026-11-26 17:33:19, run_095_geom rc 0)
 cb10e82d7bb274f56580c5f620076c85adb2e06d76f23a829352944ba0cfcf93  exp081d_results/exp085c/G_W4P10.json  (landed 2026-11-26 17:44:51, run_095_geom rc 0)
 42998fa06c8d14cdab32b2d7940c801236b2e271ac10ac5700cae9c5c9322b2e  exp081d_results/air_pull/sigma_W2_P10_box10_c2_cp12_sc3.0_dd0_ckpt.json  (landed 2026-11-27: Air ckpt mtime 15:02:47, air_route_W2P10 rc 0 15:02:56; final validated pull 15:24:22, sha equal both ends; NOT opened)
+08deebc511a8ecd67e62505ff85531457bea208fc964252a9ea73ca11d87cb5a  exp081d_results/air_pull/sigma_W4_P10_box10_c2_cp12_sc3.0_dd0_ckpt.json  (landed 2026-11-27: 095b Air ckpt mtime 21:31:55, air_route_W4P10 rc 0 21:32:01; final validated pull 21:58:14, sha equal both ends; NOT opened)
+c0d2f1a4614da0f64b8c48a236abbf3e25b9a9418e7c4eb695a2d59a45440963  exp081d_results/air_pull/095b/air_route_W4P10.out  (095b route stdout, pulled 2026-11-27 ~21:40, sha equal both ends; NOT opened)
