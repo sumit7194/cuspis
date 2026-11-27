@@ -228,3 +228,55 @@
 - **Then rerun EXP-097 unchanged otherwise:**
   - the stale guard holds (the Air's exp097/ is empty; the first run wrote nothing);
   - code: `scripts/exp097_run.py`, with the (iii) block, (vii) and (d) marked "amendment 3".
+
+## Amendment 4 (2026-11-27 ~19:00; Bridge ruling on e96d: scan, then W12P12 with a gate paragraph, and a whole-sum referee sweep)
+**Order and memory:**
+- The Air has **8 GB**. The worst-case sum of pilot peaks is W12P12 3.24 + sweep ~1.05 (the Mac referee figure) + the 095b route up to its 3.06 hold = 7.35 GB. That is over the 6.4 GB the < 20 % pause allows, so the sweep does NOT run alongside W12P12.
+- Order (the Bridge's fallback): (1) the scan; (2) the sweep; (3) W12P12 after the sweep lands. If the scan FIRES, report to the Bridge before (3).
+
+**Step 1: pole-list scan, `scripts/exp096_scan.py W P`.**
+- Pole lists only, no install: `Slice.poles()` fixes them at construction, reading CUSPIS_081E at import; the install only iterates over them.
+- Run at W8P8 (flag unset) and W12P12 (CUSPIS_081E=1), as the stored runs.
+- **FIRE, then report before W12P12:**
+  - S1: any pole s ≤ 1e-5 (the 1e-5 contour around ±i s would enclose the kernel's pole at α = 0);
+  - S2: any cross-slice pole gap < 1e-6 (the 1e-2·rad merge threshold is 1e-7 at 1e-5 and 1e-8 at 1e-6).
+- Reported, no fire:
+  - S3: the same-slice classes at gap < 1e-4. **KA:** they must reproduce the route's class lists (9 at W8P8; 11 at W12P12, p = 6–16).
+  - S4: the count of two-tag entries outside vs inside the classes.
+- **Plant (must fire):** add s = 5e-6 to one list and a cross copy at +5e-8 to another; both S1 and S2 must fire. Tier 1 (W4P4, Air): CLEAR, plant PASS, 0.6 s.
+
+**Step 2: whole-sum referee sweep at W8P8, `scripts/exp096_refsweep.py 8 8`.**
+- Code: the diag code verbatim except the output name.
+- Computed:
+  - whole OFF t0 at rad 1e-6, 2e-6, 5e-7;
+  - class OFF_d at 1e-6 and 2e-6 (5e-7 from the diagrad JSON);
+  - out(rad) = whole − Σ class OFF_d (the part outside the 9 discs).
+- **KAs:**
+  - KA-1: class OFF_d(1e-6) bitwise against the diagrad JSON;
+  - KA-2: whole OFF(1e-6) equals the Mac referee −209.27942615304573 to ≤ 2.1e-8 (1e-10 × 209.3, the cross-platform TOL).
+  - Tier 1 (W8P3, Air, 266 s): KA-1 PASS bitwise, and KA-2 FAILS (wrong geometry, by design), so both can fail.
+- **Readings** (d1 = out(2e-6) − out(1e-6), d2 = out(5e-7) − out(1e-6)):
+  - **R-real:** |d2| ≤ 1e-7. The outside part is stable below 1e-6, so the 7.8e-7 is a real rad dependence of production t0 outside the clusters. d1 locates the step above or below 2e-6.
+  - **R-noise:** |d2| ≥ 3e-7. The whole-sum referee is noise-limited at that level, and the 7.8e-7 is not a measured truth.
+  - Otherwise: **UNCLASSIFIED.**
+- ~2 h on the Air (3 whole t0 at ~30 min + 2 class passes at ~12 min). Under 12 h, so no gate paragraph.
+- **Correction to my e96d message (an honest miss):** I wrote that the per-class floor "would need hundreds of times more entries" to reach 7.8e-7, so noise was "not the obvious answer". The Tier-1 sweep (W8P3; debug, not a target) shows the outside part moving **−8.9e-7 between 1e-6 and 5e-7**, while each class moves ~1e-8. Outside entries can carry a far larger floor than the clusters. That inference was wrong at W8P3; W8P8 is decided by the sweep.
+- Until the sweep lands, **W12P12's R(2) carries an unquantified outside-entry term** (STATUS.md). Its reading is folded into W12P12's 25 % check-in.
+
+**Step 3: W12P12. Gate paragraph (the run is over 12 h):**
+- **What it decides:** whether the EXP-087 fix's Δt0(W12P12) = +0.06394052643 is right at the cluster level (EXACT / PASS / FAIL against τ_num and δ_mat). That sets whether every k = 3 reading carries the fix or Δt0(truth).
+- **Pilot cost, and the projection:**
+  - W8P8 on the Air: 430 s per class, 0.56 GB.
+  - W12P12 probe: install 4111 s (Air crowded), 3.24 GB true peak.
+  - Scaled per class: × 1.5 (Ny 48/32) × 11.4 (N 864/384, cubed for G) ≈ 2.0 h. With 11 classes (p = 6–16) plus install ≈ **23.5 h**.
+  - Outside-view overrun from our own record: × 2 (the W12P12 install took 4.8× the M4; memory came out 1.9× my estimate). That gives **47 h ≈ 2.0 days of one core**, under the 3-day line, so no referral to Sumit.
+  - Memory: 3.24 GB true (install), plus ~0.15 GB G cache.
+- **Premortem:**
+  - (i) a real outside-entry rad dependence at W12P12, which the cluster route cannot see (steps 1–2 test this first);
+  - (ii) pauses from 095b memory on the 8 GB Air (pause-only: a delay, not a loss; per-class JSON checkpoints).
+- **Dependencies:** the scan CLEAR; the sweep landed; the 095b route shares the Air.
+- **Stop rule:**
+  - `--budget-h 47` (2× the estimate): a checkpoint stop at a class boundary, then re-gate with the Bridge;
+  - the 25 % check-in at ~12 h, with the sweep reading folded in;
+  - **kill date: not graded by 2026-11-30 12:00**: report what exists and stop.
+- Launch: `air_run_096.sh e96_W12P12 1 exp096_t0_disc.py 12 12 --budget-h 47`, one process. The launch note confirms the first-class projection.
