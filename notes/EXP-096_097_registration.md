@@ -153,7 +153,7 @@
   3. W12P12 as ONE process with all classes (the Air's memory allows one 3.2 GB job beside the 095b route; the Mac mini is excluded, at 33 % free).
 - **The registered per-class "2-point probe" is replaced** by the first class of the full run. That run's projection line gives the time; its watchdog peak gives the memory.
 
-## Amendment 2 (2026-11-27 17:45): two controls fired. Both diagnosed BEFORE any rerun; no tolerance changed
+## Amendment 2 (2026-11-27 17:25; registered 5d203db before the run): two controls fired. Both diagnosed BEFORE any rerun; no tolerance changed
 **A. EXP-096 W8P8 known answer FAILED (rc 0, 17:16; `exp096/W8P8Wb8Ny32.json`, sha 4bc71372…).**
 - Route: Δ_truth = +0.0206829953. Referee (OFF@1e-6 − OFF@1e-5) = +0.0206837753. Gap **G = −7.80e-7** (route − referee); tolerance 1e-7.
 - Everything else passed:
@@ -189,3 +189,42 @@
 - Effect on the target: f₂ uses ρ₂A differences over a G₂b drop ~0.16. An absolute 1e-11 is 1e-10 of f₂. Nil.
 - **Proposed (needs the Bridge's GO; NOT applied):** for the derived rows (ρ₂A, G₂b), use the propagated tolerance TOL·(|x| + |y|)/|x + y| from their two inputs; keep 1e-10 on every input row. Then rerun EXP-097 unchanged otherwise (minutes).
 - I do not rerun before the GO. The failed run is kept (`air_pull_096/e97_P8.out`, sha 70712b52…).
+
+## Amendment 3 (2026-11-27 ~17:50; Bridge ruling on amendment 2; before the diagnostic lands and before any W2P8 value)
+**Honest misses (recorded):**
+- **EXP-096:** I expected the referee's 9.2e-7 (truth − fix at W8P8) to be the p = 10 singleton leak. The route measures that leak at 1.395e-7. **Out by ~6.6×.**
+- **EXP-097, my message to the Bridge:** I wrote "8.3e-12 × 128 = 5.38e-10". **Wrong arithmetic** (that product is 1.06e-9).
+  - The observed value is R₂'s input error alone, propagated with the factor |R₂|/|ρ₂A| = 64.46: 8.3e-12 × 64.46 = 5.35e-10 (printed as 5.4e-10).
+  - The worst-case first-order bound factor is (|R₂| + |ΔR^A|)/|ρ₂A| = **127.92**, from the stored inputs. The Bridge quoted 128.1.
+  - Amendment 2's own route (1.125e-11 absolute / 0.02103) was right. Its "127.9" is the bound, not the observed factor.
+- **Amendment 2's header time:** first written as 17:45; corrected to 17:25 (the Air clock showed the diagnostic launched at 17:27).
+
+**EXP-096 e96d: what each reading decides** (the Bridge rules when it lands):
+- **H1 (referee floor at the clusters):** the 1e-7 W8P8 known answer could never have passed with a single-rad referee. It is replaced by a referee whose precision is MEASURED (a rad sweep with a stated spread), not waived.
+- **H2 (referee error outside the clusters):** the same. The region is named as "OFF entries outside the 9 class discs".
+  - This diagnostic cannot localise it further.
+  - A per-slice whole-sum rad sweep would be a follow-up, registered separately if wanted.
+- **H3 (route wrong at the clusters):** W12P12 stays held, and any EXP-095 / EXP-097 input that uses the route is re-read. (Today none does: EXP-097 uses no t0, and EXP-095 is sealed and uses the stored fix.)
+
+**EXP-097 control (iii) (Bridge GO, with conditions):**
+- **(a) As written, control (iii) FAILED on the first run:**
+  - verbatim line: `(iii) P=6 rho2A vs exp094_result.json   FAIL  rel 5.4e-10` (e97_P8, rc 1, 16:07:44; kept in `air_pull_096/e97_P8.out`, sha 70712b52…);
+  - the new rule below is a **correction of the control's design**, derived from first-order error propagation. It is method-derived, not tuned;
+  - the as-written verdict is still printed, as an INFO line, on every run.
+- **(b) Input rows** R₂, ΔR^A, ΔR^bulk stay at TOL = 1e-10 and remain the controlling check.
+  - R₂ = −½(Q₂ − Q₄)·norm is itself a difference of two QA values, but it stays an input row at 1e-10.
+  - The derived-row check catches errors in the COMBINATION step (sign, a missing or extra term, the pairing). Those are O(1).
+  - **Plant (vii):** in a copy of each P = 4 / 6 row, flip the sign of ΔR^A. Each derived row must then FAIL its tolerance. Predicted from the stored values:
+    - ρ₂A: rel 9.55 at P = 4, 127 at P = 6;
+    - G₂b: rel 1.12 at P = 4, 3.30 at P = 6;
+    - against tolerances ≤ 1.3e-8.
+- **(c) The derived rows, all of them:** ρ₂A = R₂ + ΔR^A and G₂b = ΔR^A − ΔR^bulk, at P = 4 and P = 6. No other row is controlled as derived. Tolerance = TOL × (|x| + |y|)/|x ± y| from the stored exp094 inputs:
+  - P = 4: ρ₂A 1.055e-9 (amp 10.55); G₂b 2.12e-10 (amp 2.12).
+  - P = 6: ρ₂A 1.279e-8 (amp 127.92); G₂b 4.30e-10 (amp 4.30).
+- **(d) At P = 8, report the amplification factor of every combination:**
+  - R₂ (from the two QA values), ρ₂A, G₂b;
+  - both G₂b drops (6→8, 4→8), and both ρ₂A numerators.
+  - FLAG any factor above 1e4 to the Bridge (inform, not a stop).
+- **Then rerun EXP-097 unchanged otherwise:**
+  - the stale guard holds (the Air's exp097/ is empty; the first run wrote nothing);
+  - code: `scripts/exp097_run.py`, with the (iii) block, (vii) and (d) marked "amendment 3".

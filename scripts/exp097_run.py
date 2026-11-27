@@ -61,9 +61,25 @@ Q4 = {W: json.load(open(os.path.join(D, "exp084", f"Q_W{W}P4b4.json")))["2"]["QA
 row = {}
 for P, sg, QQ in ((4, sig4, Q4), (6, {W: SIG[(W, 6)] for W in (2, 4)}, {W: Q[(W, 6)] for W in (2, 4)})):
     R2 = -0.5 * (QQ[2] - QQ[4]) * nm[P]; A, B = dRs(P, sg, nm[P]); row[P] = dict(R2=R2, dRA=A, dRB=B, rho2A=R2 + A, G2b=A - B)
+# amendment 3 (Bridge GO 2026-11-27): input rows R2, dRA, dRB stay at TOL and are the controlling check. The ONLY derived rows are
+# rho2A = R2 + dRA and G2b = dRA - dRB; they get the first-order propagated tolerance TOL x amp, amp = (|x| + |y|) / |x +- y|, computed
+# from the STORED exp094 inputs (method-derived, not tuned). The as-written verdict (rel <= TOL) is still printed, as INFO.
+DERIVED = {"rho2A": ("R2", "dRA", +1), "G2b": ("dRA", "dRB", -1)}
+def amp(r, key):
+    x, y, s = DERIVED[key]; return (abs(r[x]) + abs(r[y])) / abs(r[x] + s * r[y])
 for i, P in enumerate((4, 6)):
+    ref94 = {k: R94[k][i] for k in ("R2", "dRA", "dRB", "rho2A", "G2b")}
     for key in ("R2", "dRA", "dRB", "rho2A", "G2b"):
-        check(f"(iii) P={P} {key} vs exp094_result.json", rel(row[P][key], R94[key][i]) <= TOL, f"rel {rel(row[P][key], R94[key][i]):.1e}")
+        rr = rel(row[P][key], R94[key][i])
+        if key in DERIVED:
+            tl = TOL * amp(ref94, key)
+            print(f"    INFO (iii) as written (rel <= {TOL:.0e}): P={P} {key} {'PASS' if rr <= TOL else 'FAIL'}  rel {rr:.1e}", flush=True)
+            check(f"(iii) P={P} {key} vs exp094_result.json (derived, TOL x amp {amp(ref94, key):.1f})", rr <= tl, f"rel {rr:.1e} vs {tl:.2e}")
+        else:
+            check(f"(iii) P={P} {key} vs exp094_result.json", rr <= TOL, f"rel {rr:.1e}")
+    for key in DERIVED:                                                     # (vii) planted mutation: dRA sign flipped in a COPY must FAIL
+        mut = dict(row[P]); mut["dRA"] = -mut["dRA"]; x, y, s = DERIVED[key]; mv = mut[x] + s * mut[y]; tl = TOL * amp(ref94, key)
+        check(f"(vii) plant: dRA sign flipped -> P={P} {key} row must FAIL its tolerance", rel(mv, R94[key][i]) > tl, f"rel {rel(mv, R94[key][i]):.1e} vs {tl:.2e}")
 recs = {}
 rec4, s48 = phase1(4, 8); ref = json.load(open(os.path.join(D, "exp084", "Q_W4P8b8.json")))
 for n in ("2", "3"):
@@ -82,6 +98,13 @@ def fstep(a_, b_):
     drop = row[a_]["G2b"] - row[b_]["G2b"]; f = -(row[b_]["rho2A"] - row[a_]["rho2A"]) / drop; inc = drop < 0.2 * row[a_]["G2b"]
     return dict(drop=drop, thr=0.2 * row[a_]["G2b"], f=f, inconclusive=inc)
 s68, s48s = fstep(6, 8), fstep(4, 8)
+# amendment 3 (d): amplification factor of every combination at P = 8 (inform, not a stop); FLAG > 1e4 to the Bridge
+AMP8 = {"R2 = -(Q2 - Q4)/2 nm": (abs(rec2["2"]["QA"]) + abs(rec4["2"]["QA"])) / abs(rec2["2"]["QA"] - rec4["2"]["QA"]),
+        "rho2A = R2 + dRA": amp(row[8], "rho2A"), "G2b = dRA - dRB": amp(row[8], "G2b")}
+for a_, b_, s in ((6, 8, s68), (4, 8, s48s)):
+    AMP8[f"drop G2b({a_}) - G2b({b_})"] = (abs(row[a_]["G2b"]) + abs(row[b_]["G2b"])) / abs(s["drop"])
+    AMP8[f"num rho2A({b_}) - rho2A({a_})"] = (abs(row[a_]["rho2A"]) + abs(row[b_]["rho2A"])) / abs(row[b_]["rho2A"] - row[a_]["rho2A"])
+for k_, v_ in AMP8.items(): print(f"    (d) amplification at P = 8: {k_:34s} {v_:10.1f}{'   FLAG > 1e4 (inform the Bridge)' if v_ > 1e4 else ''}")
 n1 = {P: (W89[f"r{P}"] if P in (4, 6) else P93["r8"]) for P in (4, 6, 8)}
 f1_48 = -(n1[8]["rhoA"] - n1[4]["rhoA"]) / (n1[4]["Gb"] - n1[8]["Gb"])
 for P in (4, 6, 8): print(f"P = {P}: R2 {row[P]['R2']:+.6f}  dR2^A {row[P]['dRA']:+.6f}  dR2^bulk {row[P]['dRB']:+.6f}  rho2A {row[P]['rho2A']:+.6f}  G2b {row[P]['G2b']:+.6f}")
@@ -89,6 +112,6 @@ for nmx, s in (("6 -> 8", s68), ("4 -> 8", s48s)):
     print(f"f2({nmx}) = {s['f']:+.4f}; G2b drop {s['drop']:+.6f} vs 0.2 G2b(start) {s['thr']:.6f} -> {'INCONCLUSIVE' if s['inconclusive'] else 'conclusive'}")
 print(f"DESCRIPTIVE, n = 1 beside it: f(4->6) {W89['f']:+.4f}, f(6->8) {P93['f']:+.4f}, f(4->8) {f1_48:+.4f};  n = 2 f2(4->6) {R94['f2']:+.4f} (INCONCLUSIVE)")
 if FAIL: print(f"controls FAILED after P = 8: {FAIL}")
-json.dump(dict(rows=row, step68=s68, span48=s48s, n1_f46=W89["f"], n1_f68=P93["f"], n1_f48=f1_48, failed=FAIL, sec={W: recs[W]["sec"] for W in (2, 4)}),
+json.dump(dict(rows=row, amp8=AMP8, step68=s68, span48=s48s, n1_f46=W89["f"], n1_f68=P93["f"], n1_f48=f1_48, failed=FAIL, sec={W: recs[W]["sec"] for W in (2, 4)}),
           open(os.path.join(D, "exp097_result.json"), "w"), indent=1, default=float)
 sys.exit(1 if FAIL else 0)
