@@ -709,6 +709,7 @@ Everything is committed and pushed. Nothing is running. Where things stand:
     - a checkpoint plan that survives a power cut.
   - [x] LAUNCHED (Bridge OK on c7a1b64): runner 92550 at 23:19:30. Route started 23:24:00 (pgate): watchdog 94275, route 94281 (nice 17).
     Guards: freepct 92557, hold 92591 (COL=3, 6.9 GB true), backup 92593. ETA ~28 Nov 11:30 (10:30-15:30).
+  - 27 Nov 02:55: the watchdog logged one yellow-pressure WARN (inform only, no pause). Back to normal at 02:56, 61 % free, job at 3.63 GB true (t0 phase). Not reported (not a hold or pause). Still in t0 at 12.7 ks (W12: t0 done at 10.2 ks).
   - [ ] Report only events to the Bridge: a hold or pause, a node milestone every ~12 h, and landing. At landing: stale-file guard + sha.
     Grade the sealed prediction (true peak 5.3 central, ≤ 5.5 GB, on phys_footprint_peak, read before exit, or the MEM max). k = 3 stays sealed.
 - Note: the printed ON time "(…s)" and the watchdog's wall time will include the pause. Report the time minus the pause.
@@ -726,7 +727,8 @@ Everything is committed and pushed. Nothing is running. Where things stand:
 - [ ] Grade the prediction at the end of each run: true peak <= 2.45 GB (kernel phys_footprint_peak via `footprint -p`, read before the process exits, or the MEM column max).
 - [ ] W2P10 route on the Air (~23 h), then W4P10 (~30 h), serial. Report the measured peak to the Bridge after the first hour.
 - [ ] GEOM W2P10 / W4P10 on the Mac mini (run_095_geom.sh).
-- [ ] At landing: commit ONLY the sha256 of the 4 outputs to exp081d_results/exp095_sealed_sha256.txt. Do NOT open them, do NOT run exp095_p1.py (it is not written yet; write and commit it without running).
+- [ ] At landing: commit ONLY the sha256 of the 4 outputs to exp081d_results/exp095_sealed_sha256.txt. Do NOT open them, do NOT run exp095_p1.py.
+- [x] 2026-11-27 (office Cuspis, carrying again): exp095_p1.py WRITTEN and committed, NOT run (only an ast parse check). Controls: sealed sha first, row(4/6/8) bitwise, shadow, route gates, W4P10 rc from air_run_095b.txt only, stale guard, G failed. Modes S (exp095_seal.json) / D.
 - [ ] Next week: path S (Fable seal, if Sumit OKs) or path D (descriptive). Any accidental view of a P = 10 value is declared at once.
 - [ ] EXP-095: W4P10 runs ALONGSIDE in ~/GitHub/fleet-air/corner_function_095b (since 18:27, Bridge OK). When W2P10 ends, the serial runner's duplicate W4P10 is SIGSTOPped by the pause guard. Then ask the Bridge: leave it paused, or end it by PID. Sealed sha so far: G_W2P10, G_W4P10 (bf15796).
 - [ ] EXP-095 duplicate end (Bridge-approved procedure). When the 0 GB pause guard fires on runner 27427:
