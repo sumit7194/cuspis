@@ -20,6 +20,7 @@ ap = argparse.ArgumentParser(); ap.add_argument("W", type=int); ap.add_argument(
 ap.add_argument("--Ny", type=int, default=None); ap.add_argument("--Wb", type=int, default=None)
 ap.add_argument("--classes", default=None); ap.add_argument("--probe", action="store_true"); ap.add_argument("--plant", action="store_true")
 ap.add_argument("--tag", default=""); ap.add_argument("--M", type=int, default=32); ap.add_argument("--gdet", type=float, default=1e-4)
+ap.add_argument("--budget-h", type=float, default=12.0)            # amendment 1: checkpoint stop at a class boundary if the projection exceeds it
 a = ap.parse_args()
 W, P = a.W, a.P; Wb = a.Wb if a.Wb else P; Ny = a.Ny if a.Ny else 4 * P; Lx, Lt = 2 * P + Wb, 2 * P; x0 = P + (Wb - W) // 2
 RAD, MRES, M, SCUT = 1e-5, 32, a.M, 3.0
@@ -28,7 +29,7 @@ name = f"W{W}P{P}Wb{Wb}Ny{Ny}{a.tag}{'_plant' if a.plant else ''}{'_probe' if a.
 def log(*x): print(*x, flush=True)
 T0 = time.time()
 S = S3.Strip3D(Lx, Lt, Ny, list(range(x0, x0 + W)), P - 1, s_cut=SCUT); U = C.install(S, refine="auto", lowrank=True, rank_drop=0)
-B1 = S.B1(); log(f"{name}: installed + B1 ({time.time()-T0:.0f}s), N {S.N}")
+B1 = S.B1(); T_INST = time.time() - T0; log(f"{name}: installed + B1 ({T_INST:.0f}s), N {S.N}")
 for k in range(Ny): B1[k] = np.linalg.inv(B1[k]).T          # in place: Binv_T[k] = inv(B1_k)^T, so Tr(B1_k^{-1} X) = sum(Binv_T[k] * X)
 BT = B1; del B1
 def tr(k, X): return complex(np.dot(BT[k].ravel(), X.ravel()))
@@ -64,8 +65,8 @@ def classes_of():
     allp = sorted(v for p in range(Ny // 2 + 1) for v in S.sl[p].s if v <= SCUT)
     for X in out:
         others = [v for v in allp if min(abs(v - m) for m in X["members"]) > 1e-12]
-        X["dmin"] = float(min(abs(v - X["c"]) for v in others)); X["r1"] = min(1e-3, X["dmin"] / 3); X["r2"] = X["r1"] / 3
-        X["ok"] = X["r2"] >= 10 * X["half"]
+        X["dmin"] = float(min(abs(v - X["c"]) for v in others)); X["r1"] = min(1e-3, X["dmin"] / 3); X["r2"] = max(X["r1"] / 3, 10 * X["half"])   # amendment 1: r2 >= 10 x half-span
+        X["ok"] = X["r2"] <= X["r1"] / 1.5                                               # the r-sweep must still span >= 1.5x
     return out
 CL = classes_of()
 on087 = [S3.clusters_087(sl.s, RAD, SCUT) for sl in S.sl]
@@ -75,7 +76,7 @@ for p in range(Ny):                                                      # every
         assert any(X["p"] == pc and all(abs(v - X["c"]) < X["r2"] for v in g) for X in CL), f"087 cluster {g} at slice {p} not covered"
 log(f"classes: {[(X['p'], len(X['members']), f'{2*X['half']:.1e}', f'{X['c']:.4f}', f'{X['r1']:.1e}', X['ok']) for X in CL]}")
 bad = [X for X in CL if not X["ok"]]
-if bad: log(f"REFUSE: r2 < 10 x half-span for classes {[X['p'] for X in bad]}"); sys.exit(3)
+if bad: log(f"REFUSE: 10 x half-span > r1/1.5 for classes {[X['p'] for X in bad]}"); sys.exit(3)
 pset = lambda p: sorted({p % Ny, (Ny - p) % Ny})
 
 # ---- OFF entries inside a disc: copy of sigma3d.Strip3D.inner_beta0 inner loop (one pair), plus the marked filter line
@@ -209,7 +210,11 @@ for X in sel:
     log(f"class p={X['p']:2d} ({len(X['members'])} members, span {2*X['half']:.1e}, r1 {X['r1']:.1e}): "
         + " ".join(f"{kk} {v.real:+.12e}" for kk, v in rc.items() if kk.startswith(("mine", "off", "on")))
         + f"  ({rc['sec']:.0f}s, {rc['npairs']} pairs)")
-    json.dump(dict(name=name, classes=allres, NG=NG[0], stats=dict(C.ExactSlice.STATS, bad=[str(b) for b in C.ExactSlice.STATS.get("bad", [])][:5])),
+    el = time.time() - T0; per = (el - T_INST) / len(allres); proj = (T_INST + per * len(sel)) / 3600
+    log(f"projection: {len(allres)}/{len(sel)} classes, {per:.0f} s per class -> total {proj:.1f} h (budget {a.budget_h} h)")
+    json.dump(dict(name=name, classes=allres, NG=NG[0], projection_h=proj, stats=dict(C.ExactSlice.STATS, bad=[str(b) for b in C.ExactSlice.STATS.get("bad", [])][:5])),
               open(os.path.join(OUT, f"{name}{'_c' + a.classes.replace(',', '-') if a.classes else ''}.json"), "w"), indent=1,
               default=lambda z: [z.real, z.imag] if isinstance(z, complex) else str(z))
+    if proj > a.budget_h and len(allres) < len(sel):
+        log(f"GATE STOP at a class boundary: projected {proj:.1f} h > {a.budget_h} h; partial results kept (re-gate with the Bridge)"); sys.exit(4)
 log(f"done: {len(allres)} classes, {NG[0]} G evaluations, unconverged {C.ExactSlice.STATS.get('unconverged')}, wall {time.time()-T0:.0f}s")

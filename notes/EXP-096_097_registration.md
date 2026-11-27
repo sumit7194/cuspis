@@ -136,3 +136,19 @@
   - KA-complete would fire on a mismatch.
 - **Air folder:** ~/GitHub/fleet-air/corner_function_096/scripts, with the runner `scripts/air_run_096.sh`. Its sha256 manifest (35 files: closure + inputs) is identical on both sides (14:44).
 - **Probe launched 14:45:** `e96_probe_W12P12`, runner PID 49011, PPID 1, freepct_guard 49018 (pause < 20 % / resume ≥ 30 %).
+
+## Amendment 1 (2026-11-27 16:10, after the W12P12 probe refused; no target number was produced)
+- **Probe result (e96_probe_W12P12, rc 3, 15:58:36):**
+  - Install + B1 took **4111 s on the Air**, against 861 s on the M4. The Air was crowded then, with W2P10 still running.
+  - Peak **3.24 GB true** (phys_footprint; 2.5 GB of it compressed).
+  - It then REFUSED class p = 6, a near-pair with gap 8.3e-5. That is below gdet = 1e-4, NOT an EXP-087 cluster (8.3·rad; the fix treats it as a singleton). With r1 = 1e-3, r2 = r1/3 = 3.3e-4 is below 10·h = 4.2e-4.
+  - The check was right; the rule was rigid for wide near-pairs.
+- **Change 1:** r2 = max(r1/3, 10·h). REFUSE only if r2 > r1/1.5 (the r-sweep must still span ≥ 1.5×).
+  - The trapezoid bound is unchanged (inner ratio ≤ 0.1).
+  - Classes with 10·h ≤ r1/3 are unchanged. Re-run Tier 1 W8P3 is **bitwise identical** to the committed one.
+- **Change 2:** `--budget-h 12`. After each class, the projection is install + (mean class time) × classes. If it exceeds 12 h, the run stops at that class boundary (a checkpoint stop; partial per-class JSON kept), and a gate paragraph goes to the Bridge before any continuation (fleet practice 2026-11-27, rule 1).
+- **Order, revised:**
+  1. W8P8 known answer FIRST (before the expensive run; ~0.5 GB);
+  2. EXP-097 (minutes);
+  3. W12P12 as ONE process with all classes (the Air's memory allows one 3.2 GB job beside the 095b route; the Mac mini is excluded, at 33 % free).
+- **The registered per-class "2-point probe" is replaced** by the first class of the full run. That run's projection line gives the time; its watchdog peak gives the memory.
