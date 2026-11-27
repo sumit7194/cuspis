@@ -1,0 +1,28 @@
+G_W2P8: failed empty                                                       PASS  
+G_W4P8: failed empty                                                       PASS  
+(v) exp097/Q_W2P8b8.json absent before the run                             PASS  
+(v) exp097/Q_W4P8b8.json absent before the run                             PASS  
+(i) phase1 W2P4 QA n=2 vs stored                                           PASS  rel 6.9e-13 bitwise False
+(i) phase1 W2P4 QA n=3 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) phase1 W4P4 QA n=2 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) phase1 W4P4 QA n=3 vs stored                                           PASS  rel 8.1e-13 bitwise False
+(i) phase1 W2P6 QA n=2 vs stored                                           PASS  rel 1.4e-12 bitwise False
+(i) phase1 W2P6 QA n=3 vs stored                                           PASS  rel 1.6e-12 bitwise False
+(i) saddle(2) W2P6 vs exp094_sigma2 (max rel)                              PASS  3.2e-15
+(i) phase1 W4P6 QA n=2 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) phase1 W4P6 QA n=3 vs stored                                           PASS  rel 0.0e+00 bitwise True
+(i) saddle(2) W4P6 vs exp094_sigma2 (max rel)                              PASS  1.7e-15
+(iii) P=4 R2 vs exp094_result.json                                         PASS  rel 0.0e+00
+(iii) P=4 dRA vs exp094_result.json                                        PASS  rel 0.0e+00
+(iii) P=4 dRB vs exp094_result.json                                        PASS  rel 0.0e+00
+(iii) P=4 rho2A vs exp094_result.json                                      PASS  rel 0.0e+00
+(iii) P=4 G2b vs exp094_result.json                                        PASS  rel 0.0e+00
+(iii) P=6 R2 vs exp094_result.json                                         PASS  rel 8.3e-12
+(iii) P=6 dRA vs exp094_result.json                                        PASS  rel 5.2e-14
+(iii) P=6 dRB vs exp094_result.json                                        PASS  rel 5.8e-14
+(iii) P=6 rho2A vs exp094_result.json                                      FAIL  rel 5.4e-10
+(iii) P=6 G2b vs exp094_result.json                                        PASS  rel 6.6e-14
+(ii) phase1 W4P8 QA n=2 vs stored Q_W4P8b8 (EXP-084)                       PASS  rel 1.5e-12 bitwise False
+(ii) phase1 W4P8 QA n=3 vs stored Q_W4P8b8 (EXP-084)                       PASS  rel 1.8e-12 bitwise False
+
+STOP: controls failed ['(iii) P=6 rho2A vs exp094_result.json'] -> W2P8 not computed

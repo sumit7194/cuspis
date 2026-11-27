@@ -1,0 +1,21 @@
+W8P8Wb8Ny32: installed + B1 (311s), N 384
+classes: [(8, 2, '5.0e-05', '1.0523', '1.0e-03', True), (9, 2, '2.6e-05', '1.1053', '1.0e-03', True), (10, 2, '1.4e-05', '1.1514', '1.0e-03', True), (11, 2, '8.9e-06', '1.1904', '1.0e-03', True), (12, 2, '6.0e-06', '1.2224', '1.0e-03', True), (13, 2, '4.4e-06', '1.2473', '1.0e-03', True), (14, 2, '3.6e-06', '1.2651', '1.0e-03', True), (15, 2, '3.1e-06', '1.2757', '1.0e-03', True), (16, 2, '3.0e-06', '1.2793', '1.0e-03', True)]
+class p= 8 (2 members, span 5.0e-05, r1 1.0e-03): mine_r1 -2.417573423072e-01 mine_r1_M2 -2.417573423072e-01 off_r1 -2.417573423270e-01 on_r1 -2.417573423270e-01 mine_r2 -2.417573423072e-01 mine_r2_M2 -2.417573423074e-01  (432s, 124 pairs)
+projection: 1/9 classes, 432 s per class -> total 1.2 h (budget 12.0 h)
+class p= 9 (2 members, span 2.6e-05, r1 1.0e-03): mine_r1 -1.444029881141e-01 mine_r1_M2 -1.444029881141e-01 off_r1 -1.444029880946e-01 on_r1 -1.444029880946e-01 mine_r2 -1.444029881142e-01 mine_r2_M2 -1.444029881142e-01  (405s, 124 pairs)
+projection: 2/9 classes, 419 s per class -> total 1.1 h (budget 12.0 h)
+class p=10 (2 members, span 1.4e-05, r1 1.0e-03): mine_r1 -9.075050981199e-02 mine_r1_M2 -9.075050981200e-02 off_r1 -9.075064930455e-02 on_r1 -9.075064930455e-02 mine_r2 -9.075050981214e-02 mine_r2_M2 -9.075050981223e-02  (392s, 124 pairs)
+projection: 3/9 classes, 410 s per class -> total 1.1 h (budget 12.0 h)
+class p=11 (2 members, span 8.9e-06, r1 1.0e-03): mine_r1 -5.990541212364e-02 mine_r1_M2 -5.990541212365e-02 off_r1 -6.670336509670e-02 on_r1 -5.990541209678e-02 mine_r2 -5.990541212362e-02 mine_r2_M2 -5.990541212365e-02  (435s, 124 pairs)
+projection: 4/9 classes, 416 s per class -> total 1.1 h (budget 12.0 h)
+class p=12 (2 members, span 6.0e-06, r1 1.0e-03): mine_r1 -4.135875965104e-02 mine_r1_M2 -4.135875965103e-02 off_r1 -4.587388178017e-02 on_r1 -4.135875967872e-02 mine_r2 -4.135875965107e-02 mine_r2_M2 -4.135875965104e-02  (495s, 124 pairs)
+projection: 5/9 classes, 432 s per class -> total 1.2 h (budget 12.0 h)
+class p=13 (2 members, span 4.4e-06, r1 1.0e-03): mine_r1 -2.941249898594e-02 mine_r1_M2 -2.941249898594e-02 off_r1 -3.287449111681e-02 on_r1 -2.941249898258e-02 mine_r2 -2.941249898592e-02 mine_r2_M2 -2.941249898590e-02  (515s, 124 pairs)
+projection: 6/9 classes, 446 s per class -> total 1.2 h (budget 12.0 h)
+class p=14 (2 members, span 3.6e-06, r1 1.0e-03): mine_r1 -1.988444106211e-02 mine_r1_M2 -1.988444106211e-02 off_r1 -2.271367301406e-02 on_r1 -1.988444107390e-02 mine_r2 -1.988444106213e-02 mine_r2_M2 -1.988444106216e-02  (401s, 124 pairs)
+projection: 7/9 classes, 439 s per class -> total 1.2 h (budget 12.0 h)
+class p=15 (2 members, span 3.1e-06, r1 1.0e-03): mine_r1 -3.130257285790e-04 mine_r1_M2 -3.130257945138e-04 off_r1 -2.798165059376e-03 on_r1 -3.130257326499e-04 mine_r2 -3.130257285798e-04 mine_r2_M2 -3.130257285754e-04  (412s, 124 pairs)
+projection: 8/9 classes, 436 s per class -> total 1.2 h (budget 12.0 h)
+class p=16 (2 members, span 3.0e-06, r1 1.0e-03): mine_r1 +5.952557400552e-02 mine_r1_M2 +5.952557407524e-02 off_r1 +5.893215672041e-02 on_r1 +5.952557399836e-02 mine_r2 +5.952557400552e-02 mine_r2_M2 +5.952557400553e-02  (379s, 63 pairs)
+projection: 9/9 classes, 429 s per class -> total 1.2 h (budget 12.0 h)
+done: 9 classes, 51488 G evaluations, unconverged 0, wall 4177s

@@ -1,0 +1,9 @@
+=== e96_probe_W12P12 start 2026-11-27 14:45:24 PID 49011 host Akashs-MacBook-Air CUSPIS_081E=1 args: exp096_t0_disc.py 12 12 --probe
+=== e96_probe_W12P12 freepct_guard PID 49018 (LOW 20 / HIGH 30, pause-only)
+=== e96_probe_W12P12 rc 3 2026-11-27 15:58:36
+=== e97_P8 start 2026-11-27 16:02:00 PID 64994 host Akashs-MacBook-Air CUSPIS_081E=unset args: exp097_run.py
+=== e96_W8P8 start 2026-11-27 16:02:00 PID 64991 host Akashs-MacBook-Air CUSPIS_081E=unset args: exp096_t0_disc.py 8 8
+=== e96_W8P8 freepct_guard PID 65006 (LOW 20 / HIGH 30, pause-only)
+=== e97_P8 freepct_guard PID 65007 (LOW 20 / HIGH 30, pause-only)
+=== e97_P8 rc 1 2026-11-27 16:07:44
+=== e96_W8P8 rc 0 2026-11-27 17:16:17

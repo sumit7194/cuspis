@@ -152,3 +152,40 @@
   2. EXP-097 (minutes);
   3. W12P12 as ONE process with all classes (the Air's memory allows one 3.2 GB job beside the 095b route; the Mac mini is excluded, at 33 % free).
 - **The registered per-class "2-point probe" is replaced** by the first class of the full run. That run's projection line gives the time; its watchdog peak gives the memory.
+
+## Amendment 2 (2026-11-27 17:45): two controls fired. Both diagnosed BEFORE any rerun; no tolerance changed
+**A. EXP-096 W8P8 known answer FAILED (rc 0, 17:16; `exp096/W8P8Wb8Ny32.json`, sha 4bc71372…).**
+- Route: Δ_truth = +0.0206829953. Referee (OFF@1e-6 − OFF@1e-5) = +0.0206837753. Gap **G = −7.80e-7** (route − referee); tolerance 1e-7.
+- Everything else passed:
+  - unconverged 0;
+  - KA-complete diff −1.1e-14;
+  - r-sweep 3.2e-13; M/2 ≤ 3.8e-12;
+  - on the six EXP-087 clusters, mine − ON per class ≤ 2.8e-11. Two independent methods agree there.
+- The route finds truth − fix = +1.395e-7, all in near-pair class p = 10 (span 1.4e-5 = 1.44·rad; the predicted singleton leak, ~1e-7 in the EXP-087 check (b)).
+- **My registration's expectation** (that the referee's 9.2e-7 is the p = 10 leak) **was wrong by a factor of ~6.6.**
+- **Premise I had not checked:** the referee is ONE rad point, and its own precision at W8P8 was never measured. On the W8P3 box, 1e-6 against 3e-7 agreed only to 3.4e-6 (EXP-087 registration, line 37).
+- **Readings, and what tells them apart.** Define g(rad) = Σ over the 9 classes of [OFF entries in the r1 disc at rad − mine], so that g(1e-6) + rest = −G = +7.80e-7, where rest = the non-class part of the referee.
+  - **H1 (referee floor at the class entries):** |g(1e-6) − 7.8e-7| ≤ 2e-7, AND g moves with rad: |g(3e-7) − g(1e-6)| ≥ 2e-7.
+  - **H2 (the referee's 7.8e-7 lies outside the classes):** |g(1e-6)| ≤ 1e-7. Then rest ≈ 7.8e-7. Off-class OFF entries have no physical rad dependence: single-tag entries use stored exact residues, and there are no neighbours within 3·rad. So rest is the small-contour floor (or a cross-slice merge at 1e-2·rad), not truth.
+  - **H3 (the route is wrong at the classes):** |g(1e-6) − 7.8e-7| ≤ 2e-7, AND g is stable: |g(5e-7) − g(1e-6)| ≤ 2e-8 and |g(3e-7) − g(1e-6)| ≤ 2e-8.
+  - Anything else: UNCLASSIFIED, reported as such.
+- **Diagnostic `scripts/exp096_diag_rad.py`:**
+  - Lines from "import os" to the end of off_disc are a verbatim copy of exp096_t0_disc.py, with 3 marked edits (--rads, the output name, rad = RADX[0]), plus a verbatim pairs_of.
+  - Own KA: per class, off(1e-5) must equal the stored off_r1 to ≤ 1e-12 (same platform).
+  - Tier 1, W8P3 on the Air against the Air-run route (`_tier1air`): KA **PASS, max 0.0e+00**.
+  - Against the Mac-stored `_tier1` it FAILS at 4.6e-10 (cross-platform, as expected). So the KA can fail.
+  - The tiny-box reading (debug only): per class, OFF@1e-6 − mine ≤ 1.1e-8, and it grows to ~1.3e-7 at 3e-7.
+- **The decision this feeds (the Bridge's):**
+  - H1 or H2: the 1e-7 KA was set against a referee that is not good to 1e-7. Propose replacing it with the referee's measured spread.
+  - H3: the route fails, and W12P12 does not run.
+  - **W12P12 does not launch until the Bridge rules.**
+- Run: `e96d_W8P8` on the Air (flag unset, same guards). ~1.2 h. Under 12 h, so no gate paragraph.
+
+**B. EXP-097 control (iii) P = 6 ρ₂A FAILED (rel 5.4e-10 > TOL 1e-10, rc 1 at 16:07; STOP, W2P8 not computed).**
+- ρ₂A = R₂ + ΔR^A = 1.35581 − 1.33477 = 0.02103. This cancellation amplifies relative error by (|R₂| + |ΔR^A|)/|ρ₂A| = 127.9.
+- R₂ itself passed at 8.3e-12 relative, which is 1.125e-11 absolute. Propagated: 1.125e-11 / 0.02103 = **5.38e-10, the observed value**.
+- To pass, R₂ would have had to agree to 1.55e-12, tighter than the cross-platform 5.7e-11 the TOL was set from. The check could not pass across platforms for a cancelled quantity. It fired on the tolerance's design, not on the computation.
+- Every input control passed: R₂ 8.3e-12, ΔR^A 5.2e-14, ΔR^bulk 5.8e-14, G₂b 6.6e-14, and all QA ≤ 1.8e-12.
+- Effect on the target: f₂ uses ρ₂A differences over a G₂b drop ~0.16. An absolute 1e-11 is 1e-10 of f₂. Nil.
+- **Proposed (needs the Bridge's GO; NOT applied):** for the derived rows (ρ₂A, G₂b), use the propagated tolerance TOL·(|x| + |y|)/|x + y| from their two inputs; keep 1e-10 on every input row. Then rerun EXP-097 unchanged otherwise (minutes).
+- I do not rerun before the GO. The failed run is kept (`air_pull_096/e97_P8.out`, sha 70712b52…).
