@@ -128,3 +128,11 @@
 - (vi) plant: σ₂(W2P8) × 1.01 must move ΔR^A(8) by > 1e-3 relative.
 
 **Footprint.** Minutes; W2P6 took 3–4 s, and P = 8 should be under 1 GB. One process on the Air, same guards.
+
+## Amendment 0 (2026-11-27 14:45, before any target run; the operational settings are those of the stored runs)
+- **CUSPIS_081E:**
+  - W12P12 runs with **CUSPIS_081E=1**, as `run_087w12.sh`, which stored t0(OFF) / t0(ON). The 081e filter recovers poles at W12P12 p = 7 and 10, so the pole lists depend on it.
+  - W8P8, W10P10 and EXP-097 leave it **unset** (the k ≤ 2.5 convention). The 081e filter changes no pole list at W8P8 or W10P10 (report.md, the 081e reciprocal-filter table).
+  - KA-complete would fire on a mismatch.
+- **Air folder:** ~/GitHub/fleet-air/corner_function_096/scripts, with the runner `scripts/air_run_096.sh`. Its sha256 manifest (35 files: closure + inputs) is identical on both sides (14:44).
+- **Probe launched 14:45:** `e96_probe_W12P12`, runner PID 49011, PPID 1, freepct_guard 49018 (pause < 20 % / resume ≥ 30 %).
