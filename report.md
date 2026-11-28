@@ -13104,7 +13104,7 @@ WHAT IS OPEN
   - Then the Bridge rules on whether stage 1 (W9P12) is still the right next step.
 
 ## EXP-099 RESULT: the free-side width curvature is a FINITE-SIZE effect of the geometry convention (2026-11-28 21:52 IST) [model: Opus 5.5]
-- **Goal:** find out whether the free-side curvature behind the EXP-098 drift is a geometry convention or intrinsic (registration 1ac1ad1, code 1b79d1b, amendment 1 7b… see git log).
+- **Goal:** find out whether the free-side curvature behind the EXP-098 drift is a geometry convention or intrinsic (registration 1ac1ad1, code 1b79d1b, amendment 1 f4705a9).
 - **Controls, all PASS:**
   - KA-sweep: 23/23 stored free caches reproduced bitwise, including the stage-0 W3P4 and W6P8 values.
   - KA-base bitwise at every k and width.

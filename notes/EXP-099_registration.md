@@ -95,3 +95,25 @@
   - If it does not, then Ny matters under symmetric gaps, and the "t-extent removes the rest" reading is wrong.
 - **Control:** B(8P, hT = P, Ny = 4P) is recomputed by the amendment script and must equal the stored B_g8P κ values bitwise.
 - **Label:** a post-registration amendment, descriptive. It does not change the registered verdicts.
+
+## Amendment 2: is the x-edge decay rate set by the t-slab? (2026-11-28; Bridge-approved; registered BEFORE these points are computed)
+- **Hypothesis (the Bridge's mechanism, graded GUESS):** with Dirichlet ends, the lowest t-mode gives the p = 0 slice an effective x-mass m. An edge effect on a quantity quadratic in the field (an image or round-trip picture) decays as exp(−2m·g). So the rate scales as 1/Lt.
+- **Prediction, exact on this lattice:**
+  - The slice operator has diagonal 4 + m_p², nearest-neighbour −1, and open (Dirichlet) ends on Lt sites. The lowest t-mode has k_t = π/(Lt + 1).
+  - The p = 0 x-decay mass is m with cosh m = 2 − cos k_t. So **κ_lat = 2·arccosh(2 − cos(π/(Lt + 1)))**. The continuum limit is 2π/Lt.
+  - Values, κ_lat·P: P = 4: 2.7646, 1.4742, 0.7610 at hT = P, 2P, 4P. P = 8: 2.9484, 1.5220, 0.7732. P = 12: 3.0120, 1.5382, 0.7772.
+- **Design (one variable, hT, besides the g grid):** symmetric gaps g = P + j·(P/4), j = 0 … 12 (g from P to 4P). W ∈ {P/2, P}, hT ∈ {P, 2P, 4P}, Ny = 4P, k = 1, 2, 3.
+- **Estimator:**
+  - Δ_j = S(g_j) − S(g_{j+1}), and the local rate κ_j = ln(Δ_j / Δ_{j+1}) / δ, with δ = P/4. On a uniform grid a pure exponential gives κ_j = κ exactly.
+  - **The reading κ_meas** is κ_j at the largest j whose Δ_{j+1} > 1e-9·|S| (the noise floor). Its nuisance drift is max − min of κ_j over the last three usable j, reported.
+- **Criteria, stated now:**
+  - **SUPPORTED:** at every (P, hT, W), |κ_meas/κ_lat − 1| ≤ 0.02, AND the nuisance drift ≤ 0.02·κ_lat.
+  - **REJECTED:** at any point, |κ_meas/κ_lat − 1| > 0.05 with drift ≤ 0.02·κ_lat. That is, a settled rate that is not the slab rate.
+  - **UNSETTLED:** anything else (no plateau), reported with numbers.
+  - Also reported: the ratios κ_meas(hT = P)/κ_meas(2P) and κ_meas(2P)/κ_meas(4P) (the 1/Lt test; predicted from κ_lat, about 1.9–2.0), and the W-dependence (predicted: none).
+- **Controls:**
+  - KA-A: the point (W = P, g = P, hT = P) equals convention A bitwise, at each k.
+  - **The estimator's known answer:** on a synthetic series S_j = c·e^{−κ*·g_j} with κ* = 0.5, the estimator returns κ* to ≤ 1e-9.
+  - **The estimator must fire:** on S_j = e^{−0.5g} + e^{−0.3g}, the last κ_j must be closer to 0.3 than to 0.5 (it picks the slow mode). The κ_j sequence must not be constant (> 1e-3 spread), so a broken estimator that returns a constant would fail.
+- **Exposure:** none of these geometries has been computed. The B(g) points at g ∈ {P, 2P, 4P}, hT = P are stored in exp099_free.json; they are recomputed here, not read.
+- **Seal:** untouched (free side only).
