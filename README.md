@@ -1,5 +1,7 @@
 # cuspis
 
+> **Correction (2026-11-29).** The δκ ratios R(k) = δκ_lat/κ_lat reported before EXP-100 divided by a lattice normaliser κ_lat computed in the same small box. That box is not converged at large distances: κ_lat/κ_free ≈ 0.43–0.46, depending on k. **Their absolute values are superseded.** To convert, multiply by κ_lat(k)/κ_free (0.432–0.459), or use the R_D = δκ/κ_free series in STATUS.md and `notes/NORMALISER_AUDIT_EXP100.md`. The numerator δκ_lat is computed in the same box, so R_D is not a continuum value either. Shape and trend statements are being re-checked; so far, one (the 081d trend statistic) stays in its band.
+
 **Why do conformal field theories that share almost nothing else agree on the normalised corner
 function a(θ)/C_T — and by exactly the amount they disagree?**
 
