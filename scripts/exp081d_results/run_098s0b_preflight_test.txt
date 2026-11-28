@@ -1,0 +1,2 @@
+=== STOP 2026-11-28 21:26:11: PREFLIGHT test: analysis interpreter has no scipy and free caches are missing: exp081b_results/free_W3_P4_box4_c2.json exp081b_results/free_W6_P8_box8_c2.json -> tell the Bridge
+=== STOP 2026-11-28 21:26:11: PREFLIGHT test: analysis interpreter has no scipy and free caches are missing: exp081b_results/free_W3_P4_box4_c2.json exp081b_results/free_W6_P8_box8_c2.json exp081b_results/free_W99_P4_box4_c2_PLANT.json -> tell the Bridge
