@@ -73,3 +73,11 @@
 ## 7. Exposure
 - Known before this registration: all stored R(k) and R^c(k), k ≤ 3 (EXP-090 k = 3 accepted 2026-11-28). The seal is made knowing R^c(3); that is needed, since D_pred(3) = d_pred·R^c(3).
 - No value at any of the new widths (W = 3, 6, 9) has been computed or seen.
+
+## Amendment 1 (2026-11-28, before any stage-0 run; found while writing the code)
+- **Sign typo in Plant P2 (§4).** Adding ε to S^c(W₃) changes R(W₁, W₃) by +ε·f₁₃ and R(W₃, W₂) by −ε·f₃₂, with f_ab = (1/Ny)/((1/a − 1/b)·κ(a, b)). So D moves by **+ε·(f₁₃ + f₃₂)**, not by "−ε·…" as written. The code uses the derived +ε(f₁₃ + f₃₂). The DRY on the stored k = 1, 2 values confirms it: P2 moves D by the predicted amount at both k. The tolerance is unchanged (1%).
+- **Interpreters, stated:** the routes and exp087_t0 run on the project venv, as the stored routes did (Python 3.14, numpy 2.4.3). The analysis runs on the python3 that ran its DRY (3.15.2, numpy 2.5.4), where KA-A is bitwise.
+- **DRY result (`exp098_3w.py DRY`, synthetic W₃ on an exact 1/W line, NOT a result):**
+  - KA-A is bitwise at k = 1, 2: R_T0, R_T1, σ and κ against exp081d_results.json, and Rc against exp090_k25.json.
+  - On the exact line: D = 0 to 7e-14 and R_q = R(W₁, W₂) to 9e-16.
+  - P1 fires (D moves by the predicted 2.65e-8 at k = 1, 1.95e-4 at k = 2) and R_q holds (≤ 6e-14). P2 fires at the predicted size.
