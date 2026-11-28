@@ -95,3 +95,29 @@ registered readings as recorded. No silent edits.*
 ## 6. Grades to be attached
 - Corrected values at W10P10 and W12P12: **partially verified** (KA bitwise; code-logic agreement; no independent truth referee).
 - Readings inherit that grade, plus the A-vs-bulk condition (§0).
+
+## Amendment 1 — frozen after the 11-28 exposure of S (2026-11-28 ~13:00; Bridge ruling; NO k = 3 reading has been computed) [model: Opus 5.5]
+**A. Exposure record (Bridge ruling 1; the value is deliberately NOT written here).**
+- Time: 2026-11-28 ~12:40 IST, during the read-only power-loss integrity check of the Mac mini.
+- File and lines: `scripts/exp081d_results/e_route_W6_081e.out`, read by a `tail -c 300`. Its last lines include the line "production complete; S (all nodes) …" for W6P12 (route tag _081e) and the planted must-fire line.
+- What was seen: ONE number, S(all nodes) for W6P12. Nothing was computed from it, no other value from that file or the checkpoint was opened, and it was reported to the Bridge at once.
+- What it does and does not reveal: R(3) needs W6P12 and W12P12 together. The W12 route's S (or its 𝒞) is not knowingly read by me (§1 above), so R(3) is not determined by what was seen. Y_A(3) = 11.115 was already known (EXP-091).
+- **The office session (this one) saw S. The Fable S-1..S-3 seals (personal account) are unaffected.** (Bridge ruling 5.)
+- Every k = 3 prediction and decision rule committed before 2026-11-28 11:19 (99484ff and its descendants, including §0–§6 above) stays valid as sealed (Bridge ruling 2).
+
+**B. k = 3 analysis choices NOT yet frozen — frozen here, in this one commit, before any k = 3 reading (Bridge ruling 3).**
+1. **Gate 4 replacement.** §5 gate 4 ("081e F.3 W6 reuse as recorded") can no longer pass: the reuse was forfeited (2026-11-23 incident). Replaced by **gate 4′**: the W6P12 rerun (`run_w6p12.sh`, exactly run_081e.sh line 42; Sumit's YES via the Bridge 2026-11-26) ends rc 0 with its stale-file guard PASS and `run_w6p12.done` written by that guard path. The 2026-11-28 power cut and resume are part of it: RESUME=1 with sha 8c9f2b0f8834… verified against the 11:19:41 backup, tag e_route_W6_081e_r1. Gates 1–3 stand as written.
+2. **The W12P12 KA-complete systematic (Bridge ruling (i) on EXP-096, 2026-11-28).**
+   - s_KA := 7.84e-7 in t0(W12P12), carried as an explicit extra systematic.
+   - In R(3) it is ½·s_KA·norm(3) = ½ · 7.84e-7 · 14.5792 = **5.7e-6**, added in quadrature to σ_R(3), next to the registered σ_Δ(W12P12), which is unchanged.
+   - It is **dropped** only if EXP-096 amendment 6 reads **R-a**, with the reason stated. Under R-b or UNCLASSIFIED it stays.
+3. **σ_Δ(W12P12): the registered proxy stays PRIMARY.** §2's σ_Δ(W12P12) = |fixed − artifact model| is used as written, and so is the robustness rule (3% of |Δ|). Frozen SECONDARY row, reported beside every k = 3 reading: σ_Δ(W12P12) = |D_EXP-096| ⊕ s_KA (D = 1.28e-9, the independent cluster-level route).
+   - If the two rows put a reading in different bands, that reading is reported as **"σ_Δ-choice dependent"** and the PRIMARY row's band stands.
+   - Unchanged for the k = 3 pair: σ_Δ(W8P8) (its referee is now known to be noise-limited at ~1e-6, e96s). It does not enter R(3), because W6P12 has Δ ≡ 0.
+4. **Which t0 goes in.** Δ(W12P12) = on − off from `exp087_t0_W12P12.json` (§2, unchanged), so the fix is carried. Grade "partially verified" (EXP-096: D EXACT; KA-complete FAILED AS WRITTEN).
+5. **Order.** The k = 3 readings wait for EXP-096 amendment 6's READING line. If it has not landed rc 0 by **2026-11-28 18:00**, the readings proceed with s_KA included, and the headline says so.
+6. **δ_mat re-grade (EXP-096's rule, already registered):** with norm(3) = 14.5792, δ_mat = 0.008/(½ · 14.5792) = 1.097e-3. EXP-096's D = 1.28e-9 stays EXACT under it.
+7. **Code.** No k = 3 reading code exists yet; `exp090_reread.py` has only CONTROLS and K25.
+   - The k = 3 mode will implement ONLY §2–§5 plus items 1–6 above, with the existing fit/slope/band code verbatim, and K1–K6 run first.
+   - **Any implementation choice met while writing it that this text does not fix makes the reading that needs it DESCRIPTIVE ONLY, and that is stated** (Bridge ruling 4).
+   - Its code is committed, with its hash, before it is run.

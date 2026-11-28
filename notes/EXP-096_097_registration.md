@@ -296,7 +296,7 @@
   - the post-resume projections show 17–19 s per class (the pause is excluded).
 - **The alert path for W12P12:** my watcher greps `GATE PAUSE` in e96_W12P12.out and reports to the Bridge. The Bridge (or Sumit) gives the new budget, and I write it into the resume file.
 
-## Amendment 6 (2026-11-28 ~07:00, Bridge ruling on the W12P12 KA-complete failure; registered BEFORE any run; nothing computed yet)
+## Amendment 6 (2026-11-28 06:10, Bridge ruling on the W12P12 KA-complete failure; registered BEFORE any run; nothing computed yet)
 **Context.** W12P12 (304ecd9): D = +1.28e-9, EXACT by rule; KA-complete FAILED AS WRITTEN: Σ_classes(ON_d − OFF_d) (Air, M1) − stored t0(ON) − t0(OFF) (Mac mini, M4) = −7.84e-7. Candidates: (a) cross-chip; (b) a missed entry or copy defect. Bridge rulings: run the discriminating test on the Mac after W6P12 lands; add a must-fail; localise the residual per class; state a falsifiable check for the 7.84e-7 (W12P12) vs 7.80e-7 (W8P8) match. The k = 3 readings carry the fix, partially verified, with |7.8e-7| in t0 as an explicit systematic, dropped only if this amendment resolves it.
 
 **Code:** `scripts/exp096_onoff.py` — a VERBATIM copy of exp096_t0_disc.py lines 1–162 (args, install, class detection, off_disc, on_disc, pairs_of), plus edits marked "# A6": (1) the name tag `_onoff`; (2) the Strip3D build is split from the install so step A is written before the install; (3) a tail that runs the od/on block of run_class verbatim for every class (no "mine"), with per-pair recording for the plant. Runner `scripts/run_096a6.sh` (Mac mini).
