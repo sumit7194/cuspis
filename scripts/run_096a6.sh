@@ -18,12 +18,12 @@ gate() { while true; do f=$(memory_pressure | awk -F': ' '/free percentage/{gsub
   (( f >= 50 )) && { echo "=== GATE $1 $(date '+%F %T'): free ${f}% (>= 50) -> LAUNCH (pgate next)" >> $L; break; }
   echo "=== GATE $1 $(date '+%F %T'): WAIT free ${f}%" >> $L; sleep 300; done; }
 rm -f $D/run_096a6.done; DONE_FILE=$D/run_096a6.done nohup zsh tools/freepct_guard.sh $$ $L 'exp096_onoff|watchdog\.py' > /dev/null 2>&1 &
-run() { local T=$1; shift; gate $T; echo "=== $T start $(date '+%F %T') args: $*" >> $L
+run() { local T=$1; shift; [ -e $D/$T.wd.log ] && stop "log tag $T already used (logs are never overwritten)"; gate $T; echo "=== $T start $(date '+%F %T') args: $*" >> $L
   pgate_run $D/$T.wd.log "nice -n ${NICE:-12} $PY tools/watchdog.py --interval 10 --log $D/$T.wd.log --stdout $D/$T.out -- $PY -u -W ignore exp096_onoff.py $*"
   local rc=$?; echo "=== $T rc $rc $(date '+%F %T')" >> $L; return $rc; }
-run e96a6_W8P8 8 8 || stop "W8P8 control rc != 0"
-grep -q "KA-complete-1chip.*CLOSES" $D/e96a6_W8P8.out && grep -q "PLANT.*FIRES (PASS)" $D/e96a6_W8P8.out || stop "W8P8 known-answer control FAILED (KA-complete-1chip or plant)"
+run e96a6${RUNSFX}_W8P8 8 8 ${RUNSFX:+--tag $RUNSFX} || stop "W8P8 control rc != 0"
+grep -q "KA-complete-1chip.*CLOSES" $D/e96a6${RUNSFX}_W8P8.out && grep -q "PLANT.*FIRES (PASS)" $D/e96a6${RUNSFX}_W8P8.out || stop "W8P8 known-answer control FAILED (KA-complete-1chip or plant)"
 echo "=== W8P8 control PASS (KA closes, plant fires) -> W12P12 next" >> $L
 export CUSPIS_081E=1
-run e96a6_W12P12 12 12 || stop "W12P12 rc != 0"
+run e96a6${RUNSFX}_W12P12 12 12 ${RUNSFX:+--tag $RUNSFX} || stop "W12P12 rc != 0"
 echo "=== run_096a6 complete $(date '+%F %T')" >> $L; touch $D/run_096a6.done
