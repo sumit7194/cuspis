@@ -43,3 +43,30 @@
 ## 6. Cost and footprint (declared)
 - Estimates: P = 16, N = 1536 sites, 33 distinct sectors, ~0.9 GB, a few minutes. P = 20, N = 2400, 41 sectors, ~2.3 GB, ~10–20 min.
 - Measured peak and wall time are reported (no-kill watchdog). nice 12, one core: this replaces run_089's finished core one for one. Gate: free ≥ 50% and pgate before each P.
+
+## Amendment b — c_A at P = 24 (2026-11-28 15:40; Bridge GO after the W6P12 landing; registered and committed BEFORE the P = 24 run)
+**Why:** an out-of-sample test of the §5 fits. On P = 8–20 the free-log form (ii) beat the 4-parameter no-log (i) by rms 1.06e-7 vs 1.39e-6 with 2 dof each. A point not used in the fit is the test that model comparison could not give.
+
+**Predictions (computed by `scripts/exp092b_predict.py` from stored values only; `exp081d_results/exp092b_pred_P24.json`):**
+- KA first: the registered §2 forms (fit to P = 8–14) reproduce the §2 predictions at P = 16 and 20 to 1e-7 (PASS). The P = 8–20 rms values reproduce the stored fit table (1.39e-6 / 1.06e-7 / 2.43e-6; gL 0.0705).
+
+| P = 24 prediction | from | value |
+|---|---|---|
+| (i) no-log, 4 parameters | P = 8–20 | **−0.1044272566** |
+| (ii) free log, 4 parameters (gL +0.0705) | P = 8–20 | **−0.1044451723** |
+| (iii) fixed gL = 0.0611, 3 parameters | P = 8–20 | −0.1044327463 |
+| §2 H-log, 3 parameters | P = 8–14 | −0.1044110406 |
+| §2 no-log, 3 parameters | P = 8–14 | −0.1041918590 |
+
+**PRIMARY reading (fixed now):** m = measured centre c_A(24); e_i = |m − (i)|, e_ii = |m − (ii)|, gap = |(ii) − (i)| = 1.79e-5.
+- **Free log holds out of sample:** e_ii < e_i AND e_ii ≤ ½·gap (8.96e-6).
+- **No-log holds out of sample:** e_i < e_ii AND e_i ≤ ½·gap.
+- **Neither form extrapolates:** e_i and e_ii both > gap.
+- Otherwise: **undecided.**
+- (iii) and the §2 pair are reported, not graded. The §2 pair is also read by the §3 rule (d_L, d_N, ½·gap with gap = 2.19e-4), labelled secondary.
+
+**Descriptive (stated criteria, not a reading):** refit P = 8–24 (3 dof for (i)/(ii)): report rms(ii)/rms(i), the free gL against [0.04, 0.12] and its drift from 0.0705, and c∞ for every form (the nuisance sweep; the P = 8–20 form drift was ±0.0011).
+
+**Controls:** `exp092_cA_centre.py KA` (KA-all P = 4, 6; KA-centre P = 8, 10, 12; must-fail plant) runs first in the same runner; if it fails, P = 24 is not run. The 4 centre sites must agree to 1e-12 (symmetry), or the value is not read.
+
+**Cost (declared):** N = 3456. G list 49 × N² × 8 B ≈ 4.7 GB, plus B, A_q and X (~0.3 GB), so a peak of **~5.0 GB**. Time ~3–6 min (×3 the P = 20 N³ scaling, inference). 1 BLAS thread as registered, nice 10, freepct_guard (pause-only), no-kill watchdog, gate free ≥ 50% + pgate. It runs BESIDE the EXP-096 amendment-6 rerun (Bridge, 2026-11-28). Measured peak reported; the Bridge is told if it passes 5 GB.

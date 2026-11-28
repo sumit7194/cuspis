@@ -12930,3 +12930,9 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - **My design miss:** I fixed the pair without checking that it carried a nonzero ON − OFF at both geometries. By the registered rule, no other pair is substituted, so the runner STOPPED before W12P12, as built.
   - At W12P12 the same pair would probably carry ON ≠ OFF, since its class-16 span of 1.8e-8 is below the 1e-7 threshold (inference). That does not rescue the control at W8P8.
 - **Next:** a replacement plant goes to the Bridge. Nothing is rerun without the ruling.
+
+### W6P12 route (EXP-081e / EXP-090 k = 3 input) LANDED (2026-11-28 15:15:13; resumed after the 11:35 power cut by the registered RESUME path, sha 8c9f2b0f8834… verified; tag _r1) [model: Opus 5.5]
+- rc 0; resume wall 9002 s; peak 5.257 GB true, under the 6.9 GB hold. The stale-file guard PASSED (mtime after the resume start, t0, tsad, 48 nodes, n1c, summary).
+- Checkpoint sha 40def5a9a1d2a685… (108 keys; only key names were checked). **No value opened; k = 3 stays sealed.** The one exposure (S(all nodes), ~12:40) is recorded in EXP-090 amendment 1 (65e0b6a).
+- Lost to the power cut: ~16 min of the b2b stage. Total route ≈ 36 h + 2.5 h.
+- EXP-090 gate 4′ is met. The k = 3 readings now wait for the amendment-6 READING, the k = 3 code and the Bridge's go.
