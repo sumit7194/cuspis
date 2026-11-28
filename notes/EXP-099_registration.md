@@ -87,3 +87,11 @@
 ## 8. Exposure
 - Known before this text: every stored free value (23 caches) and every EXP-098 stage-0 number.
 - No free value at any non-stored geometry has been computed or seen.
+
+## Amendment 1 (2026-11-28 21:50 IST; after the registered readings, BEFORE these two points are computed)
+- **Why:** the registered verdicts are (b) PARTIAL (|df| 0.21, 0.30, 0.32, saturated at g ≥ 2P), (c) and (d) NOT REMOVED, and (e) all-large |df| 0.014, 0.035, 0.038. Going from B_g8P to E changes TWO variables (hT and Ny), so the step that removes the rest is not isolated.
+- **Added points (one variable from B_g8P):** B(g = 8P, hT ∈ {2P, 4P}, Ny = 4P) at k = 1, 2, 3. Same code (`exp099_free.S`), same df.
+- **Prediction, stated now:** Ny was inert in (d) under convention A, to ≤ 4e-4 in df. So |df| at B(8P, hT = 4P, Ny = 4P) equals |df_E| within 0.01 at every k, and hT = 2P lies between B_g8P and that value.
+  - If it does not, then Ny matters under symmetric gaps, and the "t-extent removes the rest" reading is wrong.
+- **Control:** B(8P, hT = P, Ny = 4P) is recomputed by the amendment script and must equal the stored B_g8P κ values bitwise.
+- **Label:** a post-registration amendment, descriptive. It does not change the registered verdicts.
