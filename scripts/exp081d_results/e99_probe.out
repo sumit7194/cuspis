@@ -1,0 +1,4 @@
+W4P4b4: N = Lx*Lt = 96, Ny 16, 2W 8: 0.25 s; stored match BITWISE
+W8P8b8: N = Lx*Lt = 384, Ny 32, 2W 16: 0.03 s; stored match BITWISE
+W12P12b12: N = Lx*Lt = 864, Ny 48, 2W 24: 0.11 s; stored match BITWISE
+W4P12b4: N = Lx*Lt = 672, Ny 48, 2W 8: 0.06 s; stored match BITWISE
