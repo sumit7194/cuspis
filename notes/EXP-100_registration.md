@@ -96,3 +96,45 @@
   - k = 2: B1 has N = 72 × 32 = 2304, Ny = 64. **A single (Ny, N, N) complex array is about 5.4 GB** (not "about 1.7 GB"). The conclusion, out of the envelope, is unchanged.
 - **§7 plant: corrected wording.** Using 1.01·Ny in the slope formula only must give exactly κ/1.01, to 1e-12 relative (κ ∝ 1/Ny). The old "by 1% ± 1e-9" was imprecise.
 - Nothing else changes.
+
+## Amendment 2 (2026-11-29 ~00:30 IST; Bridge ruling (a) on part B; before any part-B value)
+- **Ruling.** The Bridge chose (a): split the production nodes across 4 single-thread processes. A split-vs-whole BITWISE known answer at W2P4 runs first. If it is not bitwise, stop and report.
+- **How the split runs.**
+  - Each part gets its own checkpoint, through `--tag-suffix`. The parts cover nodes 0:6 | 6:20 | 20:34 | 34:48, and part 0 also computes t0 and tsad.
+  - Why separate files: `exp100_route.put()` rewrites the whole in-memory dict on each write. Several processes on one file would silently drop each other's nodes.
+  - `exp100_merge.py` merges the parts. It copies values and never recomputes them. It refuses: an overlapping node; a union that is not the 48 C-nodes; t0 or tsad outside part 0; install ranks that differ; check-stage keys inside a part; an existing output. Its self-test plants each of these defects, and each one must be refused.
+  - The unsplit route then runs the check stage (planted, B2b, N1'''c, Woodbury, summary) on the merged file.
+- **KA (phase 1).**
+  - The split run is at W2P4 with the convention-A geometry passed explicitly (gL = gR = 5, hT = 4, Ny = 16), then merged and checked. It is compared with the stored whole checkpoint `sigma_W2_P4_box4_c2_cp12_sc3.0_dd0_ckpt.json`: t0, tsad, the 48 g nodes and the n1c arms, all bitwise.
+  - A comparator plant runs first: one node moved by one ulp must be reported.
+  - This also satisfies §3's KA-route.
+- **t0 fix at the new geometries.** `exp087_t0.py` is convention-A only. `exp100_t0.py` is an exact-text copy with the geometry as arguments; the differences are shown by `diff`.
+  - KA-t0: the OFF value must equal the route t0 to 1e-10 relative.
+  - Δ = t0_on − t0_off enters as in `exp098_3w.pairR`: δκ = −[(S_T0(a) + Δ_a/2) − (S_T0(b) + Δ_b/2)]/Ny/(1/a − 1/b).
+  - This t0 work was NOT in the 13.9 h projection. It runs alongside the split parts.
+- **Analysis `exp100_B.py`.**
+  - KAN: the δκ code applied to the stored convention-A k = 1 checkpoints, divided by κ_A(1), must reproduce the stored R^c_T0(1) = 2.2552242844155943 to 1e-12. The DRY passes at +0.0e+00.
+  - The route guards are re-checked from each checkpoint. Each guard has a planted negative in the DRY, and all of them fire.
+  - Plant: δκ(B1) × 1.02 must move Δ_B to its prediction.
+  - The free κ_lat(2, 4; B0 / B1) must equal part A's chain T(1) / T(2) κ12, bitwise.
+  - Readings are printed only if every control PASSES.
+- **Phases and memory (peak per process from the probe).**
+  - 1: KA, small.
+  - 2: B0 W4 ∥ W2 (whole routes), then their t0 fixes.
+  - 3: B1 W4 × 4 parts, about 6.0 GB.
+  - 4: B1 W2 × 4 parts ∥ t0 fix at B1 W4, about 6.3 GB.
+  - 5: merges; B1 W4 checks ∥ B1 W2 checks ∥ t0 fix at B1 W2, about 3.9 GB.
+  - 6: reading.
+  - Each phase passes the free ≥ 50% gate and the pgate. The freepct_guard is pause-only; nothing is killed.
+- **Time, state plus date (from the probe):**
+  - Expected wall about 5 h: phase 3 about 7,000 s, phase 4 about 6,300 s, phase 5 about 4,000 s, phases 1–2 about 0.4 h.
+  - Check-in at about 25%: when B1 W4's parts have logged their first nodes, with the per-node rate against the probe's 490 s.
+  - If it has not landed by 1.5 × the estimate (about 7.5 h after launch), report the state.
+  - No automatic stop. The registered part-B stop date (2026-11-30 12:00 IST) stands.
+- **What B can and cannot settle (stated before any value).**
+  - **Can:** whether δκ(2, 4) at k = 1 moves by more than τ = 1% when every IR length doubles, T(1) → T(2). On the same step the free κ moves 38%.
+  - **Cannot:**
+    - (i) that δκ is IR-converged at T(2). A small |Δ_B| is consistent with convergence but does not show it. The free side's later steps are 13%, 4.4% and 1.5%, and a single σ step gives no tail.
+    - (ii) anything about the scaling regime (k = 1, W = 2, 4).
+    - (iii) R_D at k ≥ 2.
+    - (iv) If |Δ_B| > τ, the size of the σ bias at T(2) is itself IR-unconverged, so δκ(B1) is not a converged value either.
