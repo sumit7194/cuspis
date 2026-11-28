@@ -295,3 +295,41 @@
   - rc 0, and all 5 classes are **bitwise equal** to the unpaused `_tier1air`;
   - the post-resume projections show 17–19 s per class (the pause is excluded).
 - **The alert path for W12P12:** my watcher greps `GATE PAUSE` in e96_W12P12.out and reports to the Bridge. The Bridge (or Sumit) gives the new budget, and I write it into the resume file.
+
+## Amendment 6 (2026-11-28 ~07:00, Bridge ruling on the W12P12 KA-complete failure; registered BEFORE any run; nothing computed yet)
+**Context.** W12P12 (304ecd9): D = +1.28e-9, EXACT by rule; KA-complete FAILED AS WRITTEN: Σ_classes(ON_d − OFF_d) (Air, M1) − stored t0(ON) − t0(OFF) (Mac mini, M4) = −7.84e-7. Candidates: (a) cross-chip; (b) a missed entry or copy defect. Bridge rulings: run the discriminating test on the Mac after W6P12 lands; add a must-fail; localise the residual per class; state a falsifiable check for the 7.84e-7 (W12P12) vs 7.80e-7 (W8P8) match. The k = 3 readings carry the fix, partially verified, with |7.8e-7| in t0 as an explicit systematic, dropped only if this amendment resolves it.
+
+**Code:** `scripts/exp096_onoff.py` — a VERBATIM copy of exp096_t0_disc.py lines 1–162 (args, install, class detection, off_disc, on_disc, pairs_of), plus edits marked "# A6": (1) the name tag `_onoff`; (2) the Strip3D build is split from the install so step A is written before the install; (3) a tail that runs the od/on block of run_class verbatim for every class (no "mine"), with per-pair recording for the plant. Runner `scripts/run_096a6.sh` (Mac mini).
+
+**Step A (pole lists, no install).** Class members built on the Mac versus the Air's (`exp096/W12P12Wb12Ny48.json`). Report max |member diff| and span differences per class. "Same" if the class lists match and max |diff| ≤ 1e-12; otherwise "DIFFER".
+- **Change from the ruling's conditional (stated, with the reason):** step B runs whether or not step A differs. (1) The per-class localisation you asked for needs one-chip class values, because the stored totals have no per-class breakdown. (2) Identical pole lists would not exclude a cross-chip difference in the install (residues Rfull, G, B1). Say if you want B conditional instead; the runner starts only after W6P12 lands.
+
+**Step B (one install on the Mac).** Per class, ON_d and OFF_d at r1 (the same disc and entries as the route).
+- **KA-complete-1chip** = Σ_Mac(ON_d − OFF_d) − stored t0(ON) − t0(OFF).
+- **Localisation:** per class, (ON_d − OFF_d)_Mac − (ON_d − OFF_d)_Air, plus ON_d and OFF_d separately (Mac − Air); their sum is reported against −7.84e-7.
+
+**Readings (falsifiable; decided by these lines only):**
+- **R-a (cross-chip):** |KA-complete-1chip| ≤ 1e-8. Candidate (a) holds; the systematic term is dropped from the k = 3 budget, and the reason stated.
+- **R-b (chip-independent):** |KA-complete-1chip − (−7.84e-7)| ≤ 1e-8, i.e. the Mac reproduces the Air residual. Candidate (b), or a fixed term in the ON/OFF bookkeeping; the systematic stays; next step to the Bridge.
+- Otherwise **UNCLASSIFIED**: the systematic stays, and the localisation table goes to the Bridge.
+
+**The 7.84e-7 / 7.80e-7 match: falsifiable check.**
+- **H-fixed** (one chip-independent term common to both geometries) predicts R-b at W12P12: the Mac residual is −7.8e-7 to ≤ 1e-8.
+  - It is already strained at W8P8. There the same comparison on one chip (the Air's own whole OFF at 1e-6 minus 1e-5, e96s) gives −2.7e-7, not +7.8e-7; the W8P8 gap moved by 1.05e-6 with the chip.
+  - So **R-a at W12P12 falsifies H-fixed outright**: neither number would then be chip-invariant.
+- **H-common-cross-chip** (both are the same cross-chip component) predicts R-a, plus a W12P12 Mac − Air difference concentrated where W8P8's lived. W8P8's lived OUTSIDE the class discs (e96d: on the clusters the referee matched to ~1e-9). So if the W12P12 Mac − Air difference sits INSIDE the classes (the localisation table sums to −7.8e-7 over the 11 classes), the two are different components, and the size match is a coincidence. That is decided by the table, not by me.
+
+**Controls (each can fail):**
+- **Known-answer control first (Mac, W8P8, flag unset; ~1 GB, minutes):** the same script must give KA-complete-1chip ≤ 1e-8 there, where the cross-chip KA-complete already closed to 1.1e-14. If it fails, STOP and tell the Bridge; W12P12 does not start.
+- **Must-fail plant (at both geometries):** in class p = 16, disc +i c, the FIRST pair in pairs_of order has its ON entry replaced by its OFF entry. The planted sum must move KA-complete-1chip by > 1e-8. The pair is fixed here, before any run, not picked. If its own |ON − OFF| ≤ 1e-8, the plant cannot fire; it is then reported as FAILED, and no other pair is substituted.
+- Gate: unconverged 0; step A's class list must be 11 classes (p = 6–16) at W12P12 and 9 (p = 8–16) at W8P8.
+
+**Run plan (Mac mini, after `run_w6p12.done`; one core, replacing W6P12's one for one):**
+- `run_096a6.sh`: wait for run_w6p12.done; if W6P12 STOPs, do not start.
+- Gate free ≥ 50% plus pgate; freepct_guard (pause-only); no-kill watchdog.
+- e96a6_W8P8 (control) first, then e96a6_W12P12 with CUSPIS_081E=1.
+- **Cost estimate:** W12P12 install ~15 min on the M4 (the e87 install took 861 s), plus 11 classes of OFF/ON only (~2–3% of the route's G evaluations) ≈ 30–60 min; peak ~3.8 GB. Beside DeepStrain (2–5 GB) on 16 GB: worst case ~9 GB, under the 50% gate.
+- **Kill criteria:**
+  - Good enough: the W12P12 READING line is printed rc 0 with both controls PASS.
+  - Stop: not landed by 2026-11-28 18:00. Then report and ask the Bridge; nothing is killed: the guard pauses only, and the run is left paused or running for the Bridge to decide.
+- **No k = 3 reading starts before this lands, unless the Bridge says so**; if it is delayed, the readings carry the systematic term (Bridge ruling).
