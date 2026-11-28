@@ -1,0 +1,31 @@
+estimator KA: pure exp, kappa* = 0.5 recovered to 1e-9                       PASS 7.8e-15
+estimator must-fire: two exps -> last rate nearer 0.3, sequence not constant PASS last 0.3881 spread 0.025
+KA-A k=1: (W=P, g=P, hT=P) == stored convention A                            PASS 
+KA-A k=2: (W=P, g=P, hT=P) == stored convention A                            PASS 
+KA-A k=3: (W=P, g=P, hT=P) == stored convention A                            PASS 
+k=1 hT=1P W= 2: kappa_meas 0.69521 (P*k 2.7808)  kappa_lat 0.69115  rel +0.0059  drift/kl 0.0056  usable j 11
+k=1 hT=1P W= 4: kappa_meas 0.69520 (P*k 2.7808)  kappa_lat 0.69115  rel +0.0059  drift/kl 0.0056  usable j 11
+k=1 hT=2P W= 2: kappa_meas 0.36867 (P*k 1.4747)  kappa_lat 0.36855  rel +0.0003  drift/kl 0.0015  usable j 11
+k=1 hT=2P W= 4: kappa_meas 0.36900 (P*k 1.4760)  kappa_lat 0.36855  rel +0.0012  drift/kl 0.0025  usable j 11
+k=1 hT=4P W= 2: kappa_meas 0.18491 (P*k 0.7396)  kappa_lat 0.19026  rel -0.0281  drift/kl 0.0058  usable j 11
+k=1 hT=4P W= 4: kappa_meas 0.18778 (P*k 0.7511)  kappa_lat 0.19026  rel -0.0130  drift/kl 0.0009  usable j 11
+k=2 hT=1P W= 4: kappa_meas 0.37096 (P*k 2.9677)  kappa_lat 0.36855  rel +0.0065  drift/kl 0.0061  usable j 11
+k=2 hT=1P W= 8: kappa_meas 0.37096 (P*k 2.9677)  kappa_lat 0.36855  rel +0.0065  drift/kl 0.0061  usable j 11
+k=2 hT=2P W= 4: kappa_meas 0.19043 (P*k 1.5235)  kappa_lat 0.19026  rel +0.0009  drift/kl 0.0022  usable j 11
+k=2 hT=2P W= 8: kappa_meas 0.19059 (P*k 1.5247)  kappa_lat 0.19026  rel +0.0017  drift/kl 0.0031  usable j 11
+k=2 hT=4P W= 4: kappa_meas 0.09410 (P*k 0.7528)  kappa_lat 0.09665  rel -0.0263  drift/kl 0.0047  usable j 11
+k=2 hT=4P W= 8: kappa_meas 0.09554 (P*k 0.7643)  kappa_lat 0.09665  rel -0.0114  drift/kl 0.0015  usable j 11
+k=3 hT=1P W= 6: kappa_meas 0.25272 (P*k 3.0326)  kappa_lat 0.25100  rel +0.0068  drift/kl 0.0063  usable j 11
+k=3 hT=1P W=12: kappa_meas 0.25271 (P*k 3.0325)  kappa_lat 0.25100  rel +0.0068  drift/kl 0.0063  usable j 11
+k=3 hT=2P W= 6: kappa_meas 0.12833 (P*k 1.5399)  kappa_lat 0.12818  rel +0.0011  drift/kl 0.0024  usable j 11
+k=3 hT=2P W=12: kappa_meas 0.12843 (P*k 1.5411)  kappa_lat 0.12818  rel +0.0019  drift/kl 0.0033  usable j 11
+k=3 hT=4P W= 6: kappa_meas 0.06309 (P*k 0.7571)  kappa_lat 0.06477  rel -0.0259  drift/kl 0.0044  usable j 11
+k=3 hT=4P W=12: kappa_meas 0.06405 (P*k 0.7686)  kappa_lat 0.06477  rel -0.0111  drift/kl 0.0018  usable j 11
+
+VERDICT (registered): UNSETTLED
+   1/Lt test k=1 W=2: kappa(P)/kappa(2P) 1.8857  kappa(2P)/kappa(4P) 1.9938
+   1/Lt test k=1 W=4: kappa(P)/kappa(2P) 1.8840  kappa(2P)/kappa(4P) 1.9651
+   1/Lt test k=2 W=4: kappa(P)/kappa(2P) 1.9480  kappa(2P)/kappa(4P) 2.0237
+   1/Lt test k=2 W=8: kappa(P)/kappa(2P) 1.9464  kappa(2P)/kappa(4P) 1.9948
+   1/Lt test k=3 W=6: kappa(P)/kappa(2P) 1.9693  kappa(2P)/kappa(4P) 2.0340
+   1/Lt test k=3 W=12: kappa(P)/kappa(2P) 1.9678  kappa(2P)/kappa(4P) 2.0050

@@ -117,3 +117,14 @@
   - **The estimator must fire:** on S_j = e^{−0.5g} + e^{−0.3g}, the last κ_j must be closer to 0.3 than to 0.5 (it picks the slow mode). The κ_j sequence must not be constant (> 1e-3 spread), so a broken estimator that returns a constant would fail.
 - **Exposure:** none of these geometries has been computed. The B(g) points at g ∈ {P, 2P, 4P}, hT = P are stored in exp099_free.json; they are recomputed here, not read.
 - **Seal:** untouched (free side only).
+
+## Amendment 3: separate the two candidate causes at hT = 4P (2026-11-28; after amendment 2 read UNSETTLED; registered BEFORE computing)
+- **The amendment-2 reading (registered verdict UNSETTLED):** the 12 points at hT = P and 2P match κ_lat within 0.7%. The 6 points at hT = 4P read −1.1% to −2.8%, with settled drift ≤ 0.6%.
+- **Two candidates, one arm each, from the amendment-2 hT = 4P geometry:**
+  - **(i) The Ny crossover** (Lt = 8P > Ny = 4P). Arm: Ny = 16P, same g grid.
+  - **(ii) Pre-asymptotic g** (κ·g_max ≈ 3 only). Arm: Ny = 4P, the g grid extended to g = 8P (δ = P/4, j = 0 … 28).
+- **Predictions:**
+  - If (i): arm (i) gives |rel| ≤ 0.02 at all six points, while arm (ii) stays at −1% to −3%.
+  - If (ii): arm (ii) gives |rel| ≤ 0.02, and its κ_j moves monotonically toward κ_lat with g, while arm (i) stays put.
+  - If both arms move: both contribute (reported). If neither does: the slab mechanism is not the whole story at hT = 4P (reported as such).
+- **Controls:** the same estimator KA and must-fire. In arm (ii), the first 13 g points reproduce the amendment-2 values bitwise.
