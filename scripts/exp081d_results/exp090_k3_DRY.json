@@ -1,0 +1,187 @@
+{
+ "mode": "DRY",
+ "notes": [
+  "N1 (R2) row 2: rho_s uses g_raw^c as DEFINED in \u00a72 (slope over k in {1, 1.5, 2, 2.5}); the k <= 3 denominator is printed beside it, DESCRIPTIVE.",
+  "N2 (R6) S-1 / S-2: the header gives a 68% band and an outer band without naming which is the PASS band (S-3 names it). Both are printed; the S-1 / S-2 main-seal grades are DESCRIPTIVE unless the Bridge fixes the band before K3 runs.",
+  "N3 (R4) robustness / secondary-sigma rows use the same decide() on the same tails; only sigma changes."
+ ],
+ "s_KA": 7.84e-07,
+ "s_label": "DRY: s_KA kept (planted)",
+ "Delta": {
+  "W12P12": 0.06394052643173609
+ },
+ "sigma_Delta": {
+  "W12P12_primary": 0.006472526431736091,
+  "W12P12_secondary": 7.840010447060333e-07
+ },
+ "R1": {
+  "Rc": {
+   "T0": {
+    "1": 2.2552242844155943,
+    "1.5": 4.233445846375093,
+    "2": 6.587692272458103,
+    "2.5": 9.090205937475202,
+    "3": 10.684849651185328
+   },
+   "T1": {
+    "1": 2.2552242844155943,
+    "1.5": 4.233445846375093,
+    "2": 6.587692272454086,
+    "2.5": 9.090205833017063,
+    "3": 10.684849546727186
+   }
+  },
+  "sigma": {
+   "primary": {
+    "1": 5.764610869710412e-10,
+    "1.5": 2.5663035137060564e-09,
+    "2": 6.478139702254268e-06,
+    "2.5": 7.162881317454797e-05,
+    "3": 0.047182141029996245
+   },
+   "robust": {
+    "1": 5.764610869710412e-10,
+    "1.5": 2.5663035137060564e-09,
+    "2": 0.004371329982624415,
+    "2.5": 0.026143717991689856,
+    "3": 0.013983030571146861
+   },
+   "secondary": {
+    "1": 5.764610869710412e-10,
+    "1.5": 2.5663035137060564e-09,
+    "2": 6.478139702254268e-06,
+    "2.5": 7.162881317454797e-05,
+    "3": 5.716348039854452e-06
+   }
+  },
+  "local": [
+   3.956443123918998,
+   4.708492852166019,
+   5.005027330034199,
+   3.1892874274202505
+  ]
+ },
+ "R2": {
+  "rows": {
+   "primary": [
+    7.11895888058268,
+    3.997065227099387,
+    1.5571327000596662,
+    0.8742796627697963,
+    "INCONCLUSIVE (straddles a band edge)"
+   ],
+   "robust": [
+    7.11895888058268,
+    3.997028004474743,
+    1.5571327000596662,
+    0.8742715210503416,
+    "INCONCLUSIVE (straddles a band edge)"
+   ],
+   "secondary": [
+    7.11895888058268,
+    3.997020671072787,
+    1.5571327000596662,
+    0.8742699170124226,
+    "INCONCLUSIVE (straddles a band edge)"
+   ]
+  },
+  "reading": "INCONCLUSIVE (straddles a band edge) [k-range dependent: row 1 supported]",
+  "graw3_descriptive": 4.343202164927915
+ },
+ "R4": {
+  "a": "power-divergent",
+  "a_tails": {
+   "T0": [
+    "power-divergent",
+    1.4295797059599797,
+    2.9104934852856054e-08
+   ],
+   "T1": [
+    "power-divergent",
+    1.429579681011697,
+    2.9104934850618253e-08
+   ]
+  },
+  "b": "power-divergent",
+  "b_rows": {
+   "primary": [
+    "power-divergent",
+    {
+     "T0": [
+      "power-divergent",
+      1.4890828559185965,
+      0.010890361370549037
+     ],
+     "T1": [
+      "power-divergent",
+      1.4890828318094376,
+      0.010890361370559128
+     ]
+    }
+   ],
+   "robust": [
+    "power-divergent",
+    {
+     "T0": [
+      "power-divergent",
+      1.4890828559185965,
+      0.0035600655960940186
+     ],
+     "T1": [
+      "power-divergent",
+      1.4890828318094376,
+      0.003560065585831364
+     ]
+    }
+   ],
+   "secondary": [
+    "power-divergent",
+    {
+     "T0": [
+      "power-divergent",
+      1.4890828559185965,
+      2.588132018245927e-06
+     ],
+     "T1": [
+      "power-divergent",
+      1.4890828318094376,
+      2.5881319872352824e-06
+     ]
+    }
+   ]
+  }
+ },
+ "R5": {
+  "t0+L": 2582.9728771947316,
+  "C": 1.1406740024008994,
+  "Y_A": -13.394492810221688
+ },
+ "R6": {
+  "S1": {
+   "R": -0.0,
+   "in68": false,
+   "inouter": false,
+   "E6": 1.0,
+   "E6_pass": false,
+   "E12": 1.0,
+   "E12_pass": false
+  },
+  "S2": {
+   "R": -0.0,
+   "in68": true,
+   "inouter": true,
+   "E6_pass": false,
+   "E12_pass": false,
+   "XL12": 241.0,
+   "XL12_pass": false
+  },
+  "S3": {
+   "R": 0.46610098009036616,
+   "pass_": false,
+   "fable_fail_rule_fires": false,
+   "dt0_pass": true
+  }
+ },
+ "headline": "EXP-090 k = 3 READING (DRY; PLANTED INPUTS, NOT A RESULT): (R4)(b) power-divergent; (R2) row 2 INCONCLUSIVE (straddles a band edge) [k-range dependent: row 1 supported]; S-3 FAIL; DRY: s_KA kept (planted); fix carried, partially verified (EXP-096); A-vs-bulk open; EXP-086 tension stands; exposure of S(W6P12) recorded (65e0b6a); controls PASS",
+ "failed": []
+}

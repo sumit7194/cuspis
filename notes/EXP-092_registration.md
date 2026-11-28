@@ -44,7 +44,7 @@
 - Estimates: P = 16, N = 1536 sites, 33 distinct sectors, ~0.9 GB, a few minutes. P = 20, N = 2400, 41 sectors, ~2.3 GB, ~10–20 min.
 - Measured peak and wall time are reported (no-kill watchdog). nice 12, one core: this replaces run_089's finished core one for one. Gate: free ≥ 50% and pgate before each P.
 
-## Amendment b — c_A at P = 24 (2026-11-28 15:40; Bridge GO after the W6P12 landing; registered and committed BEFORE the P = 24 run)
+## Amendment b — c_A at P = 24 (2026-11-28 15:17; Bridge GO after the W6P12 landing; registered and committed BEFORE the P = 24 run)
 **Why:** an out-of-sample test of the §5 fits. On P = 8–20 the free-log form (ii) beat the 4-parameter no-log (i) by rms 1.06e-7 vs 1.39e-6 with 2 dof each. A point not used in the fit is the test that model comparison could not give.
 
 **Predictions (computed by `scripts/exp092b_predict.py` from stored values only; `exp081d_results/exp092b_pred_P24.json`):**
