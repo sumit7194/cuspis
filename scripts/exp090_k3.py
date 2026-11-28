@@ -19,9 +19,9 @@ def check(nm, ok, det=""):
     print(f"{nm:78s} {'PASS' if ok else 'FAIL'}  {det}", flush=True)
     if not ok: FAIL.append(nm)
 IMPLEMENTATION_NOTES = [
-    "N1 (R2) row 2: rho_s uses g_raw^c as DEFINED in §2 (slope over k in {1, 1.5, 2, 2.5}); the k <= 3 denominator is printed beside it, DESCRIPTIVE.",
+    "N1 (R2) row 2: rho_s uses g_raw^c as DEFINED in §2 (slope over k in {1, 1.5, 2, 2.5}), PRIMARY (Bridge ruling 2026-11-28: the frozen definition); the k <= 3 denominator is printed beside it, DESCRIPTIVE.",
     "N2 (R6) S-1 / S-2: the header gives a 68% band and an outer band without naming which is the PASS band (S-3 names it). Both are "
-    "printed; the S-1 / S-2 main-seal grades are DESCRIPTIVE unless the Bridge fixes the band before K3 runs.",
+    "printed; the S-1 / S-2 main-seal grades are DESCRIPTIVE (Bridge ruling 2026-11-28: not fixed before the exposure, so not fixable now).",
     "N3 (R4) robustness / secondary-sigma rows use the same decide() on the same tails; only sigma changes.",
 ]
 JD = json.load(open(os.path.join(HERE, "exp081d_results.json"))); K25 = [1, 1.5, 2, 2.5]; KS3 = [1, 1.5, 2, 2.5, 3]
@@ -199,7 +199,8 @@ print(f"(R6) S-3 (corrected t0): R(t0+L)(3) {Rcor:+.4f} in [0.25, 0.42] -> {'PAS
 out["R6"] = dict(S1=S1, S2=S2, S3=S3)
 head = (f"EXP-090 k = 3 READING ({mode}{'; PLANTED INPUTS, NOT A RESULT' if mode == 'DRY' else ''}): (R4)(b) {r4}{dep4}; (R2) row 2 {b}{dep}{krange}; "
         f"S-3 {'PASS' if S3['pass_'] else 'FAIL'}; {s_lab}; fix carried, partially verified (EXP-096); A-vs-bulk open; EXP-086 tension stands; "
-        f"exposure of S(W6P12) recorded (65e0b6a); controls {'PASS' if not FAIL else FAIL}")
+        f"exposure of S(W6P12) recorded (65e0b6a); S-1/S-2 PASS band not fixed before exposure; graded descriptive (Bridge ruling 2026-11-28); "
+        f"controls {'PASS' if not FAIL else FAIL}")
 print("\n" + head); out["headline"] = head; out["failed"] = FAIL
 json.dump(out, open(os.path.join(D, f"exp090_k3{'_DRY' if mode == 'DRY' else ''}.json"), "w"), indent=1, default=lambda v: float(v) if np.isscalar(v) else str(v))
 sys.exit(1 if FAIL else 0)
