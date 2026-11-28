@@ -1,0 +1,6 @@
+# exit 0; wall 31 s; PEAK tree footprint 0.115 GB (MEM = phys_footprint; CMPRS 0.000 GB of it compressed)
+PROBE sigma_W4_P4_box4_c2_cp12_sc3.0_dd0_gL8_gR8_hT4_Ny16: N 160 Ny 16 Lx 20 Lt 8: install 9.7 s, B1 0.0 s, one g node (s=1.974) 12.1 s; value discarded
+# exit 0; wall 31 s; PEAK tree footprint 0.115 GB (MEM = phys_footprint; CMPRS 0.000 GB of it compressed)
+# exit 0; wall 786 s; PEAK tree footprint 1.490 GB (MEM = phys_footprint; CMPRS 0.165 GB of it compressed)
+PROBE sigma_W4_P4_box4_c2_cp12_sc3.0_dd0_gL16_gR16_hT8_Ny32: N 576 Ny 32 Lx 36 Lt 16: install 291.0 s, B1 0.5 s, one g node (s=1.974) 490.1 s; value discarded
+# exit 0; wall 786 s; PEAK tree footprint 1.490 GB (MEM = phys_footprint; CMPRS 0.165 GB of it compressed)

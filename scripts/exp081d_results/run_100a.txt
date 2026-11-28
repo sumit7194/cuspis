@@ -1,0 +1,4 @@
+=== run_100a start 2026-11-28 22:03:21 PID 2275; venv 3.14.5 2.4.3 1.17.1
+=== GATE 2026-11-28 22:03:21: free 71% -> LAUNCH
+=== e100_free rc 0 2026-11-28 23:42:36 # exit 0; wall 5955 s; PEAK tree footprint 1.231 GB (MEM = phys_footprint; CMPRS 0.367 GB of it compressed)
+=== run_100a complete 2026-11-28 23:42:36

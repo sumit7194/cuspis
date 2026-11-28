@@ -1,0 +1,10 @@
+# cmd: ../.venv/bin/python -u -W ignore exp100_route.py 2 4 4 --gL 8 --gR 8 --hT 4 --Ny 16 --probe
+# caps: tree <= 5.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# disk mode: NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored; caller pid 8178
+# pressure trigger: off
+# TREE_GB = MEM_GB (phys_footprint; CMPRS_GB is part of it; fixed 2026-11-26, older logs: TREE = MEM + CMPRS, a double count)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.046    0.000   0.046        34.73       1380.4           69              1
+    10.8     1   0.094    0.000   0.094        34.77       1380.4           69              1
+# exit 0; wall 21 s; PEAK tree footprint 0.094 GB (MEM = phys_footprint; CMPRS 0.000 GB of it compressed)

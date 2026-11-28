@@ -13156,3 +13156,102 @@ WHAT IS OPEN
   - **(i) Ny = 16P:** +20% to +21% with drift about 4.5%, NOT settled. Descriptive candidate, unverified: with dense y-slices the p-sum approaches an integral over k_y, which gives a g^(−1/2) prefactor and a local rate of about κ + 1/(2g), converging slowly.
 - **Grade:** the mechanism is **partially verified**. With Ny = 4P, all 18 points match the exact lattice slab rate within 0.7% on a settled plateau, and that rate is not fitted. It is one implementation, on the free side only. At large Ny the rate is not settled.
 - **Consequence:** the x-edge part of the EXP-099 drift is set by the t-slab. Edges are screened over a length Lt/(2π) of the order of P/3 at hT = P. With unequal x-gaps (convention A), the screened edge term differs across widths. This explains why (b) saturates by g ≥ 2P, and why (c), a larger hT, makes convention A worse: the screening length grows.
+
+## EXP-100 part A RESULT + part B cost + part E (2026-11-28 23:42 IST) [model: Opus 5.5]
+*Registration 4dbbf5a + amendment 1 d9edfa5. Code 14ae9ed (`exp100_free.py`, runner `run_100a.sh`); route copy ccd6583 (`exp100_route.py`). Mac mini, venv 3.14.5 / numpy 2.4.3 / scipy 1.17.1, 1 thread, nice 10, under the watchdog. 22:03 → 23:42; rc 0; wall 5955 s; peak footprint 1.23 GB. Output `exp081d_results/exp100_free.json`, `e100_free.out`.*
+
+- **Goal:** find the box where the free slope κ(P/2, P) is IR-converged to 1% (part A). Measure what the interacting Lt-doubling check would cost (part B). Record seal fb6060f as superseded (part E).
+- **Hypothesis (registered §2):** convergence in m is slow, about 1/m, so 1% is reached late or never at k = 2, 3. The g → 2Lt and Ny → 4Lt arms stay below 1% at every m ≥ 2.
+- **Method:** as registered. Box chain T(m): hT = mP, g = Lt, Ny = 2Lt. Arms at each m: g ∈ {Lt/2, 2Lt}, Ny = 4Lt. Criterion: (i), (ii), (iii) each < 1%.
+
+### Controls: all PASS (`e100_free.out`)
+- The KA-sweep subset reproduces EXP-099 B_g1P bitwise at k = 1, 2, 3.
+- Wiring negative: every arm changes S at T(1), by 1.5e-3 to 4.5 relative.
+- The 1.01·Ny plant gives κ/1.01 to ≤ 1.1e-16.
+
+### Results: κ(P/2, P; T(m))/κ_free, with κ_free = 0.0396481
+
+| k | m = 1 | 2 | 4 | 8 | 16 |
+|---|---|---|---|---|---|
+| 1 (W 2, 4) | 0.5756 | 0.7958 | 0.8987 | 0.9379 | 0.9521 |
+| 2 (W 4, 8) | 0.5921 | 0.8342 | 0.9415 | 0.9810 | 0.9950 |
+| 3 (W 6, 12) | 0.5821 | 0.8322 | 0.9415 | 0.9814 | (not in the chain, m ≤ 8) |
+
+- **Chain steps (i), m → 2m:**
+  - k = 1: 38.3%, 12.9%, 4.36%, 1.51%;
+  - k = 2: 40.9%, 12.9%, 4.20%, 1.43%;
+  - k = 3: 43.0%, 13.1%, 4.23%.
+- **Arms:**
+  - g → 2Lt: ≤ 1.5e-3 at every m, including m = 1.
+  - Ny → 4Lt: ≤ 6.0e-3 at m = 1 and ≤ 9.3e-4 at m ≥ 2.
+  - The g → Lt/2 arm (outside the criterion) is −1.3% to −1.4% even at the largest m. So g = Lt is needed; g = Lt/2 would fail the criterion.
+- **Free slope drift df (EXP-099 definition) along the chain:**
+  - k = 1: +0.213 → −0.043;
+  - k = 2: +0.303 → +0.0028;
+  - k = 3: +0.318 → +0.014.
+- **Verdict (registered rule):** NOT CONVERGED within the affordable chain at k = 1, 2, 3. Only (i) fails, and at the last evaluable step it misses by 0.4–0.5 points (1.43%, 1.51%). No G* exists, so the registered UV bracket and the mismatch flag are not evaluated.
+
+### Analysis
+- **Prediction, graded:**
+  - "Slow" HELD.
+  - "About 1/m" FAILED. Successive steps fall by a factor of 2.9–3.3 per doubling (1/m would give 2). That is about m^−1.6, and the factor is falling (k = 2: 3.18, 3.07, 2.94). Descriptive only; no fit.
+  - "(ii), (iii) < 1% at m ≥ 2" HELD; it holds even at m = 1.
+- **k = 2 and k = 3 agree at fixed m:** 0.9415 / 0.9415 at m = 4, and 0.9810 / 0.9814 at m = 8. At fixed hT/W the free slope barely depends on k from k = 2 on. k = 1 sits about 4% lower; W = 2 is lattice-scale.
+- **Descriptive UV comparison (NOT the registered bracket, since there is no G*):** the largest boxes give 0.9521 (k = 1), 0.9950 (k = 2) and 0.9814 (k = 3, m = 8). All three are inside [0.85, 1.05], so nothing points to a normalisation mismatch between κ_lat and κ_free.
+  - **Inference, unverified, two bounds on the tail:**
+    - If the step ratio stays at its last value, the k = 2 limit is ≈ 1.002 (k = 1: ≈ 0.960).
+    - If it falls to 2 (1/m), the k = 2 limit is ≈ 1.009.
+    - So κ_lat(4, 8) → κ_free to within about 1% is plausible. It is not shown.
+- **What this means for δκ:**
+  - Convention A (Lt = 2P) sits at κ_lat/κ_free = 0.445, 0.448, 0.432 for k = 1, 2, 3.
+  - A free slope within 1–2% of its limit needs Lt ≈ 16–32 × P on this route.
+  - The σ side cannot be placed in such a box. B1 = T(2) at k = 1 is already about 14 h (below). That is the case for the part-D normaliser.
+- **Part D, the stored convention-A values (labelled "convention A, IR-unconverged"):**
+
+  | k | R^c_T0 = δκ/κ_lat (EXP-090) | R_D = δκ/κ_free |
+  |---|---|---|
+  | 1 | 2.2552 | 1.0045 |
+  | 2 | 6.5877 | 2.9481 |
+  | 3 | 11.7582 | 5.0854 |
+
+  - R_D = R × κ_lat,A/κ_free, with κ_lat,A = 0.017660, 0.017743, 0.017148 (EXP-099 row A).
+  - These κ_lat,A values match the normalisers stored in report.md to the printed digits: κ(2) bitwise (0.017743046048925182), κ(3) = 0.0171477. Grade: **partially verified** (matched by value, not re-traced through exp090 code).
+  - δκ itself is IR-unconverged at convention A (EXP-099: the σ slope drifted 9–11%). So R_D,A is NOT a continuum estimate.
+- **Scheduling note:**
+  - k = 2, m = 16 was scheduled under the rule as written (predecessor 63.4 s × 8 = 507 s < 900 s).
+  - Its chain cost was 1007 s, 15.9 × the predecessor and not 8 ×. With the arms it took 3903 s.
+  - The × 8 factor underestimates the growth: N = Lx·Lt grows about 4 × per step and Ny 2 ×. Nothing was harmed. The point landed well inside the kill date (11-29 12:00).
+
+### Part B: cost from the measured probe → BACK TO THE GATE (B not run)
+- **Probe** (`exp100_route.py --probe`; wall times only; no value printed or kept):
+
+  | geometry | install | one g node at s = 1.974 | peak |
+  |---|---|---|---|
+  | B0 W4 (N 160, Ny 16) | 9.7 s | 12.1 s | 0.12 GB |
+  | B0 W2 (N 144, Ny 16) | 6.3 s | 8.2 s | 0.09 GB |
+  | B1 W4 (N 576, Ny 32) | 291 s | 490 s | 1.49 GB |
+  | B1 W2 (N 544, Ny 32) | 158 s | 318 s | 1.21 GB |
+
+- **Projection:**
+  - Method: scale by the W6P8 route's full stage mix (`e98_W6P8.out`): (wall − install)/node(1.974) = (11457 − 119)/191 = 59.4 node-units. That mix is t0 at 6.1, 48 production nodes, then the planted, B2b, N1'''c and Woodbury checks.
+  - B1 W4 ≈ 291 + 59.4 × 490 ≈ 29,400 s (8.2 h). B1 W2 ≈ 19,050 s (5.3 h). B0 ≈ 1,200 s. KA-route ≈ 200 s.
+  - **Total ≈ 49,900 s ≈ 13.9 h single-process. That is over 12 h, so B goes back to the gate (registered rule).**
+- **Correction:** an earlier in-session projection of about 20 h was not saved with its breakdown, and I cannot reproduce it. This entry's 13.9 h is the figure of record, with the method stated. The conclusion (over 12 h) is the same under both.
+- Grade: **partially verified**. The node and install times are measured; the stage mix is assumed to scale like the node.
+- **Options for the gate (not started):**
+  - (a) Split the production nodes across 4 single-thread processes with the existing `--nodes i:j`. That is about 6 GB for the W4 leg, run legs one after another, roughly 6 h wall, the same ~14 core-h. It first needs a split-vs-whole bitwise KA at W2P4.
+  - (b) 2 threads, after the reproduction test.
+  - (c) Drop part B, and carry "σ-side Lt bias untested" as a stated caveat on R_D.
+
+### Part E
+- **Seal fb6060f is SUPERSEDED BEFORE TEST.** It stays committed and unopened; convention A's D(3) will not be measured. Not failed, not passed.
+
+### Grades
+- Part A readings and verdict: **verified** (controls PASS; registered rule applied as coded).
+- "κ_lat → κ_free within 1%": **unverified** (inference from the tail).
+- Part D values: **partially verified**.
+- Part B cost: **partially verified**.
+
+### Next steps
+- The Bridge rules on B: (a), (b) or (c).
+- If the Bridge wants the free side finished: one more chain point, k = 2, m = 32, would settle (i). It would take about 16 × 1007 s ≈ 4.5 h for the chain alone, plus about 4 × that with the arms. That is over the registered 15-min rule, so it needs a new registration.

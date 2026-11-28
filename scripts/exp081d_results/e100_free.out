@@ -1,0 +1,35 @@
+interpreter 3.14.5 numpy 2.4.3 scipy 1.17.1
+KA-sweep subset k=1: S(W=P, g=P, hT=P, Ny=4P) == stored EXP-099 B_g1P (bitwise) PASS 
+wiring-neg k=1: arm g=Lt/2 at T(1) changes S (> 1e-12 rel)                   PASS -3.46e-02
+wiring-neg k=1: arm g=2Lt at T(1) changes S (> 1e-12 rel)                    PASS +1.87e-03
+wiring-neg k=1: arm Ny=4Lt at T(1) changes S (> 1e-12 rel)                   PASS +1.21e+00
+plant k=1: 1.01*Ny in the slope gives kappa/1.01 (1e-12 rel)                 PASS +0.0e+00
+KA-sweep subset k=2: S(W=P, g=P, hT=P, Ny=4P) == stored EXP-099 B_g1P (bitwise) PASS 
+wiring-neg k=2: arm g=Lt/2 at T(1) changes S (> 1e-12 rel)                   PASS -3.76e-02
+wiring-neg k=2: arm g=2Lt at T(1) changes S (> 1e-12 rel)                    PASS +1.61e-03
+wiring-neg k=2: arm Ny=4Lt at T(1) changes S (> 1e-12 rel)                   PASS +2.84e+00
+plant k=2: 1.01*Ny in the slope gives kappa/1.01 (1e-12 rel)                 PASS +0.0e+00
+KA-sweep subset k=3: S(W=P, g=P, hT=P, Ny=4P) == stored EXP-099 B_g1P (bitwise) PASS 
+wiring-neg k=3: arm g=Lt/2 at T(1) changes S (> 1e-12 rel)                   PASS -3.85e-02
+wiring-neg k=3: arm g=2Lt at T(1) changes S (> 1e-12 rel)                    PASS +1.53e-03
+wiring-neg k=3: arm Ny=4Lt at T(1) changes S (> 1e-12 rel)                   PASS +4.49e+00
+plant k=3: 1.01*Ny in the slope gives kappa/1.01 (1e-12 rel)                 PASS -1.1e-16
+[1s] controls PASS -> chain
+k=1 m= 1 (hT 4, Lt 8, Lx 20, Ny 16): kappa12 0.022821 (/kf 0.5756) df +0.2130 | g->2Lt +1.48e-03 g->Lt/2 -2.76e-02 Ny->4Lt -5.99e-03 [0s]
+k=1 m= 2 (hT 8, Lt 16, Lx 36, Ny 32): kappa12 0.031554 (/kf 0.7958) df +0.0502 | g->2Lt +5.41e-04 g->Lt/2 -1.32e-02 Ny->4Lt -9.29e-04 [0s]
+k=1 m= 4 (hT 16, Lt 32, Lx 68, Ny 64): kappa12 0.035630 (/kf 0.8987) df -0.0136 | g->2Lt +2.39e-04 g->Lt/2 -6.58e-03 Ny->4Lt -2.24e-04 [3s]
+k=1 m= 8 (hT 32, Lt 64, Lx 132, Ny 128): kappa12 0.037184 (/kf 0.9379) df -0.0355 | g->2Lt +1.10e-04 g->Lt/2 -3.17e-03 Ny->4Lt -7.19e-05 [28s]
+k=1 m=16 (hT 64, Lt 128, Lx 260, Ny 256): kappa12 0.037748 (/kf 0.9521) df -0.0428 | g->2Lt +4.87e-05 g->Lt/2 -1.43e-03 Ny->4Lt -2.66e-05 [319s]
+k=2 m= 1 (hT 8, Lt 16, Lx 40, Ny 32): kappa12 0.023474 (/kf 0.5921) df +0.3030 | g->2Lt +9.96e-04 g->Lt/2 -2.30e-02 Ny->4Lt -4.05e-03 [0s]
+k=2 m= 2 (hT 16, Lt 32, Lx 72, Ny 64): kappa12 0.033073 (/kf 0.8342) df +0.1072 | g->2Lt +4.34e-04 g->Lt/2 -1.19e-02 Ny->4Lt -7.13e-04 [3s]
+k=2 m= 4 (hT 32, Lt 64, Lx 136, Ny 128): kappa12 0.037327 (/kf 0.9415) df +0.0349 | g->2Lt +2.07e-04 g->Lt/2 -6.04e-03 Ny->4Lt -1.87e-04 [25s]
+k=2 m= 8 (hT 64, Lt 128, Lx 264, Ny 256): kappa12 0.038893 (/kf 0.9810) df +0.0107 | g->2Lt +9.80e-05 g->Lt/2 -2.91e-03 Ny->4Lt -6.28e-05 [282s]
+k=2 m=16 (hT 128, Lt 256, Lx 520, Ny 512): kappa12 0.039449 (/kf 0.9950) df +0.0028 | g->2Lt +4.41e-05 g->Lt/2 -1.31e-03 Ny->4Lt -2.38e-05 [3903s]
+k=3 m= 1 (hT 12, Lt 24, Lx 60, Ny 48): kappa12 0.023078 (/kf 0.5821) df +0.3183 | g->2Lt +9.15e-04 g->Lt/2 -2.27e-02 Ny->4Lt -3.64e-03 [1s]
+k=3 m= 2 (hT 24, Lt 48, Lx 108, Ny 96): kappa12 0.032996 (/kf 0.8322) df +0.1127 | g->2Lt +4.18e-04 g->Lt/2 -1.19e-02 Ny->4Lt -6.67e-04 [14s]
+k=3 m= 4 (hT 48, Lt 96, Lx 204, Ny 192): kappa12 0.037331 (/kf 0.9415) df +0.0383 | g->2Lt +2.03e-04 g->Lt/2 -6.04e-03 Ny->4Lt -1.80e-04 [127s]
+k=3 m= 8 (hT 96, Lt 192, Lx 396, Ny 384): kappa12 0.038909 (/kf 0.9814) df +0.0137 | g->2Lt +9.68e-05 g->Lt/2 -2.91e-03 Ny->4Lt -6.14e-05 [1244s]
+VERDICT k=1: NOT CONVERGED within the affordable chain; chain steps (m -> 2m) 1:+3.83e-01, 2:+1.29e-01, 4:+4.36e-02, 8:+1.51e-02
+VERDICT k=2: NOT CONVERGED within the affordable chain; chain steps (m -> 2m) 1:+4.09e-01, 2:+1.29e-01, 4:+4.20e-02, 8:+1.43e-02
+VERDICT k=3: NOT CONVERGED within the affordable chain; chain steps (m -> 2m) 1:+4.30e-01, 2:+1.31e-01, 4:+4.23e-02
+[5950s] 152 geometries; slowest 502 s; wrote exp081d_results/exp100_free.json
