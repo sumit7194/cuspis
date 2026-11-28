@@ -1,0 +1,85 @@
+[    0s] interpreter 3.14.5 numpy 2.4.3 scipy 1.17.1
+KA-sweep: 23 stored free caches reproduced bitwise                             PASS  23/23
+KA-base k=1: B(g=P) at W=P == A (bitwise)                                      PASS  
+KA-base k=1 W=2: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+KA-base k=1 W=3: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+KA-base k=1 W=4: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+wiring-neg k=1: B(2P) at W=P differs from A (> 1e-12 rel)                      PASS  +3.464e-02
+wiring-neg k=1: C(2P) at W=P differs from A (> 1e-12 rel)                      PASS  +9.703e-02
+wiring-neg k=1: Dy(8P) at W=P differs from A (> 1e-12 rel)                     PASS  +1.173e+00
+KA-base k=2: B(g=P) at W=P == A (bitwise)                                      PASS  
+KA-base k=2 W=4: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+KA-base k=2 W=6: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+KA-base k=2 W=8: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+wiring-neg k=2: B(2P) at W=P differs from A (> 1e-12 rel)                      PASS  +3.759e-02
+wiring-neg k=2: C(2P) at W=P differs from A (> 1e-12 rel)                      PASS  +1.083e-01
+wiring-neg k=2: Dy(8P) at W=P differs from A (> 1e-12 rel)                     PASS  +2.803e+00
+KA-base k=3: B(g=P) at W=P == A (bitwise)                                      PASS  
+KA-base k=3 W=6: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+KA-base k=3 W=9: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                     PASS  
+KA-base k=3 W=12: C(hT=P) == A and Dy(Ny=4P) == A (bitwise)                    PASS  
+wiring-neg k=3: B(2P) at W=P differs from A (> 1e-12 rel)                      PASS  +3.855e-02
+wiring-neg k=3: C(2P) at W=P differs from A (> 1e-12 rel)                      PASS  +1.121e-01
+wiring-neg k=3: Dy(8P) at W=P differs from A (> 1e-12 rel)                     PASS  +4.452e+00
+Plant 1: strip shifted one column (gL+1, gR-1) at W2P4, g=P changes S (> 1e-9 rel) -> FIRES PASS  -1.169e-02
+Plant 2: cut row tcut = hT - 2 at W2P4 (A) changes S (> 1e-9 rel) -> FIRES     PASS  -2.302e-02
+[    2s] all controls PASS -> readings
+
+k = 1 (P = 4; W = 2, 3, 4): df by family  [kappa13 / kappa32 / kappa12]
+   A        df +0.4974   [0.020588 / 0.011804 / 0.017660]
+   B_g1P    df +0.2193   [0.023814 / 0.018947 / 0.022192]
+   B_g2P    df +0.2130   [0.024442 / 0.019581 / 0.022821]
+   B_g4P    df +0.2126   [0.024475 / 0.019616 / 0.022855]
+   B_g8P    df +0.2126   [0.024475 / 0.019616 / 0.022855]
+   C_h1P    df +0.4974   [0.020588 / 0.011804 / 0.017660]
+   C_h2P    df +0.5174   [0.023240 / 0.012985 / 0.019822]
+   C_h4P    df +0.5284   [0.023511 / 0.012948 / 0.019990]
+   Dy_4P    df +0.4974   [0.020588 / 0.011804 / 0.017660]
+   Dy_8P    df +0.4978   [0.020564 / 0.011784 / 0.017637]
+   Dy_16P   df +0.4978   [0.020564 / 0.011784 / 0.017637]
+   E        df -0.0136   [0.035468 / 0.035954 / 0.035630]
+   edge exponent (B, W=2): a(P,2P,4P) +4.214  a(2P,4P,8P) +8.081  drift 3.867 -> NO stable exponent (descriptive)
+   edge exponent (B, W=3): a(P,2P,4P) +4.215  a(2P,4P,8P) +8.082  drift 3.866 -> NO stable exponent (descriptive)
+   edge exponent (B, W=4): a(P,2P,4P) +4.214  a(2P,4P,8P) +8.081  drift 3.867 -> NO stable exponent (descriptive)
+
+k = 2 (P = 8; W = 4, 6, 8): df by family  [kappa13 / kappa32 / kappa12]
+   A        df +0.7918   [0.022426 / 0.008377 / 0.017743]
+   B_g1P    df +0.3102   [0.025306 / 0.018192 / 0.022935]
+   B_g2P    df +0.3030   [0.025845 / 0.018732 / 0.023474]
+   B_g4P    df +0.3026   [0.025868 / 0.018757 / 0.023498]
+   B_g8P    df +0.3026   [0.025868 / 0.018757 / 0.023498]
+   C_h1P    df +0.7918   [0.022426 / 0.008377 / 0.017743]
+   C_h2P    df +0.8722   [0.025477 / 0.008261 / 0.019739]
+   C_h4P    df +0.8910   [0.025745 / 0.008058 / 0.019849]
+   Dy_4P    df +0.7918   [0.022426 / 0.008377 / 0.017743]
+   Dy_8P    df +0.7918   [0.022411 / 0.008371 / 0.017731]
+   Dy_16P   df +0.7918   [0.022411 / 0.008371 / 0.017731]
+   E        df +0.0349   [0.037761 / 0.036460 / 0.037327]
+   edge exponent (B, W=4): a(P,2P,4P) +4.543  a(2P,4P,8P) +8.634  drift 4.091 -> NO stable exponent (descriptive)
+   edge exponent (B, W=6): a(P,2P,4P) +4.543  a(2P,4P,8P) +8.634  drift 4.091 -> NO stable exponent (descriptive)
+   edge exponent (B, W=8): a(P,2P,4P) +4.542  a(2P,4P,8P) +8.634  drift 4.092 -> NO stable exponent (descriptive)
+
+k = 3 (P = 12; W = 6, 9, 12): df by family  [kappa13 / kappa32 / kappa12]
+   A        df +0.8335   [0.021912 / 0.007619 / 0.017148]
+   B_g1P    df +0.3255   [0.025001 / 0.017660 / 0.022554]
+   B_g2P    df +0.3183   [0.025527 / 0.018182 / 0.023078]
+   B_g4P    df +0.3179   [0.025548 / 0.018203 / 0.023100]
+   B_g8P    df +0.3179   [0.025548 / 0.018203 / 0.023100]
+   C_h1P    df +0.8335   [0.021912 / 0.007619 / 0.017148]
+   C_h2P    df +0.9237   [0.024947 / 0.007329 / 0.019075]
+   C_h4P    df +0.9439   [0.025197 / 0.007106 / 0.019167]
+   Dy_4P    df +0.8335   [0.021912 / 0.007619 / 0.017148]
+   Dy_8P    df +0.8335   [0.021900 / 0.007615 / 0.017138]
+   Dy_16P   df +0.8335   [0.021900 / 0.007615 / 0.017138]
+   E        df +0.0383   [0.037807 / 0.036379 / 0.037331]
+   edge exponent (B, W=6): a(P,2P,4P) +4.655  a(2P,4P,8P) +8.826  drift 4.171 -> NO stable exponent (descriptive)
+   edge exponent (B, W=9): a(P,2P,4P) +4.655  a(2P,4P,8P) +8.826  drift 4.171 -> NO stable exponent (descriptive)
+   edge exponent (B, W=12): a(P,2P,4P) +4.654  a(2P,4P,8P) +8.826  drift 4.172 -> NO stable exponent (descriptive)
+
+VERDICTS (registered criteria, section 4):
+   x (b) B_g8P    PARTIAL      |df| at k=1,2,3: 0.2126, 0.3026, 0.3179
+   t (c) C_h4P    NOT REMOVED  |df| at k=1,2,3: 0.5284, 0.8910, 0.9439
+   y (d) Dy_16P   NOT REMOVED  |df| at k=1,2,3: 0.4978, 0.7918, 0.8335
+   (e) all large (descriptive): |df| 0.0136, 0.0349, 0.0383;  INTRINSIC: False
+
+[   38s] 102 geometries; slowest 9.0 s at (12, 96, 96, 48, 192); wrote exp081d_results/exp099_free.json

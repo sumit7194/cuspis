@@ -13102,3 +13102,44 @@ WHAT IS OPEN
 - **Next:**
   - Seal D(3) and R_q(3) by the registered §5 method in a separate commit, BEFORE free(9, 12) is computed: the free side carries most of D, so computing it would expose the seal.
   - Then the Bridge rules on whether stage 1 (W9P12) is still the right next step.
+
+## EXP-099 RESULT: the free-side width curvature is a FINITE-SIZE effect of the geometry convention (2026-11-28 21:52 IST) [model: Opus 5.5]
+- **Goal:** find out whether the free-side curvature behind the EXP-098 drift is a geometry convention or intrinsic (registration 1ac1ad1, code 1b79d1b, amendment 1 7b… see git log).
+- **Controls, all PASS:**
+  - KA-sweep: 23/23 stored free caches reproduced bitwise, including the stage-0 W3P4 and W6P8 values.
+  - KA-base bitwise at every k and width.
+  - Negative arm wiring: every arm variable changes S.
+  - Plant 1 (column shift, −1.2e-2) and plant 2 (cut row, −2.3e-2) both fire.
+  - Amendment-1 control: B(8P, hT = P) equals the stored B_g8P bitwise.
+- **Readings:** df = (κ₁₃ − κ₃₂)/κ₁₂. Convention A: +0.497, +0.792, +0.834 at k = 1, 2, 3 (k = 3 is new; see §6 on the seal).
+
+  | arm (largest value) | k = 1 | k = 2 | k = 3 | registered verdict |
+  |---|---|---|---|---|
+  | (b) symmetric x-gap g = 8P (saturated already at g ≥ 2P) | 0.213 | 0.303 | 0.318 | **PARTIAL** |
+  | (c) hT = 4P, convention A in x | 0.528 | 0.891 | 0.944 | **NOT REMOVED** (it grows) |
+  | (d) Ny = 16P, convention A | 0.498 | 0.792 | 0.834 | **NOT REMOVED** (inert) |
+  | (e) all large: g = 8P, hT = 4P, Ny = 16P (descriptive) | −0.014 | +0.035 | +0.038 | INTRINSIC: **False** |
+  | amendment 1: g = 8P, hT = 2P, Ny = 4P | +0.023 | +0.080 | +0.086 | descriptive |
+  | amendment 1: g = 8P, hT = 4P, Ny = 4P | −0.077 | −0.033 | −0.029 | **prediction FAILED** |
+
+  - κ₁₂ at (e) is 0.03563, 0.03733, 0.03733, i.e. κ₁₂/κ_free = 0.90, 0.94, 0.94. This is consistent with EXP-080's box table (0.92 at r = 32).
+- **My expectation (§4), graded:**
+  - "PARTIAL in (b): held.
+  - "Neither (b) nor (c) alone removes it": held.
+  - "(e) shrinks it most": held.
+  - "(d) changes it little": held under A.
+  - **The amendment-1 prediction FAILED.** I predicted Ny was inert under symmetric gaps. At hT = 4P with Ny = 4P, df overshoots through zero and κ₁₂ (0.040–0.042) exceeds κ_free. That is EXP-080's overshoot when the box is longer than the periodic L: Lt = 8P > Ny = 4P. I cited that warning in §1 and still predicted inertness, so it was my misjudgement. Ny is inert only while the box is shorter than Ny.
+- **The edge exponent:** NO stable power law. The local exponent doubles when g doubles (4.2 → 8.1 at k = 1; 4.7 → 8.8 at k = 3). That is the signature of exponential decay, so my power-law GUESS failed.
+  - Descriptive interpretation, unverified: the x-edges are screened by the finite t-slab. The decay rate is κ ≈ a₁·ln2/P = 2.9/P (k = 1) to 3.2/P (k = 3), close to 2π/Lt = π/P for two propagators in a Dirichlet slab of thickness Lt = 2P. This matches to within 7%; it is a number match, not a check.
+- **Analysis (descriptive):** the drift comes from three finite-size effects acting together.
+  - (i) The x-gaps differ across widths in convention A. That accounts for about 60% of df, and is removed by equal gaps.
+  - (ii) The finite t-extent hT = P is comparable to W. That accounts for most of the rest, and is removed by hT ≥ 2P once the gaps are equal.
+  - (iii) Once the box is larger than Ny, the periodic y-length matters (the overshoot).
+  - The variables interact. A larger hT under convention A makes the drift WORSE, consistent with weaker t-screening of the unequal x-gaps.
+  - With all three large, |df| ≤ 0.04 at every k.
+  - **The σ routes use convention A (hT = P, Ny = 4P, unequal gaps).** On that geometry the σ-side slope drift was only 9–11%, against 50–83% on the free side. So the finite-size effects do NOT cancel in R = δκ/κ, and the free normaliser carries the convention artefact.
+- **The seal:** free(9, 12) has been seen (A: df = +0.834). The seal fb6060f is unchanged, and the D(3) census gate stands.
+- **Cost:** 102 geometries in 42 s (slowest 9.0 s, at k = 3 (e)), peak 0.15 GB. Amendment 1 took seconds.
+- **Next:** this goes to the Bridge. Stage 1 returns to the value gate with a Neon outside view on the field questions:
+  - (1) is the normaliser κ_lat from the σ route's own geometry the right one, given that its finite-size artefact does not cancel?
+  - (2) does any two-width pair define the O(N⁰) ratio at hT = P?
