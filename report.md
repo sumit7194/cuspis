@@ -12919,3 +12919,14 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Footprint:** 8.5 h, against a 23.5 h central and 47 h budget (the per-class cost was 0.73 h, not 2.0 h: my N³ scaling over-predicted by ~2.7×). The peak was 3.78 GB against a predicted 3.39 GB (×1.11).
 - **Grade:** the fix agrees with the independent route to 1.3e-9 on the clusters (verified, same machine). The whole-t0 consistency check is FAILED AS WRITTEN and undiagnosed, so the overall W12P12 grade is **partially verified**. The k = 3 use of the fix waits for the Bridge.
 - **Air:** no Cuspis process remains (checked 06:05); the Air is left idle for AlphaMate.
+
+### EXP-096 amendment 6, run 1: the W8P8 known-answer control STOPPED the runner (the plant could not fire); W12P12 not run (2026-11-28 14:57 → 15:09, Mac mini, 437 s, peak 0.59 GB; `exp096/W8P8Wb8Ny32_onoff.json` sha 82752164eef06977, `e96a6_W8P8.out` sha 3653123f056f7595; kept as the failed run) [model: Opus 5.5]
+- **Results at W8P8 (Mac mini, M4):**
+  - Step A: the class list and members are bitwise identical to the Air's (max diff 0).
+  - **KA-complete-1chip = −1.10e-14: CLOSES.**
+  - Per class, Mac − Air of (ON_d − OFF_d), ON_d and OFF_d: all ≤ 5e-17. At W8P8 the two chips agree to rounding on every class value.
+  - ON_d − OFF_d is exactly 0 for p = 8, 9, 10 (spans ≥ 1.4e-5 > rad, so not EXP-087 clusters) and nonzero for p = 11–16.
+- **Plant: FAILED (it could not fire).** The registered pair, class 16, disc +i c, the first pair in pairs_of order, is (k, p) = (16, 16), q = 0: a single-tag pair. At W8P8 the class-16 members are 3.0e-6 apart, far above the 1e-2·rad = 1e-7 merge threshold. So OFF already sums both residues, ON does the same, and ON − OFF = 0 exactly for that pair. The fix changes only (A) two-tag entries and (B) single-tag entries with a gap < 1e-7.
+  - **My design miss:** I fixed the pair without checking that it carried a nonzero ON − OFF at both geometries. By the registered rule, no other pair is substituted, so the runner STOPPED before W12P12, as built.
+  - At W12P12 the same pair would probably carry ON ≠ OFF, since its class-16 span of 1.8e-8 is below the 1e-7 threshold (inference). That does not rescue the control at W8P8.
+- **Next:** a replacement plant goes to the Bridge. Nothing is rerun without the ruling.

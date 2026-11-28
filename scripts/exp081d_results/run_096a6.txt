@@ -1,0 +1,8 @@
+=== run_096a6 armed 2026-11-28 06:11:13; waiting for exp081d_results/run_w6p12.done
+=== run_096a6 armed 2026-11-28 12:41:11; waiting for exp081d_results/run_w6p12.done
+=== run_096a6 waiter PID 19999 ended by PID (TERM) 2026-11-28 14:57:49: replaced by a NOWAIT=1 launch on the Bridge's go
+=== run_096a6 armed 2026-11-28 14:57:57; NOWAIT=1 (Bridge go): not waiting for W6P12
+=== GATE e96a6_W8P8 2026-11-28 14:57:57: free 83% (>= 50) -> LAUNCH (pgate next)
+=== e96a6_W8P8 start 2026-11-28 14:57:57 args: 8 8
+=== e96a6_W8P8 rc 0 2026-11-28 15:09:44
+=== STOP 2026-11-28 15:09:44: W8P8 known-answer control FAILED (KA-complete-1chip or plant) -> tell the Bridge
