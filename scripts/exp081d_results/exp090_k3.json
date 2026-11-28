@@ -1,0 +1,188 @@
+{
+ "mode": "K3",
+ "notes": [
+  "N1 (R2) row 2: rho_s uses g_raw^c as DEFINED in \u00a72 (slope over k in {1, 1.5, 2, 2.5}), PRIMARY (Bridge ruling 2026-11-28: the frozen definition); the k <= 3 denominator is printed beside it, DESCRIPTIVE.",
+  "N2 (R6) S-1 / S-2: the header gives a 68% band and an outer band without naming which is the PASS band (S-3 names it). Both are printed; the S-1 / S-2 main-seal grades are DESCRIPTIVE (Bridge ruling 2026-11-28: not fixed before the exposure, so not fixable now).",
+  "N3 (R4) robustness / secondary-sigma rows use the same decide() on the same tails; only sigma changes.",
+  "N4 s_KA (Bridge ruling 2026-11-28, after b25a9bd): decided ONLY from the graded record exp096/A6_GRADED.json (sha-bound to the raw A6 JSON, plant_fired cross-checked against the raw plant_ka); the raw 'reading' field is never read. K3 REFUSES before opening any k = 3 file if the graded record is missing or inconsistent. The 18:00 not-landed fallback is gone (A6 landed and is graded)."
+ ],
+ "s_KA": 7.84e-07,
+ "s_label": "amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07",
+ "Delta": {
+  "W12P12": 0.06394052643173609
+ },
+ "sigma_Delta": {
+  "W12P12_primary": 0.006472526431736091,
+  "W12P12_secondary": 7.840010447060333e-07
+ },
+ "R1": {
+  "Rc": {
+   "T0": {
+    "1": 2.2552242844155943,
+    "1.5": 4.233445846375093,
+    "2": 6.587692272458103,
+    "2.5": 9.090205937475202,
+    "3": 11.758199614922905
+   },
+   "T1": {
+    "1": 2.2552242844155943,
+    "1.5": 4.233445846375093,
+    "2": 6.587692272454086,
+    "2.5": 9.090205833017063,
+    "3": 11.758198590566746
+   }
+  },
+  "sigma": {
+   "primary": {
+    "1": 5.764610869710412e-10,
+    "1.5": 2.5663035137060564e-09,
+    "2": 6.478139702254268e-06,
+    "2.5": 7.162881317454797e-05,
+    "3": 0.047182141041715704
+   },
+   "robust": {
+    "1": 5.764610869710412e-10,
+    "1.5": 2.5663035137060564e-09,
+    "2": 0.004371329982624415,
+    "2.5": 0.026143717991689856,
+    "3": 0.013983030610691142
+   },
+   "secondary": {
+    "1": 5.764610869710412e-10,
+    "1.5": 2.5663035137060564e-09,
+    "2": 6.478139702254268e-06,
+    "2.5": 7.162881317454797e-05,
+    "3": 5.8122743135211215e-06
+   }
+  },
+  "local": [
+   3.956443123918998,
+   4.708492852166019,
+   5.005027330034199,
+   5.335987354895405
+  ]
+ },
+ "R2": {
+  "rows": {
+   "primary": [
+    0.18652169451784947,
+    0.020309260385736164,
+    0.04079796423553876,
+    0.004442252580909382,
+    "supported"
+   ],
+   "robust": [
+    0.18652169451784947,
+    0.010719371515624646,
+    0.04079796423553876,
+    0.0023446523840156106,
+    "supported"
+   ],
+   "secondary": [
+    0.18652169451784947,
+    0.007502089941874925,
+    0.04079796423553876,
+    0.0016409351090852244,
+    "supported"
+   ]
+  },
+  "reading": "supported",
+  "graw3_descriptive": 4.772542150422944
+ },
+ "R4": {
+  "a": "power-divergent",
+  "a_tails": {
+   "T0": [
+    "power-divergent",
+    1.6859475741344592,
+    2.528604789238534e-07
+   ],
+   "T1": [
+    "power-divergent",
+    1.6859473294702978,
+    2.528604789210799e-07
+   ]
+  },
+  "b": "power-divergent",
+  "b_rows": {
+   "primary": [
+    "power-divergent",
+    {
+     "T0": [
+      "power-divergent",
+      1.7368284749745233,
+      0.010890361455292248
+     ],
+     "T1": [
+      "power-divergent",
+      1.7368282385390357,
+      0.010890361455302262
+     ]
+    }
+   ],
+   "robust": [
+    "power-divergent",
+    {
+     "T0": [
+      "power-divergent",
+      1.7368284749745233,
+      0.0036725569384559267
+     ],
+     "T1": [
+      "power-divergent",
+      1.7368282385390357,
+      0.0036725568246291345
+     ]
+    }
+   ],
+   "secondary": [
+    "power-divergent",
+    {
+     "T0": [
+      "power-divergent",
+      1.7368284749745233,
+      2.9230456210427184e-06
+     ],
+     "T1": [
+      "power-divergent",
+      1.7368282385390357,
+      2.923045306948355e-06
+     ]
+    }
+   ]
+  }
+ },
+ "R5": {
+  "t0+L": -0.08905152997105859,
+  "C": 0.24960875375788005,
+  "Y_A": 5.00995011867798
+ },
+ "R6": {
+  "S1": {
+   "R": -0.12293556007202029,
+   "in68": false,
+   "inouter": false,
+   "E6": 1.8930782077314632,
+   "E6_pass": true,
+   "E12": 1.884645952958408,
+   "E12_pass": false
+  },
+  "S2": {
+   "R": -0.12293556007202029,
+   "in68": true,
+   "inouter": true,
+   "E6_pass": true,
+   "E12_pass": true,
+   "XL12": 244.95337158030614,
+   "XL12_pass": true
+  },
+  "S3": {
+   "R": 0.3431654200183459,
+   "pass_": true,
+   "fable_fail_rule_fires": false,
+   "dt0_pass": true
+  }
+ },
+ "headline": "EXP-090 k = 3 READING (K3): (R4)(b) power-divergent; (R2) row 2 supported; S-3 PASS; amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07; fix carried, partially verified (EXP-096); A-vs-bulk open; EXP-086 tension stands; exposure of S(W6P12) recorded (65e0b6a); S-1/S-2 PASS band not fixed before exposure; graded descriptive (Bridge ruling 2026-11-28); controls PASS",
+ "failed": []
+}

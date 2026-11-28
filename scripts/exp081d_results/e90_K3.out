@@ -1,0 +1,23 @@
+K1-K6: exp090_reread.py CONTROLS exits 0                                       PASS  rc 0
+KA-R k = 2 through this code path == exp081d_results.json (R_T0, R_T1, sigma, kappa bitwise) PASS  (0 s) R_T0 np.float64(6.4419812730374115) vs 6.4419812730374115
+kappa(3) via exp081b_run.pair == EXP-091 stored kappa3 (bitwise)               PASS  0.017147712932114922
+norm(3) == EXP-091 norm3 (1e-12 rel)                                           PASS  14.5792037101
+gate 1: W12 route rc 0 with the stale-file guard PASS (run_k3.txt)             PASS  
+gate 2: C1 W12 rc 0 and its C1 row PASS                                        PASS  
+gate 3: exp087_t0_W12P12.json exists, K2 OFF == W12 route t0 (1e-10 rel)       PASS  
+gate 4': W6P12 rerun rc 0, stale-file guard PASS after it, run_w6p12.done      PASS  
+
+amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07
+K3' placement plant at k = 3 through corr(): +1 on WIDE W2 = 12 moves R(3) by +norm(3)/2, on NARROW W1 = 6 by -norm(3)/2 (1e-12) PASS  
+consistency: g_raw^c recomputed == exp090_k25.json graw_c (bitwise)            PASS  4.571838277052364
+
+(R1) R^c_T0(k) [2.25522, 4.23345, 6.58769, 9.09021, np.float64(11.7582)]  R^c_T1(3) +11.75820  sigma^c(3) 4.72e-02  local slopes [3.956, 4.708, 5.005, np.float64(5.336)]  [descriptive]
+(R2) row 2 (k = 1..3): g_A +0.1865 +- 0.0203  rho_s +0.0408 +- 0.0044 -> supported   [secondary-sigma: supported; robustness: supported; descriptive N1: / g_raw over k<=3 +4.7725 -> rho +0.0391]
+(R4)(a) 081e as registered (carries the EXP-087 defect at W8P8 and W12P12): power-divergent  [('T0', np.float64(1.6859), np.float64(0.0)), ('T1', np.float64(1.6859), np.float64(0.0))]
+(R4)(b) EXP-090 corrected (the physics reading): power-divergent  [('T0', np.float64(1.7368), np.float64(0.0109)), ('T1', np.float64(1.7368), np.float64(0.0109))]   [secondary-sigma: power-divergent; robustness: power-divergent]
+(R5) pair 2 -> 3 [descriptive]: {t0+L: -0.0891, C: +0.2496, Y_A: +5.0100}
+(R6) S-1 (current code): R(t0+L)(3) -0.1229; in 68% [-2.0,-1.1] False, in outer [-2.5,-0.7] False [main grade DESCRIPTIVE, N2]; E(W6P12) 1.8931 vs 1.892+-0.008 PASS; E(W12P12) 1.8846 vs 1.78+-0.03 FAIL
+(R6) S-2 (current code): in 68% [-0.30,+0.15] True, in outer [-0.60,+0.40] True [main grade DESCRIPTIVE, N2]; E(W6P12) vs 1.895+-0.006 PASS; E(W12P12) vs 1.890+-0.02 PASS; X_Lam(W12P12) 244.9534 vs 244.958+-0.02 PASS
+(R6) S-3 (corrected t0): R(t0+L)(3) +0.3432 in [0.25, 0.42] -> PASS; Fable's fail rule (outside [0.15, 0.50]) does not fire; sub-seal dt0 +0.063941 vs 0.0575+-0.03 PASS
+
+EXP-090 k = 3 READING (K3): (R4)(b) power-divergent; (R2) row 2 supported; S-3 PASS; amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07; fix carried, partially verified (EXP-096); A-vs-bulk open; EXP-086 tension stands; exposure of S(W6P12) recorded (65e0b6a); S-1/S-2 PASS band not fixed before exposure; graded descriptive (Bridge ruling 2026-11-28); controls PASS

@@ -12989,3 +12989,23 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - **Real record → "s_KA kept = 7.84e-07".**
   - Every other DRY output value is identical to the committed DRY (only labels and notes changed).
 - **Verified by reading the code, not by a run:** the K3-mode refusal order. A K3-mode run with the record removed was not done, because it would risk the k = 3 seal.
+
+### EXP-090 k = 3 RESULT (registered 99484ff + amendment 1 65e0b6a; code 33f972f / 26f562f / 038df25; Bridge "K3 go" 2026-11-28 after 038df25; Mac mini 16:39 → 16:44 (pgate wait, then ~10 s compute; watchdog peak not sampled at its 10 s interval); `exp081d_results/exp090_k3.json` sha 7c080e6dabecb10a, `e90_K3.out` c6b4c8fe25b08adf; runner `run_090k3.sh`, the same python 3.15.2 / numpy 2.5.4 as the DRY): **(R4)(b) power-divergent; (R2) row 2 supported (agrees with row 1); S-3 PASS; controls PASS** [model: Opus 5.5]
+- **Controls:** K1–K6 PASS; KA-R at k = 2 bitwise; κ(3) bitwise against EXP-091; norm(3); gates 1, 2, 3, 4′ PASS. The amendment-6 GRADED reading is FAILED (control) → **s_KA kept = 7.84e-7**. The K3′ placement plant fires (PASS); g_raw^c is bitwise against exp090_k25.json.
+- **(R1), descriptive:** R^c_T0(k = 1, 1.5, 2, 2.5, 3) = 2.2552, 4.2335, 6.5877, 9.0902, 11.7582; R^c_T1(3) = 11.7582; σ^c(3) = 4.72e-2; local slopes 3.956, 4.708, 5.005, 5.336. (081d's stored-t0 extrapolation, known beforehand, was R(3) = 9.2–9.9.)
+- **(R2) row 2 (k = 1–3):** g_A = 0.1865 ± 0.0203; **ρ_s = 0.0408 ± 0.0044 → supported (A flattens)**, ±2σ interval [0.032, 0.050] inside [−0.1, 0.1]. The secondary-σ and robustness rows are also supported. Row 1 (k ≤ 2.5) was supported too, so the two rows agree ("k-range dependent" does not fire). N1, descriptive: over g_raw for k ≤ 3 (4.7725), ρ = 0.0391.
+  - Fixed caveat (registered): 085c's 1/a² row on Y still fails, so this is a finite-k slope, not a continuum statement.
+- **(R4) 081e PRIMARY at k = 3:**
+  - (a) as registered (carries the EXP-087 defect): power-divergent, r = 1.6859 (σ 0 as coded for the stored-t0 row).
+  - **(b) corrected, the physics reading: power-divergent, r = 1.7368 ± 0.0109 (band ≥ 1.33)**; the secondary-σ and robustness rows are also power-divergent.
+- **(R5) pair 2 → 3, descriptive:** t0 + L −0.0891, 𝒞 +0.2496, Y_A +5.0100.
+- **(R6) seals:**
+  - **S-3 (corrected t0): R(t0+L)(3) = +0.3432, in [0.25, 0.42] → PASS** (the sealed prediction was +0.33). Fable's fail rule (outside [0.15, 0.50]) does not fire. Sub-seal Δt0 +0.063941 against 0.0575 ± 0.03: PASS.
+  - S-1 (current code): R(t0+L)(3) = −0.1229, outside both the 68% band [−2.0, −1.1] and the outer band [−2.5, −0.7]. The main grade is DESCRIPTIVE (N2). Sub-seals: E(W6P12) 1.8931 against 1.892 ± 0.008 PASS; **E(W12P12) 1.8846 against 1.78 ± 0.03 FAIL** (3.5σ).
+  - S-2 (current code): in both bands (main grade DESCRIPTIVE, N2); sub-seals E(W6P12), E(W12P12), X_Λ(W12P12) 244.9534 against 244.958 ± 0.02: all PASS.
+- **Exposure, in the grading line:** this session saw S(all nodes) for W6P12 at ~12:40 (EXP-090 amendment 1 A). Every band and decision rule above was committed before 11:19 (99484ff and descendants); the open choices were frozen in 65e0b6a before any k = 3 reading; N1 and N2 were ruled by the Bridge. Fable's S-1–S-3 seals (personal account) are unaffected. So S-3's PASS is graded on a band fixed before the exposure, by a session that had seen one of its inputs.
+- **Grades:**
+  - (R2) row 2 supported: **verified** as computed by the registered code. Its physics meaning is finite-k only.
+  - (R4)(b) power-divergent: verified as computed. The t0 fix inside it is partially verified (EXP-096; s_KA kept).
+  - S-3 PASS: verified as computed; exposure noted.
+  - The S-1/S-2 main grades are descriptive.

@@ -1,0 +1,9 @@
+# cmd: /opt/homebrew/bin/python3 -u -W ignore exp090_k3.py K3
+# caps: tree <= 5.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# disk mode: NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored; caller pid 64563
+# pressure trigger: off
+# TREE_GB = MEM_GB (phys_footprint; CMPRS_GB is part of it; fixed 2026-11-26, older logs: TREE = MEM + CMPRS, a double count)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     0   0.000    0.000   0.000        35.57       1005.4           78              1
+# exit 0; wall 10 s; PEAK tree footprint 0.000 GB (MEM = phys_footprint; CMPRS 0.000 GB of it compressed)
