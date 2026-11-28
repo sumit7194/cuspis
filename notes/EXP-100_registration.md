@@ -89,3 +89,10 @@
 - **Arm wiring negative:** each arm variable changes S by > 1e-12 rel.
 - **Plant:** a 1% scale on Ny inside the slope formula only (the wrong normalisation) must move κ by 1% ± 1e-9. This catches an Ny mis-wiring in the slope.
 - **Normalisation-mismatch flag** (§2): it can fire.
+
+## Amendment 1 (2026-11-28 22:03 IST; before any EXP-100 value; the registered §3/§7 text above had arithmetic slips)
+- **§3, "Why k = 1": the corrected sizes (g = Lt, so Lx = W + 2Lt):**
+  - k = 1: B0 has N = Lx·Lt = 20 × 8 = 160, Ny = 16. **B1 has N = 36 × 16 = 576, Ny = 32** (not "20 × 16 = 320"). That is LARGER than the W6P8 route (N = 384, Ny = 32, 3.18 h), so B1 may exceed 12 h, and the timing probe decides.
+  - k = 2: B1 has N = 72 × 32 = 2304, Ny = 64. **A single (Ny, N, N) complex array is about 5.4 GB** (not "about 1.7 GB"). The conclusion, out of the envelope, is unchanged.
+- **§7 plant: corrected wording.** Using 1.01·Ny in the slope formula only must give exactly κ/1.01, to 1e-12 relative (κ ∝ 1/Ny). The old "by 1% ± 1e-9" was imprecise.
+- Nothing else changes.
