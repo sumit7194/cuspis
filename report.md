@@ -13009,3 +13009,40 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - (R4)(b) power-divergent: verified as computed. The t0 fix inside it is partially verified (EXP-096; s_KA kept).
   - S-3 PASS: verified as computed; exposure noted.
   - The S-1/S-2 main grades are descriptive.
+
+### DIGEST 2026-11-28 (Bridge digest-first rule) [model: Opus 5.5]
+WHAT WE NOW KNOW
+1. The centre coefficient c_A has a log term (EXP-092b, 48a3434). Fits made on P = 8-20, with predictions committed before the run (01ac42a), were tested at P = 24:
+   - the fit WITH a free log missed by 1.4e-6;
+   - the fit WITHOUT a log missed by 1.65e-5, beyond the half-gap rule.
+   So the log form holds out of sample. Grade: VERIFIED (a registered out-of-sample test on an exact computation; you recomputed it).
+   NOT known: the log's coefficient. The free fit gives 0.0699, the fixed candidate is 0.0611; the coefficient is UNVERIFIED.
+2. The Mac-vs-Air t0 question at W12P12 was NOT settled (A6, b25a9bd). On one chip the class sum closes to 5e-14. But the must-fail plant did not fire at W12P12, so by the rule the test reads FAILED (control). The 7.84e-7 stays in the error budget as s_KA. It is tiny: 5.7e-6 on sigma_R(3), against sigma^c(3) = 4.7e-2. The pre-check was not measured at W12P12. My miss; it is now a mechanism in the code, not a promise.
+   Descriptive only: the whole Mac-Air difference sits in ONE class (p = 8), on its OFF contour.
+3. k = 3 readings (EXP-090, d1c2da1; your acceptance today). Grades are "verified as computed by the registered code (single implementation, not an independent replication)":
+   - (R4)(b) the corrected series R^c(k) is POWER-DIVERGENT through k = 3 (r = 1.737 +- 0.011; every sigma row agrees).
+   - (R2) mechanism A explains the slope at finite k: rho_s = 0.041 +- 0.004, "supported", the same band over k = 1-2.5 and k = 1-3.
+   - The t0 fix inside both is PARTIALLY VERIFIED (EXP-096 W12P12 exact, but the A6 control failed).
+   - S-3 PASS: Fable's corrected-t0 seal +0.33 against the measured +0.343. It was graded by a session that had seen one input (S(W6P12) exposure, 65e0b6a); the band was fixed before.
+
+YOUR QUESTION: does S-1's miss point at the current-code t0 and not at the physics?
+- Answer: NO, not the miss itself. S-1 and S-2 are two Fable seals on the SAME current-code numbers (the code passes identical R and E to both; checked in exp090_k3.json).
+- S-2 (Fable's revision) contains them: R -0.123 in [-0.30, 0.15]; E(W12P12) 1.8846 against 1.890 +- 0.02. S-1 (the original, which Fable itself expected to fail) is off on both.
+- So S-1's miss is a miss of the original seal's model, not something the data or the t0 defect did to S-1 alone.
+- What the t0 defect DOES do: it is the whole gap between current code and corrected. S-3 - S-1 = +0.46610, and 1/2 * dt0(W12P12) * norm(3) = 0.46610 (they agree to 3.5e-6, the rounding of dt0). So at k = 3 the defect moves R(t0+L) from -0.12 to +0.34, all of it through W12P12's t0. Grade: verified arithmetic.
+
+WHAT IS OPEN
+- Third strip width at k = 3. Only W6 and W12 exist, so width drift at k = 3 is unmeasured (CORRECTED: no row tests width drift at all; the robustness row is about the t0 fix. Width drift at k = 3 is fully OPEN. See the correction below.)
+- Continuum. 085c's 1/a^2 row on Y still fails, so (R2) "A flattens" is a finite-k statement only.
+- The class-8 OFF disc. Why the chips differ there by 7.8e-7 at W12P12, and whether it is the same thing as W8P8's 7.8e-7 (which lived outside the classes). Descriptive; a follow-up would be a separate registration (your ruling).
+- The c_A log coefficient (0.0699 free vs 0.0611): unconfirmed.
+- An independent recompute of (R2)/(R4)(b): yours to consider, if Sumit wants k = 3 taken outside.
+- EXP-095 path S/D: Sumit's.
+
+
+### CORRECTION to the EXP-090 k = 3 checklist and the 11-28 digest (2026-11-28, after the third-width costing) [model: Opus 5.5]
+- I wrote that the robustness row (σ_Δ = 3% of |Δ|) was a width-drift proxy. **Wrong:** that row is about the t0-fix model gap (W8P8's fraction; EXP-090 registration line 37), not about strip width.
+- So **strip-width drift at k = 3 is OPEN, with no row testing it**, not "PARTLY". The k = 3 grades themselves are unchanged: no reading used that claim.
+- The third-width proposal (W9P12, with a step 0 at W3P4 / W6P8) has gone to the Bridge for a ruling. Sensitivity bounds from the stored numbers:
+  - (R2) row 2 leaves "supported" if R(3) rises by ≥ +0.58 (4.9%) relative to the lower k;
+  - (R4)(b) leaves "power-divergent" only if R(3) falls by ≥ 1.67 (14%).
