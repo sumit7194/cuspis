@@ -12896,3 +12896,26 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Not cherry-picked: the Air whole(1e-6) lies 1.3e-7 from the fixed route value −209.279427072581; at 2e-6 it is +3.4e-7, at 5e-7 −2.8e-6. The spread is the reading; no single rad is taken as truth.
   - Honest note: my e96d sentence "noise not the obvious answer" (already corrected in amendment 4 from Tier 1) is now contradicted at W8P8 as well.
 - **Next steps:** W12P12 launched 21:28:37 (PID 22185, CUSPIS_081E=1, --budget-h 47, pause-not-exit gate of amendment 5); the outside-entry term at W12P12 stays **unquantified below ~1e-6 in t0**, stated in STATUS.md; this reading is folded into W12P12's 25 % check-in.
+
+### EXP-096 W12P12 RESULT (registered amendments 0-5; Air, 21:28:37 → 06:01:00, wall 30473 s = 8.5 h, peak 3.78 GB of which 2.0 GB compressed; `exp081d_results/exp096/W12P12Wb12Ny48.json` sha df86eba6f28a1635, `air_pull_096/e96_W12P12.out` sha 2c0d73516df0221e, both equal to the Air copies; grader output `exp096/grade_W12P12.txt`): **D = truth − fix = +1.28e-9, EXACT by the registered rule. But control KA-complete FAILED AS WRITTEN (−7.8e-7 against ≤ 1e-8); cause not found** [model: Opus 5.5]
+- **Goal:** decide whether the EXP-087 fix's Δt0(W12P12) = +0.0639405264 is right on the clusters, so the k = 3 readings can carry it.
+- **Results (exp096_grade.py 12 12):**
+  - Gate: unconverged G evaluations 0. PASS.
+  - **KA-complete: Σ_classes(ON_d − OFF_d) = +0.063939742864 against the stored t0(ON) − t0(OFF) = +0.063940526432; diff −7.8e-7. FAIL** (tolerance 1e-8).
+  - Δ_truth (this route) +0.063939744; **D = +1.280e-9** (EXP-087 clusters +8.2e-10; the other near-pairs p = 6, 7 +4.6e-10).
+  - Nuisance drifts: r-sweep 1.9e-13; M/2 −5.2e-14 / −1.4e-12. τ_num 1.0e-8; δ_mat 1.07e-3 (NORM 15, an inference bound).
+  - Per class |mine − ON| ≤ 1.03e-9 for all 11 classes (p = 6–16; spans 8.3e-5 down to 1.8e-8).
+  - **Grade as printed: EXACT, with the controls-FAILED flag.**
+- **Why KA-complete fired (checked so far, nothing resolved):**
+  - Flags match the stored run: run_087w12.sh exports CUSPIS_081E=1 and unsets CUSPIS_087; this run had CUSPIS_081E=1. Amendment 0 named a flag mismatch as one way KA-complete fires; that is excluded.
+  - Cluster coverage: the route asserts every 087 cluster is inside a class disc (no assert fired). The Mac leak_check (EXP-087) also counts 9 clusters at W12P12, matching the 9 "087" classes here.
+  - Code reading: outside the cluster entries, `_ib0_pair_087` and the OFF loop give the same formula for every singleton and every zero-gap two-tag entry. So ON − OFF should vanish outside the discs on one machine.
+  - **Not ruled out (candidates):**
+    - (a) A cross-chip difference in the residue-based OFF/ON cluster entries. The stored ON/OFF ran on the Mac mini (M4); the classes ran on the Air (M1). The pole lists are solved independently on each chip, and the W12P12 spans go down to 1.8e-8, 100× below W8P8's smallest (3.0e-6), where the same cross-chip KA-complete passed to 1.1e-14. The pole-free "mine" cannot see this.
+    - (b) An entry missed by the route, or a copy defect: the registered meaning of a KA-complete failure.
+    - Noticed, not interpreted: |diff| 7.84e-7 is close to the W8P8 referee gap of 7.80e-7. Different quantities; most likely a coincidence.
+  - **Discriminating test (needs compute; none available now):** build the W12P12 pole lists on the Mac (no install) and compare class members with the Air's to ~1e-12. If they differ, recompute the 11 class OFF_d/ON_d on the Mac (one install). Candidate (a) predicts the Mac classes close KA-complete to ≤ 1e-8.
+- **Materiality (inference, not verified):** if (a) holds, the fix and the truth route agree on the same machine to 1.3e-9, and the cross-chip term moves R(3) by ½ · 7.8e-7 · 15 ≈ 5.9e-6. If (b) holds, the unmeasured entries have ON − OFF summing to 7.8e-7, so an error in them of that order gives ≲ 1e-5 in R(3). Both are ~100× below δ_mat 1.07e-3. That bound assumes the missed entries' truth lies near ON or OFF, which is not shown.
+- **Footprint:** 8.5 h, against a 23.5 h central and 47 h budget (the per-class cost was 0.73 h, not 2.0 h: my N³ scaling over-predicted by ~2.7×). The peak was 3.78 GB against a predicted 3.39 GB (×1.11).
+- **Grade:** the fix agrees with the independent route to 1.3e-9 on the clusters (verified, same machine). The whole-t0 consistency check is FAILED AS WRITTEN and undiagnosed, so the overall W12P12 grade is **partially verified**. The k = 3 use of the fix waits for the Bridge.
+- **Air:** no Cuspis process remains (checked 06:05); the Air is left idle for AlphaMate.

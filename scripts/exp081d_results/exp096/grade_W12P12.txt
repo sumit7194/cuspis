@@ -1,0 +1,19 @@
+files: ['W12P12Wb12Ny48.json']; classes [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+gate: unconverged G evaluations = 0                                    PASS  0
+KA-complete: sum(ON_d - OFF_d) == stored t0(ON) - t0(OFF)              FAIL  +0.063939742864 vs +0.063940526432 (diff -7.8e-07)
+
+Delta_fix (stored) +0.063940526   Delta_truth (this route) +0.063939744   D = truth - fix +1.280e-09  [EXP-087 clusters +8.166e-10; other near-pairs +4.633e-10]
+r-sweep +1.9e-13; M/2 -5.2e-14 / -1.4e-12;  tau_num 1.0e-08;  delta_mat 1.07e-03 (NORM 15.0)
+  class p= 6 span 8.3e-05 near: mine - ON +1.026e-09  ON - OFF +0.000000e+00
+  class p= 7 span 2.6e-05 near: mine - ON -5.625e-10  ON - OFF +0.000000e+00
+  class p= 8 span 8.9e-06 087: mine - ON +3.489e-10  ON - OFF +7.689654e-02
+  class p= 9 span 3.2e-06 087: mine - ON +6.900e-10  ON - OFF +4.587345e-02
+  class p=10 span 1.3e-06 087: mine - ON +9.365e-12  ON - OFF +3.073531e-02
+  class p=11 span 5.2e-07 087: mine - ON -1.085e-10  ON - OFF +2.112707e-02
+  class p=12 span 2.3e-07 087: mine - ON -5.238e-11  ON - OFF +1.487684e-02
+  class p=13 span 1.1e-07 087: mine - ON +4.097e-11  ON - OFF +1.072241e-02
+  class p=14 span 5.6e-08 087: mine - ON +6.087e-11  ON - OFF -5.780072e-02
+  class p=15 span 3.0e-08 087: mine - ON +2.149e-10  ON - OFF -4.878506e-02
+  class p=16 span 1.8e-08 087: mine - ON -3.876e-10  ON - OFF -2.970610e-02
+
+EXP-096 W12P12 GRADE: EXACT   |D| 1.28e-09 vs tau_num 1.0e-08, delta_mat 1.07e-03;  dR = 0.5 D NORM = +9.60e-09   (controls FAILED: ['KA-complete: sum(ON_d - OFF_d) == stored t0(ON) - t0(OFF)'])

@@ -16,3 +16,6 @@
 === e96s_W8P8 start 2026-11-27 18:38:09 PID 92231 host Akashs-MacBook-Air CUSPIS_081E=unset args: exp096_refsweep.py 8 8
 === e96s_W8P8 freepct_guard PID 92238 (LOW 20 / HIGH 30, pause-only)
 === e96s_W8P8 rc 0 2026-11-27 21:25:20
+=== e96_W12P12 start 2026-11-27 21:28:37 PID 22185 host Akashs-MacBook-Air CUSPIS_081E=1 args: exp096_t0_disc.py 12 12 --budget-h 47
+=== e96_W12P12 freepct_guard PID 22192 (LOW 20 / HIGH 30, pause-only)
+=== e96_W12P12 rc 0 2026-11-28 06:01:00
