@@ -12936,3 +12936,27 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - Checkpoint sha 40def5a9a1d2a685… (108 keys; only key names were checked). **No value opened; k = 3 stays sealed.** The one exposure (S(all nodes), ~12:40) is recorded in EXP-090 amendment 1 (65e0b6a).
 - Lost to the power cut: ~16 min of the b2b stage. Total route ≈ 36 h + 2.5 h.
 - EXP-090 gate 4′ is met. The k = 3 readings now wait for the amendment-6 READING, the k = 3 code and the Bridge's go.
+
+### EXP-092 amendment b RESULT: centre c_A at P = 24 (registered 01ac42a with predictions first; Mac mini 15:23 → 15:29, 108 s; peak 4.93 GB phys_footprint (watchdog) / 5.30 GB ru_maxrss (script), against a declared ~5.0 GB; `exp081d_results/exp092_cA_P24.json`, `exp092b_grade.txt`): **FREE LOG HOLDS OUT OF SAMPLE** [model: Opus 5.5]
+- **Controls:** KA-all P = 4, 6 and KA-centre P = 8–12 PASS (≤ 2.4e-14); must-fail plant fails (9.9); 4 centre sites agree to 1.7e-14.
+- **Measured:** c_A(24) = **−0.104443790377**.
+- **Against the P = 8–20 predictions:**
+  - (i) no-log, e_i = 1.65e-5;
+  - **(ii) free log, e_ii = 1.38e-6**;
+  - gap 1.79e-5, so ½·gap = 8.96e-6. e_ii < e_i and e_ii ≤ ½·gap → **free log holds out of sample** (registered rule).
+  - (iii), fixed gL = 0.0611: e = 1.10e-5 (reported). The §2 pair (secondary): H-log supported (d_L 3.3e-5 against d_N 2.5e-4).
+- **Descriptive refits:**
+  - P = 8–24: rms (ii)/(i) = 0.075, free gL +0.0699, c∞ −0.11698 (i) / −0.11866 (ii) / −0.11834 (iii).
+  - P = 10–24: ratio 0.067, gL +0.0687.
+  - The free gL is stable at 0.069–0.070, still ~14% above y1·h0 = 0.0611. **The theory-fixed coefficient stays unconfirmed:** (iii) predicted P = 24 eight times worse than (ii).
+  - c∞ form drift ±0.0008 (was ±0.0011 on P = 8–20).
+- **Analysis:** this is the first out-of-sample test of the log term. The (ln P)/P form predicted a point it was not fitted to, at the 1e-6 level; the 4-parameter power form missed by 12×. It supports a log in centre c_A, so H-log holds structurally; it does not fix the coefficient. Fable's "gL = y1·h0 exactly" is still not borne out (the free gL is 0.0699 ± drift).
+- **Field checklist (rule 7b):**
+  - an independent implementation, KA against the office code: done;
+  - an out-of-sample point: done;
+  - numerical exactness (symmetry 1.7e-14): done;
+  - fit-form dependence of c∞ (nuisance sweep): reported, ±0.0008;
+  - admixtures (boundary operators, ln P/P²): **open**;
+  - the coefficient against the literature y1 (verified at source) times h0: **open**, 14% off;
+  - only 7 sizes, up to P = 24: **open**.
+- **Grade:** the reading is verified by the registered rule on an exact computation; "log in c_A" is partially verified (one out-of-sample point); the coefficient is unverified.

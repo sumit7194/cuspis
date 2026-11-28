@@ -1,0 +1,9 @@
+P = 24 measured -0.104443790377
+  (i) no-log  -0.1044272566  e_i  1.653e-05
+  (ii) free log -0.1044451723  e_ii 1.382e-06
+  gap 1.792e-05, half-gap 8.958e-06
+  (iii) fixed gL -0.1044327463  e 1.104e-05  [reported]
+  sec.2 pair (P = 8-14): H-log -0.1044110406 d_L 3.275e-05; no-log -0.1041918590 d_N 2.519e-04; gap 2.192e-04 -> H-log supported [secondary]
+PRIMARY READING (registered 01ac42a): FREE LOG HOLDS OUT OF SAMPLE
+[descriptive] P=8-24: rms (i) 2.93e-06, (ii) 2.19e-07 (gL +0.0699), (iii) 3.38e-06;  ratio (ii)/(i) 0.075;  c_inf (i) -0.11698 (ii) -0.11866 (iii) -0.11834
+[descriptive] P=10-24: rms (i) 1.14e-06, (ii) 7.60e-08 (gL +0.0687), (iii) 1.35e-06;  ratio (ii)/(i) 0.067;  c_inf (i) -0.11714 (ii) -0.11862 (iii) -0.11837
