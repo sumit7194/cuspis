@@ -1,0 +1,31 @@
+# cmd: ../.venv/bin/python -u -W ignore exp081d_route.py 3 4 4 --tag-suffix _098
+# caps: tree <= 5.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# disk mode: NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored; caller pid 99547
+# pressure trigger: off
+# TREE_GB = MEM_GB (phys_footprint; CMPRS_GB is part of it; fixed 2026-11-26, older logs: TREE = MEM + CMPRS, a double count)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.040    0.000   0.040        35.52       1013.4           64              1
+    10.7     1   0.057    0.000   0.057        35.52       1013.4           67              1
+    21.1     1   0.058    0.000   0.058        35.41       1013.4           67              1
+    31.5     1   0.065    0.009   0.065        35.58       1013.4           62              1
+    42.0     1   0.066    0.026   0.066        35.51       1013.4           55              1
+    52.4     1   0.066    0.025   0.066        35.43       1013.4           61              1
+    62.8     1   0.067    0.025   0.067        35.57       1013.4           66              1
+    73.3     1   0.067    0.026   0.067        35.50       1013.4           66              1
+    83.6     1   0.068    0.039   0.068        35.43       1013.4           57              1
+    94.0     1   0.068    0.037   0.068        35.56       1013.4           67              1
+   104.4     1   0.063    0.037   0.063        35.54       1013.4           73              1
+   114.7     1   0.067    0.038   0.067        35.42       1013.4           54              1
+   125.1     1   0.067    0.038   0.067        35.54       1013.4           65              1
+   135.4     1   0.067    0.038   0.067        35.47       1013.4           60              1
+   145.8     1   0.067    0.038   0.067        35.40       1013.4           67              1
+   156.1     1   0.067    0.038   0.067        35.53       1013.4           73              1
+   166.4     1   0.067    0.038   0.067        35.46       1013.4           55              1
+   176.8     1   0.067    0.038   0.067        35.38       1021.4           64              1
+   187.3     1   0.067    0.038   0.067        35.49       1021.4           64              1
+   197.6     1   0.067    0.038   0.067        35.42       1021.4           66              1
+   208.0     1   0.067    0.029   0.067        35.42       1021.4           65              1
+   218.4     1   0.069    0.026   0.069        35.30       1021.4           64              1
+   228.8     0   0.000    0.000   0.000        35.46       1021.4           67              1
+# exit 0; wall 239 s; PEAK tree footprint 0.069 GB (MEM = phys_footprint; CMPRS 0.026 GB of it compressed)

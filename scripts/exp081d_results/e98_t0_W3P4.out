@@ -1,0 +1,5 @@
+W3P4: installed + B1 (4s)
+t0 flag OFF: -45.864057876093  (26s)
+KA OFF vs stored -45.8640578760927: diff +0.0e+00 -> PASS
+t0 flag ON : -45.864057876093  (28s)
+fixed - unfixed = +0.000000

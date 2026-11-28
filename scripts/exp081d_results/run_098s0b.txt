@@ -1,0 +1,12 @@
+=== run_098s0b start 2026-11-28 21:26:25 PID 88747; freepct_guard 88751
+=== PREFLIGHT start PASS 2026-11-28 21:26:25: venv 3.14.5 2.4.3 1.17.1; analysis 3.15.2 2.5.4 (scipy: no); free caches checked 6
+=== GATE e98_free3 2026-11-28 21:26:25: free 79% -> LAUNCH (pgate next)
+=== e98_free3 start 2026-11-28 21:26:25 args: exp098_free3.py
+=== e98_free3 rc 0 2026-11-28 21:31:06 # exit 0; wall 10 s; PEAK tree footprint 0.038 GB (MEM = phys_footprint; CMPRS 0.000 GB of it compressed)
+=== free cache exp081b_results/free_W3_P4_box4_c2.json (7c97141585906806): {"S": 1.159841411482609}
+=== free cache exp081b_results/free_W6_P8_box8_c2.json (ee1dd51f080f3539): {"S": 2.7933448600506616}
+=== PREFLIGHT analysis PASS 2026-11-28 21:31:06: venv 3.14.5 2.4.3 1.17.1; analysis 3.15.2 2.5.4 (scipy: no); free caches checked 6
+=== GATE e98_stage0_r2 2026-11-28 21:31:06: free 71% -> LAUNCH (pgate next)
+=== e98_stage0_r2 start 2026-11-28 21:31:06 args: exp098_3w.py S0
+=== e98_stage0_r2 rc 0 2026-11-28 21:35:47 # exit 0; wall 10 s; PEAK tree footprint 0.000 GB (MEM = phys_footprint; CMPRS 0.000 GB of it compressed)
+=== run_098s0b complete 2026-11-28 21:35:47

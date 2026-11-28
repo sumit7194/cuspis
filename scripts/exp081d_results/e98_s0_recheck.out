@@ -1,0 +1,7 @@
+k=1: R13 1.990576731 R32 3.178392526 D -1.187815796 vs exp098_3w -1.187815796 -> MATCH
+      sigma slope (W1,W3) 0.040982 (W3,W2) 0.037518 (W1,W2) 0.039827: relative drift +0.087
+      free  slope (W1,W3) 0.020588 (W3,W2) 0.011804 (W1,W2) 0.017660: relative drift +0.497
+k=2: R13 5.403752164 R32 12.926899810 D -7.523147646 vs exp098_3w -7.523147646 -> MATCH
+      sigma slope (W1,W3) 0.121185 (W3,W2) 0.108286 (W1,W2) 0.116886: relative drift +0.110
+      free  slope (W1,W3) 0.022426 (W3,W2) 0.008377 (W1,W2) 0.017743: relative drift +0.792
+recheck: PASS

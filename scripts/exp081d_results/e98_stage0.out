@@ -1,0 +1,20 @@
+KA-A k = 1: Rk (verbatim) == exp081d_results.json (R_T0, R_T1, sigma, kappa bitwise) PASS  R_T0 np.float64(2.2552242844155943)
+KA-A k = 1: pairR raw == Rk R_T0 and kappa (bitwise)                                 PASS  
+KA-A k = 1: pairR corrected == exp090_k25.json Rc (bitwise)                          PASS  np.float64(2.2552242844155943) vs 2.2552242844155943
+KA-A k = 2: Rk (verbatim) == exp081d_results.json (R_T0, R_T1, sigma, kappa bitwise) PASS  R_T0 np.float64(6.4419812730374115)
+KA-A k = 2: pairR raw == Rk R_T0 and kappa (bitwise)                                 PASS  
+KA-A k = 2: pairR corrected == exp090_k25.json Rc (bitwise)                          PASS  np.float64(6.587692272458103) vs 6.587692272458103
+KA-t0 W3P4: exp087 OFF == route t0 (1e-10 rel)                                       PASS  +0.0e+00
+Traceback (most recent call last):
+  File "/Users/sumit/Github/corner_function/scripts/exp098_3w.py", line 106, in <module>
+    INP = {k: (synth(k) if mode == "DRY" else real(k)) for k in (1, 2)}
+                                              ~~~~^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp098_3w.py", line 105, in real
+    F[W3] = Rn.free(W3, P, Wbox=P); return X, F
+            ~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/exp081b_run.py", line 29, in free
+    json.dump(dict(S=float(S3.FreeStrip(Lx, Lt, int(c * 2 * P), list(range(x0, x0 + W)), P - 1).S(cpts=12).real)), open(f, "w"))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sumit/Github/corner_function/scripts/sigma3d.py", line 377, in __init__
+    import scipy.sparse as sp, scipy.sparse.linalg as spla
+ModuleNotFoundError: No module named 'scipy'. Did you mean: 'sympy'?

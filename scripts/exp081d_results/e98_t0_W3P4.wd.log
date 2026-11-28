@@ -1,0 +1,14 @@
+# cmd: ../.venv/bin/python -u -W ignore exp087_t0.py 3 4 -45.8640578760927
+# caps: tree <= 5.0 GB, disk >= 5.0 GB, free swap >= 512.0 MB
+# memory trigger: system free < 10.0%, or free swap < 512.0 MB together with system free < 20%
+# disk mode: NO-KILL (Sumit 2026-11-25): disk inform < 10 GB, pause < 5, resume > 6, CRITICAL < 2; memory pause-on-red; caps/kill flags are accepted but ignored; caller pid 99547
+# pressure trigger: off
+# TREE_GB = MEM_GB (phys_footprint; CMPRS_GB is part of it; fixed 2026-11-26, older logs: TREE = MEM + CMPRS, a double count)
+# t_s  nproc  MEM_GB  CMPRS_GB  TREE_GB  disk_free_GB  swap_free_MB  sys_free_pct  pressure_level
+     0.4     1   0.039    0.000   0.039        35.15       1021.4           73              1
+    10.8     1   0.056    0.000   0.056        35.08       1021.4           71              1
+    21.2     1   0.057    0.021   0.057        34.96       1021.4           70              1
+    31.6     1   0.057    0.021   0.057        34.89       1021.4           70              1
+    42.4     1   0.057    0.021   0.057        34.27       1021.4           69              1
+    52.8     1   0.058    0.021   0.058        34.27       1021.4           69              1
+# exit 0; wall 63 s; PEAK tree footprint 0.058 GB (MEM = phys_footprint; CMPRS 0.021 GB of it compressed)

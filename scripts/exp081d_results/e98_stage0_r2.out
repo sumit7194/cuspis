@@ -1,0 +1,24 @@
+KA-A k = 1: Rk (verbatim) == exp081d_results.json (R_T0, R_T1, sigma, kappa bitwise) PASS  R_T0 np.float64(2.2552242844155943)
+KA-A k = 1: pairR raw == Rk R_T0 and kappa (bitwise)                                 PASS  
+KA-A k = 1: pairR corrected == exp090_k25.json Rc (bitwise)                          PASS  np.float64(2.2552242844155943) vs 2.2552242844155943
+KA-A k = 2: Rk (verbatim) == exp081d_results.json (R_T0, R_T1, sigma, kappa bitwise) PASS  R_T0 np.float64(6.4419812730374115)
+KA-A k = 2: pairR raw == Rk R_T0 and kappa (bitwise)                                 PASS  
+KA-A k = 2: pairR corrected == exp090_k25.json Rc (bitwise)                          PASS  np.float64(6.587692272458103) vs 6.587692272458103
+KA-t0 W3P4: exp087 OFF == route t0 (1e-10 rel)                                       PASS  +0.0e+00
+KA-t0 W6P8: exp087 OFF == route t0 (1e-10 rel)                                       PASS  +0.0e+00
+P1 k = 1: 1/W^2 plant moves D_T0 by the predicted 3.500e-08 (1%) -> FIRES            PASS  moved 3.500e-08
+P1 k = 1: ... and R_q holds (<= 1e-9 rel)                                            PASS  -6.7e-14
+P2 k = 1: eps on S(W3) moves D_T0 by eps (f13 + f32) = 3.500e-08 (1%) -> FIRES       PASS  moved 3.500e-08
+P1 k = 2: 1/W^2 plant moves D_T0 by the predicted 4.120e-04 (1%) -> FIRES            PASS  moved 4.120e-04
+P1 k = 2: ... and R_q holds (<= 1e-9 rel)                                            PASS  -1.3e-14
+P2 k = 2: eps on S(W3) moves D_T0 by eps (f13 + f32) = 4.120e-04 (1%) -> FIRES       PASS  moved 4.120e-04
+
+k = 1 (W = (2, 3, 4)): R(W1,W3) +1.990577  R(W3,W2) +3.178393  R(W1,W2) +2.255224
+  D_T0 -1.188e+00  D_T1 -1.188e+00  sigma_D 3.50e-09  d = -52.6695% +- 0.0000%  drift seen: True
+  R_q T0 -3.386525  T1 -3.386525  sigma_q 1.65e-08  q = -250.1636% +- 0.0000%   Delta(W3) +0.000e+00
+
+k = 2 (W = (4, 6, 8)): R(W1,W3) +5.403752  R(W3,W2) +12.926900  R(W1,W2) +6.587692
+  D_T0 -7.523e+00  D_T1 -7.523e+00  sigma_D 4.12e-05  d = -114.2000% +- 0.0006%  drift seen: True
+  R_q T0 -3.203811  T1 -3.203811  sigma_q 4.71e-05  q = -148.6333% +- 0.0007%   Delta(W3) +0.000e+00
+
+EXP-098 stage 0 (S0): controls PASS; readings DESCRIPTIVE (basis of the k = 3 seal)

@@ -13062,3 +13062,43 @@ WHAT IS OPEN
 - **KA-free (new, on the venv): PASS.** The four stored free values stage 0 uses are reproduced bitwise.
 - **Pilot timing for stage 1:** the W6P8 route took 3.18 h single-threaded, against a W2P8 route of 4.6 h on the Air. The t0 fix took 0.64 h. The stage-1 cost re-estimate waits for the stage-0 report.
 - **Next:** registration amendment 2 is proposed to the Bridge: compute free(3, 4), free(6, 8) on the venv, then re-run the analysis only. Nothing runs before the go.
+
+## EXP-098 stage 0 RESULT (amendment 2 re-run, 2026-11-28 21:35 IST) [model: Opus 5.5]
+- **Goal:** measure the width drift D(k) = R(W₁, W₃) − R(W₃, W₂) at k = 1, 2, as registered (243b079 + amendments 1, 2).
+- **Hypothesis under test:** the premise s(W) = s_∞ + δκ/W (EXP-081b) holds well enough that D is small next to R. The registered sensitivity: (R2) row 2 leaves "supported" at +4.9% in R(3).
+- **Method:**
+  - run_098s0b.sh: the interpreter preflight passed twice.
+  - free(3, 4, box 4) = 1.159841411482609 and free(6, 8, box 8) = 2.7933448600506616, both on the venv (10 s).
+  - Then exp098_3w.py S0, unchanged (rc 0, 10 s).
+- **Controls, all PASS:**
+  - KA-0 (bitwise, from the first run).
+  - KA-A at k = 1, 2: R_T0, R_T1, σ, κ and Rc, all bitwise.
+  - KA-t0 at W3P4 and W6P8 (diff 0).
+  - KA-free 4/4 bitwise.
+  - P1 fires at both k (3.500e-8, 4.120e-4) and R_q holds (≤ 7e-14).
+  - P2 fires at both k.
+  - The route guards.
+- **Readings (DESCRIPTIVE, as registered §3). Values are R_T0; the T1 tail agrees to ≤ 3e-11:**
+
+  | k | R(W₁,W₃) | R(W₃,W₂) | R(W₁,W₂) = R^c | D_T0 | σ_D | d = D/R^c | R_q | q | Δ(W₃) |
+  |---|---|---|---|---|---|---|---|---|---|
+  | 1 | 1.990577 | 3.178393 | 2.255224 | −1.187816 | 3.5e-9 | −52.67% | −3.3865 | −250.2% | 0 |
+  | 2 | 5.403752 | 12.926900 | 6.587692 | −7.523148 | 4.1e-5 | −114.20% | −3.2038 | −148.6% | 0 |
+
+  - "Drift seen" is true at both k: |D| is about 10⁸·σ_D and 10⁵·σ_D. σ_D carries only the numerical errors and no model for width systematics.
+- **Verification:**
+  - `exp098_s0_recheck.py`, a second implementation of the pair formula (it shares only S_T and the JSON inputs), reproduces D at both k to 1e-12 (e98_s0_recheck.out). **Grade: verified, single route** (both implementations use the same S_T and the same checkpoints).
+- **Analysis (descriptive; mechanism unverified):**
+  - **The drift sits mostly on the FREE side.** Relative change of the per-1/W slope between the (W₁, W₃) and (W₃, W₂) pairs:
+    - σ side (δκ_lat): +8.7% at k = 1, +11.0% at k = 2;
+    - free side (κ_lat): +49.7% at k = 1, +79.2% at k = 2.
+    - So R = δκ/κ inherits mainly the free normaliser's departure from 1/W at these widths.
+    - In this geometry Lx = 2P + Wb is fixed while W varies, so the strip-edge to lattice-edge distance changes with W, P + (Wb − W)/2. That is a candidate for the free-side curvature. Not tested.
+  - **R_q is negative at both k.** The exact 1/W + 1/W² solve through three widths is dominated by curvature, so R_q is NOT a usable improved estimate here. q is −250% and −149%.
+  - **Against the premise:** the registered (R2) sensitivity is a 4.9% change in R(3). Width drift at k = 1, 2 is 53% and 114% of R and growing with k. **The premise "1/W² and box terms negligible" fails at the stage-0 widths, on the free side above all.**
+    - This is a statement about the pair-definition systematic of R(k). It does not by itself say which pair, if any, approximates the continuum ratio.
+  - **Lesson (my miss, kept):** the free half of D costs seconds, and could have been computed before the 3.5 h of routes. It would have shown the drift scale at once. A "known-answer control BEFORE the expensive run" was available and not taken.
+- **Pilot timing for stage 1:** W6P8 route 3.18 h and t0 fix 0.64 h, at 1 thread, peak 0.77 GB. This is at the low end of the registered 3–6 h.
+- **Next:**
+  - Seal D(3) and R_q(3) by the registered §5 method in a separate commit, BEFORE free(9, 12) is computed: the free side carries most of D, so computing it would expose the seal.
+  - Then the Bridge rules on whether stage 1 (W9P12) is still the right next step.

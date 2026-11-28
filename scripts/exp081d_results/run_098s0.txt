@@ -1,0 +1,24 @@
+=== run_098s0 start 2026-11-28 16:56:16 PID 99547; freepct_guard 99557; venv 3.14.5 2.4.3; analysis 3.15.2 2.5.4
+=== GATE e98_ka_W2P4 2026-11-28 16:56:16: free 68% -> LAUNCH (pgate next)
+=== e98_ka_W2P4 start 2026-11-28 16:56:16 args: exp081d_route.py 2 4 4 --tag-suffix _098ka
+=== e98_ka_W2P4 rc 0 2026-11-28 17:04:04 # exit 0; wall 198 s; PEAK tree footprint 0.065 GB (MEM = phys_footprint; CMPRS 0.010 GB of it compressed)
+=== stale-file guard PASS: exp081d_results/sigma_W2_P4_box4_c2_cp12_sc3.0_dd0_098ka_ckpt.json (d6f2b03a6cb805e7)
+=== KA-0: 50 keys + n1c arms compared; mismatches 0 [] -> PASS (bitwise)
+=== GATE e98_W3P4 2026-11-28 17:04:04: free 72% -> LAUNCH (pgate next)
+=== e98_W3P4 start 2026-11-28 17:04:04 args: exp081d_route.py 3 4 4 --tag-suffix _098
+=== e98_W3P4 rc 0 2026-11-28 17:12:33 # exit 0; wall 239 s; PEAK tree footprint 0.069 GB (MEM = phys_footprint; CMPRS 0.026 GB of it compressed)
+=== stale-file guard PASS: exp081d_results/sigma_W3_P4_box4_c2_cp12_sc3.0_dd0_098_ckpt.json (7f7de848efc9d71e)
+=== GATE e98_t0_W3P4 2026-11-28 17:12:33: free 66% -> LAUNCH (pgate next)
+=== e98_t0_W3P4 start 2026-11-28 17:12:33 args: exp087_t0.py 3 4 -45.8640578760927
+=== e98_t0_W3P4 rc 0 2026-11-28 17:18:06 # exit 0; wall 63 s; PEAK tree footprint 0.058 GB (MEM = phys_footprint; CMPRS 0.021 GB of it compressed)
+=== GATE e98_W6P8 2026-11-28 17:18:06: free 69% -> LAUNCH (pgate next)
+=== e98_W6P8 start 2026-11-28 17:18:06 args: exp081d_route.py 6 8 8 --tag-suffix _098
+=== e98_W6P8 rc 0 2026-11-28 20:33:33 # exit 0; wall 11457 s; PEAK tree footprint 0.767 GB (MEM = phys_footprint; CMPRS 0.041 GB of it compressed)
+=== stale-file guard PASS: exp081d_results/sigma_W6_P8_box8_c2_cp12_sc3.0_dd0_098_ckpt.json (a91df42699b78621)
+=== GATE e98_t0_W6P8 2026-11-28 20:33:33: free 72% -> LAUNCH (pgate next)
+=== e98_t0_W6P8 start 2026-11-28 20:33:33 args: exp087_t0.py 6 8 -205.83158001212004
+=== e98_t0_W6P8 rc 0 2026-11-28 21:16:43 # exit 0; wall 2320 s; PEAK tree footprint 0.537 GB (MEM = phys_footprint; CMPRS 0.238 GB of it compressed)
+=== GATE e98_stage0 2026-11-28 21:16:43: free 71% -> LAUNCH (pgate next)
+=== e98_stage0 start 2026-11-28 21:16:43 args: exp098_3w.py S0
+=== e98_stage0 rc 1 2026-11-28 21:21:24 # exit 1; wall 10 s; PEAK tree footprint 0.000 GB (MEM = phys_footprint; CMPRS 0.000 GB of it compressed)
+=== STOP 2026-11-28 21:21:24: exp098_3w S0 rc != 0 (control FAIL or KA FAIL) -> tell the Bridge

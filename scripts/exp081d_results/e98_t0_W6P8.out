@@ -1,0 +1,5 @@
+W6P8: installed + B1 (120s)
+t0 flag OFF: -205.831580012120  (1106s)
+KA OFF vs stored -205.83158001212004: diff +0.0e+00 -> PASS
+t0 flag ON : -205.831580012120  (1089s)
+fixed - unfixed = +0.000000
