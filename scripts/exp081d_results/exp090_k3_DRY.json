@@ -3,10 +3,11 @@
  "notes": [
   "N1 (R2) row 2: rho_s uses g_raw^c as DEFINED in \u00a72 (slope over k in {1, 1.5, 2, 2.5}), PRIMARY (Bridge ruling 2026-11-28: the frozen definition); the k <= 3 denominator is printed beside it, DESCRIPTIVE.",
   "N2 (R6) S-1 / S-2: the header gives a 68% band and an outer band without naming which is the PASS band (S-3 names it). Both are printed; the S-1 / S-2 main-seal grades are DESCRIPTIVE (Bridge ruling 2026-11-28: not fixed before the exposure, so not fixable now).",
-  "N3 (R4) robustness / secondary-sigma rows use the same decide() on the same tails; only sigma changes."
+  "N3 (R4) robustness / secondary-sigma rows use the same decide() on the same tails; only sigma changes.",
+  "N4 s_KA (Bridge ruling 2026-11-28, after b25a9bd): decided ONLY from the graded record exp096/A6_GRADED.json (sha-bound to the raw A6 JSON, plant_fired cross-checked against the raw plant_ka); the raw 'reading' field is never read. K3 REFUSES before opening any k = 3 file if the graded record is missing or inconsistent. The 18:00 not-landed fallback is gone (A6 landed and is graded)."
  ],
  "s_KA": 7.84e-07,
- "s_label": "DRY: s_KA kept (planted)",
+ "s_label": "DRY: real-record decision -> amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07; planted readings use s_KA kept",
  "Delta": {
   "W12P12": 0.06394052643173609
  },
@@ -182,6 +183,6 @@
    "dt0_pass": true
   }
  },
- "headline": "EXP-090 k = 3 READING (DRY; PLANTED INPUTS, NOT A RESULT): (R4)(b) power-divergent; (R2) row 2 INCONCLUSIVE (straddles a band edge) [k-range dependent: row 1 supported]; S-3 FAIL; DRY: s_KA kept (planted); fix carried, partially verified (EXP-096); A-vs-bulk open; EXP-086 tension stands; exposure of S(W6P12) recorded (65e0b6a); S-1/S-2 PASS band not fixed before exposure; graded descriptive (Bridge ruling 2026-11-28); controls PASS",
+ "headline": "EXP-090 k = 3 READING (DRY; PLANTED INPUTS, NOT A RESULT): (R4)(b) power-divergent; (R2) row 2 INCONCLUSIVE (straddles a band edge) [k-range dependent: row 1 supported]; S-3 FAIL; DRY: real-record decision -> amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07; planted readings use s_KA kept; fix carried, partially verified (EXP-096); A-vs-bulk open; EXP-086 tension stands; exposure of S(W6P12) recorded (65e0b6a); S-1/S-2 PASS band not fixed before exposure; graded descriptive (Bridge ruling 2026-11-28); controls PASS",
  "failed": []
 }

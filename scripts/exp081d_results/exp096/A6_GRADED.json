@@ -1,0 +1,11 @@
+{
+  "graded": "FAILED (control)",
+  "commit": "b25a9bd",
+  "raw_file": "exp096/W12P12Wb12Ny48_r2_onoff.json",
+  "raw_sha256": "0cb4f1a52f00c1594047e23fb8a9e3319eaec7702682ee3610f9f7f584e2a7e8",
+  "plant_fired": false,
+  "plant_line": 1e-8,
+  "why": "amendment 6b: plant (0,16) |ON-OFF| 1.16e-11 <= 1e-8 at W12P12 -> the test reads FAILED (control); the raw file's 'reading' field is the script's ungraded print",
+  "s_KA": "kept (7.84e-7 in t0)",
+  "ruling": "Bridge ruling (i), 2026-11-28: FAILED (control) as registered; s_KA kept and carried into k = 3; no third plant"
+}

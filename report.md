@@ -12977,3 +12977,15 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The lesson already in memory ("check the plant against the mechanism at EVERY geometry, measured") was written after run 1, and I applied it only at W8P8. The pre-check at W12P12 would have cost one install (~15 min).
 - **Kept as evidence:** run 1 (ade24c1) and this run; nothing is overwritten.
 - **Next steps (the Bridge's decision):** (i) accept FAILED and carry s_KA into k = 3, the registered path that is already coded in exp090_k3.py; (ii) or register a third plant measured at W12P12 first (a post-outcome choice, graded as such). No rerun without a ruling. k = 3 still waits for "K3 go".
+
+### EXP-090 k3 code fix before K3: s_KA now comes from the GRADED A6 record (Bridge ruling (i) and blocker, 2026-11-28 ~16:50) [model: Opus 5.5]
+- **The defect (found by the Bridge):** exp090_k3.py decided s_KA from the raw A6 JSON's `reading` field. That field holds the script's ungraded print, "R-a", although the plant did not fire. As coded, K3 would have DROPPED s_KA, the opposite of the graded FAILED (control). My miss: I wrote the dependency before the result and never re-read it against the graded outcome.
+- **Fix:**
+  - New committed record `exp096/A6_GRADED.json`: graded "FAILED (control)", commit b25a9bd, raw_sha256 0cb4f1a5…, plant_fired false.
+  - `ska_decide()` reads only this record. It REFUSES if the record is missing, if the raw sha differs, if the reading is an unknown string, if plant_fired disagrees with the raw plant_ka against the 1e-8 line, or if the record says R-a while the plant did not fire.
+  - In K3 this runs FIRST, before any k = 3 file is opened. The 18:00 not-landed fallback is removed (A6 has landed and is graded). The A6 result JSON is untouched.
+- **DRY (`exp090_k3_DRY_ska.out`, rc 0):** 8 new checks, all PASS.
+  - Planted cases: R-a with a fired plant → dropped; FAILED → kept; R-a with a non-fired plant → REFUSE; record missing → REFUSE; sha mismatch → REFUSE; the raw print string used as the grade → REFUSE; the trap present in the raw file.
+  - **Real record → "s_KA kept = 7.84e-07".**
+  - Every other DRY output value is identical to the committed DRY (only labels and notes changed).
+- **Verified by reading the code, not by a run:** the K3-mode refusal order. A K3-mode run with the record removed was not done, because it would risk the k = 3 seal.

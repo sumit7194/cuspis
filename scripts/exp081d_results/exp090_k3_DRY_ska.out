@@ -1,0 +1,28 @@
+K1-K6: exp090_reread.py CONTROLS exits 0                                       PASS  rc 0
+KA-R k = 2 through this code path == exp081d_results.json (R_T0, R_T1, sigma, kappa bitwise) PASS  (0 s) R_T0 np.float64(6.4419812730374115) vs 6.4419812730374115
+kappa(3) via exp081b_run.pair == EXP-091 stored kappa3 (bitwise)               PASS  0.017147712932114922
+norm(3) == EXP-091 norm3 (1e-12 rel)                                           PASS  14.5792037101
+DRY s_KA: planted graded R-a + fired plant -> dropped (0)                      PASS  
+DRY s_KA: planted graded FAILED (control) -> kept                              PASS  
+DRY s_KA: planted graded R-a with a NON-fired plant -> REFUSE                  PASS  
+DRY s_KA: graded record missing -> REFUSE                                      PASS  
+DRY s_KA: raw sha mismatch -> REFUSE                                           PASS  
+DRY s_KA: unknown graded string -> REFUSE                                      PASS  
+DRY s_KA: the RAW file's 'reading' field says R-a (the trap is present)        PASS  
+DRY s_KA: REAL A6 record (A6_GRADED.json + raw) -> s_KA == S_KA0 (kept)        PASS  amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07
+DRY s_KA kept: real A6 graded record gives s_KA = S_KA0 = 7.84e-7
+
+DRY: real-record decision -> amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07; planted readings use s_KA kept
+K3' placement plant at k = 3 through corr(): +1 on WIDE W2 = 12 moves R(3) by +norm(3)/2, on NARROW W1 = 6 by -norm(3)/2 (1e-12) PASS  
+consistency: g_raw^c recomputed == exp090_k25.json graw_c (bitwise)            PASS  4.571838277052364
+
+(R1) R^c_T0(k) [2.25522, 4.23345, 6.58769, 9.09021, 10.68485]  R^c_T1(3) +10.68485  sigma^c(3) 4.72e-02  local slopes [3.956, 4.708, 5.005, 3.189]  [descriptive]
+(R2) row 2 (k = 1..3): g_A +7.1190 +- 3.9971  rho_s +1.5571 +- 0.8743 -> INCONCLUSIVE (straddles a band edge) [k-range dependent: row 1 supported]   [secondary-sigma: INCONCLUSIVE (straddles a band edge); robustness: INCONCLUSIVE (straddles a band edge); descriptive N1: / g_raw over k<=3 +4.3432 -> rho +1.6391]
+(R4)(a) 081e as registered (carries the EXP-087 defect at W8P8 and W12P12): power-divergent  [('T0', 1.4296, np.float64(0.0)), ('T1', 1.4296, np.float64(0.0))]
+(R4)(b) EXP-090 corrected (the physics reading): power-divergent  [('T0', 1.4891, np.float64(0.0109)), ('T1', 1.4891, np.float64(0.0109))]   [secondary-sigma: power-divergent; robustness: power-divergent]
+(R5) pair 2 -> 3 [descriptive]: {t0+L: +2582.9729, C: +1.1407, Y_A: -13.3945}
+(R6) S-1 (current code): R(t0+L)(3) -0.0000; in 68% [-2.0,-1.1] False, in outer [-2.5,-0.7] False [main grade DESCRIPTIVE, N2]; E(W6P12) 1.0000 vs 1.892+-0.008 FAIL; E(W12P12) 1.0000 vs 1.78+-0.03 FAIL
+(R6) S-2 (current code): in 68% [-0.30,+0.15] True, in outer [-0.60,+0.40] True [main grade DESCRIPTIVE, N2]; E(W6P12) vs 1.895+-0.006 FAIL; E(W12P12) vs 1.890+-0.02 FAIL; X_Lam(W12P12) 241.0000 vs 244.958+-0.02 FAIL
+(R6) S-3 (corrected t0): R(t0+L)(3) +0.4661 in [0.25, 0.42] -> FAIL; Fable's fail rule (outside [0.15, 0.50]) does not fire; sub-seal dt0 +0.063941 vs 0.0575+-0.03 PASS
+
+EXP-090 k = 3 READING (DRY; PLANTED INPUTS, NOT A RESULT): (R4)(b) power-divergent; (R2) row 2 INCONCLUSIVE (straddles a band edge) [k-range dependent: row 1 supported]; S-3 FAIL; DRY: real-record decision -> amendment-6 GRADED reading: FAILED (control) (commit b25a9bd) -> s_KA kept = 7.84e-07; planted readings use s_KA kept; fix carried, partially verified (EXP-096); A-vs-bulk open; EXP-086 tension stands; exposure of S(W6P12) recorded (65e0b6a); S-1/S-2 PASS band not fixed before exposure; graded descriptive (Bridge ruling 2026-11-28); controls PASS

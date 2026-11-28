@@ -1,6 +1,8 @@
 """EXP-090 k = 3 part (registration notes/EXP-090_registration.md §3-§6 and amendment 1, 65e0b6a "frozen after the 11-28 exposure of S").
 [model: Opus 5.5]
-Modes:  DRY   code-path test on a PLANTED k = 3 (never opens the W6P12 / W12P12 checkpoints, their G files, or the A6 W12 result):
+Modes:  DRY   code-path test on a PLANTED k = 3 (never opens the W6P12 / W12P12 checkpoints or their G files; since the Bridge ruling of
+              2026-11-28 it DOES open the graded A6 record exp096/A6_GRADED.json and the A6 raw JSON (already exposed, not k = 3 data)
+              to assert the s_KA decision on the real record):
               exercises every reading, gate and control with synthetic inputs; prints only planted-input readings.
         K3    the real k = 3 readings (ONLY on the Bridge's go, after the EXP-096 amendment-6 READING): (R1) R^c(3), (R2) row 2,
               (R4) 081e PRIMARY (a) as registered and (b) corrected, (R5) pair 2 -> 3 (descriptive), (R6) S-1/S-2/S-3 and sub-seals.
@@ -23,6 +25,9 @@ IMPLEMENTATION_NOTES = [
     "N2 (R6) S-1 / S-2: the header gives a 68% band and an outer band without naming which is the PASS band (S-3 names it). Both are "
     "printed; the S-1 / S-2 main-seal grades are DESCRIPTIVE (Bridge ruling 2026-11-28: not fixed before the exposure, so not fixable now).",
     "N3 (R4) robustness / secondary-sigma rows use the same decide() on the same tails; only sigma changes.",
+    "N4 s_KA (Bridge ruling 2026-11-28, after b25a9bd): decided ONLY from the graded record exp096/A6_GRADED.json (sha-bound to the raw "
+    "A6 JSON, plant_fired cross-checked against the raw plant_ka); the raw 'reading' field is never read. K3 REFUSES before opening any "
+    "k = 3 file if the graded record is missing or inconsistent. The 18:00 not-landed fallback is gone (A6 landed and is graded).",
 ]
 JD = json.load(open(os.path.join(HERE, "exp081d_results.json"))); K25 = [1, 1.5, 2, 2.5]; KS3 = [1, 1.5, 2, 2.5, 3]
 
@@ -85,6 +90,27 @@ d8, d10, d12 = ref8["on_1e-5"] - ref8["off_1e-5"], f10["on"] - f10["off"], f12["
 s8, s10, s12 = abs(ref8["off_1e-6"] - ref8["on_1e-5"]), abs(d10 - art[(10, 10)]), abs(d12 - art[(12, 12)])
 G96 = json.load(open(os.path.join(D, "exp096", "grade_W12P12.json"))); D96 = abs(G96["D"])
 S_KA0 = 7.84e-7
+# ---------------- amendment-6 dependency (Bridge ruling 2026-11-28, after b25a9bd): s_KA is decided by the GRADED record only.
+# The raw A6 JSON's "reading" field is the script's ungraded print (it says R-a although the plant did not fire) and is never read.
+A6RAW = os.path.join(D, "exp096", "W12P12Wb12Ny48_r2_onoff.json"); A6GR = os.path.join(D, "exp096", "A6_GRADED.json")
+GRADES = {"R-a": 0.0, "R-b": S_KA0, "UNCLASSIFIED": S_KA0, "FAILED (control)": S_KA0}
+def ska_decide(gr, raw_bytes):
+    """gr: the graded record (dict) or None; raw_bytes: the raw A6 JSON bytes or None. Returns (s_KA, label); raises ValueError = REFUSE."""
+    import hashlib
+    if gr is None: raise ValueError("graded A6 record missing")
+    if raw_bytes is None: raise ValueError("raw A6 result missing")
+    if hashlib.sha256(raw_bytes).hexdigest() != gr.get("raw_sha256"): raise ValueError("raw A6 sha256 != graded record's raw_sha256")
+    g = gr.get("graded")
+    if g not in GRADES: raise ValueError(f"unknown graded reading {g!r}")
+    fired = abs(json.loads(raw_bytes)["plant_ka"]) > 1e-8
+    if bool(gr.get("plant_fired")) != fired: raise ValueError(f"graded plant_fired {gr.get('plant_fired')} != raw plant_ka line ({fired})")
+    if g == "R-a" and not fired: raise ValueError("graded R-a but the plant did not fire (R-a needs a PASS control)")
+    s = GRADES[g]
+    return s, f"amendment-6 GRADED reading: {g} (commit {gr.get('commit')}) -> s_KA {'dropped (R-a)' if s == 0 else 'kept'} = {s:.3g}"
+def ska_from_files():
+    gr = json.load(open(A6GR)) if os.path.exists(A6GR) else None
+    raw = open(A6RAW, "rb").read() if os.path.exists(A6RAW) else None
+    return ska_decide(gr, raw)
 
 # ---------------- k = 3 inputs: REAL (K3) or PLANTED (DRY)
 F6 = os.path.join(D, "sigma_W6_P12_box12_c2_cp12_sc3.0_dd0_081e_ckpt.json"); F12 = os.path.join(D, "sigma_W12_P12_box12_c2_cp12_sc3.0_dd0_ckpt.json")
@@ -101,24 +127,36 @@ def k3_gates():
     check("gate 4': W6P12 rerun rc 0, stale-file guard PASS after it, run_w6p12.done", i >= 0 and "stale-file guard PASS" in r6[i:]
           and os.path.exists(os.path.join(D, "run_w6p12.done")), "")
 if mode == "K3":
+    try: s_KA, s_lab = ska_from_files()          # FIRST, before any k = 3 file is opened: no graded record -> REFUSE
+    except ValueError as e: print(f"STOP (REFUSE): amendment-6 dependency: {e} -> no k = 3 reading"); sys.exit(1)
     k3_gates()
     if FAIL: print(f"\nSTOP: gate(s) failed -> k = 3 readings VOID: {FAIL}"); sys.exit(1)
     R3 = Rk(3, F6, F12, kap3)
     if R3.get("void"): print(f"k = 3 VOID: {R3['why']}"); sys.exit(1)
     G6, G12 = G(6, 12), G(12, 12)
-    A6 = os.path.join(D, "exp096", "W12P12Wb12Ny48_r2_onoff.json")
-    if os.path.exists(A6):
-        a6 = json.load(open(A6))["reading"]; s_KA = 0.0 if a6.startswith("R-a") else S_KA0
-        s_lab = f"amendment-6 READING: {a6} -> s_KA {'dropped (R-a)' if s_KA == 0 else 'kept'}"
-    elif time.time() >= time.mktime(time.strptime("2026-11-28 18:00", "%Y-%m-%d %H:%M")):
-        s_KA, s_lab = S_KA0, "amendment-6 READING not landed by 2026-11-28 18:00 -> s_KA INCLUDED (amendment 1 item 5)"
-    else:
-        print("STOP: the amendment-6 READING has not landed and it is before 18:00 (amendment 1 item 5): no k = 3 reading"); sys.exit(1)
 else:   # DRY: planted k = 3 built from the k = 2.5 values (no k = 3 file opened)
     R3 = dict(R_T0=JD["2.5"]["R_T0"] + 2.0, R_T1=JD["2.5"]["R_T1"] + 2.0, sigma=JD["2.5"]["sigma"], kappa=kap3,
               components={c: v + 1.0 for c, v in JD["2.5"]["components"].items()}, t0_W1=-100.0, t0_W2=-480.0)
     G6 = dict(X_cA=0.0, X_Lam=51.0); G12 = dict(X_cA=-0.5, X_Lam=241.0)
-    s_KA, s_lab = S_KA0, "DRY: s_KA kept (planted)"
+    # DRY assertions on the s_KA decision (Bridge ruling 2026-11-28). Each planted case must give its stated outcome.
+    import hashlib
+    def plant_raw(pk): b = json.dumps({"plant_ka": pk, "reading": "R-a (ungraded print)"}).encode(); return b, hashlib.sha256(b).hexdigest()
+    def refuses(gr, raw):
+        try: ska_decide(gr, raw); return False
+        except ValueError: return True
+    bF, hF = plant_raw(1.16e-11); bP, hP = plant_raw(2.97e-4)
+    check("DRY s_KA: planted graded R-a + fired plant -> dropped (0)", ska_decide(dict(graded="R-a", raw_sha256=hP, plant_fired=True), bP)[0] == 0.0, "")
+    check("DRY s_KA: planted graded FAILED (control) -> kept", ska_decide(dict(graded="FAILED (control)", raw_sha256=hF, plant_fired=False), bF)[0] == S_KA0, "")
+    check("DRY s_KA: planted graded R-a with a NON-fired plant -> REFUSE", refuses(dict(graded="R-a", raw_sha256=hF, plant_fired=False), bF), "")
+    check("DRY s_KA: graded record missing -> REFUSE", refuses(None, bF), "")
+    check("DRY s_KA: raw sha mismatch -> REFUSE", refuses(dict(graded="FAILED (control)", raw_sha256=hP, plant_fired=False), bF), "")
+    check("DRY s_KA: unknown graded string -> REFUSE", refuses(dict(graded="R-a (cross-chip: closes on one chip)", raw_sha256=hP, plant_fired=True), bP), "")
+    check("DRY s_KA: the RAW file's 'reading' field says R-a (the trap is present)", json.load(open(A6RAW))["reading"].startswith("R-a"), "")
+    try: s_real, lab_real = ska_from_files(); ok_real = (s_real == S_KA0)
+    except ValueError as e: s_real, lab_real, ok_real = None, f"REFUSE: {e}", False
+    check("DRY s_KA: REAL A6 record (A6_GRADED.json + raw) -> s_KA == S_KA0 (kept)", ok_real, lab_real)
+    s_KA, s_lab = S_KA0, f"DRY: real-record decision -> {lab_real}; planted readings use s_KA kept"
+    if ok_real: print("DRY s_KA kept: real A6 graded record gives s_KA = S_KA0 = 7.84e-7")
 print(f"\n{s_lab}")
 
 # ---------------- K-k3 controls
