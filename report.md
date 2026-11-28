@@ -12960,3 +12960,20 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - the coefficient against the literature y1 (verified at source) times h0: **open**, 14% off;
   - only 7 sizes, up to P = 24: **open**.
 - **Grade:** the reading is verified by the registered rule on an exact computation; "log in c_A" is partially verified (one out-of-sample point); the coefficient is unverified.
+
+### EXP-096 amendment 6 (6b rerun, tag _r2) RESULT: W8P8 control PASS; at W12P12 the KA line closes but **the plant DID NOT FIRE, so the test reads FAILED (control) by the registered rule** (2026-11-28 15:14 → 16:33, Mac mini, 1 thread, nice 10; W12P12 wall 3832 s, peak 3.63 GB phys_footprint against ~3.8 GB declared; `exp096/W12P12Wb12Ny48_r2_onoff.json` sha 0cb4f1a52f00c159, `_stepA.json` ef05d28159e3ae42, `e96a6_r2_W12P12.out` 868c1ca529748338; W8P8: `exp096/W8P8Wb8Ny32_r2_onoff.json` 5117c69b844a1cf8, `e96a6_r2_W8P8.out` 7d6b8d85ca511cca) [model: Opus 5.5]
+- **Goal.** Decide between the cross-chip reading (R-a) and the chip-independent reading (R-b) of the W12P12 KA-complete residual −7.84e-7 (amendments 6, 6b).
+- **W8P8 known-answer control: PASS.** KA-complete-1chip −1.10e-14; plant (0,16) moves it by 2.97e-4 (FIRES); step A bitwise; every class Mac − Air ≤ 5e-17.
+- **W12P12 results (Mac mini, M4):**
+  - Step A: 11 classes (p = 6–16), the same list as the Air's; max |member diff| 1.71e-14 (p = 14) → "same" (≤ 1e-12). Gate: unconverged 0, NG 16480.
+  - **KA-complete-1chip = Σ_Mac(ON_d − OFF_d) − stored t0 = +0.063940526432 − 0.063940526432 = −4.71e-14 → closes (≤ 1e-8).**
+  - **Plant: |ON − OFF| of (0,16) = 1.16e-11 ≤ 1e-8 → DOES NOT FIRE (FAIL).** By the registered text ("if (0,16) fails to fire, the amendment-6 test reads FAILED (control), and the next step is decided with the Bridge"), the script's printed "READING: R-a" is **not** a graded reading. The systematic s_KA stays in the k = 3 budget (amendment 1 drops it only on R-a).
+- **Localisation table (descriptive, because the control failed):** Σ_classes(Mac − Air) of (ON_d − OFF_d) = +7.836e-7, against the Air residual of −7.84e-7 (the sign is consistent: KA_Air − KA_Mac = −7.84e-7).
+  - All of it sits in **class p = 8, OFF disc:** OFF_d Mac − Air −7.839e-7; ON_d Mac − Air +2.1e-10.
+  - Every other class: |Mac − Air| ≤ 1.0e-9 on ON and OFF separately (p = 6, 7: ±1e-9 on both, so it cancels in ON − OFF; p = 11: 4e-10; p = 14: 1e-10; the rest ≤ 2e-16).
+  - Under the amendment-6 wording, a difference INSIDE the classes would make the W8P8 (outside the clusters) and W12P12 sizes different components, so the 7.84e-7 / 7.80e-7 match would be a coincidence. **That conclusion is not drawn here, because the control failed.**
+- **Analysis: why the plant failed (my design miss again; the mechanism is unverified).** The 6b rule took "the first pair whose partner q is in pset(16)", (0,16), with a structural argument that it would fire at W12P12; I did not measure it there. It fired at W8P8 (2.97e-4) but not at W12P12 (1.16e-11), while class 16 as a whole has ON_d − OFF_d = −2.97e-2 at W12P12.
+  - Inference (**unverified**): the W12P12 class-16 span is 1.8e-8, far below rad = 1e-5. So for the two-tag pair, the OFF contour (radius rad) and the ON contour (0.5·span + rad) are nearly the same circle, giving ON ≈ OFF. The class's fix effect is then carried by the single-tag pairs (mechanism B: gap 1.8e-8 < 1e-7). At W8P8 it is the reverse (span 3e-6 > 1e-7). Run 1's plant (16,16) and the 6b plant (0,16) each fire at only one of the two geometries.
+  - The lesson already in memory ("check the plant against the mechanism at EVERY geometry, measured") was written after run 1, and I applied it only at W8P8. The pre-check at W12P12 would have cost one install (~15 min).
+- **Kept as evidence:** run 1 (ade24c1) and this run; nothing is overwritten.
+- **Next steps (the Bridge's decision):** (i) accept FAILED and carry s_KA into k = 3, the registered path that is already coded in exp090_k3.py; (ii) or register a third plant measured at W12P12 first (a post-outcome choice, graded as such). No rerun without a ruling. k = 3 still waits for "K3 go".

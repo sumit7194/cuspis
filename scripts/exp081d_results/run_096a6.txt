@@ -6,3 +6,12 @@
 === e96a6_W8P8 start 2026-11-28 14:57:57 args: 8 8
 === e96a6_W8P8 rc 0 2026-11-28 15:09:44
 === STOP 2026-11-28 15:09:44: W8P8 known-answer control FAILED (KA-complete-1chip or plant) -> tell the Bridge
+=== run_096a6 armed 2026-11-28 15:14:27; NOWAIT=1 (Bridge go): not waiting for W6P12
+=== GATE e96a6_r2_W8P8 2026-11-28 15:14:27: free 84% (>= 50) -> LAUNCH (pgate next)
+=== e96a6_r2_W8P8 start 2026-11-28 15:14:27 args: 8 8 --tag _r2
+=== e96a6_r2_W8P8 rc 0 2026-11-28 15:25:08
+=== W8P8 control PASS (KA closes, plant fires) -> W12P12 next
+=== GATE e96a6_r2_W12P12 2026-11-28 15:25:08: free 84% (>= 50) -> LAUNCH (pgate next)
+=== e96a6_r2_W12P12 start 2026-11-28 15:25:08 args: 12 12 --tag _r2
+=== e96a6_r2_W12P12 rc 0 2026-11-28 16:33:31
+=== run_096a6 complete 2026-11-28 16:33:31

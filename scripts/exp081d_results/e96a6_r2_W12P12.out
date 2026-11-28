@@ -1,0 +1,30 @@
+STEP A: class list here [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] vs Air [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]: same list True; max |member diff| 1.71e-14 -> same (<= 1e-12)
+  p= 6: max |member diff| 7.77e-16; span here - span Air -3.33e-16
+  p= 7: max |member diff| 7.77e-16; span here - span Air +5.55e-16
+  p= 8: max |member diff| 1.89e-15; span here - span Air +1.67e-15
+  p= 9: max |member diff| 0.00e+00; span here - span Air +0.00e+00
+  p=10: max |member diff| 0.00e+00; span here - span Air +0.00e+00
+  p=11: max |member diff| 2.66e-15; span here - span Air +4.44e-16
+  p=12: max |member diff| 0.00e+00; span here - span Air +0.00e+00
+  p=13: max |member diff| 0.00e+00; span here - span Air +0.00e+00
+  p=14: max |member diff| 1.71e-14; span here - span Air -6.66e-16
+  p=15: max |member diff| 0.00e+00; span here - span Air +0.00e+00
+  p=16: max |member diff| 0.00e+00; span here - span Air +0.00e+00
+W12P12Wb12Ny48_r2_onoff: installed + B1 (861s), N 864
+classes: [(6, 2, '8.3e-05', '0.7719', '1.0e-03', np.True_), (7, 2, '2.6e-05', '0.8262', '1.0e-03', True), (8, 2, '8.9e-06', '0.8774', '1.0e-03', True), (9, 2, '3.2e-06', '0.9256', '1.0e-03', True), (10, 2, '1.3e-06', '0.9708', '1.0e-03', True), (11, 2, '5.2e-07', '1.0131', '1.0e-03', True), (12, 2, '2.3e-07', '1.0523', '1.0e-03', True), (13, 2, '1.1e-07', '1.0884', '1.0e-03', True), (14, 2, '5.6e-08', '1.1215', '1.0e-03', True), (15, 2, '3.0e-08', '1.1514', '1.0e-03', True), (16, 2, '1.8e-08', '1.1782', '1.0e-03', True)]
+class p= 6: ON_d-OFF_d here +0.000000000000e+00  Air +0.000000000000e+00  here-Air +0.00e+00  (ON here-Air +1.01e-09, OFF here-Air +1.01e-09; 209s)
+class p= 7: ON_d-OFF_d here +0.000000000000e+00  Air +0.000000000000e+00  here-Air +0.00e+00  (ON here-Air -7.38e-10, OFF here-Air -7.38e-10; 208s)
+class p= 8: ON_d-OFF_d here +7.689732309062e-02  Air +7.689653900448e-02  here-Air +7.84e-07  (ON here-Air +2.07e-10, OFF here-Air -7.84e-07; 304s)
+class p= 9: ON_d-OFF_d here +4.587345073513e-02  Air +4.587345073513e-02  here-Air -1.11e-16  (ON here-Air +1.11e-16, OFF here-Air +2.22e-16; 320s)
+class p=10: ON_d-OFF_d here +3.073530555632e-02  Air +3.073530555632e-02  here-Air +0.00e+00  (ON here-Air +0.00e+00, OFF here-Air +0.00e+00; 319s)
+class p=11: ON_d-OFF_d here +2.112707335023e-02  Air +2.112707376170e-02  here-Air -4.11e-10  (ON here-Air -2.74e-10, OFF here-Air +1.38e-10; 319s)
+class p=12: ON_d-OFF_d here +1.487684147192e-02  Air +1.487684147192e-02  here-Air +0.00e+00  (ON here-Air -5.55e-17, OFF here-Air -5.55e-17; 310s)
+class p=13: ON_d-OFF_d here +1.072241345243e-02  Air +1.072241345243e-02  here-Air +2.78e-17  (ON here-Air -8.33e-17, OFF here-Air -1.11e-16; 318s)
+class p=14: ON_d-OFF_d here -5.780072191948e-02  Air -5.780072181289e-02  here-Air -1.07e-10  (ON here-Air -1.10e-10, OFF here-Air -3.16e-12; 221s)
+class p=15: ON_d-OFF_d here -4.878505780359e-02  Air -4.878505780359e-02  here-Air -4.86e-17  (ON here-Air +0.00e+00, OFF here-Air +4.86e-17; 217s)
+class p=16: ON_d-OFF_d here -2.970610150188e-02  Air -2.970610150188e-02  here-Air -6.94e-17  (ON here-Air -6.94e-17, OFF here-Air +0.00e+00; 217s)
+KA-complete-1chip: sum +0.063940526432 - stored +0.063940526432 = -4.71e-14 -> CLOSES (<= 1e-8)
+  sum over classes of (here - Air) = +7.836e-07 (Air KA residual was -7.84e-07)
+PLANT: class 16 first pair (0, 16) |vn - vo| 1.16e-11; planted KA moves by 1.16e-11 -> DOES NOT FIRE (FAIL)
+READING: R-a (cross-chip: closes on one chip)
+done: 11 classes, NG 16480, unconverged 0, wall 3827s
