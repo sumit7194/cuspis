@@ -1,3 +1,5 @@
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** Any R here is about 2.2–2.3 × R_D = δκ/κ_free. Register: `notes/NORMALISER_AUDIT_EXP100.md`. The text below is unchanged.
+
 # Brief for Cuspis-personal (Fable): which O(N⁰) critical-coupling counterterm, box A or bulk, at n = 1? (2026-11-26 ~01:00) [model: Opus 5.5]
 
 *Self-contained. Requested by the Bridge for Sumit's Fable window (03:20–05:30). It is a consultation for thinking; compute at most minutes.

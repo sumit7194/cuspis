@@ -3,6 +3,7 @@
 
 ## What we know (grades)
 - **R(k), corrected with the EXP-087 t0 fix:** k = 1, 1.5, 2, 2.5 → 2.2552, 4.2334, 6.5877, 9.0902. *Partially verified.*
+  - **[Normaliser mark, 2026-11-28] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** Under R_D = δκ/κ_free, k = 1, 1.5, 2, 2.5, 3 → 1.0045, 1.944, 2.948, 4.005, 5.085 (also convention A, IR-unconverged). Register: notes/NORMALISER_AUDIT_EXP100.md.
 - **The t0 fix:** *verified* at W8P8 at the cluster level (to ~1e-9; e96d); the W8P8 referee is noise-limited at ~1e-6 (e96s). At W12P12, it agrees with the independent route to 1.3e-9 on the clusters (EXP-096), but KA-complete FAILED (−7.8e-7, undiagnosed): *partially verified*. At W10P10: *partially verified* (no route run).
 - **Counterterm (box c_A vs bulk c):**
   - EXP-090 at k ≤ 2.5: A *supported*; bulk overshoots. *Partially verified*: argued, not derived.

@@ -97,7 +97,7 @@
 - **§7 plant: corrected wording.** Using 1.01·Ny in the slope formula only must give exactly κ/1.01, to 1e-12 relative (κ ∝ 1/Ny). The old "by 1% ± 1e-9" was imprecise.
 - Nothing else changes.
 
-## Amendment 2 (2026-11-29 ~00:30 IST; Bridge ruling (a) on part B; before any part-B value)
+## Amendment 2 (2026-11-28 23:51 IST, committed b8906f1; the first draft of this heading said "2026-11-29 ~00:30", wrong; Bridge ruling (a) on part B; before any part-B value)
 - **Ruling.** The Bridge chose (a): split the production nodes across 4 single-thread processes. A split-vs-whole BITWISE known answer at W2P4 runs first. If it is not bitwise, stop and report.
 - **How the split runs.**
   - Each part gets its own checkpoint, through `--tag-suffix`. The parts cover nodes 0:6 | 6:20 | 20:34 | 34:48, and part 0 also computes t0 and tsad.

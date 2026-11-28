@@ -1,0 +1,10 @@
+[      4s] sigma_W2_P4_box4_c2_cp12_sc3.0_dd0_gL5_gR5_hT4_Ny16_kap0: N 96 Ny 16; 081c numerics installed (9 unique slices, low-rank residues; ranks {'max': 1, 'hist': {'1': 36}}) 1152 G, unconverged 0 (4s)
+[     30s] t0 -42.179451919445  G calls 9488 unconverged 0 (26s)
+[     30s] tsad +45.571704321323  G calls 0 unconverged 0 (0s)
+[     33s] g(0.0046) done: 2016 G, steps hist {'1': 1768, '2': 248}, unconverged 0 (3s)
+[     36s] g(0.0240) done: 2016 G, steps hist {'1': 1786, '2': 230}, unconverged 0 (3s)
+[     40s] g(0.0575) done: 2016 G, steps hist {'1': 1760, '2': 256}, unconverged 0 (4s)
+[     45s] g(0.1032) done: 2016 G, steps hist {'1': 1751, '2': 265}, unconverged 0 (4s)
+[     48s] g(0.1580) done: 2016 G, steps hist {'1': 1760, '2': 256}, unconverged 0 (4s)
+[     52s] g(0.2187) done: 2016 G, steps hist {'1': 1749, '2': 267}, unconverged 0 (4s)
+[     52s] production part done

@@ -1,3 +1,5 @@
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** Any R here is about 2.2–2.3 × R_D = δκ/κ_free. Register: `notes/NORMALISER_AUDIT_EXP100.md`. The text below is unchanged.
+
 # T55 (REVISED after the Bridge's review: FIX 1–4 applied; for sending by the Bridge): blind Neon prompt for the O(N⁰) critical-coupling counterterm coefficient [model: Opus 5.5]
 
 *Blind: it states no target value, no factor, and no observed outcome. Sumit sends it from his Chrome after the Bridge's review.*

@@ -8848,6 +8848,7 @@ q-convolved bubble. Conditions:
   infinite volume.
 
 ## EXP-081  Lean P1: first sign estimate of δκ/κ_free on the 3D lattice, with a measured uncertainty — pre-registration [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: same-geometry κ_lat (EXP-081 rung geometry, not convention A), IR status never measured; superseded by EXP-100.** Register: `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Decision.** Option 3 (the Bridge, for Sumit, 2026-11-21): the lean P1 now; the matrix-free P2 is designed in parallel
 (Neon brief `BRIEF_P2_matrixfree.md`).
 
@@ -8903,6 +8904,7 @@ otherwise INCONCLUSIVE.**
 - Estimated ~5 h.
 
 ## EXP-081a  Amendment: the saddle term added to the engine; engine-path controls; the r = 8 rung — registered before any saddle-included value is computed [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: same-geometry κ_lat (EXP-081 rung geometry, not convention A), IR status never measured; superseded by EXP-100.** Register: `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **What happened, stated plainly.**
 - The EXP-081 production run was **stopped by me** after its first two points: W = 2, no saddle.
   - r = 2: δκ_lat = −0.61646762, R = −48.534388;
@@ -9031,6 +9033,7 @@ night run uses **launch variant (b)**, run from `scripts/`:
 - The full EXP-081b registration awaits the Bridge's OK on the redesign.
 
 ## EXP-081b  Strip-pair redesign of the lean P1 — pre-registration (replaces the EXP-081/081a geometry; the Bridge's OK) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Disclosure.** Seen before this registration:
 - the EXP-081 no-saddle values (R = −48.5, −69.4);
 - the EXP-081a saddle-included edge-design values (R = 1.82, 3.62, −237, 21.5; the edge numerics are broken);
@@ -9399,6 +9402,7 @@ is not negligible: **argued (consistent; not reproduced by me).**
   route; P2 is a cross-check.
 
 ### EXP-081b result: INCONCLUSIVE under both rules, as registered. The lattice nuisance σ_W is the sole cause; one production-code bug found by the N_y control and fixed [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 
 **Runs.**
 - The driver finished all 20 geometries (W2P12 resumed from its checkpoint at the 3.2 GB cap; peak 2.25 GB).
@@ -9799,6 +9803,7 @@ control.**
   - **T46e must reproduce this table**, the Bridge's referee rule.
 
 ## EXP-083  Honest integer-n referee for the lattice σ continuation (Strip3D: QEP poles, s_cut, saddle) — REGISTRATION (draft 77013fc + the Bridge's edits 1–5, 2026-11-22) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Text.** `notes/EXP-083_draft.md` at 77013fc is registered, with the amendments below; they govern where they differ.
 Nothing has been computed. It may run in parallel with 081c (each < 1 GB, nice 12, watchdog).
 
@@ -9889,6 +9894,7 @@ No comparison with the continuation was made.)
     the base-free arm required at P = 2 only. Its tolerance must be < 0.191 or the experiment stops.
 
 ### EXP-083 redesign R1 — REGISTERED (the Bridge's OK with edits A–D, 2026-11-22) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Disclosure (edit D), stated exactly.**
 - After Tier-1 I partly formed a comparison in my head. From the honest arm-(a) (no saddle) Q′ values I computed
   δQ′(P = 4) = +5.14, converted it to a no-saddle R(4) ≈ −36.4, and recalled EXP-081's saddle-off values (R = −48.5, −69.4;
@@ -10812,6 +10818,7 @@ hoc, with the residue error graded by impact: σ_W = 3.80, ρ = 1.86, NOT resolu
 2·10⁻⁹…1.3·10⁻⁷). Rule: a check's tolerance must exceed its reference arm's known error, or be graded by downstream impact.
 
 ### EXP-081c post hoc, continued (the Bridge's questions 1–2; descriptive; data in hand only) and the EXP-081d draft [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 (`scripts/exp081c_components.py` → `exp081c_components_output.txt`, `exp081c_components.json`;
 `exp081c_components_Pseries_output.txt`; draft `notes/EXP-081d_refinement_draft.md`.)
 
@@ -11205,6 +11212,7 @@ gains `check_scale_plant`. **No R, S or g of k = 1.5, 2.5 or 3 exists.** The pre
 subset).
 
 ### A. Question, geometry, estimator
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Question:** in the fixed physical geometry of (2,4)@P4 box 4, does R(k) converge, diverge logarithmically, or diverge as a power?
 - **Geometry at k:** (W1, W2) = (2k, 4k), P = box = 4k, c = 2, N_y = 4P, N = 96k².
 - **Production numerics:** 081c numerics (exact integer H, adaptive refinement with divergence guard, R1 non-convergence tiers),
@@ -11222,6 +11230,7 @@ subset).
 - **k = 1** uses the 081d pipeline (the known-answer run).
 
 ### B. PRIMARY decision rule (fixed now; `decide_r` / `decide`, 12/12 planted tests pass, `scripts/exp081d_analyze_tests_output.txt`)
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Statistic:** r = [R(3) − R(1.5)] / [R(2) − R(1)], computed per tail (T0, T1). σ_r is propagated from σ_R(k).
 
 | r (the whole interval r ± 2σ_r must lie in the band) | reading |
@@ -11289,6 +11298,7 @@ subset).
 Every control that can void a k has shown, on real data, that it fires. Woodbury (reported only) does not fire at k = 1, as expected.
 
 ### E. Resources, and a correction to the draft
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Correction (the draft's error, stated): k = 3 is not one night on 4 cores at 4 GB.** The draft said "< 0.3 GB per process", and
   that was never measured.
   - `Strip3D.inner()` holds three (N_y, N, N) complex arrays, and the route keeps B1 alongside: 4 × 573 MB at k = 3.
@@ -11311,6 +11321,7 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 - **No physics number from a new k is read or reported before the Bridge's GO.**
 
 ### EXP-081d amendment 1 (the Bridge named §B; committed BEFORE launch; no new-k number exists) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **The defect (Bridge):** the registered bands 0.60 / 0.80–1.25 / 1.60 could not produce the most plausible readings.
 - O(a) convergence (p = 1, r = 1.5⁻¹ = 0.667) fell in the 0.60–0.80 gap, and linear growth (r = 1.5) in the 1.25–1.60 gap. Both were
   INCONCLUSIVE whatever σ_r.
@@ -11391,6 +11402,7 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
   and R1 caps before C0 and the T1 fit; conservative). It implements the registered consequence and does not change it.
 
 ### EXP-081d — Stage 1 end (2026-11-23 12:42). **Stage 1 of 2, no verdict.**
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 
 **Registered headline:** PRIMARY = INCONCLUSIVE (k = 3 is missing). That is expected at Stage 1; the PRIMARY ratio needs k = 3 (Stage 2).
 
@@ -11522,6 +11534,7 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 **Recommendation:** (c), which is (a) with Step 0 and census first. It keeps the code identical, and the first hour can void k = 3 cheaply.
 
 ### EXP-081d Stage 2: census FLAGS W12P12b12. Registered row CEN: "geometry flagged, so k void". **STOP-class event, k = 3.** (2026-11-23 15:04, read at 15:50)
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Step 0 at k = 3:** W6P12b12 and W12P12b12 PASS at all 5 checkpoints. No cap, no void. Peaks 0.72 / 1.09 GB.
 - **Census:** W6P12b12 PASS (0 of 25 slices flagged). **W12P12b12 FLAGGED, 13 of 25 slices.** Detail rerun: `exp081d_results/census_W12P12b12_detail.txt`.
   - **(i) Slices p = 7, 10: production MISSES a pole pair below the cut.**
@@ -11541,6 +11554,7 @@ Every control that can void a k has shown, on real data, that it fires. Woodbury
 - **Consequence as registered:** k = 3 void, so the PRIMARY stays INCONCLUSIVE (a needed k is void). Any rescue (a QEP filter fix, then re-census) is a post-registration change and needs a ruling.
 
 ### **EXP-081d RESULT (registered headline): PRIMARY INCONCLUSIVE, because k = 3 is VOID (census row CEN: W12P12b12 flagged).** Bridge ruling, 2026-11-23.
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Registered output of 081d:** the Stage-1 series R(k) at k = 1, 1.5, 2, 2.5 = +2.255, +4.233, +6.442, +8.219, positive at every k, **partially verified** (entry 105e4fe; gates all PASS).
   - No convergence reading is possible: the registered ratio needs k = 3, and k = 3 is void.
   - The lattice "+2.4" remains NOT resolution-stable (081c post hoc ρ = 1.86). R keeps growing with k through k = 2.5.
@@ -11744,6 +11758,7 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
 - Tested: the same line without pipefail continues; with pipefail, a failing checker STOPs.
 
 ### Pre-R(3) interpretation note (2026-11-23, before any 081e R is read; the bands are unchanged). Prompted by the Bridge's Neon T53 relay (outside input, unverified; I did not open the Neon file).
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Component scaling of the registered Stage-1 numbers** (`exp081d_results/e_component_scaling.txt`; DESCRIPTIVE, 4-point coefficients are inference):
 - t0/k² goes −36.1 → −30.1 and T_sad/k² goes +38.9 → +31.4. Each width-differenced component grows like k², and their k² parts cancel.
 - The remainder (t0 + T_sad)/k levels off at ≈ 3.2, so the growth of R is a **linear-in-k (∝ 1/a) left-over of a near-cancelled 1/a² pair**. 𝒞 is small (≤ 0.5) and changes sign.
@@ -11758,6 +11773,7 @@ The controls are what exposed both. The Bridge's point 5 also applies to plants:
   - (c) the MFS conical counterterm is local on the cut, so it cancels in the width pair and cannot cause the growth (argued).
 
 ### 081e: every outcome pre-stated (Bridge addition, 2026-11-23, before any R(3) read; the bands are unchanged)
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Expected outcome, stated plainly:** the descriptive linear fit R ≈ 4.02k − 1.75 predicts R(3) ≈ 10.3, so r ≈ 1.45, **POWER-DIVERGENT (argued: an extrapolation of 4 points, descriptive)**. An 081e power-divergent verdict would mainly CONFIRM the trend. The information lies in the cut-placement test, not in that confirmation.
 
 | 081e PRIMARY reading | pre-stated meaning | next step |
@@ -11798,6 +11814,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 **The draft includes:** the Bridge's caveat (σₙ ≠ σ₁ and the MFS conical behaviour, so n = 2 AND n = 3 are measured, and n-dependence separates the outcomes); the exoneration of the estimator via the k-stable free κ; the argued UV-finiteness of the exact-n pair; the pre-stated (i) / (ii-a) / (ii-b) readings; and a must-fire plant.
 
 ### **EXP-084 REGISTERED** (`notes/EXP-084_registration.md`), 2026-11-23, after the Bridge's review of draft eaa88f0
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Bridge additions:**
 - the continued reference column, put through the same ratio;
 - the r₂–r₃ rule fixed now as |r₂ − r₃| < max(0.15, 3σ_r23), with precision measured on the parts BEFORE any ratio;
@@ -11843,6 +11860,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - The 081e registration is unaffected.
 
 ### Neon T54 (via the Bridge; UNVERIFIED except where the Bridge marked it): a missing O(N⁰) coupling counterterm. My judgement, 2026-11-23.
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Hypothesis:**
 - The 1/a² parts of t0 (A) and T_sad (B) cancel through the linearised gap equation.
 - (B) also carries T0^sub·Σσ̇, where T0^sub = δ(1/g_c)_lat ~ c/a is the lattice O(1/N) shift of the critical coupling.
@@ -11872,6 +11890,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **084:** the honest replica saddle is also solved at g_c(∞) (target Σ G⁽¹⁾(x,x), no O(1/N) shift), so T54 PREDICTS the exact-n pair also grows: outcome (ii-a), (ii-b) or mixed, NOT (i). **An 084 outcome (i) would count against T54** (argued). 084 is therefore a T54 test too, and its outcomes stay as registered.
 
 ### EXP-085 draft: T54 counterterm test (`notes/EXP-085_registration_draft.md`). Paper only; numerics in the gap, alone.
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **My derivation:**
 - **(exact)** T(z) = ∂ log det B/∂σ(z), so T_sad = Σ_z T(z)σ̇(z).
 - **(argued)** The O(N⁰) critical point needs 1/g_c shifted by (1/N)·∂_σ log det B, and production omits it.
@@ -11900,6 +11919,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 **No compute until Sumit's office use ends.** The queue becomes 084 → 085 → 081e by a verified runner swap (to do when compute is allowed).
 
 ### Amendments (pre-read / pre-run): typed rounded constants replaced by stored values (found by the Bridge in EXP-085)
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **EXP-085 amendment 1:** the planted expected value used κ(2) rounded (7.045031843543933). With the stored κ = 0.017743046048925182 it is 7.04501355941485, a 2.6e-6 difference that would have failed a correct implementation at 1e-12.
   - The expected value and g_raw are now computed from `exp081d_results.json` at run time.
   - Nothing of 085 has run.
@@ -11952,6 +11972,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - The Bridge notes that the "pressure-stop is the real guard" framing in its earlier rulings was its own addition, not Sumit's instruction.
 
 ### **EXP-084 RESULT (registered headline): "mixed (both loci contribute)"** (2026-11-23 17:24; `exp081d_results/exp084/`, `exp084_k25.out`)
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Run:** k = 2.5 alone under the no-kill watchdog: measured peak **3.03 GB**, 105 s, rc 0. Phase 0 PASS (6/6 plants; known answer 4e-13). The σ table was written before any ratio (σ ≤ 2e-7 in R units).
 
 **Registered criteria:**
@@ -12145,6 +12166,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - (2) Lesson recorded in `notes/LESSONS.md` (L1: end-to-end tests run every phase on the real stored files; L2: chain on success, not on the PID).
 
 ### EXP-085 B–E under amendment 5 (part 7b, 22:09): reading **INCONCLUSIVE**, for two independent registered reasons [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Run:** 4104 s; peak 3.15 GB (2.04 MEM + 1.10 CMPRS); rc 0; all controls PASS:
   - B: R-norm and the planted normalisation.
   - C: t_sad reproduction, rel dev 0.0 at all 8 geometries. Σσ̇ radius spreads ≤ 4.4e-8.
@@ -12430,6 +12452,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Node times 2013–2347 s; ETA ~2026-11-26 05:00–07:00.
 
 ### t0 defect in `inner_beta0` for W ≥ 7 (Fable lead, branch fable/2026-11-25-t0L-largek 6156a51): **VERIFIED on tiny boxes**; production not yet measured [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Code reading (mine):**
   - Mechanism A: a same-slice doublet in the two-tag branch is counted twice when its gap g < rad = 1e-5.
   - Mechanism B: when g < 1e-2·rad, the single-tag branch drops the second member's residue.
@@ -12510,6 +12533,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Fresh routes W2P6b6 and W4P6b6 plus GEOMs are queued behind W10P10 (`run_089.sh`).
 
 ### EXP-090 REGISTERED (99484ff; nothing computed): re-reads with the corrected t0 (EXP-087) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - Registration: `notes/EXP-090_registration.md`. Every reading is NEW; 081d, 081e, 085 and 085c keep their recorded readings.
 - **Readings:**
   - (R1) corrected R(k), descriptive;
@@ -12524,6 +12548,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **W12P12 t0 runner** `run_087w12.sh` (fd1e81a) is armed (PID 67498). It waits for run_k3 to complete (C1 W12 first, the Bridge's order) and a free ≥ 50% gate. It refuses to start if run_k3 STOPs (both branches tested in scratch).
 
 ### EXP-090 k ≤ 2.5 RESULT (registered 99484ff; script ae2e3c6; `exp081d_results/exp090_k25.txt/.json`): **confirmation, not blind** [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 **Headline:** A **supported** (finite-k, k = 1–2.5; 085c's Y 1/a² row still fails; conditional on the open A-vs-bulk question at n = 1). Bulk **overshoot** at both ends. Ingredient map: **none of (a)–(d)**. Fable S-4 **PASS**. EXP-086's n = 2 overshoot stands (immune, unexplained).
 
 - **Controls:** all PASS, run before any reading (hard stop otherwise).
@@ -12597,6 +12622,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Amendment 1 (C3′) is committed before the rerun. Slip logged: a tolerance below the precision of typed inputs, plus a diagnosis that did not take the inputs as typed.
 
 ### EXP-091 RESULT (registered 33ae101 + amendment 1 ae5b046; `exp081d_results/exp091_grade.txt/.json`): **all graded Fable S-c items PASS; S-a's two fail clauses do not fire** [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Controls:** C1a, C1b, C2, C3′ (thin: |Δ| 4.06e-5 ≤ 4.69e-5), C4 and C5 all PASS.
 - **norm(3):** κ(3) = 0.0171477, so norm(3) = **14.5792**. That is OUTSIDE Fable's guessed [14.02, 14.42], so per the registration the raw g_b(3) is graded in place of Δ_bb(3).
 
@@ -12777,6 +12803,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - check the live W2P10 and Mac-mini W12P12 holds, which read TREE.
 
 ### EXP-087 W12P12 t0 RESULT + EXP-090 k = 3 gate check (2026-11-26 23:10) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Run:** `exp087_t0.py 12 12` rc 0 (23:10:12), `exp081d_results/exp087_t0_W12P12.json`.
   - It was paused 20:09:43-20:54:25 for Sumit's office work (2682 s, 0 re-pauses).
   - The printed ON time of 13556 s is therefore 10874 s of compute (OFF: 10622 s).
@@ -12841,6 +12868,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - Carry "n = 2 f ≈ 0.41 at 4 → 8, against n = 1 ≈ 0.22" into the A-vs-bulk item as descriptive.
 
 ### EXP-096 W8P8: known answer FAILED, then the diagnostic e96d (registered amendment 2 at 5d203db; decision meanings in amendment 3 at 43915a9; Air, landed 18:25; `exp096/W8P8Wb8Ny32.json`, `exp096/W8P8Wb8Ny32_diagrad.json`): **reading H2. The route is right on the clusters; the referee's extra 7.8e-7 lies OUTSIDE them** [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Goal:** the W8P8 known answer, before the expensive W12P12 run.
 - **Hypothesis:** the route reproduces the referee OFF@1e-6 − OFF@1e-5 = +0.020683775 to ≤ 1e-7, the referee's 9.2e-7 being the p = 10 leak. **Wrong** (see the honest misses in amendment 3).
 - **Route run (e96_W8P8, rc 0, 4186 s, 0.56 GB):**
@@ -12879,6 +12907,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - and, separately, whether to localise the non-class 7.8e-7. Options: a pole-list scan (install only, ~5 min on the Air, no t0); a whole-sum referee rad sweep (OFF at 5e-7 and 2e-6; ~1.5 h on the Air).
 
 ### EXP-096 step 2 RESULT: whole-sum referee sweep e96s_W8P8 (registered amendment 4 at 1ca4cb9; Air, 18:38 → 21:25, 9760 s, peak 0.615 GB; `exp081d_results/exp096/W8P8Wb8Ny32_refsweep.json` sha e20443200573bf88, `air_pull_096/e96s_W8P8.out` sha aa3cd88e18cf49fb, both equal to the Air copies): **reading R-noise by the registered rule; KA-2 FAILED (Air vs Mac at the same rad, same code: 1.05e-6)** [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Goal:** decide whether the referee's extra 7.8e-7 outside the 9 class discs (e96d, reading H2) is a real rad dependence of t0 or noise.
 - **Hypothesis (as registered):** R-real if |d2| ≤ 1e-7; R-noise if |d2| ≥ 3e-7; otherwise UNCLASSIFIED. d1 = out(2e-6) − out(1e-6), d2 = out(5e-7) − out(1e-6), out = whole − Σ class OFF_d.
 - **Results:**
@@ -12898,6 +12927,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Next steps:** W12P12 launched 21:28:37 (PID 22185, CUSPIS_081E=1, --budget-h 47, pause-not-exit gate of amendment 5); the outside-entry term at W12P12 stays **unquantified below ~1e-6 in t0**, stated in STATUS.md; this reading is folded into W12P12's 25 % check-in.
 
 ### EXP-096 W12P12 RESULT (registered amendments 0-5; Air, 21:28:37 → 06:01:00, wall 30473 s = 8.5 h, peak 3.78 GB of which 2.0 GB compressed; `exp081d_results/exp096/W12P12Wb12Ny48.json` sha df86eba6f28a1635, `air_pull_096/e96_W12P12.out` sha 2c0d73516df0221e, both equal to the Air copies; grader output `exp096/grade_W12P12.txt`): **D = truth − fix = +1.28e-9, EXACT by the registered rule. But control KA-complete FAILED AS WRITTEN (−7.8e-7 against ≤ 1e-8); cause not found** [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Goal:** decide whether the EXP-087 fix's Δt0(W12P12) = +0.0639405264 is right on the clusters, so the k = 3 readings can carry it.
 - **Results (exp096_grade.py 12 12):**
   - Gate: unconverged G evaluations 0. PASS.
@@ -12991,6 +13021,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
 - **Verified by reading the code, not by a run:** the K3-mode refusal order. A K3-mode run with the record removed was not done, because it would risk the k = 3 seal.
 
 ### EXP-090 k = 3 RESULT (registered 99484ff + amendment 1 65e0b6a; code 33f972f / 26f562f / 038df25; Bridge "K3 go" 2026-11-28 after 038df25; Mac mini 16:39 → 16:44 (pgate wait, then ~10 s compute; watchdog peak not sampled at its 10 s interval); `exp081d_results/exp090_k3.json` sha 7c080e6dabecb10a, `e90_K3.out` c6b4c8fe25b08adf; runner `run_090k3.sh`, the same python 3.15.2 / numpy 2.5.4 as the DRY): **(R4)(b) power-divergent; (R2) row 2 supported (agrees with row 1); S-3 PASS; controls PASS** [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Controls:** K1–K6 PASS; KA-R at k = 2 bitwise; κ(3) bitwise against EXP-091; norm(3); gates 1, 2, 3, 4′ PASS. The amendment-6 GRADED reading is FAILED (control) → **s_KA kept = 7.84e-7**. The K3′ placement plant fires (PASS); g_raw^c is bitwise against exp090_k25.json.
 - **(R1), descriptive:** R^c_T0(k = 1, 1.5, 2, 2.5, 3) = 2.2552, 4.2335, 6.5877, 9.0902, 11.7582; R^c_T1(3) = 11.7582; σ^c(3) = 4.72e-2; local slopes 3.956, 4.708, 5.005, 5.336. (081d's stored-t0 extrapolation, known beforehand, was R(3) = 9.2–9.9.)
 - **(R2) row 2 (k = 1–3):** g_A = 0.1865 ± 0.0203; **ρ_s = 0.0408 ± 0.0044 → supported (A flattens)**, ±2σ interval [0.032, 0.050] inside [−0.1, 0.1]. The secondary-σ and robustness rows are also supported. Row 1 (k ≤ 2.5) was supported too, so the two rows agree ("k-range dependent" does not fire). N1, descriptive: over g_raw for k ≤ 3 (4.7725), ρ = 0.0391.
@@ -13011,6 +13042,7 @@ Cost and peak are unmeasured. A dry run at k = 1 comes first and is queued behin
   - The S-1/S-2 main grades are descriptive.
 
 ### DIGEST 2026-11-28 (Bridge digest-first rule) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 WHAT WE NOW KNOW
 1. The centre coefficient c_A has a log term (EXP-092b, 48a3434). Fits made on P = 8-20, with predictions committed before the run (01ac42a), were tested at P = 24:
    - the fit WITH a free log missed by 1.4e-6;
@@ -13041,6 +13073,7 @@ WHAT IS OPEN
 
 
 ### CORRECTION to the EXP-090 k = 3 checklist and the 11-28 digest (2026-11-28, after the third-width costing) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - I wrote that the robustness row (σ_Δ = 3% of |Δ|) was a width-drift proxy. **Wrong:** that row is about the t0-fix model gap (W8P8's fraction; EXP-090 registration line 37), not about strip width.
 - So **strip-width drift at k = 3 is OPEN, with no row testing it**, not "PARTLY". The k = 3 grades themselves are unchanged: no reading used that claim.
 - The third-width proposal (W9P12, with a step 0 at W3P4 / W6P8) has gone to the Bridge for a ruling. Sensitivity bounds from the stored numbers:
@@ -13064,6 +13097,7 @@ WHAT IS OPEN
 - **Next:** registration amendment 2 is proposed to the Bridge: compute free(3, 4), free(6, 8) on the venv, then re-run the analysis only. Nothing runs before the go.
 
 ## EXP-098 stage 0 RESULT (amendment 2 re-run, 2026-11-28 21:35 IST) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Goal:** measure the width drift D(k) = R(W₁, W₃) − R(W₃, W₂) at k = 1, 2, as registered (243b079 + amendments 1, 2).
 - **Hypothesis under test:** the premise s(W) = s_∞ + δκ/W (EXP-081b) holds well enough that D is small next to R. The registered sensitivity: (R2) row 2 leaves "supported" at +4.9% in R(3).
 - **Method:**
@@ -13104,6 +13138,7 @@ WHAT IS OPEN
   - Then the Bridge rules on whether stage 1 (W9P12) is still the right next step.
 
 ## EXP-099 RESULT: the free-side width curvature is a FINITE-SIZE effect of the geometry convention (2026-11-28 21:52 IST) [model: Opus 5.5]
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** The absolute R values in this entry are about 2.2–2.3 × R_D = δκ/κ_free (κ_lat,A/κ_free = 0.43–0.45). Ratio and shape statistics move only by the k-spread of κ_lat,A (6%): e.g. the 081d PRIMARY r goes 1.737 → 1.616 under R_D, still power-divergent. The register is `notes/NORMALISER_AUDIT_EXP100.md`. The entry below is unchanged.
 - **Goal:** find out whether the free-side curvature behind the EXP-098 drift is a geometry convention or intrinsic (registration 1ac1ad1, code 1b79d1b, amendment 1 f4705a9).
 - **Controls, all PASS:**
   - KA-sweep: 23/23 stored free caches reproduced bitwise, including the stage-0 W3P4 and W6P8 values.

@@ -1,3 +1,5 @@
+> **[Normaliser mark, 2026-11-28, EXP-100 (5bd59ac)] Normaliser: convention A (same-geometry κ_lat), IR-unconverged; superseded by EXP-100.** Any R here is about 2.2–2.3 × R_D = δκ/κ_free. Register: `notes/NORMALISER_AUDIT_EXP100.md`. The text below is unchanged.
+
 # Addendum to `notes/fable_brief_A_vs_bulk.md`: the EXP-089 (ii) wall-test result (2026-11-26 01:17) [model: Opus 5.5]
 **Read this ONLY after your S-a and S-c seals are committed.** Your seal commit must be an ancestor of any commit that cites this file.
 

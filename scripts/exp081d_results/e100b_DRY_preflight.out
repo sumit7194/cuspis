@@ -1,0 +1,64 @@
+S_T convA W2P4: not void                                                             PASS 
+KA-t0 convA W2P4: exp100_t0 OFF == route t0 (1e-10 rel)                              PASS +0.0e+00
+S_T convA W4P4: not void                                                             PASS 
+KA-t0 convA W4P4: exp100_t0 OFF == route t0 (1e-10 rel)                              PASS +0.0e+00
+KAN: dk code on stored convention-A k = 1 / kappa_A(1) == stored R^c_T0(1) (1e-12 rel) PASS +0.0e+00
+guards B0 W2: 48 nodes, t0, tsad, summary present                                    PASS 
+guards B0 W2: planted must-fire FIRES and matches its prediction                     PASS impact 1.0e-06
+guards B0 W2: B2b converged+1 (<= 1e-12 rel)                                         PASS rel 0.0e+00
+guards B0 W2: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7)         PASS 
+   B0 W2: Woodbury must-fire does not fire (reported only, as in the route)
+guards B0 W4: 48 nodes, t0, tsad, summary present                                    PASS 
+guards B0 W4: planted must-fire FIRES and matches its prediction                     PASS impact 1.0e-06
+guards B0 W4: B2b converged+1 (<= 1e-12 rel)                                         PASS rel 0.0e+00
+guards B0 W4: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7)         PASS 
+   B0 W4: Woodbury must-fire does not fire (reported only, as in the route)
+guards B1 W2: 48 nodes, t0, tsad, summary present                                    PASS 
+guards B1 W2: planted must-fire FIRES and matches its prediction                     PASS impact 1.0e-06
+guards B1 W2: B2b converged+1 (<= 1e-12 rel)                                         PASS rel 0.0e+00
+guards B1 W2: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7)         PASS 
+   B1 W2: Woodbury must-fire does not fire (reported only, as in the route)
+guards B1 W4: 48 nodes, t0, tsad, summary present                                    PASS 
+guards B1 W4: planted must-fire FIRES and matches its prediction                     PASS impact 1.0e-06
+guards B1 W4: B2b converged+1 (<= 1e-12 rel)                                         PASS rel 0.0e+00
+guards B1 W4: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7)         PASS 
+   B1 W4: Woodbury must-fire does not fire (reported only, as in the route)
+S_T B0 W2: not void                                                                  PASS 
+KA-t0 B0 W2: exp100_t0 OFF == route t0 (1e-10 rel)                                   PASS +0.0e+00
+S_T B0 W4: not void                                                                  PASS 
+KA-t0 B0 W4: exp100_t0 OFF == route t0 (1e-10 rel)                                   PASS +0.0e+00
+S_T B1 W2: not void                                                                  PASS 
+KA-t0 B1 W2: exp100_t0 OFF == route t0 (1e-10 rel)                                   PASS +0.0e+00
+S_T B1 W4: not void                                                                  PASS 
+KA-t0 B1 W4: exp100_t0 OFF == route t0 (1e-10 rel)                                   PASS +0.0e+00
+plant: dk(B1) x 1.02 via S_T0(B1, W2) moves Delta_B to its prediction (1e-9 abs)     PASS +1.7e-16
+DRY: identical stand-ins for B0 and B1 give Delta_B == 0 exactly                     PASS np.float64(0.0)
+   [guard negative 'node removed': a FAIL is expected next]
+guards planted-node removed: 48 nodes, t0, tsad, summary present                     FAIL 
+guards planted-node removed: planted must-fire FIRES and matches its prediction      PASS impact 1.0e-06
+guards planted-node removed: B2b converged+1 (<= 1e-12 rel)                          PASS rel 0.0e+00
+guards planted-node removed: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7) PASS 
+   planted-node removed: Woodbury must-fire does not fire (reported only, as in the route)
+DRY guard negative 'node removed': the guard FIRES                                   PASS 
+   [guard negative 'planted not firing': a FAIL is expected next]
+guards planted-planted not firing: 48 nodes, t0, tsad, summary present               PASS 
+guards planted-planted not firing: planted must-fire FIRES and matches its prediction FAIL impact 1.0e-06
+guards planted-planted not firing: B2b converged+1 (<= 1e-12 rel)                    PASS rel 0.0e+00
+guards planted-planted not firing: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7) PASS 
+   planted-planted not firing: Woodbury must-fire does not fire (reported only, as in the route)
+DRY guard negative 'planted not firing': the guard FIRES                             PASS 
+   [guard negative 'B2b failing': a FAIL is expected next]
+guards planted-B2b failing: 48 nodes, t0, tsad, summary present                      PASS 
+guards planted-B2b failing: planted must-fire FIRES and matches its prediction       PASS impact 1.0e-06
+guards planted-B2b failing: B2b converged+1 (<= 1e-12 rel)                           FAIL rel 0.0e+00
+guards planted-B2b failing: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7) PASS 
+   planted-B2b failing: Woodbury must-fire does not fire (reported only, as in the route)
+DRY guard negative 'B2b failing': the guard FIRES                                    PASS 
+   [guard negative 'residue not ok': a FAIL is expected next]
+guards planted-residue not ok: 48 nodes, t0, tsad, summary present                   PASS 
+guards planted-residue not ok: planted must-fire FIRES and matches its prediction    PASS impact 1.0e-06
+guards planted-residue not ok: B2b converged+1 (<= 1e-12 rel)                        PASS rel 0.0e+00
+guards planted-residue not ok: t0 refined vs unrefined (<= 2e-6) and residue impact (<= 1e-7) FAIL 
+   planted-residue not ok: Woodbury must-fire does not fire (reported only, as in the route)
+DRY guard negative 'residue not ok': the guard FIRES                                 PASS 
+all controls PASS
