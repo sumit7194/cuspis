@@ -333,3 +333,13 @@
   - Good enough: the W12P12 READING line is printed rc 0 with both controls PASS.
   - Stop: not landed by 2026-11-28 18:00. Then report and ask the Bridge; nothing is killed: the guard pauses only, and the run is left paused or running for the Bridge to decide.
 - **No k = 3 reading starts before this lands, unless the Bridge says so**; if it is delayed, the readings carry the systematic term (Bridge ruling).
+
+## Amendment 6b (2026-11-28 15:15; post-failure amendment: the plant was replaced after the first plant could not fire; Bridge ruling)
+**Grade label:** post-failure amendment (plant replaced after the first plant could not fire). Run 1 (ade24c1) is kept as the failed run.
+- **Why:** run 1's plant pair (16,16) is single-tag (q = 0). At W8P8 its class-16 members are 3.0e-6 apart, so ON − OFF = 0 exactly for it, and the plant could not fire.
+- **Replacement plant (structural rule, not chosen from outcome values):** in class 16, disc +i c, take the FIRST pair in pairs_of order whose partner q is in pset(16). That is the same-object pair carrying the two-tag cluster entry. It is (0,16) at both geometries: at W8P8, q = 16; at W12P12, q = 32. Its ON entry is replaced by its OFF entry; the planted sum must move KA-complete-1chip by > 1e-8.
+- **Pre-check (field-check line; Bridge ruling 2): W8P8, measured before the rerun.** Run 1 stored no per-pair values, so this needed a 5-minute computation: `PRECHECK=1 exp096_onoff.py 8 8`, Mac, flag unset, single-threaded, nice 10. Output: `e96a6b_pre_W8P8.out`.
+  - |ON − OFF| for (0,16) = **2.967e-4** (index 31 in pairs_of order; 2.97e4 × the 1e-8 line; exactly half of class 16's total ON − OFF of 5.934e-4 over both discs, so this pair carries the whole class-16 fix effect); step A bitwise again; 104 s, 0.56 GB. **PASS**. Rule: it must be > 1e-8 by a clear margin, or the rerun does not start.
+- **W12P12, structural argument (not measured; firing there is part of the run's own verdict, as registered):** the pair carries the two-tag entry of class 16 (span 1.8e-8). OFF evaluates it on a contour of radius rad = 1e-5 that encloses both members. ON evaluates one contour of radius 0.5·span + rad around both, together with the summed single-tag treatment. Mechanisms A and B both act on this pair, so ON − OFF ≠ 0 is expected.
+- **No further substitute:** if (0,16) fails to fire, the amendment-6 test reads FAILED (control), and the next step is decided with the Bridge.
+- **Rerun:** the whole runner (W8P8, then W12P12), 1 core, single-threaded, nice 10, pause-only. Readings unchanged.

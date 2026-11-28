@@ -5,7 +5,8 @@ VERBATIM copy of exp096_t0_disc.py lines 1-162 (args, install, classes, off_disc
 STEP A: class members on THIS chip vs the Air's (exp096/W12P12Wb12Ny48.json): max |diff| reported; "same" if <= 1e-12.
 STEP B: per class ON_d, OFF_d on this chip; KA-complete-1chip = sum(ON_d - OFF_d) - stored t0(ON) - t0(OFF) (exp087_t0_W12P12.json);
   localisation: per class (ON_d - OFF_d)_here - (ON_d - OFF_d)_Air, and ON_d, OFF_d separately.
-PLANT (must fire): in class p = 16, disc +i c, the FIRST pair in pairs_of order has its ON entry replaced by its OFF entry; the planted
+PLANT (must fire; A6b, replaced after run 1): in class p = 16, disc +i c, the FIRST pair in pairs_of order whose partner q is in pset(16)
+  (the two-tag same-object pair, (0,16) at W8P8 and W12P12) has its ON entry replaced by its OFF entry; the planted
   sum must move KA-complete-1chip by > 1e-8 (its |vn - vo| is reported). Usage: exp096_onoff.py 12 12 (CUSPIS_081E=1, as the stored runs); exp096_onoff.py 8 8 (flag unset) is the known-answer control:
   there the cross-chip KA-complete already closed to 1.1e-14, so here it must close too, and the plant must fire."""
 import os, sys, json, time, argparse, collections, numpy as np
@@ -186,8 +187,17 @@ else:
     REF = json.load(open(os.path.join(HERE, "exp081d_results", f"exp087_t0_W{W}P{P}.json"))); FIX = REF["on"] - REF["off"]
 AIRC = {X["p"]: X for X in AIR}; cz = lambda v: complex(*v) if isinstance(v, list) else complex(v)
 res, tot, plant = [], 0.0, None
+def plant_idx(X, prs):                                                  # A6b (registered after run 1's plant could not fire): the FIRST pair
+    cls = set(pset(X["p"]))                                              # of class 16 in pairs_of order whose partner q is in pset(16)
+    return next(i for i, (k, p) in enumerate(prs) if (k - p) % Ny in cls)
+if os.environ.get("PRECHECK") == "1":                                    # A6b pre-check: the plant pair's |ON - OFF| only, then exit
+    X = [Y for Y in CL if Y["p"] == 16][0]; prs = pairs_of(X); i = plant_idx(X, prs); k, p = prs[i]; q = (k - p) % Ny; ad = 1j * X["c"]
+    vo = tr(k, off_disc(S.sl[p], S.sl[q], ad, X["r1"])) / Ny; vn = tr(k, on_disc(S.sl[p], S.sl[q], on087[p], on087[q], ad, X["r1"])) / Ny
+    log(f"PRECHECK A6b: class 16 plant pair {(k, p)} (index {i}, q {q}): |ON - OFF| = {abs((vn - vo).real):.3e} (needs > 1e-8 by a clear margin)")
+    json.dump(dict(pair=(k, p), index=i, q=q, dvn=(vn - vo).real), open(os.path.join(OUT, f"{name}_precheck.json"), "w"), indent=1); sys.exit(0)
 for X in CL:
     t = time.time(); r = X["r1"]; prs = pairs_of(X); od = on = 0j
+    ipl = plant_idx(X, prs) if X["p"] == 16 else -1
     for sgn in (1, -1):
         ad = sgn * 1j * X["c"]
         for ip, (k, p) in enumerate(prs):
@@ -195,7 +205,7 @@ for X in CL:
             o = off_disc(sa, sb, ad, r); vo = tr(k, o) / Ny
             vn = tr(k, on_disc(sa, sb, on087[p], on087[q], ad, r)) / Ny if (on087[p] or on087[q]) else vo
             od += vo; on += vn
-            if X["p"] == 16 and sgn == 1 and ip == 0: plant = dict(pair=(k, p), dvn=(vn - vo).real)
+            if X["p"] == 16 and sgn == 1 and ip == ipl: plant = dict(pair=(k, p), dvn=(vn - vo).real)   # A6b
     d_here = (on - od).real; tot += d_here; A_ = AIRC.get(X["p"])
     d_air = (cz(A_["on_r1"]) - cz(A_["off_r1"])).real if A_ else float("nan")
     rr = dict(p=X["p"], on=on.real, off=od.real, d_here=d_here, d_air=d_air, dd=d_here - d_air,
