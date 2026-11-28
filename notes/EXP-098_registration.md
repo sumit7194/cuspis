@@ -81,3 +81,31 @@
   - KA-A is bitwise at k = 1, 2: R_T0, R_T1, σ and κ against exp081d_results.json, and Rc against exp090_k25.json.
   - On the exact line: D = 0 to 7e-14 and R_q = R(W₁, W₂) to 9e-16.
   - P1 fires (D moves by the predicted 2.65e-8 at k = 1, 1.95e-4 at k = 2) and R_q holds (≤ 6e-14). P2 fires at the predicted size.
+
+## Amendment 2 (2026-11-28; written 21:40 IST, Bridge GO 2026-11-28; after the stage-0 STOP, before any reading exists)
+- **Grade: a post-failure plumbing amendment (a missing module).** No formula, metric, tolerance, or reading changes. Its support is KA-free, 4 of 4 bitwise on the venv (below). It is committed BEFORE the two free values are computed and before the analysis re-run.
+- **What happened:** the analysis step (`exp098_3w.py S0`, on /opt/homebrew python3 3.15.2) crashed at k = 1 in `real()`, at `Rn.free(3, 4, Wbox=4)`. That interpreter has no scipy, and the free values at the new widths were not cached, so `free()` had to compute one. Exit code 1, so the runner stopped as designed. All controls that ran before the crash PASSED (KA-A at k = 1 and 2, bitwise; KA-t0 W3P4). No reading was computed or printed. No free-side cache file was written: the exception was raised before `open(f, "w")`.
+- **Why the DRY missed it (my miss):** in the DRY, `synth()` replaced F(W₃) with a linear interpolation, so the `free()` compute path never ran on that interpreter. The DRY could not have caught it. The interpreter choice in amendment 1 was checked only on paths that read cached values.
+- **Proposed fix (no change to any formula, metric, tolerance, or reading):**
+  1. Compute the two free values free(3, 4, box 4) and free(6, 8, box 8) with `exp081b_run.free`, verbatim, on the project venv (3.14.5, numpy 2.4.3, scipy 1.17.1). That is the interpreter that made every stored free cache, and the only one with scipy.
+  2. Re-run only `exp098_3w.py S0` on /opt/homebrew python3, unchanged. It now reads the cached free values, as it already does at W₁ and W₂.
+- **Known-answer control for (1), already run:** `exp098_freeka.py` on the venv recomputes the four stored free values stage 0 uses (W2P4, W4P4, W4P8, W8P8) and matches all four **bitwise** (KA-free PASS, e98_freeka.out). It writes nothing into exp081b_results/.
+- **Mechanism so this cannot recur (the Bridge's condition):** the re-run uses a NEW runner, `run_098s0b.sh`, a copy rather than an edit of run_098s0.sh. It runs an interpreter preflight before any stage, and STOPs if:
+  - (a) PY is not the project venv or cannot import numpy and scipy;
+  - (b) the analysis interpreter PYA has no scipy AND a free cache that the analysis needs (all six: k = 1 W2/W3/W4 at P = 4; k = 2 W4/W6/W8 at P = 8) is missing.
+  - The preflight runs again right before the analysis stage.
+  - It has a planted must-fire: PREFLIGHT_PLANT=1 adds a non-existent cache to the list, and the preflight must STOP.
+- **DRY coverage is now an explicit checklist item.** The DRY's synth() path skipped free(), so the DRY did not exercise the compute path that crashed. From now on, every registration's DRY section lists each compute path the real run takes (every cache-miss branch included) and says whether the DRY runs it on the production interpreter. Any path the DRY does not run needs its own preflight or a known-answer test.
+- **The Δ(W₃) = 0 question, settled from the code (the Bridge asked for this before the re-run):**
+  - **Code facts. Verified by reading; line numbers are at f049c92.**
+    - **The flag reaches every width.** `exp087_t0.py:10` sets the module global `S3.INNER_BETA0_087` before each `C.t0_term`. `exp081c_numerics.py:160-161` (`t0_term`) calls `S.inner_beta0(1.0, dn=True)`, which `install` does not replace: the only `inner_beta0` reference in exp081c_numerics.py is line 161. `sigma3d.py:275` reads the global at call time. Nothing in the path tests W, P, the box, or parity.
+    - **The fix's only condition is in the data.** At `sigma3d.py:275`, `cl087` is built per slice by `clusters_087` (`sigma3d.py:19`): single-linkage clusters of the in-cut poles (s ≤ s_cut) with a gap < rad = 1e-5 (`sigma3d.py:261`), keeping only clusters with more than one member. The cluster branch at `sigma3d.py:279` is taken for a (p, q) pair only if slice p or slice q has such a cluster. Every other pair runs the identical OFF code.
+    - **So ON == OFF bitwise exactly when no slice has an in-cut pole pair closer than 1e-5.** The stored ON and OFF are equal bitwise at both widths: −45.8640578760927 at W3P4 and −205.83158001212004 at W6P8. So the cluster branch was never taken there. A branch taken but equal to the last bit is not credible, since `_ib0_pair_087` is a different formula.
+  - **Answer.** The fix is NOT inert by construction at odd or non-filling widths. It has no width condition and does reach them. It is inert there because their spectra (in the production pole lists) have no intra-slice in-cut pair with a gap below 1e-5.
+    - That is correct as far as the fix goes. Isolated poles are handled by the OFF residue path, which is exact for a simple pole. EXP-087 changes only near-coincident pairs, whose separate residues are ill-conditioned.
+    - Every stored nonzero Δ is at W = P = box (W8P8, W10P10, W12P12). Whether filling the box is what makes the near-doubles is **NOT settled by the code**. That is a spectral fact.
+  - **What the code cannot settle, flagged BEFORE D(3) is read.** Two things decide whether Δ(W₃) = 0 is the whole story:
+    - (i) near-pairs with gaps between 1e-5 and the s_KA scale, which are not EXP-087 clusters (as at W8P8 p = 8–10, line 12928 of report.md);
+    - (ii) a pole that production misses (census failure mode (i), seen at W12P12).
+    - Neither is tested at W3P4 or W6P8: no census exists at those geometries.
+    - At W9P12 (stage 1) the census must be run, and its result stated, before D(3) is read. This goes into the stage-1 registration as a gate. For stage 0, D(1) and D(2) carry the label "Δ(W₃) = 0 from bitwise ON = OFF; no census at W₃".

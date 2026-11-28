@@ -1,0 +1,6 @@
+interpreter 3.14.5 numpy 2.4.3 scipy 1.17.1
+free W2P4 box4: recomputed 1.1049400660372055 stored 1.1049400660372055 -> BITWISE
+free W4P4 box4: recomputed 1.1755801534742203 stored 1.1755801534742203 -> BITWISE
+free W4P8 box8: recomputed 2.733541779458818 stored 2.733541779458818 -> BITWISE
+free W8P8 box8: recomputed 2.804513963654519 stored 2.804513963654519 -> BITWISE
+KA-free: PASS

@@ -13046,3 +13046,19 @@ WHAT IS OPEN
 - The third-width proposal (W9P12, with a step 0 at W3P4 / W6P8) has gone to the Bridge for a ruling. Sensitivity bounds from the stored numbers:
   - (R2) row 2 leaves "supported" if R(3) rises by ≥ +0.58 (4.9%) relative to the lower k;
   - (R4)(b) leaves "power-divergent" only if R(3) falls by ≥ 1.67 (14%).
+
+## EXP-098 stage 0: STOP in the analysis step (2026-11-28 21:21 IST) [model: Opus 5.5]
+- **Goal:** run the stage-0 routes (W3P4, W6P8), then the registered analysis (notes/EXP-098_registration.md).
+- **Results so far (graded):**
+  - KA-0, a fresh W2P4 route, matches the stored checkpoint **bitwise** (50 keys and the n1c arms). Verified.
+  - **Route W3P4:** rc 0, 239 s, peak 0.07 GB. Stale-file guard PASS. Planted must-fire FIRES (ratio 1.0000). B2b, N1'''c and the t0 refined check all PASS.
+  - **Route W6P8:** rc 0, 11457 s (3.18 h), peak 0.77 GB. The same guards PASS. The Woodbury comparison (reported only) fires at W6P8, impact up to 3.6e-5 at s = 2.99. That is the 081b-versus-081d numerics difference, which this route does not use.
+  - **exp087_t0, the t0 fix:**
+    - W3P4: 63 s; the OFF value equals the route's t0 (diff 0), PASS.
+    - W6P8: 2320 s, peak 0.54 GB; OFF equals the route's t0, PASS.
+    - **At both widths, Δ(W₃) = ON − OFF = 0 exactly.** Descriptive. The stored nonzero values are all at W = P ≥ 8 (W8P8, W10P10, W12P12). Why Δ is zero at W = 6 in box 8 is unverified: maybe the defect needs a strip that fills the box, but I have not checked.
+  - **Analysis (`exp098_3w.py S0`): rc 1.** KA-A passed at k = 1 and 2 (bitwise) and KA-t0 W3P4 passed, then the step crashed in `free(3, 4, box 4)`: there is no scipy on the analysis interpreter. **No reading was computed.** The runner STOPPED as designed.
+- **Analysis of the failure:** a plumbing bug, not a control result. The DRY could not exercise this path, because synth() interpolates F(W₃). That was my miss in amendment 1.
+- **KA-free (new, on the venv): PASS.** The four stored free values stage 0 uses are reproduced bitwise.
+- **Pilot timing for stage 1:** the W6P8 route took 3.18 h single-threaded, against a W2P8 route of 4.6 h on the Air. The t0 fix took 0.64 h. The stage-1 cost re-estimate waits for the stage-0 report.
+- **Next:** registration amendment 2 is proposed to the Bridge: compute free(3, 4), free(6, 8) on the venv, then re-run the analysis only. Nothing runs before the go.
