@@ -13143,3 +13143,16 @@ WHAT IS OPEN
 - **Next:** this goes to the Bridge. Stage 1 returns to the value gate with a Neon outside view on the field questions:
   - (1) is the normaliser κ_lat from the σ route's own geometry the right one, given that its finite-size artefact does not cancel?
   - (2) does any two-width pair define the O(N⁰) ratio at hT = P?
+
+## EXP-099 amendments 2–3: the x-edge decay rate is the lattice t-slab rate (2026-11-28) [model: Opus 5.5]
+- **Hypothesis (the Bridge's GUESS):** edge effects decay as exp(−2m·g), with m the p = 0 x-mass of the lowest Dirichlet t-mode. On this lattice that means κ_lat = 2·arccosh(2 − cos(π/(Lt + 1))). It was pre-stated, with criteria, in the registration (2e43410).
+- **Controls, PASS:** the estimator's known answer (7.8e-15); its must-fire (two exponentials, it picks the slow one); KA-A bitwise at k = 1–3; amendment 3's first 13 g points bitwise equal to amendment 2's.
+- **Amendment 2 (g from P to 4P, Ny = 4P), registered verdict UNSETTLED:**
+  - hT = P and 2P: all 12 points within 0.7% of κ_lat (+0.03% to +0.68%), drift ≤ 0.6%.
+  - The 1/Lt ratios κ(P)/κ(2P) are 1.886, 1.948, 1.969 at k = 1, 2, 3, against κ_lat ratios 1.875, 1.937, 1.958 (within 0.6%).
+  - hT = 4P: −1.1% to −2.8% at all six points, beyond the 2% line.
+- **Amendment 3:**
+  - **(ii) g extended to 8P:** all six hT = 4P points within 0.17% (−0.08% to −0.17%), drift ≤ 0.08%, approaching monotonically. So the amendment-2 deficit was **pre-asymptotic** (κ·g_max ≈ 3).
+  - **(i) Ny = 16P:** +20% to +21% with drift about 4.5%, NOT settled. Descriptive candidate, unverified: with dense y-slices the p-sum approaches an integral over k_y, which gives a g^(−1/2) prefactor and a local rate of about κ + 1/(2g), converging slowly.
+- **Grade:** the mechanism is **partially verified**. With Ny = 4P, all 18 points match the exact lattice slab rate within 0.7% on a settled plateau, and that rate is not fitted. It is one implementation, on the free side only. At large Ny the rate is not settled.
+- **Consequence:** the x-edge part of the EXP-099 drift is set by the t-slab. Edges are screened over a length Lt/(2π) of the order of P/3 at hT = P. With unequal x-gaps (convention A), the screened edge term differs across widths. This explains why (b) saturates by g ≥ 2P, and why (c), a larger hT, makes convention A worse: the screening length grows.

@@ -1,0 +1,8 @@
+estimator KA PASS; must-fire PASS
+k=1 W= 2: amend2 rel -0.0281 | (i) Ny=16P rel +0.2002 drift/kl 0.0424 | (ii) g->8P rel -0.0017 drift/kl 0.0008 monotone True | first-13 bitwise True
+k=1 W= 4: amend2 rel -0.0130 | (i) Ny=16P rel +0.2087 drift/kl 0.0451 | (ii) g->8P rel -0.0010 drift/kl 0.0004 monotone True | first-13 bitwise True
+k=2 W= 4: amend2 rel -0.0263 | (i) Ny=16P rel +0.2031 drift/kl 0.0441 | (ii) g->8P rel -0.0016 drift/kl 0.0007 monotone True | first-13 bitwise True
+k=2 W= 8: amend2 rel -0.0114 | (i) Ny=16P rel +0.2113 drift/kl 0.0466 | (ii) g->8P rel -0.0008 drift/kl 0.0004 monotone True | first-13 bitwise True
+k=3 W= 6: amend2 rel -0.0259 | (i) Ny=16P rel +0.2038 drift/kl 0.0446 | (ii) g->8P rel -0.0015 drift/kl 0.0007 monotone True | first-13 bitwise True
+k=3 W=12: amend2 rel -0.0111 | (i) Ny=16P rel +0.2119 drift/kl 0.0470 | (ii) g->8P rel -0.0008 drift/kl 0.0004 monotone True | first-13 bitwise True
+arm (i) Ny crossover removes it: False;  arm (ii) pre-asymptotic g removes it: True
