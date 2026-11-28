@@ -109,3 +109,13 @@
     - (ii) a pole that production misses (census failure mode (i), seen at W12P12).
     - Neither is tested at W3P4 or W6P8: no census exists at those geometries.
     - At W9P12 (stage 1) the census must be run, and its result stated, before D(3) is read. This goes into the stage-1 registration as a gate. For stage 0, D(1) and D(2) carry the label "Δ(W₃) = 0 from bitwise ON = OFF; no census at W₃".
+
+## SEAL (2026-11-28, registered §5 method, verbatim; committed BEFORE free(9, 12) or any W9 value exists)
+- Input: exp081d_results/exp098_stage0.json (sha256 0f8fbd478aa9c1a2…, commit f7175f2). Script: scripts/exp098_seal.py. Output: exp081d_results/exp098_SEAL.json.
+- **d_pred(3) = −1.7573 ± 0.6153**, so **D_pred(3) = −20.66 ± 7.23** (R^c(3) = 11.7582).
+- **The (W3) band for stage 1: D(3) ∈ [−35.13, −6.19]** (±2σ_pred).
+- **q_pred(3) = −0.471 ± 1.015**, so **R_q,pred(3) = 6.22 ± 11.94.**
+- **Premortem on the seal itself, stated now:**
+  - The linear-in-k extrapolation is a two-point model.
+  - The free side carries most of D (stage-0 decomposition), and free(9, 12) can be computed in seconds. So it is NOT computed until this seal is committed.
+  - R_q is curvature-dominated at k = 1, 2 (negative), so its seal is wide and barely informative.

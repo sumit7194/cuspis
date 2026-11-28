@@ -1,0 +1,12 @@
+input          exp081d_results/exp098_stage0.json
+input_sha256   0f8fbd478aa9c1a28f2766ff6ba8904b565e2e601c4847cfea0d93f3ae38f28d
+Rc3            11.7582
+d_pred         -1.7573057365735956
+sigma_d_pred   0.615305270465991
+D_pred         -20.662752311779652
+sigma_D_pred   7.234882431193216
+band_W3        [-35.13251717416609, -6.19298744939322]
+q_pred         -0.47102999750178354
+sigma_q_pred   1.0153028672212925
+Rq_pred        6.219735083374529
+sigma_Rq_pred  11.938134173361401
